@@ -166,7 +166,7 @@
             z-index: 10;
         }
 
-        /* BANNER IMAGEN PRINCIPAL CORREGIDO */
+        /* BANNER IMAGEN PRINCIPAL */
         .hero-banner-container {
             width: 100%;
             margin-bottom: 20px;
@@ -175,17 +175,12 @@
             border: 1px solid var(--primary);
             box-shadow: 0 0 25px rgba(0, 240, 255, 0.3);
             background: var(--surface-card);
-            /* Asegura que la imagen no se estire raro */
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
         .hero-banner-container img {
             width: 100%;
             height: auto;
             display: block;
-            /* Esto quita el espacio blanco debajo de la imagen */
         }
 
         /* CATEGORÍAS */
@@ -576,9 +571,9 @@
     </header>
 
     <div class="container">
-        <!-- BANNER CON LA IMAGEN PROFESIONAL YA INTEGRADA -->
+        <!-- BANNER CON LA NUEVA IMAGEN PROFESIONAL -->
         <div class="hero-banner-container">
-            <img src="banner-store.jpg" alt="GTR / UDC Store - Venta de Servicios Digitales">
+            <img src="https://raw.githubusercontent.com/gtrowen/gtrowen.github.io/main/banner-store.jpg" alt="GTR / UDC Store - Venta de Servicios Digitales" onerror="this.src='banner-store.jpg'">
         </div>
 
         <!-- BARRA DE CATEGORÍAS -->
@@ -729,4 +724,574 @@
                 </div>
                 <div>
                     <div class="product-price price-tag">₡4,000</div>
-                    <button class="btn
+                    <button class="btn-add" onclick="add('Spotify Familiar 1 Año (Permanente)', 4000, 8.00, 146, 33300, 10100, 29.00)">Agregar</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="streaming-perm" data-crc="7000" data-usd="13.99" data-mxn="255" data-cop="58300" data-ars="17700" data-pen="51.00">
+                <div>
+                    <div class="product-badge" style="color: var(--gold);">Spotify Familiar VIP</div>
+                    <div class="product-name">Spotify Cuenta Familiar (Garantía 1 Año)</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡7,000</div>
+                    <button class="btn-add" onclick="add('Spotify Familiar VIP 1 Año', 7000, 13.99, 255, 58300, 17700, 51.00)">Agregar</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="streaming-perm" data-crc="4000" data-usd="8.00" data-mxn="146" data-cop="33300" data-ars="10100" data-pen="29.00">
+                <div>
+                    <div class="product-badge" style="color: #ff0000;">YouTube Individual</div>
+                    <div class="product-name">YouTube Individual Permanente (Garantía 30 Días)</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡4,000</div>
+                    <button class="btn-add" onclick="add('YouTube Individual Permanente', 4000, 8.00, 146, 33300, 10100, 29.00)">Agregar</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="streaming-perm" data-crc="5000" data-usd="10.00" data-mxn="183" data-cop="41600" data-ars="12600" data-pen="36.50">
+                <div>
+                    <div class="product-badge" style="color: var(--gold);">YouTube Familiar</div>
+                    <div class="product-name">YouTube Premium Cuenta Familiar (Garantía 25 Días)</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡5,000</div>
+                    <button class="btn-add" onclick="add('YouTube Familiar Permanente', 5000, 10.00, 183, 41600, 12600, 36.50)">Agregar</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="streaming-perm" data-crc="4000" data-usd="8.00" data-mxn="146" data-cop="33300" data-ars="10100" data-pen="29.00">
+                <div>
+                    <div class="product-badge" style="color: var(--gold);">HBO Max</div>
+                    <div class="product-name">HBO Max Full Access [FA] (Permanente / Garantía 30 Días)</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡4,000</div>
+                    <button class="btn-add" onclick="add('HBO Max Full Access Permanente', 4000, 8.00, 146, 33300, 10100, 29.00)">Agregar</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="streaming-perm" data-crc="3500" data-usd="7.00" data-mxn="128" data-cop="29100" data-ars="8800" data-pen="25.50">
+                <div>
+                    <div class="product-badge" style="color: var(--gold);">Disney+ Combo</div>
+                    <div class="product-name">Disney+ + Hulu y ESPN (Permanente / Garantía 30 Días)</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡3,500</div>
+                    <button class="btn-add" onclick="add('Disney+ Hulu ESPN Permanente', 3500, 7.00, 128, 29100, 8800, 25.50)">Agregar</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="streaming-perm" data-crc="4500" data-usd="9.00" data-mxn="165" data-cop="37500" data-ars="11400" data-pen="33.00">
+                <div>
+                    <div class="product-badge" style="color: var(--gold);">Crunchyroll VIP</div>
+                    <div class="product-name">Crunchyroll Ultimate Fan Member 1 Año</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡4,500</div>
+                    <button class="btn-add" onclick="add('Crunchyroll Ultimate Fan 1 Año', 4500, 9.00, 165, 37500, 11400, 33.00)">Agregar</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="streaming-perm" data-crc="5000" data-usd="10.00" data-mxn="183" data-cop="41600" data-ars="12600" data-pen="36.50">
+                <div>
+                    <div class="product-badge" style="color: var(--gold);">Prime Video VIP</div>
+                    <div class="product-name">Amazon Prime Video Premium 6 Meses</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡5,000</div>
+                    <button class="btn-add" onclick="add('Amazon Prime Video 6 Meses', 5000, 10.00, 183, 41600, 12600, 36.50)">Agregar</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="streaming-perm" data-crc="9000" data-usd="18.00" data-mxn="330" data-cop="75000" data-ars="22800" data-pen="66.00">
+                <div>
+                    <div class="product-badge" style="color: var(--purple);">ChatGPT Plus</div>
+                    <div class="product-name">ChatGPT Plus 1 Mes (Privado)</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡9,000</div>
+                    <button class="btn-add" onclick="add('ChatGPT Plus 1 Mes', 9000, 18.00, 330, 75000, 22800, 66.00)">Agregar</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="streaming-perm" data-crc="6500" data-usd="13.00" data-mxn="238" data-cop="54100" data-ars="16400" data-pen="47.50">
+                <div>
+                    <div class="product-badge" style="color: var(--purple);">Google Gemini</div>
+                    <div class="product-name">Gemini Advanced Premium 18 Meses</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡6,500</div>
+                    <button class="btn-add" onclick="add('Gemini Advanced 18 Meses', 6500, 13.00, 238, 54100, 16400, 47.50)">Agregar</button>
+                </div>
+            </div>
+
+            <!-- FF LIMITADOS -->
+            <div class="product-card" data-cat="ff-lim" data-crc="1200" data-usd="2.5" data-mxn="35" data-cop="10500" data-ars="3200" data-pen="9.00">
+                <div>
+                    <div class="product-badge">Free Fire (Limitado)</div>
+                    <div class="product-name">341 Diamantes</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡1,200</div>
+                    <button class="btn-add" onclick="add('341 Diamantes FF (Limitado)', 1200, 2.5, 35, 10500, 3200, 9.00)">Agregar</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="ff-lim" data-crc="2300" data-usd="4.37" data-mxn="60" data-cop="18000" data-ars="5500" data-pen="16.00">
+                <div>
+                    <div class="product-badge">Free Fire (Limitado)</div>
+                    <div class="product-name">572 Diamantes</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡2,300</div>
+                    <button class="btn-add" onclick="add('572 Diamantes FF (Limitado)', 2300, 4.37, 60, 18000, 5500, 16.00)">Agregar</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="ff-lim" data-crc="4300" data-usd="9" data-mxn="130" data-cop="37500" data-ars="11400" data-pen="33.00">
+                <div>
+                    <div class="product-badge">Free Fire (Limitado)</div>
+                    <div class="product-name">1,160 Diamantes</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡4,300</div>
+                    <button class="btn-add" onclick="add('1,160 Diamantes FF (Limitado)', 4300, 9, 130, 37500, 11400, 33.00)">Agregar</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="ff-lim" data-crc="8200" data-usd="13" data-mxn="340" data-cop="54000" data-ars="16500" data-pen="48.00">
+                <div>
+                    <div class="product-badge">Free Fire (Limitado)</div>
+                    <div class="product-name">2,398 Diamantes</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡8,200</div>
+                    <button class="btn-add" onclick="add('2,398 Diamantes FF (Limitado)', 8200, 13, 340, 54000, 16500, 48.00)">Agregar</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="ff-lim" data-crc="16100" data-usd="28" data-mxn="490" data-cop="116000" data-ars="35500" data-pen="102.00">
+                <div>
+                    <div class="product-badge">Free Fire (Limitado)</div>
+                    <div class="product-name">6,160 Diamantes</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡16,100</div>
+                    <button class="btn-add" onclick="add('6,160 Diamantes FF (Limitado)', 16100, 28, 490, 116000, 35500, 102.00)">Agregar</button>
+                </div>
+            </div>
+
+            <!-- FF ILIMITADOS -->
+            <div class="product-card" data-cat="ff-ilim" data-crc="2400" data-usd="5" data-mxn="60" data-cop="21000" data-ars="6300" data-pen="18.00">
+                <div>
+                    <div class="product-badge">Free Fire (Ilimitado)</div>
+                    <div class="product-name">572 Diamantes</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡2,400</div>
+                    <button class="btn-add" onclick="add('572 Diamantes FF (Ilimitado)', 2400, 5, 60, 21000, 6300, 18.00)">Agregar</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="ff-ilim" data-crc="4500" data-usd="9" data-mxn="170" data-cop="37500" data-ars="11400" data-pen="33.00">
+                <div>
+                    <div class="product-badge">Free Fire (Ilimitado)</div>
+                    <div class="product-name">1,160 Diamantes</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡4,500</div>
+                    <button class="btn-add" onclick="add('1,160 Diamantes FF (Ilimitado)', 4500, 9, 170, 37500, 11400, 33.00)">Agregar</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="ff-ilim" data-crc="8800" data-usd="16" data-mxn="275" data-cop="66500" data-ars="20300" data-pen="58.00">
+                <div>
+                    <div class="product-badge">Free Fire (Ilimitado)</div>
+                    <div class="product-name">2,398 Diamantes</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡8,800</div>
+                    <button class="btn-add" onclick="add('2,398 Diamantes FF (Ilimitado)', 8800, 16, 275, 66500, 20300, 58.00)">Agregar</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="ff-ilim" data-crc="18100" data-usd="38" data-mxn="650" data-cop="158000" data-ars="48000" data-pen="139.00">
+                <div>
+                    <div class="product-badge">Free Fire (Ilimitado)</div>
+                    <div class="product-name">6,160 Diamantes</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡18,100</div>
+                    <button class="btn-add" onclick="add('6,160 Diamantes FF (Ilimitado)', 18100, 38, 650, 158000, 48000, 139.00)">Agregar</button>
+                </div>
+            </div>
+
+            <!-- PASES & MEMBRESÍAS FF -->
+            <div class="product-card" data-cat="ff-passes" data-crc="1200" data-usd="2" data-mxn="35" data-cop="8300" data-ars="2500" data-pen="7.30">
+                <div>
+                    <div class="product-badge">Membresía FF</div>
+                    <div class="product-name">Tarjeta Semanal</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡1,200</div>
+                    <button class="btn-add" onclick="add('Tarjeta Semanal FF', 1200, 2, 35, 8300, 2500, 7.30)">Agregar</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="ff-passes" data-crc="1500" data-usd="3" data-mxn="55" data-cop="12500" data-ars="3800" data-pen="11.00">
+                <div>
+                    <div class="product-badge">Pase Especial FF</div>
+                    <div class="product-name">Pase Booyah Premium</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡1,500</div>
+                    <button class="btn-add" onclick="add('Pase Booyah Premium FF', 1500, 3, 55, 12500, 3800, 11.00)">Agregar</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="ff-passes" data-crc="4300" data-usd="8" data-mxn="140" data-cop="33500" data-ars="10200" data-pen="29.00">
+                <div>
+                    <div class="product-badge">Membresía FF</div>
+                    <div class="product-name">Tarjeta Mensual</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡4,300</div>
+                    <button class="btn-add" onclick="add('Tarjeta Mensual FF', 4300, 8, 140, 33500, 10200, 29.00)">Agregar</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="ff-passes" data-crc="300" data-usd="0.40" data-mxn="10" data-cop="1700" data-ars="500" data-pen="1.50">
+                <div>
+                    <div class="product-badge">Membresía FF</div>
+                    <div class="product-name">Basic Card</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡300</div>
+                    <button class="btn-add" onclick="add('Basic Card FF', 300, 0.40, 10, 1700, 500, 1.50)">Agregar</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="ff-passes" data-crc="1000" data-usd="1.8" data-mxn="35" data-cop="7500" data-ars="2300" data-pen="6.60">
+                <div>
+                    <div class="product-badge">Evolutivas FF</div>
+                    <div class="product-name">35 Fragmentos Universales</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡1,000</div>
+                    <button class="btn-add" onclick="add('35 Fragmentos Universales FF', 1000, 1.8, 35, 7500, 2300, 6.60)">Agregar</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="ff-passes" data-crc="1200" data-usd="2.40" data-mxn="44" data-cop="10000" data-ars="3050" data-pen="8.90">
+                <div>
+                    <div class="product-badge">Cajas Evolutivas FF</div>
+                    <div class="product-name">10 Cajas de Tokens / Fragmentos Evolutivos</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡1,200</div>
+                    <button class="btn-add" onclick="add('10 Cajas de Tokens Evolutivos FF', 1200, 2.40, 44, 10000, 3050, 8.90)">Agregar</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="ff-passes" data-crc="1200" data-usd="2.2" data-mxn="42" data-cop="9200" data-ars="2800" data-pen="8.00">
+                <div>
+                    <div class="product-badge">Hiperlibro FF</div>
+                    <div class="product-name">35 Frag. Hiperlibro Revolución</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡1,200</div>
+                    <button class="btn-add" onclick="add('35 Frag. Hiperlibro Revolución', 1200, 2.2, 42, 9200, 2800, 8.00)">Agregar</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="ff-passes" data-crc="1200" data-usd="2.2" data-mxn="42" data-cop="9200" data-ars="2800" data-pen="8.00">
+                <div>
+                    <div class="product-badge">Hiperlibro FF</div>
+                    <div class="product-name">35 Frag. Hiperlibro Galaxia</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡1,200</div>
+                    <button class="btn-add" onclick="add('35 Frag. Hiperlibro Galaxia', 1200, 2.2, 42, 9200, 2800, 8.00)">Agregar</button>
+                </div>
+            </div>
+
+            <!-- BLOOD STRIKE ORO -->
+            <div class="product-card" data-cat="bs" data-crc="1600" data-usd="3" data-mxn="54" data-cop="12500" data-ars="3800" data-pen="11.00">
+                <div>
+                    <div class="product-badge">Blood Strike</div>
+                    <div class="product-name">341 de Oro</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡1,600</div>
+                    <button class="btn-add" onclick="add('341 de Oro Blood Strike', 1600, 3, 54, 12500, 3800, 11.00)">Agregar</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="bs" data-crc="2700" data-usd="5" data-mxn="90" data-cop="21000" data-ars="6300" data-pen="18.00">
+                <div>
+                    <div class="product-badge">Blood Strike</div>
+                    <div class="product-name">572 de Oro</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡2,700</div>
+                    <button class="btn-add" onclick="add('572 de Oro Blood Strike', 2700, 5, 90, 21000, 6300, 18.00)">Agregar</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="bs" data-crc="4800" data-usd="9" data-mxn="162" data-cop="37500" data-ars="11400" data-pen="33.00">
+                <div>
+                    <div class="product-badge">Blood Strike</div>
+                    <div class="product-name">1,160 de Oro</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡4,800</div>
+                    <button class="btn-add" onclick="add('1,160 de Oro Blood Strike', 4800, 9, 162, 37500, 11400, 33.00)">Agregar</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="bs" data-crc="9900" data-usd="18.5" data-mxn="333" data-cop="77000" data-ars="23500" data-pen="68.00">
+                <div>
+                    <div class="product-badge">Blood Strike</div>
+                    <div class="product-name">2,398 de Oro</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡9,900</div>
+                    <button class="btn-add" onclick="add('2,398 de Oro Blood Strike', 9900, 18.5, 333, 77000, 23500, 68.00)">Agregar</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="bs" data-crc="23000" data-usd="43" data-mxn="774" data-cop="179000" data-ars="54500" data-pen="158.00">
+                <div>
+                    <div class="product-badge">Blood Strike</div>
+                    <div class="product-name">6,160 de Oro</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡23,000</div>
+                    <button class="btn-add" onclick="add('6,160 de Oro Blood Strike', 23000, 43, 774, 179000, 54500, 158.00)">Agregar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- BOTONES FLOTANTES -->
+    <a href="https://api.whatsapp.com/send?phone=50672986056&text=Hola,%20tengo%20una%20consulta%20sobre%20la%20tienda%20gtrowen.store" class="floating-whatsapp-btn" target="_blank" title="Escríbenos por WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.9-4.44 9.9-9.9 0-2.65-1.03-5.14-2.9-7.01-1.87-1.87-4.36-2.9-7.01-2.9zm0 1.83c2.2 0 4.27.86 5.82 2.42 1.56 1.55 2.42 3.62 2.42 5.82 0 4.54-3.7 8.24-8.24 8.24-1.46 0-2.88-.39-4.12-1.13l-.3-.18-3.08.81.82-3-.19-.31c-.81-1.28-1.24-2.78-1.24-4.32 0-4.54 3.7-8.24 8.24-8.24zm4.51 5.92c-.18-.09-1.07-.53-1.24-.59-.17-.06-.29-.09-.42.09-.13.18-.48.59-.59.72-.11.13-.22.15-.4.06-.18-.09-.76-.28-1.45-.89-.54-.48-.9-1.07-1.01-1.25-.11-.18-.01-.28.08-.37.08-.08.18-.21.27-.32.09-.11.12-.18.18-.3.06-.12.03-.23-.01-.32-.05-.09-.42-1.01-.58-1.38-.15-.36-.31-.31-.42-.32h-.36c-.12 0-.32.04-.49.23-.17.18-.65.63-.65 1.54s.67 1.78.76 1.9c.09.12 1.32 2.01 3.2 2.82.45.2.8.32 1.07.41.45.15.86.13 1.18.08.36-.05 1.07-.44 1.22-.87.15-.43.15-.8.11-.87-.04-.07-.16-.11-.34-.2z"/></svg>
+    </a>
+
+    <button class="floating-cart-btn" onclick="openModal()">
+        🛒 MI CARRITO
+        <span class="floating-cart-badge cart-count">0</span>
+    </button>
+
+    <!-- MODAL CARRITO / CHECKOUT -->
+    <div class="modal" id="cartModal">
+        <div class="modal-box">
+            <div class="modal-top">
+                <h3 id="modalTitle">TU CARRITO DE COMPRA</h3>
+                <button class="btn-close" onclick="closeModal()">&times;</button>
+            </div>
+
+            <!-- LISTA DE PRODUCTOS DEL CARRITO -->
+            <div id="cartList"></div>
+
+            <!-- TOTAL Y BOTÓN PARA PASAR A PAGAR -->
+            <div id="cartSummary">
+                <div class="cart-total-box">
+                    <span>TOTAL:</span>
+                    <span id="cTotal">₡0</span>
+                </div>
+                <button class="btn-proceed" onclick="proceedToCheckout()">PROCEDER AL PAGO</button>
+            </div>
+
+            <!-- FORMULARIO DE PAGO -->
+            <div id="checkoutForm" style="display:none; margin-top: 15px;">
+                <div class="input-box">
+                    <label>ID de Jugador / Cuenta / Correo</label>
+                    <input type="text" id="pId" placeholder="Ej: Tu ID o correo de contacto">
+                </div>
+
+                <div class="input-box">
+                    <label>Método de Pago</label>
+                    <select id="pMethod" onchange="changePay()">
+                        <option value="SINPE">🇨🇷 SINPE Móvil</option>
+                        <option value="BINANCE">🌐 Binance Pay (USDT)</option>
+                    </select>
+                </div>
+
+                <div class="info-pay" id="payBox">
+                    <strong>Datos SINPE Móvil:</strong><br>
+                    • Teléfono: <strong>6412 9943</strong><br>
+                    • Titular: <strong>OWEN MORALES UGALDE</strong>
+                </div>
+
+                <button class="btn-send" onclick="sendWA()">
+                    📲 ENVIAR PEDIDO A WHATSAPP
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let cart = [];
+        let currentCurrency = 'CRC';
+
+        function setCurrency(curr) {
+            currentCurrency = curr;
+            document.querySelectorAll('.curr-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById('btn-' + curr).classList.add('active');
+
+            const cards = document.querySelectorAll('.product-card');
+            cards.forEach(card => {
+                const tag = card.querySelector('.price-tag');
+                if (curr === 'CRC') {
+                    tag.innerText = '₡' + parseInt(card.getAttribute('data-crc')).toLocaleString();
+                } else if (curr === 'USD') {
+                    tag.innerText = '$' + card.getAttribute('data-usd') + ' USD';
+                } else if (curr === 'MXN') {
+                    tag.innerText = '$' + card.getAttribute('data-mxn') + ' MXN';
+                } else if (curr === 'COP') {
+                    tag.innerText = '$' + parseInt(card.getAttribute('data-cop')).toLocaleString() + ' COP';
+                } else if (curr === 'ARS') {
+                    tag.innerText = '$' + parseInt(card.getAttribute('data-ars')).toLocaleString() + ' ARS';
+                } else if (curr === 'PEN') {
+                    tag.innerText = 'S/ ' + card.getAttribute('data-pen') + ' PEN';
+                }
+            });
+            renderCart();
+        }
+
+        function filterCategory(cat, btnElement) {
+            const buttons = document.querySelectorAll('.cat-btn');
+            buttons.forEach(b => b.classList.remove('active'));
+            if(btnElement) btnElement.classList.add('active');
+
+            const cards = document.querySelectorAll('.product-card');
+            cards.forEach(card => {
+                if (cat === 'all' || card.getAttribute('data-cat') === cat) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function toggleTopAccordion() {
+            document.getElementById('topAccordion').classList.toggle('open');
+        }
+
+        function add(title, crc, usd, mxn, cop, ars, pen) {
+            cart.push({ title, crc, usd, mxn, cop, ars, pen });
+            renderCart();
+        }
+
+        function remove(idx) {
+            cart.splice(idx, 1);
+            renderCart();
+        }
+
+        function renderCart() {
+            const counts = document.querySelectorAll('.cart-count');
+            counts.forEach(el => el.innerText = cart.length);
+
+            const list = document.getElementById('cartList');
+            const summary = document.getElementById('cartSummary');
+            const form = document.getElementById('checkoutForm');
+
+            if (cart.length === 0) {
+                list.innerHTML = '<p style="text-align:center; color:var(--text-dim); padding:20px; font-size:0.85rem;">Tu carrito está vacío</p>';
+                summary.style.display = 'none';
+                form.style.display = 'none';
+                return;
+            }
+
+            summary.style.display = 'block';
+            list.innerHTML = '';
+
+            let totalVal = 0;
+
+            cart.forEach((item, i) => {
+                let priceFormatted = '';
+                let rawPrice = 0;
+
+                if (currentCurrency === 'CRC') { rawPrice = item.crc; priceFormatted = '₡' + item.crc.toLocaleString(); }
+                else if (currentCurrency === 'USD') { rawPrice = item.usd; priceFormatted = '$' + item.usd + ' USD'; }
+                else if (currentCurrency === 'MXN') { rawPrice = item.mxn; priceFormatted = '$' + item.mxn + ' MXN'; }
+                else if (currentCurrency === 'COP') { rawPrice = item.cop; priceFormatted = '$' + item.cop.toLocaleString() + ' COP'; }
+                else if (currentCurrency === 'ARS') { rawPrice = item.ars; priceFormatted = '$' + item.ars.toLocaleString() + ' ARS'; }
+                else if (currentCurrency === 'PEN') { rawPrice = item.pen; priceFormatted = 'S/ ' + item.pen + ' PEN'; }
+
+                totalVal += rawPrice;
+
+                list.innerHTML += `
+                    <div class="cart-row">
+                        <div>
+                            <strong>${item.title}</strong><br>
+                            <span style="color:var(--primary); font-family:'Orbitron',sans-serif; font-size:0.8rem;">${priceFormatted}</span>
+                        </div>
+                        <button onclick="remove(${i})" style="background:none; border:none; color:var(--secondary); font-size:1.2rem; cursor:pointer; padding: 4px 8px;">&times;</button>
+                    </div>
+                `;
+            });
+
+            let totalFormatted = '';
+            if (currentCurrency === 'CRC') totalFormatted = '₡' + totalVal.toLocaleString();
+            else if (currentCurrency === 'USD') totalFormatted = '$' + totalVal.toFixed(2) + ' USD';
+            else if (currentCurrency === 'MXN') totalFormatted = '$' + totalVal.toFixed(2) + ' MXN';
+            else if (currentCurrency === 'COP') totalFormatted = '$' + totalVal.toLocaleString() + ' COP';
+            else if (currentCurrency === 'ARS') totalFormatted = '$' + totalVal.toLocaleString() + ' ARS';
+            else if (currentCurrency === 'PEN') totalFormatted = 'S/ ' + totalVal.toFixed(2) + ' PEN';
+
+            document.getElementById('cTotal').innerText = totalFormatted;
+        }
+
+        function proceedToCheckout() {
+            if (cart.length === 0) return;
+            document.getElementById('cartSummary').style.display = 'none';
+            document.getElementById('checkoutForm').style.display = 'block';
+            document.getElementById('modalTitle').innerText = 'FINALIZAR COMPRA';
+        }
+
+        function openModal() {
+            document.getElementById('cartModal').classList.add('open');
+            if(cart.length > 0 && document.getElementById('checkoutForm').style.display === 'block') {
+                // Mantener formulario si ya estaban en proceso de pago
+            } else {
+                document.getElementById('cartSummary').style.display = cart.length > 0 ? 'block' : 'none';
+                document.getElementById('checkoutForm').style.display = 'none';
+                document.getElementById('modalTitle').innerText = 'TU CARRITO DE COMPRA';
+            }
+            renderCart();
+        }
+
+        function closeModal() { document.getElementById('cartModal').classList.remove('open'); }
+
+        function changePay() {
+            const m = document.getElementById('pMethod').value;
+            const box = document.getElementById('payBox');
+            if(m === 'SINPE') {
+                box.innerHTML = '<strong>Datos SINPE Móvil:</strong><br>• Teléfono: <strong>6412 9943</strong><br>• Titular: <strong>OWEN MORALES UGALDE</strong>';
+            } else {
+                box.innerHTML = '<strong>Binance Pay:</strong><br>• Solicitá ID de transferencia por WhatsApp o usa tu QR fijo.<br>• Moneda: USDT';
+            }
+        }
+
+        function sendWA() {
+            const id = document.getElementById('pId').value.trim();
+            if(!id) { alert('Por favor ingresa tu ID o datos de contacto'); return; }
+
+            const method = document.getElementById('pMethod').options[document.getElementById('pMethod').selectedIndex].text;
+            let items = cart.map(c => `• ${c.title}`).join('%0A');
+            let totalText = document.getElementById('cTotal').innerText;
+
+            let msg = `🚀 *NUEVO PEDIDO - UDC STORE*%0A%0A🎮 *Referencia / ID:* ${id}%0A💳 *Pago:* ${method}%0A%0A📦 *Productos:*%0A${items}%0A💰 *Total:* ${totalText}%0A%0AAdjunto comprobante de pago a continuación:`;
+
+            let whatsappUrl = `https://api.whatsapp.com/send?phone=50672986056&text=${msg}`;
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
+<script src="//code.tidio.co/gcscrd4peehpejmvje2jrp2vof5cpe3w.js" async></script>
