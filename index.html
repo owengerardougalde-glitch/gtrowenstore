@@ -228,30 +228,33 @@
             text-transform: uppercase;
         }
 
-        /* APARTADO EXCLUSIVO DE MEJORES CLIENTES / TOP PRIME */
-        .top-ranking-section {
-            background: rgba(18, 23, 40, 0.95);
+        /* BOTÓN PARA ABRIR TOP CLIENTES SIN ESTORBAR */
+        .btn-open-top-clients {
+            background: linear-gradient(135deg, rgba(255, 183, 0, 0.15), rgba(11, 14, 25, 0.9));
             border: 1px solid var(--gold);
-            border-radius: 16px;
-            padding: 18px;
-            margin-bottom: 25px;
-            position: relative;
-            z-index: 10;
-            box-shadow: 0 0 25px rgba(255, 183, 0, 0.25);
-        }
-
-        .top-ranking-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.9rem;
             color: var(--gold);
+            width: 100%;
+            padding: 12px;
+            border-radius: 12px;
+            font-family: 'Orbitron', sans-serif;
             font-weight: 900;
+            font-size: 0.85rem;
+            cursor: pointer;
             margin-bottom: 15px;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            text-align: center;
-            text-shadow: 0 0 10px rgba(255, 183, 0, 0.4);
+            box-shadow: 0 0 15px rgba(255, 183, 0, 0.2);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
 
+        .btn-open-top-clients:active {
+            transform: scale(0.98);
+        }
+
+        /* ESTILOS DEL MODAL DE CLIENTES Y TARJETAS */
         .prime-client-card {
             display: flex;
             align-items: center;
@@ -261,11 +264,12 @@
             border-radius: 14px;
             padding: 14px;
             position: relative;
+            margin-bottom: 12px;
         }
 
         .prime-avatar-container {
-            width: 75px;
-            height: 75px;
+            width: 65px;
+            height: 65px;
             border-radius: 50%;
             border: 2px solid var(--gold);
             overflow: hidden;
@@ -282,7 +286,7 @@
         .css-ff-logo {
             font-family: 'Orbitron', sans-serif;
             font-weight: 900;
-            font-size: 15px;
+            font-size: 13px;
             color: #ffaa00;
             text-shadow: 1px 1px 0px #ff0055, 0 0 8px rgba(255, 170, 0, 0.6);
             line-height: 1.1;
@@ -309,7 +313,7 @@
 
         .prime-name {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.15rem;
+            font-size: 1.05rem;
             font-weight: 900;
             color: #fff;
             margin-bottom: 2px;
@@ -328,7 +332,7 @@
             font-family: 'Orbitron', sans-serif;
             color: var(--primary);
             font-weight: 900;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             text-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
         }
 
@@ -338,7 +342,6 @@
             background: rgba(0, 240, 255, 0.04);
             padding: 14px;
             box-shadow: 0 0 15px rgba(0, 240, 255, 0.15);
-            margin-top: 15px;
         }
 
         .samurai-box-title {
@@ -731,27 +734,10 @@
                 <div class="samurai-store-sub">🥷 VENTA DE SERVICIOS DIGITALES 🥷</div>
             </div>
 
-            <!-- APARTADO EXCLUSIVO DE MEJORES CLIENTES / TOP PRIME -->
-            <div class="top-ranking-section">
-                <div class="top-ranking-title">🏆 MEJOR CLIENTE · TOP PRIME 👑</div>
-                <div class="prime-client-card">
-                    
-                    <!-- ESTE ES EL LOGO NUEVO, 100% CÓDIGO, CERO IMÁGENES ROTAS -->
-                    <div class="prime-avatar-container">
-                        <span class="css-ff-logo">FREE</span>
-                        <span class="css-ff-logo">FIRE</span>
-                    </div>
-
-                    <div class="prime-info">
-                        <span class="prime-badge-tag">TOP #1 PRIME ⚡</span>
-                        <div class="prime-name">J.C.</div>
-                        <div class="prime-details">
-                            <span>ID: <strong>301110819</strong></span>
-                            <span class="prime-diamonds">12,343 💎 DIAMANTES</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <!-- BOTÓN QUE ABRE LA "PESTAÑITA" DE LOS MEJORES CLIENTES SIN ESTORBAR -->
+            <button class="btn-open-top-clients" id="btnOpenTopClients">
+                🏆 VER TOP CLIENTES PRIME 👑
+            </button>
 
             <div class="samurai-box-catalog">
                 <div class="samurai-box-title">⚡ CATÁLOGO PRINCIPAL (TOCA PARA IR) ⚡</div>
@@ -874,7 +860,7 @@
                     <div class="product-name">Crunchyroll 1 Mes</div>
                 </div>
                 <div>
-                    <div class="product-price price-tag">₡2500</div>
+                    <div class="product-price price-tag">₡2,500</div>
                     <button class="btn-add" data-title="Crunchyroll 1 Mes (Streaming)" data-crc="2500" data-usd="5.00" data-mxn="92" data-cop="20800" data-ars="6300" data-pen="18.50">Agregar</button>
                 </div>
             </div>
@@ -1271,6 +1257,7 @@
         <span class="floating-cart-badge cart-count">0</span>
     </button>
 
+    <!-- MODAL PRINCIPAL: EL CARRITO DE COMPRAS -->
     <div class="modal" id="cartModal">
         <div class="modal-box">
             <div class="modal-top">
@@ -1319,6 +1306,40 @@
                     📲 ENVIAR PEDIDO A WHATSAPP
                 </button>
             </div>
+        </div>
+    </div>
+
+    <!-- MODAL SECUNDARIO: PESTAÑITA DE TOP CLIENTES PRIME -->
+    <div class="modal" id="topClientsModal">
+        <div class="modal-box">
+            <div class="modal-top">
+                <h3>🏆 TOP CLIENTES PRIME</h3>
+                <button class="btn-close" id="closeTopClientsBtn">&times;</button>
+            </div>
+            
+            <p style="font-size: 0.75rem; color: var(--text-dim); margin-bottom: 15px; text-align: center;">
+                Gracias a nuestros mejores clientes por su lealtad a GTROWEN.STORE.
+            </p>
+
+            <div class="prime-client-card">
+                <!-- LOGO SEGURO CERO ERRORES -->
+                <div class="prime-avatar-container">
+                    <span class="css-ff-logo">FREE</span>
+                    <span class="css-ff-logo">FIRE</span>
+                </div>
+
+                <div class="prime-info">
+                    <span class="prime-badge-tag">TOP #1 PRIME ⚡</span>
+                    <div class="prime-name">J.C.</div>
+                    <div class="prime-details">
+                        <span>ID: <strong>301110819</strong></span>
+                        <span class="prime-diamonds">12,343 💎 DIAMANTES</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Aquí puedes copiar y pegar más bloques de "prime-client-card" si quieres agregar más clientes después -->
+
         </div>
     </div>
 
@@ -1389,6 +1410,7 @@
                 });
             });
 
+            // LÓGICA DEL CARRITO
             const openModal = () => {
                 document.getElementById('cartModal').classList.add('open');
                 document.getElementById('cartSummary').style.display = cart.length > 0 ? 'block' : 'none';
@@ -1396,15 +1418,20 @@
                 document.getElementById('modalTitle').innerText = 'TU CARRITO DE COMPRA';
                 renderCart();
             };
-
-            const closeModal = () => {
-                document.getElementById('cartModal').classList.remove('open');
-            };
+            const closeModal = () => document.getElementById('cartModal').classList.remove('open');
 
             document.getElementById('openCartHeader').addEventListener('click', openModal);
             document.getElementById('openCartFloating').addEventListener('click', openModal);
             document.getElementById('bannerOpenModal').addEventListener('click', openModal);
             document.getElementById('closeModalBtn').addEventListener('click', closeModal);
+
+            // LÓGICA DE LA NUEVA PESTAÑITA (MODAL) DE TOP CLIENTES
+            document.getElementById('btnOpenTopClients').addEventListener('click', () => {
+                document.getElementById('topClientsModal').classList.add('open');
+            });
+            document.getElementById('closeTopClientsBtn').addEventListener('click', () => {
+                document.getElementById('topClientsModal').classList.remove('open');
+            });
 
             document.getElementById('proceedCheckoutBtn').addEventListener('click', () => {
                 if (cart.length === 0) return;
