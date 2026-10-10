@@ -620,28 +620,6 @@
             line-height: 1.5;
         }
 
-        .binance-qr-box {
-            background: rgba(243, 186, 47, 0.08);
-            border: 1px solid var(--binance);
-            border-radius: 10px;
-            padding: 12px;
-            text-align: center;
-            margin-bottom: 15px;
-        }
-
-        .binance-qr-box img {
-            width: 200px;
-            height: 200px;
-            background: #fff;
-            border-radius: 8px;
-            margin: 8px auto;
-            display: block;
-            object-fit: contain;
-            image-rendering: -webkit-optimize-contrast;
-            image-rendering: crisp-edges;
-            padding: 6px;
-        }
-
         .btn-proceed {
             background: linear-gradient(135deg, var(--secondary), var(--purple));
             color: #fff;
@@ -1401,14 +1379,16 @@
                     txBox.style.display = 'none';
                 } else {
                     box.innerHTML = `
-                        <div class="binance-qr-box">
-                            <strong style="color:var(--binance);">🌐 BINANCE PAY (USDT)</strong>
-                            <img src="https://i.ibb.co/GvWTGs1t/image.png" alt="QR Binance Pay">
-                            <span style="font-size:0.75rem; color:var(--text-dim); display:block; margin-top:4px;">Escanea con la app de Binance</span>
+                        <div style="background: #ffffff; padding: 12px; border-radius: 12px; border: 2px solid var(--binance); text-align: center;">
+                            <strong style="color: #000000; display: block; margin-bottom: 8px; font-size: 0.85rem;">🌐 ESCANEA PARA PAGAR CON BINANCE</strong>
+                            <img src="https://i.ibb.co/GvWTGs1t/image.png" alt="QR Binance Pay" style="width: 100%; max-width: 260px; height: auto; display: block; margin: 0 auto; border-radius: 6px; image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges;">
+                            <span style="font-size: 0.7rem; color: #555555; display: block; margin-top: 6px; font-weight: 700;">Abre tu app de Binance y escanea el código</span>
                         </div>
-                        • Binance Pay ID: <strong>1020350187</strong><br>
-                        • Titular: <strong>Owen Morales ugalde</strong><br>
-                        • Moneda aceptada: <strong>USDT / Cripto</strong>
+                        <div style="margin-top: 10px; font-size: 0.8rem; line-height: 1.4; color: #fff;">
+                            • Binance Pay ID: <strong>1020350187</strong><br>
+                            • Titular: <strong>Owen Morales ugalde</strong><br>
+                            • Moneda aceptada: <strong>USDT / Cripto</strong>
+                        </div>
                     `;
                     txBox.style.display = 'block';
                 }
