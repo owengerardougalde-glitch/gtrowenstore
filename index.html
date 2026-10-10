@@ -37,7 +37,7 @@
             background-attachment: fixed;
         }
 
-        /* HEADER FIX */
+        /* HEADER */
         header {
             background: rgba(11, 14, 25, 0.95);
             backdrop-filter: blur(16px);
@@ -49,8 +49,6 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            height: auto;
-            pointer-events: auto;
         }
 
         .brand-box {
@@ -100,7 +98,7 @@
             gap: 10px;
         }
 
-        /* CURRENCY SELECTOR */
+        /* MONEDAS */
         .currency-switch {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border);
@@ -171,7 +169,6 @@
             border-radius: 20px;
             padding: 22px;
             margin-bottom: 20px;
-            position: relative;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
@@ -239,15 +236,13 @@
             color: var(--text-dim);
         }
 
-        /* FILTROS Y CATEGORÍAS FIX */
+        /* CATEGORÍAS */
         .category-scroll {
             display: flex;
             gap: 10px;
             overflow-x: auto;
             padding-bottom: 10px;
             margin-bottom: 20px;
-            position: relative;
-            z-index: 20;
         }
 
         .cat-btn {
@@ -264,7 +259,6 @@
             display: flex;
             align-items: center;
             gap: 6px;
-            pointer-events: auto;
         }
 
         .cat-btn.active {
@@ -274,7 +268,7 @@
             box-shadow: 0 0 12px rgba(112, 0, 255, 0.4);
         }
 
-        /* TOP RECARGADORES DESPLEGABLE */
+        /* TOP CLIENTES ACORDEÓN */
         .top-accordion {
             background: var(--surface-card);
             border: 1px solid rgba(255, 183, 0, 0.3);
@@ -282,8 +276,6 @@
             margin-bottom: 25px;
             overflow: hidden;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            position: relative;
-            z-index: 20;
         }
 
         .top-header {
@@ -312,9 +304,7 @@
             transition: transform 0.3s ease;
         }
 
-        .top-accordion.open .top-arrow {
-            transform: rotate(180deg);
-        }
+        .top-accordion.open .top-arrow { transform: rotate(180deg); }
 
         .top-body {
             display: none;
@@ -322,9 +312,7 @@
             border-top: 1px solid rgba(255, 183, 0, 0.15);
         }
 
-        .top-accordion.open .top-body {
-            display: block;
-        }
+        .top-accordion.open .top-body { display: block; }
 
         .top-list {
             display: flex;
@@ -356,7 +344,7 @@
             font-weight: 700;
         }
 
-        /* CATÁLOGO DE PRODUCTOS */
+        /* CATÁLOGO */
         .section-h2 {
             font-family: 'Orbitron', sans-serif;
             font-size: 0.95rem;
@@ -373,8 +361,6 @@
             grid-template-columns: repeat(2, 1fr);
             gap: 12px;
             margin-bottom: 25px;
-            position: relative;
-            z-index: 20;
         }
 
         .product-card {
@@ -385,7 +371,6 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            position: relative;
         }
 
         .product-badge {
@@ -425,10 +410,9 @@
             cursor: pointer;
             width: 100%;
             text-transform: uppercase;
-            pointer-events: auto;
         }
 
-        /* CARRITO FLOTANTE */
+        /* CARRITO FLOTANTE ABAJO */
         .floating-cart-btn {
             position: fixed;
             bottom: 20px;
@@ -580,9 +564,9 @@
 
         <div class="header-actions">
             <div class="currency-switch">
-                <button class="curr-btn" onclick="setCurrency('MXN')">MXN</button>
-                <button class="curr-btn" onclick="setCurrency('USD')">USD</button>
-                <button class="curr-btn active" onclick="setCurrency('CRC')">CRC</button>
+                <button class="curr-btn" id="btn-MXN" onclick="setCurrency('MXN')">MXN</button>
+                <button class="curr-btn" id="btn-USD" onclick="setCurrency('USD')">USD</button>
+                <button class="curr-btn active" id="btn-CRC" onclick="setCurrency('CRC')">CRC</button>
             </div>
 
             <div class="header-cart" onclick="openModal()">
@@ -598,7 +582,7 @@
             <div class="hero-tag">⚡ Recargas Instantáneas & Seguras 24/7</div>
             <div class="hero-title">TUS RECARGAS AL <span>MEJOR PRECIO</span></div>
             <div class="hero-desc">
-                Catálogo oficial para <strong>Free Fire</strong> (Limitados e Ilimitados) y <strong>Blood Strike</strong>. Entregas ultra rápidas por ID de jugador.
+                Catálogo oficial para <strong>Free Fire</strong> (Limitados e Ilimitados), <strong>Pases</strong> y <strong>Blood Strike</strong>. Entregas ultra rápidas por ID.
             </div>
 
             <div class="hero-features">
@@ -622,17 +606,18 @@
             <button class="cat-btn active" onclick="filterCategory('all', this)">▦ Todo el Catálogo</button>
             <button class="cat-btn" onclick="filterCategory('ff-lim', this)">💎 FF Limitados</button>
             <button class="cat-btn" onclick="filterCategory('ff-ilim', this)">⚡ FF Ilimitados</button>
+            <button class="cat-btn" onclick="filterCategory('ff-passes', this)">🎫 FF Pases & Extras</button>
             <button class="cat-btn" onclick="filterCategory('bs', this)">🎯 Blood Strike</button>
         </div>
 
-        <!-- TOP RECARGADORES DESPLEGABLE -->
+        <!-- TOP CLIENTES ACORDEÓN (DESPLEGABLE) -->
         <div class="top-accordion" id="topAccordion">
             <div class="top-header" onclick="toggleTopAccordion()">
                 <div class="top-title">🏆 TOP CLIENTES DE ESTE MES</div>
                 <div class="top-arrow">▼</div>
             </div>
             <div class="top-body">
-                <p style="color:var(--text-dim); font-size:0.75rem; margin-top:8px;">Jugadores con más recargas del mes</p>
+                <p style="color:var(--text-dim); font-size:0.75rem; margin-top:8px;">Jugadores destacados con más recargas este mes</p>
                 <div class="top-list">
                     <div class="top-item rank-1">
                         <span>🥇 <strong>GTR_Owen</strong> <small style="color:var(--gold); border:1px solid var(--gold); padding:1px 4px; border-radius:3px; font-size:0.6rem;">VIP MAX</small></span>
@@ -650,94 +635,245 @@
             </div>
         </div>
 
-        <!-- PRODUCTOS -->
+        <!-- PRODUCTOS REALES EXTRAÍDOS DE LOS FLYERS -->
         <div class="section-h2" id="catalogTitle">🔥 CATALOGO DE RECARGAS</div>
-        <div class="products-grid">
+        <div class="products-grid" id="productsGrid">
+
             <!-- FF LIMITADOS -->
-            <div class="product-card" data-cat="ff-lim">
+            <div class="product-card" data-cat="ff-lim" data-crc="1200" data-mxn="35" data-usd="2.5">
                 <div>
                     <div class="product-badge">Free Fire (Limitado)</div>
-                    <div class="product-name">100 + 10 Diamantes</div>
+                    <div class="product-name">341 Diamantes</div>
                 </div>
                 <div>
-                    <div class="product-price">₡800</div>
-                    <button class="btn-add" onclick="add('100+10 Diamantes FF', 800)">Agregar</button>
+                    <div class="product-price price-tag">₡1,200</div>
+                    <button class="btn-add" onclick="add('341 Diamantes FF (Limitado)')">Agregar</button>
                 </div>
             </div>
-            <div class="product-card" data-cat="ff-lim">
+
+            <div class="product-card" data-cat="ff-lim" data-crc="2300" data-mxn="60" data-usd="4.37">
                 <div>
                     <div class="product-badge">Free Fire (Limitado)</div>
-                    <div class="product-name">310 + 31 Diamantes</div>
+                    <div class="product-name">572 Diamantes</div>
                 </div>
                 <div>
-                    <div class="product-price">₡2,300</div>
-                    <button class="btn-add" onclick="add('310+31 Diamantes FF', 2300)">Agregar</button>
+                    <div class="product-price price-tag">₡2,300</div>
+                    <button class="btn-add" onclick="add('572 Diamantes FF (Limitado)')">Agregar</button>
                 </div>
             </div>
-            <div class="product-card" data-cat="ff-lim">
+
+            <div class="product-card" data-cat="ff-lim" data-crc="4300" data-mxn="130" data-usd="9">
                 <div>
                     <div class="product-badge">Free Fire (Limitado)</div>
-                    <div class="product-name">520 + 52 Diamantes</div>
+                    <div class="product-name">1,160 Diamantes</div>
                 </div>
                 <div>
-                    <div class="product-price">₡3,800</div>
-                    <button class="btn-add" onclick="add('520+52 Diamantes FF', 3800)">Agregar</button>
+                    <div class="product-price price-tag">₡4,300</div>
+                    <button class="btn-add" onclick="add('1,160 Diamantes FF (Limitado)')">Agregar</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="ff-lim" data-crc="8200" data-mxn="340" data-usd="13">
+                <div>
+                    <div class="product-badge">Free Fire (Limitado)</div>
+                    <div class="product-name">2,398 Diamantes</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡8,200</div>
+                    <button class="btn-add" onclick="add('2,398 Diamantes FF (Limitado)')">Agregar</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="ff-lim" data-crc="16100" data-mxn="490" data-usd="28">
+                <div>
+                    <div class="product-badge">Free Fire (Limitado)</div>
+                    <div class="product-name">6,160 Diamantes</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡16,100</div>
+                    <button class="btn-add" onclick="add('6,160 Diamantes FF (Limitado)')">Agregar</button>
                 </div>
             </div>
 
             <!-- FF ILIMITADOS -->
-            <div class="product-card" data-cat="ff-ilim">
+            <div class="product-card" data-cat="ff-ilim" data-crc="2400" data-mxn="60" data-usd="5">
                 <div>
                     <div class="product-badge">Free Fire (Ilimitado)</div>
-                    <div class="product-name">1060 + 106 Diamantes</div>
+                    <div class="product-name">572 Diamantes</div>
                 </div>
                 <div>
-                    <div class="product-price">₡7,200</div>
-                    <button class="btn-add" onclick="add('1060+106 Diamantes FF (Ilimitado)', 7200)">Agregar</button>
-                </div>
-            </div>
-            <div class="product-card" data-cat="ff-ilim">
-                <div>
-                    <div class="product-badge">Free Fire (Ilimitado)</div>
-                    <div class="product-name">2180 + 218 Diamantes</div>
-                </div>
-                <div>
-                    <div class="product-price">₡14,000</div>
-                    <button class="btn-add" onclick="add('2180+218 Diamantes FF (Ilimitado)', 14000)">Agregar</button>
-                </div>
-            </div>
-            <div class="product-card" data-cat="ff-ilim">
-                <div>
-                    <div class="product-badge">Free Fire (Pase)</div>
-                    <div class="product-name">Pase Nivel Up FF</div>
-                </div>
-                <div>
-                    <div class="product-price">₡3,500</div>
-                    <button class="btn-add" onclick="add('Pase Nivel Up FF', 3500)">Agregar</button>
+                    <div class="product-price price-tag">₡2,400</div>
+                    <button class="btn-add" onclick="add('572 Diamantes FF (Ilimitado)')">Agregar</button>
                 </div>
             </div>
 
-            <!-- BLOOD STRIKE -->
-            <div class="product-card" data-cat="bs">
+            <div class="product-card" data-cat="ff-ilim" data-crc="4500" data-mxn="170" data-usd="9">
                 <div>
-                    <div class="product-badge">Blood Strike</div>
-                    <div class="product-name">100 Oro / Pass</div>
+                    <div class="product-badge">Free Fire (Ilimitado)</div>
+                    <div class="product-name">1,160 Diamantes</div>
                 </div>
                 <div>
-                    <div class="product-price">₡900</div>
-                    <button class="btn-add" onclick="add('100 Oro Blood Strike', 900)">Agregar</button>
-                </div>
-            </div>
-            <div class="product-card" data-cat="bs">
-                <div>
-                    <div class="product-badge">Blood Strike</div>
-                    <div class="product-name">500 Oro / Pass</div>
-                </div>
-                <div>
-                    <div class="product-price">₡4,200</div>
-                    <button class="btn-add" onclick="add('500 Oro Blood Strike', 4200)">Agregar</button>
+                    <div class="product-price price-tag">₡4,500</div>
+                    <button class="btn-add" onclick="add('1,160 Diamantes FF (Ilimitado)')">Agregar</button>
                 </div>
             </div>
+
+            <div class="product-card" data-cat="ff-ilim" data-crc="8800" data-mxn="275" data-usd="16">
+                <div>
+                    <div class="product-badge">Free Fire (Ilimitado)</div>
+                    <div class="product-name">2,398 Diamantes</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡8,800</div>
+                    <button class="btn-add" onclick="add('2,398 Diamantes FF (Ilimitado)')">Agregar</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="ff-ilim" data-crc="18100" data-mxn="650" data-usd="38">
+                <div>
+                    <div class="product-badge">Free Fire (Ilimitado)</div>
+                    <div class="product-name">6,160 Diamantes</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡18,100</div>
+                    <button class="btn-add" onclick="add('6,160 Diamantes FF (Ilimitado)')">Agregar</button>
+                </div>
+            </div>
+
+            <!-- PASES & MEMBRESÍAS FF -->
+            <div class="product-card" data-cat="ff-passes" data-crc="1200" data-mxn="35" data-usd="2">
+                <div>
+                    <div class="product-badge">Membresía FF</div>
+                    <div class="product-name">Tarjeta Semanal</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡1,200</div>
+                    <button class="btn-add" onclick="add('Tarjeta Semanal FF')">Agregar</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="ff-passes" data-crc="1500" data-mxn="55" data-usd="3">
+                <div>
+                    <div class="product-badge">Pase Especial FF</div>
+                    <div class="product-name">Pase Booyah Premium</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡1,500</div>
+                    <button class="btn-add" onclick="add('Pase Booyah Premium FF')">Agregar</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="ff-passes" data-crc="4300" data-mxn="140" data-usd="8">
+                <div>
+                    <div class="product-badge">Membresía FF</div>
+                    <div class="product-name">Tarjeta Mensual</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡4,300</div>
+                    <button class="btn-add" onclick="add('Tarjeta Mensual FF')">Agregar</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="ff-passes" data-crc="300" data-mxn="10" data-usd="0.40">
+                <div>
+                    <div class="product-badge">Membresía FF</div>
+                    <div class="product-name">Basic Card</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡300</div>
+                    <button class="btn-add" onclick="add('Basic Card FF')">Agregar</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="ff-passes" data-crc="1000" data-mxn="35" data-usd="1.8">
+                <div>
+                    <div class="product-badge">Evolutivas FF</div>
+                    <div class="product-name">35 Fragmentos Universales</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡1,000</div>
+                    <button class="btn-add" onclick="add('35 Fragmentos Universales FF')">Agregar</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="ff-passes" data-crc="1200" data-mxn="42" data-usd="2.2">
+                <div>
+                    <div class="product-badge">Hiperlibro FF</div>
+                    <div class="product-name">35 Frag. Hiperlibro Revolución</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡1,200</div>
+                    <button class="btn-add" onclick="add('35 Frag. Hiperlibro Revolución')">Agregar</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="ff-passes" data-crc="1200" data-mxn="42" data-usd="2.2">
+                <div>
+                    <div class="product-badge">Hiperlibro FF</div>
+                    <div class="product-name">35 Frag. Hiperlibro Galaxia</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡1,200</div>
+                    <button class="btn-add" onclick="add('35 Frag. Hiperlibro Galaxia')">Agregar</button>
+                </div>
+            </div>
+
+            <!-- BLOOD STRIKE ORO -->
+            <div class="product-card" data-cat="bs" data-crc="1600" data-mxn="54" data-usd="3">
+                <div>
+                    <div class="product-badge">Blood Strike</div>
+                    <div class="product-name">341 de Oro</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡1,600</div>
+                    <button class="btn-add" onclick="add('341 de Oro Blood Strike')">Agregar</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="bs" data-crc="2700" data-mxn="90" data-usd="5">
+                <div>
+                    <div class="product-badge">Blood Strike</div>
+                    <div class="product-name">572 de Oro</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡2,700</div>
+                    <button class="btn-add" onclick="add('572 de Oro Blood Strike')">Agregar</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="bs" data-crc="4800" data-mxn="162" data-usd="9">
+                <div>
+                    <div class="product-badge">Blood Strike</div>
+                    <div class="product-name">1,160 de Oro</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡4,800</div>
+                    <button class="btn-add" onclick="add('1,160 de Oro Blood Strike')">Agregar</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="bs" data-crc="9900" data-mxn="333" data-usd="18.5">
+                <div>
+                    <div class="product-badge">Blood Strike</div>
+                    <div class="product-name">2,398 de Oro</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡9,900</div>
+                    <button class="btn-add" onclick="add('2,398 de Oro Blood Strike')">Agregar</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="bs" data-crc="23000" data-mxn="774" data-usd="43">
+                <div>
+                    <div class="product-badge">Blood Strike</div>
+                    <div class="product-name">6,160 de Oro</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡23,000</div>
+                    <button class="btn-add" onclick="add('6,160 de Oro Blood Strike')">Agregar</button>
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -791,6 +927,26 @@
 
     <script>
         let cart = [];
+        let currentCurrency = 'CRC';
+
+        function setCurrency(curr) {
+            currentCurrency = curr;
+            document.querySelectorAll('.curr-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById('btn-' + curr).classList.add('active');
+
+            const cards = document.querySelectorAll('.product-card');
+            cards.forEach(card => {
+                const tag = card.querySelector('.price-tag');
+                if (curr === 'CRC') {
+                    tag.innerText = '₡' + parseInt(card.getAttribute('data-crc')).toLocaleString();
+                } else if (curr === 'MXN') {
+                    tag.innerText = '$' + card.getAttribute('data-mxn') + ' MXN';
+                } else if (curr === 'USD') {
+                    tag.innerText = '$' + card.getAttribute('data-usd') + ' USD';
+                }
+            });
+            render();
+        }
 
         function filterCategory(cat, btnElement) {
             const buttons = document.querySelectorAll('.cat-btn');
@@ -811,8 +967,17 @@
             document.getElementById('topAccordion').classList.toggle('open');
         }
 
-        function add(title, price) {
-            cart.push({ title, price });
+        function add(title) {
+            // Buscar precio de la tarjeta correspondiente según la moneda seleccionada
+            const cards = document.querySelectorAll('.product-card');
+            let priceText = '';
+            cards.forEach(c => {
+                if(c.querySelector('.product-name').innerText.includes(title) || title.includes(c.querySelector('.product-name').innerText)) {
+                    priceText = c.querySelector('.price-tag').innerText;
+                }
+            });
+
+            cart.push({ title, priceText });
             render();
             openModal();
         }
@@ -828,7 +993,6 @@
 
             const list = document.getElementById('cartList');
             const area = document.getElementById('checkoutArea');
-            const totalEl = document.getElementById('cTotal');
 
             if (cart.length === 0) {
                 list.innerHTML = '<p style="text-align:center; color:var(--text-dim); padding:15px; font-size:0.85rem;">El carrito está vacío</p>';
@@ -838,22 +1002,20 @@
 
             area.style.display = 'block';
             list.innerHTML = '';
-            let total = 0;
 
             cart.forEach((item, i) => {
-                total += item.price;
                 list.innerHTML += `
                     <div class="cart-row">
                         <div>
                             <strong>${item.title}</strong><br>
-                            <span style="color:var(--primary)">₡${item.price.toLocaleString()}</span>
+                            <span style="color:var(--primary)">${item.priceText}</span>
                         </div>
                         <button onclick="remove(${i})" style="background:none; border:none; color:var(--secondary); font-size:1.1rem; cursor:pointer;">&times;</button>
                     </div>
                 `;
             });
 
-            totalEl.innerText = `₡${total.toLocaleString()}`;
+            document.getElementById('cTotal').innerText = cart.length + ' producto(s)';
         }
 
         function openModal() { document.getElementById('cartModal').classList.add('open'); }
@@ -874,10 +1036,9 @@
             if(!id) { alert('Por favor ingresa tu ID de jugador'); return; }
 
             const method = document.getElementById('pMethod').options[document.getElementById('pMethod').selectedIndex].text;
-            let items = cart.map(c => `• ${c.title} (₡${c.price})`).join('%0A');
-            let total = cart.reduce((a, b) => a + b.price, 0);
+            let items = cart.map(c => `• ${c.title} (${c.priceText})`).join('%0A');
 
-            let msg = `🚀 *NUEVO PEDIDO - UDC STORE*%0A%0A🎮 *ID Jugador:* ${id}%0A💳 *Pago:* ${method}%0A%0A📦 *Productos:*%0A${items}%0A%0A💰 *TOTAL:* ₡${total.toLocaleString()}%0A%0AAdjunto comprobante de pago:`;
+            let msg = `🚀 *NUEVO PEDIDO - UDC STORE*%0A%0A🎮 *ID Jugador:* ${id}%0A💳 *Pago:* ${method}%0A%0A📦 *Productos:*%0A${items}%0A%0AAdjunto comprobante de pago a continuación:`;
             window.open(`https://wa.me/50664129943?text=${msg}`, '_blank');
         }
     </script>
