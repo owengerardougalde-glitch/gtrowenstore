@@ -1,120 +1,842 @@
 <!DOCTYPE html>
-
 <html lang="es">
-
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>UDC STORE | GTROWEN.STORE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #03050b;
+            --surface: #0b0e19;
+            --surface-card: #121728;
+            --primary: #00f0ff;
+            --secondary: #ff007f;
+            --purple: #7000ff;
+            --gold: #ffb700;
+            --text: #ffffff;
+            --text-dim: #8b92b0;
+            --border: rgba(0, 240, 255, 0.2);
+        }
 
-<meta charset="UTF-8">
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            padding-bottom: 100px;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(112, 0, 255, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(0, 240, 255, 0.1) 0%, transparent 40%);
+            background-attachment: fixed;
+        }
 
-<title>UDC Store - Tienda Oficial de Recargas</title>
+        /* HEADER */
+        header {
+            background: rgba(11, 14, 25, 0.9);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+            padding: 12px 18px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+        .brand-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-<style>
+        .brand-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--primary), var(--purple));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
 
-:root {
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+        }
 
---bg-dark: #070913;
+        .brand-title {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 1.1rem;
+            color: var(--primary);
+            letter-spacing: 1px;
+            line-height: 1;
+        }
 
---card-bg: rgba(18, 24, 43, 0.75);
+        .brand-title span { color: var(--secondary); }
 
---primary-neon: #00f0ff;
+        .brand-sub {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.6rem;
+            color: var(--text-dim);
+            letter-spacing: 1.5px;
+            margin-top: 2px;
+        }
 
---secondary-neon: #7000ff;
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
---accent-pink: #ff007f;
+        /* CURRENCY SELECTOR */
+        .currency-switch {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2px;
+            display: flex;
+            gap: 2px;
+        }
 
---accent-green: #00ff88;
+        .curr-btn {
+            background: none;
+            border: none;
+            color: var(--text-dim);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 4px 8px;
+            border-radius: 16px;
+            cursor: pointer;
+        }
 
---text-main: #f0f6fc;
+        .curr-btn.active {
+            background: var(--purple);
+            color: #fff;
+            box-shadow: 0 0 10px rgba(112, 0, 255, 0.5);
+        }
 
---text-muted: #8b949e;
+        .header-cart {
+            background: linear-gradient(135deg, rgba(112, 0, 255, 0.3), rgba(255, 0, 127, 0.3));
+            border: 1px solid var(--purple);
+            border-radius: 20px;
+            padding: 6px 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            color: #fff;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
 
-}
+        .header-cart-badge {
+            background: var(--primary);
+            color: #000;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 900;
+        }
 
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 16px;
+        }
 
-* {
+        /* HERO BANNER DE LA IMAGEN */
+        .hero-card {
+            background: linear-gradient(135deg, rgba(18, 23, 40, 0.9), rgba(11, 14, 25, 0.9));
+            border: 1px solid rgba(0, 240, 255, 0.25);
+            border-radius: 20px;
+            padding: 22px;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
 
-box-sizing: border-box;
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(0, 240, 255, 0.1);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+        }
 
-margin: 0;
+        .hero-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+            line-height: 1.2;
+            color: #fff;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
 
-padding: 0;
+        .hero-title span {
+            color: var(--primary);
+            text-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+        }
 
-font-family: 'Rajdhani', sans-serif;
+        .hero-desc {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            line-height: 1.5;
+            margin-bottom: 18px;
+        }
 
-}
+        .hero-desc strong { color: var(--primary); }
 
+        .hero-features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 15px;
+        }
 
-body {
+        .feature-item {
+            text-align: center;
+        }
 
-background-color: var(--bg-dark);
+        .feature-val {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 0.9rem;
+            color: var(--primary);
+            margin-bottom: 2px;
+        }
 
-color: var(--text-main);
+        .feature-val.purple { color: #a855f7; }
+        .feature-val.gold { color: var(--gold); }
 
-min-height: 100vh;
+        .feature-lbl {
+            font-size: 0.65rem;
+            color: var(--text-dim);
+        }
 
-background-image:
+        /* FILTROS Y CATEGORÍAS */
+        .category-scroll {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            scrollbar-width: none;
+        }
 
-radial-gradient(circle at 15% 15%, rgba(112, 0, 255, 0.15) 0%, transparent 35%),
+        .category-scroll::-webkit-scrollbar { display: none; }
 
-radial-gradient(circle at 85% 85%, rgba(0, 240, 255, 0.12) 0%, transparent 35%);
+        .cat-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            color: var(--text-dim);
+            padding: 8px 16px;
+            border-radius: 12px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            white-space: nowrap;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
 
-background-attachment: fixed;
+        .cat-btn.active {
+            background: linear-gradient(135deg, var(--purple), #4c1d95);
+            color: #fff;
+            border-color: var(--primary);
+            box-shadow: 0 0 12px rgba(112, 0, 255, 0.4);
+        }
 
-padding-bottom: 60px;
+        /* TOP RECARGADORES DESPLEGABLE / ACORDEÓN */
+        .top-accordion {
+            background: var(--surface-card);
+            border: 1px solid rgba(255, 183, 0, 0.3);
+            border-radius: 16px;
+            margin-bottom: 25px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
 
-}
+        .top-header {
+            padding: 14px 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            background: rgba(255, 183, 0, 0.04);
+            user-select: none;
+        }
 
+        .top-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
-/* HEADER */
+        .top-arrow {
+            color: var(--gold);
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+        }
 
-header {
+        .top-accordion.open .top-arrow {
+            transform: rotate(180deg);
+        }
 
-display: flex;
+        .top-body {
+            display: none;
+            padding: 0 18px 16px 18px;
+            border-top: 1px solid rgba(255, 183, 0, 0.15);
+        }
 
-justify-content: space-between;
+        .top-accordion.open .top-body {
+            display: block;
+        }
 
-align-items: center;
+        .top-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 12px;
+        }
 
-padding: 1.2rem 5%;
+        .top-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 12px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 8px;
+            border-left: 3px solid var(--primary);
+            font-size: 0.85rem;
+        }
 
-background: rgba(7, 9, 19, 0.85);
+        .top-item.rank-1 {
+            border-left-color: var(--gold);
+            background: rgba(255, 183, 0, 0.08);
+            font-weight: 700;
+        }
 
-backdrop-filter: blur(12px);
+        .top-amount {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--primary);
+            font-weight: 700;
+        }
 
-border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+        /* CATÁLOGO DE PRODUCTOS */
+        .section-h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
-position: sticky;
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 25px;
+        }
 
-top: 0;
+        .product-card {
+            background: var(--surface-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 14px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
 
-z-index: 100;
+        .product-badge {
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
 
-}
+        .product-name {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
 
+        .product-price {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.95rem;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
 
-.brand {
+        .btn-add {
+            background: linear-gradient(135deg, var(--purple), var(--secondary));
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 8px 0;
+            font-weight: 700;
+            font-size: 0.75rem;
+            font-family: 'Orbitron', sans-serif;
+            cursor: pointer;
+            width: 100%;
+            text-transform: uppercase;
+        }
 
-display: flex;
+        /* CARRITO FLOTANTE ABAJO */
+        .floating-cart-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--purple), var(--secondary));
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 12px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 0 20px rgba(255, 0, 127, 0.5);
+            z-index: 999;
+        }
 
-align-items: center;
+        .floating-cart-badge {
+            background: #fff;
+            color: #000;
+            font-size: 0.75rem;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+        }
 
-gap: 12px;
+        /* MODAL */
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+        }
 
-}
+        .modal.open { display: flex; }
 
+        .modal-box {
+            background: var(--surface);
+            border: 1px solid var(--primary);
+            border-radius: 16px;
+            width: 100%;
+            max-width: 420px;
+            padding: 20px;
+            max-height: 85vh;
+            overflow-y: auto;
+        }
 
-.brand-logo {
+        .modal-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
+        }
 
-width: 42px;
+        .modal-top h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.95rem;
+            color: var(--primary);
+        }
 
-height: 42px;
+        .btn-close {
+            background: none;
+            border: none;
+            color: var(--text-dim);
+            font-size: 1.4rem;
+            cursor: pointer;
+        }
 
-background: linear-gradient(135deg, var(--primary-neon), var(--secondary-neon));
+        .cart-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.85rem;
+        }
 
-border-radius: 10px;
+        .cart-total-row {
+            display: flex;
+            justify-content: space-between;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            color: var(--primary);
+            margin: 15px 0;
+            font-weight: 700;
+        }
 
-display
+        .input-box { margin-bottom: 12px; }
+        .input-box label { display: block; font-size: 0.75rem; color: var(--text-dim); margin-bottom: 4px; }
+        .input-box input, .input-box select {
+            width: 100%;
+            padding: 10px;
+            background: var(--surface-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 0.85rem;
+            outline: none;
+        }
+
+        .info-pay {
+            background: rgba(0, 240, 255, 0.05);
+            border: 1px dashed var(--primary);
+            border-radius: 8px;
+            padding: 10px;
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .btn-send {
+            background: #25d366;
+            color: #000;
+            border: none;
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="brand-box">
+            <div class="brand-icon">🎮</div>
+            <div class="brand-text">
+                <div class="brand-title">UDC <span>STORE</span></div>
+                <div class="brand-sub">GTROWEN.STORE</div>
+            </div>
+        </div>
+
+        <div class="header-actions">
+            <div class="currency-switch">
+                <button class="curr-btn" onclick="setCurrency('MXN')">MXN</button>
+                <button class="curr-btn" onclick="setCurrency('USD')">USD</button>
+                <button class="curr-btn active" onclick="setCurrency('CRC')">CRC</button>
+            </div>
+
+            <div class="header-cart" onclick="openModal()">
+                <span>🛒</span>
+                <span class="header-cart-badge cart-count">0</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- HERO BANNER PRO DE LA CAPTURA -->
+        <div class="hero-card">
+            <div class="hero-tag">⚡ Recargas Instantáneas & Seguras 24/7</div>
+            <div class="hero-title">TUS RECARGAS AL <span>MEJOR PRECIO</span></div>
+            <div class="hero-desc">
+                Catálogo oficial para <strong>Free Fire</strong> (Limitados e Ilimitados) y <strong>Blood Strike</strong>. Entregas ultra rápidas por ID de jugador.
+            </div>
+
+            <div class="hero-features">
+                <div class="feature-item">
+                    <div class="feature-val">100%</div>
+                    <div class="feature-lbl">Garantizado</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-val purple">Rápido</div>
+                    <div class="feature-lbl">Entrega por ID</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-val gold">Soporte</div>
+                    <div class="feature-lbl">Personalizado</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BARRA DE CATEGORÍAS -->
+        <div class="category-scroll">
+            <button class="cat-btn active">▦ Todo el Catálogo</button>
+            <button class="cat-btn">💎 FF Limitados</button>
+            <button class="cat-btn">⚡ FF Ilimitados</button>
+            <button class="cat-btn">🎯 Blood Strike</button>
+        </div>
+
+        <!-- TOP CLIENTES ACORDEÓN (DESPLEGABLE) -->
+        <div class="top-accordion" id="topAccordion">
+            <div class="top-header" onclick="toggleTopAccordion()">
+                <div class="top-title">🏆 TOP CLIENTES DE ESTE MES</div>
+                <div class="top-arrow">▼</div>
+            </div>
+            <div class="top-body">
+                <p style="color:var(--text-dim); font-size:0.75rem; margin-top:8px;">Toca la flechita para ver quiénes lideran las recargas</p>
+                <div class="top-list">
+                    <div class="top-item rank-1">
+                        <span>🥇 <strong>GTR_Owen</strong> <small style="color:var(--gold); border:1px solid var(--gold); padding:1px 4px; border-radius:3px; font-size:0.6rem;">VIP MAX</small></span>
+                        <span class="top-amount">₡45,000</span>
+                    </div>
+                    <div class="top-item">
+                        <span>🥈 Carlos_FF</span>
+                        <span class="top-amount">₡28,500</span>
+                    </div>
+                    <div class="top-item">
+                        <span>🥉 Kevin_BS</span>
+                        <span class="top-amount">₡18,000</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-h2">🔥 FREE FIRE (DIAMANTES ID)</div>
+        <div class="products-grid">
+            <div class="product-card">
+                <div>
+                    <div class="product-badge">Free Fire</div>
+                    <div class="product-name">100 + 10 Diamantes</div>
+                </div>
+                <div>
+                    <div class="product-price">₡800</div>
+                    <button class="btn-add" onclick="add('100+10 Diamantes FF', 800)">Agregar</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div>
+                    <div class="product-badge">Free Fire</div>
+                    <div class="product-name">310 + 31 Diamantes</div>
+                </div>
+                <div>
+                    <div class="product-price">₡2,300</div>
+                    <button class="btn-add" onclick="add('310+31 Diamantes FF', 2300)">Agregar</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div>
+                    <div class="product-badge">Free Fire</div>
+                    <div class="product-name">520 + 52 Diamantes</div>
+                </div>
+                <div>
+                    <div class="product-price">₡3,800</div>
+                    <button class="btn-add" onclick="add('520+52 Diamantes FF', 3800)">Agregar</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div>
+                    <div class="product-badge">Free Fire</div>
+                    <div class="product-name">1060 + 106 Diamantes</div>
+                </div>
+                <div>
+                    <div class="product-price">₡7,200</div>
+                    <button class="btn-add" onclick="add('1060+106 Diamantes FF', 7200)">Agregar</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-h2">⚡ BLOOD STRIKE & OFERTAS</div>
+        <div class="products-grid">
+            <div class="product-card">
+                <div>
+                    <div class="product-badge">Blood Strike</div>
+                    <div class="product-name">100 Oro / Pass</div>
+                </div>
+                <div>
+                    <div class="product-price">₡900</div>
+                    <button class="btn-add" onclick="add('100 Oro Blood Strike', 900)">Agregar</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div>
+                    <div class="product-badge">Especial</div>
+                    <div class="product-name">Pase Nivel Up FF</div>
+                </div>
+                <div>
+                    <div class="product-price">₡3,500</div>
+                    <button class="btn-add" onclick="add('Pase Nivel Up FF', 3500)">Agregar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BOTÓN FLOTANTE CARRITO -->
+    <button class="floating-cart-btn" onclick="openModal()">
+        🛒 MI CARRITO
+        <span class="floating-cart-badge cart-count">0</span>
+    </button>
+
+    <!-- MODAL CHECKOUT -->
+    <div class="modal" id="cartModal">
+        <div class="modal-box">
+            <div class="modal-top">
+                <h3>TU CARRITO DE COMPRA</h3>
+                <button class="btn-close" onclick="closeModal()">&times;</button>
+            </div>
+
+            <div id="cartList"></div>
+
+            <div id="checkoutArea" style="display:none;">
+                <div class="cart-total-row">
+                    <span>TOTAL:</span>
+                    <span id="cTotal">₡0</span>
+                </div>
+
+                <div class="input-box">
+                    <label>ID de Jugador</label>
+                    <input type="text" id="pId" placeholder="Ej: 123456789 (GTR_Owen)">
+                </div>
+
+                <div class="input-box">
+                    <label>Método de Pago</label>
+                    <select id="pMethod" onchange="changePay()">
+                        <option value="SINPE">🇨🇷 SINPE Móvil</option>
+                        <option value="BINANCE">🌐 Binance Pay (USDT)</option>
+                    </select>
+                </div>
+
+                <div class="info-pay" id="payBox">
+                    <strong>Datos SINPE Móvil:</strong><br>
+                    • Teléfono: <strong>6412 9943</strong><br>
+                    • Titular: <strong>OWEN MORALES UGALDE</strong>
+                </div>
+
+                <button class="btn-send" onclick="sendWA()">
+                    📲 ENVIAR PEDIDO A WHATSAPP
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let cart = [];
+
+        function toggleTopAccordion() {
+            document.getElementById('topAccordion').classList.toggle('open');
+        }
+
+        function add(title, price) {
+            cart.push({ title, price });
+            render();
+            openModal();
+        }
+
+        function remove(idx) {
+            cart.splice(idx, 1);
+            render();
+        }
+
+        function render() {
+            const counts = document.querySelectorAll('.cart-count');
+            counts.forEach(el => el.innerText = cart.length);
+
+            const list = document.getElementById('cartList');
+            const area = document.getElementById('checkoutArea');
+            const totalEl = document.getElementById('cTotal');
+
+            if (cart.length === 0) {
+                list.innerHTML = '<p style="text-align:center; color:var(--text-dim); padding:15px; font-size:0.85rem;">El carrito está vacío</p>';
+                area.style.display = 'none';
+                return;
+            }
+
+            area.style.display = 'block';
+            list.innerHTML = '';
+            let total = 0;
+
+            cart.forEach((item, i) => {
+                total += item.price;
+                list.innerHTML += `
+                    <div class="cart-row">
+                        <div>
+                            <strong>${item.title}</strong><br>
+                            <span style="color:var(--primary)">₡${item.price.toLocaleString()}</span>
+                        </div>
+                        <button onclick="remove(${i})" style="background:none; border:none; color:var(--secondary); font-size:1.1rem; cursor:pointer;">&times;</button>
+                    </div>
+                `;
+            });
+
+            totalEl.innerText = `₡${total.toLocaleString()}`;
+        }
+
+        function openModal() { document.getElementById('cartModal').classList.add('open'); }
+        function closeModal() { document.getElementById('cartModal').classList.remove('open'); }
+
+        function changePay() {
+            const m = document.getElementById('pMethod').value;
+            const box = document.getElementById('payBox');
+            if(m === 'SINPE') {
+                box.innerHTML = '<strong>Datos SINPE Móvil:</strong><br>• Teléfono: <strong>6412 9943</strong><br>• Titular: <strong>OWEN MORALES UGALDE</strong>';
+            } else {
+                box.innerHTML = '<strong>Binance Pay:</strong><br>• Solicitá ID de transferencia por WhatsApp<br>• Moneda: USDT';
+            }
+        }
+
+        function sendWA() {
+            const id = document.getElementById('pId').value.trim();
+            if(!id) { alert('Por favor ingresa tu ID de jugador'); return; }
+
+            const method = document.getElementById('pMethod').options[document.getElementById('pMethod').selectedIndex].text;
+            let items = cart.map(c => `• ${c.title} (₡${c.price})`).join('%0A');
+            let total = cart.reduce((a, b) => a + b.price, 0);
+
+            let msg = `🚀 *NUEVO PEDIDO - UDC STORE*%0A%0A🎮 *ID Jugador:* ${id}%0A💳 *Pago:* ${method}%0A%0A📦 *Productos:*%0A${items}%0A%0A💰 *TOTAL:* ₡${total.toLocaleString()}%0A%0AAdjunto comprobante de pago:`;
+            window.open(`https://wa.me/50664129943?text=${msg}`, '_blank');
+        }
+    </script>
+</body>
+</html>
