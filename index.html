@@ -14,6 +14,8 @@
             --secondary: #ff0055;
             --purple: #7000ff;
             --gold: #ffb700;
+            --ff-gold: #f9d342;
+            --ff-dark: #1a1a1a;
             --binance: #f3ba2f;
             --text: #ffffff;
             --text-dim: #8b92b0;
@@ -252,88 +254,6 @@
 
         .btn-open-top-clients:active {
             transform: scale(0.98);
-        }
-
-        /* ESTILOS DEL MODAL DE CLIENTES Y TARJETAS */
-        .prime-client-card {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            background: linear-gradient(135deg, rgba(255, 183, 0, 0.1), rgba(11, 14, 25, 0.9));
-            border: 1px solid var(--gold);
-            border-radius: 14px;
-            padding: 14px;
-            position: relative;
-            margin-bottom: 12px;
-        }
-
-        .prime-avatar-container {
-            width: 65px;
-            height: 65px;
-            border-radius: 50%;
-            border: 2px solid var(--gold);
-            overflow: hidden;
-            flex-shrink: 0;
-            box-shadow: 0 0 15px rgba(255, 183, 0, 0.6), inset 0 0 15px rgba(255, 0, 85, 0.3);
-            background: #0b0e19;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* TEXTO FREE FIRE HECHO CON CSS (IMPOSIBLE QUE SE ROMPA) */
-        .css-ff-logo {
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 900;
-            font-size: 13px;
-            color: #ffaa00;
-            text-shadow: 1px 1px 0px #ff0055, 0 0 8px rgba(255, 170, 0, 0.6);
-            line-height: 1.1;
-            text-align: center;
-            letter-spacing: 0.5px;
-        }
-
-        .prime-info {
-            flex-grow: 1;
-        }
-
-        .prime-badge-tag {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--gold), var(--secondary));
-            color: #000;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.6rem;
-            font-weight: 900;
-            padding: 2px 8px;
-            border-radius: 6px;
-            margin-bottom: 4px;
-            text-transform: uppercase;
-        }
-
-        .prime-name {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.05rem;
-            font-weight: 900;
-            color: #fff;
-            margin-bottom: 2px;
-            letter-spacing: 0.5px;
-        }
-
-        .prime-details {
-            font-size: 0.75rem;
-            color: var(--text-dim);
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-        }
-
-        .prime-diamonds {
-            font-family: 'Orbitron', sans-serif;
-            color: var(--primary);
-            font-weight: 900;
-            font-size: 0.85rem;
-            text-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
         }
 
         .samurai-box-catalog {
@@ -605,6 +525,7 @@
             color: var(--text-dim);
             font-size: 1.4rem;
             cursor: pointer;
+            z-index: 2010;
         }
 
         .cart-row {
@@ -678,6 +599,183 @@
             font-size: 0.85rem;
             cursor: pointer;
         }
+
+        /* ---------------------------------------------------
+           NUEVO MODAL TOP CLIENTES - ESTILO LOBBY FREE FIRE
+           --------------------------------------------------- */
+        
+        #topClientsModal .modal-box {
+            /* Fondo inspirado en el lobby oscuro de Free Fire con tonos dorados */
+            background: linear-gradient(to bottom, #1a1a1a 0%, #0d0d0d 100%);
+            border: 2px solid var(--ff-gold);
+            box-shadow: 0 0 30px rgba(249, 211, 66, 0.2), inset 0 0 20px rgba(0,0,0,0.8);
+            padding: 0;
+            overflow: hidden;
+        }
+
+        #topClientsModal .modal-top {
+            background: rgba(0,0,0,0.6);
+            border-bottom: 1px solid var(--ff-gold);
+            padding: 15px;
+            margin-bottom: 0;
+            position: relative;
+            z-index: 10;
+        }
+
+        #topClientsModal .modal-top h3 {
+            color: var(--ff-gold);
+            text-shadow: 0 0 10px rgba(249, 211, 66, 0.5);
+            letter-spacing: 2px;
+        }
+
+        /* Contenedor tipo "Inspeccionar Jugador" de FF */
+        .ff-lobby-container {
+            position: relative;
+            padding: 20px;
+            /* Aquí puedes poner un fondo de lobby real en el futuro, por ahora un gradiente elegante */
+            background: radial-gradient(circle at center, #2a2a2a 0%, #0a0a0a 100%);
+            min-height: 350px; /* Espacio para que se vea la skin de cuerpo entero */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* El recuadro con la info del jugador arriba a la derecha como en FF */
+        .ff-player-card {
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid var(--ff-gold);
+            border-radius: 4px;
+            padding: 10px 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            align-self: flex-end;
+            backdrop-filter: blur(5px);
+            z-index: 5;
+            min-width: 200px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .ff-player-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            justify-content: flex-end;
+            border-bottom: 1px solid rgba(249, 211, 66, 0.3);
+            padding-bottom: 5px;
+            margin-bottom: 5px;
+        }
+
+        .ff-avatar {
+            width: 35px;
+            height: 35px;
+            background: #333;
+            border: 1px solid var(--ff-gold);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.6rem;
+        }
+
+        .ff-name-level {
+            text-align: right;
+        }
+
+        .ff-name {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 1rem;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        .ff-level {
+            font-size: 0.65rem;
+            color: var(--ff-gold);
+            font-weight: bold;
+        }
+
+        .ff-uid {
+            font-size: 0.7rem;
+            color: var(--text-dim);
+            text-align: right;
+            width: 100%;
+        }
+
+        /* Contenedor para la skin 3D del personaje */
+        .ff-character-stage {
+            position: absolute;
+            bottom: -20px; /* Para que pise el borde inferior */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 250px;
+            height: 300px;
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+        /* AQUI VA LA IMAGEN DE TU SKIN RECORTADA */
+        .ff-skin-img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            /* Si quieres subirla, cambia src="" por el link de tu imagen recortada */
+        }
+
+        /* Plataforma bajo el personaje */
+        .ff-platform {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 30px;
+            background: radial-gradient(ellipse at center, rgba(255,255,255,0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        /* Estadísticas abajo a la izquierda */
+        .ff-stats-box {
+            background: rgba(0, 0, 0, 0.7);
+            border-left: 3px solid var(--primary);
+            padding: 8px 12px;
+            align-self: flex-start;
+            z-index: 5;
+            backdrop-filter: blur(5px);
+            margin-top: auto;
+        }
+
+        .ff-stat-title {
+            font-size: 0.6rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .ff-stat-value {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 1.1rem;
+            color: var(--primary);
+            text-shadow: 0 0 8px rgba(0, 240, 255, 0.4);
+        }
+
+        /* CSS Logo para el Avatar (Seguro) */
+        .css-ff-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 10px;
+            color: #ffaa00;
+            text-shadow: 1px 1px 0px #ff0055;
+            line-height: 1;
+            text-align: center;
+        }
+        
     </style>
 </head>
 <body>
@@ -1309,37 +1407,47 @@
         </div>
     </div>
 
-    <!-- MODAL SECUNDARIO: PESTAÑITA DE TOP CLIENTES PRIME -->
+    <!-- MODAL SECUNDARIO: PESTAÑITA DE TOP CLIENTES PRIME (ESTILO LOBBY FF) -->
     <div class="modal" id="topClientsModal">
         <div class="modal-box">
             <div class="modal-top">
                 <h3>🏆 TOP CLIENTES PRIME</h3>
                 <button class="btn-close" id="closeTopClientsBtn">&times;</button>
             </div>
-            
-            <p style="font-size: 0.75rem; color: var(--text-dim); margin-bottom: 15px; text-align: center;">
-                Gracias a nuestros mejores clientes por su lealtad a GTROWEN.STORE.
-            </p>
 
-            <div class="prime-client-card">
-                <!-- LOGO SEGURO CERO ERRORES -->
-                <div class="prime-avatar-container">
-                    <span class="css-ff-logo">FREE</span>
-                    <span class="css-ff-logo">FIRE</span>
+            <!-- CONTENEDOR DEL LOBBY -->
+            <div class="ff-lobby-container">
+                
+                <!-- CARTA DEL JUGADOR (ARRIBA DERECHA) -->
+                <div class="ff-player-card">
+                    <div class="ff-player-header">
+                        <div class="ff-name-level">
+                            <div class="ff-name">J.C.</div>
+                            <div class="ff-level">Nv. 75</div>
+                        </div>
+                        <div class="ff-avatar">
+                            <span class="css-ff-logo">FREE<br>FIRE</span>
+                        </div>
+                    </div>
+                    <div class="ff-uid">UID: 301110819</div>
                 </div>
 
-                <div class="prime-info">
-                    <span class="prime-badge-tag">TOP #1 PRIME ⚡</span>
-                    <div class="prime-name">J.C.</div>
-                    <div class="prime-details">
-                        <span>ID: <strong>301110819</strong></span>
-                        <span class="prime-diamonds">12,343 💎 DIAMANTES</span>
-                    </div>
+                <!-- EL PERSONAJE 3D Y PLATAFORMA (CENTRO/ABAJO) -->
+                <div class="ff-character-stage">
+                    <div class="ff-platform"></div>
+                    <!-- AQUI PONES EL LINK DE TU IMAGEN RECORTADA SIN FONDO -->
+                    <!-- Si tienes la imagen en imgbb o similar pon el link aqui en src="" -->
+                    <img src="" alt="Skin Top Cliente" class="ff-skin-img">
+                </div>
+
+                <!-- ESTADÍSTICAS DEL CLIENTE (ABAJO IZQUIERDA) -->
+                <div class="ff-stats-box">
+                    <div class="ff-stat-title">COMPRAS TOTALES</div>
+                    <div class="ff-stat-value">12,343 💎</div>
+                    <div style="font-size: 0.6rem; color: var(--gold); margin-top: 2px;">TOP #1 PRIME ⚡</div>
                 </div>
             </div>
             
-            <!-- Aquí puedes copiar y pegar más bloques de "prime-client-card" si quieres agregar más clientes después -->
-
         </div>
     </div>
 
@@ -1425,7 +1533,7 @@
             document.getElementById('bannerOpenModal').addEventListener('click', openModal);
             document.getElementById('closeModalBtn').addEventListener('click', closeModal);
 
-            // LÓGICA DE LA NUEVA PESTAÑITA (MODAL) DE TOP CLIENTES
+            // LÓGICA DE LA NUEVA PESTAÑITA (MODAL LOBBY) DE TOP CLIENTES
             document.getElementById('btnOpenTopClients').addEventListener('click', () => {
                 document.getElementById('topClientsModal').classList.add('open');
             });
