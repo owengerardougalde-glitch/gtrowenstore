@@ -14,7 +14,7 @@
             --accent-purple: #7000ff;
             --text-main: #ffffff;
             --text-muted: #a0a5c0;
-            --success-color: #00ff66;
+            --gold: #ffd700;
         }
 
         * {
@@ -60,21 +60,6 @@
             color: var(--accent-pink);
         }
 
-        .header-cart-btn {
-            background: rgba(0, 240, 255, 0.1);
-            border: 1px solid var(--accent-cyan);
-            color: var(--accent-cyan);
-            padding: 8px 14px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 700;
-            font-size: 0.85rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
         .container {
             max-width: 1000px;
             margin: 0 auto;
@@ -104,24 +89,54 @@
             margin-bottom: 15px;
         }
 
-        .hero-cart-trigger {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: var(--accent-cyan);
-            color: #000;
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 900;
-            cursor: pointer;
-            border: none;
-            box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
-            transition: transform 0.2s;
+        /* SECCIÓN TOP RECARGADORES */
+        .top-buyers-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 215, 0, 0.4);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 35px;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.15);
         }
 
-        .hero-cart-trigger:active {
-            transform: scale(0.95);
+        .top-buyers-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .top-buyer-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-cyan);
+            font-size: 1.05rem;
+        }
+
+        .top-buyer-item.rank-1 {
+            border-left-color: var(--gold);
+            background: rgba(255, 215, 0, 0.08);
+            font-weight: 700;
+        }
+
+        .top-buyer-item.rank-2 {
+            border-left-color: #c0c0c0;
+            background: rgba(192, 192, 192, 0.05);
+        }
+
+        .top-buyer-item.rank-3 {
+            border-left-color: #cd7f32;
+            background: rgba(205, 127, 50, 0.05);
+        }
+
+        .buyer-amount {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--accent-cyan);
+            font-weight: 700;
         }
 
         .section-title {
@@ -200,10 +215,10 @@
             color: #000;
         }
 
-        /* BOTÓN FLOTANTE FIJO (ABAJO) */
+        /* BOTÓN FLOTANTE FIJO (ABAJO DERECHA) */
         .floating-cart-btn {
             position: fixed;
-            bottom: 20px;
+            bottom: 25px;
             right: 20px;
             background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
             color: #ffffff;
@@ -217,14 +232,14 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            box-shadow: 0 0 25px rgba(0, 240, 255, 0.6);
-            z-index: 150;
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.8);
+            z-index: 999;
             animation: pulse-glow 2s infinite alternate;
         }
 
         @keyframes pulse-glow {
-            0% { box-shadow: 0 0 15px rgba(0, 240, 255, 0.5); }
-            100% { box-shadow: 0 0 30px rgba(255, 0, 127, 0.8); }
+            0% { box-shadow: 0 0 15px rgba(0, 240, 255, 0.6); }
+            100% { box-shadow: 0 0 30px rgba(255, 0, 127, 0.9); }
         }
 
         .cart-badge {
@@ -236,7 +251,7 @@
             font-weight: 700;
         }
 
-        /* MODAL DEL CARRITO */
+        /* MODAL CHECKOUT */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -245,7 +260,7 @@
             height: 100%;
             background: rgba(0, 0, 0, 0.85);
             backdrop-filter: blur(8px);
-            z-index: 200;
+            z-index: 1000;
             display: none;
             justify-content: center;
             align-items: center;
@@ -331,10 +346,6 @@
             outline: none;
         }
 
-        .input-group input:focus, .input-group select:focus {
-            border-color: var(--accent-cyan);
-        }
-
         .payment-box {
             background: rgba(0, 240, 255, 0.05);
             border: 1px dashed var(--accent-cyan);
@@ -378,18 +389,41 @@
 
     <header>
         <div class="logo-text">UDC <span>STORE</span></div>
-        <button class="header-cart-btn" onclick="toggleCartModal()">
-            🛒 CARRITO <span class="cart-badge cartCount">0</span>
-        </button>
     </header>
 
     <div class="container">
         <div class="hero-banner">
             <h1>RECARGAS INSTANTÁNEAS Y PASES GAMER</h1>
             <p>Free Fire, Blood Strike y Servicios Digitales. Paga de forma segura y recibe al instante.</p>
-            <button class="hero-cart-trigger" onclick="toggleCartModal()">
-                🛒 VER CARRITO DE COMPRA (<span class="cartCount">0</span>)
-            </button>
+        </div>
+
+        <!-- SECCIÓN TOP CLIENTES VIP -->
+        <div class="top-buyers-card">
+            <div class="section-title" style="color: var(--gold); margin-bottom:0;">🏆 TOP CLIENTES DEL MES</div>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Los jugadores que más han recargado en UDC Store</p>
+            
+            <div class="top-buyers-list">
+                <div class="top-buyer-item rank-1">
+                    <div class="buyer-name">🥇 <strong>GTR_Owen</strong> <span style="font-size:0.75rem; color:var(--gold); border:1px solid var(--gold); padding:2px 6px; border-radius:4px;">VIP MAX</span></div>
+                    <div class="buyer-amount">₡45,000</div>
+                </div>
+                <div class="top-buyer-item rank-2">
+                    <div class="buyer-name">🥈 <strong>Carlos_FF</strong></div>
+                    <div class="buyer-amount">₡28,500</div>
+                </div>
+                <div class="top-buyer-item rank-3">
+                    <div class="buyer-name">🥉 <strong>Kevin_BS</strong></div>
+                    <div class="buyer-amount">₡18,000</div>
+                </div>
+                <div class="top-buyer-item">
+                    <div class="buyer-name">4. 👤 <strong>Sofia_CR</strong></div>
+                    <div class="buyer-amount">₡12,500</div>
+                </div>
+                <div class="top-buyer-item">
+                    <div class="buyer-name">5. 👤 <strong>Andrey_07</strong></div>
+                    <div class="buyer-amount">₡9,200</div>
+                </div>
+            </div>
         </div>
 
         <div class="section-title">🔥 Free Fire (Diamantes ID)</div>
@@ -421,204 +455,4 @@
                 </div>
                 <div>
                     <div class="product-price">₡3,800 CRC</div>
-                    <button class="add-cart-btn" onclick="addToCart('520+52 Diamantes FF', 3800)">Agregar</button>
-                </div>
-            </div>
-            <div class="product-card">
-                <div>
-                    <div class="product-tag">Free Fire</div>
-                    <div class="product-title">1060 + 106 Diamantes</div>
-                </div>
-                <div>
-                    <div class="product-price">₡7,200 CRC</div>
-                    <button class="add-cart-btn" onclick="addToCart('1060+106 Diamantes FF', 7200)">Agregar</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="section-title">⚡ Blood Strike & Ofertas</div>
-        <div class="grid-products">
-            <div class="product-card">
-                <div>
-                    <div class="product-tag">Blood Strike</div>
-                    <div class="product-title">100 Oro / Pass</div>
-                </div>
-                <div>
-                    <div class="product-price">₡900 CRC</div>
-                    <button class="add-cart-btn" onclick="addToCart('100 Oro Blood Strike', 900)">Agregar</button>
-                </div>
-            </div>
-            <div class="product-card">
-                <div>
-                    <div class="product-tag">Pase Especial</div>
-                    <div class="product-title">Pase Nivel Up FF</div>
-                </div>
-                <div>
-                    <div class="product-price">₡3,500 CRC</div>
-                    <button class="add-cart-btn" onclick="addToCart('Pase Nivel Up FF', 3500)">Agregar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- BOTÓN FLOTANTE SIEMPRE VISIBLE EN PANTALLA ABAJO -->
-    <button class="floating-cart-btn" onclick="toggleCartModal()">
-        🛒 MI CARRITO <span class="cart-badge cartCount">0</span>
-    </button>
-
-    <!-- MODAL CHECKOUT -->
-    <div class="modal-overlay" id="cartModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>CARRITO DE COMPRA</h2>
-                <button class="close-modal-btn" onclick="toggleCartModal()">&times;</button>
-            </div>
-
-            <div id="cartItemsContainer">
-                <div class="empty-cart-msg">Tu carrito está vacío</div>
-            </div>
-
-            <div id="checkoutForm" style="display: none;">
-                <div class="cart-total">
-                    <span>TOTAL:</span>
-                    <span id="cartTotal">₡0 CRC</span>
-                </div>
-
-                <div class="input-group">
-                    <label>ID de Jugador / Nombre de Cuenta</label>
-                    <input type="text" id="playerIdInput" placeholder="Ej: 1234567890 (GTR_Owen)">
-                </div>
-
-                <div class="input-group">
-                    <label>País / Método de Pago</label>
-                    <select id="paymentMethod" onchange="updatePaymentDetails()">
-                        <option value="SINPE_CR">🇨🇷 Costa Rica - SINPE Móvil</option>
-                        <option value="BINANCE">🌐 Binance Pay (USDT)</option>
-                        <option value="OTHER">🌍 Otro País (Consulta directa)</option>
-                    </select>
-                </div>
-
-                <div class="payment-box" id="paymentDetails">
-                    <strong>Datos para SINPE Móvil:</strong><br>
-                    • Teléfono: <strong>6412 9943</strong><br>
-                    • Titular: <strong>OWEN MORALES UGALDE</strong><br>
-                    • Banco: <strong>BCR</strong>
-                </div>
-
-                <button class="btn-whatsapp" onclick="sendOrderToWhatsApp()">
-                    📲 ENVIAR PEDIDO POR WHATSAPP
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        let cart = [];
-
-        function addToCart(title, price) {
-            cart.push({ title, price });
-            updateCartUI();
-            toggleCartModal(true);
-        }
-
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            updateCartUI();
-        }
-
-        function updateCartUI() {
-            const countElements = document.querySelectorAll('.cartCount');
-            const container = document.getElementById('cartItemsContainer');
-            const form = document.getElementById('checkoutForm');
-            const totalEl = document.getElementById('cartTotal');
-
-            countElements.forEach(el => el.innerText = cart.length);
-
-            if (cart.length === 0) {
-                container.innerHTML = '<div class="empty-cart-msg">Tu carrito está vacío</div>';
-                form.style.display = 'none';
-                return;
-            }
-
-            form.style.display = 'block';
-            container.innerHTML = '';
-            let total = 0;
-
-            cart.forEach((item, index) => {
-                total += item.price;
-                const itemDiv = document.createElement('div');
-                itemDiv.className = 'cart-item';
-                itemDiv.innerHTML = `
-                    <div>
-                        <strong>${item.title}</strong><br>
-                        <span style="color:var(--text-muted);">₡${item.price.toLocaleString()} CRC</span>
-                    </div>
-                    <button onclick="removeFromCart(${index})" style="background:none; border:none; color:var(--accent-pink); cursor:pointer; font-size:1.2rem;">&times;</button>
-                `;
-                container.appendChild(itemDiv);
-            });
-
-            totalEl.innerText = `₡${total.toLocaleString()} CRC`;
-        }
-
-        function toggleCartModal(forceOpen = false) {
-            const modal = document.getElementById('cartModal');
-            if (forceOpen) {
-                modal.classList.add('active');
-            } else {
-                modal.classList.toggle('active');
-            }
-        }
-
-        function updatePaymentDetails() {
-            const method = document.getElementById('paymentMethod').value;
-            const detailsBox = document.getElementById('paymentDetails');
-
-            if (method === 'SINPE_CR') {
-                detailsBox.innerHTML = `
-                    <strong>Datos para SINPE Móvil:</strong><br>
-                    • Teléfono: <strong>6412 9943</strong><br>
-                    • Titular: <strong>OWEN MORALES UGALDE</strong><br>
-                    • Banco: <strong>BCR</strong>
-                `;
-            } else if (method === 'BINANCE') {
-                detailsBox.innerHTML = `
-                    <strong>Datos Binance Pay:</strong><br>
-                    • Binance ID / Pay: Consultar por WhatsApp<br>
-                    • Moneda: <strong>USDT</strong>
-                `;
-            } else {
-                detailsBox.innerHTML = `
-                    <strong>Medios de Pago Latam:</strong><br>
-                    • Aceptamos pagos para México, Colombia, Argentina y Perú.<br>
-                    • Coordinamos el medio de pago local directamente por WhatsApp.
-                `;
-            }
-        }
-
-        function sendOrderToWhatsApp() {
-            const playerId = document.getElementById('playerIdInput').value.trim();
-            if (!playerId) {
-                alert('Por favor ingresa tu ID de jugador antes de enviar la orden.');
-                return;
-            }
-
-            const methodSelect = document.getElementById('paymentMethod');
-            const methodName = methodSelect.options[methodSelect.selectedIndex].text;
-
-            let itemsText = cart.map(i => `• ${i.title} (₡${i.price})`).join('%0A');
-            let total = cart.reduce((sum, i) => sum + i.price, 0);
-
-            let message = `🚀 *NUEVO PEDIDO - UDC STORE*%0A%0A` +
-                `🎮 *ID de Jugador:* ${playerId}%0A` +
-                `💳 *Método de Pago:* ${methodName}%0A%0A` +
-                `📦 *Productos:*%0A${itemsText}%0A%0A` +
-                `💰 *TOTAL A PAGAR:* ₡${total.toLocaleString()} CRC%0A%0A` +
-                `Adjunto comprobante de pago a continuación.`;
-
-            let whatsappUrl = `https://wa.me/50664129943?text=${message}`;
-            window.open(whatsappUrl, '_blank');
-        }
-    </script>
-</body>
-</html>
+                    <button class="add-
