@@ -271,16 +271,19 @@
             overflow: hidden;
             flex-shrink: 0;
             box-shadow: 0 0 15px rgba(255, 183, 0, 0.6);
-            background: #060913;
+            background: radial-gradient(circle, #2a2a2a 0%, #060913 80%);
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
+        /* Ajuste clave para que el logo se vea nítido y no se corte */
         .prime-avatar-container img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
+            padding: 8px; /* Da espacio para que el logo respire dentro del círculo */
+            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
         }
 
         .prime-info {
@@ -729,7 +732,8 @@
                 <div class="top-ranking-title">🏆 MEJOR CLIENTE · TOP PRIME 👑</div>
                 <div class="prime-client-card">
                     <div class="prime-avatar-container">
-                        <img src="https://images.vexels.com/content/organizations/preview/2020/09/free-fire-logo-svg-vector.svg" alt="Free Fire Logo">
+                        <!-- IMAGEN SEGURA DESDE WORLD VECTOR LOGO -->
+                        <img src="https://cdn.worldvectorlogo.com/logos/free-fire-1.svg" alt="Free Fire">
                     </div>
                     <div class="prime-info">
                         <span class="prime-badge-tag">TOP #1 PRIME ⚡</span>
