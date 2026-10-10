@@ -5,13 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>GTROWEN.STORE</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-    <!-- SDK de EmailJS -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script type="text/javascript">
-        (function() {
-            emailjs.init("DaZqps5Rb4wPuMM7J");
-        })();
-    </script>
     <style>
         :root {
             --bg: #03050b;
@@ -1173,7 +1166,7 @@
                 </div>
 
                 <button class="btn-send" id="sendWaBtn">
-                    📲 ENVIAR PEDIDO A WHATSAPP Y CORREO
+                    📲 ENVIAR PEDIDO A WHATSAPP
                 </button>
             </div>
         </div>
@@ -1367,34 +1360,11 @@
                 const id = idInput.value.trim();
                 if (!id) { alert('Por favor ingresa tu ID o datos de contacto'); return; }
 
-                const method = document.getElementById('pMethod').value;
-                const txId = document.getElementById('pTxId').value.trim();
                 const methodSelect = document.getElementById('pMethod');
                 const methodName = methodSelect.options[methodSelect.selectedIndex].text;
+                const txId = document.getElementById('pTxId').value.trim();
                 let totalText = document.getElementById('cTotal').innerText;
 
-                // Preparar datos para EmailJS
-                const emailParams = {
-                    user_id: id,
-                    payment_method: methodName,
-                    transaction_id: txId || 'N/A',
-                    orders: cart.map(item => ({
-                        name: item.title,
-                        units: 1,
-                        price: currentCurrency === 'CRC' ? '₡' + item.crc.toLocaleString() : '$' + item.usd
-                    })),
-                    total_amount: totalText
-                };
-
-                // Enviar correo mediante EmailJS (Ya configurado con tu template_nldj8vg real)
-                emailjs.send('service_9c6i5ge', 'template_nldj8vg', emailParams)
-                    .then(response => {
-                        console.log('Correo enviado exitosamente!', response.status, response.text);
-                    }, error => {
-                        console.error('Error al enviar el correo:', error);
-                    });
-
-                // Enviar pedido a WhatsApp
                 let itemsWaText = cart.map(c => `• ${c.title}`).join('%0A');
                 let msg = `🚀 *NUEVO PEDIDO - GTROWEN STORE*%0A%0A🎮 *Referencia / ID:* ${id}%0A💳 *Pago:* ${methodName}`;
                 if (txId) {
