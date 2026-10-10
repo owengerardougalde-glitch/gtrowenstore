@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>GTROWEN.STORE</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- SDK de EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("DaZqps5Rb4wPuMM7J");
+        })();
+    </script>
     <style>
         :root {
             --bg: #03050b;
@@ -314,82 +321,6 @@
             color: #fff;
             border-color: var(--primary);
             box-shadow: 0 0 12px rgba(255, 0, 85, 0.4);
-        }
-
-        .top-accordion {
-            background: rgba(18, 23, 40, 0.95);
-            border: 1px solid rgba(255, 183, 0, 0.3);
-            border-radius: 16px;
-            margin-bottom: 25px;
-            overflow: hidden;
-            position: relative;
-            z-index: 10;
-        }
-
-        .top-header {
-            padding: 14px 18px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            background: rgba(255, 183, 0, 0.04);
-            user-select: none;
-        }
-
-        .top-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: var(--gold);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .top-arrow {
-            color: var(--gold);
-            font-size: 0.8rem;
-            transition: transform 0.3s ease;
-        }
-
-        .top-accordion.open .top-arrow { transform: rotate(180deg); }
-
-        .top-body {
-            display: none;
-            padding: 0 18px 16px 18px;
-            border-top: 1px solid rgba(255, 183, 0, 0.15);
-        }
-
-        .top-accordion.open .top-body { display: block; }
-
-        .top-list {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-top: 12px;
-        }
-
-        .top-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 12px;
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 8px;
-            border-left: 3px solid var(--primary);
-            font-size: 0.85rem;
-        }
-
-        .top-item.rank-1 {
-            border-left-color: var(--gold);
-            background: rgba(255, 183, 0, 0.08);
-            font-weight: 700;
-        }
-
-        .top-amount {
-            font-family: 'Orbitron', sans-serif;
-            color: var(--primary);
-            font-weight: 700;
         }
 
         .section-h2 {
@@ -723,30 +654,6 @@
             <button class="cat-btn" data-cat="ff-ilim">⚡ FF Ilimitados</button>
             <button class="cat-btn" data-cat="ff-passes">🎫 FF Pases</button>
             <button class="cat-btn" data-cat="bs">🪙 Blood Strike</button>
-        </div>
-
-        <div class="top-accordion" id="topAccordion">
-            <div class="top-header" id="topAccordionHeader">
-                <div class="top-title">🏆 TOP CLIENTES DE ESTE MES</div>
-                <div class="top-arrow">▼</div>
-            </div>
-            <div class="top-body">
-                <p style="color:var(--text-dim); font-size:0.75rem; margin-top:8px;">Jugadores destacados con más recargas este mes</p>
-                <div class="top-list">
-                    <div class="top-item rank-1">
-                        <span>🥇 <strong>GTR_Owen</strong> <small style="color:var(--gold); border:1px solid var(--gold); padding:1px 4px; border-radius:3px; font-size:0.6rem;">VIP MAX</small></span>
-                        <span class="top-amount">₡45,000</span>
-                    </div>
-                    <div class="top-item">
-                        <span>🥈 Carlos_FF</span>
-                        <span class="top-amount">₡28,500</span>
-                    </div>
-                    <div class="top-item">
-                        <span>🥉 Kevin_BS</span>
-                        <span class="top-amount">₡18,000</span>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <div class="section-h2" id="catalogTitle">🔥 CATALOGO GENERAL</div>
@@ -1249,6 +1156,8 @@
                     <select id="pMethod">
                         <option value="SINPE">🇨🇷 SINPE Móvil</option>
                         <option value="BINANCE">🌐 Binance Pay (USDT)</option>
+                        <option value="NU">🇲🇽 Nu México (Transferencia CLABE)</option>
+                        <option value="OXXO">🇲🇽 Spin By Oxxo (Depósito)</option>
                     </select>
                 </div>
 
@@ -1259,12 +1168,12 @@
                 </div>
 
                 <div class="input-box" id="txIdBox" style="display: none;">
-                    <label>ID de Transacción de Binance (TxID / Order ID)</label>
-                    <input type="text" id="pTxId" placeholder="Ej: 84920491029485">
+                    <label>ID de Transacción / Comprobante (TxID / Referencia)</label>
+                    <input type="text" id="pTxId" placeholder="Ej: 84920491029485 o Ref. de pago">
                 </div>
 
                 <button class="btn-send" id="sendWaBtn">
-                    📲 ENVIAR PEDIDO A WHATSAPP
+                    📲 ENVIAR PEDIDO A WHATSAPP Y CORREO
                 </button>
             </div>
         </div>
@@ -1321,13 +1230,6 @@
                 });
             });
 
-            const topHeader = document.getElementById('topAccordionHeader');
-            if (topHeader) {
-                topHeader.addEventListener('click', () => {
-                    document.getElementById('topAccordion').classList.toggle('open');
-                });
-            }
-
             document.querySelectorAll('.btn-add').forEach(btn => {
                 btn.addEventListener('click', (e) => {
                     const b = e.currentTarget;
@@ -1341,7 +1243,6 @@
                         pen: parseFloat(b.getAttribute('data-pen'))
                     });
                     renderCart();
-                    // Removido openModal() para evitar que se abra de golpe al agregar productos
                 });
             });
 
@@ -1373,11 +1274,12 @@
                 const m = e.target.value;
                 const box = document.getElementById('payBox');
                 const txBox = document.getElementById('txIdBox');
+                txBox.style.display = 'block';
 
                 if (m === 'SINPE') {
                     box.innerHTML = '<strong>Datos SINPE Móvil:</strong><br>• Teléfono: <strong>6412 9943</strong><br>• Titular: <strong>OWEN MORALES UGALDE</strong>';
                     txBox.style.display = 'none';
-                } else {
+                } else if (m === 'BINANCE') {
                     box.innerHTML = `
                         <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
                             <img src="https://cryptologos.cc/logos/binance-coin-bnb-logo.svg" alt="Binance Logo" style="width: 22px; height: 22px;">
@@ -1385,9 +1287,22 @@
                         </div>
                         • Binance Pay ID: <strong>1020350187</strong><br>
                         • Titular: <strong>Owen Morales ugalde</strong><br>
-                        • Moneda aceptada: <strong>USDT / Cripto</strong>
+                        • Moneda: <strong>USDT / Cripto</strong>
                     `;
-                    txBox.style.display = 'block';
+                } else if (m === 'NU') {
+                    box.innerHTML = `
+                        <strong style="color: #b873ef;">Transferencia Nu México:</strong><br>
+                        • Beneficiario: <strong>Brandon Vazquez Moreno</strong><br>
+                        • CLABE: <strong style="color:var(--primary);">638180000144588877</strong><br>
+                        • Banco: <strong>Nu Mexico</strong>
+                    `;
+                } else if (m === 'OXXO') {
+                    box.innerHTML = `
+                        <strong style="color: #ff4d4d;">Depósito Spin By Oxxo:</strong><br>
+                        • Beneficiario: <strong>Brandon Vazquez Moreno</strong><br>
+                        • Cuenta: <strong style="color:var(--primary);">4217470278990896</strong><br>
+                        • Entidad: <strong>Spin By Oxxo</strong>
+                    `;
                 }
             });
 
@@ -1453,22 +1368,39 @@
                 if (!id) { alert('Por favor ingresa tu ID o datos de contacto'); return; }
 
                 const method = document.getElementById('pMethod').value;
-                let txId = '';
-                if (method === 'BINANCE') {
-                    txId = document.getElementById('pTxId').value.trim();
-                    if (!txId) { alert('Por favor ingresa el ID de transacción (TxID) de Binance'); return; }
-                }
-
+                const txId = document.getElementById('pTxId').value.trim();
                 const methodSelect = document.getElementById('pMethod');
                 const methodName = methodSelect.options[methodSelect.selectedIndex].text;
-                let items = cart.map(c => `• ${c.title}`).join('%0A');
                 let totalText = document.getElementById('cTotal').innerText;
 
+                // Preparar datos para EmailJS
+                const emailParams = {
+                    user_id: id,
+                    payment_method: methodName,
+                    transaction_id: txId || 'N/A',
+                    orders: cart.map(item => ({
+                        name: item.title,
+                        units: 1,
+                        price: currentCurrency === 'CRC' ? '₡' + item.crc.toLocaleString() : '$' + item.usd
+                    })),
+                    total_amount: totalText
+                };
+
+                // Enviar correo mediante EmailJS (Reemplaza 'template_TU_ID' con tu Template ID real de EmailJS)
+                emailjs.send('service_9c6i5ge', 'template_TU_ID', emailParams)
+                    .then(response => {
+                        console.log('Correo enviado exitosamente!', response.status, response.text);
+                    }, error => {
+                        console.error('Error al enviar el correo:', error);
+                    });
+
+                // Enviar pedido a WhatsApp
+                let itemsWaText = cart.map(c => `• ${c.title}`).join('%0A');
                 let msg = `🚀 *NUEVO PEDIDO - GTROWEN STORE*%0A%0A🎮 *Referencia / ID:* ${id}%0A💳 *Pago:* ${methodName}`;
-                if (method === 'BINANCE') {
-                    msg += `%0A🔢 *TxID Binance:* ${txId}`;
+                if (txId) {
+                    msg += `%0A🔢 *Comprobante/Ref:* ${txId}`;
                 }
-                msg += `%0A%0A📦 *Productos:*%0A${items}%0A💰 *Total:* ${totalText}%0A%0AAdjunto comprobante de pago a continuación:`;
+                msg += `%0A%0A📦 *Productos:*%0A${itemsWaText}%0A💰 *Total:* ${totalText}%0A%0AAdjunto comprobante de pago a continuación:`;
 
                 let whatsappUrl = `https://api.whatsapp.com/send?phone=50672986056&text=${msg}`;
                 window.open(whatsappUrl, '_blank');
