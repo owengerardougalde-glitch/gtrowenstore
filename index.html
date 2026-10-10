@@ -166,94 +166,21 @@
             z-index: 10;
         }
 
-        /* HERO BANNER */
-        .hero-card {
-            background: linear-gradient(rgba(3, 5, 11, 0.85), rgba(3, 5, 11, 0.90)), url('banner.jpg') center/cover no-repeat;
-            border: 1px solid var(--primary);
-            border-radius: 20px;
-            padding: 24px;
+        /* BANNER IMAGEN PRINCIPAL */
+        .hero-banner-container {
+            width: 100%;
             margin-bottom: 20px;
-            box-shadow: 0 0 25px rgba(0, 240, 255, 0.25);
-            position: relative;
+            border-radius: 16px;
             overflow: hidden;
-        }
-
-        .hero-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: rgba(0, 240, 255, 0.1);
             border: 1px solid var(--primary);
-            color: var(--primary);
-            font-size: 0.7rem;
-            font-weight: 700;
-            padding: 4px 10px;
-            border-radius: 20px;
-            margin-bottom: 12px;
-            text-transform: uppercase;
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.3);
+            background: var(--surface-card);
         }
 
-        .hero-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.4rem;
-            font-weight: 900;
-            line-height: 1.2;
-            color: #fff;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-        }
-
-        .hero-title span {
-            color: var(--primary);
-            text-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
-        }
-
-        .hero-subtitle {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.85rem;
-            color: var(--secondary);
-            margin-bottom: 12px;
-            font-weight: 700;
-        }
-
-        .hero-desc {
-            font-size: 0.85rem;
-            color: var(--text-dim);
-            line-height: 1.5;
-            margin-bottom: 18px;
-        }
-
-        .hero-features {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            padding-top: 15px;
-        }
-
-        @media(min-width: 600px) {
-            .hero-features { grid-template-columns: repeat(4, 1fr); }
-        }
-
-        .feature-box {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 10px;
-            text-align: center;
-        }
-
-        .feature-val {
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 900;
-            font-size: 0.8rem;
-            color: var(--primary);
-            margin-bottom: 2px;
-        }
-
-        .feature-lbl {
-            font-size: 0.65rem;
-            color: var(--text-dim);
+        .hero-banner-container img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
 
         /* CATEGORÍAS */
@@ -644,33 +571,9 @@
     </header>
 
     <div class="container">
-        <!-- HERO BANNER -->
-        <div class="hero-card">
-            <div class="hero-tag">⚡ OWEN STORE / UDC STORE</div>
-            <div class="hero-title">VENTA DE <span>FREE FIRE</span> Y STREAMING</div>
-            <div class="hero-subtitle">DIAMANTES • TOKENS • PASES • MEMBRESÍAS • CUENTAS VIP</div>
-            <div class="hero-desc">
-                Tu tienda de confianza con entregas ultra rápidas por ID o correo. Todo seguro y verificado al instante.
-            </div>
-
-            <div class="hero-features">
-                <div class="feature-box">
-                    <div class="feature-val">⚡ Inmediata</div>
-                    <div class="feature-lbl">Entrega Rápida</div>
-                </div>
-                <div class="feature-box">
-                    <div class="feature-val">🛡️ 100% Seguro</div>
-                    <div class="feature-lbl">Garantizado</div>
-                </div>
-                <div class="feature-box">
-                    <div class="feature-val">🤝 Confiable</div>
-                    <div class="feature-lbl">Soporte 24/7</div>
-                </div>
-                <div class="feature-box">
-                    <div class="feature-val">🌍 Multidivisa</div>
-                    <div class="feature-lbl">6 Países</div>
-                </div>
-            </div>
+        <!-- BANNER CON LA NUEVA IMAGEN PROFESIONAL -->
+        <div class="hero-banner-container">
+            <img src="watermarked_img_2786808353975181081.jpg" alt="GTR / UDC Store - Venta de Servicios Digitales">
         </div>
 
         <!-- BARRA DE CATEGORÍAS -->
@@ -1203,7 +1106,7 @@
                 <button class="btn-proceed" onclick="proceedToCheckout()">PROCEDER AL PAGO</button>
             </div>
 
-            <!-- FORMULARIO DE PAGO (OCULTO HASTA QUE TOQUEN PROCEDER) -->
+            <!-- FORMULARIO DE PAGO -->
             <div id="checkoutForm" style="display:none; margin-top: 15px;">
                 <div class="input-box">
                     <label>ID de Jugador / Cuenta / Correo</label>
