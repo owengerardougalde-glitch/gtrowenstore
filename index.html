@@ -264,21 +264,35 @@
         }
 
         .prime-avatar-container {
-            width: 70px;
-            height: 70px;
+            width: 75px;
+            height: 75px;
             border-radius: 50%;
             border: 2px solid var(--gold);
             overflow: hidden;
             flex-shrink: 0;
-            box-shadow: 0 0 15px rgba(255, 183, 0, 0.5);
-            background: #000;
+            box-shadow: 0 0 15px rgba(255, 183, 0, 0.6);
+            background: #060913;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
         }
 
-        .prime-avatar-container img {
+        /* DISEÑO DE LA SKIN DE FREE FIRE INTEGRADA EN EL AVATAR */
+        .ff-skin-avatar {
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            object-position: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle, rgba(0, 240, 255, 0.3) 0%, rgba(11, 14, 25, 0.95) 80%);
+        }
+
+        .ff-skin-avatar svg {
+            width: 110%;
+            height: 110%;
+            filter: drop-shadow(0 0 5px var(--primary));
         }
 
         .prime-info {
@@ -300,10 +314,11 @@
 
         .prime-name {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             font-weight: 900;
             color: #fff;
             margin-bottom: 2px;
+            letter-spacing: 0.5px;
         }
 
         .prime-details {
@@ -318,7 +333,8 @@
             font-family: 'Orbitron', sans-serif;
             color: var(--primary);
             font-weight: 900;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
         }
 
         .samurai-box-catalog {
@@ -722,16 +738,26 @@
 
             <!-- APARTADO EXCLUSIVO DE MEJORES CLIENTES / TOP PRIME -->
             <div class="top-ranking-section">
-                <div class="top-ranking-title">🏆 MEJORES CLIENTES · TOP PRIME 👑</div>
+                <div class="top-ranking-title">🏆 MEJOR CLIENTE · TOP PRIME 👑</div>
                 <div class="prime-client-card">
                     <div class="prime-avatar-container">
-                        <img src="71593.jpg" alt="Skin de J.C.">
+                        <div class="ff-skin-avatar">
+                            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Silueta del personaje con efecto de energía azul (Free Fire) -->
+                                <circle cx="50" cy="35" r="14" fill="#00f0ff"/>
+                                <path d="M25 80 C25 55 40 50 50 50 C60 50 75 55 75 80 Z" fill="#2979ff"/>
+                                <path d="M40 30 L50 20 L60 30 L55 45 L45 45 Z" fill="#ff0055"/>
+                                <!-- Rayos de energía eléctrica -->
+                                <path d="M50 10 L45 25 L55 28 L48 45" stroke="#00f0ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="50" cy="50" r="45" stroke="#ff0055" stroke-width="2" stroke-dasharray="4 4"/>
+                            </svg>
+                        </div>
                     </div>
                     <div class="prime-info">
-                        <span class="prime-badge-tag">TOP #1 PRIME</span>
+                        <span class="prime-badge-tag">TOP #1 PRIME ⚡</span>
                         <div class="prime-name">J.C.</div>
                         <div class="prime-details">
-                            <span>ID: 301110819</span>
+                            <span>ID: <strong>301110819</strong></span>
                             <span class="prime-diamonds">12,343 💎 DIAMANTES</span>
                         </div>
                     </div>
