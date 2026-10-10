@@ -270,20 +270,24 @@
             border: 2px solid var(--gold);
             overflow: hidden;
             flex-shrink: 0;
-            box-shadow: 0 0 15px rgba(255, 183, 0, 0.6);
-            background: radial-gradient(circle, #2a2a2a 0%, #060913 80%);
+            box-shadow: 0 0 15px rgba(255, 183, 0, 0.6), inset 0 0 15px rgba(255, 0, 85, 0.3);
+            background: #0b0e19;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
         }
 
-        /* Ajuste clave para que el logo se vea nítido y no se corte */
-        .prime-avatar-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            padding: 8px; /* Da espacio para que el logo respire dentro del círculo */
-            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
+        /* TEXTO FREE FIRE HECHO CON CSS (IMPOSIBLE QUE SE ROMPA) */
+        .css-ff-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 15px;
+            color: #ffaa00;
+            text-shadow: 1px 1px 0px #ff0055, 0 0 8px rgba(255, 170, 0, 0.6);
+            line-height: 1.1;
+            text-align: center;
+            letter-spacing: 0.5px;
         }
 
         .prime-info {
@@ -731,10 +735,13 @@
             <div class="top-ranking-section">
                 <div class="top-ranking-title">🏆 MEJOR CLIENTE · TOP PRIME 👑</div>
                 <div class="prime-client-card">
+                    
+                    <!-- ESTE ES EL LOGO NUEVO, 100% CÓDIGO, CERO IMÁGENES ROTAS -->
                     <div class="prime-avatar-container">
-                        <!-- IMAGEN SEGURA DESDE WORLD VECTOR LOGO -->
-                        <img src="https://cdn.worldvectorlogo.com/logos/free-fire-1.svg" alt="Free Fire">
+                        <span class="css-ff-logo">FREE</span>
+                        <span class="css-ff-logo">FIRE</span>
                     </div>
+
                     <div class="prime-info">
                         <span class="prime-badge-tag">TOP #1 PRIME ⚡</span>
                         <div class="prime-name">J.C.</div>
@@ -867,7 +874,7 @@
                     <div class="product-name">Crunchyroll 1 Mes</div>
                 </div>
                 <div>
-                    <div class="product-price price-tag">₡2,500</div>
+                    <div class="product-price price-tag">₡2500</div>
                     <button class="btn-add" data-title="Crunchyroll 1 Mes (Streaming)" data-crc="2500" data-usd="5.00" data-mxn="92" data-cop="20800" data-ars="6300" data-pen="18.50">Agregar</button>
                 </div>
             </div>
