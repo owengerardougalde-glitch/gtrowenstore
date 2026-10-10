@@ -228,12 +228,115 @@
             text-transform: uppercase;
         }
 
+        /* ESTILOS DEL TOP RANKING */
+        .top-ranking-section {
+            background: rgba(18, 23, 40, 0.95);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .top-ranking-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 900;
+            margin-bottom: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .top-podium {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            text-align: center;
+        }
+
+        .podium-card {
+            background: rgba(11, 14, 25, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 12px 8px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .podium-card.first {
+            border-color: var(--gold);
+            box-shadow: 0 0 15px rgba(255, 183, 0, 0.25);
+            transform: translateY(-4px);
+        }
+
+        .podium-medal {
+            position: absolute;
+            top: -10px;
+            background: #222;
+            color: #fff;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 900;
+            padding: 2px 8px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .podium-card.first .podium-medal { background: var(--gold); color: #000; border-color: #fff; }
+        .podium-card.second .podium-medal { background: #c0c0c0; color: #000; }
+        .podium-card.third .podium-medal { background: #cd7f32; color: #fff; }
+
+        .podium-avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+            margin: 10px 0 6px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            background: #1a1f35;
+        }
+
+        .podium-name {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+        }
+
+        .podium-score {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.7rem;
+            color: var(--primary);
+            font-weight: 950;
+        }
+
+        .podium-orders {
+            font-size: 0.62rem;
+            color: var(--text-dim);
+            margin-top: 2px;
+        }
+
         .samurai-box-catalog {
             border: 1px solid var(--primary);
             border-radius: 12px;
             background: rgba(0, 240, 255, 0.04);
             padding: 14px;
             box-shadow: 0 0 15px rgba(0, 240, 255, 0.15);
+            margin-top: 15px;
         }
 
         .samurai-box-title {
@@ -626,6 +729,34 @@
                 <div class="samurai-store-sub">🥷 VENTA DE SERVICIOS DIGITALES 🥷</div>
             </div>
 
+            <!-- SECCIÓN DE TOP / RANKING ESTILO HEXZ -->
+            <div class="top-ranking-section">
+                <div class="top-ranking-title">🏆 TOP FREE FIRE LATAM · DESDE EL PRINCIPIO</div>
+                <div class="top-podium">
+                    <div class="podium-card second">
+                        <div class="podium-medal">2°</div>
+                        <div class="podium-avatar">🥷</div>
+                        <div class="podium-name">Gerald B.</div>
+                        <div class="podium-score">30,316 💎</div>
+                        <div class="podium-orders">30 recargas</div>
+                    </div>
+                    <div class="podium-card first">
+                        <div class="podium-medal">1° 👑</div>
+                        <div class="podium-avatar">🔥</div>
+                        <div class="podium-name">Jeremy</div>
+                        <div class="podium-score">38,379 💎</div>
+                        <div class="podium-orders">24 recargas</div>
+                    </div>
+                    <div class="podium-card third">
+                        <div class="podium-medal">3°</div>
+                        <div class="podium-avatar">⚡</div>
+                        <div class="podium-name">Jeff S.</div>
+                        <div class="podium-score">29,436 💎</div>
+                        <div class="podium-orders">17 recargas</div>
+                    </div>
+                </div>
+            </div>
+
             <div class="samurai-box-catalog">
                 <div class="samurai-box-title">⚡ CATÁLOGO PRINCIPAL (TOCA PARA IR) ⚡</div>
                 <div class="samurai-catalog-grid">
@@ -919,7 +1050,7 @@
                 </div>
             </div>
 
-            <!-- FF ILIMITADOS (TUS PRECIOS EXACTOS DEL FLYER + NUEVA OPCIÓN DE 12,320 DIAMANTES) -->
+            <!-- FF ILIMITADOS (TUS PRECIOS EXACTOS DEL FLYER) -->
             <div class="product-card" data-cat="ff-ilim" data-crc="1200" data-usd="2.50" data-mxn="35" data-cop="12000" data-ars="2500" data-pen="10.00">
                 <div>
                     <div class="product-badge">💎 Free Fire (Ilimitado)</div>
@@ -975,7 +1106,7 @@
                 </div>
             </div>
 
-            <!-- NUEVA PAQUETE DE 12,320 DIAMANTES -->
+            <!-- PAQUETE DE 12,320 DIAMANTES (CON ID 301110819) -->
             <div class="product-card" data-cat="ff-ilim" data-crc="35500" data-usd="66.00" data-mxn="1150" data-cop="350000" data-ars="65000" data-pen="265.00">
                 <div>
                     <div class="product-badge" style="color:var(--gold);">💎 Free Fire (Mega Pack)</div>
