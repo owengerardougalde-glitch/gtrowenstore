@@ -228,123 +228,97 @@
             text-transform: uppercase;
         }
 
-        /* ESTILOS DEL TOP RANKING */
+        /* APARTADO DE MEJORES CLIENTES / TOP PRIME */
         .top-ranking-section {
             background: rgba(18, 23, 40, 0.95);
-            border: 1px solid var(--border);
+            border: 1px solid var(--gold);
             border-radius: 16px;
-            padding: 16px;
+            padding: 18px;
             margin-bottom: 25px;
             position: relative;
             z-index: 10;
+            box-shadow: 0 0 25px rgba(255, 183, 0, 0.25);
         }
 
         .top-ranking-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.85rem;
-            color: var(--primary);
+            font-size: 0.9rem;
+            color: var(--gold);
             font-weight: 900;
-            margin-bottom: 14px;
+            margin-bottom: 15px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .top-podium {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
             text-align: center;
+            text-shadow: 0 0 10px rgba(255, 183, 0, 0.4);
         }
 
-        .podium-card {
-            background: rgba(11, 14, 25, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
-            padding: 12px 8px;
-            position: relative;
+        .prime-client-card {
             display: flex;
-            flex-direction: column;
             align-items: center;
+            gap: 15px;
+            background: linear-gradient(135deg, rgba(255, 183, 0, 0.1), rgba(11, 14, 25, 0.9));
+            border: 1px solid var(--gold);
+            border-radius: 14px;
+            padding: 14px;
+            position: relative;
         }
 
-        .podium-card.first {
-            border-color: var(--gold);
-            box-shadow: 0 0 20px rgba(255, 183, 0, 0.4);
-            transform: translateY(-6px);
-            background: linear-gradient(180deg, rgba(255, 183, 0, 0.1), rgba(11, 14, 25, 0.9));
-        }
-
-        .podium-medal {
-            position: absolute;
-            top: -10px;
-            background: #222;
-            color: #fff;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.65rem;
-            font-weight: 900;
-            padding: 2px 8px;
-            border-radius: 10px;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .podium-card.first .podium-medal { background: var(--gold); color: #000; border-color: #fff; }
-        .podium-card.second .podium-medal { background: #c0c0c0; color: #000; }
-        .podium-card.third .podium-medal { background: #cd7f32; color: #fff; }
-
-        .podium-avatar {
-            width: 48px;
-            height: 48px;
+        .prime-avatar-container {
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             border: 2px solid var(--gold);
-            margin: 10px 0 6px 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            background: #1a1f35;
-            box-shadow: 0 0 10px rgba(255, 183, 0, 0.5);
-        }
-
-        .podium-card.second .podium-avatar { border-color: #c0c0c0; box-shadow: none; font-size: 1.1rem; width: 42px; height: 42px; }
-        .podium-card.third .podium-avatar { border-color: #cd7f32; box-shadow: none; font-size: 1.1rem; width: 42px; height: 42px; }
-
-        .podium-name {
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 2px;
-            white-space: nowrap;
             overflow: hidden;
-            text-overflow: ellipsis;
-            width: 100%;
+            flex-shrink: 0;
+            box-shadow: 0 0 15px rgba(255, 183, 0, 0.5);
+            background: #000;
         }
 
-        .podium-badge-prime {
-            font-size: 0.55rem;
-            font-family: 'Orbitron', sans-serif;
+        .prime-avatar-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .prime-info {
+            flex-grow: 1;
+        }
+
+        .prime-badge-tag {
+            display: inline-block;
             background: linear-gradient(135deg, var(--gold), var(--secondary));
             color: #000;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.6rem;
             font-weight: 900;
-            padding: 1px 6px;
-            border-radius: 4px;
+            padding: 2px 8px;
+            border-radius: 6px;
             margin-bottom: 4px;
             text-transform: uppercase;
         }
 
-        .podium-score {
+        .prime-name {
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.7rem;
-            color: var(--primary);
-            font-weight: 950;
+            font-size: 1.1rem;
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 2px;
         }
 
-        .podium-orders {
-            font-size: 0.62rem;
+        .prime-details {
+            font-size: 0.75rem;
             color: var(--text-dim);
-            margin-top: 2px;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .prime-diamonds {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--primary);
+            font-weight: 900;
+            font-size: 0.9rem;
         }
 
         .samurai-box-catalog {
@@ -746,31 +720,20 @@
                 <div class="samurai-store-sub">🥷 VENTA DE SERVICIOS DIGITALES 🥷</div>
             </div>
 
-            <!-- SECCIÓN DE TOP / RANKING (ACTUALIZADO CON J.C. Y SKIN DE FREE FIRE) -->
+            <!-- APARTADO EXCLUSIVO DE MEJORES CLIENTES / TOP PRIME -->
             <div class="top-ranking-section">
-                <div class="top-ranking-title">🏆 TOP FREE FIRE LATAM · DESDE EL PRINCIPIO</div>
-                <div class="top-podium">
-                    <div class="podium-card second">
-                        <div class="podium-medal">2°</div>
-                        <div class="podium-avatar">🥷</div>
-                        <div class="podium-name">Gerald B.</div>
-                        <div class="podium-score">30,316 💎</div>
-                        <div class="podium-orders">30 recargas</div>
+                <div class="top-ranking-title">🏆 MEJORES CLIENTES · TOP PRIME 👑</div>
+                <div class="prime-client-card">
+                    <div class="prime-avatar-container">
+                        <img src="71593.jpg" alt="Skin de J.C.">
                     </div>
-                    <div class="podium-card first">
-                        <div class="podium-medal">1° 👑</div>
-                        <div class="podium-avatar">⚡🔥</div>
-                        <div class="podium-name">J.C.</div>
-                        <div class="podium-badge-prime">TOP PRIME</div>
-                        <div class="podium-score">12,343 💎</div>
-                        <div class="podium-orders">ID: 301110819</div>
-                    </div>
-                    <div class="podium-card third">
-                        <div class="podium-medal">3°</div>
-                        <div class="podium-avatar">⚡</div>
-                        <div class="podium-name">Jeff S.</div>
-                        <div class="podium-score">29,436 💎</div>
-                        <div class="podium-orders">17 recargas</div>
+                    <div class="prime-info">
+                        <span class="prime-badge-tag">TOP #1 PRIME</span>
+                        <div class="prime-name">J.C.</div>
+                        <div class="prime-details">
+                            <span>ID: 301110819</span>
+                            <span class="prime-diamonds">12,343 💎 DIAMANTES</span>
+                        </div>
                     </div>
                 </div>
             </div>
