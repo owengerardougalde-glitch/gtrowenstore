@@ -30,25 +30,27 @@
         body {
             background-color: var(--bg);
             color: var(--text);
-            padding-bottom: 100px;
+            padding-bottom: 120px;
             background-image: 
                 radial-gradient(circle at 10% 20%, rgba(112, 0, 255, 0.15) 0%, transparent 40%),
                 radial-gradient(circle at 90% 80%, rgba(0, 240, 255, 0.1) 0%, transparent 40%);
             background-attachment: fixed;
         }
 
-        /* HEADER */
+        /* HEADER FIX */
         header {
-            background: rgba(11, 14, 25, 0.9);
+            background: rgba(11, 14, 25, 0.95);
             backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--border);
             padding: 12px 18px;
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 90;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            height: auto;
+            pointer-events: auto;
         }
 
         .brand-box {
@@ -158,9 +160,11 @@
             max-width: 900px;
             margin: 0 auto;
             padding: 16px;
+            position: relative;
+            z-index: 10;
         }
 
-        /* HERO BANNER DE LA IMAGEN */
+        /* HERO BANNER */
         .hero-card {
             background: linear-gradient(135deg, rgba(18, 23, 40, 0.9), rgba(11, 14, 25, 0.9));
             border: 1px solid rgba(0, 240, 255, 0.25);
@@ -168,7 +172,6 @@
             padding: 22px;
             margin-bottom: 20px;
             position: relative;
-            overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
@@ -218,9 +221,7 @@
             padding-top: 15px;
         }
 
-        .feature-item {
-            text-align: center;
-        }
+        .feature-item { text-align: center; }
 
         .feature-val {
             font-family: 'Orbitron', sans-serif;
@@ -238,23 +239,22 @@
             color: var(--text-dim);
         }
 
-        /* FILTROS Y CATEGORÍAS */
+        /* FILTROS Y CATEGORÍAS FIX */
         .category-scroll {
             display: flex;
             gap: 10px;
             overflow-x: auto;
             padding-bottom: 10px;
             margin-bottom: 20px;
-            scrollbar-width: none;
+            position: relative;
+            z-index: 20;
         }
-
-        .category-scroll::-webkit-scrollbar { display: none; }
 
         .cat-btn {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid var(--border);
             color: var(--text-dim);
-            padding: 8px 16px;
+            padding: 10px 18px;
             border-radius: 12px;
             font-family: 'Orbitron', sans-serif;
             font-size: 0.75rem;
@@ -264,6 +264,7 @@
             display: flex;
             align-items: center;
             gap: 6px;
+            pointer-events: auto;
         }
 
         .cat-btn.active {
@@ -273,7 +274,7 @@
             box-shadow: 0 0 12px rgba(112, 0, 255, 0.4);
         }
 
-        /* TOP RECARGADORES DESPLEGABLE / ACORDEÓN */
+        /* TOP RECARGADORES DESPLEGABLE */
         .top-accordion {
             background: var(--surface-card);
             border: 1px solid rgba(255, 183, 0, 0.3);
@@ -281,6 +282,8 @@
             margin-bottom: 25px;
             overflow: hidden;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 20;
         }
 
         .top-header {
@@ -370,6 +373,8 @@
             grid-template-columns: repeat(2, 1fr);
             gap: 12px;
             margin-bottom: 25px;
+            position: relative;
+            z-index: 20;
         }
 
         .product-card {
@@ -413,16 +418,17 @@
             color: #fff;
             border: none;
             border-radius: 8px;
-            padding: 8px 0;
+            padding: 10px 0;
             font-weight: 700;
             font-size: 0.75rem;
             font-family: 'Orbitron', sans-serif;
             cursor: pointer;
             width: 100%;
             text-transform: uppercase;
+            pointer-events: auto;
         }
 
-        /* CARRITO FLOTANTE ABAJO */
+        /* CARRITO FLOTANTE */
         .floating-cart-btn {
             position: fixed;
             bottom: 20px;
@@ -440,7 +446,7 @@
             align-items: center;
             gap: 10px;
             box-shadow: 0 0 20px rgba(255, 0, 127, 0.5);
-            z-index: 999;
+            z-index: 100;
         }
 
         .floating-cart-badge {
@@ -456,13 +462,13 @@
             font-weight: 900;
         }
 
-        /* MODAL */
+        /* MODAL CHECKOUT */
         .modal {
             position: fixed;
             inset: 0;
             background: rgba(0, 0, 0, 0.85);
             backdrop-filter: blur(10px);
-            z-index: 1000;
+            z-index: 200;
             display: none;
             align-items: center;
             justify-content: center;
@@ -587,7 +593,7 @@
     </header>
 
     <div class="container">
-        <!-- HERO BANNER PRO DE LA CAPTURA -->
+        <!-- HERO BANNER -->
         <div class="hero-card">
             <div class="hero-tag">⚡ Recargas Instantáneas & Seguras 24/7</div>
             <div class="hero-title">TUS RECARGAS AL <span>MEJOR PRECIO</span></div>
@@ -613,20 +619,20 @@
 
         <!-- BARRA DE CATEGORÍAS -->
         <div class="category-scroll">
-            <button class="cat-btn active">▦ Todo el Catálogo</button>
-            <button class="cat-btn">💎 FF Limitados</button>
-            <button class="cat-btn">⚡ FF Ilimitados</button>
-            <button class="cat-btn">🎯 Blood Strike</button>
+            <button class="cat-btn active" onclick="filterCategory('all', this)">▦ Todo el Catálogo</button>
+            <button class="cat-btn" onclick="filterCategory('ff-lim', this)">💎 FF Limitados</button>
+            <button class="cat-btn" onclick="filterCategory('ff-ilim', this)">⚡ FF Ilimitados</button>
+            <button class="cat-btn" onclick="filterCategory('bs', this)">🎯 Blood Strike</button>
         </div>
 
-        <!-- TOP CLIENTES ACORDEÓN (DESPLEGABLE) -->
+        <!-- TOP RECARGADORES DESPLEGABLE -->
         <div class="top-accordion" id="topAccordion">
             <div class="top-header" onclick="toggleTopAccordion()">
                 <div class="top-title">🏆 TOP CLIENTES DE ESTE MES</div>
                 <div class="top-arrow">▼</div>
             </div>
             <div class="top-body">
-                <p style="color:var(--text-dim); font-size:0.75rem; margin-top:8px;">Toca la flechita para ver quiénes lideran las recargas</p>
+                <p style="color:var(--text-dim); font-size:0.75rem; margin-top:8px;">Jugadores con más recargas del mes</p>
                 <div class="top-list">
                     <div class="top-item rank-1">
                         <span>🥇 <strong>GTR_Owen</strong> <small style="color:var(--gold); border:1px solid var(--gold); padding:1px 4px; border-radius:3px; font-size:0.6rem;">VIP MAX</small></span>
@@ -644,11 +650,13 @@
             </div>
         </div>
 
-        <div class="section-h2">🔥 FREE FIRE (DIAMANTES ID)</div>
+        <!-- PRODUCTOS -->
+        <div class="section-h2" id="catalogTitle">🔥 CATALOGO DE RECARGAS</div>
         <div class="products-grid">
-            <div class="product-card">
+            <!-- FF LIMITADOS -->
+            <div class="product-card" data-cat="ff-lim">
                 <div>
-                    <div class="product-badge">Free Fire</div>
+                    <div class="product-badge">Free Fire (Limitado)</div>
                     <div class="product-name">100 + 10 Diamantes</div>
                 </div>
                 <div>
@@ -656,9 +664,9 @@
                     <button class="btn-add" onclick="add('100+10 Diamantes FF', 800)">Agregar</button>
                 </div>
             </div>
-            <div class="product-card">
+            <div class="product-card" data-cat="ff-lim">
                 <div>
-                    <div class="product-badge">Free Fire</div>
+                    <div class="product-badge">Free Fire (Limitado)</div>
                     <div class="product-name">310 + 31 Diamantes</div>
                 </div>
                 <div>
@@ -666,9 +674,9 @@
                     <button class="btn-add" onclick="add('310+31 Diamantes FF', 2300)">Agregar</button>
                 </div>
             </div>
-            <div class="product-card">
+            <div class="product-card" data-cat="ff-lim">
                 <div>
-                    <div class="product-badge">Free Fire</div>
+                    <div class="product-badge">Free Fire (Limitado)</div>
                     <div class="product-name">520 + 52 Diamantes</div>
                 </div>
                 <div>
@@ -676,21 +684,41 @@
                     <button class="btn-add" onclick="add('520+52 Diamantes FF', 3800)">Agregar</button>
                 </div>
             </div>
-            <div class="product-card">
+
+            <!-- FF ILIMITADOS -->
+            <div class="product-card" data-cat="ff-ilim">
                 <div>
-                    <div class="product-badge">Free Fire</div>
+                    <div class="product-badge">Free Fire (Ilimitado)</div>
                     <div class="product-name">1060 + 106 Diamantes</div>
                 </div>
                 <div>
                     <div class="product-price">₡7,200</div>
-                    <button class="btn-add" onclick="add('1060+106 Diamantes FF', 7200)">Agregar</button>
+                    <button class="btn-add" onclick="add('1060+106 Diamantes FF (Ilimitado)', 7200)">Agregar</button>
                 </div>
             </div>
-        </div>
+            <div class="product-card" data-cat="ff-ilim">
+                <div>
+                    <div class="product-badge">Free Fire (Ilimitado)</div>
+                    <div class="product-name">2180 + 218 Diamantes</div>
+                </div>
+                <div>
+                    <div class="product-price">₡14,000</div>
+                    <button class="btn-add" onclick="add('2180+218 Diamantes FF (Ilimitado)', 14000)">Agregar</button>
+                </div>
+            </div>
+            <div class="product-card" data-cat="ff-ilim">
+                <div>
+                    <div class="product-badge">Free Fire (Pase)</div>
+                    <div class="product-name">Pase Nivel Up FF</div>
+                </div>
+                <div>
+                    <div class="product-price">₡3,500</div>
+                    <button class="btn-add" onclick="add('Pase Nivel Up FF', 3500)">Agregar</button>
+                </div>
+            </div>
 
-        <div class="section-h2">⚡ BLOOD STRIKE & OFERTAS</div>
-        <div class="products-grid">
-            <div class="product-card">
+            <!-- BLOOD STRIKE -->
+            <div class="product-card" data-cat="bs">
                 <div>
                     <div class="product-badge">Blood Strike</div>
                     <div class="product-name">100 Oro / Pass</div>
@@ -700,14 +728,14 @@
                     <button class="btn-add" onclick="add('100 Oro Blood Strike', 900)">Agregar</button>
                 </div>
             </div>
-            <div class="product-card">
+            <div class="product-card" data-cat="bs">
                 <div>
-                    <div class="product-badge">Especial</div>
-                    <div class="product-name">Pase Nivel Up FF</div>
+                    <div class="product-badge">Blood Strike</div>
+                    <div class="product-name">500 Oro / Pass</div>
                 </div>
                 <div>
-                    <div class="product-price">₡3,500</div>
-                    <button class="btn-add" onclick="add('Pase Nivel Up FF', 3500)">Agregar</button>
+                    <div class="product-price">₡4,200</div>
+                    <button class="btn-add" onclick="add('500 Oro Blood Strike', 4200)">Agregar</button>
                 </div>
             </div>
         </div>
@@ -763,6 +791,21 @@
 
     <script>
         let cart = [];
+
+        function filterCategory(cat, btnElement) {
+            const buttons = document.querySelectorAll('.cat-btn');
+            buttons.forEach(b => b.classList.remove('active'));
+            if(btnElement) btnElement.classList.add('active');
+
+            const cards = document.querySelectorAll('.product-card');
+            cards.forEach(card => {
+                if (cat === 'all' || card.getAttribute('data-cat') === cat) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
 
         function toggleTopAccordion() {
             document.getElementById('topAccordion').classList.toggle('open');
