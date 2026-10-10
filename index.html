@@ -31,7 +31,7 @@
                 radial-gradient(circle at 15% 15%, rgba(0, 240, 255, 0.08) 0%, transparent 40%),
                 radial-gradient(circle at 85% 85%, rgba(255, 0, 127, 0.08) 0%, transparent 40%);
             min-height: 100vh;
-            padding-bottom: 90px;
+            padding-bottom: 110px;
         }
 
         header {
@@ -60,28 +60,19 @@
             color: var(--accent-pink);
         }
 
-        .cart-icon-btn {
+        .header-cart-btn {
             background: rgba(0, 240, 255, 0.1);
             border: 1px solid var(--accent-cyan);
             color: var(--accent-cyan);
-            padding: 8px 16px;
+            padding: 8px 14px;
             border-radius: 8px;
             cursor: pointer;
             font-family: 'Orbitron', sans-serif;
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             display: flex;
             align-items: center;
             gap: 8px;
-            box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
-        }
-
-        .cart-badge {
-            background: var(--accent-pink);
-            color: #fff;
-            font-size: 0.75rem;
-            padding: 2px 6px;
-            border-radius: 50%;
         }
 
         .container {
@@ -110,6 +101,27 @@
         .hero-banner p {
             color: var(--text-muted);
             font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .hero-cart-trigger {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--accent-cyan);
+            color: #000;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+            transition: transform 0.2s;
+        }
+
+        .hero-cart-trigger:active {
+            transform: scale(0.95);
         }
 
         .section-title {
@@ -186,6 +198,42 @@
         .add-cart-btn:hover {
             background: var(--accent-cyan);
             color: #000;
+        }
+
+        /* BOTÓN FLOTANTE FIJO (ABAJO) */
+        .floating-cart-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            color: #ffffff;
+            border: 2px solid var(--accent-cyan);
+            padding: 14px 22px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.6);
+            z-index: 150;
+            animation: pulse-glow 2s infinite alternate;
+        }
+
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 15px rgba(0, 240, 255, 0.5); }
+            100% { box-shadow: 0 0 30px rgba(255, 0, 127, 0.8); }
+        }
+
+        .cart-badge {
+            background: var(--accent-pink);
+            color: #fff;
+            font-size: 0.85rem;
+            padding: 3px 8px;
+            border-radius: 20px;
+            font-weight: 700;
         }
 
         /* MODAL DEL CARRITO */
@@ -330,8 +378,8 @@
 
     <header>
         <div class="logo-text">UDC <span>STORE</span></div>
-        <button class="cart-icon-btn" onclick="toggleCartModal()">
-            🛒 CARRITO <span class="cart-badge" id="cartCount">0</span>
+        <button class="header-cart-btn" onclick="toggleCartModal()">
+            🛒 CARRITO <span class="cart-badge cartCount">0</span>
         </button>
     </header>
 
@@ -339,6 +387,9 @@
         <div class="hero-banner">
             <h1>RECARGAS INSTANTÁNEAS Y PASES GAMER</h1>
             <p>Free Fire, Blood Strike y Servicios Digitales. Paga de forma segura y recibe al instante.</p>
+            <button class="hero-cart-trigger" onclick="toggleCartModal()">
+                🛒 VER CARRITO DE COMPRA (<span class="cartCount">0</span>)
+            </button>
         </div>
 
         <div class="section-title">🔥 Free Fire (Diamantes ID)</div>
@@ -410,6 +461,11 @@
         </div>
     </div>
 
+    <!-- BOTÓN FLOTANTE SIEMPRE VISIBLE EN PANTALLA ABAJO -->
+    <button class="floating-cart-btn" onclick="toggleCartModal()">
+        🛒 MI CARRITO <span class="cart-badge cartCount">0</span>
+    </button>
+
     <!-- MODAL CHECKOUT -->
     <div class="modal-overlay" id="cartModal">
         <div class="modal-content">
@@ -471,12 +527,12 @@
         }
 
         function updateCartUI() {
-            const countEl = document.getElementById('cartCount');
+            const countElements = document.querySelectorAll('.cartCount');
             const container = document.getElementById('cartItemsContainer');
             const form = document.getElementById('checkoutForm');
             const totalEl = document.getElementById('cartTotal');
 
-            countEl.innerText = cart.length;
+            countElements.forEach(el => el.innerText = cart.length);
 
             if (cart.length === 0) {
                 container.innerHTML = '<div class="empty-cart-msg">Tu carrito está vacío</div>';
@@ -560,7 +616,6 @@
                 `💰 *TOTAL A PAGAR:* ₡${total.toLocaleString()} CRC%0A%0A` +
                 `Adjunto comprobante de pago a continuación.`;
 
-            // Número de WhatsApp oficial
             let whatsappUrl = `https://wa.me/50664129943?text=${message}`;
             window.open(whatsappUrl, '_blank');
         }
