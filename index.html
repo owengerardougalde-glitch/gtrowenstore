@@ -1341,7 +1341,7 @@
                         pen: parseFloat(b.getAttribute('data-pen'))
                     });
                     renderCart();
-                    openModal();
+                    // Removido openModal() para evitar que se abra de golpe al agregar productos
                 });
             });
 
@@ -1379,16 +1379,13 @@
                     txBox.style.display = 'none';
                 } else {
                     box.innerHTML = `
-                        <div style="background: #ffffff; padding: 12px; border-radius: 12px; border: 2px solid var(--binance); text-align: center;">
-                            <strong style="color: #000000; display: block; margin-bottom: 8px; font-size: 0.85rem;">🌐 ESCANEA PARA PAGAR CON BINANCE</strong>
-                            <img src="https://i.ibb.co/GvWTGs1t/image.png" alt="QR Binance Pay" style="width: 100%; max-width: 260px; height: auto; display: block; margin: 0 auto; border-radius: 6px; image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges;">
-                            <span style="font-size: 0.7rem; color: #555555; display: block; margin-top: 6px; font-weight: 700;">Abre tu app de Binance y escanea el código</span>
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+                            <img src="https://cryptologos.cc/logos/binance-coin-bnb-logo.svg" alt="Binance Logo" style="width: 22px; height: 22px;">
+                            <strong style="color: var(--binance);">Binance Pay (USDT)</strong>
                         </div>
-                        <div style="margin-top: 10px; font-size: 0.8rem; line-height: 1.4; color: #fff;">
-                            • Binance Pay ID: <strong>1020350187</strong><br>
-                            • Titular: <strong>Owen Morales ugalde</strong><br>
-                            • Moneda aceptada: <strong>USDT / Cripto</strong>
-                        </div>
+                        • Binance Pay ID: <strong>1020350187</strong><br>
+                        • Titular: <strong>Owen Morales ugalde</strong><br>
+                        • Moneda aceptada: <strong>USDT / Cripto</strong>
                     `;
                     txBox.style.display = 'block';
                 }
