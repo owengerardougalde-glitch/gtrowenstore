@@ -272,8 +272,9 @@
 
         .podium-card.first {
             border-color: var(--gold);
-            box-shadow: 0 0 15px rgba(255, 183, 0, 0.25);
-            transform: translateY(-4px);
+            box-shadow: 0 0 20px rgba(255, 183, 0, 0.4);
+            transform: translateY(-6px);
+            background: linear-gradient(180deg, rgba(255, 183, 0, 0.1), rgba(11, 14, 25, 0.9));
         }
 
         .podium-medal {
@@ -294,27 +295,43 @@
         .podium-card.third .podium-medal { background: #cd7f32; color: #fff; }
 
         .podium-avatar {
-            width: 42px;
-            height: 42px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
-            border: 2px solid var(--primary);
+            border: 2px solid var(--gold);
             margin: 10px 0 6px 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.1rem;
+            font-size: 1.3rem;
             background: #1a1f35;
+            box-shadow: 0 0 10px rgba(255, 183, 0, 0.5);
         }
+
+        .podium-card.second .podium-avatar { border-color: #c0c0c0; box-shadow: none; font-size: 1.1rem; width: 42px; height: 42px; }
+        .podium-card.third .podium-avatar { border-color: #cd7f32; box-shadow: none; font-size: 1.1rem; width: 42px; height: 42px; }
 
         .podium-name {
             font-size: 0.75rem;
             font-weight: 700;
             color: #fff;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
             width: 100%;
+        }
+
+        .podium-badge-prime {
+            font-size: 0.55rem;
+            font-family: 'Orbitron', sans-serif;
+            background: linear-gradient(135deg, var(--gold), var(--secondary));
+            color: #000;
+            font-weight: 900;
+            padding: 1px 6px;
+            border-radius: 4px;
+            margin-bottom: 4px;
+            text-transform: uppercase;
         }
 
         .podium-score {
@@ -729,7 +746,7 @@
                 <div class="samurai-store-sub">🥷 VENTA DE SERVICIOS DIGITALES 🥷</div>
             </div>
 
-            <!-- SECCIÓN DE TOP / RANKING ESTILO HEXZ -->
+            <!-- SECCIÓN DE TOP / RANKING ESTILO HEXZ (ACTUALIZADO CON JEREMY Y SKIN/DIAMANTES) -->
             <div class="top-ranking-section">
                 <div class="top-ranking-title">🏆 TOP FREE FIRE LATAM · DESDE EL PRINCIPIO</div>
                 <div class="top-podium">
@@ -742,10 +759,11 @@
                     </div>
                     <div class="podium-card first">
                         <div class="podium-medal">1° 👑</div>
-                        <div class="podium-avatar">🔥</div>
+                        <div class="podium-avatar">🥷🔥</div>
                         <div class="podium-name">Jeremy</div>
-                        <div class="podium-score">38,379 💎</div>
-                        <div class="podium-orders">24 recargas</div>
+                        <div class="podium-badge-prime">TOP PRIME</div>
+                        <div class="podium-score">12,320 💎</div>
+                        <div class="podium-orders">ID: 301110819</div>
                     </div>
                     <div class="podium-card third">
                         <div class="podium-medal">3°</div>
@@ -1325,9 +1343,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Script oficial de Tidio Chat -->
-    <script src="//code.tidio.co/YOUR_TIDIO_CODE.js" async></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
