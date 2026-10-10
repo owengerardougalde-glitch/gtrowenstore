@@ -635,7 +635,7 @@
             </div>
         </div>
 
-        <!-- PRODUCTOS REALES EXTRAÍDOS DE LOS FLYERS -->
+        <!-- PRODUCTOS REALES -->
         <div class="section-h2" id="catalogTitle">🔥 CATALOGO DE RECARGAS</div>
         <div class="products-grid" id="productsGrid">
 
@@ -793,6 +793,18 @@
                 <div>
                     <div class="product-price price-tag">₡1,000</div>
                     <button class="btn-add" onclick="add('35 Fragmentos Universales FF')">Agregar</button>
+                </div>
+            </div>
+
+            <!-- NUEVAS CAJAS EVOLUTIVAS (10 CAJAS) -->
+            <div class="product-card" data-cat="ff-passes" data-crc="1200" data-mxn="44" data-usd="2.40">
+                <div>
+                    <div class="product-badge">Cajas Evolutivas FF</div>
+                    <div class="product-name">10 Cajas de Tokens / Fragmentos Evolutivos</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡1,200</div>
+                    <button class="btn-add" onclick="add('10 Cajas de Tokens Evolutivos FF')">Agregar</button>
                 </div>
             </div>
 
@@ -968,7 +980,6 @@
         }
 
         function add(title) {
-            // Buscar precio de la tarjeta correspondiente según la moneda seleccionada
             const cards = document.querySelectorAll('.product-card');
             let priceText = '';
             cards.forEach(c => {
@@ -1032,19 +1043,17 @@
         }
 
         function sendWA() {
-    const id = document.getElementById('pId').value.trim();
-    if(!id) { alert('Por favor ingresa tu ID de jugador'); return; }
+            const id = document.getElementById('pId').value.trim();
+            if(!id) { alert('Por favor ingresa tu ID de jugador'); return; }
 
-    const method = document.getElementById('pMethod').options[document.getElementById('pMethod').selectedIndex].text;
-    let items = cart.map(c => `• ${c.title} (${c.priceText})`).join('%0A');
+            const method = document.getElementById('pMethod').options[document.getElementById('pMethod').selectedIndex].text;
+            let items = cart.map(c => `• ${c.title} (${c.priceText})`).join('%0A');
 
-    let msg = `🚀 *NUEVO PEDIDO - UDC STORE*%0A%0A🎮 *ID Jugador:* ${id}%0A💳 *Pago:* ${method}%0A%0A📦 *Productos:*%0A${items}%0A%0AAdjunto comprobante de pago a continuación:`;
+            let msg = `🚀 *NUEVO PEDIDO - UDC STORE*%0A%0A🎮 *ID Jugador:* ${id}%0A💳 *Pago:* ${method}%0A%0A📦 *Productos:*%0A${items}%0A%0AAdjunto comprobante de pago a continuación:`;
 
-    // Número de WhatsApp oficial para recibir pedidos
-    let whatsappUrl = `https://api.whatsapp.com/send?phone=50672986056&text=${msg}`;
-    window.open(whatsappUrl, '_blank');
-}
-
+            let whatsappUrl = `https://api.whatsapp.com/send?phone=50672986056&text=${msg}`;
+            window.open(whatsappUrl, '_blank');
+        }
     </script>
 </body>
 </html>
