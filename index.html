@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>UDC STORE | GTROWEN.STORE</title>
+    <title>GTROWEN.STORE</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -11,12 +11,12 @@
             --surface: #0b0e19;
             --surface-card: #121728;
             --primary: #00f0ff;
-            --secondary: #ff007f;
+            --secondary: #ff0055;
             --purple: #7000ff;
             --gold: #ffb700;
             --text: #ffffff;
             --text-dim: #8b92b0;
-            --border: rgba(0, 240, 255, 0.2);
+            --border: rgba(255, 0, 85, 0.3);
         }
 
         * {
@@ -32,7 +32,7 @@
             color: var(--text);
             padding-bottom: 120px;
             background-image: 
-                radial-gradient(circle at 10% 20%, rgba(112, 0, 255, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 10% 20%, rgba(255, 0, 85, 0.12) 0%, transparent 40%),
                 radial-gradient(circle at 90% 80%, rgba(0, 240, 255, 0.1) 0%, transparent 40%);
             background-attachment: fixed;
         }
@@ -60,7 +60,7 @@
         .brand-icon {
             width: 32px;
             height: 32px;
-            background: linear-gradient(135deg, var(--primary), var(--purple));
+            background: linear-gradient(135deg, var(--secondary), var(--purple));
             border-radius: 8px;
             display: flex;
             align-items: center;
@@ -77,12 +77,13 @@
             font-family: 'Orbitron', sans-serif;
             font-weight: 900;
             font-size: 1.1rem;
-            color: var(--primary);
+            color: var(--secondary);
             letter-spacing: 1px;
             line-height: 1;
+            text-shadow: 0 0 10px rgba(255, 0, 85, 0.5);
         }
 
-        .brand-title span { color: var(--secondary); }
+        .brand-title span { color: var(--primary); }
 
         .brand-sub {
             font-family: 'Orbitron', sans-serif;
@@ -124,14 +125,14 @@
         }
 
         .curr-btn.active {
-            background: var(--purple);
+            background: var(--secondary);
             color: #fff;
-            box-shadow: 0 0 10px rgba(112, 0, 255, 0.5);
+            box-shadow: 0 0 10px rgba(255, 0, 85, 0.5);
         }
 
         .header-cart {
-            background: linear-gradient(135deg, rgba(112, 0, 255, 0.3), rgba(255, 0, 127, 0.3));
-            border: 1px solid var(--purple);
+            background: linear-gradient(135deg, rgba(112, 0, 255, 0.3), rgba(255, 0, 85, 0.3));
+            border: 1px solid var(--secondary);
             border-radius: 20px;
             padding: 6px 12px;
             display: flex;
@@ -166,84 +167,90 @@
             z-index: 10;
         }
 
-        /* SECCIÓN SAMURAI CYBERPUNK (DISEÑO DOS LADOS / RESPONSIVO) */
-        .samurai-hero {
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 15px;
-            background: linear-gradient(135deg, rgba(18, 23, 40, 0.95), rgba(11, 14, 25, 0.95));
-            border: 1px solid var(--primary);
-            border-radius: 16px;
-            padding: 16px;
-            margin-bottom: 20px;
-            box-shadow: 0 0 25px rgba(0, 240, 255, 0.25);
-            align-items: center;
+        /* ESTILO SAMURAI BANNER NEÓN */
+        .samurai-banner {
+            background: linear-gradient(135deg, rgba(11, 14, 25, 0.95), rgba(18, 23, 40, 0.95));
+            border: 2px solid var(--secondary);
+            border-radius: 18px;
+            padding: 20px 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 0 30px rgba(255, 0, 85, 0.3), inset 0 0 15px rgba(0, 240, 255, 0.1);
+            position: relative;
+            overflow: hidden;
         }
 
-        @media (max-width: 600px) {
-            .samurai-hero {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .samurai-avatar-side {
-            background: radial-gradient(circle, rgba(112, 0, 255, 0.2) 0%, rgba(3, 5, 11, 0.8) 100%);
-            border: 1px dashed var(--secondary);
-            border-radius: 12px;
-            padding: 20px;
+        .samurai-header-content {
             text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 160px;
+            margin-bottom: 18px;
         }
 
-        .samurai-icon-art {
-            font-size: 2.8rem;
-            margin-bottom: 8px;
-            filter: drop-shadow(0 0 10px var(--secondary));
+        .samurai-store-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--secondary);
+            text-transform: uppercase;
+            text-shadow: 0 0 15px rgba(255, 0, 85, 0.7);
+            letter-spacing: 2px;
         }
 
-        .samurai-tagline {
+        .samurai-store-sub {
             font-family: 'Orbitron', sans-serif;
             font-size: 0.75rem;
-            color: var(--secondary);
-            font-weight: 900;
-            letter-spacing: 1px;
+            color: var(--primary);
+            letter-spacing: 3px;
+            margin-top: 4px;
+            text-transform: uppercase;
         }
 
-        .samurai-catalog-side {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
+        /* CAJITAS CENTRALES CON LO QUE VENDEMOS */
+        .samurai-box-catalog {
+            border: 1px solid var(--primary);
+            border-radius: 12px;
+            background: rgba(0, 240, 255, 0.03);
+            padding: 14px;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.15);
         }
 
         .samurai-box-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--primary);
             font-weight: 900;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 4px;
+            text-align: center;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
         }
 
-        .catalog-mini-grid {
+        .samurai-catalog-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 6px;
+            gap: 8px;
         }
 
-        .catalog-mini-item {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(0, 240, 255, 0.1);
-            padding: 6px 8px;
-            border-radius: 6px;
-            font-size: 0.72rem;
+        @media (max-width: 500px) {
+            .samurai-catalog-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .samurai-item-pill {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 8px 10px;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 700;
             display: flex;
             align-items: center;
-            gap: 6px;
-            font-weight: 600;
+            gap: 8px;
+            color: #fff;
+            transition: all 0.2s ease;
+        }
+
+        .samurai-item-pill:hover {
+            border-color: var(--primary);
+            background: rgba(0, 240, 255, 0.08);
         }
 
         /* CATEGORÍAS */
@@ -272,10 +279,10 @@
         }
 
         .cat-btn.active {
-            background: linear-gradient(135deg, var(--purple), #4c1d95);
+            background: linear-gradient(135deg, var(--secondary), var(--purple));
             color: #fff;
             border-color: var(--primary);
-            box-shadow: 0 0 12px rgba(112, 0, 255, 0.4);
+            box-shadow: 0 0 12px rgba(255, 0, 85, 0.4);
         }
 
         /* TOP CLIENTES ACORDEÓN */
@@ -396,7 +403,7 @@
             gap: 6px;
         }
 
-        .product-badge svg, .product-badge img {
+        .product-badge svg {
             width: 14px;
             height: 14px;
             object-fit: contain;
@@ -449,7 +456,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            box-shadow: 0 0 20px rgba(255, 0, 127, 0.5);
+            box-shadow: 0 0 20px rgba(255, 0, 85, 0.5);
             z-index: 100;
         }
 
@@ -586,7 +593,7 @@
         }
 
         .btn-proceed {
-            background: linear-gradient(135deg, var(--purple), var(--secondary));
+            background: linear-gradient(135deg, var(--secondary), var(--purple));
             color: #fff;
             border: none;
             width: 100%;
@@ -617,10 +624,10 @@
 
     <header>
         <div class="brand-box">
-            <div class="brand-icon">🎮</div>
+            <div class="brand-icon">🥷</div>
             <div class="brand-text">
-                <div class="brand-title">UDC <span>STORE</span></div>
-                <div class="brand-sub">GTROWEN.STORE</div>
+                <div class="brand-title">GTROWEN <span>STORE</span></div>
+                <div class="brand-sub">UDC DIGITAL</div>
             </div>
         </div>
 
@@ -643,22 +650,22 @@
     </header>
 
     <div class="container">
-        <!-- DISEÑO SAMURAI CYBERPUNK (DOS LADOS) -->
-        <div class="samurai-hero">
-            <div class="samurai-avatar-side">
-                <div class="samurai-icon-art">🥷⚔️</div>
-                <div class="samurai-tagline">GTR / UDC STORE</div>
-                <div style="font-size: 0.65rem; color: var(--text-dim); margin-top: 4px;">Cyber Samurai Edition</div>
+        <!-- BANNER ESTILO SAMURAI CYBERPUNK (CON CAJITAS DE CATALOGO EN EL CENTRO) -->
+        <div class="samurai-banner">
+            <div class="samurai-header-content">
+                <div class="samurai-store-name">GTROWEN.STORE</div>
+                <div class="samurai-store-sub">🥷 VENTA DE SERVICIOS DIGITALES 🥷</div>
             </div>
-            <div class="samurai-catalog-side">
-                <div class="samurai-box-title">⚡ CATÁLOGO RÁPIDO</div>
-                <div class="catalog-mini-grid">
-                    <div class="catalog-mini-item">💎 Diamantes Free Fire</div>
-                    <div class="catalog-mini-item">⚙️ Tokens Evolutivos</div>
-                    <div class="catalog-mini-item">🎫 Pases Sem./Mensual</div>
-                    <div class="catalog-mini-item">🎬 Streaming (Netflix/Spoti)</div>
-                    <div class="catalog-mini-item">🎯 Blood Strike Oro</div>
-                    <div class="catalog-mini-item">🚀 Entrega Inmediata</div>
+
+            <div class="samurai-box-catalog">
+                <div class="samurai-box-title">⚡ CATÁLOGO PRINCIPAL ⚡</div>
+                <div class="samurai-catalog-grid">
+                    <div class="samurai-item-pill">💎 Diamantes Free Fire</div>
+                    <div class="samurai-item-pill">⚙️ Tokens Evolutivos</div>
+                    <div class="samurai-item-pill">🎫 Pases Semanales/Mensuales</div>
+                    <div class="samurai-item-pill">🎬 Streaming (Netflix, Spotify...)</div>
+                    <div class="samurai-item-pill">🎯 Blood Strike Oro</div>
+                    <div class="samurai-item-pill">🚀 Entrega Inmediata 100% Segura</div>
                 </div>
             </div>
         </div>
@@ -699,11 +706,11 @@
             </div>
         </div>
 
-        <!-- PRODUCTOS CON SUS LOGOS OFICIALES -->
+        <!-- PRODUCTOS CON SUS LOGOS Y NOMBRES -->
         <div class="section-h2" id="catalogTitle">🔥 CATALOGO GENERAL</div>
         <div class="products-grid" id="productsGrid">
 
-            <!-- SECCIÓN 1: STREAMING MENSUAL -->
+            <!-- STREAMING MENSUAL -->
             <div class="product-card" data-cat="streaming" data-crc="3000" data-usd="6.00" data-mxn="110" data-cop="25000" data-ars="7600" data-pen="22.00">
                 <div>
                     <div class="product-badge" style="color: #e50914;">
@@ -771,9 +778,7 @@
 
             <div class="product-card" data-cat="streaming" data-crc="2000" data-usd="4.00" data-mxn="73" data-cop="16600" data-ars="5000" data-pen="14.50">
                 <div>
-                    <div class="product-badge" style="color: #00a8e1;">
-                        📦 Prime Video
-                    </div>
+                    <div class="product-badge" style="color: #00a8e1;">📦 Prime Video</div>
                     <div class="product-name">Amazon Prime Video 1 Mes</div>
                 </div>
                 <div>
@@ -784,9 +789,7 @@
 
             <div class="product-card" data-cat="streaming" data-crc="3000" data-usd="6.00" data-mxn="110" data-cop="25000" data-ars="7600" data-pen="22.00">
                 <div>
-                    <div class="product-badge" style="color: #ffffff;">
-                         Apple TV+
-                    </div>
+                    <div class="product-badge" style="color: #ffffff;"> Apple TV+</div>
                     <div class="product-name">Apple TV+ 1 Mes</div>
                 </div>
                 <div>
@@ -797,9 +800,7 @@
 
             <div class="product-card" data-cat="streaming" data-crc="3000" data-usd="6.00" data-mxn="110" data-cop="25000" data-ars="7600" data-pen="22.00">
                 <div>
-                    <div class="product-badge" style="color: #0064ff;">
-                        🏔️ Paramount+
-                    </div>
+                    <div class="product-badge" style="color: #0064ff;">🏔️ Paramount+</div>
                     <div class="product-name">Paramount+ 1 Mes</div>
                 </div>
                 <div>
@@ -810,9 +811,7 @@
 
             <div class="product-card" data-cat="streaming" data-crc="2500" data-usd="5.00" data-mxn="92" data-cop="20800" data-ars="6300" data-pen="18.50">
                 <div>
-                    <div class="product-badge" style="color: #f47521;">
-                        🧡 Crunchyroll
-                    </div>
+                    <div class="product-badge" style="color: #f47521;">🧡 Crunchyroll</div>
                     <div class="product-name">Crunchyroll 1 Mes</div>
                 </div>
                 <div>
@@ -821,7 +820,7 @@
                 </div>
             </div>
 
-            <!-- SECCIÓN 2: STREAMING PERMANENTE / VIP -->
+            <!-- STREAMING PERMANENTE / VIP -->
             <div class="product-card" data-cat="streaming-perm" data-crc="4000" data-usd="8.00" data-mxn="146" data-cop="33300" data-ars="10100" data-pen="29.00">
                 <div>
                     <div class="product-badge" style="color: var(--gold);">Spotify Familiar</div>
@@ -1391,7 +1390,7 @@
             let items = cart.map(c => `• ${c.title}`).join('%0A');
             let totalText = document.getElementById('cTotal').innerText;
 
-            let msg = `🚀 *NUEVO PEDIDO - UDC STORE*%0A%0A🎮 *Referencia / ID:* ${id}%0A💳 *Pago:* ${method}%0A%0A📦 *Productos:*%0A${items}%0A💰 *Total:* ${totalText}%0A%0AAdjunto comprobante de pago a continuación:`;
+            let msg = `🚀 *NUEVO PEDIDO - GTROWEN STORE*%0A%0A🎮 *Referencia / ID:* ${id}%0A💳 *Pago:* ${method}%0A%0A📦 *Productos:*%0A${items}%0A💰 *Total:* ${totalText}%0A%0AAdjunto comprobante de pago a continuación:`;
 
             let whatsappUrl = `https://api.whatsapp.com/send?phone=50672986056&text=${msg}`;
             window.open(whatsappUrl, '_blank');
