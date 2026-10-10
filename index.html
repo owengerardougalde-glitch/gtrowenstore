@@ -39,7 +39,7 @@
             background-attachment: fixed;
         }
 
-        /* FONDO SAMURÁI CYBERPUNK CON MÁSCARA SAKURA Y KATANA (SEMITRANSPARENTE) */
+        /* FONDO SAMURÁI CYBERPUNK DETALLADO CON MÁSCARA SAKURA Y KATANA (SEMITRANSPARENTE) */
         .samurai-watermark-bg {
             position: fixed;
             top: 50%;
@@ -49,7 +49,7 @@
             height: 100vh;
             pointer-events: none;
             z-index: 1;
-            opacity: 0.12;
+            opacity: 0.15;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -57,10 +57,10 @@
         }
 
         .samurai-svg-art {
-            width: 500px;
-            max-width: 90vw;
+            width: 650px;
+            max-width: 95vw;
             height: auto;
-            filter: drop-shadow(0 0 25px var(--secondary));
+            filter: drop-shadow(0 0 35px var(--secondary));
         }
 
         /* HEADER */
@@ -230,7 +230,7 @@
             text-transform: uppercase;
         }
 
-        /* CAJITAS CENTRALES */
+        /* CAJITAS CENTRALES CON ACCESOS DIRECTOS */
         .samurai-box-catalog {
             border: 1px solid var(--primary);
             border-radius: 12px;
@@ -264,7 +264,7 @@
         .samurai-item-pill {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 8px 10px;
+            padding: 10px 12px;
             border-radius: 8px;
             font-size: 0.75rem;
             font-weight: 700;
@@ -272,12 +272,16 @@
             align-items: center;
             gap: 8px;
             color: #fff;
+            cursor: pointer;
             transition: all 0.2s ease;
+            text-align: left;
         }
 
         .samurai-item-pill:hover {
             border-color: var(--primary);
-            background: rgba(0, 240, 255, 0.08);
+            background: rgba(0, 240, 255, 0.15);
+            transform: translateY(-2px);
+            box-shadow: 0 0 12px rgba(0, 240, 255, 0.3);
         }
 
         /* CATEGORÍAS */
@@ -653,18 +657,30 @@
 </head>
 <body>
 
-    <!-- FONDO DE MARCA DE AGUA: SAMURÁI CYBERPUNK CON MÁSCARA SAKURA Y KATANA -->
+    <!-- FONDO SAMURÁI CYBERPUNK DETALLADO CON MÁSCARA SAKURA Y KATANA -->
     <div class="samurai-watermark-bg">
-        <svg class="samurai-svg-art" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M250 60 C180 60 130 110 130 170 C130 200 145 230 160 250 L180 230 L200 280 L250 260 L300 280 L320 230 L340 250 C355 230 370 200 370 170 C370 110 320 60 250 60Z" stroke="#00f0ff" stroke-width="3" fill="#121728" opacity="0.9"/>
-            <path d="M160 100 L90 50 L130 130 Z" fill="#ff0055" opacity="0.8"/>
-            <path d="M340 100 L410 50 L370 130 Z" fill="#ff0055" opacity="0.8"/>
-            <path d="M210 200 Q250 220 290 200 Q310 250 290 310 Q250 340 210 310 Q190 250 210 200Z" stroke="#ff0055" stroke-width="3" fill="#03050b"/>
-            <circle cx="235" cy="250" r="8" fill="#ff0055" opacity="0.7"/>
-            <circle cx="265" cy="250" r="8" fill="#ff0055" opacity="0.7"/>
-            <path d="M120 400 L380 340" stroke="#00f0ff" stroke-width="6" stroke-linecap="round"/>
-            <path d="M130 350 L370 410" stroke="#ff0055" stroke-width="4" stroke-linecap="round"/>
-            <circle cx="125" cy="375" r="12" fill="#ffb700"/>
+        <svg class="samurai-svg-art" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Casco Kabuto Cyberpunk Completo -->
+            <path d="M300 70 C210 70 150 130 150 200 C150 235 170 270 190 290 L220 260 L250 320 L300 295 L350 320 L380 260 L410 290 C430 270 450 235 450 200 C450 130 390 70 300 70Z" stroke="#00f0ff" stroke-width="3.5" fill="#0b0e19" opacity="0.95"/>
+            <!-- Cuernos y Cresta del Samurái -->
+            <path d="M190 120 L100 60 L140 160 Z" fill="#ff0055" opacity="0.9"/>
+            <path d="M410 120 L500 60 L460 160 Z" fill="#ff0055" opacity="0.9"/>
+            <path d="M300 40 L315 80 L285 80 Z" fill="#ffb700" opacity="0.9"/>
+            <!-- Máscara de Hannya / Sakura (Rostro Cyberpunk con Cerezo) -->
+            <path d="M240 230 Q300 250 360 230 Q390 290 360 360 Q300 400 240 360 Q210 290 240 230Z" stroke="#ff0055" stroke-width="3" fill="#03050b"/>
+            <!-- Ojos LED brillantes -->
+            <path d="M260 270 Q280 260 300 270 Q280 280 260 270Z" fill="#00f0ff"/>
+            <path d="M340 270 Q320 260 300 270 Q320 280 340 270Z" fill="#00f0ff"/>
+            <!-- Detalles de Sakura (Cerezo) en la máscara -->
+            <circle cx="275" cy="320" r="10" fill="#ff0055" opacity="0.8"/>
+            <circle cx="325" cy="320" r="10" fill="#ff0055" opacity="0.8"/>
+            <!-- Katana cruzada en la cintura, agarrada para atacar -->
+            <path d="M140 480 L460 400" stroke="#00f0ff" stroke-width="7" stroke-linecap="round"/>
+            <path d="M150 420 L450 490" stroke="#ff0055" stroke-width="5" stroke-linecap="round"/>
+            <circle cx="145" cy="450" r="14" fill="#ffb700"/>
+            <!-- Hombros de Armadura Samurai -->
+            <path d="M150 350 L100 420 L180 440 Z" fill="#7000ff" opacity="0.7"/>
+            <path d="M450 350 L500 420 L420 440 Z" fill="#7000ff" opacity="0.7"/>
         </svg>
     </div>
 
@@ -696,7 +712,7 @@
     </header>
 
     <div class="container">
-        <!-- BANNER ESTILO SAMURAI CYBERPUNK -->
+        <!-- BANNER CON ACCESOS DIRECTOS INTERACTIVOS -->
         <div class="samurai-banner">
             <div class="samurai-header-content">
                 <div class="samurai-store-name">GTROWEN.STORE</div>
@@ -704,14 +720,14 @@
             </div>
 
             <div class="samurai-box-catalog">
-                <div class="samurai-box-title">⚡ CATÁLOGO PRINCIPAL ⚡</div>
+                <div class="samurai-box-title">⚡ CATÁLOGO PRINCIPAL (TOCA PARA IR) ⚡</div>
                 <div class="samurai-catalog-grid">
-                    <div class="samurai-item-pill">💎 Diamantes Free Fire</div>
-                    <div class="samurai-item-pill">⚙️ Tokens Evolutivos</div>
-                    <div class="samurai-item-pill">🎫 Pases Semanales/Mensuales</div>
-                    <div class="samurai-item-pill">🎬 Streaming (Netflix, Spotify...)</div>
-                    <div class="samurai-item-pill">🪙 Blood Strike Oro</div>
-                    <div class="samurai-item-pill">🚀 Entrega Inmediata 100% Segura</div>
+                    <button class="samurai-item-pill" onclick="jumpToCategory('ff-lim')">💎 Diamantes Free Fire</button>
+                    <button class="samurai-item-pill" onclick="jumpToCategory('ff-passes')">⚙️ Tokens Evolutivos</button>
+                    <button class="samurai-item-pill" onclick="jumpToCategory('ff-passes')">🎫 Pases Semanales/Mensuales</button>
+                    <button class="samurai-item-pill" onclick="jumpToCategory('streaming')">🎬 Streaming (Netflix, Spotify...)</button>
+                    <button class="samurai-item-pill" onclick="jumpToCategory('bs')">🪙 Blood Strike Oro</button>
+                    <button class="samurai-item-pill" onclick="openModal()">🚀 Entrega Inmediata 100% Segura</button>
                 </div>
             </div>
         </div>
@@ -756,7 +772,7 @@
         <div class="section-h2" id="catalogTitle">🔥 CATALOGO GENERAL</div>
         <div class="products-grid" id="productsGrid">
 
-            <!-- STREAMING MENSUAL (CON LOGO OFICIAL EN CADA UNA) -->
+            <!-- STREAMING MENSUAL -->
             <div class="product-card" data-cat="streaming" data-crc="3000" data-usd="6.00" data-mxn="110" data-cop="25000" data-ars="7600" data-pen="22.00">
                 <div>
                     <div class="product-badge" style="color: #e50914;">
@@ -864,7 +880,7 @@
             <div class="product-card" data-cat="streaming" data-crc="2500" data-usd="5.00" data-mxn="92" data-cop="20800" data-ars="6300" data-pen="18.50">
                 <div>
                     <div class="product-badge" style="color: #f47521;">
-                        <svg viewBox="0 0 24 24" fill="#f47521"><path d="M19.346 11.235c-1.124-.62-2.198-1.298-3.23-2.028-.868-.616-1.583-1.36-2.126-2.215-.52-.81-.795-1.745-.81-2.775V2.325h-2.36v1.905c0 1.25.323 2.378.955 3.332.617.925 1.43 1.74 2.422 2.425 1.048.72 2.164 1.385 3.328 1.98l-2.094 1.355c-1.134-.63-2.222-1.32-3.243-2.065-.89-.64-1.616-1.407-2.16-2.285-.53-.84-.81-1.807-.82-2.875V1.2h-2.36v2.09c0 1.35.34 2.57 1.002 3.59.645.98 1.492 1.84 2.52 2.56 1.09.76 2.25 1.46 3.46 2.08l-2.1 1.36c-1.15-.65-2.26-1.37-3.31-2.13-.93-.68-1.69-1.5-2.27-2.43-.56-.91-.85-1.95-.86-3.1V0H0v4.25c0 1.48.33 2.87.98 4.13.63 1.22 1.48 2.3 2.53 3.23 1.13.97 2.42 1.83 3.84 2.57l-1.96 1.28c-1.22-.68-2.38-1.45-3.46-2.3-1.02-.82-1.86-1.79-2.5-2.88-.63-1.07-.95-2.26-.95-3.55V0h2.36v3.25c0 .94.22 1.79.65 2.52.42.71 1.01 1.34 1.75 1.87.79.56 1.71 1.08 2.74 1.55l-2.07 1.34c-1.19-.62-2.33-1.32-3.41-2.08-.99-.7-1.82-1.53-2.47-2.47-.64-.94-.97-2.01-.97-3.18V0h2.36v2.22c.01.76.2 1.44.57 2.02.36.57.85 1.07 1.45 1.48.64.44 1.38.84 2.2 1.18l-1.98 1.28c-1.26-.59-2.47-1.27-3.61-2.03-1.07-.71-1.98-1.57-2.7-2.56-.7-.97-1.06-2.07-1.06-3.29V0h2.36v1.35c0 .87.21 1.63.63 2.26.41.62.96 1.16 1.63 1.61.71.48 1.52.9 2.4 1.25L9.61 9.4c-1.22-.53-2.39-1.15-3.49-1.84-.98-.63-1.81-1.39-2.46-2.26-.64-.86-.97-1.84-.97-2.92V0h2.36v1.22c0 .64.15 1.21.46 1.69.31.47.74.88 1.28 1.22.56.36 1.2.68 1.91.95L3.6 7.62c-1.34-.51-2.61-1.13-3.8-1.85-.98-.6-1.8-1.33-2.44-2.18-.62-.84-.94-1.78-.94-2.81V0h2.36v.92c0 .41.1 .79.29 1.11.2.32.47.6.82.82.37.23.8.43 1.29.6l-1.8 1.18c-1.39-.48-2.71-1.07-3.93-1.77-1.03-.6-1.9-1.32-2.59-2.14-.68-.82-1.03-1.74-1.03-2.76V0h2.36v.55c0 .18.04.35.12.5.08.15.2.28.36.38.18.11.4.21.66.3l-1.57 1.02c-1.48-.44-2.88-.98-4.17-1.62C-1.12.38-2.15.17-3.05-.12-3.83-.37-4.46-.71-4.94-1.15-5.38-1.56-5.6-2.07-5.6-2.69v0h2.36c0 .18.06.33.19.45.13.12.31.22.54.31.28.1.6.19.95.27l-1.25.81c-1.54-.39-2.99-.88-4.32-1.46-1.1-.48-2.09-1.05-2.96-1.7-1.02-.75-1.55-1.65-1.55-2.68V0h2.36z"/></svg> Crunchyroll
+                        <svg viewBox="0 0 24 24" fill="#f47521"><path d="M19.346 11.235c-1.124-.62-2.198-1.298-3.23-2.028-.868-.616-1.583-1.36-2.126-2.215-.52-.81-.795-1.745-.81-2.775V2.325h-2.36v1.905c0 1.25.323 2.378.955 3.332.617.925 1.43 1.74 2.422 2.425 1.048.72 2.164 1.385 3.328 1.98l-2.094 1.355c-1.134-.63-2.222-1.32-3.243-2.065-.89-.64-1.616-1.407-2.16-2.285-.53-.84-.81-1.807-.82-2.875V1.2h-2.36v2.09c0 1.35.34 2.57 1.002 3.59.645.98 1.492 1.84 2.52 2.56 1.09.76 2.25 1.46 3.46 2.08l-2.1 1.36c-1.15-.65-2.26-1.37-3.31-2.13-.93-.68-1.69-1.5-2.27-2.43-.56-.91-.85-1.95-.86-3.1V0H0v4.25c0 1.48.33 2.87.98 4.13.63 1.22 1.48 2.3 2.53 3.23 1.13.97 2.42 1.83 3.84 2.57l-1.96 1.28c-1.22-.68-2.38-1.45-3.46-2.3-1.02-.82-1.86-1.79-2.5-2.88-.63-1.07-.95-2.26-.95-3.55V0h2.36v3.25c0 .94.22 1.79.65 2.52.42.71 1.01 1.34 1.75 1.87.79.56 1.71 1.08 2.74 1.55l-2.07 1.34c-1.19-.62-2.33-1.32-3.41-2.08-.99-.7-1.82-1.53-2.47-2.47-.64-.94-.97-2.01-.97-3.18V0h2.36v2.22c.01.76.2 1.44.57 2.02.36.57.85 1.07 1.45 1.48.64.44 1.38.84 2.2 1.18l-1.98 1.28c-1.26-.59-2.47-1.27-3.61-2.03-1.07-.71-1.98-1.57-2.7-2.56-.7-.97-1.06-2.07-1.06-3.29V0h2.36v1.35c0 .87.21 1.63.63 2.26.41.62.96 1.16 1.63 1.61.71.48 1.52.9 2.4 1.25L9.61 9.4c-1.22-.53-2.39-1.15-3.49-1.84-.98-.63-1.81-1.39-2.46-2.26-.64-.86-.97-1.84-.97-2.92V0h2.36v1.22c0 .64.15 1.21.46 1.69.31.47.74.88 1.28 1.22.56.36 1.2.68 1.91.95L3.6 7.62c-1.34-.51-2.61-1.13-3.8-1.85-.98-.6-1.8-1.33-2.44-2.18-.62-.84-.94-1.78-.94-2.81V0h2.36v.92c0 .41.1 .79.29 1.11.2.32.47.6.82.82.37.23.8.43 1.29.6l-1.8 1.18c-1.39-.48-2.71-1.07-3.93-1.77-1.03-.6-1.9-1.32-2.59-2.14-.68-.82-1.03-1.74-1.03-2.76V0h2.36z"/></svg> Crunchyroll
                     </div>
                     <div class="product-name">Crunchyroll 1 Mes</div>
                 </div>
@@ -874,7 +890,7 @@
                 </div>
             </div>
 
-            <!-- STREAMING PERMANENTE / VIP (CON LOGO EN CADA UNO) -->
+            <!-- STREAMING PERMANENTE / VIP -->
             <div class="product-card" data-cat="streaming-perm" data-crc="4000" data-usd="8.00" data-mxn="146" data-cop="33300" data-ars="10100" data-pen="29.00">
                 <div>
                     <div class="product-badge" style="color: #1db954;">
@@ -956,7 +972,7 @@
             <div class="product-card" data-cat="streaming-perm" data-crc="4500" data-usd="9.00" data-mxn="165" data-cop="37500" data-ars="11400" data-pen="33.00">
                 <div>
                     <div class="product-badge" style="color: #f47521;">
-                        <svg viewBox="0 0 24 24" fill="#f47521"><path d="M19.346 11.235c-1.124-.62-2.198-1.298-3.23-2.028-.868-.616-1.583-1.36-2.126-2.215-.52-.81-.795-1.745-.81-2.775V2.325h-2.36v1.905c0 1.25.323 2.378.955 3.332.617.925 1.43 1.74 2.422 2.425 1.048.72 2.164 1.385 3.328 1.98l-2.094 1.355c-1.134-.63-2.222-1.32-3.243-2.065-.89-.64-1.616-1.407-2.16-2.285-.53-.84-.81-1.807-.82-2.875V1.2h-2.36v2.09c0 1.35.34 2.57 1.002 3.59.645.98 1.492 1.84 2.52 2.56 1.09.76 2.25 1.46 3.46 2.08l-2.1 1.36c-1.15-.65-2.26-1.37-3.31-2.13-.93-.68-1.69-1.5-2.27-2.43-.56-.91-.85-1.95-.86-3.1V0H0v4.25c0 1.48.33 2.87.98 4.13.63 1.22 1.48 2.3 2.53 3.23 1.13.97 2.42 1.83 3.84 2.57l-1.96 1.28c-1.22-.68-2.38-1.45-3.46-2.3-1.02-.82-1.86-1.79-2.5-2.88-.63-1.07-.95-2.26-.95-3.55V0h2.36v3.25c0 .94.22 1.79.65 2.52.42.71 1.01 1.34 1.75 1.87.79.56 1.71 1.08 2.74 1.55l-2.07 1.34c-1.19-.62-2.33-1.32-3.41-2.08-.99-.7-1.82-1.53-2.47-2.47-.64-.94-.97-2.01-.97-3.18V0h2.36v2.22c.01.76.2 1.44.57 2.02.36.57.85 1.07 1.45 1.48.64.44 1.38.84 2.2 1.18l-1.98 1.28c-1.26-.59-2.47-1.27-3.61-2.03-1.07-.71-1.98-1.57-2.7-2.56-.7-.97-1.06-2.07-1.06-3.29V0h2.36v1.35c0 .87.21 1.63.63 2.26.41.62.96 1.16 1.63 1.61.71.48 1.52.9 2.4 1.25L9.61 9.4c-1.22-.53-2.39-1.15-3.49-1.84-.98-.63-1.81-1.39-2.46-2.26-.64-.86-.97-1.84-.97-2.92V0h2.36v1.22c0 .64.15 1.21.46 1.69.31.47.74.88 1.28 1.22.56.36 1.2.68 1.91.95L3.6 7.62c-1.34-.51-2.61-1.13-3.8-1.85-.98-.6-1.8-1.33-2.44-2.18-.62-.84-.94-1.78-.94-2.81V0h2.36v.92c0 .41.1.79.29 1.11.2.32.47.6.82.82.37.23.8.43 1.29.6l-1.8 1.18c-1.39-.48-2.71-1.07-3.93-1.77-1.03-.6-1.9-1.32-2.59-2.14-.68-.82-1.03-1.74-1.03-2.76V0h2.36v.55c0 .18.04.35.12.5.08.15.2.28.36.38.18.11.4.21.66.3l-1.57 1.02c-1.48-.44-2.88-.98-4.17-1.62C-1.12.38-2.15.17-3.05-.12-3.83-.37-4.46-.71-4.94-1.15-5.38-1.56-5.6-2.07-5.6-2.69v0h2.36c0 .18.06.33.19.45.13.12.31.22.54.31.28.1.6.19.95.27l-1.25.81c-1.54-.39-2.99-.88-4.32-1.46-1.1-.48-2.09-1.05-2.96-1.7-1.02-.75-1.55-1.65-1.55-2.68V0h2.36z"/></svg> Crunchyroll VIP
+                        <svg viewBox="0 0 24 24" fill="#f47521"><path d="M19.346 11.235c-1.124-.62-2.198-1.298-3.23-2.028-.868-.616-1.583-1.36-2.126-2.215-.52-.81-.795-1.745-.81-2.775V2.325h-2.36v1.905c0 1.25.323 2.378.955 3.332.617.925 1.43 1.74 2.422 2.425 1.048.72 2.164 1.385 3.328 1.98l-2.094 1.355c-1.134-.63-2.222-1.32-3.243-2.065-.89-.64-1.616-1.407-2.16-2.285-.53-.84-.81-1.807-.82-2.875V1.2h-2.36v2.09c0 1.35.34 2.57 1.002 3.59.645.98 1.492 1.84 2.52 2.56 1.09.76 2.25 1.46 3.46 2.08l-2.1 1.36c-1.15-.65-2.26-1.37-3.31-2.13-.93-.68-1.69-1.5-2.27-2.43-.56-.91-.85-1.95-.86-3.1V0H0v4.25c0 1.48.33 2.87.98 4.13.63 1.22 1.48 2.3 2.53 3.23 1.13.97 2.42 1.83 3.84 2.57l-1.96 1.28c-1.22-.68-2.38-1.45-3.46-2.3-1.02-.82-1.86-1.79-2.5-2.88-.63-1.07-.95-2.26-.95-3.55V0h2.36v3.25c0 .94.22 1.79.65 2.52.42.71 1.01 1.34 1.75 1.87.79.56 1.71 1.08 2.74 1.55l-2.07 1.34c-1.19-.62-2.33-1.32-3.41-2.08-.99-.7-1.82-1.53-2.47-2.47-.64-.94-.97-2.01-.97-3.18V0h2.36v2.22c.01.76.2 1.44.57 2.02.36.57.85 1.07 1.45 1.48.64.44 1.38.84 2.2 1.18l-1.98 1.28c-1.26-.59-2.47-1.27-3.61-2.03-1.07-.71-1.98-1.57-2.7-2.56-.7-.97-1.06-2.07-1.06-3.29V0h2.36v1.35c0 .87.21 1.63.63 2.26.41.62.96 1.16 1.63 1.61.71.48 1.52.9 2.4 1.25L9.61 9.4c-1.22-.53-2.39-1.15-3.49-1.84-.98-.63-1.81-1.39-2.46-2.26-.64-.86-.97-1.84-.97-2.92V0h2.36v1.22c0 .64.15 1.21.46 1.69.31.47.74.88 1.28 1.22.56.36 1.2.68 1.91.95L3.6 7.62c-1.34-.51-2.61-1.13-3.8-1.85-.98-.6-1.8-1.33-2.44-2.18-.62-.84-.94-1.78-.94-2.81V0h2.36v.92c0 .41.1 .79.29 1.11.2.32.47.6.82.82.37.23.8.43 1.29.6l-1.8 1.18c-1.39-.48-2.71-1.07-3.93-1.77-1.03-.6-1.9-1.32-2.59-2.14-.68-.82-1.03-1.74-1.03-2.76V0h2.36z"/></svg> Crunchyroll VIP
                     </div>
                     <div class="product-name">Crunchyroll Ultimate Fan Member 1 Año</div>
                 </div>
@@ -1005,7 +1021,7 @@
                 </div>
             </div>
 
-            <!-- FF LIMITADOS (CON EMOJI DE DIAMANTE 💎 EN CADA OFERTA) -->
+            <!-- FF LIMITADOS -->
             <div class="product-card" data-cat="ff-lim" data-crc="1200" data-usd="2.5" data-mxn="35" data-cop="10500" data-ars="3200" data-pen="9.00">
                 <div>
                     <div class="product-badge">💎 Free Fire (Limitado)</div>
@@ -1061,7 +1077,7 @@
                 </div>
             </div>
 
-            <!-- FF ILIMITADOS (CON EMOJI DE DIAMANTE 💎 EN CADA OFERTA) -->
+            <!-- FF ILIMITADOS -->
             <div class="product-card" data-cat="ff-ilim" data-crc="2400" data-usd="5" data-mxn="60" data-cop="21000" data-ars="6300" data-pen="18.00">
                 <div>
                     <div class="product-badge">💎 Free Fire (Ilimitado)</div>
@@ -1195,7 +1211,7 @@
                 </div>
             </div>
 
-            <!-- BLOOD STRIKE ORO (CON EMOJI DE ORO 🪙 EN CADA OFERTA) -->
+            <!-- BLOOD STRIKE ORO -->
             <div class="product-card" data-cat="bs" data-crc="1600" data-usd="3" data-mxn="54" data-cop="12500" data-ars="3800" data-pen="11.00">
                 <div>
                     <div class="product-badge">🪙 Blood Strike</div>
@@ -1344,7 +1360,17 @@
         function filterCategory(cat, btnElement) {
             const buttons = document.querySelectorAll('.cat-btn');
             buttons.forEach(b => b.classList.remove('active'));
-            if(btnElement) btnElement.classList.add('active');
+            
+            if (btnElement) {
+                btnElement.classList.add('active');
+            } else {
+                // Sincronizar botón de la barra horizontal si se llama desde el banner
+                buttons.forEach(b => {
+                    if (b.getAttribute('onclick') && b.getAttribute('onclick').includes(cat)) {
+                        b.classList.add('active');
+                    }
+                });
+            }
 
             const cards = document.querySelectorAll('.product-card');
             cards.forEach(card => {
@@ -1354,6 +1380,12 @@
                     card.style.display = 'none';
                 }
             });
+        }
+
+        function jumpToCategory(cat) {
+            filterCategory(cat, null);
+            // Hacer scroll suave hacia el catálogo
+            document.getElementById('catalogTitle').scrollIntoView({ behavior: 'smooth' });
         }
 
         function toggleTopAccordion() {
