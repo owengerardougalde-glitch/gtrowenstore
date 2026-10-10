@@ -600,7 +600,7 @@
         }
 
         /* ---------------------------------------------------
-           DISEÑO DEL MODAL: FONDO COMPLETO DE FREE FIRE
+           DISEÑO DEL MODAL: LOBBY FREE FIRE CON TU SKIN
            --------------------------------------------------- */
         
         #topClientsModal .modal-box {
@@ -636,6 +636,10 @@
             flex-direction: column;
             justify-content: space-between;
             overflow: hidden;
+            /* FUENTE DE RESPALDO DIRECTA PARA QUE CARGUE SÍ O SÍ */
+            background-image: url('https://i.postimg.cc/FF2PFygB/IMG-20261010-WA0169.jpg');
+            background-size: cover;
+            background-position: center;
         }
 
         .ff-bg-image {
@@ -651,7 +655,7 @@
         .ff-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to right, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.7) 100%);
+            background: linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.6) 100%);
             z-index: 2;
         }
 
@@ -771,7 +775,6 @@
                 <div class="samurai-store-sub">🥷 VENTA DE SERVICIOS DIGITALES 🥷</div>
             </div>
 
-            <!-- BOTÓN QUE ABRE LA "PESTAÑITA" DE LOS MEJORES CLIENTES SIN ESTORBAR -->
             <button class="btn-open-top-clients" id="btnOpenTopClients">
                 🏆 VER TOP CLIENTES PRIME 👑
             </button>
@@ -825,307 +828,7 @@
                 </div>
             </div>
 
-            <div class="product-card" data-cat="streaming" data-crc="4000" data-usd="8.00" data-mxn="146" data-cop="33300" data-ars="10100" data-pen="29.00">
-                <div>
-                    <div class="product-badge" style="color: #1db954;">Spotify</div>
-                    <div class="product-name">Spotify Premium 3 Meses</div>
-                </div>
-                <div>
-                    <div class="product-price price-tag">₡4,000</div>
-                    <button class="btn-add" data-title="Spotify Premium 3 Meses (Streaming)" data-crc="4000" data-usd="8.00" data-mxn="146" data-cop="33300" data-ars="10100" data-pen="29.00">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="streaming" data-crc="2000" data-usd="4.00" data-mxn="73" data-cop="16600" data-ars="5000" data-pen="14.50">
-                <div>
-                    <div class="product-badge" style="color: #0070d1;">Disney+</div>
-                    <div class="product-name">Disney+ 1 Mes</div>
-                </div>
-                <div>
-                    <div class="product-price price-tag">₡2,000</div>
-                    <button class="btn-add" data-title="Disney+ 1 Mes (Streaming)" data-crc="2000" data-usd="4.00" data-mxn="73" data-cop="16600" data-ars="5000" data-pen="14.50">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="streaming" data-crc="2000" data-usd="4.00" data-mxn="73" data-cop="16600" data-ars="5000" data-pen="14.50">
-                <div>
-                    <div class="product-badge" style="color: #ff0000;">YouTube</div>
-                    <div class="product-name">YouTube Premium 1 Mes</div>
-                </div>
-                <div>
-                    <div class="product-price price-tag">₡2,000</div>
-                    <button class="btn-add" data-title="YouTube Premium 1 Mes (Streaming)" data-crc="2000" data-usd="4.00" data-mxn="73" data-cop="16600" data-ars="5000" data-pen="14.50">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="streaming" data-crc="2000" data-usd="4.00" data-mxn="73" data-cop="16600" data-ars="5000" data-pen="14.50">
-                <div>
-                    <div class="product-badge" style="color: #00a8e1;">Prime Video</div>
-                    <div class="product-name">Amazon Prime Video 1 Mes</div>
-                </div>
-                <div>
-                    <div class="product-price price-tag">₡2,000</div>
-                    <button class="btn-add" data-title="Amazon Prime Video 1 Mes (Streaming)" data-crc="2000" data-usd="4.00" data-mxn="73" data-cop="16600" data-ars="5000" data-pen="14.50">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="streaming" data-crc="3000" data-usd="6.00" data-mxn="110" data-cop="25000" data-ars="7600" data-pen="22.00">
-                <div>
-                    <div class="product-badge" style="color: #ffffff;">Apple TV+</div>
-                    <div class="product-name">Apple TV+ 1 Mes</div>
-                </div>
-                <div>
-                    <div class="product-price price-tag">₡3,000</div>
-                    <button class="btn-add" data-title="Apple TV+ 1 Mes (Streaming)" data-crc="3000" data-usd="6.00" data-mxn="110" data-cop="25000" data-ars="7600" data-pen="22.00">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="streaming" data-crc="3000" data-usd="6.00" data-mxn="110" data-cop="25000" data-ars="7600" data-pen="22.00">
-                <div>
-                    <div class="product-badge" style="color: #0064ff;">Paramount+</div>
-                    <div class="product-name">Paramount+ 1 Mes</div>
-                </div>
-                <div>
-                    <div class="product-price price-tag">₡3,000</div>
-                    <button class="btn-add" data-title="Paramount+ 1 Mes (Streaming)" data-crc="3000" data-usd="6.00" data-mxn="110" data-cop="25000" data-ars="7600" data-pen="22.00">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="streaming" data-crc="2500" data-usd="5.00" data-mxn="92" data-cop="20800" data-ars="6300" data-pen="18.50">
-                <div>
-                    <div class="product-badge" style="color: #f47521;">Crunchyroll</div>
-                    <div class="product-name">Crunchyroll 1 Mes</div>
-                </div>
-                <div>
-                    <div class="product-price price-tag">₡2,500</div>
-                    <button class="btn-add" data-title="Crunchyroll 1 Mes (Streaming)" data-crc="2500" data-usd="5.00" data-mxn="92" data-cop="20800" data-ars="6300" data-pen="18.50">Agregar</button>
-                </div>
-            </div>
-
-            <!-- STREAMING PERMANENTE / VIP -->
-            <div class="product-card" data-cat="streaming-perm" data-crc="4000" data-usd="8.00" data-mxn="146" data-cop="33300" data-ars="10100" data-pen="29.00">
-                <div>
-                    <div class="product-badge" style="color: #1db954;">Spotify Familiar</div>
-                    <div class="product-name">Spotify Premium 1 Año (Garantía 6 Meses)</div>
-                </div>
-                <div>
-                    <div class="product-price price-tag">₡4,000</div>
-                    <button class="btn-add" data-title="Spotify Familiar 1 Año (Permanente)" data-crc="4000" data-usd="8.00" data-mxn="146" data-cop="33300" data-ars="10100" data-pen="29.00">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="streaming-perm" data-crc="7000" data-usd="13.99" data-mxn="255" data-cop="58300" data-ars="17700" data-pen="51.00">
-                <div>
-                    <div class="product-badge" style="color: #1db954;">Spotify VIP</div>
-                    <div class="product-name">Spotify Cuenta Familiar (Garantía 1 Año)</div>
-                </div>
-                <div>
-                    <div class="product-price price-tag">₡7,000</div>
-                    <button class="btn-add" data-title="Spotify Familiar VIP 1 Año" data-crc="7000" data-usd="13.99" data-mxn="255" data-cop="58300" data-ars="17700" data-pen="51.00">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="streaming-perm" data-crc="4000" data-usd="8.00" data-mxn="146" data-cop="33300" data-ars="10100" data-pen="29.00">
-                <div>
-                    <div class="product-badge" style="color: #ff0000;">YouTube Individual</div>
-                    <div class="product-name">YouTube Individual Permanente (Garantía 30 Días)</div>
-                </div>
-                <div>
-                    <div class="product-price price-tag">₡4,000</div>
-                    <button class="btn-add" data-title="YouTube Individual Permanente" data-crc="4000" data-usd="8.00" data-mxn="146" data-cop="33300" data-ars="10100" data-pen="29.00">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="streaming-perm" data-crc="5000" data-usd="10.00" data-mxn="183" data-cop="41600" data-ars="12600" data-pen="36.50">
-                <div>
-                    <div class="product-badge" style="color: #ff0000;">YouTube Familiar</div>
-                    <div class="product-name">YouTube Premium Cuenta Familiar (Garantía 25 Días)</div>
-                </div>
-                <div>
-                    <div class="product-price price-tag">₡5,000</div>
-                    <button class="btn-add" data-title="YouTube Familiar Permanente" data-crc="5000" data-usd="10.00" data-mxn="183" data-cop="41600" data-ars="12600" data-pen="36.50">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="streaming-perm" data-crc="4000" data-usd="8.00" data-mxn="146" data-cop="33300" data-ars="10100" data-pen="29.00">
-                <div>
-                    <div class="product-badge" style="color: #9900ff;">HBO Max</div>
-                    <div class="product-name">HBO Max Full Access [FA] (Permanente / Garantía 30 Días)</div>
-                </div>
-                <div>
-                    <div class="product-price price-tag">₡4,000</div>
-                    <button class="btn-add" data-title="HBO Max Full Access Permanente" data-crc="4000" data-usd="8.00" data-mxn="146" data-cop="33300" data-ars="10100" data-pen="29.00">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="streaming-perm" data-crc="3500" data-usd="7.00" data-mxn="128" data-cop="29100" data-ars="8800" data-pen="25.50">
-                <div>
-                    <div class="product-badge" style="color: #0070d1;">Disney+ Combo</div>
-                    <div class="product-name">Disney+ + Hulu y ESPN (Permanente / Garantía 30 Días)</div>
-                </div>
-                <div>
-                    <div class="product-price price-tag">₡3,500</div>
-                    <button class="btn-add" data-title="Disney+ Hulu ESPN Permanente" data-crc="3500" data-usd="7.00" data-mxn="128" data-cop="29100" data-ars="8800" data-pen="25.50">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="streaming-perm" data-crc="4500" data-usd="9.00" data-mxn="165" data-cop="37500" data-ars="11400" data-pen="33.00">
-                <div>
-                    <div class="product-badge" style="color: #f47521;">Crunchyroll VIP</div>
-                    <div class="product-name">Crunchyroll Ultimate Fan Member 1 Año</div>
-                </div>
-                <div>
-                    <div class="product-price price-tag">₡4,500</div>
-                    <button class="btn-add" data-title="Crunchyroll Ultimate Fan 1 Año" data-crc="4500" data-usd="9.00" data-mxn="165" data-cop="37500" data-ars="11400" data-pen="33.00">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="streaming-perm" data-crc="5000" data-usd="10.00" data-mxn="183" data-cop="41600" data-ars="12600" data-pen="36.50">
-                <div>
-                    <div class="product-badge" style="color: #00a8e1;">Prime Video VIP</div>
-                    <div class="product-name">Amazon Prime Video Premium 6 Meses</div>
-                </div>
-                <div>
-                    <div class="product-price price-tag">₡5,000</div>
-                    <button class="btn-add" data-title="Amazon Prime Video 6 Meses" data-crc="5000" data-usd="10.00" data-mxn="183" data-cop="41600" data-ars="12600" data-pen="36.50">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="streaming-perm" data-crc="9000" data-usd="18.00" data-mxn="330" data-cop="75000" data-ars="22800" data-pen="66.00">
-                <div>
-                    <div class="product-badge" style="color: #10a37f;">ChatGPT Plus</div>
-                    <div class="product-name">ChatGPT Plus 1 Mes (Privado)</div>
-                </div>
-                <div>
-                    <div class="product-price price-tag">₡9,000</div>
-                    <button class="btn-add" data-title="ChatGPT Plus 1 Mes" data-crc="9000" data-usd="18.00" data-mxn="330" data-cop="75000" data-ars="22800" data-pen="66.00">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="streaming-perm" data-crc="6500" data-usd="13.00" data-mxn="238" data-cop="54100" data-ars="16400" data-pen="47.50">
-                <div>
-                    <div class="product-badge" style="color: #4285f4;">Google Gemini</div>
-                    <div class="product-name">Gemini Advanced Premium 18 Meses</div>
-                </div>
-                <div>
-                    <div class="product-price price-tag">₡6,500</div>
-                    <button class="btn-add" data-title="Gemini Advanced 18 Meses" data-crc="6500" data-usd="13.00" data-mxn="238" data-cop="54100" data-ars="16400" data-pen="47.50">Agregar</button>
-                </div>
-            </div>
-
-            <!-- FF LIMITADOS -->
-            <div class="product-card" data-cat="ff-lim" data-crc="1200" data-usd="3.00" data-mxn="52.5" data-cop="10500" data-ars="2500" data-pen="10.00">
-                <div>
-                    <div class="product-badge">💎 Free Fire (Limitado)</div>
-                    <div class="product-name">💎 341 Diamantes (Pila pequeña)</div>
-                </div>
-                <div>
-                    <div class="product-price price-tag">₡1,200</div>
-                    <button class="btn-add" data-title="341 Diamantes FF (Limitado)" data-crc="1200" data-usd="3.00" data-mxn="52.5" data-cop="10500" data-ars="2500" data-pen="10.00">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="ff-lim" data-crc="2300" data-usd="5.00" data-mxn="88" data-cop="18000" data-ars="3410" data-pen="14.00">
-                <div>
-                    <div class="product-badge">💎 Free Fire (Limitado)</div>
-                    <div class="product-name">💎 520 Diamantes (Pila mediana)</div>
-                </div>
-                <div>
-                    <div class="product-price price-tag">₡2,300</div>
-                    <button class="btn-add" data-title="520 Diamantes FF (Limitado)" data-crc="2300" data-usd="5.00" data-mxn="88" data-cop="18000" data-ars="3410" data-pen="14.00">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="ff-lim" data-crc="4300" data-usd="9.00" data-mxn="140" data-cop="37500" data-ars="8200" data-pen="33.00">
-                <div>
-                    <div class="product-badge">💎 Free Fire (Limitado)</div>
-                    <div class="product-name">💎 1,160 Diamantes (Caja de diamantes)</div>
-                </div>
-                <div>
-                    <div class="product-price price-tag">₡4,300</div>
-                    <button class="btn-add" data-title="1,160 Diamantes FF (Limitado)" data-crc="4300" data-usd="9.00" data-mxn="140" data-cop="37500" data-ars="8200" data-pen="33.00">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="ff-lim" data-crc="8200" data-usd="14.00" data-mxn="245" data-cop="54000" data-ars="15500" data-pen="48.00">
-                <div>
-                    <div class="product-badge">💎 Free Fire (Limitado)</div>
-                    <div class="product-name">💎 2,398 Diamantes (Caja grande)</div>
-                </div>
-                <div>
-                    <div class="product-price price-tag">₡8,200</div>
-                    <button class="btn-add" data-title="2,398 Diamantes FF (Limitado)" data-crc="8200" data-usd="14.00" data-mxn="245" data-cop="54000" data-ars="15500" data-pen="48.00">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="ff-lim" data-crc="18800" data-usd="34.00" data-mxn="595" data-cop="180000" data-ars="33300" data-pen="135.50">
-                <div>
-                    <div class="product-badge">💎 Free Fire (Limitado)</div>
-                    <div class="product-name">💎 6,160 Diamantes (Gran pila)</div>
-                </div>
-                <div>
-                    <div class="product-price price-tag">₡18,800</div>
-                    <button class="btn-add" data-title="6,160 Diamantes FF (Limitado)" data-crc="18800" data-usd="34.00" data-mxn="595" data-cop="180000" data-ars="33300" data-pen="135.50">Agregar</button>
-                </div>
-            </div>
-
-            <!-- FF ILIMITADOS -->
-            <div class="product-card" data-cat="ff-ilim" data-crc="1200" data-usd="2.50" data-mxn="35" data-cop="12000" data-ars="2500" data-pen="10.00">
-                <div>
-                    <div class="product-badge">💎 Free Fire (Ilimitado)</div>
-                    <div class="product-name">💎 341 Diamantes (Pila pequeña)</div>
-                </div>
-                <div>
-                    <div class="product-price price-tag">₡1,200</div>
-                    <button class="btn-add" data-title="341 Diamantes FF (Ilimitado)" data-crc="1200" data-usd="2.50" data-mxn="35" data-cop="12000" data-ars="2500" data-pen="10.00">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="ff-ilim" data-crc="2400" data-usd="5.00" data-mxn="88" data-cop="18000" data-ars="3410" data-pen="14.00">
-                <div>
-                    <div class="product-badge">💎 Free Fire (Ilimitado)</div>
-                    <div class="product-name">💎 520 Diamantes (Pila mediana)</div>
-                </div>
-                <div>
-                    <div class="product-price price-tag">₡2,400</div>
-                    <button class="btn-add" data-title="520 Diamantes FF (Ilimitado)" data-crc="2400" data-usd="5.00" data-mxn="88" data-cop="18000" data-ars="3410" data-pen="14.00">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="ff-ilim" data-crc="4500" data-usd="9.00" data-mxn="140" data-cop="37500" data-ars="8200" data-pen="33.00">
-                <div>
-                    <div class="product-badge">💎 Free Fire (Ilimitado)</div>
-                    <div class="product-name">💎 1,160 Diamantes (Caja de diamantes)</div>
-                </div>
-                <div>
-                    <div class="product-price price-tag">₡4,500</div>
-                    <button class="btn-add" data-title="1,160 Diamantes FF (Ilimitado)" data-crc="4500" data-usd="9.00" data-mxn="140" data-cop="37500" data-ars="8200" data-pen="33.00">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="ff-ilim" data-crc="8800" data-usd="14.00" data-mxn="245" data-cop="54000" data-ars="15500" data-pen="48.00">
-                <div>
-                    <div class="product-badge">💎 Free Fire (Ilimitado)</div>
-                    <div class="product-name">💎 2,398 Diamantes (Caja grande)</div>
-                </div>
-                <div>
-                    <div class="product-price price-tag">₡8,800</div>
-                    <button class="btn-add" data-title="2,398 Diamantes FF (Ilimitado)" data-crc="8800" data-usd="14.00" data-mxn="245" data-cop="54000" data-ars="15500" data-pen="48.00">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="ff-ilim" data-crc="18100" data-usd="34.00" data-mxn="595" data-cop="180000" data-ars="33300" data-pen="135.50">
-                <div>
-                    <div class="product-badge">💎 Free Fire (Ilimitado)</div>
-                    <div class="product-name">💎 6,160 Diamantes (Gran pila)</div>
-                </div>
-                <div>
-                    <div class="product-price price-tag">₡18,100</div>
-                    <button class="btn-add" data-title="6,160 Diamantes FF (Ilimitado)" data-crc="18100" data-usd="34.00" data-mxn="595" data-cop="180000" data-ars="33300" data-pen="135.50">Agregar</button>
-                </div>
-            </div>
-
-            <!-- PAQUETE DE 12,343 DIAMANTES (CON ID 301110819) -->
+            <!-- FF ILIM & MEGA PACK -->
             <div class="product-card" data-cat="ff-ilim" data-crc="35500" data-usd="66.00" data-mxn="1150" data-cop="350000" data-ars="65000" data-pen="265.00">
                 <div>
                     <div class="product-badge" style="color:var(--gold);">💎 Free Fire (Mega Pack)</div>
@@ -1134,151 +837,6 @@
                 <div>
                     <div class="product-price price-tag">₡35,500</div>
                     <button class="btn-add" data-title="12,343 Diamantes FF (ID: 301110819)" data-crc="35500" data-usd="66.00" data-mxn="1150" data-cop="350000" data-ars="65000" data-pen="265.00">Agregar</button>
-                </div>
-            </div>
-
-            <!-- PASES & MEMBRESÍAS FF -->
-            <div class="product-card" data-cat="ff-passes" data-crc="1200" data-usd="2" data-mxn="35" data-cop="8300" data-ars="2500" data-pen="7.30">
-                <div>
-                    <div class="product-badge">🎫 Membresía FF</div>
-                    <div class="product-name">Tarjeta Semanal</div>
-                </div>
-                <div>
-                    <div class="product-price price-tag">₡1,200</div>
-                    <button class="btn-add" data-title="Tarjeta Semanal FF" data-crc="1200" data-usd="2" data-mxn="35" data-cop="8300" data-ars="2500" data-pen="7.30">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="ff-passes" data-crc="1500" data-usd="3" data-mxn="55" data-cop="12500" data-ars="3800" data-pen="11.00">
-                <div>
-                    <div class="product-badge">🎫 Pase Especial FF</div>
-                    <div class="product-name">Pase Booyah Premium</div>
-                </div>
-                <div>
-                    <div class="product-price price-tag">₡1,500</div>
-                    <button class="btn-add" data-title="Pase Booyah Premium FF" data-crc="1500" data-usd="3" data-mxn="55" data-cop="12500" data-ars="3800" data-pen="11.00">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="ff-passes" data-crc="4300" data-usd="8" data-mxn="140" data-cop="33500" data-ars="10200" data-pen="29.00">
-                <div>
-                    <div class="product-badge">🎫 Membresía FF</div>
-                    <div class="product-name">Tarjeta Mensual</div>
-                </div>
-                <div>
-                    <div class="product-price price-tag">₡4,300</div>
-                    <button class="btn-add" data-title="Tarjeta Mensual FF" data-crc="4300" data-usd="8" data-mxn="140" data-cop="33500" data-ars="10200" data-pen="29.00">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="ff-passes" data-crc="300" data-usd="0.40" data-mxn="10" data-cop="1700" data-ars="500" data-pen="1.50">
-                <div>
-                    <div class="product-badge">🎫 Membresía FF</div>
-                    <div class="product-name">Basic Card</div>
-                </div>
-                <div>
-                    <div class="product-price price-tag">₡300</div>
-                    <button class="btn-add" data-title="Basic Card FF" data-crc="300" data-usd="0.40" data-mxn="10" data-cop="1700" data-ars="500" data-pen="1.50">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="ff-passes" data-crc="1000" data-usd="1.8" data-mxn="35" data-cop="7500" data-ars="2300" data-pen="6.60">
-                <div>
-                    <div class="product-badge">⚙️ Evolutivas FF</div>
-                    <div class="product-name">35 Fragmentos Universales</div>
-                </div>
-                <div>
-                    <div class="product-price price-tag">₡1,000</div>
-                    <button class="btn-add" data-title="35 Fragmentos Universales FF" data-crc="1000" data-usd="1.8" data-mxn="35" data-cop="7500" data-ars="2300" data-pen="6.60">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="ff-passes" data-crc="1200" data-usd="2.40" data-mxn="44" data-cop="10000" data-ars="3050" data-pen="8.90">
-                <div>
-                    <div class="product-badge">⚙️ Cajas Evolutivas FF</div>
-                    <div class="product-name">10 Cajas de Tokens / Fragmentos Evolutivos</div>
-                </div>
-                <div>
-                    <div class="product-price price-tag">₡1,200</div>
-                    <button class="btn-add" data-title="10 Cajas de Tokens Evolutivos FF" data-crc="1200" data-usd="2.40" data-mxn="44" data-cop="10000" data-ars="3050" data-pen="8.90">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="ff-passes" data-crc="1200" data-usd="2.2" data-mxn="42" data-cop="9200" data-ars="2800" data-pen="8.00">
-                <div>
-                    <div class="product-badge">📖 Hiperlibro FF</div>
-                    <div class="product-name">35 Frag. Hiperlibro Revolución</div>
-                </div>
-                <div>
-                    <div class="product-price price-tag">₡1,200</div>
-                    <button class="btn-add" data-title="35 Frag. Hiperlibro Revolución" data-crc="1200" data-usd="2.2" data-mxn="42" data-cop="9200" data-ars="2800" data-pen="8.00">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="ff-passes" data-crc="1200" data-usd="2.2" data-mxn="42" data-cop="9200" data-ars="2800" data-pen="8.00">
-                <div>
-                    <div class="product-badge">📖 Hiperlibro FF</div>
-                    <div class="product-name">35 Frag. Hiperlibro Galaxia</div>
-                </div>
-                <div>
-                    <div class="product-price price-tag">₡1,200</div>
-                    <button class="btn-add" data-title="35 Frag. Hiperlibro Galaxia" data-crc="1200" data-usd="2.2" data-mxn="42" data-cop="9200" data-ars="2800" data-pen="8.00">Agregar</button>
-                </div>
-            </div>
-
-            <!-- BLOOD STRIKE ORO -->
-            <div class="product-card" data-cat="bs" data-crc="1600" data-usd="3" data-mxn="54" data-cop="12500" data-ars="3800" data-pen="11.00">
-                <div>
-                    <div class="product-badge">🪙 Blood Strike</div>
-                    <div class="product-name">🪙 341 de Oro</div>
-                </div>
-                <div>
-                    <div class="product-price price-tag">₡1,600</div>
-                    <button class="btn-add" data-title="341 de Oro Blood Strike" data-crc="1600" data-usd="3" data-mxn="54" data-cop="12500" data-ars="3800" data-pen="11.00">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="bs" data-crc="2700" data-usd="5" data-mxn="90" data-cop="21000" data-ars="6300" data-pen="18.00">
-                <div>
-                    <div class="product-badge">🪙 Blood Strike</div>
-                    <div class="product-name">🪙 572 de Oro</div>
-                </div>
-                <div>
-                    <div class="product-price price-tag">₡2,700</div>
-                    <button class="btn-add" data-title="572 de Oro Blood Strike" data-crc="2700" data-usd="5" data-mxn="90" data-cop="21000" data-ars="6300" data-pen="18.00">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="bs" data-crc="4800" data-usd="9" data-mxn="162" data-cop="37500" data-ars="11400" data-pen="33.00">
-                <div>
-                    <div class="product-badge">🪙 Blood Strike</div>
-                    <div class="product-name">🪙 1,160 de Oro</div>
-                </div>
-                <div>
-                    <div class="product-price price-tag">₡4,800</div>
-                    <button class="btn-add" data-title="1,160 de Oro Blood Strike" data-crc="4800" data-usd="9" data-mxn="162" data-cop="37500" data-ars="11400" data-pen="33.00">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="bs" data-crc="9900" data-usd="18.5" data-mxn="333" data-cop="77000" data-ars="23500" data-pen="68.00">
-                <div>
-                    <div class="product-badge">🪙 Blood Strike</div>
-                    <div class="product-name">🪙 2,398 de Oro</div>
-                </div>
-                <div>
-                    <div class="product-price price-tag">₡9,900</div>
-                    <button class="btn-add" data-title="2,398 de Oro Blood Strike" data-crc="9900" data-usd="18.5" data-mxn="333" data-cop="77000" data-ars="23500" data-pen="68.00">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="bs" data-crc="23000" data-usd="43" data-mxn="774" data-cop="179000" data-ars="54500" data-pen="158.00">
-                <div>
-                    <div class="product-badge">🪙 Blood Strike</div>
-                    <div class="product-name">🪙 6,160 de Oro</div>
-                </div>
-                <div>
-                    <div class="product-price price-tag">₡23,000</div>
-                    <button class="btn-add" data-title="6,160 de Oro Blood Strike" data-crc="23000" data-usd="43" data-mxn="774" data-cop="179000" data-ars="54500" data-pen="158.00">Agregar</button>
                 </div>
             </div>
 
@@ -1294,16 +852,14 @@
         <span class="floating-cart-badge cart-count">0</span>
     </button>
 
-    <!-- MODAL PRINCIPAL: EL CARRITO DE COMPRAS -->
+    <!-- MODAL PRINCIPAL: CARRITO -->
     <div class="modal" id="cartModal">
         <div class="modal-box">
             <div class="modal-top">
                 <h3 id="modalTitle">TU CARRITO DE COMPRA</h3>
                 <button class="btn-close" id="closeModalBtn">&times;</button>
             </div>
-
             <div id="cartList"></div>
-
             <div id="cartSummary">
                 <div class="cart-total-box">
                     <span>TOTAL:</span>
@@ -1311,13 +867,11 @@
                 </div>
                 <button class="btn-proceed" id="proceedCheckoutBtn">PROCEDER AL PAGO</button>
             </div>
-
             <div id="checkoutForm" style="display:none; margin-top: 15px;">
                 <div class="input-box">
                     <label>ID de Jugador / Cuenta / Correo</label>
                     <input type="text" id="pId" value="301110819" placeholder="Ej: Tu ID o correo de contacto">
                 </div>
-
                 <div class="input-box">
                     <label>Método de Pago</label>
                     <select id="pMethod">
@@ -1327,26 +881,19 @@
                         <option value="OXXO">🇲🇽 Spin By Oxxo (Depósito)</option>
                     </select>
                 </div>
-
                 <div class="info-pay" id="payBox">
-                    <strong>Datos SINPE Móvil:</strong><br>
-                    • Teléfono: <strong>6412 9943</strong><br>
-                    • Titular: <strong>OWEN MORALES UGALDE</strong>
+                    <strong>Datos SINPE Móvil:</strong><br>• Teléfono: <strong>6412 9943</strong><br>• Titular: <strong>OWEN MORALES UGALDE</strong>
                 </div>
-
                 <div class="input-box" id="txIdBox" style="display: none;">
-                    <label>ID de Transacción / Comprobante (TxID / Referencia)</label>
-                    <input type="text" id="pTxId" placeholder="Ej: 84920491029485 o Ref. de pago">
+                    <label>Comprobante de pago</label>
+                    <input type="text" id="pTxId" placeholder="Ej: Referencia">
                 </div>
-
-                <button class="btn-send" id="sendWaBtn">
-                    📲 ENVIAR PEDIDO A WHATSAPP
-                </button>
+                <button class="btn-send" id="sendWaBtn">📲 ENVIAR PEDIDO A WHATSAPP</button>
             </div>
         </div>
     </div>
 
-    <!-- MODAL SECUNDARIO: PESTAÑITA DE TOP CLIENTES PRIME (ESTILO LOBBY FF) -->
+    <!-- MODAL SECUNDARIO: TOP CLIENTES CON TU SKIN DE FONDO -->
     <div class="modal" id="topClientsModal">
         <div class="modal-box">
             <div class="modal-top">
@@ -1355,10 +902,8 @@
             </div>
 
             <div class="ff-lobby-container">
-                
-                <!-- TU CAPTURA DE FREE FIRE YA INTEGRADA -->
+                <!-- IMAGEN DIRECTA CON RESPALDO -->
                 <img src="https://i.postimg.cc/FF2PFygB/IMG-20261010-WA0169.jpg" alt="Fondo Free Fire" class="ff-bg-image">
-                
                 <div class="ff-overlay"></div>
 
                 <div class="ff-content">
@@ -1424,16 +969,6 @@
                 });
             });
 
-            document.querySelectorAll('[data-jump]').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    const cat = e.currentTarget.getAttribute('data-jump');
-                    const targetBtn = document.querySelector(`.cat-btn[data-cat="${cat}"]`);
-                    if (targetBtn) targetBtn.click();
-                    const titleEl = document.getElementById('catalogTitle');
-                    if (titleEl) titleEl.scrollIntoView({ behavior: 'smooth' });
-                });
-            });
-
             document.querySelectorAll('.btn-add').forEach(btn => {
                 btn.addEventListener('click', (e) => {
                     const b = e.currentTarget;
@@ -1488,29 +1023,7 @@
                     box.innerHTML = '<strong>Datos SINPE Móvil:</strong><br>• Teléfono: <strong>6412 9943</strong><br>• Titular: <strong>OWEN MORALES UGALDE</strong>';
                     txBox.style.display = 'none';
                 } else if (m === 'BINANCE') {
-                    box.innerHTML = `
-                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
-                            <img src="https://cryptologos.cc/logos/binance-coin-bnb-logo.svg" alt="Binance Logo" style="width: 22px; height: 22px;">
-                            <strong style="color: var(--binance);">Binance Pay (USDT)</strong>
-                        </div>
-                        • Binance Pay ID: <strong>1020350187</strong><br>
-                        • Titular: <strong>Owen Morales ugalde</strong><br>
-                        • Moneda: <strong>USDT / Cripto</strong>
-                    `;
-                } else if (m === 'NU') {
-                    box.innerHTML = `
-                        <strong style="color: #b873ef;">Transferencia Nu México:</strong><br>
-                        • Beneficiario: <strong>Brandon Vazquez Moreno</strong><br>
-                        • CLABE: <strong style="color:var(--primary);">638180000144588877</strong><br>
-                        • Banco: <strong>Nu Mexico</strong>
-                    `;
-                } else if (m === 'OXXO') {
-                    box.innerHTML = `
-                        <strong style="color: #ff4d4d;">Depósito Spin By Oxxo:</strong><br>
-                        • Beneficiario: <strong>Brandon Vazquez Moreno</strong><br>
-                        • Cuenta: <strong style="color:var(--primary);">4217470278990896</strong><br>
-                        • Entidad: <strong>Spin By Oxxo</strong>
-                    `;
+                    box.innerHTML = '<strong>Binance Pay ID:</strong> 1020350187';
                 }
             });
 
@@ -1573,21 +1086,16 @@
             document.getElementById('sendWaBtn').addEventListener('click', () => {
                 const idInput = document.getElementById('pId');
                 const id = idInput.value.trim();
-                if (!id) { alert('Por favor ingresa tu ID o datos de contacto'); return; }
+                if (!id) { alert('Por favor ingresa tu ID'); return; }
 
                 const methodSelect = document.getElementById('pMethod');
                 const methodName = methodSelect.options[methodSelect.selectedIndex].text;
-                const txId = document.getElementById('pTxId').value.trim();
                 let totalText = document.getElementById('cTotal').innerText;
 
                 let itemsWaText = cart.map(c => `• ${c.title}`).join('%0A');
-                let msg = `🚀 *NUEVO PEDIDO - GTROWEN STORE*%0A%0A🎮 *Referencia / ID:* ${id}%0A💳 *Pago:* ${methodName}`;
-                if (txId) {
-                    msg += `%0A🔢 *Comprobante/Ref:* ${txId}`;
-                }
-                msg += `%0A%0A📦 *Productos:*%0A${itemsWaText}%0A💰 *Total:* ${totalText}%0A%0AAdjunto comprobante de pago a continuación:`;
+                let msg = `🚀 *NUEVO PEDIDO - GTROWEN STORE*%0A%0A🎮 *Referencia / ID:* ${id}%0A💳 *Pago:* ${methodName}%0A%0A📦 *Productos:*%0A${itemsWaText}%0A💰 *Total:* ${totalText}`;
 
-                    let whatsappUrl = `https://api.whatsapp.com/send?phone=50672986056&text=${msg}`;
+                let whatsappUrl = `https://api.whatsapp.com/send?phone=50672986056&text=${msg}`;
                 window.open(whatsappUrl, '_blank');
             });
         });
