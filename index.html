@@ -166,14 +166,25 @@
             z-index: 10;
         }
 
-        /* HERO BANNER */
+        /* HERO BANNER ESTILO POSTER GAMER / STREAMING */
         .hero-card {
-            background: linear-gradient(135deg, rgba(18, 23, 40, 0.9), rgba(11, 14, 25, 0.9));
-            border: 1px solid rgba(0, 240, 255, 0.25);
+            background: linear-gradient(135deg, rgba(18, 23, 40, 0.95), rgba(11, 14, 25, 0.95));
+            border: 1px solid var(--primary);
             border-radius: 20px;
-            padding: 22px;
+            padding: 24px;
             margin-bottom: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-card::after {
+            content: '';
+            position: absolute;
+            top: 0; right: 0;
+            width: 150px; height: 150px;
+            background: radial-gradient(circle, rgba(0, 240, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
         }
 
         .hero-tag {
@@ -188,21 +199,30 @@
             padding: 4px 10px;
             border-radius: 20px;
             margin-bottom: 12px;
+            text-transform: uppercase;
         }
 
         .hero-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 900;
             line-height: 1.2;
             color: #fff;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             text-transform: uppercase;
         }
 
         .hero-title span {
             color: var(--primary);
             text-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+        }
+
+        .hero-subtitle {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            color: var(--secondary);
+            margin-bottom: 14px;
+            font-weight: 700;
         }
 
         .hero-desc {
@@ -212,28 +232,34 @@
             margin-bottom: 18px;
         }
 
-        .hero-desc strong { color: var(--primary); }
-
+        /* GRID DE VENTAJAS TIPO FLYER */
         .hero-features {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 10px;
             border-top: 1px solid rgba(255, 255, 255, 0.08);
             padding-top: 15px;
         }
 
-        .feature-item { text-align: center; }
+        @media(min-width: 600px) {
+            .hero-features { grid-template-columns: repeat(4, 1fr); }
+        }
+
+        .feature-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 10px;
+            text-align: center;
+        }
 
         .feature-val {
             font-family: 'Orbitron', sans-serif;
             font-weight: 900;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: var(--primary);
             margin-bottom: 2px;
         }
-
-        .feature-val.purple { color: #a855f7; }
-        .feature-val.gold { color: var(--gold); }
 
         .feature-lbl {
             font-size: 0.65rem;
@@ -611,26 +637,31 @@
     </header>
 
     <div class="container">
-        <!-- HERO BANNER -->
+        <!-- HERO BANNER TIPO FLYER OFICIAL -->
         <div class="hero-card">
-            <div class="hero-tag">⚡ Recargas & Streaming 24/7</div>
-            <div class="hero-title">TUS JUEGOS Y <span>STREAMING</span></div>
+            <div class="hero-tag">⚡ OWEN STORE / UDC STORE</div>
+            <div class="hero-title">VENTA DE <span>FREE FIRE</span> Y STREAMING</div>
+            <div class="hero-subtitle">DIAMANTES • TOKENS • PASES • MEMBRESÍAS • CUENTAS VIP</div>
             <div class="hero-desc">
-                Catálogo oficial para <strong>Free Fire</strong>, <strong>Blood Strike</strong>, servicios <strong>Streaming Mensuales</strong> y cuentas <strong>Permanentes / VIP</strong>.
+                Tu tienda de confianza con entregas ultra rápidas por ID o correo. Todo seguro y verificado al instante.
             </div>
 
             <div class="hero-features">
-                <div class="feature-item">
-                    <div class="feature-val">100%</div>
+                <div class="feature-box">
+                    <div class="feature-val">⚡ Inmediata</div>
+                    <div class="feature-lbl">Entrega Rápida</div>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-val">🛡️ 100% Seguro</div>
                     <div class="feature-lbl">Garantizado</div>
                 </div>
-                <div class="feature-item">
-                    <div class="feature-val purple">Rápido</div>
-                    <div class="feature-lbl">Entrega Segura</div>
+                <div class="feature-box">
+                    <div class="feature-val">🤝 Confiable</div>
+                    <div class="feature-lbl">Soporte 24/7</div>
                 </div>
-                <div class="feature-item">
-                    <div class="feature-val gold">Soporte</div>
-                    <div class="feature-lbl">Personalizado</div>
+                <div class="feature-box">
+                    <div class="feature-val">🌍 Multidivisa</div>
+                    <div class="feature-lbl">6 Países</div>
                 </div>
             </div>
         </div>
