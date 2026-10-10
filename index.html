@@ -31,15 +31,42 @@
             background-color: var(--bg);
             color: var(--text);
             padding-bottom: 120px;
+            position: relative;
+            overflow-x: hidden;
             background-image: 
-                radial-gradient(circle at 10% 20%, rgba(255, 0, 85, 0.12) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(0, 240, 255, 0.1) 0%, transparent 40%);
+                radial-gradient(circle at 10% 20%, rgba(255, 0, 85, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(0, 240, 255, 0.06) 0%, transparent 40%);
             background-attachment: fixed;
+        }
+
+        /* FONDO SAMURÁI CYBERPUNK CON MÁSCARA SAKURA Y KATANA (SEMITRANSPARENTE) */
+        .samurai-watermark-bg {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.12; /* Sutil y transparente de fondo */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* Ilustración CSS / SVG del Samurái con Máscara Sakura y Katana en la cintura */
+        .samurai-svg-art {
+            width: 500px;
+            max-width: 90vw;
+            height: auto;
+            filter: drop-shadow(0 0 25px var(--secondary));
         }
 
         /* HEADER */
         header {
-            background: rgba(11, 14, 25, 0.95);
+            background: rgba(11, 14, 25, 0.92);
             backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--border);
             padding: 12px 18px;
@@ -167,9 +194,10 @@
             z-index: 10;
         }
 
-        /* ESTILO SAMURAI BANNER NEÓN */
+        /* BANNER ESTILO SAMURAI CYBERPUNK */
         .samurai-banner {
-            background: linear-gradient(135deg, rgba(11, 14, 25, 0.95), rgba(18, 23, 40, 0.95));
+            background: linear-gradient(135deg, rgba(11, 14, 25, 0.92), rgba(18, 23, 40, 0.92));
+            backdrop-filter: blur(8px);
             border: 2px solid var(--secondary);
             border-radius: 18px;
             padding: 20px 15px;
@@ -207,7 +235,7 @@
         .samurai-box-catalog {
             border: 1px solid var(--primary);
             border-radius: 12px;
-            background: rgba(0, 240, 255, 0.03);
+            background: rgba(0, 240, 255, 0.04);
             padding: 14px;
             box-shadow: 0 0 15px rgba(0, 240, 255, 0.15);
         }
@@ -235,7 +263,7 @@
         }
 
         .samurai-item-pill {
-            background: rgba(255, 255, 255, 0.04);
+            background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
             padding: 8px 10px;
             border-radius: 8px;
@@ -263,7 +291,7 @@
         }
 
         .cat-btn {
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(11, 14, 25, 0.85);
             border: 1px solid var(--border);
             color: var(--text-dim);
             padding: 10px 18px;
@@ -287,7 +315,8 @@
 
         /* TOP CLIENTES ACORDEÓN */
         .top-accordion {
-            background: var(--surface-card);
+            background: rgba(18, 23, 40, 0.9);
+            backdrop-filter: blur(8px);
             border: 1px solid rgba(255, 183, 0, 0.3);
             border-radius: 16px;
             margin-bottom: 25px;
@@ -372,6 +401,7 @@
             align-items: center;
             gap: 8px;
             margin-top: 25px;
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
         }
 
         .products-grid {
@@ -382,7 +412,8 @@
         }
 
         .product-card {
-            background: var(--surface-card);
+            background: rgba(18, 23, 40, 0.9);
+            backdrop-filter: blur(8px);
             border: 1px solid var(--border);
             border-radius: 14px;
             padding: 14px;
@@ -621,6 +652,26 @@
     </style>
 </head>
 <body>
+
+    <!-- FONDO DE MARCA DE AGUA: SAMURÁI CYBERPUNK CON MÁSCARA SAKURA Y KATANA -->
+    <div class="samurai-watermark-bg">
+        <svg class="samurai-svg-art" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Capucha / Casco Kabuto Cyberpunk -->
+            <path d="M250 60 C180 60 130 110 130 170 C130 200 145 230 160 250 L180 230 L200 280 L250 260 L300 280 L320 230 L340 250 C355 230 370 200 370 170 C370 110 320 60 250 60Z" stroke="#00f0ff" stroke-width="3" fill="#121728" opacity="0.9"/>
+            <!-- Cuernos y detalles de armadura -->
+            <path d="M160 100 L90 50 L130 130 Z" fill="#ff0055" opacity="0.8"/>
+            <path d="M340 100 L410 50 L370 130 Z" fill="#ff0055" opacity="0.8"/>
+            <!-- Máscara de Hannya / Sakura (Rostro Cyberpunk) -->
+            <path d="M210 200 Q250 220 290 200 Q310 250 290 310 Q250 340 210 310 Q190 250 210 200Z" stroke="#ff0055" stroke-width="3" fill="#03050b"/>
+            <!-- Detalles de Cerezo / Sakura en la máscara -->
+            <circle cx="235" cy="250" r="8" fill="#ff0055" opacity="0.7"/>
+            <circle cx="265" cy="250" r="8" fill="#ff0055" opacity="0.7"/>
+            <!-- Katana cruzada en la cintura / listos para atacar -->
+            <path d="M120 400 L380 340" stroke="#00f0ff" stroke-width="6" stroke-linecap="round"/>
+            <path d="M130 350 L370 410" stroke="#ff0055" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="125" cy="375" r="12" fill="#ffb700"/>
+        </svg>
+    </div>
 
     <header>
         <div class="brand-box">
