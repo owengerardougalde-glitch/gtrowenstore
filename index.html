@@ -14,6 +14,7 @@
             --secondary: #ff0055;
             --purple: #7000ff;
             --gold: #ffb700;
+            --binance: #f3ba2f;
             --text: #ffffff;
             --text-dim: #8b92b0;
             --border: rgba(255, 0, 85, 0.3);
@@ -39,7 +40,7 @@
             background-attachment: fixed;
         }
 
-        /* FONDO SAMURÁI CYBERPUNK DETALLADO CON MÁSCARA SAKURA Y KATANA (SEMITRANSPARENTE) */
+        /* FONDO SAMURÁI CYBERPUNK DETALLADO CON MÁSCARA SAKURA Y KATANA */
         .samurai-watermark-bg {
             position: fixed;
             top: 50%;
@@ -230,7 +231,6 @@
             text-transform: uppercase;
         }
 
-        /* CAJITAS CENTRALES CON ACCESOS DIRECTOS */
         .samurai-box-catalog {
             border: 1px solid var(--primary);
             border-radius: 12px;
@@ -621,10 +621,30 @@
             background: rgba(0, 240, 255, 0.05);
             border: 1px dashed var(--primary);
             border-radius: 8px;
-            padding: 10px;
+            padding: 12px;
             font-size: 0.8rem;
             margin-bottom: 15px;
-            line-height: 1.4;
+            line-height: 1.5;
+        }
+
+        .binance-qr-box {
+            background: rgba(243, 186, 47, 0.08);
+            border: 1px solid var(--binance);
+            border-radius: 10px;
+            padding: 12px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .binance-qr-box img {
+            width: 150px;
+            height: 150px;
+            background: #fff;
+            border-radius: 8px;
+            margin: 8px auto;
+            display: block;
+            object-fit: contain;
+            padding: 4px;
         }
 
         .btn-proceed {
@@ -660,25 +680,18 @@
     <!-- FONDO SAMURÁI CYBERPUNK DETALLADO CON MÁSCARA SAKURA Y KATANA -->
     <div class="samurai-watermark-bg">
         <svg class="samurai-svg-art" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- Casco Kabuto Cyberpunk Completo -->
             <path d="M300 70 C210 70 150 130 150 200 C150 235 170 270 190 290 L220 260 L250 320 L300 295 L350 320 L380 260 L410 290 C430 270 450 235 450 200 C450 130 390 70 300 70Z" stroke="#00f0ff" stroke-width="3.5" fill="#0b0e19" opacity="0.95"/>
-            <!-- Cuernos y Cresta del Samurái -->
             <path d="M190 120 L100 60 L140 160 Z" fill="#ff0055" opacity="0.9"/>
             <path d="M410 120 L500 60 L460 160 Z" fill="#ff0055" opacity="0.9"/>
             <path d="M300 40 L315 80 L285 80 Z" fill="#ffb700" opacity="0.9"/>
-            <!-- Máscara de Hannya / Sakura (Rostro Cyberpunk con Cerezo) -->
             <path d="M240 230 Q300 250 360 230 Q390 290 360 360 Q300 400 240 360 Q210 290 240 230Z" stroke="#ff0055" stroke-width="3" fill="#03050b"/>
-            <!-- Ojos LED brillantes -->
             <path d="M260 270 Q280 260 300 270 Q280 280 260 270Z" fill="#00f0ff"/>
             <path d="M340 270 Q320 260 300 270 Q320 280 340 270Z" fill="#00f0ff"/>
-            <!-- Detalles de Sakura (Cerezo) en la máscara -->
             <circle cx="275" cy="320" r="10" fill="#ff0055" opacity="0.8"/>
             <circle cx="325" cy="320" r="10" fill="#ff0055" opacity="0.8"/>
-            <!-- Katana cruzada en la cintura, agarrada para atacar -->
             <path d="M140 480 L460 400" stroke="#00f0ff" stroke-width="7" stroke-linecap="round"/>
             <path d="M150 420 L450 490" stroke="#ff0055" stroke-width="5" stroke-linecap="round"/>
             <circle cx="145" cy="450" r="14" fill="#ffb700"/>
-            <!-- Hombros de Armadura Samurai -->
             <path d="M150 350 L100 420 L180 440 Z" fill="#7000ff" opacity="0.7"/>
             <path d="M450 350 L500 420 L420 440 Z" fill="#7000ff" opacity="0.7"/>
         </svg>
@@ -694,7 +707,6 @@
         </div>
 
         <div class="header-actions">
-            <!-- SELECTOR DE LAS 6 MONEDAS -->
             <div class="currency-switch">
                 <button class="curr-btn active" id="btn-CRC" onclick="setCurrency('CRC')">CRC</button>
                 <button class="curr-btn" id="btn-USD" onclick="setCurrency('USD')">USD</button>
@@ -712,7 +724,7 @@
     </header>
 
     <div class="container">
-        <!-- BANNER CON ACCESOS DIRECTOS INTERACTIVOS -->
+        <!-- BANNER CON ACCESOS DIRECTOS -->
         <div class="samurai-banner">
             <div class="samurai-header-content">
                 <div class="samurai-store-name">GTROWEN.STORE</div>
@@ -732,7 +744,7 @@
             </div>
         </div>
 
-        <!-- BARRA DE CATEGORÍAS -->
+        <!-- CATEGORÍAS -->
         <div class="category-scroll">
             <button class="cat-btn active" onclick="filterCategory('all', this)">▦ Todo</button>
             <button class="cat-btn" onclick="filterCategory('streaming', this)">🎬 Streaming Mensual</button>
@@ -1315,10 +1327,17 @@
                     </select>
                 </div>
 
+                <!-- CAJA DE DATOS DE PAGO (DINÁMICA SINPE / BINANCE) -->
                 <div class="info-pay" id="payBox">
                     <strong>Datos SINPE Móvil:</strong><br>
                     • Teléfono: <strong>6412 9943</strong><br>
                     • Titular: <strong>OWEN MORALES UGALDE</strong>
+                </div>
+
+                <!-- CAMPO PARA ID DE TRANSACCIÓN (SE MUESTRA AL ELEGIR BINANCE) -->
+                <div class="input-box" id="txIdBox" style="display: none;">
+                    <label>ID de Transacción de Binance (TxID / Order ID)</label>
+                    <input type="text" id="pTxId" placeholder="Ej: 84920491029485">
                 </div>
 
                 <button class="btn-send" onclick="sendWA()">
@@ -1364,7 +1383,6 @@
             if (btnElement) {
                 btnElement.classList.add('active');
             } else {
-                // Sincronizar botón de la barra horizontal si se llama desde el banner
                 buttons.forEach(b => {
                     if (b.getAttribute('onclick') && b.getAttribute('onclick').includes(cat)) {
                         b.classList.add('active');
@@ -1384,7 +1402,6 @@
 
         function jumpToCategory(cat) {
             filterCategory(cat, null);
-            // Hacer scroll suave hacia el catálogo
             document.getElementById('catalogTitle').scrollIntoView({ behavior: 'smooth' });
         }
 
@@ -1439,7 +1456,7 @@
                     <div class="cart-row">
                         <div>
                             <strong>${item.title}</strong><br>
-                            <span style="color:var(--primary); font-family:'Orbitron',sans-serif; font-size:0.8rem;">${priceFormatted}</span>
+                            <span style="color:var(--primary); font-family:'Orbitron',sans-serif; font-size:0.80rem;">${priceFormatted}</span>
                         </div>
                         <button onclick="remove(${i})" style="background:none; border:none; color:var(--secondary); font-size:1.2rem; cursor:pointer; padding: 4px 8px;">&times;</button>
                     </div>
@@ -1467,7 +1484,7 @@
         function openModal() {
             document.getElementById('cartModal').classList.add('open');
             if(cart.length > 0 && document.getElementById('checkoutForm').style.display === 'block') {
-                // Mantener formulario si ya estaban en proceso de pago
+                // Mantener formulario
             } else {
                 document.getElementById('cartSummary').style.display = cart.length > 0 ? 'block' : 'none';
                 document.getElementById('checkoutForm').style.display = 'none';
@@ -1481,10 +1498,23 @@
         function changePay() {
             const m = document.getElementById('pMethod').value;
             const box = document.getElementById('payBox');
+            const txBox = document.getElementById('txIdBox');
+
             if(m === 'SINPE') {
                 box.innerHTML = '<strong>Datos SINPE Móvil:</strong><br>• Teléfono: <strong>6412 9943</strong><br>• Titular: <strong>OWEN MORALES UGALDE</strong>';
+                txBox.style.display = 'none';
             } else {
-                box.innerHTML = '<strong>Binance Pay:</strong><br>• Solicitá ID de transferencia por WhatsApp o usa tu QR fijo.<br>• Moneda: USDT';
+                box.innerHTML = `
+                    <div class="binance-qr-box">
+                        <strong style="color:var(--binance);">🌐 BINANCE PAY (USDT)</strong>
+                        <img src="69061.png" alt="QR Binance Pay">
+                        <span style="font-size:0.75rem; color:var(--text-dim);">Escanea con la app de Binance</span>
+                    </div>
+                    • Binance Pay ID: <strong>1020350187</strong><br>
+                    • Titular: <strong>Owen Morales ugalde</strong><br>
+                    • Moneda aceptada: <strong>USDT / Cripto</strong>
+                `;
+                txBox.style.display = 'block';
             }
         }
 
@@ -1492,11 +1522,22 @@
             const id = document.getElementById('pId').value.trim();
             if(!id) { alert('Por favor ingresa tu ID o datos de contacto'); return; }
 
-            const method = document.getElementById('pMethod').options[document.getElementById('pMethod').selectedIndex].text;
+            const method = document.getElementById('pMethod').value;
+            let txId = '';
+            if(method === 'BINANCE') {
+                txId = document.getElementById('pTxId').value.trim();
+                if(!txId) { alert('Por favor ingresa el ID de transacción (TxID) de Binance'); return; }
+            }
+
+            const methodName = document.getElementById('pMethod').options[document.getElementById('pMethod').selectedIndex].text;
             let items = cart.map(c => `• ${c.title}`).join('%0A');
             let totalText = document.getElementById('cTotal').innerText;
 
-            let msg = `🚀 *NUEVO PEDIDO - GTROWEN STORE*%0A%0A🎮 *Referencia / ID:* ${id}%0A💳 *Pago:* ${method}%0A%0A📦 *Productos:*%0A${items}%0A💰 *Total:* ${totalText}%0A%0AAdjunto comprobante de pago a continuación:`;
+            let msg = `🚀 *NUEVO PEDIDO - GTROWEN STORE*%0A%0A🎮 *Referencia / ID:* ${id}%0A💳 *Pago:* ${methodName}`;
+            if(method === 'BINANCE') {
+                msg += `%0A🔢 *TxID Binance:* ${txId}`;
+            }
+            msg += `%0A%0A📦 *Productos:*%0A${items}%0A💰 *Total:* ${totalText}%0A%0AAdjunto comprobante de pago a continuación:`;
 
             let whatsappUrl = `https://api.whatsapp.com/send?phone=50672986056&text=${msg}`;
             window.open(whatsappUrl, '_blank');
