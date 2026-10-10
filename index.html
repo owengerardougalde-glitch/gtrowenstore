@@ -106,6 +106,8 @@
             padding: 2px;
             display: flex;
             gap: 2px;
+            overflow-x: auto;
+            max-width: 220px;
         }
 
         .curr-btn {
@@ -113,11 +115,12 @@
             border: none;
             color: var(--text-dim);
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             font-weight: 700;
-            padding: 4px 8px;
+            padding: 4px 6px;
             border-radius: 16px;
             cursor: pointer;
+            white-space: nowrap;
         }
 
         .curr-btn.active {
@@ -139,6 +142,7 @@
             font-family: 'Orbitron', sans-serif;
             font-size: 0.8rem;
             font-weight: 700;
+            white-space: nowrap;
         }
 
         .header-cart-badge {
@@ -563,10 +567,14 @@
         </div>
 
         <div class="header-actions">
+            <!-- SELECTOR DE LAS 6 MONEDAS -->
             <div class="currency-switch">
-                <button class="curr-btn" id="btn-MXN" onclick="setCurrency('MXN')">MXN</button>
-                <button class="curr-btn" id="btn-USD" onclick="setCurrency('USD')">USD</button>
                 <button class="curr-btn active" id="btn-CRC" onclick="setCurrency('CRC')">CRC</button>
+                <button class="curr-btn" id="btn-USD" onclick="setCurrency('USD')">USD</button>
+                <button class="curr-btn" id="btn-MXN" onclick="setCurrency('MXN')">MXN</button>
+                <button class="curr-btn" id="btn-COP" onclick="setCurrency('COP')">COP</button>
+                <button class="curr-btn" id="btn-ARS" onclick="setCurrency('ARS')">ARS</button>
+                <button class="curr-btn" id="btn-PEN" onclick="setCurrency('PEN')">PEN</button>
             </div>
 
             <div class="header-cart" onclick="openModal()">
@@ -635,12 +643,12 @@
             </div>
         </div>
 
-        <!-- PRODUCTOS REALES -->
+        <!-- PRODUCTOS CON LOS PRECIOS EN LAS 6 MONEDAS -->
         <div class="section-h2" id="catalogTitle">🔥 CATALOGO DE RECARGAS</div>
         <div class="products-grid" id="productsGrid">
 
             <!-- FF LIMITADOS -->
-            <div class="product-card" data-cat="ff-lim" data-crc="1200" data-mxn="35" data-usd="2.5">
+            <div class="product-card" data-cat="ff-lim" data-crc="1200" data-usd="2.5" data-mxn="35" data-cop="10500" data-ars="3200" data-pen="9.00">
                 <div>
                     <div class="product-badge">Free Fire (Limitado)</div>
                     <div class="product-name">341 Diamantes</div>
@@ -651,7 +659,7 @@
                 </div>
             </div>
 
-            <div class="product-card" data-cat="ff-lim" data-crc="2300" data-mxn="60" data-usd="4.37">
+            <div class="product-card" data-cat="ff-lim" data-crc="2300" data-usd="4.37" data-mxn="60" data-cop="18000" data-ars="5500" data-pen="16.00">
                 <div>
                     <div class="product-badge">Free Fire (Limitado)</div>
                     <div class="product-name">572 Diamantes</div>
@@ -662,7 +670,7 @@
                 </div>
             </div>
 
-            <div class="product-card" data-cat="ff-lim" data-crc="4300" data-mxn="130" data-usd="9">
+            <div class="product-card" data-cat="ff-lim" data-crc="4300" data-usd="9" data-mxn="130" data-cop="37500" data-ars="11400" data-pen="33.00">
                 <div>
                     <div class="product-badge">Free Fire (Limitado)</div>
                     <div class="product-name">1,160 Diamantes</div>
@@ -673,7 +681,7 @@
                 </div>
             </div>
 
-            <div class="product-card" data-cat="ff-lim" data-crc="8200" data-mxn="340" data-usd="13">
+            <div class="product-card" data-cat="ff-lim" data-crc="8200" data-usd="13" data-mxn="340" data-cop="54000" data-ars="16500" data-pen="48.00">
                 <div>
                     <div class="product-badge">Free Fire (Limitado)</div>
                     <div class="product-name">2,398 Diamantes</div>
@@ -684,7 +692,7 @@
                 </div>
             </div>
 
-            <div class="product-card" data-cat="ff-lim" data-crc="16100" data-mxn="490" data-usd="28">
+            <div class="product-card" data-cat="ff-lim" data-crc="16100" data-usd="28" data-mxn="490" data-cop="116000" data-ars="35500" data-pen="102.00">
                 <div>
                     <div class="product-badge">Free Fire (Limitado)</div>
                     <div class="product-name">6,160 Diamantes</div>
@@ -696,7 +704,7 @@
             </div>
 
             <!-- FF ILIMITADOS -->
-            <div class="product-card" data-cat="ff-ilim" data-crc="2400" data-mxn="60" data-usd="5">
+            <div class="product-card" data-cat="ff-ilim" data-crc="2400" data-usd="5" data-mxn="60" data-cop="21000" data-ars="6300" data-pen="18.00">
                 <div>
                     <div class="product-badge">Free Fire (Ilimitado)</div>
                     <div class="product-name">572 Diamantes</div>
@@ -707,7 +715,7 @@
                 </div>
             </div>
 
-            <div class="product-card" data-cat="ff-ilim" data-crc="4500" data-mxn="170" data-usd="9">
+            <div class="product-card" data-cat="ff-ilim" data-crc="4500" data-usd="9" data-mxn="170" data-cop="37500" data-ars="11400" data-pen="33.00">
                 <div>
                     <div class="product-badge">Free Fire (Ilimitado)</div>
                     <div class="product-name">1,160 Diamantes</div>
@@ -718,7 +726,7 @@
                 </div>
             </div>
 
-            <div class="product-card" data-cat="ff-ilim" data-crc="8800" data-mxn="275" data-usd="16">
+            <div class="product-card" data-cat="ff-ilim" data-crc="8800" data-usd="16" data-mxn="275" data-cop="66500" data-ars="20300" data-pen="58.00">
                 <div>
                     <div class="product-badge">Free Fire (Ilimitado)</div>
                     <div class="product-name">2,398 Diamantes</div>
@@ -729,7 +737,7 @@
                 </div>
             </div>
 
-            <div class="product-card" data-cat="ff-ilim" data-crc="18100" data-mxn="650" data-usd="38">
+            <div class="product-card" data-cat="ff-ilim" data-crc="18100" data-usd="38" data-mxn="650" data-cop="158000" data-ars="48000" data-pen="139.00">
                 <div>
                     <div class="product-badge">Free Fire (Ilimitado)</div>
                     <div class="product-name">6,160 Diamantes</div>
@@ -741,7 +749,7 @@
             </div>
 
             <!-- PASES & MEMBRESÍAS FF -->
-            <div class="product-card" data-cat="ff-passes" data-crc="1200" data-mxn="35" data-usd="2">
+            <div class="product-card" data-cat="ff-passes" data-crc="1200" data-usd="2" data-mxn="35" data-cop="8300" data-ars="2500" data-pen="7.30">
                 <div>
                     <div class="product-badge">Membresía FF</div>
                     <div class="product-name">Tarjeta Semanal</div>
@@ -752,7 +760,7 @@
                 </div>
             </div>
 
-            <div class="product-card" data-cat="ff-passes" data-crc="1500" data-mxn="55" data-usd="3">
+            <div class="product-card" data-cat="ff-passes" data-crc="1500" data-usd="3" data-mxn="55" data-cop="12500" data-ars="3800" data-pen="11.00">
                 <div>
                     <div class="product-badge">Pase Especial FF</div>
                     <div class="product-name">Pase Booyah Premium</div>
@@ -763,7 +771,7 @@
                 </div>
             </div>
 
-            <div class="product-card" data-cat="ff-passes" data-crc="4300" data-mxn="140" data-usd="8">
+            <div class="product-card" data-cat="ff-passes" data-crc="4300" data-usd="8" data-mxn="140" data-cop="33500" data-ars="10200" data-pen="29.00">
                 <div>
                     <div class="product-badge">Membresía FF</div>
                     <div class="product-name">Tarjeta Mensual</div>
@@ -774,7 +782,7 @@
                 </div>
             </div>
 
-            <div class="product-card" data-cat="ff-passes" data-crc="300" data-mxn="10" data-usd="0.40">
+            <div class="product-card" data-cat="ff-passes" data-crc="300" data-usd="0.40" data-mxn="10" data-cop="1700" data-ars="500" data-pen="1.50">
                 <div>
                     <div class="product-badge">Membresía FF</div>
                     <div class="product-name">Basic Card</div>
@@ -785,7 +793,7 @@
                 </div>
             </div>
 
-            <div class="product-card" data-cat="ff-passes" data-crc="1000" data-mxn="35" data-usd="1.8">
+            <div class="product-card" data-cat="ff-passes" data-crc="1000" data-usd="1.8" data-mxn="35" data-cop="7500" data-ars="2300" data-pen="6.60">
                 <div>
                     <div class="product-badge">Evolutivas FF</div>
                     <div class="product-name">35 Fragmentos Universales</div>
@@ -796,8 +804,8 @@
                 </div>
             </div>
 
-            <!-- NUEVAS CAJAS EVOLUTIVAS (10 CAJAS) -->
-            <div class="product-card" data-cat="ff-passes" data-crc="1200" data-mxn="44" data-usd="2.40">
+            <!-- CAJAS EVOLUTIVAS (10 CAJAS) -->
+            <div class="product-card" data-cat="ff-passes" data-crc="1200" data-usd="2.40" data-mxn="44" data-cop="10000" data-ars="3050" data-pen="8.90">
                 <div>
                     <div class="product-badge">Cajas Evolutivas FF</div>
                     <div class="product-name">10 Cajas de Tokens / Fragmentos Evolutivos</div>
@@ -808,7 +816,7 @@
                 </div>
             </div>
 
-            <div class="product-card" data-cat="ff-passes" data-crc="1200" data-mxn="42" data-usd="2.2">
+            <div class="product-card" data-cat="ff-passes" data-crc="1200" data-usd="2.2" data-mxn="42" data-cop="9200" data-ars="2800" data-pen="8.00">
                 <div>
                     <div class="product-badge">Hiperlibro FF</div>
                     <div class="product-name">35 Frag. Hiperlibro Revolución</div>
@@ -819,7 +827,7 @@
                 </div>
             </div>
 
-            <div class="product-card" data-cat="ff-passes" data-crc="1200" data-mxn="42" data-usd="2.2">
+            <div class="product-card" data-cat="ff-passes" data-crc="1200" data-usd="2.2" data-mxn="42" data-cop="9200" data-ars="2800" data-pen="8.00">
                 <div>
                     <div class="product-badge">Hiperlibro FF</div>
                     <div class="product-name">35 Frag. Hiperlibro Galaxia</div>
@@ -831,7 +839,7 @@
             </div>
 
             <!-- BLOOD STRIKE ORO -->
-            <div class="product-card" data-cat="bs" data-crc="1600" data-mxn="54" data-usd="3">
+            <div class="product-card" data-cat="bs" data-crc="1600" data-usd="3" data-mxn="54" data-cop="12500" data-ars="3800" data-pen="11.00">
                 <div>
                     <div class="product-badge">Blood Strike</div>
                     <div class="product-name">341 de Oro</div>
@@ -842,7 +850,7 @@
                 </div>
             </div>
 
-            <div class="product-card" data-cat="bs" data-crc="2700" data-mxn="90" data-usd="5">
+            <div class="product-card" data-cat="bs" data-crc="2700" data-usd="5" data-mxn="90" data-cop="21000" data-ars="6300" data-pen="18.00">
                 <div>
                     <div class="product-badge">Blood Strike</div>
                     <div class="product-name">572 de Oro</div>
@@ -853,7 +861,7 @@
                 </div>
             </div>
 
-            <div class="product-card" data-cat="bs" data-crc="4800" data-mxn="162" data-usd="9">
+            <div class="product-card" data-cat="bs" data-crc="4800" data-usd="9" data-mxn="162" data-cop="37500" data-ars="11400" data-pen="33.00">
                 <div>
                     <div class="product-badge">Blood Strike</div>
                     <div class="product-name">1,160 de Oro</div>
@@ -864,7 +872,7 @@
                 </div>
             </div>
 
-            <div class="product-card" data-cat="bs" data-crc="9900" data-mxn="333" data-usd="18.5">
+            <div class="product-card" data-cat="bs" data-crc="9900" data-usd="18.5" data-mxn="333" data-cop="77000" data-ars="23500" data-pen="68.00">
                 <div>
                     <div class="product-badge">Blood Strike</div>
                     <div class="product-name">2,398 de Oro</div>
@@ -875,7 +883,7 @@
                 </div>
             </div>
 
-            <div class="product-card" data-cat="bs" data-crc="23000" data-mxn="774" data-usd="43">
+            <div class="product-card" data-cat="bs" data-crc="23000" data-usd="43" data-mxn="774" data-cop="179000" data-ars="54500" data-pen="158.00">
                 <div>
                     <div class="product-badge">Blood Strike</div>
                     <div class="product-name">6,160 de Oro</div>
@@ -951,10 +959,16 @@
                 const tag = card.querySelector('.price-tag');
                 if (curr === 'CRC') {
                     tag.innerText = '₡' + parseInt(card.getAttribute('data-crc')).toLocaleString();
-                } else if (curr === 'MXN') {
-                    tag.innerText = '$' + card.getAttribute('data-mxn') + ' MXN';
                 } else if (curr === 'USD') {
                     tag.innerText = '$' + card.getAttribute('data-usd') + ' USD';
+                } else if (curr === 'MXN') {
+                    tag.innerText = '$' + card.getAttribute('data-mxn') + ' MXN';
+                } else if (curr === 'COP') {
+                    tag.innerText = '$' + parseInt(card.getAttribute('data-cop')).toLocaleString() + ' COP';
+                } else if (curr === 'ARS') {
+                    tag.innerText = '$' + parseInt(card.getAttribute('data-ars')).toLocaleString() + ' ARS';
+                } else if (curr === 'PEN') {
+                    tag.innerText = 'S/ ' + card.getAttribute('data-pen') + ' PEN';
                 }
             });
             render();
