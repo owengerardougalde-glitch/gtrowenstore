@@ -416,7 +416,7 @@
             text-transform: uppercase;
         }
 
-        /* CARRITO FLOTANTE ABAJO */
+        /* BOTONES FLOTANTES */
         .floating-cart-btn {
             position: fixed;
             bottom: 20px;
@@ -435,6 +435,26 @@
             gap: 10px;
             box-shadow: 0 0 20px rgba(255, 0, 127, 0.5);
             z-index: 100;
+        }
+
+        .floating-whatsapp-btn {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: #25d366;
+            color: #000;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 0 20px rgba(37, 211, 102, 0.5);
+            z-index: 100;
+            text-decoration: none;
         }
 
         .floating-cart-badge {
@@ -897,7 +917,11 @@
         </div>
     </div>
 
-    <!-- BOTÓN FLOTANTE CARRITO -->
+    <!-- BOTONES FLOTANTES -->
+    <a href="https://api.whatsapp.com/send?phone=50672986056&text=Hola,%20tengo%20una%20consulta%20sobre%20la%20tienda%20gtrowen.store" class="floating-whatsapp-btn" target="_blank" title="Escríbenos por WhatsApp">
+        💬
+    </a>
+
     <button class="floating-cart-btn" onclick="openModal()">
         🛒 MI CARRITO
         <span class="floating-cart-badge cart-count">0</span>
@@ -1052,7 +1076,7 @@
             if(m === 'SINPE') {
                 box.innerHTML = '<strong>Datos SINPE Móvil:</strong><br>• Teléfono: <strong>6412 9943</strong><br>• Titular: <strong>OWEN MORALES UGALDE</strong>';
             } else {
-                box.innerHTML = '<strong>Binance Pay:</strong><br>• Solicitá ID de transferencia por WhatsApp<br>• Moneda: USDT';
+                box.innerHTML = '<strong>Binance Pay:</strong><br>• Solicitá ID de transferencia por WhatsApp o usa tu QR fijo.<br>• Moneda: USDT';
             }
         }
 
