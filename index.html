@@ -1282,7 +1282,6 @@
         function add(title, crc, usd, mxn, cop, ars, pen) {
             cart.push({ title, crc, usd, mxn, cop, ars, pen });
             renderCart();
-            // Ya no se abre el modal automáticamente, solo actualiza la burbuja del carrito
         }
 
         function remove(idx) {
@@ -1305,7 +1304,6 @@
                 return;
             }
 
-            // Si hay productos pero estaban en vista de pago, reseteamos a vista de carrito si se desea
             summary.style.display = 'block';
             list.innerHTML = '';
 
@@ -1355,9 +1353,8 @@
 
         function openModal() {
             document.getElementById('cartModal').classList.add('open');
-            // Si el carrito tiene cosas, mostramos el resumen inicial y ocultamos el form de pago hasta que le den a proceder
             if(cart.length > 0 && document.getElementById('checkoutForm').style.display === 'block') {
-                // Mantener estado si ya iban a pagar
+                // Mantener formulario si ya estaban en proceso de pago
             } else {
                 document.getElementById('cartSummary').style.display = cart.length > 0 ? 'block' : 'none';
                 document.getElementById('checkoutForm').style.display = 'none';
