@@ -1,708 +1,120 @@
 <!DOCTYPE html>
+
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UDC Store | Tienda Gamer & Servicios Digitales</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-color: #0d0e15;
-            --card-bg: rgba(22, 27, 46, 0.8);
-            --accent-cyan: #00f0ff;
-            --accent-pink: #ff007f;
-            --accent-purple: #7000ff;
-            --text-main: #ffffff;
-            --text-muted: #a0a5c0;
-            --gold: #ffd700;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Rajdhani', sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            background-image: 
-                radial-gradient(circle at 15% 15%, rgba(0, 240, 255, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 85% 85%, rgba(255, 0, 127, 0.08) 0%, transparent 40%);
-            min-height: 100vh;
-            padding-bottom: 110px;
-        }
-
-        header {
-            background: rgba(13, 14, 21, 0.9);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(0, 240, 255, 0.2);
-            padding: 15px 20px;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo-text {
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 900;
-            font-size: 1.4rem;
-            color: var(--accent-cyan);
-            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
-            letter-spacing: 1px;
-        }
-
-        .logo-text span {
-            color: var(--accent-pink);
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .hero-banner {
-            background: linear-gradient(135deg, rgba(112, 0, 255, 0.3), rgba(255, 0, 127, 0.2));
-            border: 1px solid rgba(0, 240, 255, 0.3);
-            border-radius: 12px;
-            padding: 25px;
-            text-align: center;
-            margin-bottom: 30px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-        }
-
-        .hero-banner h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
-
-        .hero-banner p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            margin-bottom: 15px;
-        }
-
-        /* SECCIÓN TOP RECARGADORES (DESPLEGABLE / ACORDEÓN) */
-        .top-buyers-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 215, 0, 0.4);
-            border-radius: 12px;
-            margin-bottom: 35px;
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.15);
-            overflow: hidden;
-        }
-
-        .accordion-header {
-            padding: 18px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            user-select: none;
-            background: rgba(255, 215, 0, 0.03);
-            transition: background 0.3s ease;
-        }
-
-        .accordion-header:hover {
-            background: rgba(255, 215, 0, 0.08);
-        }
-
-        .accordion-arrow {
-            font-size: 1.2rem;
-            color: var(--gold);
-            transition: transform 0.3s ease;
-        }
-
-        .top-buyers-card.open .accordion-arrow {
-            transform: rotate(180deg);
-        }
-
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease-out, padding 0.3s ease;
-            padding: 0 20px;
-        }
-
-        .top-buyers-card.open .accordion-content {
-            max-height: 500px;
-            padding: 0 20px 20px 20px;
-            border-top: 1px solid rgba(255, 215, 0, 0.15);
-        }
-
-        .top-buyers-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .top-buyer-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 15px;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px;
-            border-left: 4px solid var(--accent-cyan);
-            font-size: 1.05rem;
-        }
-
-        .top-buyer-item.rank-1 {
-            border-left-color: var(--gold);
-            background: rgba(255, 215, 0, 0.08);
-            font-weight: 700;
-        }
-
-        .top-buyer-item.rank-2 {
-            border-left-color: #c0c0c0;
-            background: rgba(192, 192, 192, 0.05);
-        }
-
-        .top-buyer-item.rank-3 {
-            border-left-color: #cd7f32;
-            background: rgba(205, 127, 50, 0.05);
-        }
-
-        .buyer-amount {
-            font-family: 'Orbitron', sans-serif;
-            color: var(--accent-cyan);
-            font-weight: 700;
-        }
-
-        .section-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.3rem;
-            color: var(--accent-cyan);
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .grid-products {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-
-        .product-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
-            padding: 18px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: all 0.3s ease;
-        }
-
-        .product-card:hover {
-            border-color: var(--accent-cyan);
-            transform: translateY(-4px);
-            box-shadow: 0 5px 15px rgba(0, 240, 255, 0.2);
-        }
-
-        .product-tag {
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: var(--accent-pink);
-            text-transform: uppercase;
-            margin-bottom: 5px;
-            letter-spacing: 1px;
-        }
-
-        .product-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .product-price {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.3rem;
-            color: var(--accent-cyan);
-            margin-bottom: 15px;
-        }
-
-        .add-cart-btn {
-            background: transparent;
-            border: 1px solid var(--accent-cyan);
-            color: var(--accent-cyan);
-            padding: 10px;
-            border-radius: 8px;
-            font-weight: 700;
-            cursor: pointer;
-            width: 100%;
-            text-transform: uppercase;
-            transition: all 0.2s ease;
-        }
-
-        .add-cart-btn:hover {
-            background: var(--accent-cyan);
-            color: #000;
-        }
-
-        /* BOTÓN FLOTANTE FIJO (ABAJO DERECHA) */
-        .floating-cart-btn {
-            position: fixed;
-            bottom: 25px;
-            right: 20px;
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
-            color: #ffffff;
-            border: 2px solid var(--accent-cyan);
-            padding: 14px 22px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 900;
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            box-shadow: 0 0 25px rgba(0, 240, 255, 0.8);
-            z-index: 999;
-            animation: pulse-glow 2s infinite alternate;
-        }
-
-        @keyframes pulse-glow {
-            0% { box-shadow: 0 0 15px rgba(0, 240, 255, 0.6); }
-            100% { box-shadow: 0 0 30px rgba(255, 0, 127, 0.9); }
-        }
-
-        .cart-badge {
-            background: var(--accent-pink);
-            color: #fff;
-            font-size: 0.85rem;
-            padding: 3px 8px;
-            border-radius: 20px;
-            font-weight: 700;
-        }
-
-        /* MODAL CHECKOUT */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(8px);
-            z-index: 1000;
-            display: none;
-            justify-content: center;
-            align-items: center;
-            padding: 15px;
-        }
-
-        .modal-overlay.active {
-            display: flex;
-        }
-
-        .modal-content {
-            background: #121522;
-            border: 1px solid var(--accent-cyan);
-            border-radius: 16px;
-            width: 100%;
-            max-width: 500px;
-            max-height: 90vh;
-            overflow-y: auto;
-            padding: 20px;
-            box-shadow: 0 0 30px rgba(0, 240, 255, 0.3);
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding-bottom: 12px;
-            margin-bottom: 15px;
-        }
-
-        .modal-header h2 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.2rem;
-            color: var(--accent-cyan);
-        }
-
-        .close-modal-btn {
-            background: none;
-            border: none;
-            color: var(--text-muted);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .cart-total {
-            display: flex;
-            justify-content: space-between;
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin: 20px 0;
-            font-family: 'Orbitron', sans-serif;
-            color: var(--accent-cyan);
-        }
-
-        .input-group {
-            margin-bottom: 15px;
-        }
-
-        .input-group label {
-            display: block;
-            margin-bottom: 5px;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        .input-group input, .input-group select {
-            width: 100%;
-            padding: 12px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 8px;
-            color: #fff;
-            font-size: 1rem;
-            outline: none;
-        }
-
-        .payment-box {
-            background: rgba(0, 240, 255, 0.05);
-            border: 1px dashed var(--accent-cyan);
-            border-radius: 8px;
-            padding: 12px;
-            margin-bottom: 15px;
-            font-size: 0.95rem;
-            line-height: 1.4;
-        }
-
-        .payment-box strong {
-            color: var(--accent-cyan);
-        }
-
-        .btn-whatsapp {
-            background: #25d366;
-            color: #000;
-            border: none;
-            width: 100%;
-            padding: 14px;
-            border-radius: 8px;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 900;
-            font-size: 1rem;
-            cursor: pointer;
-            text-transform: uppercase;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .empty-cart-msg {
-            text-align: center;
-            color: var(--text-muted);
-            padding: 20px 0;
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <div class="logo-text">UDC <span>STORE</span></div>
-    </header>
-
-    <div class="container">
-        <div class="hero-banner">
-            <h1>RECARGAS INSTANTÁNEAS Y PASES GAMER</h1>
-            <p>Free Fire, Blood Strike y Servicios Digitales. Paga de forma segura y recibe al instante.</p>
-        </div>
-
-        <!-- SECCIÓN TOP CLIENTES VIP (DESPLEGABLE CON FLECHA) -->
-        <div class="top-buyers-card" id="topBuyersCard">
-            <div class="accordion-header" onclick="toggleTopBuyers()">
-                <div>
-                    <div class="section-title" style="color: var(--gold); margin-bottom:0;">🏆 TOP CLIENTES DEL MES</div>
-                    <p style="color: var(--text-muted); font-size: 0.85rem; margin-top:2px;">Toca para ver los mejores recargadores</p>
-                </div>
-                <div class="accordion-arrow">▼</div>
-            </div>
-            
-            <div class="accordion-content">
-                <div class="top-buyers-list">
-                    <div class="top-buyer-item rank-1">
-                        <div class="buyer-name">🥇 <strong>GTR_Owen</strong> <span style="font-size:0.75rem; color:var(--gold); border:1px solid var(--gold); padding:2px 6px; border-radius:4px;">VIP MAX</span></div>
-                        <div class="buyer-amount">₡45,000</div>
-                    </div>
-                    <div class="top-buyer-item rank-2">
-                        <div class="buyer-name">🥈 <strong>Carlos_FF</strong></div>
-                        <div class="buyer-amount">₡28,500</div>
-                    </div>
-                    <div class="top-buyer-item rank-3">
-                        <div class="buyer-name">🥉 <strong>Kevin_BS</strong></div>
-                        <div class="buyer-amount">₡18,000</div>
-                    </div>
-                    <div class="top-buyer-item">
-                        <div class="buyer-name">4. 👤 <strong>Sofia_CR</strong></div>
-                        <div class="buyer-amount">₡12,500</div>
-                    </div>
-                    <div class="top-buyer-item">
-                        <div class="buyer-name">5. 👤 <strong>Andrey_07</strong></div>
-                        <div class="buyer-amount">₡9,200</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="section-title">🔥 Free Fire (Diamantes ID)</div>
-        <div class="grid-products">
-            <div class="product-card">
-                <div>
-                    <div class="product-tag">Free Fire</div>
-                    <div class="product-title">100 + 10 Diamantes</div>
-                </div>
-                <div>
-                    <div class="product-price">₡800 CRC</div>
-                    <button class="add-cart-btn" onclick="addToCart('100+10 Diamantes FF', 800)">Agregar</button>
-                </div>
-            </div>
-            <div class="product-card">
-                <div>
-                    <div class="product-tag">Free Fire</div>
-                    <div class="product-title">310 + 31 Diamantes</div>
-                </div>
-                <div>
-                    <div class="product-price">₡2,300 CRC</div>
-                    <button class="add-cart-btn" onclick="addToCart('310+31 Diamantes FF', 2300)">Agregar</button>
-                </div>
-            </div>
-            <div class="product-card">
-                <div>
-                    <div class="product-tag">Free Fire</div>
-                    <div class="product-title">520 + 52 Diamantes</div>
-                </div>
-                <div>
-                    <div class="product-price">₡3,800 CRC</div>
-                    <button class="add-cart-btn" onclick="addToCart('520+52 Diamantes FF', 3800)">Agregar</button>
-                </div>
-            </div>
-            <div class="product-card">
-                <div>
-                    <div class="product-tag">Free Fire</div>
-                    <div class="product-title">1060 + 106 Diamantes</div>
-                </div>
-                <div>
-                    <div class="product-price">₡7,200 CRC</div>
-                    <button class="add-cart-btn" onclick="addToCart('1060+106 Diamantes FF', 7200)">Agregar</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="section-title">⚡ Blood Strike & Ofertas</div>
-        <div class="grid-products">
-            <div class="product-card">
-                <div>
-                    <div class="product-tag">Blood Strike</div>
-                    <div class="product-title">100 Oro / Pass</div>
-                </div>
-                <div>
-                    <div class="product-price">₡900 CRC</div>
-                    <button class="add-cart-btn" onclick="addToCart('100 Oro Blood Strike', 900)">Agregar</button>
-                </div>
-            </div>
-            <div class="product-card">
-                <div>
-                    <div class="product-tag">Pase Especial</div>
-                    <div class="product-title">Pase Nivel Up FF</div>
-                </div>
-                <div>
-                    <div class="product-price">₡3,500 CRC</div>
-                    <button class="add-cart-btn" onclick="addToCart('Pase Nivel Up FF', 3500)">Agregar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- BOTÓN FLOTANTE FIJO EN LA ESQUINA INFERIOR DERECHA -->
-    <button class="floating-cart-btn" onclick="toggleCartModal()">
-        🛒 MI CARRITO <span class="cart-badge cartCount">0</span>
-    </button>
-
-    <!-- MODAL CHECKOUT -->
-    <div class="modal-overlay" id="cartModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>CARRITO DE COMPRA</h2>
-                <button class="close-modal-btn" onclick="toggleCartModal()">&times;</button>
-            </div>
-
-            <div id="cartItemsContainer">
-                <div class="empty-cart-msg">Tu carrito está vacío</div>
-            </div>
-
-            <div id="checkoutForm" style="display: none;">
-                <div class="cart-total">
-                    <span>TOTAL:</span>
-                    <span id="cartTotal">₡0 CRC</span>
-                </div>
-
-                <div class="input-group">
-                    <label>ID de Jugador / Nombre de Cuenta</label>
-                    <input type="text" id="playerIdInput" placeholder="Ej: 1234567890 (GTR_Owen)">
-                </div>
-
-                <div class="input-group">
-                    <label>País / Método de Pago</label>
-                    <select id="paymentMethod" onchange="updatePaymentDetails()">
-                        <option value="SINPE_CR">🇨🇷 Costa Rica - SINPE Móvil</option>
-                        <option value="BINANCE">🌐 Binance Pay (USDT)</option>
-                        <option value="OTHER">🌍 Otro País (Consulta directa)</option>
-                    </select>
-                </div>
-
-                <div class="payment-box" id="paymentDetails">
-                    <strong>Datos para SINPE Móvil:</strong><br>
-                    • Teléfono: <strong>6412 9943</strong><br>
-                    • Titular: <strong>OWEN MORALES UGALDE</strong><br>
-                    • Banco: <strong>BCR</strong>
-                </div>
-
-                <button class="btn-whatsapp" onclick="sendOrderToWhatsApp()">
-                    📲 ENVIAR PEDIDO POR WHATSAPP
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        let cart = [];
-
-        function toggleTopBuyers() {
-            const card = document.getElementById('topBuyersCard');
-            card.classList.toggle('open');
-        }
-
-        function addToCart(title, price) {
-            cart.push({ title, price });
-            updateCartUI();
-            toggleCartModal(true);
-        }
-
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            updateCartUI();
-        }
-
-        function updateCartUI() {
-            const countElements = document.querySelectorAll('.cartCount');
-            const container = document.getElementById('cartItemsContainer');
-            const form = document.getElementById('checkoutForm');
-            const totalEl = document.getElementById('cartTotal');
-
-            countElements.forEach(el => el.innerText = cart.length);
-
-            if (cart.length === 0) {
-                container.innerHTML = '<div class="empty-cart-msg">Tu carrito está vacío</div>';
-                form.style.display = 'none';
-                return;
-            }
-
-            form.style.display = 'block';
-            container.innerHTML = '';
-            let total = 0;
-
-            cart.forEach((item, index) => {
-                total += item.price;
-                const itemDiv = document.createElement('div');
-                itemDiv.className = 'cart-item';
-                itemDiv.innerHTML = `
-                    <div>
-                        <strong>${item.title}</strong><br>
-                        <span style="color:var(--text-muted);">₡${item.price.toLocaleString()} CRC</span>
-                    </div>
-                    <button onclick="removeFromCart(${index})" style="background:none; border:none; color:var(--accent-pink); cursor:pointer; font-size:1.2rem;">&times;</button>
-                `;
-                container.appendChild(itemDiv);
-            });
-
-            totalEl.innerText = `₡${total.toLocaleString()} CRC`;
-        }
-
-        function toggleCartModal(forceOpen = false) {
-            const modal = document.getElementById('cartModal');
-            if (forceOpen) {
-                modal.classList.add('active');
-            } else {
-                modal.classList.toggle('active');
-            }
-        }
-
-        function updatePaymentDetails() {
-            const method = document.getElementById('paymentMethod').value;
-            const detailsBox = document.getElementById('paymentDetails');
-
-            if (method === 'SINPE_CR') {
-                detailsBox.innerHTML = `
-                    <strong>Datos para SINPE Móvil:</strong><br>
-                    • Teléfono: <strong>6412 9943</strong><br>
-                    • Titular: <strong>OWEN MORALES UGALDE</strong><br>
-                    • Banco: <strong>BCR</strong>
-                `;
-            } else if (method === 'BINANCE') {
-                detailsBox.innerHTML = `
-                    <strong>Datos Binance Pay:</strong><br>
-                    • Binance ID / Pay: Consultar por WhatsApp<br>
-                    • Moneda: <strong>USDT</strong>
-                `;
-            } else {
-                detailsBox.innerHTML = `
-                    <strong>Medios de Pago Latam:</strong><br>
-                    • Aceptamos pagos para México, Colombia, Argentina y Perú.<br>
-                    • Coordinamos el medio de pago local directamente por WhatsApp.
-                `;
-            }
-        }
-
-        function sendOrderToWhatsApp() {
-            const playerId = document.getElementById('playerIdInput').value.trim();
-            if (!playerId) {
-                alert('Por favor ingresa tu ID de jugador antes de enviar la orden.');
-                return;
-            }
-
-            const methodSelect = document.getElementById('paymentMethod');
-            const methodName = methodSelect.options[methodSelect.selectedIndex].text;
-
-            let itemsText = cart.map(i => `• ${i.title} (₡${i.price})`).join('%0A');
-            let total = cart.reduce((sum, i) => sum + i.price, 0);
-
-            let message = `🚀 *NUEVO PEDIDO - UDC STORE*%0A%0A` +
-                `🎮 *ID de Jugador:* ${playerId}%0A` +
-                `💳 *Método de Pago:* ${methodName}%0A%0A` +
-                `📦 *Productos:*%0A${itemsText}%0A%0A` +
-                `💰 *TOTAL A PAGAR:* ₡${total.toLocaleString()} CRC%0A%0A` +
-                `Adjunto comprobante de pago a continuación.`;
-
-            let whatsappUrl = `https://wa.me/50664129943?text=${message}`;
-            window.open(whatsappUrl, '_blank');
-        }
-    </script>
-</body>
-</html>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>UDC Store - Tienda Oficial de Recargas</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root {
+
+--bg-dark: #070913;
+
+--card-bg: rgba(18, 24, 43, 0.75);
+
+--primary-neon: #00f0ff;
+
+--secondary-neon: #7000ff;
+
+--accent-pink: #ff007f;
+
+--accent-green: #00ff88;
+
+--text-main: #f0f6fc;
+
+--text-muted: #8b949e;
+
+}
+
+
+* {
+
+box-sizing: border-box;
+
+margin: 0;
+
+padding: 0;
+
+font-family: 'Rajdhani', sans-serif;
+
+}
+
+
+body {
+
+background-color: var(--bg-dark);
+
+color: var(--text-main);
+
+min-height: 100vh;
+
+background-image:
+
+radial-gradient(circle at 15% 15%, rgba(112, 0, 255, 0.15) 0%, transparent 35%),
+
+radial-gradient(circle at 85% 85%, rgba(0, 240, 255, 0.12) 0%, transparent 35%);
+
+background-attachment: fixed;
+
+padding-bottom: 60px;
+
+}
+
+
+/* HEADER */
+
+header {
+
+display: flex;
+
+justify-content: space-between;
+
+align-items: center;
+
+padding: 1.2rem 5%;
+
+background: rgba(7, 9, 19, 0.85);
+
+backdrop-filter: blur(12px);
+
+border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+
+position: sticky;
+
+top: 0;
+
+z-index: 100;
+
+}
+
+
+.brand {
+
+display: flex;
+
+align-items: center;
+
+gap: 12px;
+
+}
+
+
+.brand-logo {
+
+width: 42px;
+
+height: 42px;
+
+background: linear-gradient(135deg, var(--primary-neon), var(--secondary-neon));
+
+border-radius: 10px;
+
+display
