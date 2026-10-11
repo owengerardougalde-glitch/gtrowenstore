@@ -597,6 +597,7 @@
             font-weight: 900;
             font-size: 0.85rem;
             cursor: pointer;
+            margin-top: 10px;
         }
 
         /* ---------------------------------------------------
@@ -1369,11 +1370,19 @@
                 </div>
                 <button class="btn-proceed" id="proceedCheckoutBtn">PROCEDER AL PAGO</button>
             </div>
+            
             <div id="checkoutForm" style="display:none; margin-top: 15px;">
+                
                 <div class="input-box">
-                    <label>ID de Jugador / Cuenta / Correo</label>
-                    <input type="text" id="pId" value="301110819" placeholder="Ej: Tu ID o correo de contacto">
+                    <label>Tu Nombre / Nick</label>
+                    <input type="text" id="pName" placeholder="Ej: Owen Morales">
                 </div>
+
+                <div class="input-box">
+                    <label>ID de Jugador (Free Fire)</label>
+                    <input type="text" id="pId" value="301110819" placeholder="Ej: 301110819">
+                </div>
+
                 <div class="input-box">
                     <label>Método de Pago</label>
                     <select id="pMethod">
@@ -1388,14 +1397,13 @@
                     <strong>Datos SINPE Móvil:</strong><br>• Teléfono: <strong>6412 9943</strong><br>• Titular: <strong>OWEN MORALES UGALDE</strong>
                 </div>
 
-                <!-- SECCIÓN DE QR Y BOTÓN DE PASARELA CON TU QR REAL EN ALTA CALIDAD -->
+                <!-- SECCIÓN DE QR Y BOTÓN DE PASARELA - TAMAÑO GRANDE Y NÍTIDO -->
                 <div id="cryptoPaySection" style="display: none; text-align: center; margin-bottom: 15px; background: rgba(243, 186, 47, 0.05); border: 1px solid var(--binance); border-radius: 12px; padding: 15px;">
                     <div style="font-family: 'Orbitron', sans-serif; font-size: 0.8rem; color: var(--binance); margin-bottom: 10px; font-weight: 700;">
                         ⚡ PAGO DIRECTO CON BINANCE PAY ⚡
                     </div>
-                    <!-- CONTENEDOR DE LA IMAGEN EN ALTA DEFINICIÓN -->
-                    <div style="background: #ffffff; padding: 8px; display: inline-block; border-radius: 8px; margin-bottom: 10px; box-shadow: 0 0 15px rgba(243, 186, 47, 0.3);">
-                        <img src="https://cdn.phototourl.com/member/2026-10-11-102d4de5-dc6c-4047-ab6c-d5474035de59.png" alt="QR Binance Pay Owen Morales" style="width: 150px; height: 150px; display: block; border-radius: 4px; image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges;">
+                    <div style="background: #000; padding: 6px; display: inline-block; border-radius: 8px; margin-bottom: 10px; box-shadow: 0 0 20px rgba(243, 186, 47, 0.3); border: 1px solid var(--binance);">
+                        <img src="https://cdn.phototourl.com/member/2026-10-11-102d4de5-dc6c-4047-ab6c-d5474035de59.png" alt="QR Binance Pay Owen Morales" style="width: 240px; height: auto; display: block; border-radius: 4px; image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges;">
                     </div>
                     <p style="font-size: 0.75rem; color: var(--text-dim); margin-bottom: 10px;">Escanea con tu app de Binance o usa el botón inferior<br><strong style="color: var(--binance);">Owen Morales Ugalde</strong></p>
                     <a href="https://pay.binance.com/" target="_blank" style="background: var(--binance); color: #000; font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 0.75rem; padding: 10px 15px; border-radius: 8px; display: block; text-decoration: none; text-transform: uppercase; box-shadow: 0 0 10px rgba(243, 186, 47, 0.4);">
@@ -1403,10 +1411,12 @@
                     </a>
                 </div>
 
-                <div class="input-box" id="txIdBox" style="display: none;">
-                    <label>Número de Orden / Hash de la Transacción</label>
-                    <input type="text" id="pTxId" placeholder="Ej: 456791601... o referencia">
+                <div class="input-box" id="txIdBox">
+                    <label>Número de Comprobante / Hash / Referencia</label>
+                    <input type="text" id="pTxId" placeholder="Ej: 456791601... o núm. de comprobante">
+                    <span style="font-size: 0.65rem; color: var(--ff-gold); display: block; margin-top: 4px;">⚠️ Recuerda enviar la captura de tu comprobante por este chat de WhatsApp.</span>
                 </div>
+
                 <button class="btn-send" id="sendWaBtn">📲 ENVIAR PEDIDO A WHATSAPP</button>
             </div>
         </div>
@@ -1555,7 +1565,6 @@
 
                 if (m === 'SINPE') {
                     box.innerHTML = '<strong>Datos SINPE Móvil:</strong><br>• Teléfono: <strong>6412 9943</strong><br>• Titular: <strong>OWEN MORALES UGALDE</strong>';
-                    txBox.style.display = 'none';
                 } else if (m === 'BINANCE') {
                     box.style.display = 'none';
                     cryptoSec.style.display = 'block';
@@ -1623,18 +1632,24 @@
             }
 
             document.getElementById('sendWaBtn').addEventListener('click', () => {
+                const nameInput = document.getElementById('pName');
+                const name = nameInput.value.trim();
+                if (!name) { alert('Por favor ingresa tu nombre'); return; }
+
                 const idInput = document.getElementById('pId');
                 const id = idInput.value.trim();
-                if (!id) { alert('Por favor ingresa tu ID'); return; }
+                if (!id) { alert('Por favor ingresa tu ID de Free Fire'); return; }
+
+                const txInput = document.getElementById('pTxId');
+                const txId = txInput.value.trim();
+                if (!txId) { alert('Por favor ingresa el número de comprobante o referencia de pago'); return; }
 
                 const methodSelect = document.getElementById('pMethod');
                 const methodName = methodSelect.options[methodSelect.selectedIndex].text;
-                const txId = document.getElementById('pTxId').value.trim();
                 let totalText = document.getElementById('cTotal').innerText;
 
                 let itemsWaText = cart.map(c => `• ${c.title}`).join('%0A');
-                let txInfo = txId ? `%0A📌 *Comprobante/Hash:* ${txId}` : '';
-                let msg = `🚀 *NUEVO PEDIDO - GTROWEN STORE*%0A%0A🎮 *Referencia / ID:* ${id}%0A💳 *Pago:* ${methodName}${txInfo}%0A%0A📦 *Productos:*%0A${itemsWaText}%0A💰 *Total:* ${totalText}`;
+                let msg = `🚀 *NUEVO PEDIDO - GTROWEN STORE*%0A%0A👤 *Cliente:* ${name}%0A🎮 *ID Free Fire:* ${id}%0A💳 *Método de Pago:* ${methodName}%0A🧾 *Nº Comprobante / Hash:* ${txId}%0A%0A📦 *Productos:*%0A${itemsWaText}%0A💰 *Total:* ${totalText}%0A%0A_Adjunto la captura del comprobante en este chat._`;
 
                 let whatsappUrl = `https://api.whatsapp.com/send?phone=50672986056&text=${msg}`;
                 window.open(whatsappUrl, '_blank');
