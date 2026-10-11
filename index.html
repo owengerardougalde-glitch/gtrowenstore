@@ -1378,17 +1378,33 @@
                     <label>Método de Pago</label>
                     <select id="pMethod">
                         <option value="SINPE">🇨🇷 SINPE Móvil</option>
-                        <option value="BINANCE">🌐 Binance Pay (USDT)</option>
+                        <option value="BINANCE">🌐 Binance Pay / USDT (QR)</option>
                         <option value="NU">🇲🇽 Nu México (Transferencia CLABE)</option>
                         <option value="OXXO">🇲🇽 Spin By Oxxo (Depósito)</option>
                     </select>
                 </div>
+                
                 <div class="info-pay" id="payBox">
                     <strong>Datos SINPE Móvil:</strong><br>• Teléfono: <strong>6412 9943</strong><br>• Titular: <strong>OWEN MORALES UGALDE</strong>
                 </div>
+
+                <!-- SECCIÓN DE QR Y BOTÓN DE PASARELA -->
+                <div id="cryptoPaySection" style="display: none; text-align: center; margin-bottom: 15px; background: rgba(243, 186, 47, 0.05); border: 1px solid var(--binance); border-radius: 12px; padding: 15px;">
+                    <div style="font-family: 'Orbitron', sans-serif; font-size: 0.8rem; color: var(--binance); margin-bottom: 10px; font-weight: 700;">
+                        ⚡ PAGO INSTANTÁNEO CON USDT ⚡
+                    </div>
+                    <div style="background: #fff; padding: 10px; display: inline-block; border-radius: 8px; margin-bottom: 10px;">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=USDT_GTROWENSTORE_2e383572" alt="QR Binance Pay" style="width: 130px; height: 130px; display: block;">
+                    </div>
+                    <p style="font-size: 0.75rem; color: var(--text-dim); margin-bottom: 10px;">Escanea el código con tu app de Binance o usa el botón de abajo</p>
+                    <a href="https://app.cryptomus.com/" target="_blank" style="background: var(--binance); color: #000; font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 0.75rem; padding: 10px 15px; border-radius: 8px; display: block; text-decoration: none; text-transform: uppercase; box-shadow: 0 0 10px rgba(243, 186, 47, 0.4);">
+                        Pagar Directo con Binance Pay 🌐
+                    </a>
+                </div>
+
                 <div class="input-box" id="txIdBox" style="display: none;">
-                    <label>Comprobante de pago o Hash de Binance</label>
-                    <input type="text" id="pTxId" placeholder="Ej: Número de orden o referencia de USDT">
+                    <label>Número de Orden / Hash de la Transacción</label>
+                    <input type="text" id="pTxId" placeholder="Ej: 456791601... o referencia">
                 </div>
                 <button class="btn-send" id="sendWaBtn">📲 ENVIAR PEDIDO A WHATSAPP</button>
             </div>
@@ -1432,12 +1448,6 @@
     </div>
 
     <script>
-        // CONFIGURACIÓN DE CREDENCIALES DE CRYPTOMUS
-        const CRYPTOMUS_CONFIG = {
-            merchantId: "2e383572-f720-4fa3-9cf7-108892da87c5",
-            paymentKey: "wK5G9120h1KeKhPvkH0qOAG1Rv5jJaPA1Cr38dXweRUZsVpDjLHzlIqSyvCgBYtPeD8VxJfWy6eZwr2c3JTb25EPdwVGDsDnV8N54ae8rwFGYrNj5oMX14U6M2E"
-        };
-
         document.addEventListener('DOMContentLoaded', () => {
             let cart = [];
             let currentCurrency = 'CRC';
@@ -1536,13 +1546,18 @@
                 const m = e.target.value;
                 const box = document.getElementById('payBox');
                 const txBox = document.getElementById('txIdBox');
+                const cryptoSec = document.getElementById('cryptoPaySection');
+                
                 txBox.style.display = 'block';
+                cryptoSec.style.display = 'none';
+                box.style.display = 'block';
 
                 if (m === 'SINPE') {
                     box.innerHTML = '<strong>Datos SINPE Móvil:</strong><br>• Teléfono: <strong>6412 9943</strong><br>• Titular: <strong>OWEN MORALES UGALDE</strong>';
                     txBox.style.display = 'none';
                 } else if (m === 'BINANCE') {
-                    box.innerHTML = `<strong>Binance Pay / Cryptomus (USDT):</strong><br>• Merchant ID configurado: <code>${CRYPTOMUS_CONFIG.merchantId}</code><br>• Pasarela integrada lista para procesar pagos seguros en USDT.`;
+                    box.style.display = 'none';
+                    cryptoSec.style.display = 'block';
                 } else if (m === 'NU') {
                     box.innerHTML = '<strong>Nu México:</strong><br>• Transferencia CLABE disponible para México.';
                 } else if (m === 'OXXO') {
