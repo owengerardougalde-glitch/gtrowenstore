@@ -1432,6 +1432,12 @@
     </div>
 
     <script>
+        // CONFIGURACIÓN DE CREDENCIALES DE CRYPTOMUS
+        const CRYPTOMUS_CONFIG = {
+            merchantId: "2e383572-f720-4fa3-9cf7-108892da87c5",
+            paymentKey: "wK5G9120h1KeKhPvkH0qOAG1Rv5jJaPA1Cr38dXweRUZsVpDjLHzlIqSyvCgBYtPeD8VxJfWy6eZwr2c3JTb25EPdwVGDsDnV8N54ae8rwFGYrNj5oMX14U6M2E"
+        };
+
         document.addEventListener('DOMContentLoaded', () => {
             let cart = [];
             let currentCurrency = 'CRC';
@@ -1536,7 +1542,7 @@
                     box.innerHTML = '<strong>Datos SINPE Móvil:</strong><br>• Teléfono: <strong>6412 9943</strong><br>• Titular: <strong>OWEN MORALES UGALDE</strong>';
                     txBox.style.display = 'none';
                 } else if (m === 'BINANCE') {
-                    box.innerHTML = '<strong>Binance Pay (USDT):</strong><br>• Envía el monto exacto en USDT a tu cuenta de Binance.<br>• API Key configurada y lista para verificar depósitos.';
+                    box.innerHTML = `<strong>Binance Pay / Cryptomus (USDT):</strong><br>• Merchant ID configurado: <code>${CRYPTOMUS_CONFIG.merchantId}</code><br>• Pasarela integrada lista para procesar pagos seguros en USDT.`;
                 } else if (m === 'NU') {
                     box.innerHTML = '<strong>Nu México:</strong><br>• Transferencia CLABE disponible para México.';
                 } else if (m === 'OXXO') {
