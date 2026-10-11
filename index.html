@@ -1386,15 +1386,15 @@
                     <strong>Datos SINPE Móvil:</strong><br>• Teléfono: <strong>6412 9943</strong><br>• Titular: <strong>OWEN MORALES UGALDE</strong>
                 </div>
                 <div class="input-box" id="txIdBox" style="display: none;">
-                    <label>Comprobante de pago</label>
-                    <input type="text" id="pTxId" placeholder="Ej: Referencia">
+                    <label>Comprobante de pago o Hash de Binance</label>
+                    <input type="text" id="pTxId" placeholder="Ej: Número de orden o referencia de USDT">
                 </div>
                 <button class="btn-send" id="sendWaBtn">📲 ENVIAR PEDIDO A WHATSAPP</button>
             </div>
         </div>
     </div>
 
-    <!-- MODAL TOP CLIENTES PRIME (CON GASTO TOTAL EN USD AGREGADO ARRIBA) -->
+    <!-- MODAL TOP CLIENTES PRIME -->
     <div class="modal" id="topClientsModal">
         <div class="modal-box">
             <div class="modal-top">
@@ -1415,7 +1415,6 @@
                         <div class="ff-prime-tag">👑 TOP #1 PRIME</div>
                     </div>
 
-                    <!-- ESTADÍSTICA CON GASTO TOTAL EN USD ARRIBA Y DETALLE ABAJO -->
                     <div class="ff-stats-box">
                         <div class="ff-stat-title">GASTO TOTAL EN CUENTA</div>
                         <div class="ff-stat-value" style="color: var(--ff-gold); font-size: 1.25rem;">
@@ -1536,7 +1535,11 @@
                     box.innerHTML = '<strong>Datos SINPE Móvil:</strong><br>• Teléfono: <strong>6412 9943</strong><br>• Titular: <strong>OWEN MORALES UGALDE</strong>';
                     txBox.style.display = 'none';
                 } else if (m === 'BINANCE') {
-                    box.innerHTML = '<strong>Binance Pay ID:</strong> 1020350187';
+                    box.innerHTML = '<strong>Binance Pay (USDT):</strong><br>• Envía el monto exacto en USDT a tu cuenta de Binance.<br>• API Key configurada y lista para verificar depósitos.';
+                } else if (m === 'NU') {
+                    box.innerHTML = '<strong>Nu México:</strong><br>• Transferencia CLABE disponible para México.';
+                } else if (m === 'OXXO') {
+                    box.innerHTML = '<strong>Spin By Oxxo:</strong><br>• Depósito directo a cuenta.';
                 }
             });
 
@@ -1603,10 +1606,12 @@
 
                 const methodSelect = document.getElementById('pMethod');
                 const methodName = methodSelect.options[methodSelect.selectedIndex].text;
+                const txId = document.getElementById('pTxId').value.trim();
                 let totalText = document.getElementById('cTotal').innerText;
 
                 let itemsWaText = cart.map(c => `• ${c.title}`).join('%0A');
-                let msg = `🚀 *NUEVO PEDIDO - GTROWEN STORE*%0A%0A🎮 *Referencia / ID:* ${id}%0A💳 *Pago:* ${methodName}%0A%0A📦 *Productos:*%0A${itemsWaText}%0A💰 *Total:* ${totalText}`;
+                let txInfo = txId ? `%0A📌 *Comprobante/Hash:* ${txId}` : '';
+                let msg = `🚀 *NUEVO PEDIDO - GTROWEN STORE*%0A%0A🎮 *Referencia / ID:* ${id}%0A💳 *Pago:* ${methodName}${txInfo}%0A%0A📦 *Productos:*%0A${itemsWaText}%0A💰 *Total:* ${totalText}`;
 
                 let whatsappUrl = `https://api.whatsapp.com/send?phone=50672986056&text=${msg}`;
                 window.open(whatsappUrl, '_blank');
