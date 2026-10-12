@@ -17,6 +17,7 @@
             --gold: #ffb700;
             --ff-gold: #f9d342;
             --binance: #f3ba2f;
+            --cryptomus-color: #3861fb;
             --text: #ffffff;
             --text-dim: #8b92b0;
             --border: rgba(255, 0, 85, 0.3);
@@ -615,6 +616,26 @@
             margin-top: 10px;
         }
 
+        .btn-cryptomus-api {
+            background: linear-gradient(135deg, #3861fb, #1c35b0);
+            color: #fff;
+            border: none;
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 0.85rem;
+            cursor: pointer;
+            margin-top: 10px;
+            text-transform: uppercase;
+            box-shadow: 0 0 15px rgba(56, 97, 251, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
         /* ---------------------------------------------------
            MODAL TOP CLIENTES PRIME (ESTILO LOBBY FF OPTIMIZADO)
            --------------------------------------------------- */
@@ -1078,7 +1099,7 @@
                 </div>
             </div>
 
-            <!-- FF LIMITADOS (CON 6,160 DIAMANTES A $28 / ₡15,000) -->
+            <!-- FF LIMITADOS -->
             <div class="product-card" data-cat="ff-lim" data-crc="500" data-dop="60" data-usd="1.00" data-mxn="18" data-cop="4000" data-ars="1200" data-pen="3.50">
                 <div>
                     <div class="product-badge" style="color: var(--ff-gold);">💎 Free Fire (Limitado)</div>
@@ -1414,9 +1435,9 @@
                     <label>Método de Pago</label>
                     <select id="pMethod">
                         <option value="SINPE">🇨🇷 SINPE Móvil</option>
+                        <option value="CRYPTOMUS">🌐 Cryptomus API / Criptomonedas</option>
                         <option value="BINANCE">🌐 Binance Pay / USDT (QR)</option>
                         <option value="NU">🇲🇽 Nu México (Transferencia CLABE)</option>
-                        <option value="OXXO">🇲🇽 Spin By Oxxo (Depósito)</option>
                     </select>
                 </div>
                 
@@ -1424,7 +1445,15 @@
                     <strong>Datos SINPE Móvil:</strong><br>• Teléfono: <strong>6412 9943</strong><br>• Titular: <strong>OWEN MORALES UGALDE</strong>
                 </div>
 
-                <!-- SECCIÓN DE QR Y BOTÓN DE PASARELA -->
+                <!-- SECCIÓN DE BOTÓN DE PAGO API CRYPTOMUS -->
+                <div id="cryptomusApiSection" style="display: none; text-align: center; margin-bottom: 15px;">
+                    <p style="font-size: 0.78rem; color: var(--text-dim); margin-bottom: 10px;">Paga de forma automática y segura con cualquier criptomoneda a través de la pasarela oficial de Cryptomus.</p>
+                    <button class="btn-cryptomus-api" id="payWithCryptomusBtn">
+                        💎 PAGAR CON CRYPTOMUS API 🌐
+                    </button>
+                </div>
+
+                <!-- SECCIÓN DE QR Y BOTÓN DE BINANCE -->
                 <div id="cryptoPaySection" style="display: none; text-align: center; margin-bottom: 15px; background: rgba(243, 186, 47, 0.05); border: 1px solid var(--binance); border-radius: 12px; padding: 15px;">
                     <div style="font-family: 'Orbitron', sans-serif; font-size: 0.8rem; color: var(--binance); margin-bottom: 10px; font-weight: 700;">
                         ⚡ PAGO DIRECTO CON BINANCE PAY ⚡
@@ -1444,7 +1473,7 @@
                 </div>
 
                 <!-- BOTÓN PARA ADJUNTAR CAPTURA DE COMPROBANTE -->
-                <div class="input-box">
+                <div class="input-box" id="receiptBox">
                     <label>Adjuntar Captura del Comprobante 📷</label>
                     <label class="file-upload-box" for="pReceipt">
                         <span id="receiptLabel" style="font-size: 0.8rem; color: var(--primary); font-weight: 700;">📂 Toca aquí para subir o tomar foto de tu comprobante</span>
@@ -1594,22 +1623,39 @@
                 const m = e.target.value;
                 const box = document.getElementById('payBox');
                 const txBox = document.getElementById('txIdBox');
+                const receiptBox = document.getElementById('receiptBox');
                 const cryptoSec = document.getElementById('cryptoPaySection');
+                const cryptomusSec = document.getElementById('cryptomusApiSection');
                 
                 txBox.style.display = 'block';
+                receiptBox.style.display = 'block';
                 cryptoSec.style.display = 'none';
+                cryptomusSec.style.display = 'none';
                 box.style.display = 'block';
 
                 if (m === 'SINPE') {
                     box.innerHTML = '<strong>Datos SINPE Móvil:</strong><br>• Teléfono: <strong>6412 9943</strong><br>• Titular: <strong>OWEN MORALES UGALDE</strong>';
+                } else if (m === 'CRYPTOMUS') {
+                    box.style.display = 'none';
+                    txBox.style.display = 'none';
+                    receiptBox.style.display = 'none';
+                    cryptomusSec.style.display = 'block';
                 } else if (m === 'BINANCE') {
                     box.style.display = 'none';
                     cryptoSec.style.display = 'block';
                 } else if (m === 'NU') {
                     box.innerHTML = '<strong>Nu México:</strong><br>• Transferencia CLABE disponible para México.';
-                } else if (m === 'OXXO') {
-                    box.innerHTML = '<strong>Spin By Oxxo:</strong><br>• Depósito directo a cuenta.';
                 }
+            });
+
+            document.getElementById('payWithCryptomusBtn').addEventListener('click', () => {
+                const name = document.getElementById('pName').value.trim();
+                const id = document.getElementById('pId').value.trim();
+                if (!name || !id) {
+                    alert('Por favor completa tu Nombre e ID de Free Fire antes de pagar con Cryptomus.');
+                    return;
+                }
+                window.open('https://app.cryptomus.com/', '_blank');
             });
 
             document.getElementById('pReceipt').addEventListener('change', (e) => {
@@ -1688,19 +1734,19 @@
                 const id = idInput.value.trim();
                 if (!id) { alert('Por favor ingresa tu ID de Free Fire'); return; }
 
-                const txInput = document.getElementById('pTxId');
-                const txId = txInput.value.trim();
-                if (!txId) { alert('Por favor ingresa el número de comprobante o referencia de pago'); return; }
-
-                const receiptInput = document.getElementById('pReceipt');
-                let receiptStatus = receiptInput.files.length > 0 ? '📎 Comprobante adjuntado en la web' : '⚠️ Pendiente de enviar captura';
-
                 const methodSelect = document.getElementById('pMethod');
                 const methodName = methodSelect.options[methodSelect.selectedIndex].text;
                 let totalText = document.getElementById('cTotal').innerText;
 
+                let txId = 'N/A (Cripto API)';
+                const txInput = document.getElementById('pTxId');
+                if (methodSelect.value !== 'CRYPTOMUS') {
+                    txId = txInput.value.trim();
+                    if (!txId) { alert('Por favor ingresa el número de comprobante o referencia de pago'); return; }
+                }
+
                 let itemsWaText = cart.map(c => `• ${c.title}`).join('%0A');
-                let msg = `🚀 *NUEVO PEDIDO - GTROWEN STORE*%0A%0A👤 *Cliente:* ${name}%0A🎮 *ID Free Fire:* ${id}%0A💳 *Método de Pago:* ${methodName}%0A🧾 *Nº Comprobante / Hash:* ${txId}%0A🖼️ *Estado Comprobante:* ${receiptStatus}%0A%0A📦 *Productos:*%0A${itemsWaText}%0A💰 *Total:* ${totalText}%0A%0A_Adjunto la captura en este chat para su verificación._`;
+                let msg = `🚀 *NUEVO PEDIDO - GTROWEN STORE*%0A%0A👤 *Cliente:* ${name}%0A🎮 *ID Free Fire:* ${id}%0A💳 *Método de Pago:* ${methodName}%0A🧾 *Referencia:* ${txId}%0A%0A📦 *Productos:*%0A${itemsWaText}%0A💰 *Total:* ${totalText}`;
 
                 let whatsappUrl = `https://api.whatsapp.com/send?phone=50672986056&text=${msg}`;
                 window.open(whatsappUrl, '_blank');
