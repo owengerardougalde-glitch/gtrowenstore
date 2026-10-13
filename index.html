@@ -836,7 +836,51 @@
         <div class="section-h2" id="catalogTitle">🔥 CATALOGO GENERAL</div>
         <div class="products-grid" id="productsGrid">
 
-            <!-- REDES SOCIALES / INSTAGRAM & TIKTOK -->
+            <!-- REDES SOCIALES / INSTAGRAM BAJA CALIDAD, LIKES, TIKTOK, FACEBOOK -->
+            <div class="product-card" data-cat="social" data-crc="1200" data-dop="100" data-usd="2.00" data-mxn="37" data-cop="8300" data-ars="2500" data-pen="7.30">
+                <div>
+                    <div class="product-badge" style="color: #e1306c;">Instagram Baja Calidad</div>
+                    <div class="product-name">1,000 Seguidores Instagram (Baja Calidad) - ($2 x mil)</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡1,200</div>
+                    <button class="btn-add" data-title="1,000 Seguidores Instagram (Baja Calidad)" data-crc="1200" data-dop="100" data-usd="2.00" data-mxn="37" data-cop="8300" data-ars="2500" data-pen="7.30">Agregar</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="social" data-crc="600" data-dop="50" data-usd="1.00" data-mxn="18" data-cop="4100" data-ars="1250" data-pen="3.65">
+                <div>
+                    <div class="product-badge" style="color: #e1306c;">Instagram Likes</div>
+                    <div class="product-name">1,000 Likes Instagram ($1 x mil)</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡600</div>
+                    <button class="btn-add" data-title="1,000 Likes Instagram" data-crc="600" data-dop="50" data-usd="1.00" data-mxn="18" data-cop="4100" data-ars="1250" data-pen="3.65">Agregar</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="social" data-crc="600" data-dop="50" data-usd="1.00" data-mxn="18" data-cop="4100" data-ars="1250" data-pen="3.65">
+                <div>
+                    <div class="product-badge" style="color: #00f2fe;">TikTok Vistas</div>
+                    <div class="product-name">1,000 Vistas TikTok ($1 x mil)</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡600</div>
+                    <button class="btn-add" data-title="1,000 Vistas TikTok" data-crc="600" data-dop="50" data-usd="1.00" data-mxn="18" data-cop="4100" data-ars="1250" data-pen="3.65">Agregar</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="social" data-crc="1200" data-dop="100" data-usd="2.00" data-mxn="37" data-cop="8300" data-ars="2500" data-pen="7.30">
+                <div>
+                    <div class="product-badge" style="color: #1877f2;">Facebook</div>
+                    <div class="product-name">1,000 Seguidores Facebook ($2 x mil)</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡1,200</div>
+                    <button class="btn-add" data-title="1,000 Seguidores Facebook" data-crc="1200" data-dop="100" data-usd="2.00" data-mxn="37" data-cop="8300" data-ars="2500" data-pen="7.30">Agregar</button>
+                </div>
+            </div>
+
             <div class="product-card" data-cat="social" data-crc="3500" data-dop="290" data-usd="6.00" data-mxn="110" data-cop="25000" data-ars="7600" data-pen="22.00">
                 <div>
                     <div class="product-badge" style="color: #e1306c;">Instagram VIP</div>
@@ -1402,7 +1446,7 @@
                 <button class="btn-hero-action" data-jump-modal="ff-passes" style="width:100%; justify-content:center; padding: 12px;">⚙️ Tokens Evolutivos</button>
                 <button class="btn-hero-action" data-jump-modal="ff-passes" style="width:100%; justify-content:center; padding: 12px;">🎫 Pases Semanales/Mensuales</button>
                 <button class="btn-hero-action" data-jump-modal="streaming" style="width:100%; justify-content:center; padding: 12px;">🎬 Streaming (Netflix, Spotify...)</button>
-                <button class="btn-hero-action" data-jump-modal="social" style="width:100%; justify-content:center; padding: 12px;">📸 Redes Sociales (Instagram/TikTok)</button>
+                <button class="btn-hero-action" data-jump-modal="social" style="width:100%; justify-content:center; padding: 12px;">📸 Redes Sociales (Instagram, TikTok...)</button>
             </div>
         </div>
     </div>
@@ -1823,7 +1867,7 @@
 
                 let txId = 'N/A (Cripto API)';
                 const txInput = document.getElementById('pTxId');
-                if (methodSelect.value !== 'CRYPTOMus') {
+                if (methodSelect.value !== 'CRYPTOMUS') {
                     txId = txInput.value.trim();
                     if (!txId) { alert('Por favor ingresa el número de comprobante o referencia de pago'); return; }
                 }
