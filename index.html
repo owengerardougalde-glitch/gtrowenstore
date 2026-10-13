@@ -30,10 +30,13 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        body {
+        /* RESET TOTAL PARA EVITAR CUALQUIER ESPACIO O MARGEN INICIAL */
+        html, body {
             background-color: var(--bg);
             color: var(--text);
-            padding-bottom: 120px;
+            margin: 0 !important;
+            padding: 0 !important;
+            padding-bottom: 120px !important;
             position: relative;
             overflow-x: hidden;
             background-image: 
@@ -43,34 +46,35 @@
         }
 
         header {
-            background: rgba(11, 18, 12, 0.95);
+            background: rgba(11, 18, 12, 0.98);
             backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--border);
-            padding: 12px 18px;
+            padding: 10px 14px;
             position: sticky;
             top: 0;
             z-index: 900;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            margin: 0 !important;
         }
 
         .brand-box {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
         .brand-icon {
-            width: 32px;
-            height: 32px;
+            width: 30px;
+            height: 30px;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: #000;
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 900;
         }
 
@@ -82,7 +86,7 @@
         .brand-title {
             font-family: 'Orbitron', sans-serif;
             font-weight: 900;
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: var(--primary);
             letter-spacing: 1px;
             line-height: 1;
@@ -93,7 +97,7 @@
 
         .brand-sub {
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.6rem;
+            font-size: 0.55rem;
             color: var(--text-dim);
             letter-spacing: 1.5px;
             margin-top: 2px;
@@ -102,7 +106,7 @@
         .header-actions {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
         .currency-switch {
@@ -113,7 +117,7 @@
             display: flex;
             gap: 2px;
             overflow-x: auto;
-            max-width: 220px;
+            max-width: 190px;
         }
 
         .curr-btn {
@@ -121,9 +125,9 @@
             border: none;
             color: var(--text-dim);
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.6rem;
+            font-size: 0.55rem;
             font-weight: 700;
-            padding: 4px 6px;
+            padding: 4px 5px;
             border-radius: 16px;
             cursor: pointer;
             white-space: nowrap;
@@ -139,14 +143,14 @@
             background: linear-gradient(135deg, rgba(16, 185, 129, 0.3), rgba(57, 255, 20, 0.3));
             border: 1px solid var(--primary);
             border-radius: 20px;
-            padding: 6px 12px;
+            padding: 5px 10px;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 5px;
             cursor: pointer;
             color: #fff;
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 700;
             white-space: nowrap;
         }
@@ -154,53 +158,53 @@
         .header-cart-badge {
             background: var(--primary);
             color: #000;
-            width: 18px;
-            height: 18px;
+            width: 16px;
+            height: 16px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             font-weight: 900;
         }
 
         .container {
             max-width: 900px;
             margin: 0 auto;
-            padding: 16px;
+            padding: 12px;
             position: relative;
             z-index: 10;
         }
 
-        /* BIENVENIDA MINIMALISTA LIMPIA */
+        /* BIENVENIDA COMPACTA Y LIMPIA */
         .welcome-hero {
-            background: linear-gradient(135deg, rgba(11, 18, 12, 0.9), rgba(17, 26, 19, 0.9));
+            background: linear-gradient(135deg, rgba(11, 18, 12, 0.95), rgba(17, 26, 19, 0.95));
             border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 16px;
+            border-radius: 12px;
+            padding: 12px;
             text-align: center;
-            margin-bottom: 16px;
-            box-shadow: 0 0 20px rgba(57, 255, 20, 0.15);
+            margin-bottom: 12px;
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.12);
         }
 
         .welcome-hero h2 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.15rem;
+            font-size: 1.05rem;
             color: var(--primary);
             font-weight: 900;
-            margin-bottom: 4px;
-            text-shadow: 0 0 10px rgba(57, 255, 20, 0.4);
+            margin-bottom: 3px;
+            text-shadow: 0 0 8px rgba(57, 255, 20, 0.4);
         }
 
         .welcome-hero p {
-            font-size: 0.78rem;
+            font-size: 0.75rem;
             color: var(--text-dim);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .hero-actions-row {
             display: flex;
-            gap: 8px;
+            gap: 6px;
             justify-content: center;
             flex-wrap: wrap;
         }
@@ -209,15 +213,15 @@
             background: rgba(57, 255, 20, 0.1);
             border: 1px solid var(--primary);
             color: var(--primary);
-            padding: 6px 12px;
-            border-radius: 8px;
+            padding: 5px 10px;
+            border-radius: 6px;
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             font-weight: 700;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 5px;
             transition: 0.2s;
         }
 
@@ -229,159 +233,157 @@
 
         .category-scroll {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             overflow-x: auto;
-            padding-bottom: 10px;
-            margin-bottom: 15px;
-            position: relative;
-            z-index: 10;
+            padding-bottom: 8px;
+            margin-bottom: 12px;
         }
 
         .cat-btn {
             background: rgba(11, 18, 12, 0.95);
             border: 1px solid var(--border);
             color: var(--text-dim);
-            padding: 10px 18px;
-            border-radius: 12px;
+            padding: 8px 14px;
+            border-radius: 10px;
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 700;
             white-space: nowrap;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 5px;
         }
 
         .cat-btn.active {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: #000;
             border-color: var(--primary);
-            box-shadow: 0 0 12px rgba(57, 255, 20, 0.5);
+            box-shadow: 0 0 10px rgba(57, 255, 20, 0.5);
             font-weight: 900;
         }
 
         .section-h2 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 700;
             color: var(--primary);
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
-            gap: 8px;
-            margin-top: 10px;
-            text-shadow: 0 0 10px rgba(57, 255, 20, 0.3);
+            gap: 6px;
+            margin-top: 8px;
+            text-shadow: 0 0 8px rgba(57, 255, 20, 0.3);
         }
 
         .products-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin-bottom: 25px;
+            gap: 10px;
+            margin-bottom: 20px;
         }
 
         .product-card {
             background: rgba(17, 26, 19, 0.95);
             border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 14px;
+            border-radius: 12px;
+            padding: 12px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
 
         .product-badge {
-            font-size: 0.68rem;
+            font-size: 0.65rem;
             font-weight: 700;
             color: var(--primary);
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            margin-bottom: 6px;
+            margin-bottom: 5px;
         }
 
         .product-name {
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             font-weight: 700;
             color: #fff;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             line-height: 1.2;
         }
 
         .product-price {
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: var(--primary);
             font-weight: 700;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .btn-add {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: #000;
             border: none;
-            border-radius: 8px;
-            padding: 10px 0;
+            border-radius: 6px;
+            padding: 8px 0;
             font-weight: 900;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-family: 'Orbitron', sans-serif;
             cursor: pointer;
             width: 100%;
             text-transform: uppercase;
-            box-shadow: 0 0 10px rgba(57, 255, 20, 0.3);
+            box-shadow: 0 0 8px rgba(57, 255, 20, 0.3);
         }
 
         .floating-cart-btn {
             position: fixed;
-            bottom: 85px;
-            right: 20px;
+            bottom: 80px;
+            right: 15px;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: #000;
             border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 12px 20px;
+            padding: 10px 16px;
             border-radius: 30px;
             cursor: pointer;
             font-family: 'Orbitron', sans-serif;
             font-weight: 900;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             display: flex;
             align-items: center;
-            gap: 10px;
-            box-shadow: 0 0 20px rgba(57, 255, 20, 0.5);
+            gap: 8px;
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.5);
             z-index: 1000;
         }
 
         .floating-whatsapp-btn {
             position: fixed;
-            bottom: 20px;
-            left: 20px;
+            bottom: 15px;
+            left: 15px;
             background: #25d366;
             color: #fff;
             border: 1px solid rgba(255, 255, 255, 0.3);
-            width: 52px;
-            height: 52px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 20px rgba(37, 211, 102, 0.5);
+            box-shadow: 0 0 15px rgba(37, 211, 102, 0.5);
             z-index: 1000;
             text-decoration: none;
         }
 
         .floating-whatsapp-btn svg {
-            width: 30px;
-            height: 30px;
+            width: 26px;
+            height: 26px;
             fill: #ffffff;
         }
 
         .floating-cart-badge {
             background: #000;
             color: var(--primary);
-            font-size: 0.75rem;
-            width: 22px;
-            height: 22px;
+            font-size: 0.7rem;
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -398,7 +400,7 @@
             display: none;
             align-items: center;
             justify-content: center;
-            padding: 15px;
+            padding: 12px;
         }
 
         .modal.open { display: flex; }
@@ -406,10 +408,10 @@
         .modal-box {
             background: var(--surface);
             border: 1px solid var(--primary);
-            border-radius: 16px;
+            border-radius: 14px;
             width: 100%;
-            max-width: 420px;
-            padding: 20px;
+            max-width: 400px;
+            padding: 16px;
             max-height: 85vh;
             overflow-y: auto;
         }
@@ -418,14 +420,14 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             border-bottom: 1px solid var(--border);
-            padding-bottom: 10px;
+            padding-bottom: 8px;
         }
 
         .modal-top h3 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: var(--primary);
         }
 
@@ -433,7 +435,7 @@
             background: none;
             border: none;
             color: var(--text-dim);
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             cursor: pointer;
         }
 
@@ -441,9 +443,9 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 0;
+            padding: 8px 0;
             border-bottom: 1px solid rgba(255,255,255,0.05);
-            font-size: 0.85rem;
+            font-size: 0.82rem;
         }
 
         .cart-total-box {
@@ -451,45 +453,45 @@
             justify-content: space-between;
             align-items: center;
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.05rem;
+            font-size: 1rem;
             color: var(--primary);
-            margin: 15px 0;
-            padding-top: 10px;
+            margin: 12px 0;
+            padding-top: 8px;
             border-top: 1px solid var(--border);
             font-weight: 700;
         }
 
-        .input-box { margin-bottom: 12px; }
-        .input-box label { display: block; font-size: 0.75rem; color: var(--text-dim); margin-bottom: 4px; }
+        .input-box { margin-bottom: 10px; }
+        .input-box label { display: block; font-size: 0.72rem; color: var(--text-dim); margin-bottom: 3px; }
         .input-box input, .input-box select {
             width: 100%;
-            padding: 10px;
+            padding: 9px;
             background: var(--surface-card);
             border: 1px solid var(--border);
-            border-radius: 8px;
+            border-radius: 6px;
             color: #fff;
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             outline: none;
         }
 
         .file-upload-box {
             background: rgba(57, 255, 20, 0.03);
             border: 2px dashed var(--primary);
-            border-radius: 10px;
-            padding: 12px;
+            border-radius: 8px;
+            padding: 10px;
             text-align: center;
             cursor: pointer;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .info-pay {
             background: rgba(57, 255, 20, 0.05);
             border: 1px dashed var(--primary);
-            border-radius: 8px;
-            padding: 12px;
-            font-size: 0.8rem;
-            margin-bottom: 15px;
-            line-height: 1.5;
+            border-radius: 6px;
+            padding: 10px;
+            font-size: 0.78rem;
+            margin-bottom: 12px;
+            line-height: 1.4;
         }
 
         .btn-proceed {
@@ -497,11 +499,11 @@
             color: #000;
             border: none;
             width: 100%;
-            padding: 12px;
-            border-radius: 8px;
+            padding: 10px;
+            border-radius: 6px;
             font-family: 'Orbitron', sans-serif;
             font-weight: 900;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             cursor: pointer;
             text-transform: uppercase;
         }
@@ -511,13 +513,13 @@
             color: #000;
             border: none;
             width: 100%;
-            padding: 12px;
-            border-radius: 8px;
+            padding: 10px;
+            border-radius: 6px;
             font-family: 'Orbitron', sans-serif;
             font-weight: 900;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             cursor: pointer;
-            margin-top: 10px;
+            margin-top: 8px;
         }
 
         .btn-cryptomus-api {
@@ -525,45 +527,44 @@
             color: #fff;
             border: none;
             width: 100%;
-            padding: 12px;
-            border-radius: 8px;
+            padding: 10px;
+            border-radius: 6px;
             font-family: 'Orbitron', sans-serif;
             font-weight: 900;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             cursor: pointer;
-            margin-top: 10px;
+            margin-top: 8px;
             text-transform: uppercase;
-            box-shadow: 0 0 15px rgba(56, 97, 251, 0.4);
+            box-shadow: 0 0 12px rgba(56, 97, 251, 0.4);
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 6px;
         }
 
-        /* MODAL TOP CLIENTES PRIME */
         #topClientsModal .modal-box {
             background: #000;
             border: 2px solid var(--ff-gold);
-            box-shadow: 0 0 35px rgba(249, 211, 66, 0.4);
+            box-shadow: 0 0 30px rgba(249, 211, 66, 0.4);
             padding: 0;
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            min-height: 480px;
+            min-height: 450px;
         }
 
         #topClientsModal .modal-top {
             background: rgba(0,0,0,0.9);
             border-bottom: 1px solid var(--ff-gold);
-            padding: 12px 15px;
+            padding: 10px 12px;
             margin-bottom: 0;
         }
 
         #topClientsModal .modal-top h3 {
             color: var(--ff-gold);
-            text-shadow: 0 0 10px rgba(249, 211, 66, 0.6);
+            text-shadow: 0 0 8px rgba(249, 211, 66, 0.6);
             letter-spacing: 1.5px;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
 
         .ff-lobby-container {
@@ -588,7 +589,7 @@
         .ff-content {
             position: relative;
             z-index: 3;
-            padding: 16px;
+            padding: 12px;
             height: 100%;
             display: flex;
             flex-direction: column;
@@ -598,15 +599,15 @@
         .ff-profile-card {
             background: rgba(0, 0, 0, 0.82);
             border: 1.5px solid var(--ff-gold);
-            border-radius: 10px;
-            padding: 10px 14px;
+            border-radius: 8px;
+            padding: 8px 12px;
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 3px;
             align-self: flex-end;
             backdrop-filter: blur(6px);
-            box-shadow: 0 0 15px rgba(0,0,0,0.8);
-            min-width: 170px;
+            box-shadow: 0 0 12px rgba(0,0,0,0.8);
+            min-width: 150px;
         }
 
         .ff-profile-top {
@@ -614,16 +615,16 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid rgba(249, 211, 66, 0.3);
-            padding-bottom: 4px;
+            padding-bottom: 3px;
         }
 
         .ff-name-big {
             font-family: 'Orbitron', sans-serif;
             font-weight: 900;
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             color: #ffffff;
             text-transform: uppercase;
-            text-shadow: 0 0 8px rgba(255,255,255,0.6);
+            text-shadow: 0 0 6px rgba(255,255,255,0.6);
             letter-spacing: 1px;
         }
 
@@ -632,21 +633,21 @@
             color: #000;
             font-family: 'Orbitron', sans-serif;
             font-weight: 900;
-            font-size: 0.65rem;
-            padding: 2px 6px;
+            font-size: 0.6rem;
+            padding: 2px 5px;
             border-radius: 4px;
         }
 
         .ff-uid-row {
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: var(--primary);
             font-weight: 700;
             letter-spacing: 0.5px;
         }
 
         .ff-prime-tag {
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             color: var(--gold);
             font-weight: 700;
             text-transform: uppercase;
@@ -656,15 +657,15 @@
         .ff-stats-box {
             background: rgba(0, 0, 0, 0.88);
             border-left: 4px solid var(--primary);
-            border-radius: 8px;
-            padding: 10px 14px;
+            border-radius: 6px;
+            padding: 8px 12px;
             backdrop-filter: blur(6px);
-            box-shadow: 0 0 15px rgba(0,0,0,0.8);
+            box-shadow: 0 0 12px rgba(0,0,0,0.8);
             margin-bottom: 4px;
         }
 
         .ff-stat-title {
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             color: var(--text-dim);
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -673,12 +674,12 @@
         .ff-stat-value {
             font-family: 'Orbitron', sans-serif;
             font-weight: 900;
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             color: var(--primary);
-            text-shadow: 0 0 10px rgba(57, 255, 20, 0.5);
+            text-shadow: 0 0 8px rgba(57, 255, 20, 0.5);
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 5px;
             flex-wrap: wrap;
         }
 
@@ -686,10 +687,10 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 6px;
-            font-size: 0.72rem;
+            margin-top: 5px;
+            font-size: 0.68rem;
             border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 6px;
+            padding-top: 5px;
             flex-wrap: wrap;
             gap: 4px;
         }
@@ -698,7 +699,7 @@
             color: var(--ff-gold);
             font-weight: 700;
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.72rem;
+            font-size: 0.68rem;
         }
     </style>
 </head>
@@ -1290,12 +1291,12 @@
                 <h3>⚡ MENÚ RÁPIDO</h3>
                 <button class="btn-close" id="closeCatalogModalBtn">&times;</button>
             </div>
-            <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 5px;">
-                <button class="btn-hero-action" data-jump-modal="ff-lim" style="width:100%; justify-content:center; padding: 12px;">💎 Diamantes Free Fire</button>
-                <button class="btn-hero-action" data-jump-modal="ff-passes" style="width:100%; justify-content:center; padding: 12px;">⚙️ Tokens Evolutivos</button>
-                <button class="btn-hero-action" data-jump-modal="ff-passes" style="width:100%; justify-content:center; padding: 12px;">🎫 Pases Semanales/Mensuales</button>
-                <button class="btn-hero-action" data-jump-modal="streaming" style="width:100%; justify-content:center; padding: 12px;">🎬 Streaming (Netflix, Spotify...)</button>
-                <button class="btn-hero-action" data-jump-modal="social" style="width:100%; justify-content:center; padding: 12px;">📸 Redes Sociales (Instagram)</button>
+            <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 5px;">
+                <button class="btn-hero-action" data-jump-modal="ff-lim" style="width:100%; justify-content:center; padding: 10px;">💎 Diamantes Free Fire</button>
+                <button class="btn-hero-action" data-jump-modal="ff-passes" style="width:100%; justify-content:center; padding: 10px;">⚙️ Tokens Evolutivos</button>
+                <button class="btn-hero-action" data-jump-modal="ff-passes" style="width:100%; justify-content:center; padding: 10px;">🎫 Pases Semanales/Mensuales</button>
+                <button class="btn-hero-action" data-jump-modal="streaming" style="width:100%; justify-content:center; padding: 10px;">🎬 Streaming (Netflix, Spotify...)</button>
+                <button class="btn-hero-action" data-jump-modal="social" style="width:100%; justify-content:center; padding: 10px;">📸 Redes Sociales (Instagram)</button>
             </div>
         </div>
     </div>
@@ -1316,7 +1317,7 @@
                 <button class="btn-proceed" id="proceedCheckoutBtn">PROCEDER AL PAGO</button>
             </div>
             
-            <div id="checkoutForm" style="display:none; margin-top: 15px;">
+            <div id="checkoutForm" style="display:none; margin-top: 12px;">
                 
                 <div class="input-box">
                     <label>Tu Nombre / Nick</label>
@@ -1342,21 +1343,21 @@
                     <strong>Datos SINPE Móvil:</strong><br>• Teléfono: <strong>6412 9943</strong><br>• Titular: <strong>OWEN MORALES UGALDE</strong>
                 </div>
 
-                <div id="cryptomusApiSection" style="display: none; text-align: center; margin-bottom: 15px;">
-                    <p style="font-size: 0.78rem; color: var(--text-dim); margin-bottom: 10px;">Paga de forma automática y segura con cualquier criptomoneda a través de la pasarela oficial de Cryptomus.</p>
+                <div id="cryptomusApiSection" style="display: none; text-align: center; margin-bottom: 12px;">
+                    <p style="font-size: 0.75rem; color: var(--text-dim); margin-bottom: 8px;">Paga de forma automática y segura con cualquier criptomoneda a través de la pasarela oficial de Cryptomus.</p>
                     <button class="btn-cryptomus-api" id="payWithCryptomusBtn">
                         💎 PAGAR CON CRYPTOMUS API 🌐
                     </button>
                 </div>
 
-                <div id="cryptoPaySection" style="display: none; text-align: center; margin-bottom: 15px; background: rgba(243, 186, 47, 0.05); border: 1px solid var(--binance); border-radius: 12px; padding: 15px;">
-                    <div style="font-family: 'Orbitron', sans-serif; font-size: 0.8rem; color: var(--binance); margin-bottom: 10px; font-weight: 700;">
+                <div id="cryptoPaySection" style="display: none; text-align: center; margin-bottom: 12px; background: rgba(243, 186, 47, 0.05); border: 1px solid var(--binance); border-radius: 10px; padding: 12px;">
+                    <div style="font-family: 'Orbitron', sans-serif; font-size: 0.75rem; color: var(--binance); margin-bottom: 8px; font-weight: 700;">
                         ⚡ PAGO DIRECTO CON BINANCE PAY ⚡
                     </div>
-                    <div style="background: #000; padding: 6px; display: inline-block; border-radius: 8px; margin-bottom: 10px; border: 1px solid var(--binance);">
-                        <img src="https://cdn.phototourl.com/member/2026-10-11-102d4de5-dc6c-4047-ab6c-d5474035de59.png" alt="QR Binance Pay" style="width: 240px; height: auto; display: block; border-radius: 4px;">
+                    <div style="background: #000; padding: 5px; display: inline-block; border-radius: 6px; margin-bottom: 8px; border: 1px solid var(--binance);">
+                        <img src="https://cdn.phototourl.com/member/2026-10-11-102d4de5-dc6c-4047-ab6c-d5474035de59.png" alt="QR Binance Pay" style="width: 200px; height: auto; display: block; border-radius: 4px;">
                     </div>
-                    <p style="font-size: 0.75rem; color: var(--text-dim); margin-bottom: 10px;">Escanea con tu app de Binance<br><strong style="color: var(--binance);">Owen Morales Ugalde</strong></p>
+                    <p style="font-size: 0.72rem; color: var(--text-dim); margin-bottom: 8px;">Escanea con tu app de Binance<br><strong style="color: var(--binance);">Owen Morales Ugalde</strong></p>
                 </div>
 
                 <div class="input-box" id="txIdBox">
@@ -1367,7 +1368,7 @@
                 <div class="input-box" id="receiptBox">
                     <label>Adjuntar Captura del Comprobante 📷</label>
                     <label class="file-upload-box" for="pReceipt">
-                        <span id="receiptLabel" style="font-size: 0.8rem; color: var(--primary); font-weight: 700;">📂 Toca aquí para subir tu comprobante</span>
+                        <span id="receiptLabel" style="font-size: 0.75rem; color: var(--primary); font-weight: 700;">📂 Toca aquí para subir tu comprobante</span>
                         <input type="file" id="pReceipt" accept="image/*" style="display: none;">
                     </label>
                 </div>
@@ -1399,12 +1400,12 @@
 
                     <div class="ff-stats-box">
                         <div class="ff-stat-title">GASTO TOTAL EN CUENTA</div>
-                        <div class="ff-stat-value" style="color: var(--ff-gold); font-size: 1.25rem;">
+                        <div class="ff-stat-value" style="color: var(--ff-gold); font-size: 1.1rem;">
                             💵 $87.60 USD
                         </div>
                         <div class="ff-extra-info">
                             <span class="ff-boxes-count">12,343 💎 + 90 Cajas ⚙️</span>
-                            <span style="color: var(--primary); font-size: 0.7rem; font-weight: 700;">VERIFICADO ⚡</span>
+                            <span style="color: var(--primary); font-size: 0.65rem; font-weight: 700;">VERIFICADO ⚡</span>
                         </div>
                     </div>
                 </div>
@@ -1567,7 +1568,7 @@
                 if (!list) return;
 
                 if (cart.length === 0) {
-                    list.innerHTML = '<p style="text-align:center; color:var(--text-dim); padding:20px; font-size:0.85rem;">Tu carrito está vacío</p>';
+                    list.innerHTML = '<p style="text-align:center; color:var(--text-dim); padding:15px; font-size:0.8rem;">Tu carrito está vacío</p>';
                     return;
                 }
 
@@ -1593,12 +1594,12 @@
                     row.innerHTML = `
                         <div>
                             <strong>${item.title}</strong><br>
-                            <span style="color:var(--primary); font-family:'Orbitron',sans-serif; font-size:0.80rem;">${priceFormatted}</span>
+                            <span style="color:var(--primary); font-family:'Orbitron',sans-serif; font-size:0.75rem;">${priceFormatted}</span>
                         </div>
                     `;
                     const delBtn = document.createElement('button');
                     delBtn.innerHTML = '&times;';
-                    delBtn.style.cssText = 'background:none; border:none; color:var(--primary); font-size:1.2rem; cursor:pointer; padding: 4px 8px;';
+                    delBtn.style.cssText = 'background:none; border:none; color:var(--primary); font-size:1.1rem; cursor:pointer; padding: 4px 6px;';
                     delBtn.addEventListener('click', () => {
                         cart.splice(i, 1);
                         renderCart();
