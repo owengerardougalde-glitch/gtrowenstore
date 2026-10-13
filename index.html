@@ -596,7 +596,7 @@
             gap: 8px;
         }
 
-        /* ESTILOS DEL NUEVO SALÓN DE LA FAMA PRIME 8 (FREE FIRE WHALES) */
+        /* ESTILOS DEL SALÓN DE LA FAMA PRIME 8 (FREE FIRE WHALES) */
         #topClientsModal .modal-box {
             background: #000;
             border: 2px solid var(--ff-gold);
@@ -801,7 +801,7 @@
         <div class="section-h2" id="catalogTitle">🔥 CATALOGO GENERAL</div>
         <div class="products-grid" id="productsGrid">
 
-            <!-- REDES SOCIALES / INSTAGRAM -->
+            <!-- REDES SOCIALES / INSTAGRAM & TIKTOK -->
             <div class="product-card" data-cat="social" data-crc="3500" data-dop="290" data-usd="6.00" data-mxn="110" data-cop="25000" data-ars="7600" data-pen="22.00">
                 <div>
                     <div class="product-badge" style="color: #e1306c;">Instagram VIP</div>
@@ -810,6 +810,28 @@
                 <div>
                     <div class="product-price price-tag">₡3,500</div>
                     <button class="btn-add" data-title="1,000 Seguidores Instagram (Calidad Alta)" data-crc="3500" data-dop="290" data-usd="6.00" data-mxn="110" data-cop="25000" data-ars="7600" data-pen="22.00">Agregar</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="social" data-crc="2400" data-dop="200" data-usd="4.00" data-mxn="73" data-cop="16600" data-ars="5000" data-pen="14.50">
+                <div>
+                    <div class="product-badge" style="color: #e1306c;">Instagram</div>
+                    <div class="product-name">1,000 Seguidores Instagram (Calidad Media)</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡2,400</div>
+                    <button class="btn-add" data-title="1,000 Seguidores Instagram (Calidad Media)" data-crc="2400" data-dop="200" data-usd="4.00" data-mxn="73" data-cop="16600" data-ars="5000" data-pen="14.50">Agregar</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="social" data-crc="3500" data-dop="290" data-usd="6.00" data-mxn="110" data-cop="25000" data-ars="7600" data-pen="22.00">
+                <div>
+                    <div class="product-badge" style="color: #00f2fe;">TikTok VIP</div>
+                    <div class="product-name">1,000 Seguidores TikTok (Calidad Estándar)</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡3,500</div>
+                    <button class="btn-add" data-title="1,000 Seguidores TikTok (Calidad Estándar)" data-crc="3500" data-dop="290" data-usd="6.00" data-mxn="110" data-cop="25000" data-ars="7600" data-pen="22.00">Agregar</button>
                 </div>
             </div>
 
@@ -1329,7 +1351,7 @@
                 <button class="btn-hero-action" data-jump-modal="ff-passes" style="width:100%; justify-content:center; padding: 12px;">⚙️ Tokens Evolutivos</button>
                 <button class="btn-hero-action" data-jump-modal="ff-passes" style="width:100%; justify-content:center; padding: 12px;">🎫 Pases Semanales/Mensuales</button>
                 <button class="btn-hero-action" data-jump-modal="streaming" style="width:100%; justify-content:center; padding: 12px;">🎬 Streaming (Netflix, Spotify...)</button>
-                <button class="btn-hero-action" data-jump-modal="social" style="width:100%; justify-content:center; padding: 12px;">📸 Redes Sociales (Instagram)</button>
+                <button class="btn-hero-action" data-jump-modal="social" style="width:100%; justify-content:center; padding: 12px;">📸 Redes Sociales (Instagram/TikTok)</button>
             </div>
         </div>
     </div>
@@ -1358,8 +1380,8 @@
                 </div>
 
                 <div class="input-box">
-                    <label>ID de Jugador (Free Fire)</label>
-                    <input type="text" id="pId" value="301110819" placeholder="Ej: 301110819">
+                    <label>ID de Jugador / Enlace de Red Social</label>
+                    <input type="text" id="pId" value="" placeholder="Ej: @tu_usuario o ID de juego">
                 </div>
 
                 <div class="input-box">
@@ -1638,7 +1660,7 @@
                 const name = document.getElementById('pName').value.trim();
                 const id = document.getElementById('pId').value.trim();
                 if (!name || !id) {
-                    alert('Por favor completa tu Nombre e ID de Free Fire antes de pagar con Cryptomus.');
+                    alert('Por favor completa tu Nombre e ID/Enlace antes de pagar con Cryptomus.');
                     return;
                 }
                 window.open('https://app.cryptomus.com/', '_blank');
@@ -1718,7 +1740,7 @@
 
                 const idInput = document.getElementById('pId');
                 const id = idInput.value.trim();
-                if (!id) { alert('Por favor ingresa tu ID de Free Fire'); return; }
+                if (!id) { alert('Por favor ingresa tu ID o Enlace'); return; }
 
                 const methodSelect = document.getElementById('pMethod');
                 const methodName = methodSelect.options[methodSelect.selectedIndex].text;
@@ -1726,13 +1748,13 @@
 
                 let txId = 'N/A (Cripto API)';
                 const txInput = document.getElementById('pTxId');
-                if (methodSelect.value !== 'CRYPTOMus') {
+                if (methodSelect.value !== 'CRYPTOMUS') {
                     txId = txInput.value.trim();
                     if (!txId) { alert('Por favor ingresa el número de comprobante o referencia de pago'); return; }
                 }
 
                 let itemsWaText = cart.map(c => `• ${c.title}`).join('%0A');
-                let msg = `⚡ *NUEVO PEDIDO - GTROWEN STORE*%0A%0A👤 *Cliente:* ${name}%0A🎮 *ID Free Fire:* ${id}%0A💳 *Método de Pago:* ${methodName}%0A🧾 *Referencia:* ${txId}%0A%0A📦 *Productos:*%0A${itemsWaText}%0A💰 *Total:* ${totalText}`;
+                let msg = `⚡ *NUEVO PEDIDO - GTROWEN STORE*%0A%0A👤 *Cliente:* ${name}%0A🔗 *ID / Enlace:* ${id}%0A💳 *Método de Pago:* ${methodName}%0A🧾 *Referencia:* ${txId}%0A%0A📦 *Productos:*%0A${itemsWaText}%0A💰 *Total:* ${totalText}`;
 
                 let whatsappUrl = `https://api.whatsapp.com/send?phone=50672986056&text=${msg}`;
                 window.open(whatsappUrl, '_blank');
