@@ -835,6 +835,17 @@
                 </div>
             </div>
 
+            <div class="product-card" data-cat="social" data-crc="4800" data-dop="400" data-usd="8.00" data-mxn="146" data-cop="33300" data-ars="10100" data-pen="29.00">
+                <div>
+                    <div class="product-badge" style="color: #00f2fe;">TikTok Alta Calidad</div>
+                    <div class="product-name">8,000 Seguidores TikTok (Calidad Alta)</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡4,800</div>
+                    <button class="btn-add" data-title="8,000 Seguidores TikTok (Calidad Alta)" data-crc="4800" data-dop="400" data-usd="8.00" data-mxn="146" data-cop="33300" data-ars="10100" data-pen="29.00">Agregar</button>
+                </div>
+            </div>
+
             <!-- STREAMING MENSUAL -->
             <div class="product-card" data-cat="streaming" data-crc="3000" data-dop="250" data-usd="6.00" data-mxn="110" data-cop="25000" data-ars="7600" data-pen="22.00">
                 <div>
@@ -1380,8 +1391,8 @@
                 </div>
 
                 <div class="input-box">
-                    <label>ID de Jugador / Enlace de Red Social</label>
-                    <input type="text" id="pId" value="" placeholder="Ej: @tu_usuario o ID de juego">
+                    <label>ID de Jugador (Free Fire)</label>
+                    <input type="text" id="pId" value="" placeholder="Ej: 301110819">
                 </div>
 
                 <div class="input-box">
@@ -1449,7 +1460,7 @@
 
             <div class="prime-hall-container">
                 
-                <!-- JUGADOR #1 -->
+                <!-- JUGADOR #1: JC -->
                 <div class="prime-card rank-1">
                     <div class="prime-header">
                         <span class="prime-rank-badge">🥇 #1 LEYENDA TIBURÓN</span>
@@ -1464,11 +1475,11 @@
                     <div class="prime-stats-grid">
                         <div class="prime-stat-item">
                             <div class="prime-stat-label">Gasto Histórico</div>
-                            <div class="prime-stat-val" style="color: var(--ff-gold);">$87.60 USD</div>
+                            <div class="prime-stat-val" style="color: var(--ff-gold);">$155.60 USD</div>
                         </div>
                         <div class="prime-stat-item">
-                            <div class="prime-stat-label">Diamantes & Cajas</div>
-                            <div class="prime-stat-val">12,343 💎</div>
+                            <div class="prime-stat-label">Diamantes & Paquetes</div>
+                            <div class="prime-stat-val">Mega Whales Tier</div>
                         </div>
                     </div>
                 </div>
@@ -1660,7 +1671,7 @@
                 const name = document.getElementById('pName').value.trim();
                 const id = document.getElementById('pId').value.trim();
                 if (!name || !id) {
-                    alert('Por favor completa tu Nombre e ID/Enlace antes de pagar con Cryptomus.');
+                    alert('Por favor completa tu Nombre e ID de Free Fire antes de pagar con Cryptomus.');
                     return;
                 }
                 window.open('https://app.cryptomus.com/', '_blank');
@@ -1740,7 +1751,7 @@
 
                 const idInput = document.getElementById('pId');
                 const id = idInput.value.trim();
-                if (!id) { alert('Por favor ingresa tu ID o Enlace'); return; }
+                if (!id) { alert('Por favor ingresa tu ID de Free Fire'); return; }
 
                 const methodSelect = document.getElementById('pMethod');
                 const methodName = methodSelect.options[methodSelect.selectedIndex].text;
@@ -1748,13 +1759,13 @@
 
                 let txId = 'N/A (Cripto API)';
                 const txInput = document.getElementById('pTxId');
-                if (methodSelect.value !== 'CRYPTOMUS') {
+                if (methodSelect.value !== 'CRYPTOMus') {
                     txId = txInput.value.trim();
                     if (!txId) { alert('Por favor ingresa el número de comprobante o referencia de pago'); return; }
                 }
 
                 let itemsWaText = cart.map(c => `• ${c.title}`).join('%0A');
-                let msg = `⚡ *NUEVO PEDIDO - GTROWEN STORE*%0A%0A👤 *Cliente:* ${name}%0A🔗 *ID / Enlace:* ${id}%0A💳 *Método de Pago:* ${methodName}%0A🧾 *Referencia:* ${txId}%0A%0A📦 *Productos:*%0A${itemsWaText}%0A💰 *Total:* ${totalText}`;
+                let msg = `⚡ *NUEVO PEDIDO - GTROWEN STORE*%0A%0A👤 *Cliente:* ${name}%0A🎮 *ID Free Fire:* ${id}%0A💳 *Método de Pago:* ${methodName}%0A🧾 *Referencia:* ${txId}%0A%0A📦 *Productos:*%0A${itemsWaText}%0A💰 *Total:* ${totalText}`;
 
                 let whatsappUrl = `https://api.whatsapp.com/send?phone=50672986056&text=${msg}`;
                 window.open(whatsappUrl, '_blank');
