@@ -388,7 +388,7 @@
             z-index: 1000;
         }
 
-        /* BOTÓN FLOTANTE DE WHATSAPP ARREGLADO Y CENTRADO */
+        /* BOTÓN FLOTANTE DE WHATSAPP 100% CORREGIDO Y CENTRADO */
         .floating-whatsapp-btn {
             position: fixed;
             bottom: 20px;
@@ -398,6 +398,8 @@
             border: 2px solid rgba(255, 255, 255, 0.4);
             width: 56px;
             height: 56px;
+            min-width: 56px;
+            min-height: 56px;
             border-radius: 50%;
             cursor: pointer;
             display: flex;
@@ -407,6 +409,7 @@
             z-index: 1000;
             text-decoration: none;
             transition: transform 0.2s;
+            flex-shrink: 0;
         }
 
         .floating-whatsapp-btn:hover {
@@ -416,6 +419,8 @@
         .floating-whatsapp-btn svg {
             width: 28px;
             height: 28px;
+            min-width: 28px;
+            min-height: 28px;
             fill: #ffffff;
             display: block;
         }
@@ -591,6 +596,7 @@
             gap: 8px;
         }
 
+        /* ESTILOS DEL NUEVO SALÓN DE LA FAMA PRIME 8 (FREE FIRE WHALES) */
         #topClientsModal .modal-box {
             background: #000;
             border: 2px solid var(--ff-gold);
@@ -599,16 +605,14 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            min-height: 480px;
+            max-height: 85vh;
         }
 
         #topClientsModal .modal-top {
-            background: rgba(0,0,0,0.9);
+            background: rgba(0,0,0,0.95);
             border-bottom: 1px solid var(--ff-gold);
             padding: 12px 15px;
             margin-bottom: 0;
-            position: relative;
-            z-index: 10;
         }
 
         #topClientsModal .modal-top h3 {
@@ -618,135 +622,106 @@
             font-size: 0.95rem;
         }
 
-        .ff-lobby-container {
+        .prime-hall-container {
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            background: linear-gradient(180deg, #050805 0%, #0b120c 100%);
+        }
+
+        .prime-card {
+            background: rgba(17, 26, 19, 0.9);
+            border: 1px solid var(--ff-gold);
+            border-radius: 12px;
+            padding: 12px;
             position: relative;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            overflow: hidden;
-            background-image: url('https://i.postimg.cc/FF2PFygB/IMG-20261010-WA0169.jpg');
-            background-size: cover;
-            background-position: center;
+            box-shadow: 0 0 15px rgba(249, 211, 66, 0.15);
         }
 
-        .ff-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.85) 100%);
-            z-index: 2;
+        .prime-card.rank-1 {
+            border: 2px solid var(--ff-gold);
+            background: linear-gradient(135deg, rgba(249, 211, 66, 0.15), rgba(17, 26, 19, 0.95));
+            box-shadow: 0 0 25px rgba(249, 211, 66, 0.35);
         }
 
-        .ff-content {
-            position: relative;
-            z-index: 3;
-            padding: 16px;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .ff-profile-card {
-            background: rgba(0, 0, 0, 0.82);
-            border: 1.5px solid var(--ff-gold);
-            border-radius: 10px;
-            padding: 10px 14px;
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            align-self: flex-end;
-            backdrop-filter: blur(6px);
-            box-shadow: 0 0 15px rgba(0,0,0,0.8);
-            min-width: 170px;
-        }
-
-        .ff-profile-top {
+        .prime-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid rgba(249, 211, 66, 0.3);
-            padding-bottom: 4px;
+            padding-bottom: 6px;
+            margin-bottom: 8px;
         }
 
-        .ff-name-big {
+        .prime-rank-badge {
             font-family: 'Orbitron', sans-serif;
             font-weight: 900;
-            font-size: 1.25rem;
-            color: #ffffff;
-            text-transform: uppercase;
-            text-shadow: 0 0 8px rgba(255,255,255,0.6);
+            font-size: 0.8rem;
+            color: var(--ff-gold);
+        }
+
+        .prime-tier {
+            background: var(--ff-gold);
+            color: #000;
+            font-family: 'Chakra Petch', sans-serif;
+            font-weight: 900;
+            font-size: 0.65rem;
+            padding: 2px 6px;
+            border-radius: 4px;
             letter-spacing: 1px;
         }
 
-        .ff-level-badge {
-            background: var(--ff-gold);
-            color: #000;
-            font-weight: 900;
-            font-size: 0.7rem;
-            padding: 2px 6px;
-            border-radius: 4px;
+        .prime-player-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
         }
 
-        .ff-uid-row {
-            font-size: 0.8rem;
+        .prime-name {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 1.05rem;
+            color: #fff;
+            text-transform: uppercase;
+            text-shadow: 0 0 8px rgba(255,255,255,0.4);
+        }
+
+        .prime-uid {
+            font-family: 'Chakra Petch', sans-serif;
+            font-size: 0.75rem;
             color: var(--primary);
             font-weight: 700;
+        }
+
+        .prime-stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px dashed rgba(255,255,255,0.1);
+        }
+
+        .prime-stat-item {
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 6px;
+            padding: 6px 10px;
+        }
+
+        .prime-stat-label {
+            font-size: 0.6rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
-        .ff-prime-tag {
-            font-size: 0.65rem;
-            color: var(--gold);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .ff-stats-box {
-            background: rgba(0, 0, 0, 0.88);
-            border-left: 4px solid var(--primary);
-            border-radius: 8px;
-            padding: 10px 14px;
-            backdrop-filter: blur(6px);
-            box-shadow: 0 0 15px rgba(0,0,0,0.8);
-            margin-bottom: 4px;
-        }
-
-        .ff-stat-title {
-            font-size: 0.65rem;
-            color: var(--text-dim);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .ff-stat-value {
+        .prime-stat-val {
+            font-family: 'Chakra Petch', sans-serif;
+            font-size: 0.95rem;
             font-weight: 900;
-            font-size: 1.25rem;
             color: var(--primary);
-            text-shadow: 0 0 10px rgba(57, 255, 20, 0.5);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            flex-wrap: wrap;
-        }
-
-        .ff-extra-info {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 6px;
-            font-size: 0.75rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 6px;
-            flex-wrap: wrap;
-            gap: 4px;
-        }
-
-        .ff-boxes-count {
-            color: var(--ff-gold);
-            font-weight: 700;
-            font-size: 0.75rem;
         }
     </style>
 
@@ -808,7 +783,7 @@
             <p>⚡ Tu tienda oficial de recargas, streaming y redes sociales ⚡</p>
             <div class="hero-actions-row">
                 <button class="btn-hero-action" id="btnOpenCatalogModal">📂 Menú Rápido</button>
-                <button class="btn-hero-action" id="btnOpenTopClients">🏆 Top Clientes</button>
+                <button class="btn-hero-action" id="btnOpenTopClients">🏆 Salón de la Fama Prime</button>
             </div>
         </div>
 
@@ -1332,7 +1307,7 @@
         </div>
     </div>
 
-    <!-- BOTÓN FLOTANTE DE WHATSAPP CON EL LOGO BIEN CENTRADO -->
+    <!-- BOTÓN FLOTANTE DE WHATSAPP CON LOGO PERFECTAMENTE CENTRADO -->
     <a href="https://api.whatsapp.com/send?phone=50672986056&text=Hola,%20tengo%20una%20consulta%20sobre%20la%20tienda%20gtrowen.store" class="floating-whatsapp-btn" target="_blank" title="Contáctanos por WhatsApp">
         <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.9-4.44 9.9-9.9 0-2.65-1.03-5.14-2.9-7.01-1.87-1.87-4.36-2.9-7.01-2.9zm0 1.83c2.2 0 4.27.86 5.82 2.42 1.56 1.55 2.42 3.62 2.42 5.82 0 4.54-3.7 8.24-8.24 8.24-1.46 0-2.88-.39-4.12-1.13l-.3-.18-3.08.81.82-3-.19-.31c-.81-1.28-1.24-2.78-1.24-4.32 0-4.54 3.7-8.24 8.24-8.24zm4.51 5.92c-.18-.09-1.07-.53-1.24-.59-.17-.06-.29-.09-.42.09-.13.18-.48.59-.59.72-.11.13-.22.15-.4.06-.18-.09-.76-.28-1.45-.89-.54-.48-.9-1.07-1.01-1.25-.11-.18-.01-.28.08-.37.08-.08.18-.21.27-.32.09-.11.12-.18.18-.3.06-.12.03-.23-.01-.32-.05-.09-.42-1.01-.58-1.38-.15-.36-.31-.31-.42-.32h-.36c-.12 0-.32.04-.49.23-.17.18-.65.63-.65 1.54s.67 1.78.76 1.9c.09.12 1.32 2.01 3.2 2.82.45.2.8.32 1.07.41.45.15.86.13 1.18.08.36-.05 1.07-.44 1.22-.87.15-.43.15-.8.11-.87-.04-.07-.16-.11-.34-.2z"/></svg>
     </a>
@@ -1442,38 +1417,88 @@
         </div>
     </div>
 
-    <!-- MODAL TOP CLIENTES PRIME -->
+    <!-- MODAL SALÓN DE LA FAMA PRIME (TOP CLIENTES WHALES FREE FIRE) -->
     <div class="modal" id="topClientsModal">
-        <div class="modal-box">
+        <div class="modal-box" style="max-width: 440px;">
             <div class="modal-top">
-                <h3>🏆 TOP CLIENTES PRIME</h3>
+                <h3>👑 SALÓN DE LA FAMA PRIME 8</h3>
                 <button class="btn-close" id="closeTopClientsBtn">&times;</button>
             </div>
 
-            <div class="ff-lobby-container">
-                <div class="ff-overlay"></div>
-
-                <div class="ff-content">
-                    <div class="ff-profile-card">
-                        <div class="ff-profile-top">
-                            <div class="ff-name-big">J.C.</div>
-                            <div class="ff-level-badge">Nv. 75</div>
-                        </div>
-                        <div class="ff-uid-row">UID: 301110819</div>
-                        <div class="ff-prime-tag">👑 TOP #1 PRIME</div>
+            <div class="prime-hall-container">
+                
+                <!-- JUGADOR #1 -->
+                <div class="prime-card rank-1">
+                    <div class="prime-header">
+                        <span class="prime-rank-badge">🥇 #1 LEYENDA TIBURÓN</span>
+                        <span class="prime-tier">PRIME 8 VIP</span>
                     </div>
-
-                    <div class="ff-stats-box">
-                        <div class="ff-stat-title">GASTO TOTAL EN CUENTA</div>
-                        <div class="ff-stat-value" style="color: var(--ff-gold); font-size: 1.25rem;">
-                            💵 $87.60 USD
+                    <div class="prime-player-info">
+                        <div>
+                            <div class="prime-name">J.C.</div>
+                            <div class="prime-uid">UID: 301110819</div>
                         </div>
-                        <div class="ff-extra-info">
-                            <span class="ff-boxes-count">12,343 💎 + 90 Cajas ⚙️</span>
-                            <span style="color: var(--primary); font-size: 0.7rem; font-weight: 700;">VERIFICADO ⚡</span>
+                    </div>
+                    <div class="prime-stats-grid">
+                        <div class="prime-stat-item">
+                            <div class="prime-stat-label">Gasto Histórico</div>
+                            <div class="prime-stat-val" style="color: var(--ff-gold);">$87.60 USD</div>
+                        </div>
+                        <div class="prime-stat-item">
+                            <div class="prime-stat-label">Diamantes & Cajas</div>
+                            <div class="prime-stat-val">12,343 💎</div>
                         </div>
                     </div>
                 </div>
+
+                <!-- JUGADOR #2 -->
+                <div class="prime-card">
+                    <div class="prime-header">
+                        <span class="prime-rank-badge" style="color: #c0c0c0;">🥈 #2 ELITE SPENDER</span>
+                        <span class="prime-tier" style="background: #c0c0c0; color:#000;">PRIME 7</span>
+                    </div>
+                    <div class="prime-player-info">
+                        <div>
+                            <div class="prime-name">KRAKEN_77</div>
+                            <div class="prime-uid">UID: 418290192</div>
+                        </div>
+                    </div>
+                    <div class="prime-stats-grid">
+                        <div class="prime-stat-item">
+                            <div class="prime-stat-label">Gasto Histórico</div>
+                            <div class="prime-stat-val">$54.00 USD</div>
+                        </div>
+                        <div class="prime-stat-item">
+                            <div class="prime-stat-label">Diamantes & Cajas</div>
+                            <div class="prime-stat-val">7,200 💎</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- JUGADOR #3 -->
+                <div class="prime-card">
+                    <div class="prime-header">
+                        <span class="prime-rank-badge" style="color: #cd7f32;">🥉 #3 VIP MASTER</span>
+                        <span class="prime-tier" style="background: #cd7f32; color:#fff;">PRIME 6</span>
+                    </div>
+                    <div class="prime-player-info">
+                        <div>
+                            <div class="prime-name">ZETA_OFFIC</div>
+                            <div class="prime-uid">UID: 192837485</div>
+                        </div>
+                    </div>
+                    <div class="prime-stats-grid">
+                        <div class="prime-stat-item">
+                            <div class="prime-stat-label">Gasto Histórico</div>
+                            <div class="prime-stat-val">$32.50 USD</div>
+                        </div>
+                        <div class="prime-stat-item">
+                            <div class="prime-stat-label">Diamantes & Cajas</div>
+                            <div class="prime-stat-val">4,150 💎</div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
