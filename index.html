@@ -8,19 +8,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #03050b;
-            --surface: #0b0e19;
-            --surface-card: #121728;
-            --primary: #00f0ff;
-            --secondary: #ff0055;
-            --purple: #7000ff;
+            --bg: #050805;
+            --surface: #0b120c;
+            --surface-card: #111a13;
+            --primary: #39FF14;
+            --secondary: #00FF66;
+            --purple: #10B981;
             --gold: #ffb700;
             --ff-gold: #f9d342;
             --binance: #f3ba2f;
             --cryptomus-color: #3861fb;
             --text: #ffffff;
             --text-dim: #8b92b0;
-            --border: rgba(255, 0, 85, 0.3);
+            --border: rgba(57, 255, 20, 0.3);
         }
 
         * {
@@ -38,8 +38,8 @@
             position: relative;
             overflow-x: hidden;
             background-image: 
-                radial-gradient(circle at 10% 20%, rgba(255, 0, 85, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(0, 240, 255, 0.06) 0%, transparent 40%);
+                radial-gradient(circle at 10% 20%, rgba(57, 255, 20, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(0, 255, 102, 0.06) 0%, transparent 40%);
             background-attachment: fixed;
         }
 
@@ -52,7 +52,7 @@
             height: 100vh;
             pointer-events: none !important;
             z-index: 0;
-            opacity: 0.15;
+            opacity: 0.12;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -63,12 +63,12 @@
             width: 650px;
             max-width: 95vw;
             height: auto;
-            filter: drop-shadow(0 0 35px var(--secondary));
+            filter: drop-shadow(0 0 35px var(--primary));
             pointer-events: none !important;
         }
 
         header {
-            background: rgba(11, 14, 25, 0.95);
+            background: rgba(11, 18, 12, 0.95);
             backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--border);
             padding: 12px 18px;
@@ -89,12 +89,14 @@
         .brand-icon {
             width: 32px;
             height: 32px;
-            background: linear-gradient(135deg, var(--secondary), var(--purple));
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #000;
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.1rem;
+            font-weight: 900;
         }
 
         .brand-text {
@@ -106,13 +108,13 @@
             font-family: 'Orbitron', sans-serif;
             font-weight: 900;
             font-size: 1.1rem;
-            color: var(--secondary);
+            color: var(--primary);
             letter-spacing: 1px;
             line-height: 1;
-            text-shadow: 0 0 10px rgba(255, 0, 85, 0.5);
+            text-shadow: 0 0 10px rgba(57, 255, 20, 0.5);
         }
 
-        .brand-title span { color: var(--primary); }
+        .brand-title span { color: #fff; }
 
         .brand-sub {
             font-family: 'Orbitron', sans-serif;
@@ -153,14 +155,14 @@
         }
 
         .curr-btn.active {
-            background: var(--secondary);
-            color: #fff;
-            box-shadow: 0 0 10px rgba(255, 0, 85, 0.5);
+            background: var(--primary);
+            color: #000;
+            box-shadow: 0 0 10px rgba(57, 255, 20, 0.5);
         }
 
         .header-cart {
-            background: linear-gradient(135deg, rgba(112, 0, 255, 0.3), rgba(255, 0, 85, 0.3));
-            border: 1px solid var(--secondary);
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.3), rgba(57, 255, 20, 0.3));
+            border: 1px solid var(--primary);
             border-radius: 20px;
             padding: 6px 12px;
             display: flex;
@@ -196,13 +198,13 @@
         }
 
         .samurai-banner {
-            background: linear-gradient(135deg, rgba(11, 14, 25, 0.95), rgba(18, 23, 40, 0.95));
+            background: linear-gradient(135deg, rgba(11, 18, 12, 0.95), rgba(17, 26, 19, 0.95));
             backdrop-filter: blur(8px);
-            border: 2px solid var(--secondary);
+            border: 2px solid var(--primary);
             border-radius: 18px;
             padding: 20px 15px;
             margin-bottom: 25px;
-            box-shadow: 0 0 30px rgba(255, 0, 85, 0.3), inset 0 0 15px rgba(0, 240, 255, 0.1);
+            box-shadow: 0 0 30px rgba(57, 255, 20, 0.25), inset 0 0 15px rgba(57, 255, 20, 0.1);
             position: relative;
             z-index: 5;
         }
@@ -216,23 +218,23 @@
             font-family: 'Orbitron', sans-serif;
             font-size: 1.6rem;
             font-weight: 900;
-            color: var(--secondary);
+            color: var(--primary);
             text-transform: uppercase;
-            text-shadow: 0 0 15px rgba(255, 0, 85, 0.7);
+            text-shadow: 0 0 15px rgba(57, 255, 20, 0.7);
             letter-spacing: 2px;
         }
 
         .samurai-store-sub {
             font-family: 'Orbitron', sans-serif;
             font-size: 0.75rem;
-            color: var(--primary);
+            color: #fff;
             letter-spacing: 3px;
             margin-top: 4px;
             text-transform: uppercase;
         }
 
         .btn-open-top-clients {
-            background: linear-gradient(135deg, rgba(255, 183, 0, 0.15), rgba(11, 14, 25, 0.9));
+            background: linear-gradient(135deg, rgba(255, 183, 0, 0.15), rgba(11, 18, 12, 0.9));
             border: 1px solid var(--gold);
             color: var(--gold);
             width: 100%;
@@ -259,9 +261,9 @@
         .samurai-box-catalog {
             border: 1px solid var(--primary);
             border-radius: 12px;
-            background: rgba(0, 240, 255, 0.04);
+            background: rgba(57, 255, 20, 0.04);
             padding: 14px;
-            box-shadow: 0 0 15px rgba(0, 240, 255, 0.15);
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.15);
         }
 
         .samurai-box-title {
@@ -305,8 +307,8 @@
 
         .samurai-item-pill:hover {
             border-color: var(--primary);
-            background: rgba(0, 240, 255, 0.15);
-            box-shadow: 0 0 12px rgba(0, 240, 255, 0.3);
+            background: rgba(57, 255, 20, 0.15);
+            box-shadow: 0 0 12px rgba(57, 255, 20, 0.3);
         }
 
         .category-scroll {
@@ -320,7 +322,7 @@
         }
 
         .cat-btn {
-            background: rgba(11, 14, 25, 0.95);
+            background: rgba(11, 18, 12, 0.95);
             border: 1px solid var(--border);
             color: var(--text-dim);
             padding: 10px 18px;
@@ -338,10 +340,11 @@
         }
 
         .cat-btn.active {
-            background: linear-gradient(135deg, var(--secondary), var(--purple));
-            color: #fff;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #000;
             border-color: var(--primary);
-            box-shadow: 0 0 12px rgba(255, 0, 85, 0.4);
+            box-shadow: 0 0 12px rgba(57, 255, 20, 0.5);
+            font-weight: 900;
         }
 
         .section-h2 {
@@ -354,7 +357,7 @@
             align-items: center;
             gap: 8px;
             margin-top: 25px;
-            text-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+            text-shadow: 0 0 10px rgba(57, 255, 20, 0.3);
         }
 
         .products-grid {
@@ -367,7 +370,7 @@
         }
 
         .product-card {
-            background: rgba(18, 23, 40, 0.95);
+            background: rgba(17, 26, 19, 0.95);
             border: 1px solid var(--border);
             border-radius: 14px;
             padding: 14px;
@@ -381,7 +384,7 @@
         .product-badge {
             font-size: 0.68rem;
             font-weight: 700;
-            color: var(--secondary);
+            color: var(--primary);
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-bottom: 6px;
@@ -404,12 +407,12 @@
         }
 
         .btn-add {
-            background: linear-gradient(135deg, var(--purple), var(--secondary));
-            color: #fff;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #000;
             border: none;
             border-radius: 8px;
             padding: 10px 0;
-            font-weight: 700;
+            font-weight: 900;
             font-size: 0.75rem;
             font-family: 'Orbitron', sans-serif;
             cursor: pointer;
@@ -417,14 +420,15 @@
             text-transform: uppercase;
             position: relative;
             z-index: 15;
+            box-shadow: 0 0 10px rgba(57, 255, 20, 0.3);
         }
 
         .floating-cart-btn {
             position: fixed;
             bottom: 85px;
             right: 20px;
-            background: linear-gradient(135deg, var(--purple), var(--secondary));
-            color: #ffffff;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #000;
             border: 1px solid rgba(255, 255, 255, 0.3);
             padding: 12px 20px;
             border-radius: 30px;
@@ -435,7 +439,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            box-shadow: 0 0 20px rgba(255, 0, 85, 0.5);
+            box-shadow: 0 0 20px rgba(57, 255, 20, 0.5);
             z-index: 1000;
         }
 
@@ -465,8 +469,8 @@
         }
 
         .floating-cart-badge {
-            background: #fff;
-            color: #000;
+            background: #000;
+            color: var(--primary);
             font-size: 0.75rem;
             width: 22px;
             height: 22px;
@@ -564,7 +568,7 @@
         }
 
         .file-upload-box {
-            background: rgba(0, 240, 255, 0.03);
+            background: rgba(57, 255, 20, 0.03);
             border: 2px dashed var(--primary);
             border-radius: 10px;
             padding: 12px;
@@ -575,11 +579,11 @@
         }
 
         .file-upload-box:hover {
-            background: rgba(0, 240, 255, 0.08);
+            background: rgba(57, 255, 20, 0.08);
         }
 
         .info-pay {
-            background: rgba(0, 240, 255, 0.05);
+            background: rgba(57, 255, 20, 0.05);
             border: 1px dashed var(--primary);
             border-radius: 8px;
             padding: 12px;
@@ -589,8 +593,8 @@
         }
 
         .btn-proceed {
-            background: linear-gradient(135deg, var(--secondary), var(--purple));
-            color: #fff;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #000;
             border: none;
             width: 100%;
             padding: 12px;
@@ -636,10 +640,7 @@
             gap: 8px;
         }
 
-        /* ---------------------------------------------------
-           MODAL TOP CLIENTES PRIME (ESTILO LOBBY FF OPTIMIZADO)
-           --------------------------------------------------- */
-        
+        /* MODAL TOP CLIENTES PRIME */
         #topClientsModal .modal-box {
             background: #000;
             border: 2px solid var(--ff-gold);
@@ -776,7 +777,7 @@
             font-weight: 900;
             font-size: 1.15rem;
             color: var(--primary);
-            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+            text-shadow: 0 0 10px rgba(57, 255, 20, 0.5);
             display: flex;
             align-items: center;
             gap: 6px;
@@ -807,26 +808,26 @@
 
     <div class="samurai-watermark-bg">
         <svg class="samurai-svg-art" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M300 70 C210 70 150 130 150 200 C150 235 170 270 190 290 L220 260 L250 320 L300 295 L350 320 L380 260 L410 290 C430 270 450 235 450 200 C450 130 390 70 300 70Z" stroke="#00f0ff" stroke-width="3.5" fill="#0b0e19" opacity="0.95"/>
-            <path d="M190 120 L100 60 L140 160 Z" fill="#ff0055" opacity="0.9"/>
-            <path d="M410 120 L500 60 L460 160 Z" fill="#ff0055" opacity="0.9"/>
+            <path d="M300 70 C210 70 150 130 150 200 C150 235 170 270 190 290 L220 260 L250 320 L300 295 L350 320 L380 260 L410 290 C430 270 450 235 450 200 C450 130 390 70 300 70Z" stroke="#39FF14" stroke-width="3.5" fill="#050805" opacity="0.95"/>
+            <path d="M190 120 L100 60 L140 160 Z" fill="#00FF66" opacity="0.9"/>
+            <path d="M410 120 L500 60 L460 160 Z" fill="#00FF66" opacity="0.9"/>
             <path d="M300 40 L315 80 L285 80 Z" fill="#ffb700" opacity="0.9"/>
-            <path d="M240 230 Q300 250 360 230 Q390 290 360 360 Q300 400 240 360 Q210 290 240 230Z" stroke="#ff0055" stroke-width="3" fill="#03050b"/>
-            <path d="M260 270 Q280 260 300 270 Q280 280 260 270Z" fill="#00f0ff"/>
-            <path d="M340 270 Q320 260 300 270 Q320 280 340 270Z" fill="#00f0ff"/>
-            <circle cx="275" cy="320" r="10" fill="#ff0055" opacity="0.8"/>
-            <circle cx="325" cy="320" r="10" fill="#ff0055" opacity="0.8"/>
-            <path d="M140 480 L460 400" stroke="#00f0ff" stroke-width="7" stroke-linecap="round"/>
-            <path d="M150 420 L450 490" stroke="#ff0055" stroke-width="5" stroke-linecap="round"/>
+            <path d="M240 230 Q300 250 360 230 Q390 290 360 360 Q300 400 240 360 Q210 290 240 230Z" stroke="#00FF66" stroke-width="3" fill="#050805"/>
+            <path d="M260 270 Q280 260 300 270 Q280 280 260 270Z" fill="#39FF14"/>
+            <path d="M340 270 Q320 260 300 270 Q320 280 340 270Z" fill="#39FF14"/>
+            <circle cx="275" cy="320" r="10" fill="#00FF66" opacity="0.8"/>
+            <circle cx="325" cy="320" r="10" fill="#00FF66" opacity="0.8"/>
+            <path d="M140 480 L460 400" stroke="#39FF14" stroke-width="7" stroke-linecap="round"/>
+            <path d="M150 420 L450 490" stroke="#00FF66" stroke-width="5" stroke-linecap="round"/>
             <circle cx="145" cy="450" r="14" fill="#ffb700"/>
-            <path d="M150 350 L100 420 L180 440 Z" fill="#7000ff" opacity="0.7"/>
-            <path d="M450 350 L500 420 L420 440 Z" fill="#7000ff" opacity="0.7"/>
+            <path d="M150 350 L100 420 L180 440 Z" fill="#10B981" opacity="0.7"/>
+            <path d="M450 350 L500 420 L420 440 Z" fill="#10B981" opacity="0.7"/>
         </svg>
     </div>
 
     <header>
         <div class="brand-box">
-            <div class="brand-icon">🥷</div>
+            <div class="brand-icon">⚡</div>
             <div class="brand-text">
                 <div class="brand-title">GTROWEN <span>STORE</span></div>
                 <div class="brand-sub">UDC DIGITAL</div>
@@ -855,7 +856,7 @@
         <div class="samurai-banner">
             <div class="samurai-header-content">
                 <div class="samurai-store-name">GTROWEN.STORE</div>
-                <div class="samurai-store-sub">🥷 VENTA DE SERVICIOS DIGITALES 🥷</div>
+                <div class="samurai-store-sub">⚡ SERVICIOS DIGITALES & GAMER ⚡</div>
             </div>
 
             <button class="btn-open-top-clients" id="btnOpenTopClients">
@@ -869,7 +870,7 @@
                     <button class="samurai-item-pill" data-jump="ff-passes">⚙️ Tokens Evolutivos</button>
                     <button class="samurai-item-pill" data-jump="ff-passes">🎫 Pases Semanales/Mensuales</button>
                     <button class="samurai-item-pill" data-jump="streaming">🎬 Streaming (Netflix, Spotify...)</button>
-                    <button class="samurai-item-pill" data-jump="bs">🪙 Blood Strike Oro</button>
+                    <button class="samurai-item-pill" data-jump="social">📸 Redes Sociales (Instagram)</button>
                     <button class="samurai-item-pill" id="bannerOpenModal">🚀 Entrega Inmediata 100% Segura</button>
                 </div>
             </div>
@@ -877,6 +878,7 @@
 
         <div class="category-scroll">
             <button class="cat-btn active" data-cat="all">▦ Todo</button>
+            <button class="cat-btn" data-cat="social">📸 Redes Sociales</button>
             <button class="cat-btn" data-cat="streaming">🎬 Streaming Mensual</button>
             <button class="cat-btn" data-cat="streaming-perm">💎 Streaming Permanente</button>
             <button class="cat-btn" data-cat="ff-lim">⚡ FF Limitados</button>
@@ -887,6 +889,18 @@
 
         <div class="section-h2" id="catalogTitle">🔥 CATALOGO GENERAL</div>
         <div class="products-grid" id="productsGrid">
+
+            <!-- REDES SOCIALES / INSTAGRAM -->
+            <div class="product-card" data-cat="social" data-crc="3500" data-dop="290" data-usd="6.00" data-mxn="110" data-cop="25000" data-ars="7600" data-pen="22.00">
+                <div>
+                    <div class="product-badge" style="color: #e1306c;">Instagram VIP</div>
+                    <div class="product-name">1,000 Seguidores Instagram (Calidad Alta)</div>
+                </div>
+                <div>
+                    <div class="product-price price-tag">₡3,500</div>
+                    <button class="btn-add" data-title="1,000 Seguidores Instagram (Calidad Alta)" data-crc="3500" data-dop="290" data-usd="6.00" data-mxn="110" data-cop="25000" data-ars="7600" data-pen="22.00">Agregar</button>
+                </div>
+            </div>
 
             <!-- STREAMING MENSUAL -->
             <div class="product-card" data-cat="streaming" data-crc="3000" data-dop="250" data-usd="6.00" data-mxn="110" data-cop="25000" data-ars="7600" data-pen="22.00">
@@ -1704,7 +1718,7 @@
                     `;
                     const delBtn = document.createElement('button');
                     delBtn.innerHTML = '&times;';
-                    delBtn.style.cssText = 'background:none; border:none; color:var(--secondary); font-size:1.2rem; cursor:pointer; padding: 4px 8px;';
+                    delBtn.style.cssText = 'background:none; border:none; color:var(--primary); font-size:1.2rem; cursor:pointer; padding: 4px 8px;';
                     delBtn.addEventListener('click', () => {
                         cart.splice(i, 1);
                         renderCart();
@@ -1746,7 +1760,7 @@
                 }
 
                 let itemsWaText = cart.map(c => `• ${c.title}`).join('%0A');
-                let msg = `🚀 *NUEVO PEDIDO - GTROWEN STORE*%0A%0A👤 *Cliente:* ${name}%0A🎮 *ID Free Fire:* ${id}%0A💳 *Método de Pago:* ${methodName}%0A🧾 *Referencia:* ${txId}%0A%0A📦 *Productos:*%0A${itemsWaText}%0A💰 *Total:* ${totalText}`;
+                let msg = `⚡ *NUEVO PEDIDO - GTROWEN STORE*%0A%0A👤 *Cliente:* ${name}%0A🎮 *ID Free Fire:* ${id}%0A💳 *Método de Pago:* ${methodName}%0A🧾 *Referencia:* ${txId}%0A%0A📦 *Productos:*%0A${itemsWaText}%0A💰 *Total:* ${totalText}`;
 
                 let whatsappUrl = `https://api.whatsapp.com/send?phone=50672986056&text=${msg}`;
                 window.open(whatsappUrl, '_blank');
