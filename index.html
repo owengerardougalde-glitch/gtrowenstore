@@ -17,7 +17,6 @@
             --gold: #ffb700;
             --ff-gold: #f9d342;
             --binance: #f3ba2f;
-            --cryptomus-color: #3861fb;
             --text: #ffffff;
             --text-dim: #8b92b0;
             --border: rgba(57, 255, 20, 0.3);
@@ -41,30 +40,6 @@
                 radial-gradient(circle at 10% 20%, rgba(57, 255, 20, 0.08) 0%, transparent 40%),
                 radial-gradient(circle at 90% 80%, rgba(0, 255, 102, 0.06) 0%, transparent 40%);
             background-attachment: fixed;
-        }
-
-        .samurai-watermark-bg {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100vw;
-            height: 100vh;
-            pointer-events: none !important;
-            z-index: 0;
-            opacity: 0.06;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .samurai-svg-art {
-            width: 650px;
-            max-width: 95vw;
-            height: auto;
-            filter: drop-shadow(0 0 35px var(--primary));
-            pointer-events: none !important;
         }
 
         header {
@@ -197,7 +172,7 @@
             z-index: 10;
         }
 
-        /* BIENVENIDA MINIMALISTA */
+        /* BIENVENIDA MINIMALISTA LIMPIA */
         .welcome-hero {
             background: linear-gradient(135deg, rgba(11, 18, 12, 0.9), rgba(17, 26, 19, 0.9));
             border: 1px solid var(--border);
@@ -276,8 +251,6 @@
             display: flex;
             align-items: center;
             gap: 6px;
-            position: relative;
-            z-index: 10;
         }
 
         .cat-btn.active {
@@ -306,8 +279,6 @@
             grid-template-columns: repeat(2, 1fr);
             gap: 12px;
             margin-bottom: 25px;
-            position: relative;
-            z-index: 10;
         }
 
         .product-card {
@@ -318,8 +289,6 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            position: relative;
-            z-index: 10;
         }
 
         .product-badge {
@@ -359,8 +328,6 @@
             cursor: pointer;
             width: 100%;
             text-transform: uppercase;
-            position: relative;
-            z-index: 15;
             box-shadow: 0 0 10px rgba(57, 255, 20, 0.3);
         }
 
@@ -445,8 +412,6 @@
             padding: 20px;
             max-height: 85vh;
             overflow-y: auto;
-            position: relative;
-            z-index: 2001;
         }
 
         .modal-top {
@@ -470,7 +435,6 @@
             color: var(--text-dim);
             font-size: 1.4rem;
             cursor: pointer;
-            z-index: 2010;
         }
 
         .cart-row {
@@ -516,11 +480,6 @@
             text-align: center;
             cursor: pointer;
             margin-bottom: 12px;
-            transition: all 0.3s ease;
-        }
-
-        .file-upload-box:hover {
-            background: rgba(57, 255, 20, 0.08);
         }
 
         .info-pay {
@@ -598,8 +557,6 @@
             border-bottom: 1px solid var(--ff-gold);
             padding: 12px 15px;
             margin-bottom: 0;
-            position: relative;
-            z-index: 10;
         }
 
         #topClientsModal .modal-top h3 {
@@ -746,25 +703,6 @@
     </style>
 </head>
 <body>
-
-    <div class="samurai-watermark-bg">
-        <svg class="samurai-svg-art" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M300 70 C210 70 150 130 150 200 C150 235 170 270 190 290 L220 260 L250 320 L300 295 L350 320 L380 260 L410 290 C430 270 450 235 450 200 C450 130 390 70 300 70Z" stroke="#39FF14" stroke-width="3.5" fill="#050805" opacity="0.95"/>
-            <path d="M190 120 L100 60 L140 160 Z" fill="#00FF66" opacity="0.9"/>
-            <path d="M410 120 L500 60 L460 160 Z" fill="#00FF66" opacity="0.9"/>
-            <path d="M300 40 L315 80 L285 80 Z" fill="#ffb700" opacity="0.9"/>
-            <path d="M240 230 Q300 250 360 230 Q390 290 360 360 Q300 400 240 360 Q210 290 240 230Z" stroke="#00FF66" stroke-width="3" fill="#050805"/>
-            <path d="M260 270 Q280 260 300 270 Q280 280 260 270Z" fill="#39FF14"/>
-            <path d="M340 270 Q320 260 300 270 Q320 280 340 270Z" fill="#39FF14"/>
-            <circle cx="275" cy="320" r="10" fill="#00FF66" opacity="0.8"/>
-            <circle cx="325" cy="320" r="10" fill="#00FF66" opacity="0.8"/>
-            <path d="M140 480 L460 400" stroke="#39FF14" stroke-width="7" stroke-linecap="round"/>
-            <path d="M150 420 L450 490" stroke="#00FF66" stroke-width="5" stroke-linecap="round"/>
-            <circle cx="145" cy="450" r="14" fill="#ffb700"/>
-            <path d="M150 350 L100 420 L180 440 Z" fill="#10B981" opacity="0.7"/>
-            <path d="M450 350 L500 420 L420 440 Z" fill="#10B981" opacity="0.7"/>
-        </svg>
-    </div>
 
     <header>
         <div class="brand-box">
@@ -1404,7 +1342,6 @@
                     <strong>Datos SINPE Móvil:</strong><br>• Teléfono: <strong>6412 9943</strong><br>• Titular: <strong>OWEN MORALES UGALDE</strong>
                 </div>
 
-                <!-- SECCIÓN DE BOTÓN DE PAGO API CRYPTOMUS -->
                 <div id="cryptomusApiSection" style="display: none; text-align: center; margin-bottom: 15px;">
                     <p style="font-size: 0.78rem; color: var(--text-dim); margin-bottom: 10px;">Paga de forma automática y segura con cualquier criptomoneda a través de la pasarela oficial de Cryptomus.</p>
                     <button class="btn-cryptomus-api" id="payWithCryptomusBtn">
@@ -1412,30 +1349,25 @@
                     </button>
                 </div>
 
-                <!-- SECCIÓN DE QR Y BOTÓN DE BINANCE -->
                 <div id="cryptoPaySection" style="display: none; text-align: center; margin-bottom: 15px; background: rgba(243, 186, 47, 0.05); border: 1px solid var(--binance); border-radius: 12px; padding: 15px;">
                     <div style="font-family: 'Orbitron', sans-serif; font-size: 0.8rem; color: var(--binance); margin-bottom: 10px; font-weight: 700;">
                         ⚡ PAGO DIRECTO CON BINANCE PAY ⚡
                     </div>
-                    <div style="background: #000; padding: 6px; display: inline-block; border-radius: 8px; margin-bottom: 10px; box-shadow: 0 0 20px rgba(243, 186, 47, 0.3); border: 1px solid var(--binance);">
-                        <img src="https://cdn.phototourl.com/member/2026-10-11-102d4de5-dc6c-4047-ab6c-d5474035de59.png" alt="QR Binance Pay Owen Morales" style="width: 240px; height: auto; display: block; border-radius: 4px; image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges;">
+                    <div style="background: #000; padding: 6px; display: inline-block; border-radius: 8px; margin-bottom: 10px; border: 1px solid var(--binance);">
+                        <img src="https://cdn.phototourl.com/member/2026-10-11-102d4de5-dc6c-4047-ab6c-d5474035de59.png" alt="QR Binance Pay" style="width: 240px; height: auto; display: block; border-radius: 4px;">
                     </div>
-                    <p style="font-size: 0.75rem; color: var(--text-dim); margin-bottom: 10px;">Escanea con tu app de Binance o usa el botón inferior<br><strong style="color: var(--binance);">Owen Morales Ugalde</strong></p>
-                    <a href="https://pay.binance.com/" target="_blank" style="background: var(--binance); color: #000; font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 0.75rem; padding: 10px 15px; border-radius: 8px; display: block; text-decoration: none; text-transform: uppercase; box-shadow: 0 0 10px rgba(243, 186, 47, 0.4);">
-                        Abrir App de Binance 🌐
-                    </a>
+                    <p style="font-size: 0.75rem; color: var(--text-dim); margin-bottom: 10px;">Escanea con tu app de Binance<br><strong style="color: var(--binance);">Owen Morales Ugalde</strong></p>
                 </div>
 
                 <div class="input-box" id="txIdBox">
                     <label>Número de Comprobante / Hash / Referencia</label>
-                    <input type="text" id="pTxId" placeholder="Ej: 456791601... o núm. de comprobante">
+                    <input type="text" id="pTxId" placeholder="Ej: 456791601...">
                 </div>
 
-                <!-- BOTÓN PARA ADJUNTAR CAPTURA DE COMPROBANTE -->
                 <div class="input-box" id="receiptBox">
                     <label>Adjuntar Captura del Comprobante 📷</label>
                     <label class="file-upload-box" for="pReceipt">
-                        <span id="receiptLabel" style="font-size: 0.8rem; color: var(--primary); font-weight: 700;">📂 Toca aquí para subir o tomar foto de tu comprobante</span>
+                        <span id="receiptLabel" style="font-size: 0.8rem; color: var(--primary); font-weight: 700;">📂 Toca aquí para subir tu comprobante</span>
                         <input type="file" id="pReceipt" accept="image/*" style="display: none;">
                     </label>
                 </div>
@@ -1455,7 +1387,6 @@
 
             <div class="ff-lobby-container">
                 <div class="ff-overlay"></div>
-
                 <div class="ff-content">
                     <div class="ff-profile-card">
                         <div class="ff-profile-top">
@@ -1523,7 +1454,6 @@
                 });
             });
 
-            // Modales de menú rápido y top clientes
             const catalogModal = document.getElementById('catalogModal');
             document.getElementById('btnOpenCatalogModal').addEventListener('click', () => catalogModal.classList.add('open'));
             document.getElementById('closeCatalogModalBtn').addEventListener('click', () => catalogModal.classList.remove('open'));
