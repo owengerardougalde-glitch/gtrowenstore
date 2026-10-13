@@ -52,7 +52,7 @@
             height: 100vh;
             pointer-events: none !important;
             z-index: 0;
-            opacity: 0.12;
+            opacity: 0.08;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -197,118 +197,59 @@
             z-index: 10;
         }
 
-        .samurai-banner {
-            background: linear-gradient(135deg, rgba(11, 18, 12, 0.95), rgba(17, 26, 19, 0.95));
-            backdrop-filter: blur(8px);
-            border: 2px solid var(--primary);
-            border-radius: 18px;
-            padding: 20px 15px;
-            margin-bottom: 25px;
-            box-shadow: 0 0 30px rgba(57, 255, 20, 0.25), inset 0 0 15px rgba(57, 255, 20, 0.1);
-            position: relative;
-            z-index: 5;
-        }
-
-        .samurai-header-content {
+        /* NUEVO HERO / BIENVENIDA MINIMALISTA */
+        .welcome-hero {
+            background: linear-gradient(135deg, rgba(11, 18, 12, 0.9), rgba(17, 26, 19, 0.9));
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 18px;
             text-align: center;
-            margin-bottom: 18px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 20px rgba(57, 255, 20, 0.15);
         }
 
-        .samurai-store-name {
+        .welcome-hero h2 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.6rem;
-            font-weight: 900;
+            font-size: 1.25rem;
             color: var(--primary);
-            text-transform: uppercase;
-            text-shadow: 0 0 15px rgba(57, 255, 20, 0.7);
-            letter-spacing: 2px;
-        }
-
-        .samurai-store-sub {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.75rem;
-            color: #fff;
-            letter-spacing: 3px;
-            margin-top: 4px;
-            text-transform: uppercase;
-        }
-
-        .btn-open-top-clients {
-            background: linear-gradient(135deg, rgba(255, 183, 0, 0.15), rgba(11, 18, 12, 0.9));
-            border: 1px solid var(--gold);
-            color: var(--gold);
-            width: 100%;
-            padding: 12px;
-            border-radius: 12px;
-            font-family: 'Orbitron', sans-serif;
             font-weight: 900;
-            font-size: 0.85rem;
-            cursor: pointer;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            box-shadow: 0 0 15px rgba(255, 183, 0, 0.2);
-            transition: all 0.3s ease;
+            margin-bottom: 6px;
+            text-shadow: 0 0 10px rgba(57, 255, 20, 0.4);
+        }
+
+        .welcome-hero p {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            margin-bottom: 14px;
+        }
+
+        .hero-actions-row {
             display: flex;
-            align-items: center;
-            justify-content: center;
             gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
-        .btn-open-top-clients:active {
-            transform: scale(0.98);
-        }
-
-        .samurai-box-catalog {
+        .btn-hero-action {
+            background: rgba(57, 255, 20, 0.1);
             border: 1px solid var(--primary);
-            border-radius: 12px;
-            background: rgba(57, 255, 20, 0.04);
-            padding: 14px;
-            box-shadow: 0 0 15px rgba(57, 255, 20, 0.15);
-        }
-
-        .samurai-box-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.85rem;
             color: var(--primary);
-            font-weight: 900;
-            text-align: center;
-            margin-bottom: 12px;
-            letter-spacing: 1px;
-        }
-
-        .samurai-catalog-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 8px;
-        }
-
-        @media (max-width: 500px) {
-            .samurai-catalog-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .samurai-item-pill {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 10px 12px;
+            padding: 8px 14px;
             border-radius: 8px;
-            font-size: 0.75rem;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.72rem;
             font-weight: 700;
+            cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 8px;
-            color: #fff;
-            cursor: pointer;
-            text-align: left;
-            position: relative;
-            z-index: 10;
+            gap: 6px;
+            transition: 0.2s;
         }
 
-        .samurai-item-pill:hover {
-            border-color: var(--primary);
-            background: rgba(57, 255, 20, 0.15);
-            box-shadow: 0 0 12px rgba(57, 255, 20, 0.3);
+        .btn-hero-action:hover {
+            background: var(--primary);
+            color: #000;
+            box-shadow: 0 0 10px var(--primary);
         }
 
         .category-scroll {
@@ -356,7 +297,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            margin-top: 25px;
+            margin-top: 15px;
             text-shadow: 0 0 10px rgba(57, 255, 20, 0.3);
         }
 
@@ -853,26 +794,13 @@
     </header>
 
     <div class="container">
-        <div class="samurai-banner">
-            <div class="samurai-header-content">
-                <div class="samurai-store-name">GTROWEN.STORE</div>
-                <div class="samurai-store-sub">⚡ SERVICIOS DIGITALES & GAMER ⚡</div>
-            </div>
-
-            <button class="btn-open-top-clients" id="btnOpenTopClients">
-                🏆 VER TOP CLIENTES PRIME 👑
-            </button>
-
-            <div class="samurai-box-catalog">
-                <div class="samurai-box-title">⚡ CATÁLOGO PRINCIPAL (TOCA PARA IR) ⚡</div>
-                <div class="samurai-catalog-grid">
-                    <button class="samurai-item-pill" data-jump="ff-lim">💎 Diamantes Free Fire</button>
-                    <button class="samurai-item-pill" data-jump="ff-passes">⚙️ Tokens Evolutivos</button>
-                    <button class="samurai-item-pill" data-jump="ff-passes">🎫 Pases Semanales/Mensuales</button>
-                    <button class="samurai-item-pill" data-jump="streaming">🎬 Streaming (Netflix, Spotify...)</button>
-                    <button class="samurai-item-pill" data-jump="social">📸 Redes Sociales (Instagram)</button>
-                    <button class="samurai-item-pill" id="bannerOpenModal">🚀 Entrega Inmediata 100% Segura</button>
-                </div>
+        <!-- SECCIÓN DE BIENVENIDA MINIMALISTA -->
+        <div class="welcome-hero">
+            <h2>BIENVENIDO A GTROWEN.STORE</h2>
+            <p>⚡ Tu tienda oficial de recargas, streaming y redes sociales ⚡</p>
+            <div class="hero-actions-row">
+                <button class="btn-hero-action" id="btnOpenCatalogModal">📂 Menú Rápido</button>
+                <button class="btn-hero-action" id="btnOpenTopClients">🏆 Top Clientes</button>
             </div>
         </div>
 
@@ -1417,6 +1345,23 @@
         <span class="floating-cart-badge cart-count">0</span>
     </button>
 
+    <!-- MODAL CATÁLOGO / MENÚ RÁPIDO -->
+    <div class="modal" id="catalogModal">
+        <div class="modal-box">
+            <div class="modal-top">
+                <h3>⚡ MENÚ RÁPIDO</h3>
+                <button class="btn-close" id="closeCatalogModalBtn">&times;</button>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 5px;">
+                <button class="btn-hero-action" data-jump-modal="ff-lim" style="width:100%; justify-content:center; padding: 12px;">💎 Diamantes Free Fire</button>
+                <button class="btn-hero-action" data-jump-modal="ff-passes" style="width:100%; justify-content:center; padding: 12px;">⚙️ Tokens Evolutivos</button>
+                <button class="btn-hero-action" data-jump-modal="ff-passes" style="width:100%; justify-content:center; padding: 12px;">🎫 Pases Semanales/Mensuales</button>
+                <button class="btn-hero-action" data-jump-modal="streaming" style="width:100%; justify-content:center; padding: 12px;">🎬 Streaming (Netflix, Spotify...)</button>
+                <button class="btn-hero-action" data-jump-modal="social" style="width:100%; justify-content:center; padding: 12px;">📸 Redes Sociales (Instagram)</button>
+            </div>
+        </div>
+    </div>
+
     <!-- MODAL CARRITO -->
     <div class="modal" id="cartModal">
         <div class="modal-box">
@@ -1578,11 +1523,17 @@
                 });
             });
 
-            document.querySelectorAll('[data-jump]').forEach(btn => {
+            // Modales de menú rápido y top clientes
+            const catalogModal = document.getElementById('catalogModal');
+            document.getElementById('btnOpenCatalogModal').addEventListener('click', () => catalogModal.classList.add('open'));
+            document.getElementById('closeCatalogModalBtn').addEventListener('click', () => catalogModal.classList.remove('open'));
+
+            document.querySelectorAll('[data-jump-modal]').forEach(btn => {
                 btn.addEventListener('click', (e) => {
-                    const cat = e.currentTarget.getAttribute('data-jump');
+                    const cat = e.currentTarget.getAttribute('data-jump-modal');
                     const targetBtn = document.querySelector(`.cat-btn[data-cat="${cat}"]`);
                     if (targetBtn) targetBtn.click();
+                    catalogModal.classList.remove('open');
                     const titleEl = document.getElementById('catalogTitle');
                     if (titleEl) titleEl.scrollIntoView({ behavior: 'smooth' });
                 });
@@ -1616,7 +1567,6 @@
 
             document.getElementById('openCartHeader').addEventListener('click', openModal);
             document.getElementById('openCartFloating').addEventListener('click', openModal);
-            document.getElementById('bannerOpenModal').addEventListener('click', openModal);
             document.getElementById('closeModalBtn').addEventListener('click', closeModal);
 
             document.getElementById('btnOpenTopClients').addEventListener('click', () => {
