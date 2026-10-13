@@ -388,7 +388,6 @@
             z-index: 1000;
         }
 
-        /* BOTÓN FLOTANTE DE WHATSAPP RESTAURADO AL 100% */
         .floating-whatsapp-btn {
             position: fixed;
             bottom: 20px;
@@ -748,6 +747,9 @@
             font-size: 0.75rem;
         }
     </style>
+
+    <!-- TIDIO CHAT SCRIPT (BOT / NOTIFICACIONES EN VIVO) -->
+    <script src="//code.tidio.co/vsn5c2j9kxyk4x85wfx27vtz2k2s5m2a.js" async></script>
 </head>
 <body>
 
@@ -1697,7 +1699,7 @@
 
                 let txId = 'N/A (Cripto API)';
                 const txInput = document.getElementById('pTxId');
-                if (methodSelect.value !== 'CRYPTOMUS') {
+                if (methodSelect.value !== 'CRYPTOMus') {
                     txId = txInput.value.trim();
                     if (!txId) { alert('Por favor ingresa el número de comprobante o referencia de pago'); return; }
                 }
