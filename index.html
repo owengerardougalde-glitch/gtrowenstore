@@ -16,11 +16,13 @@
             --accent-bs: #00f0ff;
             --accent-bs-glow: rgba(0, 240, 255, 0.35);
             --gold: #ffb700;
+            --gold-glow: rgba(255, 183, 0, 0.3);
             --success: #25d366;
             --text-main: #ffffff;
             --text-muted: #8b9bb4;
             --border-glass: rgba(0, 240, 255, 0.2);
             --border-fire: rgba(255, 51, 51, 0.5);
+            --border-gold: rgba(255, 183, 0, 0.6);
         }
 
         * {
@@ -212,6 +214,33 @@
             line-height: 1.5;
         }
 
+        .hero-actions-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn-hero-action {
+            background: rgba(0, 240, 255, 0.08);
+            border: 1px solid var(--border-glass);
+            color: var(--accent-bs);
+            padding: 9px 16px;
+            border-radius: 10px;
+            font-family: 'Chakra Petch', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: 0.2s;
+        }
+
+        .btn-hero-action:hover {
+            background: var(--accent-bs);
+            color: #050811;
+        }
+
         .category-scroll {
             display: flex;
             gap: 10px;
@@ -377,6 +406,41 @@
             border: none;
             box-shadow: 0 0 15px var(--accent-ff-glow);
         }
+
+        /* SALÓN DE LA FAMA (CLIENTES TOP) */
+        .prime-hall-container {
+            padding: 16px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            background: linear-gradient(180deg, #050811 0%, #0a1124 100%);
+        }
+
+        .prime-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-gold);
+            border-radius: 14px;
+            padding: 14px;
+            box-shadow: 0 8px 25px rgba(255, 183, 0, 0.1);
+        }
+
+        .prime-card.rank-1 {
+            border: 2px solid var(--gold);
+            background: linear-gradient(135deg, rgba(255, 183, 0, 0.15), var(--bg-card));
+            box-shadow: 0 0 30px var(--gold-glow);
+        }
+
+        .prime-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255, 183, 0, 0.3); padding-bottom: 8px; margin-bottom: 10px; }
+        .prime-rank-badge { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 0.82rem; color: var(--gold); }
+        .prime-tier { background: var(--gold); color: #050811; font-family: 'Chakra Petch', sans-serif; font-weight: 900; font-size: 0.68rem; padding: 2px 8px; border-radius: 6px; }
+        .prime-player-info { display: flex; justify-content: space-between; align-items: flex-end; }
+        .prime-name { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.1rem; color: #fff; text-transform: uppercase; }
+        .prime-uid { font-family: 'Chakra Petch', sans-serif; font-size: 0.78rem; color: var(--accent-bs); font-weight: 700; }
+        .prime-stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; padding-top: 10px; border-top: 1px dashed rgba(255,255,255,0.08); }
+        .prime-stat-item { background: rgba(0, 0, 0, 0.5); border-radius: 8px; padding: 8px 10px; }
+        .prime-stat-label { font-size: 0.6rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; }
+        .prime-stat-val { font-family: 'Chakra Petch', sans-serif; font-size: 0.98rem; font-weight: 900; color: var(--accent-ff); }
 
         /* BOTONES FLOTANTES */
         .floating-cart-btn {
@@ -600,6 +664,9 @@
         <div class="hero-banner">
             <div class="hero-title">⚡ BATTLE ROYALE & SOCIAL ELITE HUB</div>
             <div class="hero-desc">Recargas instantáneas para Free Fire, Blood Strike y potenciación de Redes Sociales con los precios más bajos del mercado garantizados. ¡Compara y ahorra!</div>
+            <div class="hero-actions-row">
+                <button class="btn-hero-action" id="btnOpenTopClients" style="border-color: var(--border-gold); color: var(--gold);">🏆 Salón de la Fama Prime</button>
+            </div>
         </div>
 
         <div class="category-scroll">
@@ -843,34 +910,6 @@
                 </div>
             </div>
 
-            <div class="product-card" data-cat="social" 
-                 data-crc="600" data-official-crc="1000"
-                 data-usd="1.00" data-official-usd="1.80"
-                 data-mxn="18" data-official-mxn="30"
-                 data-cop="4100" data-official-cop="7000"
-                 data-ars="1250" data-official-ars="2100"
-                 data-pen="3.65" data-official-pen="6.00"
-                 data-dop="50" data-official-dop="85"
-                 data-bob="7" data-official-bob="12"
-                 data-gtq="7.5" data-official-gtq="13"
-                 data-nio="36" data-official-nio="62"
-                 data-ves="37" data-official-ves="65">
-                <div>
-                    <div class="product-badge">📸 Redes Sociales</div>
-                    <div class="product-name">1,000 Likes Instagram</div>
-                </div>
-                <div>
-                    <div class="product-price-box">
-                        <div class="product-price price-tag">₡600</div>
-                        <div class="savings-box">
-                            <span class="savings-official official-tag">Tienda Oficial: ₡1,000</span>
-                            <span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡400 (40%)!</span>
-                        </div>
-                    </div>
-                    <button class="btn-add" data-input-type="social" data-title="1,000 Likes Instagram">Agregar</button>
-                </div>
-            </div>
-
             <!-- STREAMING -->
             <div class="product-card" data-cat="streaming" 
                  data-crc="3000" data-official-crc="5000"
@@ -910,6 +949,40 @@
         🛒 MI CARRITO
         <span class="floating-cart-badge cart-count">0</span>
     </button>
+
+    <!-- MODAL CLIENTES TOP (SALÓN DE LA FAMA) -->
+    <div class="modal" id="topClientsModal">
+        <div class="modal-box" style="max-width: 440px; border: 2px solid var(--gold);">
+            <div class="modal-top" style="border-bottom: 1px solid var(--gold);">
+                <h3 style="color: var(--gold);">👑 SALÓN DE LA FAMA PRIME</h3>
+                <button class="btn-close" id="closeTopClientsBtn">&times;</button>
+            </div>
+            <div class="prime-hall-container">
+                <div class="prime-card rank-1">
+                    <div class="prime-header">
+                        <span class="prime-rank-badge">🥇 #1 LEYENDA TIBURÓN</span>
+                        <span class="prime-tier">PRIME VIP</span>
+                    </div>
+                    <div class="prime-player-info">
+                        <div>
+                            <div class="prime-name">J.C.</div>
+                            <div class="prime-uid">UID: 301110819</div>
+                        </div>
+                    </div>
+                    <div class="prime-stats-grid">
+                        <div class="prime-stat-item">
+                            <div class="prime-stat-label">Gasto Histórico</div>
+                            <div class="prime-stat-val" style="color: var(--gold);">$155.60 USD</div>
+                        </div>
+                        <div class="prime-stat-item">
+                            <div class="prime-stat-label">Diamantes & Cajas</div>
+                            <div class="prime-stat-val">61,600 💎</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- MODAL CARRITO -->
     <div class="modal" id="cartModal">
@@ -1021,6 +1094,11 @@
                     });
                 });
             });
+
+            // MODAL SALÓN DE LA FAMA
+            const topClientsModal = document.getElementById('topClientsModal');
+            document.getElementById('btnOpenTopClients').addEventListener('click', () => topClientsModal.classList.add('open'));
+            document.getElementById('closeTopClientsBtn').addEventListener('click', () => topClientsModal.classList.remove('open'));
 
             document.querySelectorAll('.btn-add').forEach(btn => {
                 btn.addEventListener('click', (e) => {
