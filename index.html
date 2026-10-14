@@ -11,7 +11,6 @@
     
     <style>
         :root {
-            /* PALETA AZUL Y NEGRO ÉLITE */
             --bg-deep: #030509;
             --bg-card: #080d18;
             --bg-card-hover: #0c1528;
@@ -58,10 +57,10 @@
         }
 
         header {
-            background: rgba(3, 5, 9, 0.9);
+            background: rgba(3, 5, 9, 0.95);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border-glass);
-            padding: 14px 20px;
+            padding: 10px 12px;
             position: sticky;
             top: 0;
             z-index: 900;
@@ -75,28 +74,29 @@
         .brand-box {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 8px;
+            min-width: max-content;
         }
 
         .brand-icon {
-            width: 38px;
-            height: 38px;
+            width: 32px;
+            height: 32px;
             background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
             color: #fff;
-            border-radius: 10px;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
-            box-shadow: 0 0 18px var(--accent-cyan-glow);
+            font-size: 1rem;
+            box-shadow: 0 0 15px var(--accent-cyan-glow);
         }
 
         .brand-title {
             font-family: 'Orbitron', sans-serif;
             font-weight: 900;
-            font-size: 1.15rem;
+            font-size: 0.95rem;
             color: var(--text-main);
-            letter-spacing: 1.2px;
+            letter-spacing: 1px;
             line-height: 1;
         }
 
@@ -104,40 +104,45 @@
 
         .brand-sub {
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.55rem;
+            font-size: 0.45rem;
             color: var(--text-muted);
-            letter-spacing: 2px;
-            margin-top: 3px;
+            letter-spacing: 1.5px;
+            margin-top: 2px;
         }
 
         .header-actions {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 6px;
+            flex: 1;
+            justify-content: flex-end;
+            overflow: hidden;
         }
 
-        /* FIX DE LAS MONEDAS (Para que se vean todas sin cortarse) */
         .currency-switch {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid var(--border-glass);
-            border-radius: 20px;
-            padding: 4px;
+            border-radius: 16px;
+            padding: 3px;
             display: flex;
-            gap: 4px;
+            gap: 2px;
             overflow-x: auto;
-            max-width: calc(100vw - 160px);
-            scrollbar-width: none; /* Firefox */
+            max-width: 58vw;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent-cyan) rgba(255,255,255,0.05);
+            -webkit-overflow-scrolling: touch;
         }
-        .currency-switch::-webkit-scrollbar { display: none; /* Chrome/Safari */ }
+        .currency-switch::-webkit-scrollbar { height: 3px; }
+        .currency-switch::-webkit-scrollbar-thumb { background: var(--accent-cyan); border-radius: 10px; }
 
         .curr-btn {
             background: none;
             border: none;
             color: var(--text-muted);
-            font-size: 0.72rem;
+            font-size: 0.65rem;
             font-weight: 800;
-            padding: 4px 10px;
-            border-radius: 16px;
+            padding: 3px 7px;
+            border-radius: 12px;
             cursor: pointer;
             white-space: nowrap;
             transition: 0.2s;
@@ -146,34 +151,35 @@
         .curr-btn.active {
             background: var(--accent-cyan);
             color: #030509;
-            box-shadow: 0 0 12px var(--accent-cyan-glow);
+            box-shadow: 0 0 10px var(--accent-cyan-glow);
         }
 
         .header-cart {
             background: rgba(0, 240, 255, 0.08);
             border: 1px solid var(--border-glass);
-            border-radius: 20px;
-            padding: 6px 14px;
+            border-radius: 16px;
+            padding: 5px 10px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 5px;
             cursor: pointer;
             color: var(--accent-cyan);
-            font-size: 0.85rem;
+            font-size: 0.78rem;
             font-weight: 700;
             white-space: nowrap;
+            min-width: max-content;
         }
 
         .header-cart-badge {
             background: var(--accent-cyan);
             color: #030509;
-            width: 18px;
-            height: 18px;
+            width: 16px;
+            height: 16px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.75rem;
+            font-size: 0.68rem;
             font-weight: 900;
         }
 
@@ -222,7 +228,6 @@
             gap: 8px;
         }
 
-        /* CONTADOR DE VISITAS */
         .gateway-status {
             font-family: 'Chakra Petch', sans-serif;
             font-size: 0.72rem;
@@ -477,7 +482,6 @@
             box-shadow: 0 0 15px var(--accent-blue-glow);
         }
 
-        /* BOTONES FLOTANTES */
         .floating-cart-btn {
             position: fixed;
             bottom: 20px;
@@ -554,7 +558,6 @@
             font-weight: 900;
         }
 
-        /* MODALES */
         .modal {
             position: fixed;
             inset: 0;
@@ -746,7 +749,7 @@
         </div>
 
         <div class="header-actions">
-            <!-- MENÚ DE MONEDAS REPARADO PARA QUE SE VEAN TODAS -->
+            <!-- MONEDAS 100% VISIBLES Y COMPACTAS CON SCROLL -->
             <div class="currency-switch">
                 <button class="curr-btn active" data-curr="CRC">CRC</button>
                 <button class="curr-btn" data-curr="USD">USD</button>
@@ -774,7 +777,6 @@
                 <div class="gateway-title">
                     <i class="fa-solid fa-shield-halved" style="color: var(--accent-cyan);"></i> PASARELA DE PAGOS Y FUENTES SEGURAS
                 </div>
-                <!-- CONTADOR DE VISITAS ACTUALIZADO -->
                 <div class="gateway-status">
                     <i class="fa-solid fa-eye"></i> Visitas Totales: <span id="pageViewsCount" style="margin-left: 4px;">24,892</span>
                 </div>
@@ -823,7 +825,7 @@
         <div class="section-h2" id="catalogTitle"><i class="fa-solid fa-fire" style="color: var(--accent-cyan);"></i> CATÁLOGO OFICIAL & OFERTAS ÉPICAS</div>
         <div class="products-grid" id="productsGrid">
 
-            <!-- REDES SOCIALES (CON LOGOS) -->
+            <!-- REDES SOCIALES -->
             <div class="product-card" data-cat="social" 
                  data-crc="1200" data-official-crc="2000" data-usd="2.00" data-official-usd="3.50" data-mxn="37" data-official-mxn="60" data-cop="8300" data-official-cop="14000" data-ars="2500" data-official-ars="4200" data-pen="7.30" data-official-pen="12.00" data-dop="100" data-official-dop="170" data-bob="14" data-official-bob="24" data-gtq="15" data-official-gtq="26" data-nio="73" data-official-nio="125" data-ves="74" data-official-ves="130">
                 <div>
@@ -1231,7 +1233,7 @@
                 </div>
             </div>
 
-            <!-- FF LIMITADOS (OFERTAS AZULES/PREMIUM) -->
+            <!-- FF LIMITADOS -->
             <div class="product-card premium-deal" data-cat="ff-lim" 
                  data-crc="500" data-official-crc="800" data-usd="1.00" data-official-usd="1.70" data-mxn="18" data-official-mxn="30" data-cop="4000" data-official-cop="6500" data-ars="1200" data-official-ars="1900" data-pen="3.50" data-official-pen="6.00" data-dop="60" data-official-dop="95" data-bob="6.8" data-official-bob="11.0" data-gtq="7.7" data-official-gtq="12.5" data-nio="36" data-official-nio="58" data-ves="37" data-official-ves="60">
                 <div>
@@ -1613,12 +1615,11 @@
         </div>
     </div>
 
-    <!-- BOTONES FLOTANTES UBICADOS CORRECTAMENTE -->
+    <!-- BOTONES FLOTANTES -->
     <a href="https://chat.whatsapp.com/Hd6IG8eEVrY5hoYPgHIjk4?s=cl&p=a&mlu=4&ilr=4" class="floating-group-btn" target="_blank" title="Unirte al Grupo de WhatsApp">
         <i class="fa-brands fa-whatsapp" style="font-size: 1.5rem;"></i>
     </a>
 
-    <!-- BOTÓN WHATSAPP CON TU IMAGEN -->
     <a href="https://api.whatsapp.com/send?phone=50672986056&text=Hola,%20tengo%20una%20consulta%20sobre%20la%20tienda%20gtrowen.store" class="floating-whatsapp-btn" target="_blank" title="Soporte por WhatsApp"></a>
 
     <button class="floating-cart-btn" id="openCartFloating">
@@ -1707,7 +1708,7 @@
         </div>
     </div>
 
-    <!-- MODAL CLIENTES TOP (SALÓN DE LA FAMA ACTUALIZADO) -->
+    <!-- MODAL CLIENTES TOP -->
     <div class="modal" id="topClientsModal">
         <div class="modal-box" style="max-width: 440px;">
             <div class="modal-top">
@@ -1715,7 +1716,6 @@
                 <button class="btn-close" id="closeTopClientsBtn">&times;</button>
             </div>
             <div class="prime-hall-container">
-                <!-- TOP 1: JC (ACTUALIZADO CON +18,400 DIAMANTES) -->
                 <div class="prime-card rank-1">
                     <div class="prime-header">
                         <span class="prime-rank-badge"><i class="fa-solid fa-medal"></i> 🥇 #1 LEYENDA TIBURÓN</span>
@@ -1739,7 +1739,6 @@
                     </div>
                 </div>
 
-                <!-- TOP 2: RICHARD (AGREGADO NUEVO) -->
                 <div class="prime-card" style="border: 1px solid silver;">
                     <div class="prime-header">
                         <span class="prime-rank-badge" style="color: silver;"><i class="fa-solid fa-medal"></i> 🥈 #2 MAESTRO ÉLITE</span>
@@ -1762,7 +1761,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -1778,11 +1776,9 @@
                 'NIO': 'C$ ', 'VES': 'Bs.S '
             };
 
-            // SIMULADOR DE VISITAS
             let startViews = 24892;
             const viewsEl = document.getElementById('pageViewsCount');
             if (viewsEl) {
-                // Aumenta ligeramente cada vez que se carga
                 startViews += Math.floor(Math.random() * 5);
                 viewsEl.innerText = startViews.toLocaleString();
                 setInterval(() => {
