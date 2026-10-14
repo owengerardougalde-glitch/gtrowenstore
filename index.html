@@ -4,24 +4,23 @@
     <meta name="cryptomus" content="a2afb2a9" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>GTROWEN.STORE</title>
-    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Orbitron:wght@500;700;900&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <title>GTROWEN.STORE | Elite Gaming & Digital Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Orbitron:wght@500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #040705;
-            --surface: #0a110b;
-            --surface-card: #0f1810;
-            --primary: #39FF14;
-            --secondary: #00FF66;
-            --trust-blue: #3861fb;
-            --trust-blue-glow: #0099ff;
+            --bg-deep: #020408;
+            --bg-card: #070d19;
+            --bg-card-hover: #0c152a;
+            --accent-blue: #00f0ff;
+            --accent-blue-glow: rgba(0, 240, 255, 0.35);
+            --accent-fire: #ff003c;
+            --accent-fire-glow: rgba(255, 0, 60, 0.4);
             --gold: #ffb700;
-            --ff-gold: #f9d342;
             --binance: #f3ba2f;
-            --text: #ffffff;
-            --text-dim: #94a3b8;
-            --border: rgba(57, 255, 20, 0.25);
-            --border-blue: rgba(56, 97, 251, 0.35);
+            --text-main: #ffffff;
+            --text-muted: #8b9bb4;
+            --border-glass: rgba(0, 240, 255, 0.18);
+            --border-fire: rgba(255, 0, 60, 0.45);
         }
 
         * {
@@ -33,8 +32,8 @@
         }
 
         html, body {
-            background-color: var(--bg);
-            color: var(--text);
+            background-color: var(--bg-deep);
+            color: var(--text-main);
             width: 100%;
             margin: 0;
             padding: 0;
@@ -42,45 +41,22 @@
             position: relative;
             overflow-x: hidden;
             background-image: 
-                radial-gradient(circle at 15% 15%, rgba(56, 97, 251, 0.07) 0%, transparent 45%),
-                radial-gradient(circle at 85% 85%, rgba(57, 255, 20, 0.07) 0%, transparent 45%);
+                radial-gradient(circle at 10% 10%, rgba(0, 240, 255, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 90%, rgba(255, 0, 60, 0.05) 0%, transparent 40%);
             background-attachment: fixed;
         }
 
-        .num-font, .product-price, .ff-uid-row, .ff-stat-value, .cart-total-box, .curr-btn, .header-cart, .floating-cart-btn {
+        .num-font, .product-price, .ff-uid-row, .cart-total-box, .curr-btn, .header-cart, .floating-cart-btn {
             font-family: 'Chakra Petch', sans-serif !important;
             letter-spacing: 0.5px;
         }
 
-        .samurai-watermark-bg {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100vw;
-            height: 100vh;
-            pointer-events: none !important;
-            z-index: 0;
-            opacity: 0.07;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .samurai-svg-art {
-            width: 650px;
-            max-width: 95vw;
-            height: auto;
-            filter: drop-shadow(0 0 35px var(--trust-blue));
-            pointer-events: none !important;
-        }
-
+        /* HEADER PREMIUM */
         header {
-            background: rgba(10, 17, 11, 0.95);
-            backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--border);
-            padding: 12px 18px;
+            background: rgba(2, 4, 8, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-glass);
+            padding: 14px 20px;
             position: sticky;
             top: 0;
             z-index: 900;
@@ -88,51 +64,46 @@
             align-items: center;
             justify-content: space-between;
             width: 100%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
         .brand-box {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
 
         .brand-icon {
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, var(--trust-blue), var(--primary));
-            color: #000;
-            border-radius: 8px;
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-fire));
+            color: #fff;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             font-weight: 900;
-            box-shadow: 0 0 12px rgba(56, 97, 251, 0.4);
-        }
-
-        .brand-text {
-            display: flex;
-            flex-direction: column;
+            box-shadow: 0 0 15px var(--accent-blue-glow);
         }
 
         .brand-title {
             font-family: 'Orbitron', sans-serif;
             font-weight: 900;
-            font-size: 1.1rem;
-            color: var(--primary);
-            letter-spacing: 1px;
+            font-size: 1.15rem;
+            color: var(--text-main);
+            letter-spacing: 1.2px;
             line-height: 1;
-            text-shadow: 0 0 10px rgba(57, 255, 20, 0.4);
         }
 
-        .brand-title span { color: #fff; }
+        .brand-title span { color: var(--accent-blue); text-shadow: 0 0 10px var(--accent-blue-glow); }
 
         .brand-sub {
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.6rem;
-            color: var(--text-dim);
-            letter-spacing: 1.5px;
-            margin-top: 2px;
+            font-size: 0.55rem;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            margin-top: 3px;
         }
 
         .header-actions {
@@ -142,52 +113,59 @@
         }
 
         .currency-switch {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-glass);
             border-radius: 20px;
             padding: 2px;
             display: flex;
             gap: 2px;
             overflow-x: auto;
-            max-width: 220px;
+            max-width: 200px;
         }
 
         .curr-btn {
             background: none;
             border: none;
-            color: var(--text-dim);
+            color: var(--text-muted);
             font-size: 0.7rem;
             font-weight: 700;
-            padding: 4px 8px;
+            padding: 4px 9px;
             border-radius: 16px;
             cursor: pointer;
             white-space: nowrap;
+            transition: 0.2s;
         }
 
         .curr-btn.active {
-            background: var(--primary);
-            color: #000;
-            box-shadow: 0 0 10px rgba(57, 255, 20, 0.5);
+            background: var(--accent-blue);
+            color: #020408;
+            box-shadow: 0 0 12px var(--accent-blue-glow);
         }
 
         .header-cart {
-            background: linear-gradient(135deg, rgba(56, 97, 251, 0.3), rgba(57, 255, 20, 0.3));
-            border: 1px solid var(--trust-blue);
+            background: rgba(0, 240, 255, 0.08);
+            border: 1px solid var(--border-glass);
             border-radius: 20px;
-            padding: 6px 12px;
+            padding: 6px 14px;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
             cursor: pointer;
-            color: #fff;
+            color: var(--accent-blue);
             font-size: 0.85rem;
             font-weight: 700;
             white-space: nowrap;
+            transition: 0.2s;
+        }
+
+        .header-cart:hover {
+            background: rgba(0, 240, 255, 0.15);
+            box-shadow: 0 0 15px var(--accent-blue-glow);
         }
 
         .header-cart-badge {
-            background: var(--primary);
-            color: #000;
+            background: var(--accent-blue);
+            color: #020408;
             width: 18px;
             height: 18px;
             border-radius: 50%;
@@ -198,36 +176,47 @@
             font-weight: 900;
         }
 
+        /* CONTAINER PRINCIPAL */
         .container {
-            max-width: 900px;
+            max-width: 950px;
             margin: 0 auto;
-            padding: 16px;
+            padding: 18px;
             position: relative;
             z-index: 10;
         }
 
+        /* HERO PASARELA */
         .payment-gateway-hero {
-            background: linear-gradient(135deg, rgba(10, 17, 11, 0.95), rgba(15, 24, 16, 0.95));
-            border: 1px solid var(--border-blue);
-            border-radius: 16px;
-            padding: 20px;
+            background: linear-gradient(135deg, rgba(7, 13, 25, 0.9), rgba(12, 21, 42, 0.95));
+            border: 1px solid var(--border-glass);
+            border-radius: 18px;
+            padding: 22px;
             margin-bottom: 25px;
-            box-shadow: 0 0 30px rgba(56, 97, 251, 0.15);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .payment-gateway-hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 4px; height: 100%;
+            background: linear-gradient(to bottom, var(--accent-blue), var(--accent-fire));
         }
 
         .gateway-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 14px;
-            border-bottom: 1px solid rgba(56, 97, 251, 0.2);
-            padding-bottom: 10px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 12px;
         }
 
         .gateway-title {
             font-family: 'Orbitron', sans-serif;
             font-size: 0.95rem;
-            color: var(--trust-blue-glow);
+            color: var(--text-main);
             font-weight: 900;
             display: flex;
             align-items: center;
@@ -236,56 +225,63 @@
 
         .gateway-status {
             font-family: 'Chakra Petch', sans-serif;
-            font-size: 0.7rem;
-            background: rgba(56, 97, 251, 0.15);
-            color: var(--trust-blue-glow);
-            border: 1px solid var(--trust-blue);
-            padding: 3px 8px;
-            border-radius: 12px;
+            font-size: 0.68rem;
+            background: rgba(0, 240, 255, 0.1);
+            color: var(--accent-blue);
+            border: 1px solid var(--border-glass);
+            padding: 4px 10px;
+            border-radius: 20px;
             font-weight: 700;
+            letter-spacing: 0.5px;
         }
 
         .gateway-methods-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            margin-bottom: 15px;
+            gap: 12px;
+            margin-bottom: 16px;
         }
 
-        @media(max-width: 600px) {
+        @media(max-width: 650px) {
             .gateway-methods-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
         .gateway-method-card {
-            background: rgba(0, 0, 0, 0.6);
-            border: 1px solid rgba(56, 97, 251, 0.2);
-            border-radius: 10px;
-            padding: 10px;
+            background: rgba(2, 4, 8, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 12px;
+            padding: 12px;
             text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 4px;
+            transition: 0.2s;
         }
 
-        .gateway-method-card span { font-size: 1.3rem; }
-        .gateway-method-name { font-family: 'Chakra Petch', sans-serif; font-size: 0.75rem; font-weight: 700; color: #fff; }
-        .gateway-method-desc { font-size: 0.6rem; color: var(--text-dim); }
+        .gateway-method-card:hover {
+            border-color: var(--border-glass);
+            background: rgba(7, 13, 25, 0.8);
+        }
+
+        .gateway-method-card span { font-size: 1.4rem; }
+        .gateway-method-name { font-family: 'Chakra Petch', sans-serif; font-size: 0.78rem; font-weight: 700; color: var(--text-main); }
+        .gateway-method-desc { font-size: 0.62rem; color: var(--text-muted); }
 
         .hero-actions-row {
             display: flex;
             gap: 10px;
             justify-content: center;
             flex-wrap: wrap;
-            margin-top: 10px;
+            margin-top: 12px;
         }
 
         .btn-hero-action {
-            background: rgba(56, 97, 251, 0.1);
-            border: 1px solid var(--trust-blue);
-            color: var(--trust-blue-glow);
-            padding: 8px 14px;
-            border-radius: 8px;
+            background: rgba(0, 240, 255, 0.08);
+            border: 1px solid var(--border-glass);
+            color: var(--accent-blue);
+            padding: 9px 16px;
+            border-radius: 10px;
             font-family: 'Chakra Petch', sans-serif;
             font-size: 0.78rem;
             font-weight: 700;
@@ -293,22 +289,32 @@
             display: flex;
             align-items: center;
             gap: 6px;
+            transition: 0.2s;
         }
 
+        .btn-hero-action:hover {
+            background: rgba(0, 240, 255, 0.18);
+            box-shadow: 0 0 15px var(--accent-blue-glow);
+        }
+
+        /* CATEGORÍAS SCROLL */
         .category-scroll {
             display: flex;
             gap: 10px;
             overflow-x: auto;
             padding-bottom: 10px;
-            margin-bottom: 20px;
+            margin-bottom: 22px;
             position: relative;
             z-index: 10;
         }
 
+        .category-scroll::-webkit-scrollbar { height: 4px; }
+        .category-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
+
         .cat-btn {
-            background: rgba(10, 17, 11, 0.95);
-            border: 1px solid var(--border);
-            color: var(--text-dim);
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            color: var(--text-muted);
             padding: 10px 18px;
             border-radius: 12px;
             font-family: 'Chakra Petch', sans-serif;
@@ -316,107 +322,179 @@
             font-weight: 700;
             white-space: nowrap;
             cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .cat-btn:hover {
+            color: var(--text-main);
+            border-color: rgba(0, 240, 255, 0.4);
         }
 
         .cat-btn.active {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: #000;
-            border-color: var(--primary);
-            box-shadow: 0 0 12px rgba(57, 255, 20, 0.5);
+            background: linear-gradient(135deg, var(--accent-blue), #0088ff);
+            color: #020408;
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 18px var(--accent-blue-glow);
             font-weight: 900;
         }
 
         .section-h2 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 12px;
+            font-size: 1rem;
+            font-weight: 900;
+            color: var(--text-main);
+            margin-bottom: 14px;
             display: flex;
             align-items: center;
-            gap: 8px;
-            margin-top: 15px;
+            gap: 10px;
+            margin-top: 20px;
+            letter-spacing: 0.5px;
         }
 
+        /* GRID DE PRODUCTOS */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin-bottom: 25px;
+            gap: 14px;
+            margin-bottom: 30px;
             position: relative;
             z-index: 10;
         }
 
+        @media(max-width: 500px) {
+            .products-grid { grid-template-columns: 1fr; }
+        }
+
+        /* TARJETA ESTÁNDAR */
         .product-card {
-            background: rgba(15, 24, 16, 0.95);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 14px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: 16px;
+            padding: 16px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             position: relative;
             z-index: 10;
+            transition: all 0.25s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .product-card:hover {
+            border-color: rgba(0, 240, 255, 0.4);
+            transform: translateY(-3px);
+            background: var(--bg-card-hover);
+            box-shadow: 0 12px 30px rgba(0, 240, 255, 0.1);
+        }
+
+        /* TARJETA DE OFERTA / DIAMANTES (ESTILO ROJO FUEGO ÉPICO) */
+        .product-card.fire-deal {
+            background: linear-gradient(145deg, rgba(255, 0, 60, 0.08), var(--bg-card));
+            border: 1px solid var(--border-fire);
+            box-shadow: 0 8px 30px rgba(255, 0, 60, 0.15);
+        }
+
+        .product-card.fire-deal:hover {
+            border-color: var(--accent-fire);
+            box-shadow: 0 12px 35px var(--accent-fire-glow);
+            transform: translateY(-3px);
         }
 
         .product-badge {
             font-size: 0.68rem;
             font-weight: 700;
-            color: var(--primary);
+            color: var(--accent-blue);
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.8px;
             margin-bottom: 6px;
         }
 
+        .fire-deal .product-badge {
+            color: var(--accent-fire);
+            text-shadow: 0 0 10px var(--accent-fire-glow);
+        }
+
         .product-name {
-            font-size: 0.85rem;
+            font-size: 0.88rem;
             font-weight: 700;
-            color: #fff;
-            margin-bottom: 8px;
-            line-height: 1.2;
+            color: var(--text-main);
+            margin-bottom: 10px;
+            line-height: 1.3;
         }
 
         .product-price {
-            font-size: 1.05rem;
-            color: var(--primary);
+            font-size: 1.15rem;
+            color: var(--accent-blue);
             font-weight: 700;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
         }
 
+        .fire-deal .product-price {
+            color: var(--accent-fire);
+            text-shadow: 0 0 12px var(--accent-fire-glow);
+        }
+
+        /* BOTONES DE COMPRA */
         .btn-add {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: #000;
-            border: none;
-            border-radius: 8px;
+            background: linear-gradient(135deg, rgba(0, 240, 255, 0.15), rgba(0, 240, 255, 0.3));
+            color: var(--accent-blue);
+            border: 1px solid var(--border-glass);
+            border-radius: 10px;
             padding: 10px 0;
             font-weight: 900;
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             font-family: 'Chakra Petch', sans-serif;
             cursor: pointer;
             width: 100%;
             text-transform: uppercase;
             position: relative;
             z-index: 15;
-            box-shadow: 0 0 12px rgba(57, 255, 20, 0.35);
+            transition: 0.2s;
         }
 
+        .btn-add:hover {
+            background: var(--accent-blue);
+            color: #020408;
+            box-shadow: 0 0 15px var(--accent-blue-glow);
+        }
+
+        .btn-add.fire-btn {
+            background: linear-gradient(135deg, var(--accent-fire), #ff3366);
+            color: #fff;
+            border: none;
+            box-shadow: 0 0 15px var(--accent-fire-glow);
+        }
+
+        .btn-add.fire-btn:hover {
+            background: linear-gradient(135deg, #ff1a4d, #ff003c);
+            box-shadow: 0 0 25px var(--accent-fire-glow);
+        }
+
+        /* BOTONES FLOTANTES */
         .floating-cart-btn {
             position: fixed;
             bottom: 85px;
             right: 20px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: #000;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            padding: 12px 20px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-fire));
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 12px 22px;
             border-radius: 30px;
             cursor: pointer;
             font-weight: 900;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             display: flex;
             align-items: center;
             gap: 10px;
-            box-shadow: 0 0 20px rgba(57, 255, 20, 0.5);
+            box-shadow: 0 10px 30px rgba(0, 240, 255, 0.3);
             z-index: 1000;
+            transition: 0.2s;
+        }
+
+        .floating-cart-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 240, 255, 0.5);
         }
 
         .floating-whatsapp-btn {
@@ -425,46 +503,50 @@
             left: 20px;
             background: #25d366;
             color: #fff;
-            border: 2px solid rgba(255, 255, 255, 0.4);
-            width: 56px;
-            height: 56px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            width: 54px;
+            height: 54px;
             border-radius: 50%;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 20px rgba(37, 211, 102, 0.7);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.5);
             z-index: 1000;
             text-decoration: none;
+            transition: 0.2s;
         }
 
+        .floating-whatsapp-btn:hover { transform: scale(1.1); }
         .floating-whatsapp-btn svg { width: 28px; height: 28px; fill: #ffffff; }
 
         .floating-group-btn {
             position: fixed;
-            bottom: 86px;
+            bottom: 84px;
             left: 20px;
             background: #128c7e;
             color: #fff;
-            border: 2px solid rgba(255, 255, 255, 0.4);
-            width: 48px;
-            height: 48px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            width: 46px;
+            height: 46px;
             border-radius: 50%;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 15px rgba(18, 140, 126, 0.7);
+            box-shadow: 0 10px 20px rgba(18, 140, 126, 0.5);
             z-index: 1000;
             text-decoration: none;
+            transition: 0.2s;
         }
 
-        .floating-group-btn svg { width: 24px; height: 24px; fill: #ffffff; }
+        .floating-group-btn:hover { transform: scale(1.1); }
+        .floating-group-btn svg { width: 22px; height: 22px; fill: #ffffff; }
 
         .floating-cart-badge {
-            background: #000;
-            color: var(--primary);
-            font-size: 0.8rem;
+            background: #020408;
+            color: var(--accent-blue);
+            font-size: 0.78rem;
             width: 22px;
             height: 22px;
             border-radius: 50%;
@@ -474,11 +556,12 @@
             font-weight: 900;
         }
 
+        /* MODALES PROFESIONALES */
         .modal {
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(10px);
+            background: rgba(2, 4, 8, 0.85);
+            backdrop-filter: blur(12px);
             z-index: 2000;
             display: none;
             align-items: center;
@@ -489,42 +572,43 @@
         .modal.open { display: flex; }
 
         .modal-box {
-            background: var(--surface);
-            border: 1px solid var(--trust-blue);
-            border-radius: 16px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
             width: 100%;
-            max-width: 420px;
-            padding: 20px;
+            max-width: 440px;
+            padding: 24px;
             max-height: 85vh;
             overflow-y: auto;
             position: relative;
             z-index: 2001;
-            box-shadow: 0 0 35px rgba(56, 97, 251, 0.25);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
         }
 
         .modal-top {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
-            border-bottom: 1px solid rgba(56, 97, 251, 0.3);
-            padding-bottom: 10px;
+            margin-bottom: 18px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 12px;
         }
 
         .modal-top h3 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.95rem;
-            color: var(--trust-blue-glow);
+            font-size: 1rem;
+            color: var(--text-main);
         }
 
-        .btn-close { background: none; border: none; color: var(--text-dim); font-size: 1.4rem; cursor: pointer; }
+        .btn-close { background: none; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer; transition: 0.2s; }
+        .btn-close:hover { color: var(--text-main); }
 
         .cart-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
             font-size: 0.85rem;
         }
 
@@ -532,94 +616,113 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 1.1rem;
-            color: var(--primary);
-            margin: 15px 0;
-            padding-top: 10px;
-            border-top: 1px solid var(--border);
+            font-size: 1.15rem;
+            color: var(--accent-blue);
+            margin: 18px 0;
+            padding-top: 14px;
+            border-top: 1px solid var(--border-glass);
             font-weight: 700;
         }
 
-        .input-box { margin-bottom: 12px; }
-        .input-box label { display: block; font-size: 0.75rem; color: var(--text-dim); margin-bottom: 4px; }
+        .input-box { margin-bottom: 14px; }
+        .input-box label { display: block; font-size: 0.75rem; color: var(--text-muted); margin-bottom: 5px; font-weight: 600; }
         .input-box input, .input-box select {
             width: 100%;
-            padding: 10px;
-            background: var(--surface-card);
-            border: 1px solid var(--border-blue);
-            border-radius: 8px;
+            padding: 11px 14px;
+            background: rgba(2, 4, 8, 0.7);
+            border: 1px solid var(--border-glass);
+            border-radius: 10px;
             color: #fff;
-            font-size: 0.85rem;
+            font-size: 0.88rem;
             outline: none;
+            transition: 0.2s;
+        }
+
+        .input-box input:focus, .input-box select:focus {
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 12px var(--accent-blue-glow);
         }
 
         .file-upload-box {
-            background: rgba(56, 97, 251, 0.04);
-            border: 2px dashed var(--trust-blue);
-            border-radius: 10px;
-            padding: 12px;
+            background: rgba(0, 240, 255, 0.03);
+            border: 2px dashed var(--border-glass);
+            border-radius: 12px;
+            padding: 14px;
             text-align: center;
             cursor: pointer;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
+            display: block;
+            transition: 0.2s;
         }
 
+        .file-upload-box:hover { border-color: var(--accent-blue); background: rgba(0, 240, 255, 0.06); }
+
         .info-pay {
-            background: rgba(56, 97, 251, 0.07);
-            border: 1px dashed var(--trust-blue);
-            border-radius: 8px;
-            padding: 12px;
-            font-size: 0.8rem;
-            margin-bottom: 15px;
-            line-height: 1.5;
+            background: rgba(0, 240, 255, 0.05);
+            border: 1px solid var(--border-glass);
+            border-radius: 12px;
+            padding: 14px;
+            font-size: 0.82rem;
+            margin-bottom: 16px;
+            line-height: 1.6;
         }
 
         .btn-proceed {
-            background: linear-gradient(135deg, var(--trust-blue), var(--trust-blue-glow));
-            color: #fff;
+            background: linear-gradient(135deg, var(--accent-blue), #0088ff);
+            color: #020408;
             border: none;
             width: 100%;
-            padding: 12px;
-            border-radius: 8px;
+            padding: 13px;
+            border-radius: 12px;
             font-family: 'Chakra Petch', sans-serif;
             font-weight: 900;
-            font-size: 0.9rem;
+            font-size: 0.92rem;
             cursor: pointer;
             text-transform: uppercase;
+            box-shadow: 0 0 20px var(--accent-blue-glow);
+            transition: 0.2s;
         }
+
+        .btn-proceed:hover { box-shadow: 0 0 30px var(--accent-blue-glow); }
 
         .btn-send {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: #000;
-            border: none;
-            width: 100%;
-            padding: 12px;
-            border-radius: 8px;
-            font-family: 'Chakra Petch', sans-serif;
-            font-weight: 900;
-            font-size: 0.9rem;
-            cursor: pointer;
-            margin-top: 10px;
-            text-transform: uppercase;
-        }
-
-        .btn-cryptomus-api {
-            background: linear-gradient(135deg, #3861fb, #1c35b0);
+            background: linear-gradient(135deg, var(--accent-fire), #ff3366);
             color: #fff;
             border: none;
             width: 100%;
-            padding: 12px;
-            border-radius: 8px;
+            padding: 13px;
+            border-radius: 12px;
             font-family: 'Chakra Petch', sans-serif;
             font-weight: 900;
-            font-size: 0.9rem;
+            font-size: 0.92rem;
+            cursor: pointer;
+            margin-top: 10px;
+            text-transform: uppercase;
+            box-shadow: 0 0 20px var(--accent-fire-glow);
+            transition: 0.2s;
+        }
+
+        .btn-send:hover { box-shadow: 0 0 30px var(--accent-fire-glow); }
+
+        .btn-cryptomus-api {
+            background: linear-gradient(135deg, #00f0ff, #0088ff);
+            color: #020408;
+            border: none;
+            width: 100%;
+            padding: 13px;
+            border-radius: 12px;
+            font-family: 'Chakra Petch', sans-serif;
+            font-weight: 900;
+            font-size: 0.92rem;
             cursor: pointer;
             margin-top: 10px;
             text-transform: uppercase;
         }
 
+        /* SALÓN DE LA FAMA */
         #topClientsModal .modal-box {
-            background: #040705;
-            border: 2px solid var(--ff-gold);
+            background: #020408;
+            border: 2px solid var(--gold);
             padding: 0;
             display: flex;
             flex-direction: column;
@@ -627,42 +730,43 @@
         }
 
         #topClientsModal .modal-top {
-            background: rgba(4, 7, 5, 0.95);
-            border-bottom: 1px solid var(--ff-gold);
-            padding: 12px 15px;
+            background: rgba(7, 13, 25, 0.95);
+            border-bottom: 1px solid var(--gold);
+            padding: 14px 18px;
         }
 
         .prime-hall-container {
-            padding: 15px;
+            padding: 16px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
             gap: 12px;
-            background: linear-gradient(180deg, #040705 0%, #0a110b 100%);
+            background: linear-gradient(180deg, #020408 0%, #070d19 100%);
         }
 
         .prime-card {
-            background: rgba(15, 24, 16, 0.9);
-            border: 1px solid var(--ff-gold);
-            border-radius: 12px;
-            padding: 12px;
+            background: var(--bg-card);
+            border: 1px solid var(--gold);
+            border-radius: 14px;
+            padding: 14px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
         }
 
         .prime-card.rank-1 {
-            border: 2px solid var(--ff-gold);
-            background: linear-gradient(135deg, rgba(249, 211, 66, 0.18), rgba(15, 24, 16, 0.95));
+            border: 2px solid var(--gold);
+            background: linear-gradient(135deg, rgba(255, 183, 0, 0.15), var(--bg-card));
         }
 
-        .prime-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(249, 211, 66, 0.3); padding-bottom: 6px; margin-bottom: 8px; }
-        .prime-rank-badge { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 0.8rem; color: var(--ff-gold); }
-        .prime-tier { background: var(--ff-gold); color: #000; font-family: 'Chakra Petch', sans-serif; font-weight: 900; font-size: 0.65rem; padding: 2px 6px; border-radius: 4px; }
+        .prime-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255, 183, 0, 0.3); padding-bottom: 8px; margin-bottom: 10px; }
+        .prime-rank-badge { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 0.82rem; color: var(--gold); }
+        .prime-tier { background: var(--gold); color: #020408; font-family: 'Chakra Petch', sans-serif; font-weight: 900; font-size: 0.68rem; padding: 2px 8px; border-radius: 6px; }
         .prime-player-info { display: flex; justify-content: space-between; align-items: flex-end; }
-        .prime-name { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.05rem; color: #fff; text-transform: uppercase; }
-        .prime-uid { font-family: 'Chakra Petch', sans-serif; font-size: 0.75rem; color: var(--primary); font-weight: 700; }
-        .prime-stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; padding-top: 8px; border-top: 1px dashed rgba(255,255,255,0.1); }
-        .prime-stat-item { background: rgba(0, 0, 0, 0.6); border-radius: 6px; padding: 6px 10px; }
-        .prime-stat-label { font-size: 0.6rem; color: var(--text-dim); text-transform: uppercase; }
-        .prime-stat-val { font-family: 'Chakra Petch', sans-serif; font-size: 0.95rem; font-weight: 900; color: var(--primary); }
+        .prime-name { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.1rem; color: #fff; text-transform: uppercase; }
+        .prime-uid { font-family: 'Chakra Petch', sans-serif; font-size: 0.78rem; color: var(--accent-blue); font-weight: 700; }
+        .prime-stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; padding-top: 10px; border-top: 1px dashed rgba(255,255,255,0.08); }
+        .prime-stat-item { background: rgba(0, 0, 0, 0.5); border-radius: 8px; padding: 8px 10px; }
+        .prime-stat-label { font-size: 0.6rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; }
+        .prime-stat-val { font-family: 'Chakra Petch', sans-serif; font-size: 0.98rem; font-weight: 900; color: var(--accent-fire); }
     </style>
     <script src="//code.tidio.co/gcscrd4peehpejmvje2jrp2vof5cpe3w.js" async></script>
 </head>
@@ -673,7 +777,7 @@
             <div class="brand-icon">⚡</div>
             <div class="brand-text">
                 <div class="brand-title">GTROWEN <span>STORE</span></div>
-                <div class="brand-sub">UDC DIGITAL</div>
+                <div class="brand-sub">ELITE DIGITAL HUB</div>
             </div>
         </div>
 
@@ -696,12 +800,13 @@
     </header>
 
     <div class="container">
+        <!-- HERO PASARELA -->
         <div class="payment-gateway-hero">
             <div class="gateway-header">
                 <div class="gateway-title">
-                    <span>💳</span> PASARELA DE PAGOS & FUENTES SEGURAS
+                    <span>💳</span> PASARELA DE PAGOS Y FUENTES SEGURAS
                 </div>
-                <div class="gateway-status">● SSL ENCRIPTADO</div>
+                <div class="gateway-status">● SSL 256-BIT ENCRIPTADO</div>
             </div>
             
             <div class="gateway-methods-grid">
@@ -713,7 +818,7 @@
                 <div class="gateway-method-card">
                     <span>🌐</span>
                     <div class="gateway-method-name">Cryptomus API</div>
-                    <div class="gateway-method-desc">Criptomonedas</div>
+                    <div class="gateway-method-desc">Cripto Seguras</div>
                 </div>
                 <div class="gateway-method-card">
                     <span>⚡</span>
@@ -729,28 +834,29 @@
 
             <div class="hero-actions-row">
                 <button class="btn-hero-action" id="btnOpenCatalogModal">📂 Menú Rápido</button>
-                <button class="btn-hero-action" id="btnOpenTopClients" style="border-color: var(--ff-gold); color: var(--ff-gold);">🏆 Salón de la Fama Prime</button>
+                <button class="btn-hero-action" id="btnOpenTopClients" style="border-color: rgba(255, 183, 0, 0.4); color: var(--gold);">🏆 Salón de la Fama Prime</button>
             </div>
         </div>
 
+        <!-- CATEGORÍAS -->
         <div class="category-scroll">
-            <button class="cat-btn active" data-cat="all">▦ Todo</button>
+            <button class="cat-btn active" data-cat="all">▦ Todo el Catálogo</button>
             <button class="cat-btn" data-cat="social">📸 Redes Sociales</button>
             <button class="cat-btn" data-cat="streaming">🎬 Streaming Mensual</button>
             <button class="cat-btn" data-cat="streaming-perm">💎 Streaming Permanente</button>
             <button class="cat-btn" data-cat="ff-lim">⚡ FF Limitados</button>
             <button class="cat-btn" data-cat="ff-ilim">⚡ FF Ilimitados</button>
-            <button class="cat-btn" data-cat="ff-passes">🎫 FF Pases</button>
-            <button class="cat-btn" data-cat="bs">🪙 Blood Strike</button>
+            <button class="cat-btn" data-cat="ff-passes">🎫 FF Pases & Tokens</button>
+            <button class="cat-btn" data-cat="bs">🪙 Blood Strike Oro</button>
         </div>
 
-        <div class="section-h2" id="catalogTitle">🔥 CATALOGO GENERAL</div>
+        <div class="section-h2" id="catalogTitle">🔥 CATÁLOGO OFICIAL & OFERTAS ÉPICAS</div>
         <div class="products-grid" id="productsGrid">
 
-            <!-- REDES SOCIALES (data-input-type="social") -->
+            <!-- REDES SOCIALES -->
             <div class="product-card" data-cat="social" data-crc="1200" data-dop="100" data-usd="2.00" data-mxn="37" data-cop="8300" data-ars="2500" data-pen="7.30">
                 <div>
-                    <div class="product-badge" style="color: #e1306c;">Instagram Baja Calidad</div>
+                    <div class="product-badge">Instagram Baja Calidad</div>
                     <div class="product-name">1,000 Seguidores Instagram (Baja Calidad)</div>
                 </div>
                 <div>
@@ -761,7 +867,7 @@
 
             <div class="product-card" data-cat="social" data-crc="600" data-dop="50" data-usd="1.00" data-mxn="18" data-cop="4100" data-ars="1250" data-pen="3.65">
                 <div>
-                    <div class="product-badge" style="color: #e1306c;">Instagram Likes</div>
+                    <div class="product-badge">Instagram Likes</div>
                     <div class="product-name">1,000 Likes Instagram</div>
                 </div>
                 <div>
@@ -772,7 +878,7 @@
 
             <div class="product-card" data-cat="social" data-crc="600" data-dop="50" data-usd="1.00" data-mxn="18" data-cop="4100" data-ars="1250" data-pen="3.65">
                 <div>
-                    <div class="product-badge" style="color: #00f2fe;">TikTok Vistas</div>
+                    <div class="product-badge">TikTok Vistas</div>
                     <div class="product-name">1,000 Vistas TikTok</div>
                 </div>
                 <div>
@@ -783,7 +889,7 @@
 
             <div class="product-card" data-cat="social" data-crc="1200" data-dop="100" data-usd="2.00" data-mxn="37" data-cop="8300" data-ars="2500" data-pen="7.30">
                 <div>
-                    <div class="product-badge" style="color: #1877f2;">Facebook</div>
+                    <div class="product-badge">Facebook</div>
                     <div class="product-name">1,000 Seguidores Facebook</div>
                 </div>
                 <div>
@@ -794,7 +900,7 @@
 
             <div class="product-card" data-cat="social" data-crc="3500" data-dop="290" data-usd="6.00" data-mxn="110" data-cop="25000" data-ars="7600" data-pen="22.00">
                 <div>
-                    <div class="product-badge" style="color: #e1306c;">Instagram VIP</div>
+                    <div class="product-badge">Instagram VIP</div>
                     <div class="product-name">1,000 Seguidores Instagram (Calidad Alta)</div>
                 </div>
                 <div>
@@ -805,7 +911,7 @@
 
             <div class="product-card" data-cat="social" data-crc="2400" data-dop="200" data-usd="4.00" data-mxn="73" data-cop="16600" data-ars="5000" data-pen="14.50">
                 <div>
-                    <div class="product-badge" style="color: #e1306c;">Instagram</div>
+                    <div class="product-badge">Instagram</div>
                     <div class="product-name">1,000 Seguidores Instagram (Calidad Media)</div>
                 </div>
                 <div>
@@ -816,7 +922,7 @@
 
             <div class="product-card" data-cat="social" data-crc="3500" data-dop="290" data-usd="6.00" data-mxn="110" data-cop="25000" data-ars="7600" data-pen="22.00">
                 <div>
-                    <div class="product-badge" style="color: #00f2fe;">TikTok VIP</div>
+                    <div class="product-badge">TikTok VIP</div>
                     <div class="product-name">1,000 Seguidores TikTok (Calidad Estándar)</div>
                 </div>
                 <div>
@@ -827,7 +933,7 @@
 
             <div class="product-card" data-cat="social" data-crc="4800" data-dop="400" data-usd="8.00" data-mxn="146" data-cop="33300" data-ars="10100" data-pen="29.00">
                 <div>
-                    <div class="product-badge" style="color: #00f2fe;">TikTok Alta Calidad</div>
+                    <div class="product-badge">TikTok Alta Calidad</div>
                     <div class="product-name">1,000 Seguidores TikTok (Calidad Alta)</div>
                 </div>
                 <div>
@@ -836,10 +942,10 @@
                 </div>
             </div>
 
-            <!-- STREAMING MENSUAL (data-input-type="streaming") -->
+            <!-- STREAMING MENSUAL -->
             <div class="product-card" data-cat="streaming" data-crc="3000" data-dop="250" data-usd="6.00" data-mxn="110" data-cop="25000" data-ars="7600" data-pen="22.00">
                 <div>
-                    <div class="product-badge" style="color: #e50914;">Netflix</div>
+                    <div class="product-badge">Netflix</div>
                     <div class="product-name">Netflix 1 Mes (Garantía 30 Días)</div>
                 </div>
                 <div>
@@ -850,7 +956,7 @@
 
             <div class="product-card" data-cat="streaming" data-crc="2000" data-dop="170" data-usd="4.00" data-mxn="73" data-cop="16600" data-ars="5000" data-pen="14.50">
                 <div>
-                    <div class="product-badge" style="color: #1db954;">Spotify</div>
+                    <div class="product-badge">Spotify</div>
                     <div class="product-name">Spotify Premium 1 Mes</div>
                 </div>
                 <div>
@@ -861,7 +967,7 @@
 
             <div class="product-card" data-cat="streaming" data-crc="4000" data-dop="330" data-usd="8.00" data-mxn="146" data-cop="33300" data-ars="10100" data-pen="29.00">
                 <div>
-                    <div class="product-badge" style="color: #1db954;">Spotify</div>
+                    <div class="product-badge">Spotify</div>
                     <div class="product-name">Spotify Premium 3 Meses</div>
                 </div>
                 <div>
@@ -872,7 +978,7 @@
 
             <div class="product-card" data-cat="streaming" data-crc="2000" data-dop="170" data-usd="4.00" data-mxn="73" data-cop="16600" data-ars="5000" data-pen="14.50">
                 <div>
-                    <div class="product-badge" style="color: #0070d1;">Disney+</div>
+                    <div class="product-badge">Disney+</div>
                     <div class="product-name">Disney+ 1 Mes</div>
                 </div>
                 <div>
@@ -883,7 +989,7 @@
 
             <div class="product-card" data-cat="streaming" data-crc="2000" data-dop="170" data-usd="4.00" data-mxn="73" data-cop="16600" data-ars="5000" data-pen="14.50">
                 <div>
-                    <div class="product-badge" style="color: #ff0000;">YouTube</div>
+                    <div class="product-badge">YouTube</div>
                     <div class="product-name">YouTube Premium 1 Mes</div>
                 </div>
                 <div>
@@ -894,7 +1000,7 @@
 
             <div class="product-card" data-cat="streaming" data-crc="2000" data-dop="170" data-usd="4.00" data-mxn="73" data-cop="16600" data-ars="5000" data-pen="14.50">
                 <div>
-                    <div class="product-badge" style="color: #00a8e1;">Prime Video</div>
+                    <div class="product-badge">Prime Video</div>
                     <div class="product-name">Amazon Prime Video 1 Mes</div>
                 </div>
                 <div>
@@ -905,7 +1011,7 @@
 
             <div class="product-card" data-cat="streaming" data-crc="3000" data-dop="250" data-usd="6.00" data-mxn="110" data-cop="25000" data-ars="7600" data-pen="22.00">
                 <div>
-                    <div class="product-badge" style="color: #ffffff;">Apple TV+</div>
+                    <div class="product-badge">Apple TV+</div>
                     <div class="product-name">Apple TV+ 1 Mes</div>
                 </div>
                 <div>
@@ -916,7 +1022,7 @@
 
             <div class="product-card" data-cat="streaming" data-crc="3000" data-dop="250" data-usd="6.00" data-mxn="110" data-cop="25000" data-ars="7600" data-pen="22.00">
                 <div>
-                    <div class="product-badge" style="color: #0064ff;">Paramount+</div>
+                    <div class="product-badge">Paramount+</div>
                     <div class="product-name">Paramount+ 1 Mes</div>
                 </div>
                 <div>
@@ -927,7 +1033,7 @@
 
             <div class="product-card" data-cat="streaming" data-crc="2500" data-dop="210" data-usd="5.00" data-mxn="92" data-cop="20800" data-ars="6300" data-pen="18.50">
                 <div>
-                    <div class="product-badge" style="color: #f47521;">Crunchyroll</div>
+                    <div class="product-badge">Crunchyroll</div>
                     <div class="product-name">Crunchyroll 1 Mes</div>
                 </div>
                 <div>
@@ -936,10 +1042,10 @@
                 </div>
             </div>
 
-            <!-- STREAMING PERMANENTE / VIP (data-input-type="streaming") -->
+            <!-- STREAMING PERMANENTE / VIP -->
             <div class="product-card" data-cat="streaming-perm" data-crc="4000" data-dop="330" data-usd="8.00" data-mxn="146" data-cop="33300" data-ars="10100" data-pen="29.00">
                 <div>
-                    <div class="product-badge" style="color: #1db954;">Spotify Familiar</div>
+                    <div class="product-badge">Spotify Familiar</div>
                     <div class="product-name">Spotify Premium 1 Año (Permanente)</div>
                 </div>
                 <div>
@@ -950,7 +1056,7 @@
 
             <div class="product-card" data-cat="streaming-perm" data-crc="7000" data-dop="580" data-usd="13.99" data-mxn="255" data-cop="58300" data-ars="17700" data-pen="51.00">
                 <div>
-                    <div class="product-badge" style="color: #1db954;">Spotify VIP</div>
+                    <div class="product-badge">Spotify VIP</div>
                     <div class="product-name">Spotify Cuenta Familiar (1 Año VIP)</div>
                 </div>
                 <div>
@@ -961,7 +1067,7 @@
 
             <div class="product-card" data-cat="streaming-perm" data-crc="4000" data-dop="330" data-usd="8.00" data-mxn="146" data-cop="33300" data-ars="10100" data-pen="29.00">
                 <div>
-                    <div class="product-badge" style="color: #ff0000;">YouTube Individual</div>
+                    <div class="product-badge">YouTube Individual</div>
                     <div class="product-name">YouTube Individual Permanente</div>
                 </div>
                 <div>
@@ -972,7 +1078,7 @@
 
             <div class="product-card" data-cat="streaming-perm" data-crc="5000" data-dop="410" data-usd="10.00" data-mxn="183" data-cop="41600" data-ars="12600" data-pen="36.50">
                 <div>
-                    <div class="product-badge" style="color: #ff0000;">YouTube Familiar</div>
+                    <div class="product-badge">YouTube Familiar</div>
                     <div class="product-name">YouTube Premium Cuenta Familiar</div>
                 </div>
                 <div>
@@ -983,7 +1089,7 @@
 
             <div class="product-card" data-cat="streaming-perm" data-crc="4000" data-dop="330" data-usd="8.00" data-mxn="146" data-cop="33300" data-ars="10100" data-pen="29.00">
                 <div>
-                    <div class="product-badge" style="color: #9900ff;">HBO Max</div>
+                    <div class="product-badge">HBO Max</div>
                     <div class="product-name">HBO Max Full Access [FA] (Permanente)</div>
                 </div>
                 <div>
@@ -994,7 +1100,7 @@
 
             <div class="product-card" data-cat="streaming-perm" data-crc="3500" data-dop="290" data-usd="7.00" data-mxn="128" data-cop="29100" data-ars="8800" data-pen="25.50">
                 <div>
-                    <div class="product-badge" style="color: #0070d1;">Disney+ Combo</div>
+                    <div class="product-badge">Disney+ Combo</div>
                     <div class="product-name">Disney+ + Hulu y ESPN (Permanente)</div>
                 </div>
                 <div>
@@ -1005,7 +1111,7 @@
 
             <div class="product-card" data-cat="streaming-perm" data-crc="4500" data-dop="370" data-usd="9.00" data-mxn="165" data-cop="37500" data-ars="11400" data-pen="33.00">
                 <div>
-                    <div class="product-badge" style="color: #f47521;">Crunchyroll VIP</div>
+                    <div class="product-badge">Crunchyroll VIP</div>
                     <div class="product-name">Crunchyroll Ultimate Fan Member 1 Año</div>
                 </div>
                 <div>
@@ -1016,7 +1122,7 @@
 
             <div class="product-card" data-cat="streaming-perm" data-crc="5000" data-dop="410" data-usd="10.00" data-mxn="183" data-cop="41600" data-ars="12600" data-pen="36.50">
                 <div>
-                    <div class="product-badge" style="color: #00a8e1;">Prime Video VIP</div>
+                    <div class="product-badge">Prime Video VIP</div>
                     <div class="product-name">Amazon Prime Video Premium 6 Meses</div>
                 </div>
                 <div>
@@ -1027,7 +1133,7 @@
 
             <div class="product-card" data-cat="streaming-perm" data-crc="9000" data-dop="750" data-usd="18.00" data-mxn="330" data-cop="75000" data-ars="22800" data-pen="66.00">
                 <div>
-                    <div class="product-badge" style="color: #10a37f;">ChatGPT Plus</div>
+                    <div class="product-badge">ChatGPT Plus</div>
                     <div class="product-name">ChatGPT Plus 1 Mes (Privado)</div>
                 </div>
                 <div>
@@ -1038,7 +1144,7 @@
 
             <div class="product-card" data-cat="streaming-perm" data-crc="6500" data-dop="540" data-usd="13.00" data-mxn="238" data-cop="54100" data-ars="16400" data-pen="47.50">
                 <div>
-                    <div class="product-badge" style="color: #4285f4;">Google Gemini</div>
+                    <div class="product-badge">Google Gemini</div>
                     <div class="product-name">Gemini Advanced Premium 18 Meses</div>
                 </div>
                 <div>
@@ -1047,141 +1153,141 @@
                 </div>
             </div>
 
-            <!-- FF LIMITADOS (data-input-type="ff") -->
-            <div class="product-card" data-cat="ff-lim" data-crc="500" data-dop="60" data-usd="1.00" data-mxn="18" data-cop="4000" data-ars="1200" data-pen="3.50">
+            <!-- FF LIMITADOS (OFERTAS ÉPICAS ROJO FUEGO) -->
+            <div class="product-card fire-deal" data-cat="ff-lim" data-crc="500" data-dop="60" data-usd="1.00" data-mxn="18" data-cop="4000" data-ars="1200" data-pen="3.50">
                 <div>
-                    <div class="product-badge" style="color: var(--ff-gold);">💎 Free Fire (Limitado)</div>
+                    <div class="product-badge">🔥 OFERTA FLASH FF</div>
                     <div class="product-name">💎 110 Diamantes (100 + 10% Bono)</div>
                 </div>
                 <div>
                     <div class="product-price price-tag">₡500</div>
-                    <button class="btn-add" data-input-type="ff" data-title="110 Diamantes FF (Limitado)" data-crc="500" data-dop="60" data-usd="1.00" data-mxn="18" data-cop="4000" data-ars="1200" data-pen="3.50">Agregar</button>
+                    <button class="btn-add fire-btn" data-input-type="ff" data-title="110 Diamantes FF (Limitado)" data-crc="500" data-dop="60" data-usd="1.00" data-mxn="18" data-cop="4000" data-ars="1200" data-pen="3.50">Comprar Oferta</button>
                 </div>
             </div>
 
-            <div class="product-card" data-cat="ff-lim" data-crc="1000" data-dop="120" data-usd="2.00" data-mxn="35" data-cop="8000" data-ars="2400" data-pen="7.00">
+            <div class="product-card fire-deal" data-cat="ff-lim" data-crc="1000" data-dop="120" data-usd="2.00" data-mxn="35" data-cop="8000" data-ars="2400" data-pen="7.00">
                 <div>
-                    <div class="product-badge">💎 Free Fire (Limitado)</div>
+                    <div class="product-badge">🔥 OFERTA FLASH FF</div>
                     <div class="product-name">💎 341 Diamantes</div>
                 </div>
                 <div>
                     <div class="product-price price-tag">₡1,000</div>
-                    <button class="btn-add" data-input-type="ff" data-title="341 Diamantes FF (Limitado)" data-crc="1000" data-dop="120" data-usd="2.00" data-mxn="35" data-cop="8000" data-ars="2400" data-pen="7.00">Agregar</button>
+                    <button class="btn-add fire-btn" data-input-type="ff" data-title="341 Diamantes FF (Limitado)" data-crc="1000" data-dop="120" data-usd="2.00" data-mxn="35" data-cop="8000" data-ars="2400" data-pen="7.00">Comprar Oferta</button>
                 </div>
             </div>
 
-            <div class="product-card" data-cat="ff-lim" data-crc="1800" data-dop="210" data-usd="3.50" data-mxn="60" data-cop="14000" data-ars="4200" data-pen="12.50">
+            <div class="product-card fire-deal" data-cat="ff-lim" data-crc="1800" data-dop="210" data-usd="3.50" data-mxn="60" data-cop="14000" data-ars="4200" data-pen="12.50">
                 <div>
-                    <div class="product-badge">💎 Free Fire (Limitado)</div>
+                    <div class="product-badge">🔥 OFERTA FLASH FF</div>
                     <div class="product-name">💎 572 Diamantes</div>
                 </div>
                 <div>
                     <div class="product-price price-tag">₡1,800</div>
-                    <button class="btn-add" data-input-type="ff" data-title="572 Diamantes FF (Limitado)" data-crc="1800" data-dop="210" data-usd="3.50" data-mxn="60" data-cop="14000" data-ars="4200" data-pen="12.50">Agregar</button>
+                    <button class="btn-add fire-btn" data-input-type="ff" data-title="572 Diamantes FF (Limitado)" data-crc="1800" data-dop="210" data-usd="3.50" data-mxn="60" data-cop="14000" data-ars="4200" data-pen="12.50">Comprar Oferta</button>
                 </div>
             </div>
 
-            <div class="product-card" data-cat="ff-lim" data-crc="4200" data-dop="480" data-usd="8.00" data-mxn="140" data-cop="32000" data-ars="9600" data-pen="30.00">
+            <div class="product-card fire-deal" data-cat="ff-lim" data-crc="4200" data-dop="480" data-usd="8.00" data-mxn="140" data-cop="32000" data-ars="9600" data-pen="30.00">
                 <div>
-                    <div class="product-badge">💎 Free Fire (Limitado)</div>
+                    <div class="product-badge">🔥 OFERTA FLASH FF</div>
                     <div class="product-name">💎 1,160 Diamantes</div>
                 </div>
                 <div>
                     <div class="product-price price-tag">₡4,200</div>
-                    <button class="btn-add" data-input-type="ff" data-title="1,160 Diamantes FF (Limitado)" data-crc="4200" data-dop="480" data-usd="8.00" data-mxn="140" data-cop="32000" data-ars="9600" data-pen="30.00">Agregar</button>
+                    <button class="btn-add fire-btn" data-input-type="ff" data-title="1,160 Diamantes FF (Limitado)" data-crc="4200" data-dop="480" data-usd="8.00" data-mxn="140" data-cop="32000" data-ars="9600" data-pen="30.00">Comprar Oferta</button>
                 </div>
             </div>
 
-            <div class="product-card" data-cat="ff-lim" data-crc="6800" data-dop="780" data-usd="13.00" data-mxn="230" data-cop="52000" data-ars="15500" data-pen="49.00">
+            <div class="product-card fire-deal" data-cat="ff-lim" data-crc="6800" data-dop="780" data-usd="13.00" data-mxn="230" data-cop="52000" data-ars="15500" data-pen="49.00">
                 <div>
-                    <div class="product-badge">💎 Free Fire (Limitado)</div>
+                    <div class="product-badge">🔥 OFERTA FLASH FF</div>
                     <div class="product-name">💎 2,398 Diamantes</div>
                 </div>
                 <div>
                     <div class="product-price price-tag">₡6,800</div>
-                    <button class="btn-add" data-input-type="ff" data-title="2,398 Diamantes FF (Limitado)" data-crc="6800" data-dop="780" data-usd="13.00" data-mxn="230" data-cop="52000" data-ars="15500" data-pen="49.00">Agregar</button>
+                    <button class="btn-add fire-btn" data-input-type="ff" data-title="2,398 Diamantes FF (Limitado)" data-crc="6800" data-dop="780" data-usd="13.00" data-mxn="230" data-cop="52000" data-ars="15500" data-pen="49.00">Comprar Oferta</button>
                 </div>
             </div>
 
-            <div class="product-card" data-cat="ff-lim" data-crc="15000" data-dop="1680" data-usd="28.00" data-mxn="500" data-cop="112000" data-ars="33000" data-pen="108.00">
+            <div class="product-card fire-deal" data-cat="ff-lim" data-crc="15000" data-dop="1680" data-usd="28.00" data-mxn="500" data-cop="112000" data-ars="33000" data-pen="108.00">
                 <div>
-                    <div class="product-badge" style="color:var(--gold);">💎 Free Fire (Limitado)</div>
+                    <div class="product-badge">⚡ MÁXIMA OFERTA FUEGO</div>
                     <div class="product-name">💎 6,160 Diamantes</div>
                 </div>
                 <div>
                     <div class="product-price price-tag">₡15,000</div>
-                    <button class="btn-add" data-input-type="ff" data-title="6,160 Diamantes FF (Limitado)" data-crc="15000" data-dop="1680" data-usd="28.00" data-mxn="500" data-cop="112000" data-ars="33000" data-pen="108.00">Agregar</button>
+                    <button class="btn-add fire-btn" data-input-type="ff" data-title="6,160 Diamantes FF (Limitado)" data-crc="15000" data-dop="1680" data-usd="28.00" data-mxn="500" data-cop="112000" data-ars="33000" data-pen="108.00">Comprar Oferta</button>
                 </div>
             </div>
 
-            <!-- FF ILIMITADOS (data-input-type="ff") -->
-            <div class="product-card" data-cat="ff-ilim" data-crc="1200" data-dop="100" data-usd="2.50" data-mxn="35" data-cop="12000" data-ars="2500" data-pen="10.00">
+            <!-- FF ILIMITADOS (OFERTAS ÉPICAS ROJO FUEGO) -->
+            <div class="product-card fire-deal" data-cat="ff-ilim" data-crc="1200" data-dop="100" data-usd="2.50" data-mxn="35" data-cop="12000" data-ars="2500" data-pen="10.00">
                 <div>
-                    <div class="product-badge">💎 Free Fire (Ilimitado)</div>
+                    <div class="product-badge">🔥 FF ILIMITADO</div>
                     <div class="product-name">💎 341 Diamantes (Pila pequeña)</div>
                 </div>
                 <div>
                     <div class="product-price price-tag">₡1,200</div>
-                    <button class="btn-add" data-input-type="ff" data-title="341 Diamantes FF (Ilimitado)" data-crc="1200" data-dop="100" data-usd="2.50" data-mxn="35" data-cop="12000" data-ars="2500" data-pen="10.00">Agregar</button>
+                    <button class="btn-add fire-btn" data-input-type="ff" data-title="341 Diamantes FF (Ilimitado)" data-crc="1200" data-dop="100" data-usd="2.50" data-mxn="35" data-cop="12000" data-ars="2500" data-pen="10.00">Comprar Oferta</button>
                 </div>
             </div>
 
-            <div class="product-card" data-cat="ff-ilim" data-crc="2400" data-dop="200" data-usd="5.00" data-mxn="88" data-cop="18000" data-ars="3410" data-pen="14.00">
+            <div class="product-card fire-deal" data-cat="ff-ilim" data-crc="2400" data-dop="200" data-usd="5.00" data-mxn="88" data-cop="18000" data-ars="3410" data-pen="14.00">
                 <div>
-                    <div class="product-badge">💎 Free Fire (Ilimitado)</div>
+                    <div class="product-badge">🔥 FF ILIMITADO</div>
                     <div class="product-name">💎 520 Diamantes (Pila mediana)</div>
                 </div>
                 <div>
                     <div class="product-price price-tag">₡2,400</div>
-                    <button class="btn-add" data-input-type="ff" data-title="520 Diamantes FF (Ilimitado)" data-crc="2400" data-dop="200" data-usd="5.00" data-mxn="88" data-cop="18000" data-ars="3410" data-pen="14.00">Agregar</button>
+                    <button class="btn-add fire-btn" data-input-type="ff" data-title="520 Diamantes FF (Ilimitado)" data-crc="2400" data-dop="200" data-usd="5.00" data-mxn="88" data-cop="18000" data-ars="3410" data-pen="14.00">Comprar Oferta</button>
                 </div>
             </div>
 
-            <div class="product-card" data-cat="ff-ilim" data-crc="4500" data-dop="375" data-usd="9.00" data-mxn="140" data-cop="37500" data-ars="8200" data-pen="33.00">
+            <div class="product-card fire-deal" data-cat="ff-ilim" data-crc="4500" data-dop="375" data-usd="9.00" data-mxn="140" data-cop="37500" data-ars="8200" data-pen="33.00">
                 <div>
-                    <div class="product-badge">💎 Free Fire (Ilimitado)</div>
+                    <div class="product-badge">🔥 FF ILIMITADO</div>
                     <div class="product-name">💎 1,160 Diamantes (Caja de diamantes)</div>
                 </div>
                 <div>
                     <div class="product-price price-tag">₡4,500</div>
-                    <button class="btn-add" data-input-type="ff" data-title="1,160 Diamantes FF (Ilimitado)" data-crc="4500" data-dop="375" data-usd="9.00" data-mxn="140" data-cop="37500" data-ars="8200" data-pen="33.00">Agregar</button>
+                    <button class="btn-add fire-btn" data-input-type="ff" data-title="1,160 Diamantes FF (Ilimitado)" data-crc="4500" data-dop="375" data-usd="9.00" data-mxn="140" data-cop="37500" data-ars="8200" data-pen="33.00">Comprar Oferta</button>
                 </div>
             </div>
 
-            <div class="product-card" data-cat="ff-ilim" data-crc="8800" data-dop="730" data-usd="14.00" data-mxn="245" data-cop="54000" data-ars="15500" data-pen="48.00">
+            <div class="product-card fire-deal" data-cat="ff-ilim" data-crc="8800" data-dop="730" data-usd="14.00" data-mxn="245" data-cop="54000" data-ars="15500" data-pen="48.00">
                 <div>
-                    <div class="product-badge">💎 Free Fire (Ilimitado)</div>
+                    <div class="product-badge">🔥 FF ILIMITADO</div>
                     <div class="product-name">💎 2,398 Diamantes (Caja grande)</div>
                 </div>
                 <div>
                     <div class="product-price price-tag">₡8,800</div>
-                    <button class="btn-add" data-input-type="ff" data-title="2,398 Diamantes FF (Ilimitado)" data-crc="8800" data-dop="730" data-usd="14.00" data-mxn="245" data-cop="54000" data-ars="15500" data-pen="48.00">Agregar</button>
+                    <button class="btn-add fire-btn" data-input-type="ff" data-title="2,398 Diamantes FF (Ilimitado)" data-crc="8800" data-dop="730" data-usd="14.00" data-mxn="245" data-cop="54000" data-ars="15500" data-pen="48.00">Comprar Oferta</button>
                 </div>
             </div>
 
-            <div class="product-card" data-cat="ff-ilim" data-crc="18100" data-dop="1500" data-usd="34.00" data-mxn="595" data-cop="180000" data-ars="33300" data-pen="135.50">
+            <div class="product-card fire-deal" data-cat="ff-ilim" data-crc="18100" data-dop="1500" data-usd="34.00" data-mxn="595" data-cop="180000" data-ars="33300" data-pen="135.50">
                 <div>
-                    <div class="product-badge">💎 Free Fire (Ilimitado)</div>
+                    <div class="product-badge">🔥 FF ILIMITADO</div>
                     <div class="product-name">💎 6,160 Diamantes (Gran pila)</div>
                 </div>
                 <div>
                     <div class="product-price price-tag">₡18,100</div>
-                    <button class="btn-add" data-input-type="ff" data-title="6,160 Diamantes FF (Ilimitado)" data-crc="18100" data-dop="1500" data-usd="34.00" data-mxn="595" data-cop="180000" data-ars="33300" data-pen="135.50">Agregar</button>
+                    <button class="btn-add fire-btn" data-input-type="ff" data-title="6,160 Diamantes FF (Ilimitado)" data-crc="18100" data-dop="1500" data-usd="34.00" data-mxn="595" data-cop="180000" data-ars="33300" data-pen="135.50">Comprar Oferta</button>
                 </div>
             </div>
 
-            <div class="product-card" data-cat="ff-ilim" data-crc="37500" data-dop="3100" data-usd="70.00" data-mxn="1220" data-cop="370000" data-ars="69000" data-pen="280.00">
+            <div class="product-card fire-deal" data-cat="ff-ilim" data-crc="37500" data-dop="3100" data-usd="70.00" data-mxn="1220" data-cop="370000" data-ars="69000" data-pen="280.00">
                 <div>
-                    <div class="product-badge" style="color:var(--gold);">💎 Free Fire (Mega Pack)</div>
+                    <div class="product-badge" style="color: #ff3366; text-shadow: 0 0 10px rgba(255,51,102,0.6);">🔥 MEGA PACK FUEGO 🔥</div>
                     <div class="product-name">💎 12,343 Diamantes (Mega Pack)</div>
                 </div>
                 <div>
                     <div class="product-price price-tag">₡37,500</div>
-                    <button class="btn-add" data-input-type="ff" data-title="12,343 Diamantes FF (Mega Pack)" data-crc="37500" data-dop="3100" data-usd="70.00" data-mxn="1220" data-cop="370000" data-ars="69000" data-pen="280.00">Agregar</button>
+                    <button class="btn-add fire-btn" data-input-type="ff" data-title="12,343 Diamantes FF (Mega Pack)" data-crc="37500" data-dop="3100" data-usd="70.00" data-mxn="1220" data-cop="370000" data-ars="69000" data-pen="280.00">¡Comprar Mega Pack!</button>
                 </div>
             </div>
 
-            <!-- PASES & MEMBRESÍAS FF (data-input-type="ff") -->
+            <!-- PASES & MEMBRESÍAS FF -->
             <div class="product-card" data-cat="ff-passes" data-crc="1200" data-dop="100" data-usd="2" data-mxn="35" data-cop="8300" data-ars="2500" data-pen="7.30">
                 <div>
                     <div class="product-badge">🎫 Membresía FF</div>
@@ -1270,7 +1376,7 @@
                 </div>
             </div>
 
-            <!-- BLOOD STRIKE ORO (data-input-type="bs") -->
+            <!-- BLOOD STRIKE ORO -->
             <div class="product-card" data-cat="bs" data-crc="1600" data-dop="130" data-usd="3" data-mxn="54" data-cop="12500" data-ars="3800" data-pen="11.00">
                 <div>
                     <div class="product-badge">🪙 Blood Strike</div>
@@ -1343,24 +1449,23 @@
         <span class="floating-cart-badge cart-count">0</span>
     </button>
 
-    <!-- MODAL CATÁLOGO -->
+    <!-- MODAL CATÁLOGO RÁPIDO -->
     <div class="modal" id="catalogModal">
         <div class="modal-box">
             <div class="modal-top">
-                <h3>⚡ MENÚ RÁPIDO</h3>
+                <h3>⚡ MENÚ RÁPIDO ELITE</h3>
                 <button class="btn-close" id="closeCatalogModalBtn">&times;</button>
             </div>
             <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 5px;">
-                <button class="btn-hero-action" data-jump-modal="ff-lim" style="width:100%; justify-content:center; padding: 12px;">💎 Diamantes Free Fire</button>
-                <button class="btn-hero-action" data-jump-modal="ff-passes" style="width:100%; justify-content:center; padding: 12px;">⚙️ Tokens Evolutivos</button>
-                <button class="btn-hero-action" data-jump-modal="ff-passes" style="width:100%; justify-content:center; padding: 12px;">🎫 Pases Semanales/Mensuales</button>
-                <button class="btn-hero-action" data-jump-modal="streaming" style="width:100%; justify-content:center; padding: 12px;">🎬 Streaming (Netflix, Spotify...)</button>
-                <button class="btn-hero-action" data-jump-modal="social" style="width:100%; justify-content:center; padding: 12px;">📸 Redes Sociales (Instagram, TikTok...)</button>
+                <button class="btn-hero-action" data-jump-modal="ff-lim" style="width:100%; justify-content:center; padding: 13px;">💎 Diamantes Free Fire</button>
+                <button class="btn-hero-action" data-jump-modal="ff-passes" style="width:100%; justify-content:center; padding: 13px;">⚙️ Tokens Evolutivos & Pases</button>
+                <button class="btn-hero-action" data-jump-modal="streaming" style="width:100%; justify-content:center; padding: 13px;">🎬 Streaming (Netflix, Spotify...)</button>
+                <button class="btn-hero-action" data-jump-modal="social" style="width:100%; justify-content:center; padding: 13px;">📸 Redes Sociales (Instagram, TikTok...)</button>
             </div>
         </div>
     </div>
 
-    <!-- MODAL CARRITO -->
+    <!-- MODAL CARRITO / CHECKOUT -->
     <div class="modal" id="cartModal">
         <div class="modal-box">
             <div class="modal-top">
@@ -1388,7 +1493,6 @@
                     <input type="text" id="pPhone" placeholder="Ej: +506 72986056">
                 </div>
 
-                <!-- CAMPO DINÁMICO PERFECTAMENTE CONTROLADO -->
                 <div class="input-box" id="dynamicInputBox">
                     <label id="dynamicLabel">Detalle Requerido</label>
                     <input type="text" id="pCustomField" placeholder="">
@@ -1409,7 +1513,7 @@
                 </div>
 
                 <div id="cryptomusApiSection" style="display: none; text-align: center; margin-bottom: 15px;">
-                    <p style="font-size: 0.78rem; color: var(--text-dim); margin-bottom: 10px;">Paga de forma automática y segura con cualquier criptomoneda a través de la pasarela oficial de Cryptomus.</p>
+                    <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 10px;">Paga de forma automática y segura con criptomonedas.</p>
                     <button class="btn-cryptomus-api" id="payWithCryptomusBtn">
                         💎 PAGAR CON CRYPTOMUS API 🌐
                     </button>
@@ -1420,23 +1524,23 @@
                         ⚡ PAGO DIRECTO CON BINANCE PAY ⚡
                     </div>
                     <div style="background: #000; padding: 6px; display: inline-block; border-radius: 8px; margin-bottom: 10px; border: 1px solid var(--binance);">
-                        <img src="https://cdn.phototourl.com/member/2026-10-11-102d4de5-dc6c-4047-ab6c-d5474035de59.png" alt="QR Binance" style="width: 240px; height: auto; display: block;">
+                        <img src="https://cdn.phototourl.com/member/2026-10-11-102d4de5-dc6c-4047-ab6c-d5474035de59.png" alt="QR Binance" style="width: 230px; height: auto; display: block;">
                     </div>
-                    <p style="font-size: 0.75rem; color: var(--text-dim); margin-bottom: 10px;">Escanea con tu app de Binance<br><strong style="color: var(--binance);">Owen Morales Ugalde</strong></p>
-                    <a href="https://pay.binance.com/" target="_blank" style="background: var(--binance); color: #000; font-family: 'Chakra Petch', sans-serif; font-weight: 900; font-size: 0.75rem; padding: 10px 15px; border-radius: 8px; display: block; text-decoration: none; text-transform: uppercase;">
+                    <p style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 10px;">Escanea con tu app de Binance<br><strong style="color: var(--binance);">Owen Morales Ugalde</strong></p>
+                    <a href="https://pay.binance.com/" target="_blank" style="background: var(--binance); color: #020408; font-family: 'Chakra Petch', sans-serif; font-weight: 900; font-size: 0.75rem; padding: 10px 15px; border-radius: 8px; display: block; text-decoration: none; text-transform: uppercase;">
                         Abrir App de Binance 🌐
                     </a>
                 </div>
 
                 <div class="input-box" id="txIdBox">
                     <label>Número de Comprobante / Hash / Referencia</label>
-                    <input type="text" id="pTxId" placeholder="Ej: 456791601... o núm. de comprobante">
+                    <input type="text" id="pTxId" placeholder="Ej: 456791601...">
                 </div>
 
                 <div class="input-box" id="receiptBox">
                     <label>Adjuntar Captura del Comprobante 📷</label>
                     <label class="file-upload-box" for="pReceipt">
-                        <span id="receiptLabel" style="font-size: 0.8rem; color: var(--trust-blue-glow); font-weight: 700;">📂 Toca aquí para subir o tomar foto de tu comprobante</span>
+                        <span id="receiptLabel" style="font-size: 0.8rem; color: var(--accent-blue); font-weight: 700;">📂 Toca aquí para subir o tomar foto de tu comprobante</span>
                         <input type="file" id="pReceipt" accept="image/*" style="display: none;">
                     </label>
                 </div>
@@ -1468,11 +1572,11 @@
                     <div class="prime-stats-grid">
                         <div class="prime-stat-item">
                             <div class="prime-stat-label">Gasto Histórico</div>
-                            <div class="prime-stat-val" style="color: var(--ff-gold);">$155.60 USD</div>
+                            <div class="prime-stat-val" style="color: var(--gold);">$155.60 USD</div>
                         </div>
                         <div class="prime-stat-item">
                             <div class="prime-stat-label">Diamantes & Cajas</div>
-                            <div class="prime-stat-val">61,600 💎 (110 Cajas)</div>
+                            <div class="prime-stat-val">61,600 💎</div>
                         </div>
                     </div>
                 </div>
@@ -1480,7 +1584,7 @@
                 <div class="prime-card">
                     <div class="prime-header">
                         <span class="prime-rank-badge" style="color: #c0c0c0;">🥈 #2 ELITE SPENDER</span>
-                        <span class="prime-tier" style="background: #c0c0c0; color:#000;">PRIME 7</span>
+                        <span class="prime-tier" style="background: #c0c0c0; color:#020408;">PRIME 7</span>
                     </div>
                     <div class="prime-player-info">
                         <div>
@@ -1549,6 +1653,7 @@
         </div>
     </div>
 
+    <!-- SCRIPT DE FUNCIONALIDAD -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             let cart = [];
@@ -1646,14 +1751,12 @@
                 document.getElementById('topClientsModal').classList.remove('open');
             });
 
-            // LÓGICA DE DETECCIÓN EXACTA BASADA EN EL TIPO DE PRODUCTO
             document.getElementById('proceedCheckoutBtn').addEventListener('click', () => {
                 if (cart.length === 0) return;
 
                 const labelEl = document.getElementById('dynamicLabel');
                 const inputEl = document.getElementById('pCustomField');
 
-                // Verificamos qué tipo de producto está en el carrito de forma precisa
                 const hasSocial = cart.some(item => item.inputType === 'social');
                 const hasStreaming = cart.some(item => item.inputType === 'streaming');
                 const hasBloodStrike = cart.some(item => item.inputType === 'bs');
@@ -1725,7 +1828,7 @@
                 const label = document.getElementById('receiptLabel');
                 if (file) {
                     label.innerText = '✅ Comprobante adjuntado: ' + file.name;
-                    label.style.color = '#39FF14';
+                    label.style.color = '#00f0ff';
                 }
             });
 
@@ -1735,7 +1838,7 @@
                 if (!list) return;
 
                 if (cart.length === 0) {
-                    list.innerHTML = '<p style="text-align:center; color:var(--text-dim); padding:20px; font-size:0.85rem;">Tu carrito está vacío</p>';
+                    list.innerHTML = '<p style="text-align:center; color:var(--text-muted); padding:20px; font-size:0.85rem;">Tu carrito está vacío</p>';
                     return;
                 }
 
@@ -1761,12 +1864,12 @@
                     row.innerHTML = `
                         <div>
                             <strong>${item.title}</strong><br>
-                            <span style="color:var(--primary); font-family:'Chakra Petch',sans-serif; font-size:0.85rem; font-weight:700;">${priceFormatted}</span>
+                            <span style="color:var(--accent-blue); font-family:'Chakra Petch',sans-serif; font-size:0.85rem; font-weight:700;">${priceFormatted}</span>
                         </div>
                     `;
                     const delBtn = document.createElement('button');
                     delBtn.innerHTML = '&times;';
-                    delBtn.style.cssText = 'background:none; border:none; color:var(--primary); font-size:1.2rem; cursor:pointer; padding: 4px 8px;';
+                    delBtn.style.cssText = 'background:none; border:none; color:var(--accent-fire); font-size:1.3rem; cursor:pointer; padding: 4px 8px;';
                     delBtn.addEventListener('click', () => {
                         cart.splice(i, 1);
                         renderCart();
