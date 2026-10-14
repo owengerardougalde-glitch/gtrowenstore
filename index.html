@@ -5,23 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>GTROWEN.STORE | Elite Gaming & Digital Hub</title>
-    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Orbitron:wght@500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700;800&family=Orbitron:wght@500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-deep: #020408;
-            --bg-card: #070d19;
-            --bg-card-hover: #0c152a;
-            --accent-blue: #00f0ff;
-            --accent-blue-glow: rgba(0, 240, 255, 0.35);
-            --accent-fire: #ff003c;
-            --accent-fire-glow: rgba(255, 0, 60, 0.4);
+            --bg-deep: #050811;
+            --bg-card: #0a1124;
+            --bg-card-hover: #101c38;
+            --accent-ff: #ff3333;
+            --accent-ff-glow: rgba(255, 51, 51, 0.4);
+            --accent-bs: #00f0ff;
+            --accent-bs-glow: rgba(0, 240, 255, 0.35);
             --gold: #ffb700;
-            --binance: #f3ba2f;
             --success: #25d366;
             --text-main: #ffffff;
             --text-muted: #8b9bb4;
-            --border-glass: rgba(0, 240, 255, 0.18);
-            --border-fire: rgba(255, 0, 60, 0.45);
+            --border-glass: rgba(0, 240, 255, 0.2);
+            --border-fire: rgba(255, 51, 51, 0.5);
         }
 
         * {
@@ -42,18 +41,18 @@
             position: relative;
             overflow-x: hidden;
             background-image: 
-                radial-gradient(circle at 10% 10%, rgba(0, 240, 255, 0.05) 0%, transparent 40%),
-                radial-gradient(circle at 90% 90%, rgba(255, 0, 60, 0.05) 0%, transparent 40%);
+                radial-gradient(circle at 15% 10%, rgba(255, 51, 51, 0.08) 0%, transparent 45%),
+                radial-gradient(circle at 85% 85%, rgba(0, 240, 255, 0.07) 0%, transparent 45%);
             background-attachment: fixed;
         }
 
-        .num-font, .product-price, .ff-uid-row, .cart-total-box, .curr-btn, .header-cart, .floating-cart-btn {
+        .num-font, .product-price, .cart-total-box, .curr-btn, .header-cart, .floating-cart-btn {
             font-family: 'Chakra Petch', sans-serif !important;
             letter-spacing: 0.5px;
         }
 
         header {
-            background: rgba(2, 4, 8, 0.85);
+            background: rgba(5, 8, 17, 0.9);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border-glass);
             padding: 14px 20px;
@@ -64,7 +63,7 @@
             align-items: center;
             justify-content: space-between;
             width: 100%;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
         }
 
         .brand-box {
@@ -74,17 +73,16 @@
         }
 
         .brand-icon {
-            width: 36px;
-            height: 36px;
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-fire));
+            width: 38px;
+            height: 38px;
+            background: linear-gradient(135deg, var(--accent-ff), var(--accent-bs));
             color: #fff;
             border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.15rem;
-            font-weight: 900;
-            box-shadow: 0 0 15px var(--accent-blue-glow);
+            font-size: 1.2rem;
+            box-shadow: 0 0 18px var(--accent-ff-glow);
         }
 
         .brand-title {
@@ -96,7 +94,7 @@
             line-height: 1;
         }
 
-        .brand-title span { color: var(--accent-blue); text-shadow: 0 0 10px var(--accent-blue-glow); }
+        .brand-title span { color: var(--accent-bs); text-shadow: 0 0 10px var(--accent-bs-glow); }
 
         .brand-sub {
             font-family: 'Orbitron', sans-serif;
@@ -120,7 +118,7 @@
             display: flex;
             gap: 2px;
             overflow-x: auto;
-            max-width: 220px;
+            max-width: 210px;
         }
 
         .curr-btn {
@@ -137,9 +135,9 @@
         }
 
         .curr-btn.active {
-            background: var(--accent-blue);
-            color: #020408;
-            box-shadow: 0 0 12px var(--accent-blue-glow);
+            background: var(--accent-bs);
+            color: #050811;
+            box-shadow: 0 0 12px var(--accent-bs-glow);
         }
 
         .header-cart {
@@ -151,15 +149,15 @@
             align-items: center;
             gap: 8px;
             cursor: pointer;
-            color: var(--accent-blue);
+            color: var(--accent-bs);
             font-size: 0.85rem;
             font-weight: 700;
             white-space: nowrap;
         }
 
         .header-cart-badge {
-            background: var(--accent-blue);
-            color: #020408;
+            background: var(--accent-bs);
+            color: #050811;
             width: 18px;
             height: 18px;
             border-radius: 50%;
@@ -178,102 +176,40 @@
             z-index: 10;
         }
 
-        .payment-gateway-hero {
-            background: linear-gradient(135deg, rgba(7, 13, 25, 0.9), rgba(12, 21, 42, 0.95));
-            border: 1px solid var(--border-glass);
-            border-radius: 18px;
-            padding: 22px;
+        .hero-banner {
+            background: linear-gradient(135deg, rgba(10, 17, 36, 0.95), rgba(26, 10, 20, 0.95));
+            border: 1px solid var(--border-fire);
+            border-radius: 20px;
+            padding: 24px;
             margin-bottom: 25px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
             position: relative;
             overflow: hidden;
         }
 
-        .payment-gateway-hero::before {
+        .hero-banner::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; width: 4px; height: 100%;
-            background: linear-gradient(to bottom, var(--accent-blue), var(--accent-fire));
+            top: 0; left: 0; width: 6px; height: 100%;
+            background: linear-gradient(to bottom, var(--accent-ff), var(--accent-bs));
         }
 
-        .gateway-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            padding-bottom: 12px;
-        }
-
-        .gateway-title {
+        .hero-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.95rem;
-            color: var(--text-main);
+            font-size: 1.1rem;
             font-weight: 900;
+            color: #fff;
+            margin-bottom: 8px;
             display: flex;
             align-items: center;
-            gap: 8px;
-        }
-
-        .gateway-status {
-            font-family: 'Chakra Petch', sans-serif;
-            font-size: 0.68rem;
-            background: rgba(0, 240, 255, 0.1);
-            color: var(--accent-blue);
-            border: 1px solid var(--border-glass);
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-weight: 700;
-        }
-
-        .gateway-methods-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
-            margin-bottom: 16px;
-        }
-
-        @media(max-width: 650px) {
-            .gateway-methods-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-
-        .gateway-method-card {
-            background: rgba(2, 4, 8, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            border-radius: 12px;
-            padding: 12px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .gateway-method-card span { font-size: 1.4rem; }
-        .gateway-method-name { font-family: 'Chakra Petch', sans-serif; font-size: 0.78rem; font-weight: 700; color: var(--text-main); }
-        .gateway-method-desc { font-size: 0.62rem; color: var(--text-muted); }
-
-        .hero-actions-row {
-            display: flex;
             gap: 10px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 12px;
         }
 
-        .btn-hero-action {
-            background: rgba(0, 240, 255, 0.08);
-            border: 1px solid var(--border-glass);
-            color: var(--accent-blue);
-            padding: 9px 16px;
-            border-radius: 10px;
-            font-family: 'Chakra Petch', sans-serif;
-            font-size: 0.78rem;
-            font-weight: 700;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 6px;
+        .hero-desc {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            line-height: 1.5;
         }
 
         .category-scroll {
@@ -282,8 +218,6 @@
             overflow-x: auto;
             padding-bottom: 10px;
             margin-bottom: 22px;
-            position: relative;
-            z-index: 10;
         }
 
         .cat-btn {
@@ -297,38 +231,37 @@
             font-weight: 700;
             white-space: nowrap;
             cursor: pointer;
+            transition: 0.2s;
         }
 
         .cat-btn.active {
-            background: linear-gradient(135deg, var(--accent-blue), #0088ff);
-            color: #020408;
-            border-color: var(--accent-blue);
-            box-shadow: 0 0 18px var(--accent-blue-glow);
+            background: linear-gradient(135deg, var(--accent-ff), #ff6600);
+            color: #fff;
+            border-color: var(--accent-ff);
+            box-shadow: 0 0 18px var(--accent-ff-glow);
             font-weight: 900;
         }
 
         .section-h2 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1rem;
+            font-size: 1.05rem;
             font-weight: 900;
             color: var(--text-main);
-            margin-bottom: 14px;
+            margin-bottom: 16px;
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-top: 20px;
+            margin-top: 24px;
         }
 
         .products-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 14px;
+            gap: 16px;
             margin-bottom: 30px;
-            position: relative;
-            z-index: 10;
         }
 
-        @media(max-width: 500px) {
+        @media(max-width: 550px) {
             .products-grid { grid-template-columns: 1fr; }
         }
 
@@ -336,72 +269,74 @@
             background: var(--bg-card);
             border: 1px solid var(--border-glass);
             border-radius: 16px;
-            padding: 16px;
+            padding: 18px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             position: relative;
-            z-index: 10;
             transition: all 0.25s ease;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
         }
 
-        .product-card.fire-deal {
-            background: linear-gradient(145deg, rgba(255, 0, 60, 0.08), var(--bg-card));
+        .product-card:hover {
+            border-color: var(--accent-bs);
+            transform: translateY(-3px);
+        }
+
+        .product-card.ff-deal {
+            background: linear-gradient(145deg, rgba(255, 51, 51, 0.07), var(--bg-card));
             border: 1px solid var(--border-fire);
-            box-shadow: 0 8px 30px rgba(255, 0, 60, 0.15);
         }
 
         .product-badge {
-            font-size: 0.68rem;
-            font-weight: 700;
-            color: var(--accent-blue);
+            font-size: 0.7rem;
+            font-weight: 800;
+            color: var(--accent-bs);
             text-transform: uppercase;
             letter-spacing: 0.8px;
             margin-bottom: 6px;
         }
 
-        .fire-deal .product-badge {
-            color: var(--accent-fire);
-            text-shadow: 0 0 10px var(--accent-fire-glow);
+        .ff-deal .product-badge {
+            color: var(--accent-ff);
+            text-shadow: 0 0 10px var(--accent-ff-glow);
         }
 
         .product-name {
-            font-size: 0.88rem;
+            font-size: 0.92rem;
             font-weight: 700;
             color: var(--text-main);
-            margin-bottom: 10px;
-            line-height: 1.3;
+            margin-bottom: 12px;
+            line-height: 1.35;
         }
 
         .product-price-box {
             display: flex;
             flex-direction: column;
             gap: 4px;
-            margin-bottom: 14px;
+            margin-bottom: 16px;
         }
 
         .product-price {
-            font-size: 1.15rem;
-            color: var(--accent-blue);
-            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--accent-bs);
+            font-weight: 900;
         }
 
-        .fire-deal .product-price {
-            color: var(--accent-fire);
-            text-shadow: 0 0 12px var(--accent-fire-glow);
+        .ff-deal .product-price {
+            color: var(--accent-ff);
+            text-shadow: 0 0 12px var(--accent-ff-glow);
         }
 
         .savings-box {
             background: rgba(37, 211, 102, 0.08);
             border: 1px dashed rgba(37, 211, 102, 0.4);
             border-radius: 8px;
-            padding: 6px 10px;
-            font-size: 0.72rem;
+            padding: 8px 10px;
+            font-size: 0.74rem;
             display: flex;
             flex-direction: column;
             gap: 2px;
-            margin-bottom: 12px;
         }
 
         .savings-official {
@@ -417,40 +352,38 @@
 
         .btn-add {
             background: linear-gradient(135deg, rgba(0, 240, 255, 0.15), rgba(0, 240, 255, 0.3));
-            color: var(--accent-blue);
+            color: var(--accent-bs);
             border: 1px solid var(--border-glass);
             border-radius: 10px;
-            padding: 10px 0;
+            padding: 11px 0;
             font-weight: 900;
-            font-size: 0.78rem;
+            font-size: 0.8rem;
             font-family: 'Chakra Petch', sans-serif;
             cursor: pointer;
             width: 100%;
             text-transform: uppercase;
-            position: relative;
-            z-index: 15;
             transition: 0.2s;
         }
 
         .btn-add:hover {
-            background: var(--accent-blue);
-            color: #020408;
-            box-shadow: 0 0 15px var(--accent-blue-glow);
+            background: var(--accent-bs);
+            color: #050811;
+            box-shadow: 0 0 15px var(--accent-bs-glow);
         }
 
-        .btn-add.fire-btn {
-            background: linear-gradient(135deg, var(--accent-fire), #ff3366);
+        .btn-add.ff-btn {
+            background: linear-gradient(135deg, var(--accent-ff), #ff6600);
             color: #fff;
             border: none;
-            box-shadow: 0 0 15px var(--accent-fire-glow);
+            box-shadow: 0 0 15px var(--accent-ff-glow);
         }
 
-        /* BOTONES FLOTANTES CON DISEÑO PROFESIONAL USANDO TU IMAGEN */
+        /* BOTONES FLOTANTES */
         .floating-cart-btn {
             position: fixed;
             bottom: 20px;
-            right: 85px;
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-fire));
+            right: 88px;
+            background: linear-gradient(135deg, var(--accent-bs), var(--accent-ff));
             color: #fff;
             border: 1px solid rgba(255, 255, 255, 0.3);
             padding: 12px 22px;
@@ -487,32 +420,9 @@
 
         .floating-whatsapp-btn:hover { transform: scale(1.1); }
 
-        .floating-group-btn {
-            position: fixed;
-            bottom: 90px;
-            left: 20px;
-            background: #128c7e;
-            color: #fff;
-            border: 2px solid rgba(255, 255, 255, 0.4);
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 15px rgba(18, 140, 126, 0.7);
-            z-index: 1000;
-            text-decoration: none;
-            transition: transform 0.2s;
-        }
-
-        .floating-group-btn:hover { transform: scale(1.1); }
-        .floating-group-btn svg { width: 24px; height: 24px; fill: #ffffff; }
-
         .floating-cart-badge {
-            background: #020408;
-            color: var(--accent-blue);
+            background: #050811;
+            color: var(--accent-bs);
             font-size: 0.78rem;
             width: 22px;
             height: 22px;
@@ -526,7 +436,7 @@
         .modal {
             position: fixed;
             inset: 0;
-            background: rgba(2, 4, 8, 0.85);
+            background: rgba(5, 8, 17, 0.88);
             backdrop-filter: blur(12px);
             z-index: 2000;
             display: none;
@@ -548,7 +458,7 @@
             overflow-y: auto;
             position: relative;
             z-index: 2001;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
         }
 
         .modal-top {
@@ -582,7 +492,7 @@
             justify-content: space-between;
             align-items: center;
             font-size: 1.15rem;
-            color: var(--accent-blue);
+            color: var(--accent-bs);
             margin: 18px 0;
             padding-top: 14px;
             border-top: 1px solid var(--border-glass);
@@ -594,7 +504,7 @@
         .input-box input, .input-box select {
             width: 100%;
             padding: 11px 14px;
-            background: rgba(2, 4, 8, 0.7);
+            background: rgba(5, 8, 17, 0.7);
             border: 1px solid var(--border-glass);
             border-radius: 10px;
             color: #fff;
@@ -624,8 +534,8 @@
         }
 
         .btn-proceed {
-            background: linear-gradient(135deg, var(--accent-blue), #0088ff);
-            color: #020408;
+            background: linear-gradient(135deg, var(--accent-bs), #0088ff);
+            color: #050811;
             border: none;
             width: 100%;
             padding: 13px;
@@ -638,7 +548,7 @@
         }
 
         .btn-send {
-            background: linear-gradient(135deg, var(--accent-fire), #ff3366);
+            background: linear-gradient(135deg, var(--accent-ff), #ff6600);
             color: #fff;
             border: none;
             width: 100%;
@@ -652,16 +562,15 @@
             text-transform: uppercase;
         }
     </style>
-    <script src="//code.tidio.co/gcscrd4peehpejmvje2jrp2vof5cpe3w.js" async></script>
 </head>
 <body>
 
     <header>
         <div class="brand-box">
-            <div class="brand-icon">⚡</div>
+            <div class="brand-icon">🔥</div>
             <div class="brand-text">
                 <div class="brand-title">GTROWEN <span>STORE</span></div>
-                <div class="brand-sub">ELITE DIGITAL HUB</div>
+                <div class="brand-sub">ELITE GAMING HUB</div>
             </div>
         </div>
 
@@ -688,172 +597,26 @@
     </header>
 
     <div class="container">
-        <div class="payment-gateway-hero">
-            <div class="gateway-header">
-                <div class="gateway-title">
-                    <span>💳</span> PASARELA DE PAGOS Y FUENTES SEGURAS
-                </div>
-                <div class="gateway-status">● SSL 256-BIT ENCRIPTADO</div>
-            </div>
-            
-            <div class="gateway-methods-grid">
-                <div class="gateway-method-card">
-                    <span>🇨🇷</span>
-                    <div class="gateway-method-name">SINPE Móvil</div>
-                    <div class="gateway-method-desc">Instantáneo CR</div>
-                </div>
-                <div class="gateway-method-card">
-                    <span>🌐</span>
-                    <div class="gateway-method-name">Cryptomus API</div>
-                    <div class="gateway-method-desc">Cripto Seguras</div>
-                </div>
-                <div class="gateway-method-card">
-                    <span>⚡</span>
-                    <div class="gateway-method-name">Binance Pay</div>
-                    <div class="gateway-method-desc">USDT / QR Directo</div>
-                </div>
-                <div class="gateway-method-card">
-                    <span>🇲🇽</span>
-                    <div class="gateway-method-name">Nu México</div>
-                    <div class="gateway-method-desc">CLABE Segura</div>
-                </div>
-            </div>
-
-            <div class="hero-actions-row">
-                <button class="btn-hero-action" id="btnOpenCatalogModal">📂 Menú Rápido</button>
-            </div>
+        <div class="hero-banner">
+            <div class="hero-title">⚡ BATTLE ROYALE & SOCIAL ELITE HUB</div>
+            <div class="hero-desc">Recargas instantáneas para Free Fire, Blood Strike y potenciación de Redes Sociales con los precios más bajos del mercado garantizados. ¡Compara y ahorra!</div>
         </div>
 
         <div class="category-scroll">
-            <button class="cat-btn active" data-cat="all">▦ Todo el Catálogo</button>
-            <button class="cat-btn" data-cat="social">📸 Redes Sociales</button>
-            <button class="cat-btn" data-cat="streaming">🎬 Streaming Mensual</button>
-            <button class="cat-btn" data-cat="streaming-perm">💎 Streaming Permanente</button>
+            <button class="cat-btn active" data-cat="all">🔥 Todo el Catálogo</button>
             <button class="cat-btn" data-cat="ff-lim">⚡ FF Limitados</button>
-            <button class="cat-btn" data-cat="ff-ilim">⚡ FF Ilimitados</button>
+            <button class="cat-btn" data-cat="ff-ilim">💎 FF Ilimitados</button>
             <button class="cat-btn" data-cat="ff-passes">🎫 FF Pases & Tokens</button>
             <button class="cat-btn" data-cat="bs">🪙 Blood Strike Oro</button>
+            <button class="cat-btn" data-cat="social">📸 Redes Sociales</button>
+            <button class="cat-btn" data-cat="streaming">🎬 Streaming VIP</button>
         </div>
 
-        <div class="section-h2" id="catalogTitle">🔥 CATÁLOGO OFICIAL & OFERTAS ÉPICAS</div>
+        <div class="section-h2" id="catalogTitle">⚡ OFERTAS ÉPICAS CON AHORRO GARANTIZADO</div>
         <div class="products-grid" id="productsGrid">
 
-            <!-- REDES SOCIALES -->
-            <div class="product-card" data-cat="social" 
-                 data-crc="1200" data-official-crc="2000"
-                 data-usd="2.00" data-official-usd="3.50"
-                 data-mxn="37" data-official-mxn="60"
-                 data-cop="8300" data-official-cop="14000"
-                 data-ars="2500" data-official-ars="4200"
-                 data-pen="7.30" data-official-pen="12.00"
-                 data-dop="100" data-official-dop="170"
-                 data-bob="14" data-official-bob="24"
-                 data-gtq="15" data-official-gtq="26"
-                 data-nio="73" data-official-nio="125"
-                 data-ves="74" data-official-ves="130">
-                <div>
-                    <div class="product-badge">Instagram Baja Calidad</div>
-                    <div class="product-name">1,000 Seguidores Instagram (Baja Calidad)</div>
-                </div>
-                <div>
-                    <div class="product-price-box">
-                        <div class="product-price price-tag">₡1,200</div>
-                        <div class="savings-box">
-                            <span class="savings-official official-tag">Tienda Oficial: ₡2,000</span>
-                            <span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡800 (40%)!</span>
-                        </div>
-                    </div>
-                    <button class="btn-add" data-input-type="social" data-title="1,000 Seguidores Instagram (Baja Calidad)" data-crc="1200" data-usd="2.00">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="social" 
-                 data-crc="600" data-official-crc="1000"
-                 data-usd="1.00" data-official-usd="1.80"
-                 data-mxn="18" data-official-mxn="30"
-                 data-cop="4100" data-official-cop="7000"
-                 data-ars="1250" data-official-ars="2100"
-                 data-pen="3.65" data-official-pen="6.00"
-                 data-dop="50" data-official-dop="85"
-                 data-bob="7" data-official-bob="12"
-                 data-gtq="7.5" data-official-gtq="13"
-                 data-nio="36" data-official-nio="62"
-                 data-ves="37" data-official-ves="65">
-                <div>
-                    <div class="product-badge">Instagram Likes</div>
-                    <div class="product-name">1,000 Likes Instagram</div>
-                </div>
-                <div>
-                    <div class="product-price-box">
-                        <div class="product-price price-tag">₡600</div>
-                        <div class="savings-box">
-                            <span class="savings-official official-tag">Tienda Oficial: ₡1,000</span>
-                            <span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡400 (40%)!</span>
-                        </div>
-                    </div>
-                    <button class="btn-add" data-input-type="social" data-title="1,000 Likes Instagram" data-crc="600" data-usd="1.00">Agregar</button>
-                </div>
-            </div>
-
-            <!-- STREAMING MENSUAL -->
-            <div class="product-card" data-cat="streaming" 
-                 data-crc="3000" data-official-crc="5000"
-                 data-usd="6.00" data-official-usd="10.00"
-                 data-mxn="110" data-official-mxn="180"
-                 data-cop="25000" data-official-cop="40000"
-                 data-ars="7600" data-official-ars="12500"
-                 data-pen="22.00" data-official-pen="36.00"
-                 data-dop="250" data-official-dop="420"
-                 data-bob="41" data-official-bob="68"
-                 data-gtq="46" data-official-gtq="75"
-                 data-nio="220" data-official-nio="360"
-                 data-ves="220" data-official-ves="370">
-                <div>
-                    <div class="product-badge">Netflix</div>
-                    <div class="product-name">Netflix 1 Mes (Garantía 30 Días)</div>
-                </div>
-                <div>
-                    <div class="product-price-box">
-                        <div class="product-price price-tag">₡3,000</div>
-                        <div class="savings-box">
-                            <span class="savings-official official-tag">Tienda Oficial: ₡5,000</span>
-                            <span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡2,000 (40%)!</span>
-                        </div>
-                    </div>
-                    <button class="btn-add" data-input-type="streaming" data-title="Netflix 1 Mes (Streaming)" data-crc="3000" data-usd="6.00">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="streaming" 
-                 data-crc="2000" data-official-crc="3500"
-                 data-usd="4.00" data-official-usd="7.00"
-                 data-mxn="73" data-official-mxn="125"
-                 data-cop="16600" data-official-cop="28000"
-                 data-ars="5000" data-official-ars="8500"
-                 data-pen="14.50" data-official-pen="25.00"
-                 data-dop="170" data-official-dop="300"
-                 data-bob="27" data-official-bob="48"
-                 data-gtq="31" data-official-gtq="54"
-                 data-nio="146" data-official-nio="255"
-                 data-ves="147" data-official-ves="260">
-                <div>
-                    <div class="product-badge">Spotify</div>
-                    <div class="product-name">Spotify Premium 1 Mes</div>
-                </div>
-                <div>
-                    <div class="product-price-box">
-                        <div class="product-price price-tag">₡2,000</div>
-                        <div class="savings-box">
-                            <span class="savings-official official-tag">Tienda Oficial: ₡3,500</span>
-                            <span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡1,500 (43%)!</span>
-                        </div>
-                    </div>
-                    <button class="btn-add" data-input-type="streaming" data-title="Spotify Premium 1 Mes (Streaming)" data-crc="2000" data-usd="4.00">Agregar</button>
-                </div>
-            </div>
-
-            <!-- FF LIMITADOS -->
-            <div class="product-card fire-deal" data-cat="ff-lim" 
+            <!-- FREE FIRE LIMITADOS -->
+            <div class="product-card ff-deal" data-cat="ff-lim" 
                  data-crc="500" data-official-crc="800"
                  data-usd="1.00" data-official-usd="1.70"
                  data-mxn="18" data-official-mxn="30"
@@ -877,11 +640,11 @@
                             <span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡300 (37%)!</span>
                         </div>
                     </div>
-                    <button class="btn-add fire-btn" data-input-type="ff" data-title="110 Diamantes FF (Limitado)" data-crc="500" data-usd="1.00">Comprar Oferta</button>
+                    <button class="btn-add ff-btn" data-input-type="ff" data-title="110 Diamantes FF (Limitado)">Comprar Oferta</button>
                 </div>
             </div>
 
-            <div class="product-card fire-deal" data-cat="ff-lim" 
+            <div class="product-card ff-deal" data-cat="ff-lim" 
                  data-crc="1000" data-official-crc="1600"
                  data-usd="2.00" data-official-usd="3.40"
                  data-mxn="35" data-official-mxn="60"
@@ -905,11 +668,11 @@
                             <span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡600 (37%)!</span>
                         </div>
                     </div>
-                    <button class="btn-add fire-btn" data-input-type="ff" data-title="341 Diamantes FF (Limitado)" data-crc="1000" data-usd="2.00">Comprar Oferta</button>
+                    <button class="btn-add ff-btn" data-input-type="ff" data-title="341 Diamantes FF (Limitado)">Comprar Oferta</button>
                 </div>
             </div>
 
-            <div class="product-card fire-deal" data-cat="ff-lim" 
+            <div class="product-card ff-deal" data-cat="ff-lim" 
                  data-crc="4200" data-official-crc="6500"
                  data-usd="8.00" data-official-usd="13.00"
                  data-mxn="140" data-official-mxn="220"
@@ -933,12 +696,12 @@
                             <span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡2,300 (35%)!</span>
                         </div>
                     </div>
-                    <button class="btn-add fire-btn" data-input-type="ff" data-title="1,160 Diamantes FF (Limitado)" data-crc="4200" data-usd="8.00">Comprar Oferta</button>
+                    <button class="btn-add ff-btn" data-input-type="ff" data-title="1,160 Diamantes FF (Limitado)">Comprar Oferta</button>
                 </div>
             </div>
 
-            <!-- FF ILIMITADOS -->
-            <div class="product-card fire-deal" data-cat="ff-ilim" 
+            <!-- FREE FIRE ILIMITADOS -->
+            <div class="product-card ff-deal" data-cat="ff-ilim" 
                  data-crc="1200" data-official-crc="1900"
                  data-usd="2.50" data-official-usd="4.00"
                  data-mxn="35" data-official-mxn="55"
@@ -951,7 +714,7 @@
                  data-nio="87" data-official-nio="138"
                  data-ves="89" data-official-ves="140">
                 <div>
-                    <div class="product-badge">🔥 FF ILIMITADO</div>
+                    <div class="product-badge">💎 FF ILIMITADO</div>
                     <div class="product-name">💎 341 Diamantes (Pila pequeña)</div>
                 </div>
                 <div>
@@ -962,11 +725,11 @@
                             <span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡700 (36%)!</span>
                         </div>
                     </div>
-                    <button class="btn-add fire-btn" data-input-type="ff" data-title="341 Diamantes FF (Ilimitado)" data-crc="1200" data-usd="2.50">Comprar Oferta</button>
+                    <button class="btn-add ff-btn" data-input-type="ff" data-title="341 Diamantes FF (Ilimitado)">Comprar Oferta</button>
                 </div>
             </div>
 
-            <div class="product-card fire-deal" data-cat="ff-ilim" 
+            <div class="product-card ff-deal" data-cat="ff-ilim" 
                  data-crc="4500" data-official-crc="7200"
                  data-usd="9.00" data-official-usd="14.50"
                  data-mxn="140" data-official-mxn="225"
@@ -979,7 +742,7 @@
                  data-nio="327" data-official-nio="520"
                  data-ves="333" data-official-ves="530">
                 <div>
-                    <div class="product-badge">🔥 FF ILIMITADO</div>
+                    <div class="product-badge">💎 FF ILIMITADO</div>
                     <div class="product-name">💎 1,160 Diamantes (Caja de diamantes)</div>
                 </div>
                 <div>
@@ -990,7 +753,7 @@
                             <span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡2,700 (37%)!</span>
                         </div>
                     </div>
-                    <button class="btn-add fire-btn" data-input-type="ff" data-title="1,160 Diamantes FF (Ilimitado)" data-crc="4500" data-usd="9.00">Comprar Oferta</button>
+                    <button class="btn-add ff-btn" data-input-type="ff" data-title="1,160 Diamantes FF (Ilimitado)">Comprar Oferta</button>
                 </div>
             </div>
 
@@ -1019,7 +782,7 @@
                             <span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡900 (36%)!</span>
                         </div>
                     </div>
-                    <button class="btn-add" data-input-type="bs" data-title="341 de Oro Blood Strike" data-crc="1600" data-usd="3">Agregar</button>
+                    <button class="btn-add" data-input-type="bs" data-title="341 de Oro Blood Strike">Agregar</button>
                 </div>
             </div>
 
@@ -1047,15 +810,15 @@
                             <span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡2,700 (36%)!</span>
                         </div>
                     </div>
-                    <button class="btn-add" data-input-type="bs" data-title="1,160 de Oro Blood Strike" data-crc="4800" data-usd="9">Agregar</button>
+                    <button class="btn-add" data-input-type="bs" data-title="1,160 de Oro Blood Strike">Agregar</button>
                 </div>
             </div>
 
-            <!-- PASES & MEMBRESÍAS FF -->
-            <div class="product-card" data-cat="ff-passes" 
-                 data-crc="1200" data-official-crc="1900"
-                 data-usd="2" data-official-usd="3.5"
-                 data-mxn="35" data-official-mxn="60"
+            <!-- REDES SOCIALES -->
+            <div class="product-card" data-cat="social" 
+                 data-crc="1200" data-official-crc="2000"
+                 data-usd="2.00" data-official-usd="3.50"
+                 data-mxn="37" data-official-mxn="60"
                  data-cop="8300" data-official-cop="14000"
                  data-ars="2500" data-official-ars="4200"
                  data-pen="7.30" data-official-pen="12.00"
@@ -1065,30 +828,82 @@
                  data-nio="73" data-official-nio="125"
                  data-ves="74" data-official-ves="130">
                 <div>
-                    <div class="product-badge">🎫 Membresía FF</div>
-                    <div class="product-name">Tarjeta Semanal</div>
+                    <div class="product-badge">📸 Redes Sociales</div>
+                    <div class="product-name">1,000 Seguidores Instagram (Baja Calidad)</div>
                 </div>
                 <div>
                     <div class="product-price-box">
                         <div class="product-price price-tag">₡1,200</div>
                         <div class="savings-box">
-                            <span class="savings-official official-tag">Tienda Oficial: ₡1,900</span>
-                            <span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡700 (36%)!</span>
+                            <span class="savings-official official-tag">Tienda Oficial: ₡2,000</span>
+                            <span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡800 (40%)!</span>
                         </div>
                     </div>
-                    <button class="btn-add" data-input-type="ff" data-title="Tarjeta Semanal FF" data-crc="1200" data-usd="2">Agregar</button>
+                    <button class="btn-add" data-input-type="social" data-title="1,000 Seguidores Instagram">Agregar</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="social" 
+                 data-crc="600" data-official-crc="1000"
+                 data-usd="1.00" data-official-usd="1.80"
+                 data-mxn="18" data-official-mxn="30"
+                 data-cop="4100" data-official-cop="7000"
+                 data-ars="1250" data-official-ars="2100"
+                 data-pen="3.65" data-official-pen="6.00"
+                 data-dop="50" data-official-dop="85"
+                 data-bob="7" data-official-bob="12"
+                 data-gtq="7.5" data-official-gtq="13"
+                 data-nio="36" data-official-nio="62"
+                 data-ves="37" data-official-ves="65">
+                <div>
+                    <div class="product-badge">📸 Redes Sociales</div>
+                    <div class="product-name">1,000 Likes Instagram</div>
+                </div>
+                <div>
+                    <div class="product-price-box">
+                        <div class="product-price price-tag">₡600</div>
+                        <div class="savings-box">
+                            <span class="savings-official official-tag">Tienda Oficial: ₡1,000</span>
+                            <span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡400 (40%)!</span>
+                        </div>
+                    </div>
+                    <button class="btn-add" data-input-type="social" data-title="1,000 Likes Instagram">Agregar</button>
+                </div>
+            </div>
+
+            <!-- STREAMING -->
+            <div class="product-card" data-cat="streaming" 
+                 data-crc="3000" data-official-crc="5000"
+                 data-usd="6.00" data-official-usd="10.00"
+                 data-mxn="110" data-official-mxn="180"
+                 data-cop="25000" data-official-cop="40000"
+                 data-ars="7600" data-official-ars="12500"
+                 data-pen="22.00" data-official-pen="36.00"
+                 data-dop="250" data-official-dop="420"
+                 data-bob="41" data-official-bob="68"
+                 data-gtq="46" data-official-gtq="75"
+                 data-nio="220" data-official-nio="360"
+                 data-ves="220" data-official-ves="370">
+                <div>
+                    <div class="product-badge">🎬 Streaming VIP</div>
+                    <div class="product-name">Netflix 1 Mes (Garantía 30 Días)</div>
+                </div>
+                <div>
+                    <div class="product-price-box">
+                        <div class="product-price price-tag">₡3,000</div>
+                        <div class="savings-box">
+                            <span class="savings-official official-tag">Tienda Oficial: ₡5,000</span>
+                            <span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡2,000 (40%)!</span>
+                        </div>
+                    </div>
+                    <button class="btn-add" data-input-type="streaming" data-title="Netflix 1 Mes">Agregar</button>
                 </div>
             </div>
 
         </div>
     </div>
 
-    <!-- BOTONES FLOTANTES CON DISEÑO PROFESIONAL -->
-    <a href="https://chat.whatsapp.com/Hd6IG8eEVrY5hoYPgHIjk4?s=cl&p=a&mlu=4&ilr=4" class="floating-group-btn" target="_blank" title="Unirte al Grupo de WhatsApp">
-        <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
-    </a>
-
-    <!-- BOTÓN DE WHATSAPP CON TU IMAGEN OFICIAL -->
+    <!-- BOTÓN WHATSAPP CON TU IMAGEN -->
     <a href="https://api.whatsapp.com/send?phone=50672986056&text=Hola,%20tengo%20una%20consulta%20sobre%20la%20tienda%20gtrowen.store" class="floating-whatsapp-btn" target="_blank" title="Soporte por WhatsApp"></a>
 
     <button class="floating-cart-btn" id="openCartFloating">
@@ -1096,21 +911,7 @@
         <span class="floating-cart-badge cart-count">0</span>
     </button>
 
-    <!-- MODALES -->
-    <div class="modal" id="catalogModal">
-        <div class="modal-box">
-            <div class="modal-top">
-                <h3>⚡ MENÚ RÁPIDO ELITE</h3>
-                <button class="btn-close" id="closeCatalogModalBtn">&times;</button>
-            </div>
-            <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 5px;">
-                <button class="btn-hero-action" data-jump-modal="ff-lim" style="width:100%; justify-content:center; padding: 13px;">💎 Diamantes Free Fire</button>
-                <button class="btn-hero-action" data-jump-modal="streaming" style="width:100%; justify-content:center; padding: 13px;">🎬 Streaming</button>
-                <button class="btn-hero-action" data-jump-modal="social" style="width:100%; justify-content:center; padding: 13px;">📸 Redes Sociales</button>
-            </div>
-        </div>
-    </div>
-
+    <!-- MODAL CARRITO -->
     <div class="modal" id="cartModal">
         <div class="modal-box">
             <div class="modal-top">
@@ -1152,15 +953,8 @@
                     <strong>Datos SINPE Móvil:</strong><br>• Teléfono: <strong>6412 9943</strong><br>• Titular: <strong>OWEN MORALES UGALDE</strong>
                 </div>
                 <div class="input-box" id="txIdBox">
-                    <label>Número de Comprobante / Hash / Referencia</label>
+                    <label>Número de Comprobante / Referencia</label>
                     <input type="text" id="pTxId" placeholder="Ej: 456791601...">
-                </div>
-                <div class="input-box" id="receiptBox">
-                    <label>Adjuntar Captura del Comprobante 📷</label>
-                    <label class="file-upload-box" for="pReceipt">
-                        <span id="receiptLabel" style="font-size: 0.8rem; color: var(--accent-blue); font-weight: 700;">📂 Toca aquí para subir tu comprobante</span>
-                        <input type="file" id="pReceipt" accept="image/*" style="display: none;">
-                    </label>
                 </div>
                 <button class="btn-send" id="sendWaBtn">🚀 PROCESAR PEDIDO</button>
             </div>
@@ -1173,17 +967,9 @@
             let currentCurrency = 'CRC';
 
             const currencySymbols = {
-                'CRC': '₡',
-                'USD': '$',
-                'MXN': '$',
-                'COP': '$',
-                'ARS': '$',
-                'PEN': 'S/ ',
-                'DOP': 'RD$ ',
-                'BOB': 'Bs. ',
-                'GTQ': 'Q ',
-                'NIO': 'C$ ',
-                'VES': 'Bs.S '
+                'CRC': '₡', 'USD': '$', 'MXN': '$', 'COP': '$', 'ARS': '$', 
+                'PEN': 'S/ ', 'DOP': 'RD$ ', 'BOB': 'Bs. ', 'GTQ': 'Q ', 
+                'NIO': 'C$ ', 'VES': 'Bs.S '
             };
 
             document.querySelectorAll('.curr-btn').forEach(btn => {
@@ -1235,10 +1021,6 @@
                     });
                 });
             });
-
-            const catalogModal = document.getElementById('catalogModal');
-            document.getElementById('btnOpenCatalogModal').addEventListener('click', () => catalogModal.classList.add('open'));
-            document.getElementById('closeCatalogModalBtn').addEventListener('click', () => catalogModal.classList.remove('open'));
 
             document.querySelectorAll('.btn-add').forEach(btn => {
                 btn.addEventListener('click', (e) => {
@@ -1333,12 +1115,12 @@
                     row.innerHTML = `
                         <div>
                             <strong>${item.title}</strong><br>
-                            <span style="color:var(--accent-blue); font-family:'Chakra Petch',sans-serif; font-size:0.85rem; font-weight:700;">${priceFormatted}</span>
+                            <span style="color:var(--accent-bs); font-family:'Chakra Petch',sans-serif; font-size:0.85rem; font-weight:700;">${priceFormatted}</span>
                         </div>
                     `;
                     const delBtn = document.createElement('button');
                     delBtn.innerHTML = '&times;';
-                    delBtn.style.cssText = 'background:none; border:none; color:var(--accent-fire); font-size:1.3rem; cursor:pointer; padding: 4px 8px;';
+                    delBtn.style.cssText = 'background:none; border:none; color:var(--accent-ff); font-size:1.3rem; cursor:pointer; padding: 4px 8px;';
                     delBtn.addEventListener('click', () => {
                         cart.splice(i, 1);
                         renderCart();
@@ -1366,7 +1148,7 @@
                 let totalText = document.getElementById('cTotal').innerText;
 
                 let txId = document.getElementById('pTxId').value.trim();
-                if (!txId) { alert('Por favor ingresa el número de comprobante o referencia de pago'); return; }
+                if (!txId) { alert('Por favor ingresa el número de referencia de pago'); return; }
 
                 let itemsWaText = cart.map(c => `• ${c.title}`).join('%0A');
                 let msg = `⚡ *NUEVO PEDIDO - GTROWEN STORE*%0A%0A👤 *Cliente:* ${name}%0A📱 *Teléfono:* ${phone}%0A🔗 *Detalle/Destino:* ${customVal}%0A💳 *Método de Pago:* ${methodName}%0A🧾 *Referencia:* ${txId}%0A%0A📦 *Productos:*%0A${itemsWaText}%0A💰 *Total:* ${totalText} (${currentCurrency})`;
