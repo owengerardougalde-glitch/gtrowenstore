@@ -206,7 +206,6 @@
             z-index: 10;
         }
 
-        /* PASARELA HERO SECTION */
         .payment-gateway-hero {
             background: linear-gradient(135deg, rgba(10, 17, 11, 0.95), rgba(15, 24, 16, 0.95));
             border: 1px solid var(--border-blue);
@@ -270,29 +269,11 @@
             flex-direction: column;
             align-items: center;
             gap: 4px;
-            transition: 0.2s;
         }
 
-        .gateway-method-card:hover {
-            border-color: var(--trust-blue);
-            box-shadow: 0 0 12px rgba(56, 97, 251, 0.3);
-        }
-
-        .gateway-method-card span {
-            font-size: 1.3rem;
-        }
-
-        .gateway-method-name {
-            font-family: 'Chakra Petch', sans-serif;
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: #fff;
-        }
-
-        .gateway-method-desc {
-            font-size: 0.6rem;
-            color: var(--text-dim);
-        }
+        .gateway-method-card span { font-size: 1.3rem; }
+        .gateway-method-name { font-family: 'Chakra Petch', sans-serif; font-size: 0.75rem; font-weight: 700; color: #fff; }
+        .gateway-method-desc { font-size: 0.6rem; color: var(--text-dim); }
 
         .hero-actions-row {
             display: flex;
@@ -392,12 +373,6 @@
             justify-content: space-between;
             position: relative;
             z-index: 10;
-            transition: transform 0.2s, border-color 0.2s;
-        }
-
-        .product-card:hover {
-            border-color: var(--primary);
-            transform: translateY(-2px);
         }
 
         .product-badge {
@@ -422,7 +397,6 @@
             color: var(--primary);
             font-weight: 700;
             margin-bottom: 12px;
-            text-shadow: 0 0 8px rgba(57, 255, 20, 0.2);
         }
 
         .btn-add {
@@ -440,10 +414,7 @@
             position: relative;
             z-index: 15;
             box-shadow: 0 0 12px rgba(57, 255, 20, 0.35);
-            transition: transform 0.1s;
         }
-
-        .btn-add:active { transform: scale(0.97); }
 
         .floating-cart-btn {
             position: fixed;
@@ -473,8 +444,6 @@
             border: 2px solid rgba(255, 255, 255, 0.4);
             width: 56px;
             height: 56px;
-            min-width: 56px;
-            min-height: 56px;
             border-radius: 50%;
             cursor: pointer;
             display: flex;
@@ -483,20 +452,9 @@
             box-shadow: 0 0 20px rgba(37, 211, 102, 0.7);
             z-index: 1000;
             text-decoration: none;
-            transition: transform 0.2s;
-            flex-shrink: 0;
         }
 
-        .floating-whatsapp-btn:hover { transform: scale(1.1); }
-
-        .floating-whatsapp-btn svg {
-            width: 28px;
-            height: 28px;
-            min-width: 28px;
-            min-height: 28px;
-            fill: #ffffff;
-            display: block;
-        }
+        .floating-whatsapp-btn svg { width: 28px; height: 28px; fill: #ffffff; }
 
         .floating-group-btn {
             position: fixed;
@@ -507,8 +465,6 @@
             border: 2px solid rgba(255, 255, 255, 0.4);
             width: 48px;
             height: 48px;
-            min-width: 48px;
-            min-height: 48px;
             border-radius: 50%;
             cursor: pointer;
             display: flex;
@@ -517,20 +473,9 @@
             box-shadow: 0 0 15px rgba(18, 140, 126, 0.7);
             z-index: 1000;
             text-decoration: none;
-            transition: transform 0.2s;
-            flex-shrink: 0;
         }
 
-        .floating-group-btn:hover { transform: scale(1.1); }
-
-        .floating-group-btn svg {
-            width: 24px;
-            height: 24px;
-            min-width: 24px;
-            min-height: 24px;
-            fill: #ffffff;
-            display: block;
-        }
+        .floating-group-btn svg { width: 24px; height: 24px; fill: #ffffff; }
 
         .floating-cart-badge {
             background: #000;
@@ -588,14 +533,7 @@
             color: var(--trust-blue-glow);
         }
 
-        .btn-close {
-            background: none;
-            border: none;
-            color: var(--text-dim);
-            font-size: 1.4rem;
-            cursor: pointer;
-            z-index: 2010;
-        }
+        .btn-close { background: none; border: none; color: var(--text-dim); font-size: 1.4rem; cursor: pointer; }
 
         .cart-row {
             display: flex;
@@ -631,11 +569,6 @@
             outline: none;
         }
 
-        .input-box input:focus, .input-box select:focus {
-            border-color: var(--trust-blue);
-            box-shadow: 0 0 10px rgba(56, 97, 251, 0.3);
-        }
-
         .file-upload-box {
             background: rgba(56, 97, 251, 0.04);
             border: 2px dashed var(--trust-blue);
@@ -644,11 +577,6 @@
             text-align: center;
             cursor: pointer;
             margin-bottom: 12px;
-            transition: all 0.3s ease;
-        }
-
-        .file-upload-box:hover {
-            background: rgba(56, 97, 251, 0.09);
         }
 
         .info-pay {
@@ -673,7 +601,6 @@
             font-size: 0.9rem;
             cursor: pointer;
             text-transform: uppercase;
-            box-shadow: 0 0 15px rgba(56, 97, 251, 0.4);
         }
 
         .btn-send {
@@ -688,7 +615,6 @@
             font-size: 0.9rem;
             cursor: pointer;
             margin-top: 10px;
-            box-shadow: 0 0 15px rgba(57, 255, 20, 0.4);
             text-transform: uppercase;
         }
 
@@ -705,20 +631,12 @@
             cursor: pointer;
             margin-top: 10px;
             text-transform: uppercase;
-            box-shadow: 0 0 15px rgba(56, 97, 251, 0.4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
         }
 
-        /* SALÓN DE LA FAMA PRIME 8 (DORADO ÉLITE) */
         #topClientsModal .modal-box {
             background: #040705;
             border: 2px solid var(--ff-gold);
-            box-shadow: 0 0 40px rgba(249, 211, 66, 0.45);
             padding: 0;
-            overflow: hidden;
             display: flex;
             flex-direction: column;
             max-height: 85vh;
@@ -728,14 +646,6 @@
             background: rgba(4, 7, 5, 0.95);
             border-bottom: 1px solid var(--ff-gold);
             padding: 12px 15px;
-            margin-bottom: 0;
-        }
-
-        #topClientsModal .modal-top h3 {
-            color: var(--ff-gold);
-            text-shadow: 0 0 10px rgba(249, 211, 66, 0.7);
-            letter-spacing: 1.5px;
-            font-size: 0.95rem;
         }
 
         .prime-hall-container {
@@ -752,118 +662,27 @@
             border: 1px solid var(--ff-gold);
             border-radius: 12px;
             padding: 12px;
-            position: relative;
-            box-shadow: 0 0 15px rgba(249, 211, 66, 0.15);
         }
 
         .prime-card.rank-1 {
             border: 2px solid var(--ff-gold);
             background: linear-gradient(135deg, rgba(249, 211, 66, 0.18), rgba(15, 24, 16, 0.95));
-            box-shadow: 0 0 25px rgba(249, 211, 66, 0.4);
         }
 
-        .prime-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid rgba(249, 211, 66, 0.3);
-            padding-bottom: 6px;
-            margin-bottom: 8px;
-        }
-
-        .prime-rank-badge {
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 900;
-            font-size: 0.8rem;
-            color: var(--ff-gold);
-        }
-
-        .prime-tier {
-            background: var(--ff-gold);
-            color: #000;
-            font-family: 'Chakra Petch', sans-serif;
-            font-weight: 900;
-            font-size: 0.65rem;
-            padding: 2px 6px;
-            border-radius: 4px;
-            letter-spacing: 1px;
-        }
-
-        .prime-player-info {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-        }
-
-        .prime-name {
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 900;
-            font-size: 1.05rem;
-            color: #fff;
-            text-transform: uppercase;
-            text-shadow: 0 0 8px rgba(255,255,255,0.4);
-        }
-
-        .prime-uid {
-            font-family: 'Chakra Petch', sans-serif;
-            font-size: 0.75rem;
-            color: var(--primary);
-            font-weight: 700;
-        }
-
-        .prime-stats-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
-            margin-top: 8px;
-            padding-top: 8px;
-            border-top: 1px dashed rgba(255,255,255,0.1);
-        }
-
-        .prime-stat-item {
-            background: rgba(0, 0, 0, 0.6);
-            border-radius: 6px;
-            padding: 6px 10px;
-        }
-
-        .prime-stat-label {
-            font-size: 0.6rem;
-            color: var(--text-dim);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .prime-stat-val {
-            font-family: 'Chakra Petch', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 900;
-            color: var(--primary);
-        }
+        .prime-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(249, 211, 66, 0.3); padding-bottom: 6px; margin-bottom: 8px; }
+        .prime-rank-badge { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 0.8rem; color: var(--ff-gold); }
+        .prime-tier { background: var(--ff-gold); color: #000; font-family: 'Chakra Petch', sans-serif; font-weight: 900; font-size: 0.65rem; padding: 2px 6px; border-radius: 4px; }
+        .prime-player-info { display: flex; justify-content: space-between; align-items: flex-end; }
+        .prime-name { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.05rem; color: #fff; text-transform: uppercase; }
+        .prime-uid { font-family: 'Chakra Petch', sans-serif; font-size: 0.75rem; color: var(--primary); font-weight: 700; }
+        .prime-stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; padding-top: 8px; border-top: 1px dashed rgba(255,255,255,0.1); }
+        .prime-stat-item { background: rgba(0, 0, 0, 0.6); border-radius: 6px; padding: 6px 10px; }
+        .prime-stat-label { font-size: 0.6rem; color: var(--text-dim); text-transform: uppercase; }
+        .prime-stat-val { font-family: 'Chakra Petch', sans-serif; font-size: 0.95rem; font-weight: 900; color: var(--primary); }
     </style>
-
-    <!-- TIDIO CHAT SCRIPT OFICIAL -->
     <script src="//code.tidio.co/gcscrd4peehpejmvje2jrp2vof5cpe3w.js" async></script>
 </head>
 <body>
-
-    <div class="samurai-watermark-bg">
-        <svg class="samurai-svg-art" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M300 70 C210 70 150 130 150 200 C150 235 170 270 190 290 L220 260 L250 320 L300 295 L350 320 L380 260 L410 290 C430 270 450 235 450 200 C450 130 390 70 300 70Z" stroke="#3861fb" stroke-width="3.5" fill="#040705" opacity="0.95"/>
-            <path d="M190 120 L100 60 L140 160 Z" fill="#39FF14" opacity="0.9"/>
-            <path d="M410 120 L500 60 L460 160 Z" fill="#39FF14" opacity="0.9"/>
-            <path d="M300 40 L315 80 L285 80 Z" fill="#ffb700" opacity="0.9"/>
-            <path d="M240 230 Q300 250 360 230 Q390 290 360 360 Q300 400 240 360 Q210 290 240 230Z" stroke="#0099ff" stroke-width="3" fill="#040705"/>
-            <path d="M260 270 Q280 260 300 270 Q280 280 260 270Z" fill="#39FF14"/>
-            <path d="M340 270 Q320 260 300 270 Q320 280 340 270Z" fill="#39FF14"/>
-            <circle cx="275" cy="320" r="10" fill="#3861fb" opacity="0.8"/>
-            <circle cx="325" cy="320" r="10" fill="#3861fb" opacity="0.8"/>
-            <path d="M140 480 L460 400" stroke="#3861fb" stroke-width="7" stroke-linecap="round"/>
-            <path d="M150 420 L450 490" stroke="#0099ff" stroke-width="5" stroke-linecap="round"/>
-            <circle cx="145" cy="450" r="14" fill="#ffb700"/>
-            <path d="M150 350 L100 420 L180 440 Z" fill="#3861fb" opacity="0.7"/>
-            <path d="M450 350 L500 420 L420 440 Z" fill="#3861fb" opacity="0.7"/>
-        </svg>
-    </div>
 
     <header>
         <div class="brand-box">
@@ -893,7 +712,6 @@
     </header>
 
     <div class="container">
-        <!-- SECCIÓN DE INICIO TIPO PASARELA / PAYMENT SOURCE -->
         <div class="payment-gateway-hero">
             <div class="gateway-header">
                 <div class="gateway-title">
@@ -949,7 +767,7 @@
             <div class="product-card" data-cat="social" data-crc="1200" data-dop="100" data-usd="2.00" data-mxn="37" data-cop="8300" data-ars="2500" data-pen="7.30">
                 <div>
                     <div class="product-badge" style="color: #e1306c;">Instagram Baja Calidad</div>
-                    <div class="product-name">1,000 Seguidores Instagram (Baja Calidad) - ($2 x mil)</div>
+                    <div class="product-name">1,000 Seguidores Instagram (Baja Calidad)</div>
                 </div>
                 <div>
                     <div class="product-price price-tag">₡1,200</div>
@@ -960,7 +778,7 @@
             <div class="product-card" data-cat="social" data-crc="600" data-dop="50" data-usd="1.00" data-mxn="18" data-cop="4100" data-ars="1250" data-pen="3.65">
                 <div>
                     <div class="product-badge" style="color: #e1306c;">Instagram Likes</div>
-                    <div class="product-name">1,000 Likes Instagram ($1 x mil)</div>
+                    <div class="product-name">1,000 Likes Instagram</div>
                 </div>
                 <div>
                     <div class="product-price price-tag">₡600</div>
@@ -971,7 +789,7 @@
             <div class="product-card" data-cat="social" data-crc="600" data-dop="50" data-usd="1.00" data-mxn="18" data-cop="4100" data-ars="1250" data-pen="3.65">
                 <div>
                     <div class="product-badge" style="color: #00f2fe;">TikTok Vistas</div>
-                    <div class="product-name">1,000 Vistas TikTok ($1 x mil)</div>
+                    <div class="product-name">1,000 Vistas TikTok</div>
                 </div>
                 <div>
                     <div class="product-price price-tag">₡600</div>
@@ -982,7 +800,7 @@
             <div class="product-card" data-cat="social" data-crc="1200" data-dop="100" data-usd="2.00" data-mxn="37" data-cop="8300" data-ars="2500" data-pen="7.30">
                 <div>
                     <div class="product-badge" style="color: #1877f2;">Facebook</div>
-                    <div class="product-name">1,000 Seguidores Facebook ($2 x mil)</div>
+                    <div class="product-name">1,000 Seguidores Facebook</div>
                 </div>
                 <div>
                     <div class="product-price price-tag">₡1,200</div>
@@ -1026,7 +844,7 @@
             <div class="product-card" data-cat="social" data-crc="4800" data-dop="400" data-usd="8.00" data-mxn="146" data-cop="33300" data-ars="10100" data-pen="29.00">
                 <div>
                     <div class="product-badge" style="color: #00f2fe;">TikTok Alta Calidad</div>
-                    <div class="product-name">1,000 Seguidores TikTok (Calidad Alta) - ($8 x mil)</div>
+                    <div class="product-name">1,000 Seguidores TikTok (Calidad Alta)</div>
                 </div>
                 <div>
                     <div class="product-price price-tag">₡4,800</div>
@@ -1138,7 +956,7 @@
             <div class="product-card" data-cat="streaming-perm" data-crc="4000" data-dop="330" data-usd="8.00" data-mxn="146" data-cop="33300" data-ars="10100" data-pen="29.00">
                 <div>
                     <div class="product-badge" style="color: #1db954;">Spotify Familiar</div>
-                    <div class="product-name">Spotify Premium 1 Año (Garantía 6 Meses)</div>
+                    <div class="product-name">Spotify Premium 1 Año (Permanente)</div>
                 </div>
                 <div>
                     <div class="product-price price-tag">₡4,000</div>
@@ -1149,7 +967,7 @@
             <div class="product-card" data-cat="streaming-perm" data-crc="7000" data-dop="580" data-usd="13.99" data-mxn="255" data-cop="58300" data-ars="17700" data-pen="51.00">
                 <div>
                     <div class="product-badge" style="color: #1db954;">Spotify VIP</div>
-                    <div class="product-name">Spotify Cuenta Familiar (Garantía 1 Año)</div>
+                    <div class="product-name">Spotify Cuenta Familiar (1 Año VIP)</div>
                 </div>
                 <div>
                     <div class="product-price price-tag">₡7,000</div>
@@ -1160,7 +978,7 @@
             <div class="product-card" data-cat="streaming-perm" data-crc="4000" data-dop="330" data-usd="8.00" data-mxn="146" data-cop="33300" data-ars="10100" data-pen="29.00">
                 <div>
                     <div class="product-badge" style="color: #ff0000;">YouTube Individual</div>
-                    <div class="product-name">YouTube Individual Permanente (Garantía 30 Días)</div>
+                    <div class="product-name">YouTube Individual Permanente</div>
                 </div>
                 <div>
                     <div class="product-price price-tag">₡4,000</div>
@@ -1171,7 +989,7 @@
             <div class="product-card" data-cat="streaming-perm" data-crc="5000" data-dop="410" data-usd="10.00" data-mxn="183" data-cop="41600" data-ars="12600" data-pen="36.50">
                 <div>
                     <div class="product-badge" style="color: #ff0000;">YouTube Familiar</div>
-                    <div class="product-name">YouTube Premium Cuenta Familiar (Garantía 25 Días)</div>
+                    <div class="product-name">YouTube Premium Cuenta Familiar</div>
                 </div>
                 <div>
                     <div class="product-price price-tag">₡5,000</div>
@@ -1182,7 +1000,7 @@
             <div class="product-card" data-cat="streaming-perm" data-crc="4000" data-dop="330" data-usd="8.00" data-mxn="146" data-cop="33300" data-ars="10100" data-pen="29.00">
                 <div>
                     <div class="product-badge" style="color: #9900ff;">HBO Max</div>
-                    <div class="product-name">HBO Max Full Access [FA] (Permanente / Garantía 30 Días)</div>
+                    <div class="product-name">HBO Max Full Access [FA] (Permanente)</div>
                 </div>
                 <div>
                     <div class="product-price price-tag">₡4,000</div>
@@ -1193,7 +1011,7 @@
             <div class="product-card" data-cat="streaming-perm" data-crc="3500" data-dop="290" data-usd="7.00" data-mxn="128" data-cop="29100" data-ars="8800" data-pen="25.50">
                 <div>
                     <div class="product-badge" style="color: #0070d1;">Disney+ Combo</div>
-                    <div class="product-name">Disney+ + Hulu y ESPN (Permanente / Garantía 30 Días)</div>
+                    <div class="product-name">Disney+ + Hulu y ESPN (Permanente)</div>
                 </div>
                 <div>
                     <div class="product-price price-tag">₡3,500</div>
@@ -1368,7 +1186,6 @@
                 </div>
             </div>
 
-            <!-- MEGA PACK (12,343 DIAMANTES) - 70 USD -->
             <div class="product-card" data-cat="ff-ilim" data-crc="37500" data-dop="3100" data-usd="70.00" data-mxn="1220" data-cop="370000" data-ars="69000" data-pen="280.00">
                 <div>
                     <div class="product-badge" style="color:var(--gold);">💎 Free Fire (Mega Pack)</div>
@@ -1528,12 +1345,11 @@
         </div>
     </div>
 
-    <!-- BOTÓN FLOTANTE DE GRUPO DE WHATSAPP -->
+    <!-- BOTONES FLOTANTES -->
     <a href="https://chat.whatsapp.com/Hd6IG8eEVrY5hoYPgHIjk4?s=cl&p=a&mlu=4&ilr=4" class="floating-group-btn" target="_blank" title="Unirte al Grupo de WhatsApp">
         <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
     </a>
 
-    <!-- BOTÓN FLOTANTE DE WHATSAPP PERSONAL -->
     <a href="https://api.whatsapp.com/send?phone=50672986056&text=Hola,%20tengo%20una%20consulta%20sobre%20la%20tienda%20gtrowen.store" class="floating-whatsapp-btn" target="_blank" title="Contáctanos por WhatsApp">
         <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.9-4.44 9.9-9.9 0-2.65-1.03-5.14-2.9-7.01-1.87-1.87-4.36-2.9-7.01-2.9zm0 1.83c2.2 0 4.27.86 5.82 2.42 1.56 1.55 2.42 3.62 2.42 5.82 0 4.54-3.7 8.24-8.24 8.24-1.46 0-2.88-.39-4.12-1.13l-.3-.18-3.08.81.82-3-.19-.31c-.81-1.28-1.24-2.78-1.24-4.32 0-4.54 3.7-8.24 8.24-8.24zm4.51 5.92c-.18-.09-1.07-.53-1.24-.59-.17-.06-.29-.09-.42.09-.13.18-.48.59-.59.72-.11.13-.22.15-.4.06-.18-.09-.76-.28-1.45-.89-.54-.48-.9-1.07-1.01-1.25-.11-.18-.01-.28.08-.37.08-.08.18-.21.27-.32.09-.11.12-.18.18-.3.06-.12.03-.23-.01-.32-.05-.09-.42-1.01-.58-1.38-.15-.36-.31-.31-.42-.32h-.36c-.12 0-.32.04-.49.23-.17.18-.65.63-.65 1.54s.67 1.78.76 1.9c.09.12 1.32 2.01 3.2 2.82.45.2.8.32 1.07.41.45.15.86.13 1.18.08.36-.05 1.07-.44 1.22-.87.15-.43.15-.8.11-.87-.04-.07-.16-.11-.34-.2z"/></svg>
     </a>
@@ -1543,7 +1359,7 @@
         <span class="floating-cart-badge cart-count">0</span>
     </button>
 
-    <!-- MODAL CATÁLOGO / MENÚ RÁPIDO -->
+    <!-- MODAL CATÁLOGO -->
     <div class="modal" id="catalogModal">
         <div class="modal-box">
             <div class="modal-top">
@@ -1588,9 +1404,10 @@
                     <input type="text" id="pPhone" placeholder="Ej: +506 72986056">
                 </div>
 
+                <!-- CAMPO DINÁMICO INTELIGENTE SEGÚN EL PRODUCTO -->
                 <div class="input-box" id="dynamicInputBox">
-                    <label id="dynamicLabel">ID de Jugador (Free Fire)</label>
-                    <input type="text" id="pCustomField" placeholder="Ej: 301110819">
+                    <label id="dynamicLabel">Detalle Requerido</label>
+                    <input type="text" id="pCustomField" placeholder="">
                 </div>
 
                 <div class="input-box">
@@ -1618,11 +1435,11 @@
                     <div style="font-family: 'Orbitron', sans-serif; font-size: 0.8rem; color: var(--binance); margin-bottom: 10px; font-weight: 700;">
                         ⚡ PAGO DIRECTO CON BINANCE PAY ⚡
                     </div>
-                    <div style="background: #000; padding: 6px; display: inline-block; border-radius: 8px; margin-bottom: 10px; box-shadow: 0 0 20px rgba(243, 186, 47, 0.3); border: 1px solid var(--binance);">
-                        <img src="https://cdn.phototourl.com/member/2026-10-11-102d4de5-dc6c-4047-ab6c-d5474035de59.png" alt="QR Binance Pay Owen Morales" style="width: 240px; height: auto; display: block; border-radius: 4px; image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges;">
+                    <div style="background: #000; padding: 6px; display: inline-block; border-radius: 8px; margin-bottom: 10px; border: 1px solid var(--binance);">
+                        <img src="https://cdn.phototourl.com/member/2026-10-11-102d4de5-dc6c-4047-ab6c-d5474035de59.png" alt="QR Binance" style="width: 240px; height: auto; display: block;">
                     </div>
-                    <p style="font-size: 0.75rem; color: var(--text-dim); margin-bottom: 10px;">Escanea con tu app de Binance o usa el botón inferior<br><strong style="color: var(--binance);">Owen Morales Ugalde</strong></p>
-                    <a href="https://pay.binance.com/" target="_blank" style="background: var(--binance); color: #000; font-family: 'Chakra Petch', sans-serif; font-weight: 900; font-size: 0.75rem; padding: 10px 15px; border-radius: 8px; display: block; text-decoration: none; text-transform: uppercase; box-shadow: 0 0 10px rgba(243, 186, 47, 0.4);">
+                    <p style="font-size: 0.75rem; color: var(--text-dim); margin-bottom: 10px;">Escanea con tu app de Binance<br><strong style="color: var(--binance);">Owen Morales Ugalde</strong></p>
+                    <a href="https://pay.binance.com/" target="_blank" style="background: var(--binance); color: #000; font-family: 'Chakra Petch', sans-serif; font-weight: 900; font-size: 0.75rem; padding: 10px 15px; border-radius: 8px; display: block; text-decoration: none; text-transform: uppercase;">
                         Abrir App de Binance 🌐
                     </a>
                 </div>
@@ -1645,17 +1462,14 @@
         </div>
     </div>
 
-    <!-- MODAL SALÓN DE LA FAMA PRIME (TOP CLIENTES WHALES FREE FIRE) -->
+    <!-- MODAL SALÓN DE LA FAMA -->
     <div class="modal" id="topClientsModal">
         <div class="modal-box" style="max-width: 440px;">
             <div class="modal-top">
                 <h3>👑 SALÓN DE LA FAMA PRIME 8</h3>
                 <button class="btn-close" id="closeTopClientsBtn">&times;</button>
             </div>
-
             <div class="prime-hall-container">
-                
-                <!-- JUGADOR #1: JC -->
                 <div class="prime-card rank-1">
                     <div class="prime-header">
                         <span class="prime-rank-badge">🥇 #1 LEYENDA TIBURÓN</span>
@@ -1679,7 +1493,6 @@
                     </div>
                 </div>
 
-                <!-- JUGADOR #2: RICHARD -->
                 <div class="prime-card">
                     <div class="prime-header">
                         <span class="prime-rank-badge" style="color: #c0c0c0;">🥈 #2 ELITE SPENDER</span>
@@ -1703,7 +1516,6 @@
                     </div>
                 </div>
 
-                <!-- JUGADOR #3 -->
                 <div class="prime-card">
                     <div class="prime-header">
                         <span class="prime-rank-badge" style="color: #cd7f32;">🥉 #3 VIP MASTER</span>
@@ -1727,7 +1539,6 @@
                     </div>
                 </div>
 
-                <!-- JUGADOR #4 -->
                 <div class="prime-card">
                     <div class="prime-header">
                         <span class="prime-rank-badge" style="color: #cd7f32;">#4 VIP MASTER</span>
@@ -1750,7 +1561,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -1853,19 +1663,34 @@
                 document.getElementById('topClientsModal').classList.remove('open');
             });
 
+            // LÓGICA INTELIGENTE DE CAMPOS SEGÚN PRODUCTO EN EL CARRITO
             document.getElementById('proceedCheckoutBtn').addEventListener('click', () => {
                 if (cart.length === 0) return;
-                
-                const hasSocialOrStreaming = cart.some(item => item.category === 'social' || item.category === 'streaming' || item.category === 'streaming-perm');
+
                 const labelEl = document.getElementById('dynamicLabel');
                 const inputEl = document.getElementById('pCustomField');
 
-                if (hasSocialOrStreaming) {
+                // Revisar qué categoría predomina en el carrito
+                const hasSocial = cart.some(item => item.category === 'social');
+                const hasStreaming = cart.some(item => item.category === 'streaming' || item.category === 'streaming-perm');
+                const hasBloodStrike = cart.some(item => item.category === 'bs');
+                const hasFreeFire = cart.some(item => item.category === 'ff-lim' || item.category === 'ff-ilim' || item.category === 'ff-passes');
+
+                if (hasSocial) {
                     labelEl.innerText = 'Enlace del Perfil (Debe estar público) 🔗';
                     inputEl.placeholder = 'Ej: https://instagram.com/tucuenta';
-                } else {
-                    labelEl.innerText = 'ID de Jugador (Free Fire / Juego)';
+                } else if (hasBloodStrike) {
+                    labelEl.innerText = 'ID de Jugador (Blood Strike)';
+                    inputEl.placeholder = 'Ej: 50819301';
+                } else if (hasStreaming) {
+                    labelEl.innerText = 'Correo o Detalle para la cuenta de Streaming ✉️';
+                    inputEl.placeholder = 'Ej: tucorreo@gmail.com o datos requeridos';
+                } else if (hasFreeFire) {
+                    labelEl.innerText = 'ID de Jugador (Free Fire)';
                     inputEl.placeholder = 'Ej: 301110819';
+                } else {
+                    labelEl.innerText = 'ID de Cuenta / Referencia';
+                    inputEl.placeholder = 'Ej: Datos necesarios';
                 }
 
                 document.getElementById('cartSummary').style.display = 'none';
@@ -1990,7 +1815,7 @@
 
                 const customInput = document.getElementById('pCustomField');
                 const customVal = customInput.value.trim();
-                if (!customVal) { alert('Por favor completa el campo requerido (ID o Link)'); return; }
+                if (!customVal) { alert('Por favor completa el campo requerido'); return; }
 
                 const methodSelect = document.getElementById('pMethod');
                 const methodName = methodSelect.options[methodSelect.selectedIndex].text;
@@ -2011,7 +1836,7 @@
                     window.open(tiendaAutomatizadaUrl, '_blank');
                 } else {
                     let itemsWaText = cart.map(c => `• ${c.title}`).join('%0A');
-                    let msg = `⚡ *NUEVO PEDIDO - GTROWEN STORE*%0A%0A👤 *Cliente:* ${name}%0A📱 *Teléfono:* ${phone}%0A🔗 *Destino (ID/Link):* ${customVal}%0A💳 *Método de Pago:* ${methodName}%0A🧾 *Referencia:* ${txId}%0A%0A📦 *Productos:*%0A${itemsWaText}%0A💰 *Total:* ${totalText}`;
+                    let msg = `⚡ *NUEVO PEDIDO - GTROWEN STORE*%0A%0A👤 *Cliente:* ${name}%0A📱 *Teléfono:* ${phone}%0A🔗 *Detalle/Destino:* ${customVal}%0A💳 *Método de Pago:* ${methodName}%0A🧾 *Referencia:* ${txId}%0A%0A📦 *Productos:*%0A${itemsWaText}%0A💰 *Total:* ${totalText}`;
 
                     let whatsappUrl = `https://api.whatsapp.com/send?phone=50672986056&text=${msg}`;
                     window.open(whatsappUrl, '_blank');
