@@ -120,16 +120,16 @@
             display: flex;
             gap: 2px;
             overflow-x: auto;
-            max-width: 200px;
+            max-width: 220px;
         }
 
         .curr-btn {
             background: none;
             border: none;
             color: var(--text-muted);
-            font-size: 0.7rem;
+            font-size: 0.68rem;
             font-weight: 700;
-            padding: 4px 9px;
+            padding: 4px 8px;
             border-radius: 16px;
             cursor: pointer;
             white-space: nowrap;
@@ -392,7 +392,6 @@
             text-shadow: 0 0 12px var(--accent-fire-glow);
         }
 
-        /* APARTADO DE AHORRO COMPARATIVO */
         .savings-box {
             background: rgba(37, 211, 102, 0.08);
             border: 1px dashed rgba(37, 211, 102, 0.4);
@@ -446,7 +445,7 @@
             box-shadow: 0 0 15px var(--accent-fire-glow);
         }
 
-        /* BOTONES FLOTANTES UBICADOS CORRECTAMENTE */
+        /* BOTONES FLOTANTES CON DISEÑO PROFESIONAL USANDO TU IMAGEN */
         .floating-cart-btn {
             position: fixed;
             bottom: 20px;
@@ -470,28 +469,27 @@
             position: fixed;
             bottom: 20px;
             left: 20px;
-            background: #25d366;
-            color: #fff;
-            border: 2px solid rgba(255, 255, 255, 0.4);
-            width: 56px;
-            height: 56px;
+            width: 58px;
+            height: 58px;
             border-radius: 50%;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 20px rgba(37, 211, 102, 0.7);
+            box-shadow: 0 0 25px rgba(37, 211, 102, 0.8);
             z-index: 1000;
             text-decoration: none;
-            transition: transform 0.2s;
+            background: url('https://i.postimg.cc/kDQPMdkG/kDQPMdkG.png') no-repeat center center;
+            background-size: cover;
+            border: 2px solid #ffffff;
+            transition: transform 0.2s ease;
         }
 
         .floating-whatsapp-btn:hover { transform: scale(1.1); }
-        .floating-whatsapp-btn svg { width: 30px; height: 30px; fill: #ffffff; }
 
         .floating-group-btn {
             position: fixed;
-            bottom: 88px;
+            bottom: 90px;
             left: 20px;
             background: #128c7e;
             color: #fff;
@@ -653,21 +651,6 @@
             margin-top: 10px;
             text-transform: uppercase;
         }
-
-        .btn-cryptomus-api {
-            background: linear-gradient(135deg, #00f0ff, #0088ff);
-            color: #020408;
-            border: none;
-            width: 100%;
-            padding: 13px;
-            border-radius: 12px;
-            font-family: 'Chakra Petch', sans-serif;
-            font-weight: 900;
-            font-size: 0.92rem;
-            cursor: pointer;
-            margin-top: 10px;
-            text-transform: uppercase;
-        }
     </style>
     <script src="//code.tidio.co/gcscrd4peehpejmvje2jrp2vof5cpe3w.js" async></script>
 </head>
@@ -685,12 +668,16 @@
         <div class="header-actions">
             <div class="currency-switch">
                 <button class="curr-btn active" data-curr="CRC">CRC</button>
-                <button class="curr-btn" data-curr="DOP">DOP</button>
                 <button class="curr-btn" data-curr="USD">USD</button>
                 <button class="curr-btn" data-curr="MXN">MXN</button>
                 <button class="curr-btn" data-curr="COP">COP</button>
                 <button class="curr-btn" data-curr="ARS">ARS</button>
                 <button class="curr-btn" data-curr="PEN">PEN</button>
+                <button class="curr-btn" data-curr="DOP">DOP</button>
+                <button class="curr-btn" data-curr="BOB">BOB</button>
+                <button class="curr-btn" data-curr="GTQ">GTQ</button>
+                <button class="curr-btn" data-curr="NIO">NIO</button>
+                <button class="curr-btn" data-curr="VES">VES</button>
             </div>
 
             <div class="header-cart" id="openCartHeader">
@@ -739,6 +726,9 @@
 
         <div class="category-scroll">
             <button class="cat-btn active" data-cat="all">▦ Todo el Catálogo</button>
+            <button class="cat-btn" data-cat="social">📸 Redes Sociales</button>
+            <button class="cat-btn" data-cat="streaming">🎬 Streaming Mensual</button>
+            <button class="cat-btn" data-cat="streaming-perm">💎 Streaming Permanente</button>
             <button class="cat-btn" data-cat="ff-lim">⚡ FF Limitados</button>
             <button class="cat-btn" data-cat="ff-ilim">⚡ FF Ilimitados</button>
             <button class="cat-btn" data-cat="ff-passes">🎫 FF Pases & Tokens</button>
@@ -748,15 +738,133 @@
         <div class="section-h2" id="catalogTitle">🔥 CATÁLOGO OFICIAL & OFERTAS ÉPICAS</div>
         <div class="products-grid" id="productsGrid">
 
-            <!-- FF LIMITADOS (OFERTAS FUEGO CON COMPARATIVO DE AHORRO) -->
+            <!-- REDES SOCIALES -->
+            <div class="product-card" data-cat="social" 
+                 data-crc="1200" data-official-crc="2000"
+                 data-usd="2.00" data-official-usd="3.50"
+                 data-mxn="37" data-official-mxn="60"
+                 data-cop="8300" data-official-cop="14000"
+                 data-ars="2500" data-official-ars="4200"
+                 data-pen="7.30" data-official-pen="12.00"
+                 data-dop="100" data-official-dop="170"
+                 data-bob="14" data-official-bob="24"
+                 data-gtq="15" data-official-gtq="26"
+                 data-nio="73" data-official-nio="125"
+                 data-ves="74" data-official-ves="130">
+                <div>
+                    <div class="product-badge">Instagram Baja Calidad</div>
+                    <div class="product-name">1,000 Seguidores Instagram (Baja Calidad)</div>
+                </div>
+                <div>
+                    <div class="product-price-box">
+                        <div class="product-price price-tag">₡1,200</div>
+                        <div class="savings-box">
+                            <span class="savings-official official-tag">Tienda Oficial: ₡2,000</span>
+                            <span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡800 (40%)!</span>
+                        </div>
+                    </div>
+                    <button class="btn-add" data-input-type="social" data-title="1,000 Seguidores Instagram (Baja Calidad)" data-crc="1200" data-usd="2.00">Agregar</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="social" 
+                 data-crc="600" data-official-crc="1000"
+                 data-usd="1.00" data-official-usd="1.80"
+                 data-mxn="18" data-official-mxn="30"
+                 data-cop="4100" data-official-cop="7000"
+                 data-ars="1250" data-official-ars="2100"
+                 data-pen="3.65" data-official-pen="6.00"
+                 data-dop="50" data-official-dop="85"
+                 data-bob="7" data-official-bob="12"
+                 data-gtq="7.5" data-official-gtq="13"
+                 data-nio="36" data-official-nio="62"
+                 data-ves="37" data-official-ves="65">
+                <div>
+                    <div class="product-badge">Instagram Likes</div>
+                    <div class="product-name">1,000 Likes Instagram</div>
+                </div>
+                <div>
+                    <div class="product-price-box">
+                        <div class="product-price price-tag">₡600</div>
+                        <div class="savings-box">
+                            <span class="savings-official official-tag">Tienda Oficial: ₡1,000</span>
+                            <span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡400 (40%)!</span>
+                        </div>
+                    </div>
+                    <button class="btn-add" data-input-type="social" data-title="1,000 Likes Instagram" data-crc="600" data-usd="1.00">Agregar</button>
+                </div>
+            </div>
+
+            <!-- STREAMING MENSUAL -->
+            <div class="product-card" data-cat="streaming" 
+                 data-crc="3000" data-official-crc="5000"
+                 data-usd="6.00" data-official-usd="10.00"
+                 data-mxn="110" data-official-mxn="180"
+                 data-cop="25000" data-official-cop="40000"
+                 data-ars="7600" data-official-ars="12500"
+                 data-pen="22.00" data-official-pen="36.00"
+                 data-dop="250" data-official-dop="420"
+                 data-bob="41" data-official-bob="68"
+                 data-gtq="46" data-official-gtq="75"
+                 data-nio="220" data-official-nio="360"
+                 data-ves="220" data-official-ves="370">
+                <div>
+                    <div class="product-badge">Netflix</div>
+                    <div class="product-name">Netflix 1 Mes (Garantía 30 Días)</div>
+                </div>
+                <div>
+                    <div class="product-price-box">
+                        <div class="product-price price-tag">₡3,000</div>
+                        <div class="savings-box">
+                            <span class="savings-official official-tag">Tienda Oficial: ₡5,000</span>
+                            <span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡2,000 (40%)!</span>
+                        </div>
+                    </div>
+                    <button class="btn-add" data-input-type="streaming" data-title="Netflix 1 Mes (Streaming)" data-crc="3000" data-usd="6.00">Agregar</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-cat="streaming" 
+                 data-crc="2000" data-official-crc="3500"
+                 data-usd="4.00" data-official-usd="7.00"
+                 data-mxn="73" data-official-mxn="125"
+                 data-cop="16600" data-official-cop="28000"
+                 data-ars="5000" data-official-ars="8500"
+                 data-pen="14.50" data-official-pen="25.00"
+                 data-dop="170" data-official-dop="300"
+                 data-bob="27" data-official-bob="48"
+                 data-gtq="31" data-official-gtq="54"
+                 data-nio="146" data-official-nio="255"
+                 data-ves="147" data-official-ves="260">
+                <div>
+                    <div class="product-badge">Spotify</div>
+                    <div class="product-name">Spotify Premium 1 Mes</div>
+                </div>
+                <div>
+                    <div class="product-price-box">
+                        <div class="product-price price-tag">₡2,000</div>
+                        <div class="savings-box">
+                            <span class="savings-official official-tag">Tienda Oficial: ₡3,500</span>
+                            <span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡1,500 (43%)!</span>
+                        </div>
+                    </div>
+                    <button class="btn-add" data-input-type="streaming" data-title="Spotify Premium 1 Mes (Streaming)" data-crc="2000" data-usd="4.00">Agregar</button>
+                </div>
+            </div>
+
+            <!-- FF LIMITADOS -->
             <div class="product-card fire-deal" data-cat="ff-lim" 
                  data-crc="500" data-official-crc="800"
                  data-usd="1.00" data-official-usd="1.70"
-                 data-dop="60" data-official-dop="95"
                  data-mxn="18" data-official-mxn="30"
                  data-cop="4000" data-official-cop="6500"
                  data-ars="1200" data-official-ars="1900"
-                 data-pen="3.50" data-official-pen="6.00">
+                 data-pen="3.50" data-official-pen="6.00"
+                 data-dop="60" data-official-dop="95"
+                 data-bob="6.8" data-official-bob="11.0"
+                 data-gtq="7.7" data-official-gtq="12.5"
+                 data-nio="36" data-official-nio="58"
+                 data-ves="37" data-official-ves="60">
                 <div>
                     <div class="product-badge">🔥 OFERTA FLASH FF</div>
                     <div class="product-name">💎 110 Diamantes (100 + 10% Bono)</div>
@@ -769,18 +877,22 @@
                             <span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡300 (37%)!</span>
                         </div>
                     </div>
-                    <button class="btn-add fire-btn" data-input-type="ff" data-title="110 Diamantes FF (Limitado)" data-crc="500" data-dop="60" data-usd="1.00" data-mxn="18" data-cop="4000" data-ars="1200" data-pen="3.50">Comprar Oferta</button>
+                    <button class="btn-add fire-btn" data-input-type="ff" data-title="110 Diamantes FF (Limitado)" data-crc="500" data-usd="1.00">Comprar Oferta</button>
                 </div>
             </div>
 
             <div class="product-card fire-deal" data-cat="ff-lim" 
                  data-crc="1000" data-official-crc="1600"
                  data-usd="2.00" data-official-usd="3.40"
-                 data-dop="120" data-official-dop="190"
                  data-mxn="35" data-official-mxn="60"
                  data-cop="8000" data-official-cop="13000"
                  data-ars="2400" data-official-ars="3800"
-                 data-pen="7.00" data-official-pen="12.00">
+                 data-pen="7.00" data-official-pen="12.00"
+                 data-dop="120" data-official-dop="190"
+                 data-bob="13.7" data-official-bob="22.0"
+                 data-gtq="15.4" data-official-gtq="25.0"
+                 data-nio="73" data-official-nio="116"
+                 data-ves="74" data-official-ves="118">
                 <div>
                     <div class="product-badge">🔥 OFERTA FLASH FF</div>
                     <div class="product-name">💎 341 Diamantes</div>
@@ -793,18 +905,22 @@
                             <span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡600 (37%)!</span>
                         </div>
                     </div>
-                    <button class="btn-add fire-btn" data-input-type="ff" data-title="341 Diamantes FF (Limitado)" data-crc="1000" data-dop="120" data-usd="2.00" data-mxn="35" data-cop="8000" data-ars="2400" data-pen="7.00">Comprar Oferta</button>
+                    <button class="btn-add fire-btn" data-input-type="ff" data-title="341 Diamantes FF (Limitado)" data-crc="1000" data-usd="2.00">Comprar Oferta</button>
                 </div>
             </div>
 
             <div class="product-card fire-deal" data-cat="ff-lim" 
                  data-crc="4200" data-official-crc="6500"
                  data-usd="8.00" data-official-usd="13.00"
-                 data-dop="480" data-official-dop="750"
                  data-mxn="140" data-official-mxn="220"
                  data-cop="32000" data-official-cop="50000"
                  data-ars="9600" data-official-ars="15000"
-                 data-pen="30.00" data-official-pen="48.00">
+                 data-pen="30.00" data-official-pen="48.00"
+                 data-dop="480" data-official-dop="750"
+                 data-bob="55" data-official-bob="85"
+                 data-gtq="62" data-official-gtq="98"
+                 data-nio="306" data-official-nio="475"
+                 data-ves="310" data-official-ves="480">
                 <div>
                     <div class="product-badge">🔥 OFERTA FLASH FF</div>
                     <div class="product-name">💎 1,160 Diamantes</div>
@@ -817,7 +933,7 @@
                             <span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡2,300 (35%)!</span>
                         </div>
                     </div>
-                    <button class="btn-add fire-btn" data-input-type="ff" data-title="1,160 Diamantes FF (Limitado)" data-crc="4200" data-dop="480" data-usd="8.00" data-mxn="140" data-cop="32000" data-ars="9600" data-pen="30.00">Comprar Oferta</button>
+                    <button class="btn-add fire-btn" data-input-type="ff" data-title="1,160 Diamantes FF (Limitado)" data-crc="4200" data-usd="8.00">Comprar Oferta</button>
                 </div>
             </div>
 
@@ -825,11 +941,15 @@
             <div class="product-card fire-deal" data-cat="ff-ilim" 
                  data-crc="1200" data-official-crc="1900"
                  data-usd="2.50" data-official-usd="4.00"
-                 data-dop="100" data-official-dop="160"
                  data-mxn="35" data-official-mxn="55"
                  data-cop="12000" data-official-cop="19000"
                  data-ars="2500" data-official-ars="4000"
-                 data-pen="10.00" data-official-pen="16.00">
+                 data-pen="10.00" data-official-pen="16.00"
+                 data-dop="100" data-official-dop="160"
+                 data-bob="16.5" data-official-bob="26.0"
+                 data-gtq="18.5" data-official-gtq="29.0"
+                 data-nio="87" data-official-nio="138"
+                 data-ves="89" data-official-ves="140">
                 <div>
                     <div class="product-badge">🔥 FF ILIMITADO</div>
                     <div class="product-name">💎 341 Diamantes (Pila pequeña)</div>
@@ -842,18 +962,22 @@
                             <span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡700 (36%)!</span>
                         </div>
                     </div>
-                    <button class="btn-add fire-btn" data-input-type="ff" data-title="341 Diamantes FF (Ilimitado)" data-crc="1200" data-dop="100" data-usd="2.50" data-mxn="35" data-cop="12000" data-ars="2500" data-pen="10.00">Comprar Oferta</button>
+                    <button class="btn-add fire-btn" data-input-type="ff" data-title="341 Diamantes FF (Ilimitado)" data-crc="1200" data-usd="2.50">Comprar Oferta</button>
                 </div>
             </div>
 
             <div class="product-card fire-deal" data-cat="ff-ilim" 
                  data-crc="4500" data-official-crc="7200"
                  data-usd="9.00" data-official-usd="14.50"
-                 data-dop="375" data-official-dop="600"
                  data-mxn="140" data-official-mxn="225"
                  data-cop="37500" data-official-cop="60000"
                  data-ars="8200" data-official-ars="13000"
-                 data-pen="33.00" data-official-pen="52.00">
+                 data-pen="33.00" data-official-pen="52.00"
+                 data-dop="375" data-official-dop="600"
+                 data-bob="60" data-official-bob="95"
+                 data-gtq="69" data-official-gtq="110"
+                 data-nio="327" data-official-nio="520"
+                 data-ves="333" data-official-ves="530">
                 <div>
                     <div class="product-badge">🔥 FF ILIMITADO</div>
                     <div class="product-name">💎 1,160 Diamantes (Caja de diamantes)</div>
@@ -866,7 +990,7 @@
                             <span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡2,700 (37%)!</span>
                         </div>
                     </div>
-                    <button class="btn-add fire-btn" data-input-type="ff" data-title="1,160 Diamantes FF (Ilimitado)" data-crc="4500" data-dop="375" data-usd="9.00" data-mxn="140" data-cop="37500" data-ars="8200" data-pen="33.00">Comprar Oferta</button>
+                    <button class="btn-add fire-btn" data-input-type="ff" data-title="1,160 Diamantes FF (Ilimitado)" data-crc="4500" data-usd="9.00">Comprar Oferta</button>
                 </div>
             </div>
 
@@ -874,11 +998,15 @@
             <div class="product-card" data-cat="bs" 
                  data-crc="1600" data-official-crc="2500"
                  data-usd="3" data-official-usd="4.80"
-                 data-dop="130" data-official-dop="200"
                  data-mxn="54" data-official-mxn="85"
                  data-cop="12500" data-official-cop="19500"
                  data-ars="3800" data-official-ars="6000"
-                 data-pen="11.00" data-official-pen="17.00">
+                 data-pen="11.00" data-official-pen="17.00"
+                 data-dop="130" data-official-dop="200"
+                 data-bob="21" data-official-bob="33"
+                 data-gtq="24" data-official-gtq="38"
+                 data-nio="116" data-official-nio="180"
+                 data-ves="118" data-official-ves="185">
                 <div>
                     <div class="product-badge">🪙 Blood Strike</div>
                     <div class="product-name">🪙 341 de Oro</div>
@@ -891,18 +1019,22 @@
                             <span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡900 (36%)!</span>
                         </div>
                     </div>
-                    <button class="btn-add" data-input-type="bs" data-title="341 de Oro Blood Strike" data-crc="1600" data-dop="130" data-usd="3" data-mxn="54" data-cop="12500" data-ars="3800" data-pen="11.00">Agregar</button>
+                    <button class="btn-add" data-input-type="bs" data-title="341 de Oro Blood Strike" data-crc="1600" data-usd="3">Agregar</button>
                 </div>
             </div>
 
             <div class="product-card" data-cat="bs" 
                  data-crc="4800" data-official-crc="7500"
                  data-usd="9" data-official-usd="14.00"
-                 data-dop="400" data-official-dop="620"
                  data-mxn="162" data-official-mxn="250"
                  data-cop="37500" data-official-cop="58000"
                  data-ars="11400" data-official-ars="17500"
-                 data-pen="33.00" data-official-pen="52.00">
+                 data-pen="33.00" data-official-pen="52.00"
+                 data-dop="400" data-official-dop="620"
+                 data-bob="62" data-official-bob="96"
+                 data-gtq="70" data-official-gtq="108"
+                 data-nio="348" data-official-nio="540"
+                 data-ves="355" data-official-ves="550">
                 <div>
                     <div class="product-badge">🪙 Blood Strike</div>
                     <div class="product-name">🪙 1,160 de Oro</div>
@@ -915,21 +1047,49 @@
                             <span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡2,700 (36%)!</span>
                         </div>
                     </div>
-                    <button class="btn-add" data-input-type="bs" data-title="1,160 de Oro Blood Strike" data-crc="4800" data-dop="400" data-usd="9" data-mxn="162" data-cop="37500" data-ars="11400" data-pen="33.00">Agregar</button>
+                    <button class="btn-add" data-input-type="bs" data-title="1,160 de Oro Blood Strike" data-crc="4800" data-usd="9">Agregar</button>
+                </div>
+            </div>
+
+            <!-- PASES & MEMBRESÍAS FF -->
+            <div class="product-card" data-cat="ff-passes" 
+                 data-crc="1200" data-official-crc="1900"
+                 data-usd="2" data-official-usd="3.5"
+                 data-mxn="35" data-official-mxn="60"
+                 data-cop="8300" data-official-cop="14000"
+                 data-ars="2500" data-official-ars="4200"
+                 data-pen="7.30" data-official-pen="12.00"
+                 data-dop="100" data-official-dop="170"
+                 data-bob="14" data-official-bob="24"
+                 data-gtq="15" data-official-gtq="26"
+                 data-nio="73" data-official-nio="125"
+                 data-ves="74" data-official-ves="130">
+                <div>
+                    <div class="product-badge">🎫 Membresía FF</div>
+                    <div class="product-name">Tarjeta Semanal</div>
+                </div>
+                <div>
+                    <div class="product-price-box">
+                        <div class="product-price price-tag">₡1,200</div>
+                        <div class="savings-box">
+                            <span class="savings-official official-tag">Tienda Oficial: ₡1,900</span>
+                            <span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡700 (36%)!</span>
+                        </div>
+                    </div>
+                    <button class="btn-add" data-input-type="ff" data-title="Tarjeta Semanal FF" data-crc="1200" data-usd="2">Agregar</button>
                 </div>
             </div>
 
         </div>
     </div>
 
-    <!-- BOTONES FLOTANTES UBICADOS CORRECTAMENTE -->
+    <!-- BOTONES FLOTANTES CON DISEÑO PROFESIONAL -->
     <a href="https://chat.whatsapp.com/Hd6IG8eEVrY5hoYPgHIjk4?s=cl&p=a&mlu=4&ilr=4" class="floating-group-btn" target="_blank" title="Unirte al Grupo de WhatsApp">
         <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
     </a>
 
-    <a href="https://api.whatsapp.com/send?phone=50672986056&text=Hola,%20tengo%20una%20consulta%20sobre%20la%20tienda%20gtrowen.store" class="floating-whatsapp-btn" target="_blank" title="Soporte por WhatsApp">
-        <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.9-4.44 9.9-9.9 0-2.65-1.03-5.14-2.9-7.01-1.87-1.87-4.36-2.9-7.01-2.9zm0 1.83c2.2 0 4.27.86 5.82 2.42 1.56 1.55 2.42 3.62 2.42 5.82 0 4.54-3.7 8.24-8.24 8.24-1.46 0-2.88-.39-4.12-1.13l-.3-.18-3.08.81.82-3-.19-.31c-.81-1.28-1.24-2.78-1.24-4.32 0-4.54 3.7-8.24 8.24-8.24zm4.51 5.92c-.18-.09-1.07-.53-1.24-.59-.17-.06-.29-.09-.42.09-.13.18-.48.59-.59.72-.11.13-.22.15-.4.06-.18-.09-.76-.28-1.45-.89-.54-.48-.9-1.07-1.01-1.25-.11-.18-.01-.28.08-.37.08-.08.18-.21.27-.32.09-.11.12-.18.18-.3.06-.12.03-.23-.01-.32-.05-.09-.42-1.01-.58-1.38-.15-.36-.31-.31-.42-.32h-.36c-.12 0-.32.04-.49.23-.17.18-.65.63-.65 1.54s.67 1.78.76 1.9c.09.12 1.32 2.01 3.2 2.82.45.2.8.32 1.07.41.45.15.86.13 1.18.08.36-.05 1.07-.44 1.22-.87.15-.43.15-.8.11-.87-.04-.07-.16-.11-.34-.2z"/></svg>
-    </a>
+    <!-- BOTÓN DE WHATSAPP CON TU IMAGEN OFICIAL -->
+    <a href="https://api.whatsapp.com/send?phone=50672986056&text=Hola,%20tengo%20una%20consulta%20sobre%20la%20tienda%20gtrowen.store" class="floating-whatsapp-btn" target="_blank" title="Soporte por WhatsApp"></a>
 
     <button class="floating-cart-btn" id="openCartFloating">
         🛒 MI CARRITO
@@ -945,7 +1105,8 @@
             </div>
             <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 5px;">
                 <button class="btn-hero-action" data-jump-modal="ff-lim" style="width:100%; justify-content:center; padding: 13px;">💎 Diamantes Free Fire</button>
-                <button class="btn-hero-action" data-jump-modal="ff-passes" style="width:100%; justify-content:center; padding: 13px;">⚙️ Tokens Evolutivos & Pases</button>
+                <button class="btn-hero-action" data-jump-modal="streaming" style="width:100%; justify-content:center; padding: 13px;">🎬 Streaming</button>
+                <button class="btn-hero-action" data-jump-modal="social" style="width:100%; justify-content:center; padding: 13px;">📸 Redes Sociales</button>
             </div>
         </div>
     </div>
@@ -1011,11 +1172,26 @@
             let cart = [];
             let currentCurrency = 'CRC';
 
+            const currencySymbols = {
+                'CRC': '₡',
+                'USD': '$',
+                'MXN': '$',
+                'COP': '$',
+                'ARS': '$',
+                'PEN': 'S/ ',
+                'DOP': 'RD$ ',
+                'BOB': 'Bs. ',
+                'GTQ': 'Q ',
+                'NIO': 'C$ ',
+                'VES': 'Bs.S '
+            };
+
             document.querySelectorAll('.curr-btn').forEach(btn => {
                 btn.addEventListener('click', (e) => {
                     document.querySelectorAll('.curr-btn').forEach(b => b.classList.remove('active'));
                     e.target.classList.add('active');
                     currentCurrency = e.target.getAttribute('data-curr');
+                    const prefix = currencySymbols[currentCurrency] || '';
 
                     document.querySelectorAll('.product-card').forEach(card => {
                         const tag = card.querySelector('.price-tag');
@@ -1026,31 +1202,17 @@
                         const officialVal = parseFloat(card.getAttribute('data-official-' + currentCurrency.toLowerCase()));
 
                         if (!isNaN(val) && !isNaN(officialVal)) {
-                            let prefix = '₡';
-                            let isUsd = (currentCurrency === 'USD');
-                            let isDop = (currentCurrency === 'DOP');
-                            let isMxn = (currentCurrency === 'MXN');
-                            let isCop = (currentCurrency === 'COP');
-                            let isArs = (currentCurrency === 'ARS');
-                            let isPen = (currentCurrency === 'PEN');
-
-                            if (isUsd) prefix = '$';
-                            else if (isDop) prefix = 'RD$ ';
-                            else if (isMxn) prefix = '$';
-                            else if (isCop) prefix = '$';
-                            else if (isArs) prefix = '$';
-                            else if (isPen) prefix = 'S/ ';
-
-                            tag.innerText = prefix + (isUsd || isPen ? val.toFixed(2) : val.toLocaleString());
+                            let isDec = ['USD', 'PEN', 'BOB', 'GTQ'].includes(currentCurrency);
+                            tag.innerText = prefix + (isDec ? val.toFixed(2) : val.toLocaleString());
 
                             if (officialTag) {
-                                officialTag.innerText = 'Tienda Oficial: ' + prefix + (isUsd || isPen ? officialVal.toFixed(2) : officialVal.toLocaleString());
+                                officialTag.innerText = 'Tienda Oficial: ' + prefix + (isDec ? officialVal.toFixed(2) : officialVal.toLocaleString());
                             }
 
                             if (savingsTag) {
                                 let diff = officialVal - val;
                                 let pct = Math.round((diff / officialVal) * 100);
-                                savingsTag.innerText = `⚡ ¡Te ahorras ${prefix}${isUsd || isPen ? diff.toFixed(2) : diff.toLocaleString()} (${pct}%)!`;
+                                savingsTag.innerText = `⚡ ¡Te ahorras ${prefix}${isDec ? diff.toFixed(2) : diff.toLocaleString()} (${pct}%)!`;
                             }
                         }
                     });
@@ -1081,18 +1243,23 @@
             document.querySelectorAll('.btn-add').forEach(btn => {
                 btn.addEventListener('click', (e) => {
                     const b = e.currentTarget;
+                    const card = b.closest('.product-card');
                     const inputType = b.getAttribute('data-input-type') || 'ff';
 
                     cart.push({
                         title: b.getAttribute('data-title'),
                         inputType: inputType,
-                        crc: parseFloat(b.getAttribute('data-crc')),
-                        dop: parseFloat(b.getAttribute('data-dop')),
-                        usd: parseFloat(b.getAttribute('data-usd')),
-                        mxn: parseFloat(b.getAttribute('data-mxn')),
-                        cop: parseFloat(b.getAttribute('data-cop')),
-                        ars: parseFloat(b.getAttribute('data-ars')),
-                        pen: parseFloat(b.getAttribute('data-pen'))
+                        crc: parseFloat(card.getAttribute('data-crc')),
+                        usd: parseFloat(card.getAttribute('data-usd')),
+                        mxn: parseFloat(card.getAttribute('data-mxn')),
+                        cop: parseFloat(card.getAttribute('data-cop')),
+                        ars: parseFloat(card.getAttribute('data-ars')),
+                        pen: parseFloat(card.getAttribute('data-pen')),
+                        dop: parseFloat(card.getAttribute('data-dop')),
+                        bob: parseFloat(card.getAttribute('data-bob')),
+                        gtq: parseFloat(card.getAttribute('data-gtq')),
+                        nio: parseFloat(card.getAttribute('data-nio')),
+                        ves: parseFloat(card.getAttribute('data-ves'))
                     });
                     renderCart();
                 });
@@ -1121,46 +1288,23 @@
                 const hasBloodStrike = cart.some(item => item.inputType === 'bs');
                 const hasFreeFire = cart.some(item => item.inputType === 'ff');
 
-                if (hasBloodStrike) {
+                if (hasSocial) {
+                    labelEl.innerText = 'Enlace del Perfil (Público) 🔗';
+                    inputEl.placeholder = 'Ej: https://instagram.com/tucuenta';
+                } else if (hasBloodStrike) {
                     labelEl.innerText = 'ID de Jugador (Blood Strike)';
                     inputEl.placeholder = 'Ej: 50819301';
                 } else if (hasFreeFire) {
                     labelEl.innerText = 'ID de Jugador (Free Fire)';
                     inputEl.placeholder = 'Ej: 301110819';
                 } else {
-                    labelEl.innerText = 'ID de Cuenta / Referencia';
-                    inputEl.placeholder = 'Ej: Datos necesarios';
+                    labelEl.innerText = 'Correo o Detalle para la cuenta ✉️';
+                    inputEl.placeholder = 'Ej: tucorreo@gmail.com';
                 }
 
                 document.getElementById('cartSummary').style.display = 'none';
                 document.getElementById('checkoutForm').style.display = 'block';
                 document.getElementById('modalTitle').innerText = 'FINALIZAR COMPRA SEGURA';
-            });
-
-            document.getElementById('pMethod').addEventListener('change', (e) => {
-                const m = e.target.value;
-                const box = document.getElementById('payBox');
-                const txBox = document.getElementById('txIdBox');
-                const receiptBox = document.getElementById('receiptBox');
-                
-                txBox.style.display = 'block';
-                receiptBox.style.display = 'block';
-                box.style.display = 'block';
-
-                if (m === 'SINPE') {
-                    box.innerHTML = '<strong>Datos SINPE Móvil:</strong><br>• Teléfono: <strong>6412 9943</strong><br>• Titular: <strong>OWEN MORALES UGALDE</strong>';
-                } else if (m === 'NU') {
-                    box.innerHTML = '<strong>Nu México:</strong><br>• Transferencia CLABE disponible para México.';
-                }
-            });
-
-            document.getElementById('pReceipt').addEventListener('change', (e) => {
-                const file = e.target.files[0];
-                const label = document.getElementById('receiptLabel');
-                if (file) {
-                    label.innerText = '✅ Comprobante adjuntado: ' + file.name;
-                    label.style.color = '#00f0ff';
-                }
             });
 
             function renderCart() {
@@ -1175,20 +1319,14 @@
 
                 list.innerHTML = '';
                 let totalVal = 0;
+                const prefix = currencySymbols[currentCurrency] || '';
 
                 cart.forEach((item, i) => {
-                    let priceFormatted = '';
-                    let rawPrice = 0;
-
-                    if (currentCurrency === 'CRC') { rawPrice = item.crc; priceFormatted = '₡' + item.crc.toLocaleString(); }
-                    else if (currentCurrency === 'DOP') { rawPrice = item.dop; priceFormatted = 'RD$ ' + item.dop.toLocaleString(); }
-                    else if (currentCurrency === 'USD') { rawPrice = item.usd; priceFormatted = '$' + item.usd + ' USD'; }
-                    else if (currentCurrency === 'MXN') { rawPrice = item.mxn; priceFormatted = '$' + item.mxn + ' MXN'; }
-                    else if (currentCurrency === 'COP') { rawPrice = item.cop; priceFormatted = '$' + item.cop.toLocaleString() + ' COP'; }
-                    else if (currentCurrency === 'ARS') { rawPrice = item.ars; priceFormatted = '$' + item.ars.toLocaleString() + ' ARS'; }
-                    else if (currentCurrency === 'PEN') { rawPrice = item.pen; priceFormatted = 'S/ ' + item.pen + ' PEN'; }
-
+                    let rawPrice = item[currentCurrency.toLowerCase()] || item.crc;
                     totalVal += rawPrice;
+
+                    let isDec = ['USD', 'PEN', 'BOB', 'GTQ'].includes(currentCurrency);
+                    let priceFormatted = prefix + (isDec ? rawPrice.toFixed(2) : rawPrice.toLocaleString());
 
                     const row = document.createElement('div');
                     row.className = 'cart-row';
@@ -1209,47 +1347,31 @@
                     list.appendChild(row);
                 });
 
-                let totalFormatted = '';
-                if (currentCurrency === 'CRC') totalFormatted = '₡' + totalVal.toLocaleString();
-                else if (currentCurrency === 'DOP') totalFormatted = 'RD$ ' + totalVal.toLocaleString();
-                else if (currentCurrency === 'USD') totalFormatted = '$' + totalVal.toFixed(2) + ' USD';
-                else if (currentCurrency === 'MXN') totalFormatted = '$' + totalVal.toFixed(2) + ' MXN';
-                else if (currentCurrency === 'COP') totalFormatted = '$' + totalVal.toLocaleString() + ' COP';
-                else if (currentCurrency === 'ARS') totalFormatted = '$' + totalVal.toLocaleString() + ' ARS';
-                else if (currentCurrency === 'PEN') totalFormatted = '$' + totalVal.toFixed(2) + ' PEN';
-
-                document.getElementById('cTotal').innerText = totalFormatted;
+                let isDecTotal = ['USD', 'PEN', 'BOB', 'GTQ'].includes(currentCurrency);
+                document.getElementById('cTotal').innerText = prefix + (isDecTotal ? totalVal.toFixed(2) : totalVal.toLocaleString());
             }
 
             document.getElementById('sendWaBtn').addEventListener('click', () => {
-                const nameInput = document.getElementById('pName');
-                const name = nameInput.value.trim();
+                const name = document.getElementById('pName').value.trim();
                 if (!name) { alert('Por favor ingresa tu nombre'); return; }
 
-                const phoneInput = document.getElementById('pPhone');
-                const phone = phoneInput.value.trim();
+                const phone = document.getElementById('pPhone').value.trim();
                 if (!phone) { alert('Por favor ingresa tu número de teléfono'); return; }
 
-                const customInput = document.getElementById('pCustomField');
-                const customVal = customInput.value.trim();
+                const customVal = document.getElementById('pCustomField').value.trim();
                 if (!customVal) { alert('Por favor completa el campo requerido'); return; }
 
                 const methodSelect = document.getElementById('pMethod');
                 const methodName = methodSelect.options[methodSelect.selectedIndex].text;
                 let totalText = document.getElementById('cTotal').innerText;
 
-                let txId = 'N/A';
-                const txInput = document.getElementById('pTxId');
-                if (methodSelect.value !== 'CRYPTOMUS') {
-                    txId = txInput.value.trim();
-                    if (!txId) { alert('Por favor ingresa el número de comprobante o referencia de pago'); return; }
-                }
+                let txId = document.getElementById('pTxId').value.trim();
+                if (!txId) { alert('Por favor ingresa el número de comprobante o referencia de pago'); return; }
 
                 let itemsWaText = cart.map(c => `• ${c.title}`).join('%0A');
-                let msg = `⚡ *NUEVO PEDIDO - GTROWEN STORE*%0A%0A👤 *Cliente:* ${name}%0A📱 *Teléfono:* ${phone}%0A🔗 *Detalle/Destino:* ${customVal}%0A💳 *Método de Pago:* ${methodName}%0A🧾 *Referencia:* ${txId}%0A%0A📦 *Productos:*%0A${itemsWaText}%0A💰 *Total:* ${totalText}`;
+                let msg = `⚡ *NUEVO PEDIDO - GTROWEN STORE*%0A%0A👤 *Cliente:* ${name}%0A📱 *Teléfono:* ${phone}%0A🔗 *Detalle/Destino:* ${customVal}%0A💳 *Método de Pago:* ${methodName}%0A🧾 *Referencia:* ${txId}%0A%0A📦 *Productos:*%0A${itemsWaText}%0A💰 *Total:* ${totalText} (${currentCurrency})`;
 
-                let whatsappUrl = `https://api.whatsapp.com/send?phone=50672986056&text=${msg}`;
-                window.open(whatsappUrl, '_blank');
+                window.open(`https://api.whatsapp.com/send?phone=50672986056&text=${msg}`, '_blank');
             });
         });
     </script>
