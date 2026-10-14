@@ -204,29 +204,86 @@
             z-index: 10;
         }
 
-        .welcome-hero {
-            background: linear-gradient(135deg, rgba(11, 18, 12, 0.9), rgba(17, 26, 19, 0.9));
+        /* SECCIÓN TIPO PASARELA / PAYMENT SOURCE EN EL INICIO */
+        .payment-gateway-hero {
+            background: linear-gradient(135deg, rgba(11, 18, 12, 0.95), rgba(17, 26, 19, 0.95));
             border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 18px;
-            text-align: center;
-            margin-bottom: 20px;
-            box-shadow: 0 0 20px rgba(57, 255, 20, 0.15);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 0 25px rgba(57, 255, 20, 0.15);
         }
 
-        .welcome-hero h2 {
+        .gateway-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
+        }
+
+        .gateway-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.25rem;
+            font-size: 0.95rem;
             color: var(--primary);
             font-weight: 900;
-            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
             text-shadow: 0 0 10px rgba(57, 255, 20, 0.4);
         }
 
-        .welcome-hero p {
-            font-size: 0.8rem;
+        .gateway-status {
+            font-family: 'Chakra Petch', sans-serif;
+            font-size: 0.7rem;
+            background: rgba(57, 255, 20, 0.15);
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-weight: 700;
+        }
+
+        .gateway-methods-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        @media(max-width: 600px) {
+            .gateway-methods-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .gateway-method-card {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 10px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .gateway-method-card span {
+            font-size: 1.3rem;
+        }
+
+        .gateway-method-name {
+            font-family: 'Chakra Petch', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .gateway-method-desc {
+            font-size: 0.6rem;
             color: var(--text-dim);
-            margin-bottom: 14px;
         }
 
         .hero-actions-row {
@@ -234,6 +291,7 @@
             gap: 10px;
             justify-content: center;
             flex-wrap: wrap;
+            margin-top: 10px;
         }
 
         .btn-hero-action {
@@ -814,10 +872,38 @@
     </header>
 
     <div class="container">
-        <!-- SECCIÓN DE BIENVENIDA MINIMALISTA -->
-        <div class="welcome-hero">
-            <h2>BIENVENIDO A GTROWEN.STORE</h2>
-            <p>⚡ Tu tienda oficial de recargas, streaming y redes sociales ⚡</p>
+        <!-- SECCIÓN DE INICIO TIPO PASARELA / PAYMENT SOURCE -->
+        <div class="payment-gateway-hero">
+            <div class="gateway-header">
+                <div class="gateway-title">
+                    <span>💳</span> PASARELA DE PAGOS & FUENTES
+                </div>
+                <div class="gateway-status">● SISTEMA ACTIVO</div>
+            </div>
+            
+            <div class="gateway-methods-grid">
+                <div class="gateway-method-card">
+                    <span>🇨🇷</span>
+                    <div class="gateway-method-name">SINPE Móvil</div>
+                    <div class="gateway-method-desc">Instantáneo CR</div>
+                </div>
+                <div class="gateway-method-card">
+                    <span>🌐</span>
+                    <div class="gateway-method-name">Cryptomus API</div>
+                    <div class="gateway-method-desc">Criptomonedas</div>
+                </div>
+                <div class="gateway-method-card">
+                    <span>⚡</span>
+                    <div class="gateway-method-name">Binance Pay</div>
+                    <div class="gateway-method-desc">USDT / QR Directo</div>
+                </div>
+                <div class="gateway-method-card">
+                    <span>🇲🇽</span>
+                    <div class="gateway-method-name">Nu México</div>
+                    <div class="gateway-method-desc">CLABE Segura</div>
+                </div>
+            </div>
+
             <div class="hero-actions-row">
                 <button class="btn-hero-action" id="btnOpenCatalogModal">📂 Menú Rápido</button>
                 <button class="btn-hero-action" id="btnOpenTopClients">🏆 Salón de la Fama Prime</button>
@@ -1753,7 +1839,6 @@
             document.getElementById('proceedCheckoutBtn').addEventListener('click', () => {
                 if (cart.length === 0) return;
                 
-                // Detectar si el carrito tiene productos de redes sociales o streaming
                 const hasSocialOrStreaming = cart.some(item => item.category === 'social' || item.category === 'streaming' || item.category === 'streaming-perm');
                 const labelEl = document.getElementById('dynamicLabel');
                 const inputEl = document.getElementById('pCustomField');
@@ -1872,7 +1957,7 @@
                 else if (currentCurrency === 'MXN') totalFormatted = '$' + totalVal.toFixed(2) + ' MXN';
                 else if (currentCurrency === 'COP') totalFormatted = '$' + totalVal.toLocaleString() + ' COP';
                 else if (currentCurrency === 'ARS') totalFormatted = '$' + totalVal.toLocaleString() + ' ARS';
-                else if (currentCurrency === 'PEN') totalFormatted = 'S/ ' + totalVal.toFixed(2) + ' PEN';
+                else if (currentCurrency === 'PEN') totalFormatted = '$' + totalVal.toFixed(2) + ' PEN';
 
                 document.getElementById('cTotal').innerText = totalFormatted;
             }
@@ -1902,16 +1987,13 @@
                     if (!txId) { alert('Por favor ingresa el número de comprobante o referencia de pago'); return; }
                 }
 
-                // Verificar si el carrito contiene diamantes ilimitados u otros productos
                 const hasIlimitados = cart.some(item => item.category === 'ff-ilim');
 
                 if (hasIlimitados) {
-                    // Si compra diamantes ilimitados, va directo a la tienda automatizada
                     const tiendaAutomatizadaUrl = 'https://tienda.gtrowen.store';
                     alert('¡Datos validados! Te redirigiremos a tu tienda automatizada.');
                     window.open(tiendaAutomatizadaUrl, '_blank');
                 } else {
-                    // Si son redes sociales o streaming, se arma el pedido y se manda a tu WhatsApp con todos los detalles
                     let itemsWaText = cart.map(c => `• ${c.title}`).join('%0A');
                     let msg = `⚡ *NUEVO PEDIDO - GTROWEN STORE*%0A%0A👤 *Cliente:* ${name}%0A📱 *Teléfono:* ${phone}%0A🔗 *Destino (ID/Link):* ${customVal}%0A💳 *Método de Pago:* ${methodName}%0A🧾 *Referencia:* ${txId}%0A%0A📦 *Productos:*%0A${itemsWaText}%0A💰 *Total:* ${totalText}`;
 
