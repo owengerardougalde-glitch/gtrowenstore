@@ -1477,8 +1477,14 @@
                 </div>
 
                 <div class="input-box">
-                    <label>ID de Jugador (Free Fire)</label>
-                    <input type="text" id="pId" value="" placeholder="Ej: 301110819">
+                    <label>Número de Teléfono</label>
+                    <input type="text" id="pPhone" placeholder="Ej: +506 72986056">
+                </div>
+
+                <!-- CAMPO DINÁMICO SEGÚN EL PRODUCTO -->
+                <div class="input-box" id="dynamicInputBox">
+                    <label id="dynamicLabel">ID de Jugador (Free Fire)</label>
+                    <input type="text" id="pCustomField" placeholder="Ej: 301110819">
                 </div>
 
                 <div class="input-box">
@@ -1531,7 +1537,7 @@
                     </label>
                 </div>
 
-                <button class="btn-send" id="sendWaBtn">🚀 PROCEDER A TIENDA AUTOMATIZADA</button>
+                <button class="btn-send" id="sendWaBtn">🚀 PROCESAR PEDIDO</button>
             </div>
         </div>
     </div>
@@ -1706,8 +1712,12 @@
             document.querySelectorAll('.btn-add').forEach(btn => {
                 btn.addEventListener('click', (e) => {
                     const b = e.currentTarget;
+                    const card = b.closest('.product-card');
+                    const category = card ? card.getAttribute('data-cat') : 'other';
+
                     cart.push({
                         title: b.getAttribute('data-title'),
+                        category: category,
                         crc: parseFloat(b.getAttribute('data-crc')),
                         dop: parseFloat(b.getAttribute('data-dop')),
                         usd: parseFloat(b.getAttribute('data-usd')),
@@ -1742,6 +1752,20 @@
 
             document.getElementById('proceedCheckoutBtn').addEventListener('click', () => {
                 if (cart.length === 0) return;
+                
+                // Detectar si el carrito tiene productos de redes sociales o streaming
+                const hasSocialOrStreaming = cart.some(item => item.category === 'social' || item.category === 'streaming' || item.category === 'streaming-perm');
+                const labelEl = document.getElementById('dynamicLabel');
+                const inputEl = document.getElementById('pCustomField');
+
+                if (hasSocialOrStreaming) {
+                    labelEl.innerText = 'Enlace del Perfil (Debe estar público) 🔗';
+                    inputEl.placeholder = 'Ej: https://instagram.com/tucuenta';
+                } else {
+                    labelEl.innerText = 'ID de Jugador (Free Fire / Juego)';
+                    inputEl.placeholder = 'Ej: 301110819';
+                }
+
                 document.getElementById('cartSummary').style.display = 'none';
                 document.getElementById('checkoutForm').style.display = 'block';
                 document.getElementById('modalTitle').innerText = 'FINALIZAR COMPRA';
@@ -1778,9 +1802,9 @@
 
             document.getElementById('payWithCryptomusBtn').addEventListener('click', () => {
                 const name = document.getElementById('pName').value.trim();
-                const id = document.getElementById('pId').value.trim();
-                if (!name || !id) {
-                    alert('Por favor completa tu Nombre e ID de Free Fire antes de pagar con Cryptomus.');
+                const customField = document.getElementById('pCustomField').value.trim();
+                if (!name || !customField) {
+                    alert('Por favor completa tu Nombre y el campo requerido antes de pagar.');
                     return;
                 }
                 window.open('https://app.cryptomus.com/', '_blank');
@@ -1853,17 +1877,24 @@
                 document.getElementById('cTotal').innerText = totalFormatted;
             }
 
-            // BOTÓN CONECTADO DIRECTAMENTE A TU TIENDA AUTOMATIZADA
+            // BOTÓN DE ACCIÓN INTELIGENTE
             document.getElementById('sendWaBtn').addEventListener('click', () => {
                 const nameInput = document.getElementById('pName');
                 const name = nameInput.value.trim();
                 if (!name) { alert('Por favor ingresa tu nombre'); return; }
 
-                const idInput = document.getElementById('pId');
-                const id = idInput.value.trim();
-                if (!id) { alert('Por favor ingresa tu ID de Free Fire'); return; }
+                const phoneInput = document.getElementById('pPhone');
+                const phone = phoneInput.value.trim();
+                if (!phone) { alert('Por favor ingresa tu número de teléfono'); return; }
+
+                const customInput = document.getElementById('pCustomField');
+                const customVal = customInput.value.trim();
+                if (!customVal) { alert('Por favor completa el campo requerido (ID o Link)'); return; }
 
                 const methodSelect = document.getElementById('pMethod');
+                const methodName = methodSelect.options[methodSelect.selectedIndex].text;
+                let totalText = document.getElementById('cTotal').innerText;
+
                 let txId = 'N/A';
                 const txInput = document.getElementById('pTxId');
                 if (methodSelect.value !== 'CRYPTOMUS') {
@@ -1871,11 +1902,22 @@
                     if (!txId) { alert('Por favor ingresa el número de comprobante o referencia de pago'); return; }
                 }
 
-                // Enlace directo configurado hacia tu tienda automatizada
-                const tiendaAutomatizadaUrl = 'https://tienda.gtrowen.store'; 
-                
-                alert('¡Datos validados! Te redirigiremos a tu tienda automatizada.');
-                window.open(tiendaAutomatizadaUrl, '_blank');
+                // Verificar si el carrito contiene diamantes ilimitados u otros productos
+                const hasIlimitados = cart.some(item => item.category === 'ff-ilim');
+
+                if (hasIlimitados) {
+                    // Si compra diamantes ilimitados, va directo a la tienda automatizada
+                    const tiendaAutomatizadaUrl = 'https://tienda.gtrowen.store';
+                    alert('¡Datos validados! Te redirigiremos a tu tienda automatizada.');
+                    window.open(tiendaAutomatizadaUrl, '_blank');
+                } else {
+                    // Si son redes sociales o streaming, se arma el pedido y se manda a tu WhatsApp con todos los detalles
+                    let itemsWaText = cart.map(c => `• ${c.title}`).join('%0A');
+                    let msg = `⚡ *NUEVO PEDIDO - GTROWEN STORE*%0A%0A👤 *Cliente:* ${name}%0A📱 *Teléfono:* ${phone}%0A🔗 *Destino (ID/Link):* ${customVal}%0A💳 *Método de Pago:* ${methodName}%0A🧾 *Referencia:* ${txId}%0A%0A📦 *Productos:*%0A${itemsWaText}%0A💰 *Total:* ${totalText}`;
+
+                    let whatsappUrl = `https://api.whatsapp.com/send?phone=50672986056&text=${msg}`;
+                    window.open(whatsappUrl, '_blank');
+                }
             });
         });
     </script>
