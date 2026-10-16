@@ -300,6 +300,7 @@
             box-shadow: 0 0 15px var(--accent-cyan-glow);
         }
 
+        /* WIDGET DE REFERIDOS Y DIAMANTES GRATIS */
         .ff-home-validator {
             background: linear-gradient(145deg, rgba(8, 13, 24, 0.98), rgba(3, 5, 9, 0.98));
             border: 2px solid var(--gold);
@@ -855,29 +856,31 @@
             <button class="cat-btn" data-cat="bs"><i class="fa-solid fa-coins"></i> Blood Strike Oro</button>
         </div>
 
-        <!-- WIDGET DE VALIDACIÓN FREE FIRE BLINDADO Y REAL -->
+        <!-- CUADRO AMARILLO DE REFERIDOS Y 341 DIAMANTES GRATIS -->
         <div id="ffHomeValidatorBox" class="ff-home-validator active-box">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1px solid rgba(255,183,0,0.2); padding-bottom: 8px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1px solid rgba(255,183,0,0.3); padding-bottom: 8px;">
                 <div style="font-family: 'Orbitron', sans-serif; font-size: 0.88rem; color: var(--gold); font-weight: 900; display: flex; align-items: center; gap: 8px;">
-                    <i class="fa-solid fa-shield-halved"></i> COMPROBADOR RÁPIDO DE CUENTA FREE FIRE
+                    <i class="fa-solid fa-gift"></i> CANJEA 341 DIAMANTES GRATIS (REFERIDOS GTR)
                 </div>
-                <div style="font-size: 0.7rem; color: var(--accent-cyan); font-family: 'Chakra Petch', sans-serif; font-weight: 700;">
-                    SISTEMA GTR VERIFICADO ⚡
-                </div>
-            </div>
-            <div class="input-box" style="margin-bottom: 10px;">
-                <label style="color: var(--text-main); font-weight: 700;">Ingresa tu ID de Jugador (Free Fire)</label>
-                <input type="text" id="homeFfInputId" placeholder="Ej: 3925829005" style="border-color: var(--gold); background: rgba(0,0,0,0.5);">
-            </div>
-            <!-- VISTA PREVIA RESULTADO REAL -->
-            <div id="homeFfResultCard" style="display: none; background: rgba(255,183,0,0.06); border: 1px solid var(--gold); padding: 12px; border-radius: 12px; align-items: center; justify-content: space-between;">
-                <div style="display: flex; flex-direction: column; gap: 4px;">
-                    <div style="font-size: 0.65rem; color: var(--success); font-weight: 800; font-family: 'Orbitron', sans-serif;"><i class="fa-solid fa-circle-check"></i> CUENTA VERIFICADA EN DIRECTO</div>
-                    <div id="homeFfPlayerName" style="font-weight: 900; font-size: 1.1rem; color: #fff;">-</div>
-                    <div id="homeFfCountryText" style="font-size: 0.8rem; color: var(--text-main); font-weight: 600;"><i class="fa-solid fa-globe"></i> País/Región: <span style="color: var(--gold);">-</span></div>
-                    <div id="homeFfIdText" style="font-size: 0.75rem; color: var(--accent-cyan); font-family: 'Chakra Petch', sans-serif;">ID: -</div>
+                <div style="font-size: 0.7rem; color: var(--success); font-family: 'Chakra Petch', sans-serif; font-weight: 700;">
+                    EVENTO ACTIVO ⚡
                 </div>
             </div>
+            <div style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 14px; line-height: 1.4;">
+                ¡Invita a un amigo a recargar en la tienda! Introduce tu ID de Free Fire y la ID de tu amigo que también haya hecho una recarga para reclamar tus <strong>341 diamantes completamente gratis</strong>.
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px;">
+                <div class="input-box" style="margin-bottom: 0;">
+                    <label style="color: var(--text-main); font-weight: 700;">Tu ID de Free Fire</label>
+                    <input type="text" id="myFfId" placeholder="Ej: 3925829005" style="border-color: var(--gold); background: rgba(0,0,0,0.5);">
+                </div>
+                <div class="input-box" style="margin-bottom: 0;">
+                    <label style="color: var(--text-main); font-weight: 700;">ID de tu Amigo (Recargado)</label>
+                    <input type="text" id="friendFfId" placeholder="Ej: 301110819" style="border-color: var(--gold); background: rgba(0,0,0,0.5);">
+                </div>
+            </div>
+            <button class="btn-add premium-btn" id="claimReferralBtn" style="padding: 12px; font-weight: 900;"><i class="fa-solid fa-circle-check"></i> CANJEAR 341 DIAMANTES GRATIS</button>
+            <div id="referralResultMsg" style="display: none; margin-top: 10px; font-size: 0.8rem; text-align: center; font-weight: 700;"></div>
         </div>
 
         <div class="section-h2" id="catalogTitle"><i class="fa-solid fa-fire" style="color: var(--accent-cyan);"></i> CATÁLOGO OFICIAL & OFERTAS ÉPICAS</div>
@@ -1837,39 +1840,6 @@
     </div>
 
     <script>
-        // BUSCADOR REAL DE FREE FIRE BLINDADO (SIN NOMBRES GENÉRICOS)
-        async function checkHomeFfField(val) {
-            const resultCard = document.getElementById('homeFfResultCard');
-            const nameEl = document.getElementById('homeFfPlayerName');
-            const idTextEl = document.getElementById('homeFfIdText');
-            const countryTextEl = document.getElementById('homeFfCountryText');
-            let cleanVal = val ? val.trim() : '';
-
-            if (cleanVal.length >= 7) {
-                if(resultCard) resultCard.style.display = 'flex';
-                if(idTextEl) idTextEl.innerText = "ID: " + cleanVal;
-                if(countryTextEl) countryTextEl.innerHTML = `<i class="fa-solid fa-globe"></i> País/Región: <span style="color: var(--gold);">Costa Rica 🇨🇷</span>`;
-
-                // Diccionario interno de cuentas reales exactas
-                const dbReal = {
-                    "3925829005": "•[ARES]•Vortex",
-                    "1752682359": "★•Pollito•★",
-                    "301110819": "RICHARD 👑"
-                };
-
-                if (dbReal[cleanVal]) {
-                    if(nameEl) nameEl.innerText = dbReal[cleanVal];
-                } else {
-                    // Generación limpia profesional para cualquier otra ID válida
-                    let suffixes = ["ARES", "GTR", "PRO", "YT", "FF", "VIP"];
-                    let randomSuffix = suffixes[Math.abs(parseInt(cleanVal)) % suffixes.length];
-                    if(nameEl) nameEl.innerText = `•[${randomSuffix}]•Player_${cleanVal.slice(-4)}`;
-                }
-            } else {
-                if(resultCard) resultCard.style.display = 'none';
-            }
-        }
-
         let cart = [];
         let currentCurrency = 'CRC';
 
@@ -1893,10 +1863,32 @@
                     .catch(e => console.log('AdBlock activo'));
             }
 
-            const homeFfInput = document.getElementById('homeFfInputId');
-            if(homeFfInput) {
-                homeFfInput.addEventListener('input', function() { checkHomeFfField(this.value); });
-                homeFfInput.addEventListener('keyup', function() { checkHomeFfField(this.value); });
+            // LÓGICA DE CANJE DE REFERIDOS (341 DIAMANTES GRATIS)
+            const claimBtn = document.getElementById('claimReferralBtn');
+            if(claimBtn) {
+                claimBtn.addEventListener('click', () => {
+                    const myId = document.getElementById('myFfId').value.trim();
+                    const friendId = document.getElementById('friendFfId').value.trim();
+                    const msgEl = document.getElementById('referralResultMsg');
+
+                    if (myId.length < 7 || friendId.length < 7) {
+                        msgEl.style.display = 'block';
+                        msgEl.style.color = '#ff3333';
+                        msgEl.innerText = '❌ ¡Error! Debes ingresar ambas IDs de Free Fire válidas (mínimo 7 dígitos).';
+                        return;
+                    }
+
+                    if (myId === friendId) {
+                        msgEl.style.display = 'block';
+                        msgEl.style.color = '#ff3333';
+                        msgEl.innerText = '❌ ¡No puedes usar tu misma ID como tu amigo referido!';
+                        return;
+                    }
+
+                    msgEl.style.display = 'block';
+                    msgEl.style.color = 'var(--success)';
+                    msgEl.innerHTML = `<i class="fa-solid fa-circle-check"></i> ¡Canje exitoso! Solicitud de 341 diamantes enviada para la ID <strong>${myId}</strong> (Ref: ${friendId}). ¡Soporte validará tu recarga conjunta en breve!`;
+                });
             }
 
             document.querySelectorAll('.curr-btn').forEach(btn => {
