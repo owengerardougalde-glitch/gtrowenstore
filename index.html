@@ -2174,6 +2174,75 @@
                 window.open(whatsappUrl, '_blank');
             });
         });
+        // CONEXIÓN DEFINITIVA CON TU API DE VERCEL - OWEN STORE FF
+async function ejecutarConsultaReal() {
+    const idJugador = document.getElementById('garena-player-id').value.trim();
+    const cajaResultado = document.getElementById('resultado-box');
+    const botonCheck = document.getElementById('btn-garena-check');
+
+    if (!idJugador || isNaN(idJugador) || idJugador.length < 5) {
+        cajaResultado.style.display = "block";
+        cajaResultado.style.border = "1px solid #ff4d4d";
+        cajaResultado.style.background = "rgba(255, 77, 77, 0.1)";
+        cajaResultado.innerHTML = `<p style="color: #ff4d4d; font-weight: bold; margin: 0; text-align: center;">⚠️ Por favor, ingresa un ID válido.</p>`;
+        return;
+    }
+
+    botonCheck.disabled = true;
+    botonCheck.innerText = "VERIFICANDO...";
+    cajaResultado.style.display = "block";
+    cajaResultado.style.border = "1px solid rgba(0, 240, 255, 0.3)";
+    cajaResultado.style.background = "rgba(0, 240, 255, 0.05)";
+    cajaResultado.innerHTML = `<p style="color: #00f0ff; margin: 0; text-align: center;">Consultando base de datos de Garena Dominicana... ⏳</p>`;
+
+    try {
+        // Apuntamos DIRECTAMENTE a tu servidor de Vercel usando tu dominio activo
+        const linkProveedorAPI = `https://gtrowen.store{idJugador}`;
+        
+        const response = await fetch(linkProveedorAPI);
+        const data = await response.json();
+
+        if (!response.ok || data.error) {
+            cajaResultado.style.border = "1px solid #ff4d4d";
+            cajaResultado.style.background = "rgba(255, 77, 77, 0.1)";
+            cajaResultado.innerHTML = `
+                <h4 style="color: #ff4d4d; margin: 0 0 5px 0; font-weight: bold;">❌ JUGADOR NO ENCONTRADO</h4>
+                <p style="color: #ffffff; margin: 0; font-size: 0.95em;">El ID <b>${idJugador}</b> no existe en Free Fire o es de otra región.</p>
+            `;
+            return;
+        }
+
+        if (data.bonus_available) {
+            cajaResultado.style.border = "1px solid #4dff4d";
+            cajaResultado.style.background = "rgba(77, 255, 77, 0.08)";
+            cajaResultado.innerHTML = `
+                <h4 style="color: #4dff4d; margin: 0 0 8px 0; font-weight: bold;">🎯 ID VERIFICADO: ${idJugador}</h4>
+                <p style="color: #ffffff; margin: 5px 0;">Jugador / Nick: <b style="color: #00f0ff;">${data.nickname}</b></p>
+                <p style="color: #4dff4d; font-weight: bold; margin: 5px 0 0 0; font-size: 1.05em;">🔥 ESTADO: ILIMITADO. El bono de República Dominicana 🇩🇴 está disponible.</p>
+            `;
+        } else {
+            cajaResultado.style.border = "1px solid #ffcc00";
+            cajaResultado.style.background = "rgba(255, 204, 0, 0.08)";
+            cajaResultado.innerHTML = `
+                <h4 style="color: #ffcc00; margin: 0 0 8px 0; font-weight: bold;">⚠️ ID VERIFICADO: ${idJugador}</h4>
+                <p style="color: #ffffff; margin: 5px 0;">Jugador / Nick: <b style="color: #00f0ff;">${data.nickname}</b></p>
+                <p style="color: #ffcc00; font-weight: bold; margin: 5px 0 0 0; font-size: 1.05em;">🚫 ESTADO: LIMITADO. Esta cuenta ya consumió u agotó la oferta en esta región.</p>
+            `;
+        }
+
+    } catch (error) {
+        cajaResultado.style.border = "1px solid #ff4d4d";
+        cajaResultado.style.background = "rgba(255, 77, 77, 0.1)";
+        cajaResultado.innerHTML = `
+            <h4 style="color: #ff4d4d; margin: 0 0 5px 0; font-weight: bold;">❌ ERROR DE CONEXIÓN</h4>
+            <p style="color: #ffffff; margin: 0; font-size: 0.95em;">El módulo de verificación no respondió. Revisa que el backend esté activo.</p>
+        `;
+    } finally {
+        botonCheck.disabled = false;
+        botonCheck.innerText = "CONSULTAR";
+    }
+}
+
     </script>
 </body>
 </html>
