@@ -855,7 +855,7 @@
             <button class="cat-btn" data-cat="bs"><i class="fa-solid fa-coins"></i> Blood Strike Oro</button>
         </div>
 
-        <!-- CUADRO DE REFERIDOS Y 341 DIAMANTES GRATIS (WHATSAPP + REQUISITO 1,160 DIAMANTES MÍNIMO) -->
+        <!-- CUADRO DE REFERIDOS 341 DIAMANTES GRATIS (SIN CAMPOS DE ID, DIRECTO A WHATSAPP CON TEXTO Y CAPTURAS) -->
         <div id="ffHomeValidatorBox" class="ff-home-validator active-box">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1px solid rgba(255,183,0,0.3); padding-bottom: 8px;">
                 <div style="font-family: 'Orbitron', sans-serif; font-size: 0.88rem; color: var(--gold); font-weight: 900; display: flex; align-items: center; gap: 8px;">
@@ -865,21 +865,12 @@
                     EVENTO ACTIVO ⚡
                 </div>
             </div>
-            <div style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 14px; line-height: 1.4;">
-                ¡Invita a un amigo a recargar! Introduce tu ID de Free Fire y la ID de tu amigo. <strong>Requisito obligatorio:</strong> Ambas recargas deben ser de al menos <strong>1,160 diamantes mínimos</strong>. Manda la prueba directo a WhatsApp para reclamar.
+            <div style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 16px; line-height: 1.5;">
+                ¡Invita a un amigo a recargar! Ambas recargas deben ser de al menos <strong>1,160 diamantes mínimos</strong>. Da clic en el botón de abajo para enviarme la prueba directo al WhatsApp.
             </div>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px;">
-                <div class="input-box" style="margin-bottom: 0;">
-                    <label style="color: var(--text-main); font-weight: 700; font-size: 0.75rem; display: block; margin-bottom: 5px;">Tu ID de Free Fire</label>
-                    <input type="text" id="myFfId" placeholder="Ej: 3925829005" style="width: 100%; padding: 11px 14px; background: rgba(0,0,0,0.5); border: 1px solid var(--gold); border-radius: 10px; color: #fff; font-size: 0.88rem; outline: none;">
-                </div>
-                <div class="input-box" style="margin-bottom: 0;">
-                    <label style="color: var(--text-main); font-weight: 700; font-size: 0.75rem; display: block; margin-bottom: 5px;">ID de tu Amigo (Recargado)</label>
-                    <input type="text" id="friendFfId" placeholder="Ej: 1752682359" style="width: 100%; padding: 11px 14px; background: rgba(0,0,0,0.5); border: 1px solid var(--gold); border-radius: 10px; color: #fff; font-size: 0.88rem; outline: none;">
-                </div>
-            </div>
-            <button class="btn-add premium-btn" id="sendReferralWhatsAppBtn" style="padding: 12px; font-weight: 900; width: 100%;"><i class="fa-brands fa-whatsapp"></i> ENVIAR PRUEBA A WHATSAPP (1,160+ DIAMANTES)</button>
-            <div id="referralResultMsg" style="display: none; margin-top: 10px; font-size: 0.8rem; text-align: center; font-weight: 700;"></div>
+            <a href="https://api.whatsapp.com/send?phone=50672986056&text=Hola,%20recargu%C3%A9%20con%20mi%20amigo,%20aqu%C3%AD%20est%C3%A1%20la%20prueba." target="_blank" class="btn-add premium-btn" style="padding: 14px; font-weight: 900; width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; font-size: 0.85rem;">
+                <i class="fa-brands fa-whatsapp" style="font-size: 1.2rem;"></i> ENVIAR PRUEBA AL WHATSAPP
+            </a>
         </div>
 
         <div class="section-h2" id="catalogTitle"><i class="fa-solid fa-fire" style="color: var(--accent-cyan);"></i> CATÁLOGO OFICIAL & OFERTAS ÉPICAS</div>
@@ -1860,41 +1851,6 @@
                     .then(res => res.json())
                     .then(data => { if(data && data.count) { viewsEl.innerText = data.count.toLocaleString(); localStorage.setItem('gtr_real_views', data.count); }})
                     .catch(e => console.log('AdBlock activo'));
-            }
-
-            // LÓGICA DE REFERIDOS DIRECTO A WHATSAPP (CON REQUISITO 1,160+ DIAMANTES Y PRUEBA)
-            const sendReferralWaBtn = document.getElementById('sendReferralWhatsAppBtn');
-            if(sendReferralWaBtn) {
-                sendReferralWaBtn.addEventListener('click', () => {
-                    const myId = document.getElementById('myFfId').value.trim();
-                    const friendId = document.getElementById('friendFfId').value.trim();
-                    const msgEl = document.getElementById('referralResultMsg');
-
-                    if (myId.length < 7 || friendId.length < 7) {
-                        msgEl.style.display = 'block';
-                        msgEl.style.color = '#ff3333';
-                        msgEl.innerText = '❌ ¡Error! Debes ingresar ambas IDs de Free Fire válidas (mínimo 7 dígitos).';
-                        return;
-                    }
-
-                    if (myId === friendId) {
-                        msgEl.style.display = 'block';
-                        msgEl.style.color = '#ff3333';
-                        msgEl.innerText = '❌ ¡No puedes usar tu misma ID como tu amigo referido!';
-                        return;
-                    }
-
-                    msgEl.style.display = 'block';
-                    msgEl.style.color = 'var(--success)';
-                    msgEl.innerHTML = `<i class="fa-solid fa-circle-check"></i> ¡Redirigiendo a WhatsApp para enviar prueba de recarga (1,160+ diamantes)!`;
-
-                    let waText = `⚡ *VALIDACIÓN DE REFERIDOS GTR (341 DIAMANTES)* ⚡%0A%0A👤 *Mi ID Free Fire:* ${myId}%0A🤝 *ID de mi Amigo (Recargado):* ${friendId}%0A💎 *Condición:* Ambas recargas son de mínimo *1,160 diamantes*.%0A%0A📷 *(Adjunto aquí la prueba de las dos recargas para la validación)*`;
-                    let waUrl = `https://api.whatsapp.com/send?phone=50672986056&text=${waText}`;
-                    
-                    setTimeout(() => {
-                        window.open(waUrl, '_blank');
-                    }, 600);
-                });
             }
 
             document.querySelectorAll('.curr-btn').forEach(btn => {
