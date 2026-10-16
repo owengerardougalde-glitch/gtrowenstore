@@ -2153,12 +2153,26 @@
             } finally {
                 botonCheck.disabled = false;
                 botonCheck.innerText = "CONSULTAR";
-            }
+           const verifyBtn = document.getElementById('btn-garena-check');
+const uidInput = document.getElementById('garena-player-id');
+
+if (verifyBtn && uidInput) {
+    // Vincula el botón para que reaccione al tocarlo con el dedo
+    verifyBtn.addEventListener('click', ejecutarConsultaReal);
+    
+    // Vincula el campo para que también busque al darle Enter en el teclado
+    uidInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            ejecutarConsultaReal();
         }
+    });
+}
+ 
+        
 
     
 
-()
+
     </script>
 </body>
 </html>
