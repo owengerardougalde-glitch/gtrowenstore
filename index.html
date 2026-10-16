@@ -1791,7 +1791,7 @@
     </div>
 
     <script>
-        // Función global para verificar si se debe mostrar la vista previa del perfil social
+        // Función global para verificar si se debe mostrar la tarjeta de perfil social
         function checkDynamicField(url) {
             const previewContainer = document.getElementById('socialProfilePreviewContainer');
             const usernameEl = document.getElementById('previewUsername');
@@ -1957,7 +1957,7 @@
                 const hasFreeFire = cart.some(item => item.inputType === 'ff');
 
                 if (hasSocial) {
-                    labelEl.innerText = 'Enlace del Perfil (Debe estar público) 🔗';
+                    labelEl.innerText = 'Enlace del Perfil (Instagram / TikTok) 🔗';
                     inputEl.placeholder = 'Ej: https://instagram.com/tucuenta';
                 } else {
                     previewContainer.style.display = 'none';
@@ -2098,7 +2098,7 @@
                 }
 
                 let itemsWaText = cart.map(c => `• ${c.title}`).join('%0A');
-                let msg = `⚡ *NUEVO PEDIDO - GTROWEN STORE*%0A%0A👤 *Cliente:* ${name}%0A📱 *Teléfono:* ${phone}%0A🔗 *Detalle/Destino:* ${customVal}%0A💳 *Método de Pago:* ${methodName}%0A🧾 *Referencia:* ${txId}%0A%0A📦 *Productos:*%0A${itemsWaText}%0A💰 *Total:* ${totalText} (${currentCurrency})`;
+                let msg = `⚡ *NUEVO PEDIDO - GTROWEN STORE*%0A%0A👤 *Cliente:* ${name}%0A📱 *Teléfono:* ${phone}%0A🔗 *Detalle/Destino:* ${customVal}%0A💳 *Método de Pago:* ${methodName}%0A🧾 *Referencia:* ${txId}%0A%0A📦 *Productos:*%0A${itemsWaTest}%0A💰 *Total:* ${totalText} (${currentCurrency})`;
 
                 let whatsappUrl = `https://api.whatsapp.com/send?phone=50672986056&text=${msg}`;
                 window.open(whatsappUrl, '_blank');
