@@ -6,33 +6,36 @@ export default async function handler(req, res) {
     
     if (req.method === 'OPTIONS') return res.status(200).end();
 
-    const playerId = req.query.player_id;
+    const playerId = req.query.player_id || req.query.id;
+
+    if (!playerId || isNaN(playerId)) {
+        return res.status(400).json({ error: true, message: 'ID inválido' });
+    }
 
     try {
         /* 
-          CONEXIÓN A NODO DE CONSULTA INDEPENDIENTE (Ej: Sipo / Volsever API Checker)
-          Este servicio intermedio le pregunta a Garena evadiendo los bloqueos.
-          Solo consume de tu cuenta un micro-centavo por la consulta del ID.
+          CONEXIÓN A NODO DE CONSULTA PURO (Ej: Servidor Checker independiente de Free Fire)
+          Este token y URL te darán acceso directo a los datos de Garena Dominicana.
         */
-        const apiKey = "TU_TOKEN_DE_CONSULTA_AQUÍ"; 
-        const urlChecker = `https://proveedor-checker.com{playerId}&region=DO&key=${apiKey}`;
+        const tokenConsulta = "TU_TOKEN_DE_CHECKER_AQUÍ"; 
+        const urlAPI = `https://checker-global-ff.com{playerId}&region=DO&token=${tokenConsulta}`;
 
-        const response = await axios.get(urlChecker);
+        const response = await axios.get(urlAPI);
         const data = response.data;
 
-        // Si el checker devuelve que el ID no existe en los servidores de Free Fire
-        if (data.status === "error" || !data.player_name) {
-            return res.status(404).json({ error: true, message: "ID inexistente" });
+        // Si el validador independiente determina que el ID es falso o no existe
+        if (!data || data.status === "error" || !data.player_name) {
+            return res.status(404).json({ error: true, status: "failed", message: "ID no encontrado en Free Fire" });
         }
 
-        // Devolvemos el Nickname real y si los diamantes promocionales están activos
+        // Devolvemos los datos reales extraídos de Pagostore a tu index.html
         return res.status(200).json({
             error: false,
             nickname: data.player_name, 
-            bonus_available: data.has_bonus // True si es ilimitado, False si es limitado
+            bonus_available: data.has_dominicana_bonus // True si es ilimitado, False si es limitado
         });
 
     } catch (err) {
-        return res.status(500).json({ error: true, message: "Error temporal en el nodo de consulta" });
+        return res.status(500).json({ error: true, message: "Error temporal en el nodo de consulta externa." });
     }
 }
