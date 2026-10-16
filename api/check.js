@@ -18,39 +18,38 @@ export default async function handler(req, res) {
     }
 
     try {
-        // Consulta directa con cabeceras de cliente simulando un navegador real para evitar bloqueos
-        const response = await fetch(`https://api.freefireinfo.tech/gg/info?uid=${playerId}`, {
-            method: 'GET',
-            headers: {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-                'Accept': 'application/json'
-            }
-        });
+        // Usamos una ruta de consulta directa alternativa y estable
+        const apiRes = await fetch(`https://ff.garena.com/api/server/check?app_id=100067&region=US&uid=${playerId}`);
+        const data = await apiRes.json();
 
-        const textResponse = await response.text();
-        let data;
-        
-        try {
-            data = JSON.parse(textResponse);
-        } catch (e) {
-            data = {};
-        }
-
-        const nickname = data.nickname || data.AccountName || data.name || data.player_name;
-
-        if (!response.ok || !nickname) {
-            return res.status(404).json({ 
-                error: true, 
-                status: "failed", 
-                message: "Jugador no encontrado en los registros oficiales." 
+        // Si la pasarela oficial responde con el usuario
+        if (data && data.nickname) {
+            return res.status(200).json({
+                error: false,
+                nickname: data.nickname,
+                bonus_available: true,
+                status: "ilimitado"
             });
         }
 
-        return res.status(200).json({
-            error: false,
-            nickname: nickname,
-            bonus_available: true,
-            status: "ilimitado"
+        // Respaldo de validación por si el servidor oficial exige cabecera de región
+        const backupRes = await fetch(`https://api.freefireinfo.tech/gg/info?uid=${playerId}`);
+        const backupData = await backupRes.json();
+        const realName = backupData.nickname || backupData.AccountName || backupData.name;
+
+        if (realName) {
+            return res.status(200).json({
+                error: false,
+                nickname: realName,
+                bonus_available: true,
+                status: "ilimitado"
+            });
+        }
+
+        return res.status(404).json({ 
+            error: true, 
+            status: "failed", 
+            message: "Jugador no encontrado en los registros de Free Fire." 
         });
 
     } catch (err) {
