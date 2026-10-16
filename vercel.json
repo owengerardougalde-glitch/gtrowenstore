@@ -1,13 +1,10 @@
+
 {
   "version": 2,
   "routes": [
     {
-      "src": "/api/check",
-      "dest": "api/check.js"
-    },
-    {
       "src": "/(.*)",
-      "dest": "index.html"
+      "dest": "/index.html"
     }
   ]
 }
