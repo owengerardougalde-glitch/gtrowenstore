@@ -1828,7 +1828,7 @@
                 }, 8000);
             }
 
-            // SISTEMA DE VERIFICACIÓN REAL CONECTADO A API
+            // SISTEMA DE VERIFICACIÓN REAL CONECTADO A LA API DE VERCEL
             const verifyBtn = document.getElementById('btn-garena-check');
             const uidInput = document.getElementById('garena-player-id');
             const resultBox = document.getElementById('resultado-box');
@@ -1852,8 +1852,8 @@
                 resultBox.innerHTML = `<p style="color: #00f0ff; margin: 0; text-align: center;">Conectando con el servidor oficial... ⏳</p>`;
 
                 try {
-                    // Reemplaza esta ruta por la de tu endpoint real de backend (ej: Vercel /api/verificar-uid?id=...)
-                    const linkProveedorAPI = `/api/verificar-uid?id=${idJugador}`;
+                    // Ruta exacta apuntando al puente en /api/check.js
+                    const linkProveedorAPI = `/api/check?player_id=${idJugador}`;
                     
                     const response = await fetch(linkProveedorAPI);
                     const data = await response.json();
