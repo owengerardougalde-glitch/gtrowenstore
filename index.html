@@ -826,7 +826,7 @@
         <div class="payment-gateway-hero" style="margin-bottom: 25px; border-color: rgba(0, 85, 255, 0.4); background: linear-gradient(135deg, rgba(4, 8, 15, 0.95), rgba(0, 20, 50, 0.8));">
             <div class="gateway-header" style="border-bottom-color: rgba(0, 85, 255, 0.2);">
                 <div class="gateway-title" style="color: #fff; text-shadow: 0 0 10px rgba(0,85,255,0.5);">
-                    <i class="fa-solid fa-satellite-dish" style="color: var(--accent-blue);"></i> VERIFICACIÓN DE ID DE FREE FIRE
+                    <i class="fa-solid fa-satellite-dish" style="color: var(--accent-blue);"></i> VERIFICACIÓN REAL DE ID DE FREE FIRE
                 </div>
                 <div class="gateway-status" style="background: rgba(0, 85, 255, 0.1); border-color: var(--accent-blue); color: #0088ff; box-shadow: 0 0 10px rgba(0,85,255,0.2);">
                     <i class="fa-solid fa-server"></i> Sistema Activo
@@ -834,18 +834,18 @@
             </div>
             
             <p style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 12px; line-height: 1.4;">
-                Ingresa tu ID de Free Fire para consultar el estado real del jugador y verificar la disponibilidad de bonos en el sistema.
+                Consulta el estado de tu cuenta directamente en el sistema para verificar la disponibilidad de bonos y el nombre del jugador.
             </p>
             
             <div style="display: flex; gap: 10px; align-items: stretch;">
-                <input type="number" id="ff-uid-checker" placeholder="Ingresa tu ID (Ej: 301110819)" 
+                <input type="text" id="garena-player-id" placeholder="Ingresa ID de Free Fire" 
                        style="flex: 1; padding: 12px; background: rgba(0,0,0,0.5); border: 1px solid var(--border-glass); border-radius: 10px; color: #fff; font-family: 'Chakra Petch', sans-serif; font-weight: 700; font-size: 0.9rem; outline: none;">
-                <button id="btn-verify-uid" style="background: linear-gradient(135deg, var(--accent-blue), #0033aa); color: #fff; border: 1px solid rgba(0,85,255,0.5); border-radius: 10px; padding: 0 20px; font-family: 'Chakra Petch', sans-serif; font-weight: 900; font-size: 0.85rem; cursor: pointer; text-transform: uppercase; box-shadow: 0 0 15px rgba(0,85,255,0.3); transition: 0.2s;">
+                <button id="btn-garena-check" style="background: linear-gradient(135deg, var(--accent-blue), #0033aa); color: #fff; border: 1px solid rgba(0,85,255,0.5); border-radius: 10px; padding: 0 20px; font-family: 'Chakra Petch', sans-serif; font-weight: 900; font-size: 0.85rem; cursor: pointer; text-transform: uppercase; box-shadow: 0 0 15px rgba(0,85,255,0.3); transition: 0.2s;">
                     Consultar
                 </button>
             </div>
 
-            <div id="verify-result-box" style="display: none; margin-top: 15px; padding: 15px; border-radius: 12px; text-align: center; border: 1px solid transparent; transition: all 0.3s ease;"></div>
+            <div id="resultado-box" style="display: none; margin-top: 15px; padding: 15px; border-radius: 12px; text-align: left; border: 1px solid transparent; transition: all 0.3s ease;"></div>
         </div>
 
         <div class="category-scroll">
@@ -1828,63 +1828,82 @@
                 }, 8000);
             }
 
-            // SISTEMA DE CONSULTA REAL (CONECTADO AL BACKEND)
-            const verifyBtn = document.getElementById('btn-verify-uid');
-            const uidInput = document.getElementById('ff-uid-checker');
-            const resultBox = document.getElementById('verify-result-box');
+            // SISTEMA DE VERIFICACIÓN REAL CONECTADO A API
+            const verifyBtn = document.getElementById('btn-garena-check');
+            const uidInput = document.getElementById('garena-player-id');
+            const resultBox = document.getElementById('resultado-box');
 
-            async function realizarConsultaReal() {
-                const uid = uidInput.value.trim();
+            async function ejecutarConsultaReal() {
+                const idJugador = uidInput.value.trim();
 
-                if (!uid || uid.length < 5) {
-                    alert('Por favor ingresa un ID de Free Fire válido.');
+                if (!idJugador || isNaN(idJugador)) {
+                    resultBox.style.display = "block";
+                    resultBox.style.border = "1px solid #ff4d4d";
+                    resultBox.style.background = "rgba(255, 77, 77, 0.1)";
+                    resultBox.innerHTML = `<p style="color: #ff4d4d; font-weight: bold; margin: 0; text-align: center;">⚠️ Por favor, ingresa un número de ID válido.</p>`;
                     return;
                 }
 
-                resultBox.style.display = 'block';
-                resultBox.style.background = 'rgba(0, 85, 255, 0.08)';
-                resultBox.style.border = '1px solid rgba(0, 85, 255, 0.4)';
-                resultBox.innerHTML = `
-                    <div style="font-size: 0.9rem; color: var(--accent-cyan); font-weight: 700; font-family: 'Chakra Petch', sans-serif;">
-                        <i class="fa-solid fa-spinner fa-spin"></i> Consultando registros oficiales de Garena...
-                    </div>
-                `;
+                verifyBtn.disabled = true;
+                verifyBtn.innerText = "VERIFICANDO...";
+                resultBox.style.display = "block";
+                resultBox.style.border = "1px solid rgba(0, 240, 255, 0.3)";
+                resultBox.style.background = "rgba(0, 240, 255, 0.05)";
+                resultBox.innerHTML = `<p style="color: #00f0ff; margin: 0; text-align: center;">Conectando con el servidor oficial... ⏳</p>`;
 
                 try {
-                    // Realiza la petición al endpoint del backend configurado
-                    const response = await fetch(`/api/verificar-uid?id=${uid}`);
+                    // Reemplaza esta ruta por la de tu endpoint real de backend (ej: Vercel /api/verificar-uid?id=...)
+                    const linkProveedorAPI = `/api/verificar-uid?id=${idJugador}`;
+                    
+                    const response = await fetch(linkProveedorAPI);
                     const data = await response.json();
 
-                    if (!response.ok) {
-                        throw new Error(data.error || 'Error al conectar con los servidores.');
+                    if (!response.ok || data.error || data.status === "failed") {
+                        resultBox.style.border = "1px solid #ff4d4d";
+                        resultBox.style.background = "rgba(255, 77, 77, 0.1)";
+                        resultBox.innerHTML = `
+                            <h4 style="color: #ff4d4d; margin: 0 0 5px 0; font-weight: bold;">❌ ID NO ENCONTRADO</h4>
+                            <p style="color: #ffffff; margin: 0; font-size: 0.95em;">El sistema no pudo validar la información para este ID en los registros.</p>
+                        `;
+                        return;
                     }
 
-                    resultBox.style.background = 'rgba(0, 255, 136, 0.08)';
-                    resultBox.style.border = '1px solid rgba(0, 255, 136, 0.4)';
+                    if (data.bonusDisponible || data.bonus_available || data.status === "ilimitado") {
+                        resultBox.style.border = "1px solid #4dff4d";
+                        resultBox.style.background = "rgba(77, 255, 77, 0.08)";
+                        resultBox.innerHTML = `
+                            <h4 style="color: #4dff4d; margin: 0 0 8px 0; font-weight: bold;">🎯 ID ENCONTRADO: ${idJugador}</h4>
+                            <p style="color: #ffffff; margin: 5px 0;">Jugador / Nick: <b style="color: #00f0ff;">${data.nickname || data.player_name || 'Verificado'}</b></p>
+                            <p style="color: #4dff4d; font-weight: bold; margin: 5px 0 0 0; font-size: 1.05em;">🔥 ESTADO: ILIMITADO. Cuenta apta para recibir bonos en el sistema.</p>
+                        `;
+                    } else {
+                        resultBox.style.border = "1px solid #ffcc00";
+                        resultBox.style.background = "rgba(255, 204, 0, 0.08)";
+                        resultBox.innerHTML = `
+                            <h4 style="color: #ffcc00; margin: 0 0 8px 0; font-weight: bold;">⚠️ ID ENCONTRADO: ${idJugador}</h4>
+                            <p style="color: #ffffff; margin: 5px 0;">Jugador / Nick: <b style="color: #00f0ff;">${data.nickname || data.player_name || 'Verificado'}</b></p>
+                            <p style="color: #ffcc00; font-weight: bold; margin: 5px 0 0 0; font-size: 1.05em;">🚫 ESTADO: LIMITADO. El bono regional ya ha sido consumido.</p>
+                        `;
+                    }
+
+                } catch (error) {
+                    resultBox.style.border = "1px solid #ff4d4d";
+                    resultBox.style.background = "rgba(255, 77, 77, 0.1)";
                     resultBox.innerHTML = `
-                        <div style="font-size: 1rem; color: var(--success); font-weight: 900; font-family: 'Orbitron', sans-serif; margin-bottom: 5px;">
-                            <i class="fa-solid fa-circle-check"></i> JUGADOR: ${data.nickname}
-                        </div>
-                        <div style="font-size: 0.8rem; color: var(--text-main); font-family: 'Chakra Petch', sans-serif;">
-                            Estado de Bonos / Ofertas: <strong>${data.bonusDisponible ? '⚡ Bono Activo Disponible' : 'Estandar'}</strong>
-                        </div>
+                        <h4 style="color: #ff4d4d; margin: 0 0 5px 0; font-weight: bold;">❌ ERROR DE CONEXIÓN</h4>
+                        <p style="color: #ffffff; margin: 0; font-size: 0.95em;">No se pudo procesar la respuesta del servidor. Revisa la ruta de tu API configurada.</p>
                     `;
-                } catch (err) {
-                    resultBox.style.background = 'rgba(255, 51, 51, 0.08)';
-                    resultBox.style.border = '1px solid rgba(255, 51, 51, 0.4)';
-                    resultBox.innerHTML = `
-                        <div style="font-size: 0.9rem; color: #ff3333; font-weight: 900; font-family: 'Chakra Petch', sans-serif;">
-                            <i class="fa-solid fa-triangle-exclamation"></i> ${err.message || 'No se pudo verificar el ID en este momento.'}
-                        </div>
-                    `;
+                } finally {
+                    verifyBtn.disabled = false;
+                    verifyBtn.innerText = "CONSULTAR";
                 }
             }
 
-            if (verifyBtn && uidInput && resultBox) {
-                verifyBtn.addEventListener('click', realizarConsultaReal);
+            if (verifyBtn && uidInput) {
+                verifyBtn.addEventListener('click', ejecutarConsultaReal);
                 uidInput.addEventListener('keypress', (e) => {
                     if (e.key === 'Enter') {
-                        realizarConsultaReal();
+                        ejecutarConsultaReal();
                     }
                 });
             }
