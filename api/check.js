@@ -14,28 +14,29 @@ export default async function handler(req, res) {
 
     try {
         /* 
-          CONEXIÓN A NODO DE CONSULTA PURO (Ej: Servidor Checker independiente de Free Fire)
-          Este token y URL te darán acceso directo a los datos de Garena Dominicana.
+          CONEXIÓN A NODO DE CONSULTA INDEPENDIENTE
+          Aquí debes colocar la URL y el Token de acceso de tu servicio de Checker contratado.
+          Este nodo se encargará de realizar el viaje secreto a Pagostore evadiendo los bloqueos.
         */
-        const tokenConsulta = "TU_TOKEN_DE_CHECKER_AQUÍ"; 
-        const urlAPI = `https://checker-global-ff.com{playerId}&region=DO&token=${tokenConsulta}`;
+        const tokenServicio = "TU_TOKEN_DE_CHECKER_AQUÍ"; 
+        const urlAPI = `https://checker-global-ff.com{playerId}&region=DO&token=${tokenServicio}`;
 
         const response = await axios.get(urlAPI);
         const data = response.data;
 
-        // Si el validador independiente determina que el ID es falso o no existe
+        // Si el checker detecta que el ID ingresado es falso o no se encuentra en Garena
         if (!data || data.status === "error" || !data.player_name) {
             return res.status(404).json({ error: true, status: "failed", message: "ID no encontrado en Free Fire" });
         }
 
-        // Devolvemos los datos reales extraídos de Pagostore a tu index.html
+        // Devolvemos el Nickname real y el estado del bono regional a tu index.html
         return res.status(200).json({
             error: false,
             nickname: data.player_name, 
-            bonus_available: data.has_dominicana_bonus // True si es ilimitado, False si es limitado
+            bonus_available: data.has_dominicana_bonus // True para Ilimitado, False para Limitado
         });
 
     } catch (err) {
-        return res.status(500).json({ error: true, message: "Error temporal en el nodo de consulta externa." });
+        return res.status(500).json({ error: true, message: "Error temporal en el nodo de consulta externo." });
     }
 }
