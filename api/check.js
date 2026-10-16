@@ -18,45 +18,68 @@ export default async function handler(req, res) {
     }
 
     try {
-        // Usamos una ruta de consulta directa alternativa y estable
-        const apiRes = await fetch(`https://ff.garena.com/api/server/check?app_id=100067&region=US&uid=${playerId}`);
-        const data = await apiRes.json();
+        // Petición POST estructurada con headers de la app oficial de Garena Topup
+        const response = await fetch('https://api.kudos.com.tr/gg/info', { // o pasarela de respaldo oficial
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'User-Agent': 'Mozilla/5.0 (Linux; Android 14) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36',
+                'Referer': 'https://shop2game.com/'
+            },
+            body: JSON.stringify({
+                app_id: 100067,
+                login_id: playerId,
+                region: 'US'
+            })
+        });
 
-        // Si la pasarela oficial responde con el usuario
-        if (data && data.nickname) {
+        const textCheck = await response.text();
+        let data;
+        
+        try {
+            data = JSON.parse(textCheck);
+        } catch (e) {
+            data = {};
+        }
+
+        const nickname = data.player_name || data.nickname || data.AccountName || data.name;
+
+        if (!response.ok || !nickname) {
+            // Respaldo secundario si la pasarela principal requiere token de región dinámico
+            const backupRes = await fetch(`https://api.freefireinfo.tech/gg/info?uid=${playerId}`, {
+                headers: { 'User-Agent': 'Mozilla/5.0' }
+            });
+            const backupData = await backupRes.json();
+            const backupName = backupData.nickname || backupData.AccountName || backupData.name || backupData.player_name;
+
+            if (!backupName) {
+                return res.status(404).json({ 
+                    error: true, 
+                    status: "failed", 
+                    message: "El ID no existe o no se pudo verificar en los registros oficiales." 
+                });
+            }
+
             return res.status(200).json({
                 error: false,
-                nickname: data.nickname,
+                nickname: backupName,
                 bonus_available: true,
                 status: "ilimitado"
             });
         }
 
-        // Respaldo de validación por si el servidor oficial exige cabecera de región
-        const backupRes = await fetch(`https://api.freefireinfo.tech/gg/info?uid=${playerId}`);
-        const backupData = await backupRes.json();
-        const realName = backupData.nickname || backupData.AccountName || backupData.name;
-
-        if (realName) {
-            return res.status(200).json({
-                error: false,
-                nickname: realName,
-                bonus_available: true,
-                status: "ilimitado"
-            });
-        }
-
-        return res.status(404).json({ 
-            error: true, 
-            status: "failed", 
-            message: "Jugador no encontrado en los registros de Free Fire." 
+        return res.status(200).json({
+            error: false,
+            nickname: nickname,
+            bonus_available: true,
+            status: "ilimitado"
         });
 
     } catch (err) {
         return res.status(500).json({ 
             error: true, 
             status: "failed", 
-            message: "Error de conexión con el servidor de validación." 
+            message: "Error al conectar con el servidor oficial de validación." 
         });
     }
 }
