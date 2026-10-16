@@ -822,6 +822,32 @@
             </div>
         </div>
 
+        <!-- RADAR DE VERIFICACIÓN DE DIAMANTES CONECTADO A VERCEL -->
+        <div class="payment-gateway-hero" style="margin-bottom: 25px; border-color: rgba(0, 85, 255, 0.4); background: linear-gradient(135deg, rgba(4, 8, 15, 0.95), rgba(0, 20, 50, 0.8));">
+            <div class="gateway-header" style="border-bottom-color: rgba(0, 85, 255, 0.2);">
+                <div class="gateway-title" style="color: #fff; text-shadow: 0 0 10px rgba(0,85,255,0.5);">
+                    <i class="fa-solid fa-satellite-dish" style="color: var(--accent-blue);"></i> RADAR PAGOSTORE RD (VERIFICADOR)
+                </div>
+                <div class="gateway-status" style="background: rgba(0, 85, 255, 0.1); border-color: var(--accent-blue); color: #0088ff; box-shadow: 0 0 10px rgba(0,85,255,0.2);">
+                    <i class="fa-solid fa-server"></i> API Online
+                </div>
+            </div>
+            
+            <p style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 12px; line-height: 1.4;">
+                Ingresa tu UID de Free Fire para consultar en el servidor si tu cuenta clasifica para recargas de diamantes <strong>LIMITADOS</strong> o <strong>ILIMITADOS</strong>.
+            </p>
+            
+            <div style="display: flex; gap: 10px; align-items: stretch;">
+                <input type="number" id="ff-uid-checker" placeholder="Ingresa tu ID (Ej: 301110819)" 
+                       style="flex: 1; padding: 12px; background: rgba(0,0,0,0.5); border: 1px solid var(--border-glass); border-radius: 10px; color: #fff; font-family: 'Chakra Petch', sans-serif; font-weight: 700; font-size: 0.9rem; outline: none;">
+                <button id="btn-verify-uid" style="background: linear-gradient(135deg, var(--accent-blue), #0033aa); color: #fff; border: 1px solid rgba(0,85,255,0.5); border-radius: 10px; padding: 0 20px; font-family: 'Chakra Petch', sans-serif; font-weight: 900; font-size: 0.85rem; cursor: pointer; text-transform: uppercase; box-shadow: 0 0 15px rgba(0,85,255,0.3); transition: 0.2s;">
+                    Verificar
+                </button>
+            </div>
+
+            <div id="verify-result-box" style="display: none; margin-top: 15px; padding: 15px; border-radius: 12px; text-align: center; border: 1px solid transparent; transition: all 0.3s ease;"></div>
+        </div>
+
         <div class="category-scroll">
             <button class="cat-btn active" data-cat="all"><i class="fa-solid fa-border-all"></i> Todo el Catálogo</button>
             <button class="cat-btn" data-cat="social"><i class="fa-solid fa-thumbs-up"></i> Redes Sociales</button>
@@ -1801,6 +1827,69 @@
                     }
                 }, 8000);
             }
+
+            // SISTEMA DE VERIFICACIÓN CONECTADO A TU BACKEND VERCEL
+            document.getElementById('btn-verify-uid').addEventListener('click', async () => {
+                const uidInput = document.getElementById('ff-uid-checker');
+                const uid = uidInput.value.trim();
+                const resultBox = document.getElementById('verify-result-box');
+
+                if (!uid || uid.length < 5) {
+                    alert('Por favor ingresa un ID de Free Fire válido.');
+                    return;
+                }
+
+                resultBox.style.display = 'block';
+                resultBox.style.background = 'rgba(0, 85, 255, 0.05)';
+                resultBox.style.border = '1px dashed var(--accent-blue)';
+                resultBox.innerHTML = `
+                    <div style="color: var(--accent-blue); font-family: 'Chakra Petch', sans-serif; font-weight: 700; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                        <i class="fa-solid fa-spinner fa-spin"></i> Consultando Vercel Server API...
+                    </div>
+                `;
+
+                try {
+                    // Consulta interna hacia tu ruta /api/verificar
+                    const response = await fetch(`/api/verificar?uid=${uid}`);
+                    const data = await response.json();
+
+                    if (data.error) {
+                        throw new Error(data.error);
+                    }
+
+                    if (data.status === "ILIMITADO") {
+                        resultBox.style.background = 'rgba(0, 255, 136, 0.08)';
+                        resultBox.style.border = '1px solid rgba(0, 255, 136, 0.4)';
+                        resultBox.innerHTML = `
+                            <div style="font-size: 1.15rem; color: #00ff88; font-weight: 900; font-family: 'Orbitron', sans-serif; margin-bottom: 5px; text-shadow: 0 0 10px rgba(0,255,136,0.4);">
+                                <i class="fa-solid fa-gem"></i> DIAMANTES ILIMITADOS
+                            </div>
+                            <div style="font-size: 0.8rem; color: var(--text-muted); font-family: 'Chakra Petch', sans-serif;">
+                                La cuenta <strong>${uid}</strong> califica para el catálogo de recargas ILIMITADAS.
+                            </div>
+                        `;
+                    } else {
+                        resultBox.style.background = 'rgba(255, 183, 0, 0.08)';
+                        resultBox.style.border = '1px solid rgba(255, 183, 0, 0.4)';
+                        resultBox.innerHTML = `
+                            <div style="font-size: 1.15rem; color: var(--gold); font-weight: 900; font-family: 'Orbitron', sans-serif; margin-bottom: 5px; text-shadow: 0 0 10px var(--gold-glow);">
+                                <i class="fa-solid fa-triangle-exclamation"></i> DIAMANTES LIMITADOS
+                            </div>
+                            <div style="font-size: 0.8rem; color: var(--text-muted); font-family: 'Chakra Petch', sans-serif;">
+                                La cuenta <strong>${uid}</strong> actualmente tiene restricción. Solo puedes comprar packs LIMITADOS.
+                            </div>
+                        `;
+                    }
+                } catch (err) {
+                    resultBox.style.background = 'rgba(255, 0, 0, 0.08)';
+                    resultBox.style.border = '1px solid rgba(255, 0, 0, 0.4)';
+                    resultBox.innerHTML = `
+                        <div style="color: #ff4444; font-family: 'Chakra Petch', sans-serif; font-size: 0.85rem; font-weight: 700;">
+                            <i class="fa-solid fa-circle-xmark"></i> Error consultando la API en Vercel. Intenta de nuevo.
+                        </div>
+                    `;
+                }
+            });
 
             document.querySelectorAll('.curr-btn').forEach(btn => {
                 btn.addEventListener('click', (e) => {
