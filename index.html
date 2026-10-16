@@ -1821,30 +1821,33 @@
                 });
             });
 
-            document.querySelectorAll('.btn-add').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    const b = e.currentTarget;
-                    const card = b.closest('.product-card');
-                    const inputType = b.getAttribute('data-input-type') || 'ff';
+            // DELEGACIÓN GLOBAL DE CLICS PARA BOTONES AGREGAR (Evita fallos y bloqueos)
+            document.addEventListener('click', (e) => {
+                const addBtn = e.target.closest('.btn-add');
+                if (!addBtn) return;
+                
+                const card = addBtn.closest('.product-card');
+                if (!card) return;
 
-                    cart.push({
-                        title: b.getAttribute('data-title'),
-                        inputType: inputType,
-                        crc: parseFloat(card.getAttribute('data-crc')),
-                        usd: parseFloat(card.getAttribute('data-usd')),
-                        mxn: parseFloat(card.getAttribute('data-mxn')),
-                        cop: parseFloat(card.getAttribute('data-cop')),
-                        ars: parseFloat(card.getAttribute('data-ars')),
-                        pen: parseFloat(card.getAttribute('data-pen')),
-                        dop: parseFloat(card.getAttribute('data-dop')),
-                        bob: parseFloat(card.getAttribute('data-bob') || 0),
-                        gtq: parseFloat(card.getAttribute('data-gtq') || 0),
-                        nio: parseFloat(card.getAttribute('data-nio') || 0),
-                        ves: parseFloat(card.getAttribute('data-ves') || 0)
-                    });
-                    renderCart();
-                    openModal();
+                const inputType = addBtn.getAttribute('data-input-type') || 'ff';
+
+                cart.push({
+                    title: addBtn.getAttribute('data-title'),
+                    inputType: inputType,
+                    crc: parseFloat(card.getAttribute('data-crc')) || 0,
+                    usd: parseFloat(card.getAttribute('data-usd')) || 0,
+                    mxn: parseFloat(card.getAttribute('data-mxn')) || 0,
+                    cop: parseFloat(card.getAttribute('data-cop')) || 0,
+                    ars: parseFloat(card.getAttribute('data-ars')) || 0,
+                    pen: parseFloat(card.getAttribute('data-pen')) || 0,
+                    dop: parseFloat(card.getAttribute('data-dop')) || 0,
+                    bob: parseFloat(card.getAttribute('data-bob') || 0),
+                    gtq: parseFloat(card.getAttribute('data-gtq') || 0),
+                    nio: parseFloat(card.getAttribute('data-nio') || 0),
+                    ves: parseFloat(card.getAttribute('data-ves') || 0)
                 });
+                renderCart();
+                openModal();
             });
 
             const openModal = () => {
