@@ -11,6 +11,7 @@
     
     <style>
         :root {
+            /* PALETA AZUL Y NEGRO ÉLITE */
             --bg-deep: #030509;
             --bg-card: #080d18;
             --bg-card-hover: #0c1528;
@@ -19,13 +20,13 @@
             --accent-blue: #0055ff;
             --accent-blue-glow: rgba(0, 85, 255, 0.4);
             --gold: #ffb700;
-            --gold-glow: rgba(255, 183, 0, 0.4);
+            --gold-glow: rgba(255, 183, 0, 0.3);
             --binance: #f3ba2f;
             --success: #00ff88;
             --text-main: #ffffff;
             --text-muted: #798ba8;
             --border-glass: rgba(0, 240, 255, 0.2);
-            --border-premium: rgba(255, 183, 0, 0.5);
+            --border-premium: rgba(0, 85, 255, 0.5);
         }
 
         * {
@@ -46,8 +47,8 @@
             position: relative;
             overflow-x: hidden;
             background-image: 
-                radial-gradient(circle at 10% 10%, rgba(255, 183, 0, 0.04) 0%, transparent 40%),
-                radial-gradient(circle at 90% 90%, rgba(0, 240, 255, 0.04) 0%, transparent 40%);
+                radial-gradient(circle at 10% 10%, rgba(0, 240, 255, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 90%, rgba(0, 85, 255, 0.05) 0%, transparent 40%);
             background-attachment: fixed;
         }
 
@@ -57,13 +58,13 @@
         }
 
         header {
-            background: rgba(3, 5, 9, 0.95);
+            background: rgba(3, 5, 9, 0.9);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border-glass);
-            padding: 10px 12px;
+            padding: 14px 20px;
             position: sticky;
             top: 0;
-            z-index: 500;
+            z-index: 900;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -74,75 +75,69 @@
         .brand-box {
             display: flex;
             align-items: center;
-            gap: 8px;
-            min-width: max-content;
+            gap: 12px;
         }
 
         .brand-icon {
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, var(--gold), #ff5500);
-            color: #030509;
-            border-radius: 8px;
+            width: 38px;
+            height: 38px;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+            color: #fff;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1rem;
-            box-shadow: 0 0 15px var(--gold-glow);
+            font-size: 1.2rem;
+            box-shadow: 0 0 18px var(--accent-cyan-glow);
         }
 
         .brand-title {
             font-family: 'Orbitron', sans-serif;
             font-weight: 900;
-            font-size: 0.95rem;
+            font-size: 1.15rem;
             color: var(--text-main);
-            letter-spacing: 1px;
+            letter-spacing: 1.2px;
             line-height: 1;
         }
 
-        .brand-title span { color: var(--gold); text-shadow: 0 0 10px var(--gold-glow); }
+        .brand-title span { color: var(--accent-cyan); text-shadow: 0 0 10px var(--accent-cyan-glow); }
 
         .brand-sub {
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.45rem;
+            font-size: 0.55rem;
             color: var(--text-muted);
-            letter-spacing: 1.5px;
-            margin-top: 2px;
+            letter-spacing: 2px;
+            margin-top: 3px;
         }
 
         .header-actions {
             display: flex;
             align-items: center;
-            gap: 6px;
-            flex: 1;
-            justify-content: flex-end;
-            overflow: hidden;
+            gap: 10px;
         }
 
+        /* FIX DE LAS MONEDAS (Para que se vean todas sin cortarse) */
         .currency-switch {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid var(--border-glass);
-            border-radius: 16px;
-            padding: 3px;
+            border-radius: 20px;
+            padding: 4px;
             display: flex;
-            gap: 2px;
+            gap: 4px;
             overflow-x: auto;
-            max-width: 58vw;
-            scrollbar-width: thin;
-            scrollbar-color: var(--accent-cyan) rgba(255,255,255,0.05);
-            -webkit-overflow-scrolling: touch;
+            max-width: calc(100vw - 160px);
+            scrollbar-width: none; /* Firefox */
         }
-        .currency-switch::-webkit-scrollbar { height: 3px; }
-        .currency-switch::-webkit-scrollbar-thumb { background: var(--accent-cyan); border-radius: 10px; }
+        .currency-switch::-webkit-scrollbar { display: none; /* Chrome/Safari */ }
 
         .curr-btn {
             background: none;
             border: none;
             color: var(--text-muted);
-            font-size: 0.65rem;
+            font-size: 0.72rem;
             font-weight: 800;
-            padding: 3px 7px;
-            border-radius: 12px;
+            padding: 4px 10px;
+            border-radius: 16px;
             cursor: pointer;
             white-space: nowrap;
             transition: 0.2s;
@@ -151,35 +146,34 @@
         .curr-btn.active {
             background: var(--accent-cyan);
             color: #030509;
-            box-shadow: 0 0 10px var(--accent-cyan-glow);
+            box-shadow: 0 0 12px var(--accent-cyan-glow);
         }
 
         .header-cart {
             background: rgba(0, 240, 255, 0.08);
             border: 1px solid var(--border-glass);
-            border-radius: 16px;
-            padding: 5px 10px;
+            border-radius: 20px;
+            padding: 6px 14px;
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 8px;
             cursor: pointer;
             color: var(--accent-cyan);
-            font-size: 0.78rem;
+            font-size: 0.85rem;
             font-weight: 700;
             white-space: nowrap;
-            min-width: max-content;
         }
 
         .header-cart-badge {
             background: var(--accent-cyan);
             color: #030509;
-            width: 16px;
-            height: 16px;
+            width: 18px;
+            height: 18px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.68rem;
+            font-size: 0.75rem;
             font-weight: 900;
         }
 
@@ -206,7 +200,7 @@
             content: '';
             position: absolute;
             top: 0; left: 0; width: 5px; height: 100%;
-            background: linear-gradient(to bottom, var(--gold), #ff5500);
+            background: linear-gradient(to bottom, var(--accent-cyan), var(--accent-blue));
         }
 
         .gateway-header {
@@ -228,6 +222,7 @@
             gap: 8px;
         }
 
+        /* CONTADOR DE VISITAS */
         .gateway-status {
             font-family: 'Chakra Petch', sans-serif;
             font-size: 0.72rem;
@@ -482,6 +477,7 @@
             box-shadow: 0 0 15px var(--accent-blue-glow);
         }
 
+        /* BOTONES FLOTANTES */
         .floating-cart-btn {
             position: fixed;
             bottom: 20px;
@@ -498,7 +494,7 @@
             align-items: center;
             gap: 10px;
             box-shadow: 0 10px 30px rgba(0, 240, 255, 0.4);
-            z-index: 400;
+            z-index: 998;
         }
 
         .floating-whatsapp-btn {
@@ -513,7 +509,7 @@
             align-items: center;
             justify-content: center;
             box-shadow: 0 0 25px rgba(37, 211, 102, 0.8);
-            z-index: 400;
+            z-index: 1000;
             text-decoration: none;
             background: url('https://i.postimg.cc/kDQPMdkG/kDQPMdkG.png') no-repeat center center;
             background-size: cover;
@@ -538,7 +534,7 @@
             align-items: center;
             justify-content: center;
             box-shadow: 0 0 15px rgba(18, 140, 126, 0.7);
-            z-index: 400;
+            z-index: 1000;
             text-decoration: none;
             transition: transform 0.2s;
         }
@@ -558,12 +554,13 @@
             font-weight: 900;
         }
 
+        /* MODALES */
         .modal {
             position: fixed;
             inset: 0;
             background: rgba(3, 5, 9, 0.88);
             backdrop-filter: blur(12px);
-            z-index: 1000;
+            z-index: 2000;
             display: none;
             align-items: center;
             justify-content: center;
@@ -582,7 +579,7 @@
             max-height: 85vh;
             overflow-y: auto;
             position: relative;
-            z-index: 1001;
+            z-index: 2001;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9);
         }
 
@@ -688,18 +685,17 @@
         }
 
         #topClientsModal .modal-box {
-            background: linear-gradient(145deg, #050811, #0a0e1c);
+            background: #030509;
             border: 2px solid var(--gold);
             padding: 0;
             display: flex;
             flex-direction: column;
             max-height: 85vh;
-            box-shadow: 0 0 40px rgba(255, 183, 0, 0.25);
         }
 
         #topClientsModal .modal-top {
-            background: rgba(8, 13, 24, 0.98);
-            border-bottom: 2px solid var(--gold);
+            background: rgba(8, 13, 24, 0.95);
+            border-bottom: 1px solid var(--gold);
             padding: 14px 18px;
         }
 
@@ -708,39 +704,33 @@
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            gap: 14px;
-            background: radial-gradient(circle at 50% 0%, rgba(255, 183, 0, 0.08) 0%, transparent 60%);
+            gap: 12px;
+            background: linear-gradient(180deg, #030509 0%, #080d18 100%);
         }
 
         .prime-card {
-            background: linear-gradient(145deg, #0c1222, #060913);
+            background: var(--bg-card);
             border: 1px solid var(--gold);
-            border-radius: 16px;
-            padding: 16px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .prime-card::after {
-            content: '';
-            position: absolute;
-            top: 0; right: 0; width: 60px; height: 60px;
-            background: radial-gradient(circle, rgba(255, 183, 0, 0.2) 0%, transparent 70%);
-            pointer-events: none;
+            border-radius: 14px;
+            padding: 14px;
         }
 
         .prime-card.rank-1 {
             border: 2px solid var(--gold);
-            background: linear-gradient(135deg, rgba(255, 183, 0, 0.18), #0a0e1c);
-            box-shadow: 0 0 25px var(--gold-glow);
+            background: linear-gradient(135deg, rgba(255, 183, 0, 0.15), var(--bg-card));
+            box-shadow: 0 0 30px var(--gold-glow);
         }
 
         .prime-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255, 183, 0, 0.3); padding-bottom: 8px; margin-bottom: 10px; }
-        .prime-rank-badge { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 0.85rem; color: var(--gold); text-shadow: 0 0 8px var(--gold-glow); display: flex; align-items: center; gap: 6px; }
-        .prime-tier { background: linear-gradient(135deg, var(--gold), #ff8800); color: #030509; font-family: 'Chakra Petch', sans-serif; font-weight: 900; font-size: 0.7rem; padding: 3px 10px; border-radius: 8px; box-shadow: 0 0 10px var(--gold-glow); letter-spacing: 1px; }
+        .prime-rank-badge { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 0.82rem; color: var(--gold); }
+        .prime-tier { background: var(--gold); color: #030509; font-family: 'Chakra Petch', sans-serif; font-weight: 900; font-size: 0.68rem; padding: 2px 8px; border-radius: 6px; }
         .prime-player-info { display: flex; justify-content: space-between; align-items: flex-end; }
-        .prime-name { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.15rem; color: #fff; text-transform: uppercase; letter-spacing: 0.5px; }
-        .prime-uid { font-family: 'Chakra Petch', sans-serif; font-size: 0.78rem; color: var(--accent-cyan); font-weight: 700; margin-top: 2px; }
+        .prime-name { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.1rem; color: #fff; text-transform: uppercase; }
+        .prime-uid { font-family: 'Chakra Petch', sans-serif; font-size: 0.78rem; color: var(--accent-cyan); font-weight: 700; }
+        .prime-stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; padding-top: 10px; border-top: 1px dashed rgba(255,255,255,0.08); }
+        .prime-stat-item { background: rgba(0, 0, 0, 0.5); border-radius: 8px; padding: 8px 10px; }
+        .prime-stat-label { font-size: 0.6rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; }
+        .prime-stat-val { font-family: 'Chakra Petch', sans-serif; font-size: 0.98rem; font-weight: 900; color: #00e5ff; }
     </style>
     <script src="//code.tidio.co/gcscrd4peehpejmvje2jrp2vof5cpe3w.js" async></script>
 </head>
@@ -756,6 +746,7 @@
         </div>
 
         <div class="header-actions">
+            <!-- MENÚ DE MONEDAS REPARADO PARA QUE SE VEAN TODAS -->
             <div class="currency-switch">
                 <button class="curr-btn active" data-curr="CRC">CRC</button>
                 <button class="curr-btn" data-curr="USD">USD</button>
@@ -783,6 +774,7 @@
                 <div class="gateway-title">
                     <i class="fa-solid fa-shield-halved" style="color: var(--accent-cyan);"></i> PASARELA DE PAGOS Y FUENTES SEGURAS
                 </div>
+                <!-- CONTADOR DE VISITAS ACTUALIZADO -->
                 <div class="gateway-status">
                     <i class="fa-solid fa-eye"></i> Visitas Totales: <span id="pageViewsCount" style="margin-left: 4px;">24,892</span>
                 </div>
@@ -831,7 +823,7 @@
         <div class="section-h2" id="catalogTitle"><i class="fa-solid fa-fire" style="color: var(--accent-cyan);"></i> CATÁLOGO OFICIAL & OFERTAS ÉPICAS</div>
         <div class="products-grid" id="productsGrid">
 
-            <!-- REDES SOCIALES -->
+            <!-- REDES SOCIALES (CON LOGOS) -->
             <div class="product-card" data-cat="social" 
                  data-crc="1200" data-official-crc="2000" data-usd="2.00" data-official-usd="3.50" data-mxn="37" data-official-mxn="60" data-cop="8300" data-official-cop="14000" data-ars="2500" data-official-ars="4200" data-pen="7.30" data-official-pen="12.00" data-dop="100" data-official-dop="170" data-bob="14" data-official-bob="24" data-gtq="15" data-official-gtq="26" data-nio="73" data-official-nio="125" data-ves="74" data-official-ves="130">
                 <div>
@@ -1239,7 +1231,7 @@
                 </div>
             </div>
 
-            <!-- FF LIMITADOS -->
+            <!-- FF LIMITADOS (OFERTAS AZULES/PREMIUM) -->
             <div class="product-card premium-deal" data-cat="ff-lim" 
                  data-crc="500" data-official-crc="800" data-usd="1.00" data-official-usd="1.70" data-mxn="18" data-official-mxn="30" data-cop="4000" data-official-cop="6500" data-ars="1200" data-official-ars="1900" data-pen="3.50" data-official-pen="6.00" data-dop="60" data-official-dop="95" data-bob="6.8" data-official-bob="11.0" data-gtq="7.7" data-official-gtq="12.5" data-nio="36" data-official-nio="58" data-ves="37" data-official-ves="60">
                 <div>
@@ -1621,11 +1613,12 @@
         </div>
     </div>
 
-    <!-- BOTONES FLOTANTES -->
+    <!-- BOTONES FLOTANTES UBICADOS CORRECTAMENTE -->
     <a href="https://chat.whatsapp.com/Hd6IG8eEVrY5hoYPgHIjk4?s=cl&p=a&mlu=4&ilr=4" class="floating-group-btn" target="_blank" title="Unirte al Grupo de WhatsApp">
         <i class="fa-brands fa-whatsapp" style="font-size: 1.5rem;"></i>
     </a>
 
+    <!-- BOTÓN WHATSAPP CON TU IMAGEN -->
     <a href="https://api.whatsapp.com/send?phone=50672986056&text=Hola,%20tengo%20una%20consulta%20sobre%20la%20tienda%20gtrowen.store" class="floating-whatsapp-btn" target="_blank" title="Soporte por WhatsApp"></a>
 
     <button class="floating-cart-btn" id="openCartFloating">
@@ -1690,7 +1683,7 @@
                     <strong>Datos SINPE Móvil:</strong><br>• Teléfono: <strong>6412 9943</strong><br>• Titular: <strong>OWEN MORALES UGALDE</strong>
                 </div>
                 <div id="cryptomusApiSection" style="display: none; text-align: center; margin-bottom: 15px;">
-                    <button class="btn-proceed" id="payWithCryptomusBtn" style="background: #7a32f4; color: #fff;"><i class="fa-brands fa-bitcoin"></i> PAGAR CON CRYPTOMUS API</button>
+                    <button class="btn-cryptomus-api" id="payWithCryptomusBtn"><i class="fa-brands fa-bitcoin"></i> PAGAR CON CRYPTOMUS API</button>
                 </div>
                 <div id="cryptoPaySection" style="display: none; text-align: center; margin-bottom: 15px; background: rgba(243, 186, 47, 0.05); border: 1px solid var(--binance); border-radius: 12px; padding: 15px;">
                     <div style="font-family: 'Orbitron', sans-serif; font-size: 0.8rem; color: var(--binance); margin-bottom: 10px; font-weight: 700;">⚡ PAGO DIRECTO CON BINANCE PAY ⚡</div>
@@ -1714,26 +1707,62 @@
         </div>
     </div>
 
-    <!-- MODAL CLIENTES TOP -->
+    <!-- MODAL CLIENTES TOP (SALÓN DE LA FAMA ACTUALIZADO) -->
     <div class="modal" id="topClientsModal">
         <div class="modal-box" style="max-width: 440px;">
             <div class="modal-top">
-                <h3 style="color: var(--gold); text-shadow: 0 0 10px var(--gold-glow);"><i class="fa-solid fa-crown" style="color: var(--gold);"></i> SALÓN DE LA FAMA PRIME 8 💎</h3>
+                <h3 style="color: var(--gold);"><i class="fa-solid fa-crown"></i> SALÓN DE LA FAMA PRIME 8</h3>
                 <button class="btn-close" id="closeTopClientsBtn">&times;</button>
             </div>
             <div class="prime-hall-container">
+                <!-- TOP 1: JC (ACTUALIZADO CON +18,400 DIAMANTES) -->
                 <div class="prime-card rank-1">
                     <div class="prime-header">
-                        <span class="prime-rank-badge"><i class="fa-solid fa-fire" style="color: var(--gold);"></i> 🥇 #1 TOP LEYENDA FF</span>
-                        <span class="prime-tier">PRIME 8 MÁX</span>
+                        <span class="prime-rank-badge"><i class="fa-solid fa-medal"></i> 🥇 #1 LEYENDA TIBURÓN</span>
+                        <span class="prime-tier">PRIME 8 VIP</span>
+                    </div>
+                    <div class="prime-player-info">
+                        <div>
+                            <div class="prime-name">J.C.</div>
+                            <div class="prime-uid">UID: 301110819</div>
+                        </div>
+                    </div>
+                    <div class="prime-stats-grid">
+                        <div class="prime-stat-item">
+                            <div class="prime-stat-label">Gasto Histórico</div>
+                            <div class="prime-stat-val" style="color: var(--gold);">$441.50 USD</div>
+                        </div>
+                        <div class="prime-stat-item">
+                            <div class="prime-stat-label">Diamantes & Cajas</div>
+                            <div class="prime-stat-val">80,000 💎</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TOP 2: RICHARD (AGREGADO NUEVO) -->
+                <div class="prime-card" style="border: 1px solid silver;">
+                    <div class="prime-header">
+                        <span class="prime-rank-badge" style="color: silver;"><i class="fa-solid fa-medal"></i> 🥈 #2 MAESTRO ÉLITE</span>
+                        <span class="prime-tier" style="background: silver;">DIAMANTE VIP</span>
                     </div>
                     <div class="prime-player-info">
                         <div>
                             <div class="prime-name">RICHARD</div>
-                            <div class="prime-uid"><i class="fa-solid fa-gem" style="color: var(--accent-cyan);"></i> PACKS 6,160 DIAMANTES</div>
+                            <div class="prime-uid">UID: TOP CLIENTE</div>
+                        </div>
+                    </div>
+                    <div class="prime-stats-grid">
+                        <div class="prime-stat-item">
+                            <div class="prime-stat-label">Gasto Histórico</div>
+                            <div class="prime-stat-val" style="color: silver;">$414.00 USD</div>
+                        </div>
+                        <div class="prime-stat-item">
+                            <div class="prime-stat-label">Diamantes & Cajas</div>
+                            <div class="prime-stat-val">75,000 💎</div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
@@ -1749,11 +1778,19 @@
                 'NIO': 'C$ ', 'VES': 'Bs.S '
             };
 
+            // SIMULADOR DE VISITAS
             let startViews = 24892;
             const viewsEl = document.getElementById('pageViewsCount');
             if (viewsEl) {
+                // Aumenta ligeramente cada vez que se carga
                 startViews += Math.floor(Math.random() * 5);
                 viewsEl.innerText = startViews.toLocaleString();
+                setInterval(() => {
+                    if (Math.random() > 0.7) {
+                        startViews += 1;
+                        viewsEl.innerText = startViews.toLocaleString();
+                    }
+                }, 8000);
             }
 
             document.querySelectorAll('.curr-btn').forEach(btn => {
@@ -1821,33 +1858,29 @@
                 });
             });
 
-            // DELEGACIÓN GLOBAL DE CLICS PARA BOTONES AGREGAR (Evita fallos y bloqueos)
-            document.addEventListener('click', (e) => {
-                const addBtn = e.target.closest('.btn-add');
-                if (!addBtn) return;
-                
-                const card = addBtn.closest('.product-card');
-                if (!card) return;
+            document.querySelectorAll('.btn-add').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const b = e.currentTarget;
+                    const card = b.closest('.product-card');
+                    const inputType = b.getAttribute('data-input-type') || 'ff';
 
-                const inputType = addBtn.getAttribute('data-input-type') || 'ff';
-
-                cart.push({
-                    title: addBtn.getAttribute('data-title'),
-                    inputType: inputType,
-                    crc: parseFloat(card.getAttribute('data-crc')) || 0,
-                    usd: parseFloat(card.getAttribute('data-usd')) || 0,
-                    mxn: parseFloat(card.getAttribute('data-mxn')) || 0,
-                    cop: parseFloat(card.getAttribute('data-cop')) || 0,
-                    ars: parseFloat(card.getAttribute('data-ars')) || 0,
-                    pen: parseFloat(card.getAttribute('data-pen')) || 0,
-                    dop: parseFloat(card.getAttribute('data-dop')) || 0,
-                    bob: parseFloat(card.getAttribute('data-bob') || 0),
-                    gtq: parseFloat(card.getAttribute('data-gtq') || 0),
-                    nio: parseFloat(card.getAttribute('data-nio') || 0),
-                    ves: parseFloat(card.getAttribute('data-ves') || 0)
+                    cart.push({
+                        title: b.getAttribute('data-title'),
+                        inputType: inputType,
+                        crc: parseFloat(card.getAttribute('data-crc')),
+                        usd: parseFloat(card.getAttribute('data-usd')),
+                        mxn: parseFloat(card.getAttribute('data-mxn')),
+                        cop: parseFloat(card.getAttribute('data-cop')),
+                        ars: parseFloat(card.getAttribute('data-ars')),
+                        pen: parseFloat(card.getAttribute('data-pen')),
+                        dop: parseFloat(card.getAttribute('data-dop')),
+                        bob: parseFloat(card.getAttribute('data-bob') || 0),
+                        gtq: parseFloat(card.getAttribute('data-gtq') || 0),
+                        nio: parseFloat(card.getAttribute('data-nio') || 0),
+                        ves: parseFloat(card.getAttribute('data-ves') || 0)
+                    });
+                    renderCart();
                 });
-                renderCart();
-                openModal();
             });
 
             const openModal = () => {
@@ -1882,13 +1915,13 @@
                 const hasFreeFire = cart.some(item => item.inputType === 'ff');
 
                 if (hasSocial) {
-                    labelEl.innerText = 'Enlace del Perfil (Público) 🔗';
+                    labelEl.innerText = 'Enlace del Perfil (Debe estar público) 🔗';
                     inputEl.placeholder = 'Ej: https://instagram.com/tucuenta';
                 } else if (hasBloodStrike) {
                     labelEl.innerText = 'ID de Jugador (Blood Strike)';
                     inputEl.placeholder = 'Ej: 50819301';
                 } else if (hasStreaming) {
-                    labelEl.innerText = 'Correo o Detalle para la cuenta ✉️';
+                    labelEl.innerText = 'Correo o Detalle para la cuenta de Streaming ✉️';
                     inputEl.placeholder = 'Ej: tucorreo@gmail.com';
                 } else if (hasFreeFire) {
                     labelEl.innerText = 'ID de Jugador (Free Fire)';
@@ -1982,7 +2015,7 @@
                     `;
                     const delBtn = document.createElement('button');
                     delBtn.innerHTML = '<i class="fa-solid fa-trash"></i>';
-                    delBtn.style.cssText = 'background:none; border:none; color:#ff3333; font-size:1.1rem; cursor:pointer; padding: 4px 8px;';
+                    delBtn.style.cssText = 'background:none; border:none; color:#ff3333; font-size:1.1rem; cursor:pointer; padding: 4px 8px; transition: 0.2s;';
                     delBtn.addEventListener('click', () => {
                         cart.splice(i, 1);
                         renderCart();
@@ -1996,13 +2029,16 @@
             }
 
             document.getElementById('sendWaBtn').addEventListener('click', () => {
-                const name = document.getElementById('pName').value.trim();
+                const nameInput = document.getElementById('pName');
+                const name = nameInput.value.trim();
                 if (!name) { alert('Por favor ingresa tu nombre'); return; }
 
-                const phone = document.getElementById('pPhone').value.trim();
+                const phoneInput = document.getElementById('pPhone');
+                const phone = phoneInput.value.trim();
                 if (!phone) { alert('Por favor ingresa tu número de teléfono'); return; }
 
-                const customVal = document.getElementById('pCustomField').value.trim();
+                const customInput = document.getElementById('pCustomField');
+                const customVal = customInput.value.trim();
                 if (!customVal) { alert('Por favor completa el campo requerido'); return; }
 
                 const methodSelect = document.getElementById('pMethod');
@@ -2010,17 +2046,19 @@
                 let totalText = document.getElementById('cTotal').innerText;
 
                 let txId = 'N/A';
+                const txInput = document.getElementById('pTxId');
                 if (methodSelect.value !== 'CRYPTOMUS') {
-                    txId = document.getElementById('pTxId').value.trim();
+                    txId = txInput.value.trim();
                     if (!txId) { alert('Por favor ingresa el número de comprobante o referencia de pago'); return; }
                 }
 
                 let itemsWaText = cart.map(c => `• ${c.title}`).join('%0A');
                 let msg = `⚡ *NUEVO PEDIDO - GTROWEN STORE*%0A%0A👤 *Cliente:* ${name}%0A📱 *Teléfono:* ${phone}%0A🔗 *Detalle/Destino:* ${customVal}%0A💳 *Método de Pago:* ${methodName}%0A🧾 *Referencia:* ${txId}%0A%0A📦 *Productos:*%0A${itemsWaText}%0A💰 *Total:* ${totalText} (${currentCurrency})`;
 
-                window.open(`https://api.whatsapp.com/send?phone=50672986056&text=${msg}`, '_blank');
+                let whatsappUrl = `https://api.whatsapp.com/send?phone=50672986056&text=${msg}`;
+                window.open(whatsappUrl, '_blank');
             });
         });
     </script>
 </body>
-</html>
+                </html>
