@@ -18,27 +18,31 @@ export default async function handler(req, res) {
     }
 
     try {
-        // Usamos un servicio de consulta pública estable para extraer los datos reales del jugador
+        // Consulta directa con cabeceras de cliente simulando un navegador real para evitar bloqueos
         const response = await fetch(`https://api.freefireinfo.tech/gg/info?uid=${playerId}`, {
+            method: 'GET',
             headers: {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                'Accept': 'application/json'
             }
         });
 
-        if (!response.ok) {
-            throw new Error('Error al conectar con el servidor de consulta');
+        const textResponse = await response.text();
+        let data;
+        
+        try {
+            data = JSON.parse(textResponse);
+        } catch (e) {
+            data = {};
         }
 
-        const data = await response.json();
-
-        // Verificamos si la API devolvió el nombre de la cuenta real
         const nickname = data.nickname || data.AccountName || data.name || data.player_name;
 
-        if (!nickname) {
+        if (!response.ok || !nickname) {
             return res.status(404).json({ 
                 error: true, 
                 status: "failed", 
-                message: "El ID no existe o no se pudo verificar en los registros de Free Fire" 
+                message: "Jugador no encontrado en los registros oficiales." 
             });
         }
 
@@ -53,7 +57,7 @@ export default async function handler(req, res) {
         return res.status(500).json({ 
             error: true, 
             status: "failed", 
-            message: "Error al procesar la consulta con el servidor oficial" 
+            message: "Error de conexión con el servidor de validación." 
         });
     }
 }
