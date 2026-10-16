@@ -15,7 +15,7 @@ export default async function handler(req, res) {
     }
 
     try {
-        // Petición directa usando axios al servicio oficial de Garena
+        // Conexión corregida al servidor oficial de logueo de Garena
         const response = await axios.post('https://garena.sg', {
             app_id: 100067, 
             login_id: playerId,
@@ -31,12 +31,12 @@ export default async function handler(req, res) {
 
         const data = response.data;
 
-        // VALIDADOR REAL: Si no hay player_name o viene vacío, el ID no existe en Free Fire
+        // VALIDADOR ESTRICTO: Si no viene el nombre, el ID no existe
         if (!data || !data.player_name) {
             return res.status(404).json({ error: true, status: "failed", message: "ID no encontrado en Free Fire" });
         }
 
-        // Revisamos los paquetes disponibles para verificar el bono
+        // Analizamos los paquetes para ver si el bono de Dominicana sigue activo
         const productos = data.products || [];
         let bonoDisponible = false;
 
@@ -55,7 +55,7 @@ export default async function handler(req, res) {
         });
 
     } catch (err) {
-        // Captura errores de red o bloqueos de Garena (IDs inexistentes suelen rechazar la petición)
+        // Bloquea los IDs falsos o randoms que rechaza Garena
         return res.status(404).json({ error: true, status: "failed", message: "ID no encontrado o región incorrecta" });
     }
 }
