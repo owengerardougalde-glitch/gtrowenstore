@@ -41,7 +41,7 @@ export default async function handler(req, res) {
             status: "success"
         });
 
-    } catchn (error) {
+    } catch (error) {
         return res.status(500).json({ error: true, message: "Falla de comunicación en el servidor" });
     }
 }
