@@ -2119,7 +2119,7 @@
             cajaResultado.innerHTML = `<p style="color: #00f0ff; margin: 0; text-align: center;">Consultando servidores oficiales de Garena... ⏳</p>`;
 
             try {
-                // Ruta absoluta limpia hacia tu backend serverless desplegado en Vercel
+                // URL absoluta apuntando a tu backend serverless desplegado en Vercel
                 const linkProveedorAPI = `https://gtrowenstore-bcg3.vercel.app/api/check?player_id=${idJugador}`;
                 
                 const response = await fetch(linkProveedorAPI);
