@@ -855,7 +855,7 @@
             <button class="cat-btn" data-cat="bs"><i class="fa-solid fa-coins"></i> Blood Strike Oro</button>
         </div>
 
-        <!-- CUADRO DE REFERIDOS Y 341 DIAMANTES GRATIS -->
+        <!-- CUADRO DE REFERIDOS Y 341 DIAMANTES GRATIS (WHATSAPP + REQUISITO 1160 DIAMANTES) -->
         <div id="ffHomeValidatorBox" class="ff-home-validator active-box">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1px solid rgba(255,183,0,0.3); padding-bottom: 8px;">
                 <div style="font-family: 'Orbitron', sans-serif; font-size: 0.88rem; color: var(--gold); font-weight: 900; display: flex; align-items: center; gap: 8px;">
@@ -866,7 +866,7 @@
                 </div>
             </div>
             <div style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 14px; line-height: 1.4;">
-                ¡Invita a un amigo a recargar en la tienda! Introduce tu ID de Free Fire y la ID de tu amigo que también haya hecho una recarga para reclamar tus <strong>341 diamantes completamente gratis</strong>.
+                ¡Invita a un amigo a recargar! Introduce tu ID de Free Fire y la ID de tu amigo. <strong>Requisito mínimo:</strong> Ambas recargas deben ser de al menos <strong>1,160 diamantes</strong>. Envía tu prueba directo a WhatsApp para reclamar.
             </div>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px;">
                 <div class="input-box" style="margin-bottom: 0;">
@@ -878,7 +878,7 @@
                     <input type="text" id="friendFfId" placeholder="Ej: 301110819" style="width: 100%; padding: 11px 14px; background: rgba(0,0,0,0.5); border: 1px solid var(--gold); border-radius: 10px; color: #fff; font-size: 0.88rem; outline: none;">
                 </div>
             </div>
-            <button class="btn-add premium-btn" id="claimReferralBtn" style="padding: 12px; font-weight: 900; width: 100%;"><i class="fa-solid fa-circle-check"></i> CANJEAR 341 DIAMANTES GRATIS</button>
+            <button class="btn-add premium-btn" id="claimReferralBtn" style="padding: 12px; font-weight: 900; width: 100%;"><i class="fa-brands fa-whatsapp"></i> RECLAMAR 341 DIAMANTES POR WHATSAPP</button>
             <div id="referralResultMsg" style="display: none; margin-top: 10px; font-size: 0.8rem; text-align: center; font-weight: 700;"></div>
         </div>
 
@@ -1862,7 +1862,7 @@
                     .catch(e => console.log('AdBlock activo'));
             }
 
-            // LÓGICA DE CANJE DE REFERIDOS (341 DIAMANTES GRATIS)
+            // LÓGICA DE CANJE DE REFERIDOS (ABRE WHATSAPP CON REQUISITO 1,160 DIAMANTES)
             const claimBtn = document.getElementById('claimReferralBtn');
             if(claimBtn) {
                 claimBtn.addEventListener('click', () => {
@@ -1886,7 +1886,14 @@
 
                     msgEl.style.display = 'block';
                     msgEl.style.color = 'var(--success)';
-                    msgEl.innerHTML = `<i class="fa-solid fa-circle-check"></i> ¡Canje exitoso! Solicitud de 341 diamantes enviada para la ID <strong>${myId}</strong> (Ref: ${friendId}). ¡Soporte validará tu recarga conjunta en breve!`;
+                    msgEl.innerHTML = `<i class="fa-solid fa-circle-check"></i> ¡Redirigiendo a WhatsApp para validar tus recargas de 1,160+ diamantes!`;
+
+                    let waText = `⚡ *RECLAMO DE 341 DIAMANTES GRATIS (REFERIDOS GTR)* ⚡%0A%0A👤 *Mi ID de Free Fire:* ${myId}%0A🤝 *ID de mi Amigo (Referido):* ${friendId}%0A💎 *Condición:* Ambas recargas son de mínimo 1,160 diamantes.%0A%0A📷 *(Adjunto aquí la prueba de las dos recargas para la validación)*`;
+                    let waUrl = `https://api.whatsapp.com/send?phone=50672986056&text=${waText}`;
+                    
+                    setTimeout(() => {
+                        window.open(waUrl, '_blank');
+                    }, 800);
                 });
             }
 
