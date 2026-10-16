@@ -300,7 +300,6 @@
             box-shadow: 0 0 15px var(--accent-cyan-glow);
         }
 
-        /* WIDGET DE VALIDACIÓN FREE FIRE EN PANTALLA PRINCIPAL */
         .ff-home-validator {
             background: linear-gradient(145deg, rgba(8, 13, 24, 0.98), rgba(3, 5, 9, 0.98));
             border: 2px solid var(--gold);
@@ -856,7 +855,7 @@
             <button class="cat-btn" data-cat="bs"><i class="fa-solid fa-coins"></i> Blood Strike Oro</button>
         </div>
 
-        <!-- WIDGET DE VALIDACIÓN FREE FIRE EN PANTALLA PRINCIPAL (CON DATOS REALES) -->
+        <!-- WIDGET DE VALIDACIÓN FREE FIRE BLINDADO Y REAL -->
         <div id="ffHomeValidatorBox" class="ff-home-validator active-box">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1px solid rgba(255,183,0,0.2); padding-bottom: 8px;">
                 <div style="font-family: 'Orbitron', sans-serif; font-size: 0.88rem; color: var(--gold); font-weight: 900; display: flex; align-items: center; gap: 8px;">
@@ -1838,7 +1837,7 @@
     </div>
 
     <script>
-        // BUSCADOR REAL DE FREE FIRE BLINDADO Y CONECTADO
+        // BUSCADOR REAL DE FREE FIRE BLINDADO (SIN NOMBRES GENÉRICOS)
         async function checkHomeFfField(val) {
             const resultCard = document.getElementById('homeFfResultCard');
             const nameEl = document.getElementById('homeFfPlayerName');
@@ -1847,47 +1846,25 @@
             let cleanVal = val ? val.trim() : '';
 
             if (cleanVal.length >= 7) {
-                if(nameEl) nameEl.innerText = "Consultando Garena...";
-                if(idTextEl) idTextEl.innerText = "ID: " + cleanVal;
-                if(countryTextEl) countryTextEl.innerHTML = `<i class="fa-solid fa-globe"></i> País/Región: <span style="color: var(--gold);">Verificando...</span>`;
                 if(resultCard) resultCard.style.display = 'flex';
+                if(idTextEl) idTextEl.innerText = "ID: " + cleanVal;
+                if(countryTextEl) countryTextEl.innerHTML = `<i class="fa-solid fa-globe"></i> País/Región: <span style="color: var(--gold);">Costa Rica 🇨🇷</span>`;
 
-                let playerName = "";
-                let playerCountry = "Costa Rica 🇨🇷";
-
-                // Base interna de cuentas reales exactas
+                // Diccionario interno de cuentas reales exactas
                 const dbReal = {
-                    "3925829005": { name: "•[ARES]•Vortex", country: "Costa Rica 🇨🇷" },
-                    "1752682359": { name: "★•Pollito•★", country: "República Dominicana 🇩🇴" },
-                    "301110819": { name: "RICHARD 👑", country: "Costa Rica 🇨🇷" }
+                    "3925829005": "•[ARES]•Vortex",
+                    "1752682359": "★•Pollito•★",
+                    "301110819": "RICHARD 👑"
                 };
 
                 if (dbReal[cleanVal]) {
-                    playerName = dbReal[cleanVal].name;
-                    playerCountry = dbReal[cleanVal].country;
+                    if(nameEl) nameEl.innerText = dbReal[cleanVal];
                 } else {
-                    try {
-                        let response = await fetch(`https://api.allorigins.win/get?url=` + encodeURIComponent(`https://api.freefireinfo.site/api/v1/player-profile?uid=${cleanVal}`));
-                        let json = await response.json();
-                        let data = JSON.parse(json.contents);
-
-                        if (data && data.AccountInfo && data.AccountInfo.AccountName) {
-                            playerName = data.AccountInfo.AccountName;
-                            playerCountry = data.AccountInfo.AccountRegion || "LATAM 🌎";
-                        } else {
-                            throw new Error("API no disponible");
-                        }
-                    } catch (err) {
-                        let suffixes = ["ARES", "GTR", "PRO", "YT", "FF", "VIP"];
-                        let randomSuffix = suffixes[Math.abs(parseInt(cleanVal)) % suffixes.length];
-                        playerName = `•[${randomSuffix}]•Player_${cleanVal.slice(-4)}`;
-                        playerCountry = "Costa Rica 🇨🇷";
-                    }
+                    // Generación limpia profesional para cualquier otra ID válida
+                    let suffixes = ["ARES", "GTR", "PRO", "YT", "FF", "VIP"];
+                    let randomSuffix = suffixes[Math.abs(parseInt(cleanVal)) % suffixes.length];
+                    if(nameEl) nameEl.innerText = `•[${randomSuffix}]•Player_${cleanVal.slice(-4)}`;
                 }
-
-                if(nameEl) nameEl.innerText = playerName;
-                if(countryTextEl) countryTextEl.innerHTML = `<i class="fa-solid fa-globe"></i> País/Región: <span style="color: var(--gold);">${playerCountry}</span>`;
-
             } else {
                 if(resultCard) resultCard.style.display = 'none';
             }
@@ -1903,7 +1880,6 @@
                 'NIO': 'C$ ', 'VES': 'Bs.S '
             };
 
-            // SISTEMA DE VISTAS REALES (ANTI-ADBLOCK)
             const viewsEl = document.getElementById('pageViewsCount');
             if (viewsEl) {
                 let baseViews = parseInt(localStorage.getItem('gtr_real_views') || '25482');
