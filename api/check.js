@@ -18,17 +18,16 @@ export default async function handler(req, res) {
     }
 
     try {
-        // Usamos un endpoint proxy de alta disponibilidad optimizado para consultas reales
         const response = await fetch(`https://api.freefireinfo.tech/gg/info?uid=${playerId}`, {
             method: 'GET',
             headers: {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
+                'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148',
                 'Accept': 'application/json'
             }
         });
 
         if (!response.ok) {
-            return res.status(404).json({ error: true, status: "failed", message: "ID no encontrado en los registros de Free Fire." });
+            return res.status(404).json({ error: true, status: "failed", message: "Jugador no encontrado en los registros de Free Fire." });
         }
 
         const data = await response.json();
