@@ -1,17 +1,13 @@
-
-import axios from 'axios';
-
 export default async function handler(req, res) {
-    // 🔥 PERMISOS DE RED (CORS) - Esto evita de raíz el Error de Conexión
+    // 🔥 PERMISOS DE RED (CORS)
     res.setHeader('Access-Control-Allow-Credentials', true);
-    res.setHeader('Access-Control-Allow-Origin', '*'); // Permite que gtrowen.store lea los datos sin bloqueos
+    res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
     res.setHeader(
         'Access-Control-Allow-Headers',
         'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
     );
     
-    // Si el navegador hace una petición de control previa (Preflight), respondemos exitoso de una vez
     if (req.method === 'OPTIONS') {
         return res.status(200).end();
     }
@@ -23,28 +19,27 @@ export default async function handler(req, res) {
     }
 
     try {
-        // Petición directa usando axios al servidor oficial de logueo de Garena
-        const response = await axios.post('https://garena.sg', {
-            app_id: 100067, 
-            login_id: playerId,
-            region: 'DO',   
-            lang: 'es'
-        }, {
+        // Usamos fetch nativo de Node.js (cero dependencias externas que fallen en Vercel)
+        const response = await fetch('https://garena.sg', {
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
             },
-            timeout: 5000 
+            body: JSON.stringify({
+                app_id: 100067, 
+                login_id: playerId,
+                region: 'DO',   
+                lang: 'es'
+            })
         });
 
-        const data = response.data;
+        const data = await response.json();
 
-        // Si no hay player_name, el ID no existe en Free Fire
         if (!data || !data.player_name) {
             return res.status(404).json({ error: true, status: "failed", message: "ID no encontrado en Free Fire" });
         }
 
-        // Revisamos los paquetes disponibles para verificar el bono de Dominicana
         const productos = data.products || [];
         let bonoDisponible = false;
 
@@ -63,7 +58,6 @@ export default async function handler(req, res) {
         });
 
     } catch (err) {
-        // Bloquea los IDs falsos que rechaza el servidor de Garena
         return res.status(404).json({ error: true, status: "failed", message: "ID no encontrado o error en los servidores de Garena" });
     }
 }
