@@ -15,40 +15,38 @@ export default async function handler(req, res) {
     }
 
     try {
-        // Consultamos DIRECTO al servidor oficial de Garena forzando República Dominicana
+        // Petición directa usando axios al servicio oficial de Garena
         const response = await axios.post('https://garena.sg', {
-            app_id: 100067, // Free Fire
+            app_id: 100067, 
             login_id: playerId,
-            region: 'DO',   // Forzamos la región de República Dominicana
+            region: 'DO',   
             lang: 'es'
         }, {
             headers: {
                 'Content-Type': 'application/json',
                 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
             },
-            timeout: 4000 // Si tarda más de 4 segundos, cancela
+            timeout: 4000 
         });
 
         const data = response.data;
 
-        // VALIDADOR REAL: Si Garena NO devuelve el "player_name", el ID NO existe
+        // VALIDADOR REAL: Si no hay player_name o viene vacío, el ID no existe en Free Fire
         if (!data || !data.player_name) {
             return res.status(404).json({ error: true, status: "failed", message: "ID no encontrado en Free Fire" });
         }
 
-        // Si el ID existe, revisamos sus paquetes para ver si el bono está activo
+        // Revisamos los paquetes disponibles para verificar el bono
         const productos = data.products || [];
         let bonoDisponible = false;
 
         for (let item of productos) {
-            // Evaluamos si tiene una promoción activa y le quedan usos disponibles
             if (item.promo_id && item.remaining_limit > 0) {
                 bonoDisponible = true;
                 break;
             }
         }
 
-        // Devolvemos la respuesta real a tu index.html
         return res.status(200).json({
             error: false,
             nickname: data.player_name,
@@ -57,7 +55,7 @@ export default async function handler(req, res) {
         });
 
     } catch (err) {
-        // Si el servidor de Garena tira error (casi siempre un 400 o 404 cuando el ID no existe)
+        // Captura errores de red o bloqueos de Garena (IDs inexistentes suelen rechazar la petición)
         return res.status(404).json({ error: true, status: "failed", message: "ID no encontrado o región incorrecta" });
     }
 }
