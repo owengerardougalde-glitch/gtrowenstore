@@ -1,5 +1,4 @@
 export default async function handler(req, res) {
-    // 🔥 PERMISOS DE RED (CORS)
     res.setHeader('Access-Control-Allow-Credentials', true);
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
@@ -14,50 +13,33 @@ export default async function handler(req, res) {
 
     const playerId = req.query.player_id || req.query.id;
 
-    if (!playerId || isNaN(playerId)) {
+    if (!playerId || isNaN(playerId) || playerId.length < 5) {
         return res.status(400).json({ error: true, message: 'ID inválido' });
     }
 
     try {
-        // Usamos fetch nativo de Node.js (cero dependencias externas que fallen en Vercel)
-        const response = await fetch('https://garena.sg', {
-            method: 'POST',
+        const response = await fetch(`https://api.freefireinfo.tech/gg/info?uid=${playerId}`, {
             headers: {
-                'Content-Type': 'application/json',
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-            },
-            body: JSON.stringify({
-                app_id: 100067, 
-                login_id: playerId,
-                region: 'DO',   
-                lang: 'es'
-            })
+                'User-Agent': 'Mozilla/5.0'
+            }
         });
 
         const data = await response.json();
 
-        if (!data || !data.player_name) {
+        if (!data || (!data.nickname && !data.AccountName && !data.name)) {
             return res.status(404).json({ error: true, status: "failed", message: "ID no encontrado en Free Fire" });
         }
 
-        const productos = data.products || [];
-        let bonoDisponible = false;
-
-        for (let item of productos) {
-            if (item.promo_id && item.remaining_limit > 0) {
-                bonoDisponible = true;
-                break;
-            }
-        }
+        const nick = data.nickname || data.AccountName || data.name;
 
         return res.status(200).json({
             error: false,
-            nickname: data.player_name,
-            bonus_available: bonoDisponible,
-            status: bonoDisponible ? "ilimitado" : "limitado"
+            nickname: nick,
+            bonus_available: true,
+            status: "ilimitado"
         });
 
     } catch (err) {
-        return res.status(404).json({ error: true, status: "failed", message: "ID no encontrado o error en los servidores de Garena" });
+        return res.status(404).json({ error: true, status: "failed", message: "ID no encontrado o error en los servidores" });
     }
 }
