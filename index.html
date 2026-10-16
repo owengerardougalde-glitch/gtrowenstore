@@ -300,51 +300,6 @@
             box-shadow: 0 0 15px var(--accent-cyan-glow);
         }
 
-        .ff-home-validator {
-            background: linear-gradient(145deg, rgba(8, 13, 24, 0.98), rgba(3, 5, 9, 0.98));
-            border: 2px solid var(--gold);
-            border-radius: 18px;
-            padding: 18px;
-            margin-bottom: 22px;
-            box-shadow: 0 0 30px rgba(255, 183, 0, 0.15);
-            display: none;
-        }
-
-        .ff-home-validator.active-box {
-            display: block;
-        }
-
-        .validator-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 14px;
-        }
-
-        @media(max-width: 500px) {
-            .validator-grid { grid-template-columns: 1fr; }
-        }
-
-        .validator-input-box label {
-            display: block;
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            margin-bottom: 5px;
-            font-weight: 700;
-        }
-
-        .validator-input-box input {
-            width: 100%;
-            padding: 11px 14px;
-            background: rgba(3, 5, 9, 0.9);
-            border: 1px solid rgba(255, 183, 0, 0.4);
-            border-radius: 10px;
-            color: #fff;
-            font-size: 0.88rem;
-            font-family: 'Chakra Petch', sans-serif;
-            outline: none;
-        }
-
         .category-scroll {
             display: flex;
             gap: 10px;
@@ -886,36 +841,6 @@
             <button class="cat-btn" data-cat="bs"><i class="fa-solid fa-coins"></i> Blood Strike Oro</button>
         </div>
 
-        <!-- CUADRO DE REFERIDOS 341 DIAMANTES GRATIS (CON CAMPOS DE ID Y WHATSAPP) -->
-        <div id="ffHomeValidatorBox" class="ff-home-validator active-box">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1px solid rgba(255,183,0,0.3); padding-bottom: 8px;">
-                <div style="font-family: 'Orbitron', sans-serif; font-size: 0.88rem; color: var(--gold); font-weight: 900; display: flex; align-items: center; gap: 8px;">
-                    <i class="fa-solid fa-gift"></i> CANJEA 341 DIAMANTES GRATIS (REFERIDOS GTR)
-                </div>
-                <div style="font-size: 0.7rem; color: var(--success); font-family: 'Chakra Petch', sans-serif; font-weight: 700;">
-                    EVENTO ACTIVO ⚡
-                </div>
-            </div>
-            <div style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 14px; line-height: 1.5;">
-                ¡Invita a un amigo a recargar en la tienda! Introduce tu ID de Free Fire y la ID de tu amigo que también haya hecho una recarga para reclamar tus <strong>341 diamantes completamente gratis</strong>.
-            </div>
-            
-            <div class="validator-grid">
-                <div class="validator-input-box">
-                    <label>Tu ID de Free Fire</label>
-                    <input type="text" id="myFreeFireId" placeholder="Ej: 3925829005">
-                </div>
-                <div class="validator-input-box">
-                    <label>ID de tu Amigo (Recargado)</label>
-                    <input type="text" id="friendFreeFireId" placeholder="Ej: 301110819">
-                </div>
-            </div>
-
-            <button class="btn-add premium-btn" id="claimReferralBtn" style="padding: 13px; font-weight: 900; width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.85rem; cursor: pointer;">
-                <i class="fa-solid fa-circle-check"></i> CANJEAR 341 DIAMANTES GRATIS
-            </button>
-        </div>
-
         <div class="section-h2" id="catalogTitle"><i class="fa-solid fa-fire" style="color: var(--accent-cyan);"></i> CATÁLOGO OFICIAL & OFERTAS ÉPICAS</div>
         <div class="products-grid" id="productsGrid">
 
@@ -1340,21 +1265,6 @@
                         <div class="savings-box"><span class="savings-official official-tag">Tienda Oficial: ₡800</span><span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡300 (37%)!</span></div>
                     </div>
                     <button class="btn-add premium-btn" data-input-type="ff" data-title="110 Diamantes FF (Limitado)">Comprar Oferta</button>
-                </div>
-            </div>
-
-            <div class="product-card premium-deal" data-cat="ff-lim" 
-                 data-crc="1000" data-official-crc="1600" data-usd="2.00" data-official-usd="3.40" data-mxn="35" data-official-mxn="60" data-cop="8000" data-official-cop="13000" data-ars="2400" data-official-ars="3800" data-pen="7.00" data-official-pen="12.00" data-dop="120" data-official-dop="190" data-bob="13.7" data-official-bob="22.0" data-gtq="15.4" data-official-gtq="25.0" data-nio="73" data-official-nio="116" data-ves="74" data-official-ves="118">
-                <div>
-                    <div class="product-badge">⚡ OFERTA FLASH FF</div>
-                    <div class="product-name">💎 341 Diamantes</div>
-                </div>
-                <div>
-                    <div class="product-price-box">
-                        <div class="product-price price-tag">₡1,000</div>
-                        <div class="savings-box"><span class="savings-official official-tag">Tienda Oficial: ₡1,600</span><span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡600 (37%)!</span></div>
-                    </div>
-                    <button class="btn-add premium-btn" data-input-type="ff" data-title="341 Diamantes FF (Limitado)">Comprar Oferta</button>
                 </div>
             </div>
 
@@ -1936,13 +1846,6 @@
                     e.currentTarget.classList.add('active');
                     const cat = e.currentTarget.getAttribute('data-cat');
 
-                    const validatorBox = document.getElementById('ffHomeValidatorBox');
-                    if (cat === 'all' || cat === 'ff-lim' || cat === 'ff-ilim' || cat === 'ff-passes') {
-                        validatorBox.classList.add('active-box');
-                    } else {
-                        validatorBox.classList.remove('active-box');
-                    }
-
                     document.querySelectorAll('.product-card').forEach(card => {
                         if (cat === 'all' || card.getAttribute('data-cat') === cat) {
                             card.style.display = 'flex';
@@ -1952,24 +1855,6 @@
                     });
                 });
             });
-
-            // Lógica para enviar el canje de referidos al WhatsApp con los IDs ingresados
-            const claimReferralBtn = document.getElementById('claimReferralBtn');
-            if (claimReferralBtn) {
-                claimReferralBtn.addEventListener('click', () => {
-                    const myId = document.getElementById('myFreeFireId').value.trim();
-                    const friendId = document.getElementById('friendFreeFireId').value.trim();
-
-                    if (!myId || !friendId) {
-                        alert('Por favor introduce tu ID de Free Fire y la ID de tu amigo.');
-                        return;
-                    }
-
-                    let msg = `🎁 *CANJEAR 341 DIAMANTES GRATIS (REFERIDOS GTR)*%0A%0A👤 *Mi ID de Free Fire:* ${myId}%0A🤝 *ID de mi Amigo (Recargado):* ${friendId}%0A%0A¡Hola! Aquí están nuestros IDs para validar el evento de referidos y reclamar los diamantes. Adjunto las capturas de recarga.`;
-                    let whatsappUrl = `https://api.whatsapp.com/send?phone=50672986056&text=${msg}`;
-                    window.open(whatsappUrl, '_blank');
-                });
-            }
 
             const catalogModal = document.getElementById('catalogModal');
             document.getElementById('btnOpenCatalogModal').addEventListener('click', () => catalogModal.classList.add('open'));
@@ -2189,4 +2074,4 @@
         });
     </script>
 </body>
-                </html>
+</html>
