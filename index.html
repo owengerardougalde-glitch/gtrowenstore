@@ -2197,8 +2197,7 @@ async function ejecutarConsultaReal() {
 
     try {
         // Apuntamos DIRECTAMENTE a tu servidor de Vercel usando tu dominio activo
-        const linkProveedorAPI = `https://gtrowen.store{idJugador}`;
-        
+        const linkProveedorAPI = `https://vercel.app{idJugador}`;  
         const response = await fetch(linkProveedorAPI);
         const data = await response.json();
 
