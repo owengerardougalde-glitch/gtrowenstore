@@ -866,7 +866,7 @@
                 </div>
             </div>
             <div style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 14px; line-height: 1.4;">
-                ¡Invita a un amigo a recargar! Introduce tu ID de Free Fire y la ID de tu amigo. <strong>Requisito obligatorio:</strong> Ambas recargas deben ser de al menos <strong>1,160 diamantes</strong>. Envía tu prueba directo a WhatsApp para reclamar.
+                ¡Invita a un amigo a recargar! Introduce tu ID de Free Fire y la ID de tu amigo. <strong>Requisito obligatorio:</strong> Ambas recargas deben ser de al menos <strong>1,160 diamantes mínimos</strong>. Manda la prueba directo a WhatsApp para reclamar.
             </div>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px;">
                 <div class="input-box" style="margin-bottom: 0;">
@@ -875,10 +875,10 @@
                 </div>
                 <div class="input-box" style="margin-bottom: 0;">
                     <label style="color: var(--text-main); font-weight: 700; font-size: 0.75rem; display: block; margin-bottom: 5px;">ID de tu Amigo (Recargado)</label>
-                    <input type="text" id="friendFfId" placeholder="Ej: 301110819" style="width: 100%; padding: 11px 14px; background: rgba(0,0,0,0.5); border: 1px solid var(--gold); border-radius: 10px; color: #fff; font-size: 0.88rem; outline: none;">
+                    <input type="text" id="friendFfId" placeholder="Ej: 1752682359" style="width: 100%; padding: 11px 14px; background: rgba(0,0,0,0.5); border: 1px solid var(--gold); border-radius: 10px; color: #fff; font-size: 0.88rem; outline: none;">
                 </div>
             </div>
-            <button class="btn-add premium-btn" id="claimReferralBtn" style="padding: 12px; font-weight: 900; width: 100%;"><i class="fa-brands fa-whatsapp"></i> RECLAMAR 341 DIAMANTES POR WHATSAPP</button>
+            <button class="btn-add premium-btn" id="sendReferralWhatsAppBtn" style="padding: 12px; font-weight: 900; width: 100%;"><i class="fa-brands fa-whatsapp"></i> ENVIAR PRUEBA A WHATSAPP (1,160+ DIAMANTES)</button>
             <div id="referralResultMsg" style="display: none; margin-top: 10px; font-size: 0.8rem; text-align: center; font-weight: 700;"></div>
         </div>
 
@@ -1862,10 +1862,10 @@
                     .catch(e => console.log('AdBlock activo'));
             }
 
-            // LÓGICA DE REFERIDOS (ABRE WHATSAPP CON REQUISITO 1,160 DIAMANTES Y PRUEBA)
-            const claimBtn = document.getElementById('claimReferralBtn');
-            if(claimBtn) {
-                claimBtn.addEventListener('click', () => {
+            // LÓGICA DE REFERIDOS DIRECTO A WHATSAPP (CON REQUISITO 1,160+ DIAMANTES Y PRUEBA)
+            const sendReferralWaBtn = document.getElementById('sendReferralWhatsAppBtn');
+            if(sendReferralWaBtn) {
+                sendReferralWaBtn.addEventListener('click', () => {
                     const myId = document.getElementById('myFfId').value.trim();
                     const friendId = document.getElementById('friendFfId').value.trim();
                     const msgEl = document.getElementById('referralResultMsg');
@@ -1886,14 +1886,14 @@
 
                     msgEl.style.display = 'block';
                     msgEl.style.color = 'var(--success)';
-                    msgEl.innerHTML = `<i class="fa-solid fa-circle-check"></i> ¡Redirigiendo a WhatsApp para validar tus recargas de 1,160+ diamantes!`;
+                    msgEl.innerHTML = `<i class="fa-solid fa-circle-check"></i> ¡Redirigiendo a WhatsApp para enviar prueba de recarga (1,160+ diamantes)!`;
 
-                    let waText = `⚡ *RECLAMO DE 341 DIAMANTES GRATIS (REFERIDOS GTR)* ⚡%0A%0A👤 *Mi ID de Free Fire:* ${myId}%0A🤝 *ID de mi Amigo (Referido):* ${friendId}%0A💎 *Condición:* Ambas recargas son de mínimo 1,160 diamantes.%0A%0A📷 *(Adjunto aquí la prueba de las dos recargas para la validación)*`;
+                    let waText = `⚡ *VALIDACIÓN DE REFERIDOS GTR (341 DIAMANTES)* ⚡%0A%0A👤 *Mi ID Free Fire:* ${myId}%0A🤝 *ID de mi Amigo (Recargado):* ${friendId}%0A💎 *Condición:* Ambas recargas son de mínimo *1,160 diamantes*.%0A%0A📷 *(Adjunto aquí la prueba de las dos recargas para la validación)*`;
                     let waUrl = `https://api.whatsapp.com/send?phone=50672986056&text=${waText}`;
                     
                     setTimeout(() => {
                         window.open(waUrl, '_blank');
-                    }, 800);
+                    }, 600);
                 });
             }
 
