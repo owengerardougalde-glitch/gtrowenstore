@@ -300,6 +300,21 @@
             box-shadow: 0 0 15px var(--accent-cyan-glow);
         }
 
+        /* WIDGET DE VALIDACIÓN FREE FIRE EN PANTALLA PRINCIPAL */
+        .ff-home-validator {
+            background: linear-gradient(145deg, rgba(8, 13, 24, 0.98), rgba(3, 5, 9, 0.98));
+            border: 2px solid var(--gold);
+            border-radius: 18px;
+            padding: 18px;
+            margin-bottom: 22px;
+            box-shadow: 0 0 30px rgba(255, 183, 0, 0.15);
+            display: none; /* Se muestra solo al estar en categorías de Free Fire */
+        }
+
+        .ff-home-validator.active-box {
+            display: block;
+        }
+
         .category-scroll {
             display: flex;
             gap: 10px;
@@ -831,6 +846,33 @@
             <button class="cat-btn" data-cat="ff-ilim"><i class="fa-solid fa-gem"></i> FF Ilimitados</button>
             <button class="cat-btn" data-cat="ff-passes"><i class="fa-solid fa-ticket"></i> FF Pases & Tokens</button>
             <button class="cat-btn" data-cat="bs"><i class="fa-solid fa-coins"></i> Blood Strike Oro</button>
+        </div>
+
+        <!-- WIDGET DE VALIDACIÓN FREE FIRE EN PANTALLA PRINCIPAL (VISIBLE EN CATEGORÍAS FF) -->
+        <div id="ffHomeValidatorBox" class="ff-home-validator">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1px solid rgba(255,183,0,0.2); padding-bottom: 8px;">
+                <div style="font-family: 'Orbitron', sans-serif; font-size: 0.88rem; color: var(--gold); font-weight: 900; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-shield-halved"></i> COMPROBADOR RÁPIDO DE CUENTA FREE FIRE
+                </div>
+                <div style="font-size: 0.7rem; color: var(--accent-cyan); font-family: 'Chakra Petch', sans-serif; font-weight: 700;">
+                    SISTEMA GTR VERIFICADO ⚡
+                </div>
+            </div>
+            <div class="input-box" style="margin-bottom: 10px;">
+                <label style="color: var(--text-main); font-weight: 700;">Ingresa tu ID de Jugador (Free Fire)</label>
+                <input type="text" id="homeFfInputId" placeholder="Ej: 301110819" style="border-color: var(--gold); background: rgba(0,0,0,0.5);">
+            </div>
+            <!-- VISTA PREVIA RESULTADO EN PANTALLA PRINCIPAL -->
+            <div id="homeFfResultCard" style="display: none; background: rgba(255,183,0,0.06); border: 1px solid var(--gold); padding: 12px; border-radius: 12px; align-items: center; justify-content: space-between;">
+                <div>
+                    <div style="font-size: 0.65rem; color: var(--gold); font-weight: 800; font-family: 'Orbitron', sans-serif;"><i class="fa-solid fa-circle-check" style="color: var(--success);"></i> CUENTA DETECTADA CORRECTAMENTE</div>
+                    <div id="homeFfPlayerName" style="font-weight: 900; font-size: 1rem; color: #fff; margin-top: 2px;">RICHARD 👑</div>
+                    <div id="homeFfIdText" style="font-size: 0.75rem; color: var(--accent-cyan); font-family: 'Chakra Petch', sans-serif;">UID: 301110819</div>
+                </div>
+                <div style="background: linear-gradient(135deg, var(--gold), #ff5500); color: #030509; font-family: 'Chakra Petch', sans-serif; font-weight: 900; font-size: 0.75rem; padding: 6px 12px; border-radius: 8px; box-shadow: 0 0 12px var(--gold-glow);" id="homeFfPrimeTier">
+                    PRIME 8 💎
+                </div>
+            </div>
         </div>
 
         <div class="section-h2" id="catalogTitle"><i class="fa-solid fa-fire" style="color: var(--accent-cyan);"></i> CATÁLOGO OFICIAL & OFERTAS ÉPICAS</div>
@@ -1694,20 +1736,6 @@
                     </div>
                 </div>
 
-                <!-- APARTADO DE VISTA PREVIA PARA FREE FIRE (ID, NOMBRE Y PRIME) -->
-                <div id="ffProfilePreviewContainer" style="display: none; margin-bottom: 14px;">
-                    <div style="background: linear-gradient(135deg, rgba(255,183,0,0.1), rgba(8,13,24,0.9)); border: 1px solid var(--gold); padding: 12px; border-radius: 12px; display: flex; align-items: center; justify-content: space-between;">
-                        <div>
-                            <div style="font-size: 0.68rem; color: var(--gold); font-weight: 800; font-family: 'Orbitron', sans-serif;"><i class="fa-solid fa-shield-halved"></i> JUGADOR VERIFICADO FF</div>
-                            <div id="ffPlayerName" style="font-weight: 900; font-size: 0.95rem; color: #fff; margin-top: 2px;">RICHARD 👑</div>
-                            <div id="ffPlayerIdText" style="font-size: 0.72rem; color: var(--accent-cyan); font-family: 'Chakra Petch', sans-serif;">UID: 301110819</div>
-                        </div>
-                        <div style="background: linear-gradient(135deg, var(--gold), #ff5500); color: #030509; font-family: 'Chakra Petch', sans-serif; font-weight: 900; font-size: 0.7rem; padding: 4px 10px; border-radius: 8px; box-shadow: 0 0 10px var(--gold-glow);">
-                            PRIME 8 💎
-                        </div>
-                    </div>
-                </div>
-
                 <div class="input-box">
                     <label>Método de Pago</label>
                     <select id="pMethod">
@@ -1805,33 +1833,16 @@
     </div>
 
     <script>
-        // Función global unificada para validar perfiles o IDs al escribir
-        function checkDynamicField(val) {
-            const socialPreview = document.getElementById('socialProfilePreviewContainer');
-            const ffPreview = document.getElementById('ffProfilePreviewContainer');
-            
-            const usernameEl = document.getElementById('previewUsername');
-            const avatarEl = document.getElementById('previewAvatar');
+        // Validador en pantalla principal para Free Fire
+        function checkHomeFfField(val) {
+            const resultCard = document.getElementById('homeFfResultCard');
+            const nameEl = document.getElementById('homeFfPlayerName');
+            const idTextEl = document.getElementById('homeFfIdText');
+            const primeTierEl = document.getElementById('homeFfPrimeTier');
 
-            const ffNameEl = document.getElementById('ffPlayerName');
-            const ffIdTextEl = document.getElementById('ffPlayerIdText');
-
-            const isSocialOrder = cart.some(item => item.inputType === 'social');
             let cleanVal = val ? val.trim() : '';
 
-            if (isSocialOrder && cleanVal.length > 6 && (cleanVal.includes('instagram.com') || cleanVal.includes('tiktok.com') || cleanVal.includes('facebook.com'))) {
-                if(ffPreview) ffPreview.style.display = 'none';
-                let cleanUrl = cleanVal.endsWith('/') ? cleanVal.slice(0, -1) : cleanVal;
-                let parts = cleanUrl.split('/');
-                let accountName = parts[parts.length - 1].replace('@', '');
-
-                if(usernameEl) usernameEl.innerText = "@" + accountName;
-                if(avatarEl) avatarEl.src = `https://ui-avatars.com/api/?name=${accountName}&background=00f0ff&color=030509&bold=true`;
-                if(socialPreview) socialPreview.style.display = 'block';
-            } 
-            else if (!isSocialOrder && cleanVal.length >= 4) {
-                if(socialPreview) socialPreview.style.display = 'none';
-                
+            if (cleanVal.length >= 4) {
                 let simulatedName = "JUGADOR ELITE";
                 let primeTier = "PRIME 8 💎";
 
@@ -1846,16 +1857,12 @@
                     primeTier = "PRIME 8 💎";
                 }
 
-                if(ffNameEl) ffNameEl.innerText = simulatedName;
-                if(ffIdTextEl) ffIdTextEl.innerText = "UID: " + cleanVal;
-                if(ffPreview) {
-                    ffPreview.style.display = 'block';
-                    ffPreview.style.visibility = 'visible';
-                }
-            } 
-            else {
-                if(socialPreview) socialPreview.style.display = 'none';
-                if(ffPreview) ffPreview.style.display = 'none';
+                if(nameEl) nameEl.innerText = simulatedName;
+                if(idTextEl) idTextEl.innerText = "UID: " + cleanVal;
+                if(primeTierEl) primeTierEl.innerText = primeTier;
+                if(resultCard) resultCard.style.display = 'flex';
+            } else {
+                if(resultCard) resultCard.style.display = 'none';
             }
         }
 
@@ -1884,6 +1891,17 @@
                     .catch(() => {
                         viewsEl.innerText = "24,892";
                     });
+            }
+
+            // Eventos para el input de Free Fire en pantalla principal
+            const homeFfInput = document.getElementById('homeFfInputId');
+            if(homeFfInput) {
+                homeFfInput.addEventListener('input', function() {
+                    checkHomeFfField(this.value);
+                });
+                homeFfInput.addEventListener('keyup', function() {
+                    checkHomeFfField(this.value);
+                });
             }
 
             document.querySelectorAll('.curr-btn').forEach(btn => {
@@ -1925,6 +1943,14 @@
                     document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
                     e.currentTarget.classList.add('active');
                     const cat = e.currentTarget.getAttribute('data-cat');
+
+                    // Mostrar u ocultar el validador principal si es categoría de Free Fire
+                    const validatorBox = document.getElementById('ffHomeValidatorBox');
+                    if (cat === 'ff-lim' || cat === 'ff-ilim' || cat === 'ff-passes') {
+                        validatorBox.classList.add('active-box');
+                    } else {
+                        validatorBox.classList.remove('active-box');
+                    }
 
                     document.querySelectorAll('.product-card').forEach(card => {
                         if (cat === 'all' || card.getAttribute('data-cat') === cat) {
@@ -1996,23 +2022,12 @@
                 document.getElementById('topClientsModal').classList.remove('open');
             });
 
-            // Enlace de eventos directos al input personalizado del formulario
-            const inputEl = document.getElementById('pCustomField');
-            if(inputEl) {
-                inputEl.addEventListener('input', function() {
-                    checkDynamicField(this.value);
-                });
-                inputEl.addEventListener('keyup', function() {
-                    checkDynamicField(this.value);
-                });
-            }
-
             document.getElementById('proceedCheckoutBtn').addEventListener('click', () => {
                 if (cart.length === 0) return;
 
                 const labelEl = document.getElementById('dynamicLabel');
+                const inputEl = document.getElementById('pCustomField');
                 const socialPreview = document.getElementById('socialProfilePreviewContainer');
-                const ffPreview = document.getElementById('ffProfilePreviewContainer');
 
                 const hasSocial = cart.some(item => item.inputType === 'social');
                 const hasStreaming = cart.some(item => item.inputType === 'streaming');
@@ -2021,17 +2036,14 @@
                 if (hasSocial) {
                     labelEl.innerText = 'Enlace del Perfil (Instagram / TikTok) 🔗';
                     inputEl.placeholder = 'Ej: https://instagram.com/tucuenta';
-                    if(ffPreview) ffPreview.style.display = 'none';
                 } else {
                     if(socialPreview) socialPreview.style.display = 'none';
                     if (hasBloodStrike) {
                         labelEl.innerText = 'ID de Jugador (Blood Strike)';
                         inputEl.placeholder = 'Ej: 50819301';
-                        if(ffPreview) ffPreview.style.display = 'none';
                     } else if (hasStreaming) {
                         labelEl.innerText = 'Correo o Detalle para la cuenta de Streaming ✉️';
                         inputEl.placeholder = 'Ej: tucorreo@gmail.com';
-                        if(ffPreview) ffPreview.style.display = 'none';
                     } else {
                         labelEl.innerText = 'ID de Jugador (Free Fire)';
                         inputEl.placeholder = 'Ej: 301110819';
