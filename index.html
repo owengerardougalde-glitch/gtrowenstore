@@ -1680,8 +1680,20 @@
                 </div>
                 <div class="input-box" id="dynamicInputBox">
                     <label id="dynamicLabel">Detalle Requerido</label>
-                    <input type="text" id="pCustomField" placeholder="">
+                    <input type="text" id="pCustomField" placeholder="" oninput="checkDynamicField(this.value)">
                 </div>
+
+                <!-- APARTADO DE VISTA PREVIA PARA REDES SOCIALES -->
+                <div id="socialProfilePreviewContainer" style="display: none; margin-bottom: 14px;">
+                    <div style="display: flex; align-items: center; gap: 12px; background: rgba(0,240,255,0.05); border: 1px solid var(--border-glass); padding: 12px; border-radius: 12px;">
+                        <img id="previewAvatar" src="" alt="Avatar" style="width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent-cyan);">
+                        <div>
+                            <div id="previewUsername" style="font-weight: 700; font-size: 0.88rem; color: #fff;">Usuario Detectado</div>
+                            <div style="font-size: 0.72rem; color: var(--success);"><i class="fa-solid fa-circle-check"></i> Perfil verificado para entrega</div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="input-box">
                     <label>Método de Pago</label>
                     <select id="pMethod">
@@ -1779,10 +1791,30 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            let cart = [];
-            let currentCurrency = 'CRC';
+        // Función global para verificar si se debe mostrar la vista previa del perfil social
+        function checkDynamicField(url) {
+            const previewContainer = document.getElementById('socialProfilePreviewContainer');
+            const usernameEl = document.getElementById('previewUsername');
+            const avatarEl = document.getElementById('previewAvatar');
 
+            const isSocialOrder = cart.some(item => item.inputType === 'social');
+            if (isSocialOrder && url.trim().length > 6 && (url.includes('instagram.com') || url.includes('tiktok.com') || url.includes('facebook.com'))) {
+                let cleanUrl = url.endsWith('/') ? url.slice(0, -1) : url;
+                let parts = cleanUrl.split('/');
+                let accountName = parts[parts.length - 1].replace('@', '');
+
+                usernameEl.innerText = "@" + accountName;
+                avatarEl.src = `https://ui-avatars.com/api/?name=${accountName}&background=00f0ff&color=030509&bold=true`;
+                previewContainer.style.display = 'block';
+            } else {
+                previewContainer.style.display = 'none';
+            }
+        }
+
+        let cart = [];
+        let currentCurrency = 'CRC';
+
+        document.addEventListener('DOMContentLoaded', () => {
             const currencySymbols = {
                 'CRC': '₡', 'USD': '$', 'MXN': '$', 'COP': '$', 'ARS': '$', 
                 'PEN': 'S/ ', 'DOP': 'RD$ ', 'BOB': 'Bs. ', 'GTQ': 'Q ', 
@@ -1917,6 +1949,7 @@
 
                 const labelEl = document.getElementById('dynamicLabel');
                 const inputEl = document.getElementById('pCustomField');
+                const previewContainer = document.getElementById('socialProfilePreviewContainer');
 
                 const hasSocial = cart.some(item => item.inputType === 'social');
                 const hasStreaming = cart.some(item => item.inputType === 'streaming');
@@ -1926,18 +1959,21 @@
                 if (hasSocial) {
                     labelEl.innerText = 'Enlace del Perfil (Debe estar público) 🔗';
                     inputEl.placeholder = 'Ej: https://instagram.com/tucuenta';
-                } else if (hasBloodStrike) {
-                    labelEl.innerText = 'ID de Jugador (Blood Strike)';
-                    inputEl.placeholder = 'Ej: 50819301';
-                } else if (hasStreaming) {
-                    labelEl.innerText = 'Correo o Detalle para la cuenta de Streaming ✉️';
-                    inputEl.placeholder = 'Ej: tucorreo@gmail.com';
-                } else if (hasFreeFire) {
-                    labelEl.innerText = 'ID de Jugador (Free Fire)';
-                    inputEl.placeholder = 'Ej: 301110819';
                 } else {
-                    labelEl.innerText = 'ID de Cuenta / Referencia';
-                    inputEl.placeholder = 'Ej: Datos necesarios';
+                    previewContainer.style.display = 'none';
+                    if (hasBloodStrike) {
+                        labelEl.innerText = 'ID de Jugador (Blood Strike)';
+                        inputEl.placeholder = 'Ej: 50819301';
+                    } else if (hasStreaming) {
+                        labelEl.innerText = 'Correo o Detalle para la cuenta de Streaming ✉️';
+                        inputEl.placeholder = 'Ej: tucorreo@gmail.com';
+                    } else if (hasFreeFire) {
+                        labelEl.innerText = 'ID de Jugador (Free Fire)';
+                        inputEl.placeholder = 'Ej: 301110819';
+                    } else {
+                        labelEl.innerText = 'ID de Cuenta / Referencia';
+                        inputEl.placeholder = 'Ej: Datos necesarios';
+                    }
                 }
 
                 document.getElementById('cartSummary').style.display = 'none';
@@ -2070,4 +2106,4 @@
         });
     </script>
 </body>
-                </html>
+</html>
