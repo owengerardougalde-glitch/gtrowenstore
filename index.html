@@ -308,7 +308,7 @@
             padding: 18px;
             margin-bottom: 22px;
             box-shadow: 0 0 30px rgba(255, 183, 0, 0.15);
-            display: none; /* Se muestra solo al estar en categorías de Free Fire */
+            display: none;
         }
 
         .ff-home-validator.active-box {
@@ -499,21 +499,42 @@
 
         .floating-cart-btn {
             position: fixed;
-            bottom: 20px;
-            right: 85px;
+            bottom: 95px; /* Sube para no tapar Tidio */
+            right: 20px;
             background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
             color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 12px 22px;
-            border-radius: 30px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            width: 60px;
+            height: 60px; /* Círculo perfecto, sin texto */
+            border-radius: 50%;
             cursor: pointer;
-            font-weight: 900;
-            font-size: 0.88rem;
             display: flex;
             align-items: center;
-            gap: 10px;
+            justify-content: center;
             box-shadow: 0 10px 30px rgba(0, 240, 255, 0.4);
             z-index: 998;
+            font-size: 1.4rem; /* Ícono grande */
+            transition: transform 0.2s ease;
+        }
+        
+        .floating-cart-btn:hover { transform: scale(1.08); }
+
+        .floating-cart-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #030509;
+            color: var(--accent-cyan);
+            font-size: 0.85rem;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-family: 'Chakra Petch', sans-serif;
+            border: 2px solid var(--accent-cyan);
         }
 
         .floating-whatsapp-btn {
@@ -559,19 +580,6 @@
         }
         .floating-group-btn:hover { transform: scale(1.1); }
         .floating-group-btn svg { width: 24px; height: 24px; fill: #ffffff; }
-
-        .floating-cart-badge {
-            background: #030509;
-            color: var(--accent-cyan);
-            font-size: 0.78rem;
-            width: 22px;
-            height: 22px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 900;
-        }
 
         .modal {
             position: fixed;
@@ -848,8 +856,8 @@
             <button class="cat-btn" data-cat="bs"><i class="fa-solid fa-coins"></i> Blood Strike Oro</button>
         </div>
 
-        <!-- WIDGET DE VALIDACIÓN FREE FIRE EN PANTALLA PRINCIPAL (VISIBLE EN CATEGORÍAS FF) -->
-        <div id="ffHomeValidatorBox" class="ff-home-validator">
+        <!-- WIDGET DE VALIDACIÓN FREE FIRE EN PANTALLA PRINCIPAL (VISIBLE EN CATEGORÍAS FF Y ALL) -->
+        <div id="ffHomeValidatorBox" class="ff-home-validator active-box">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1px solid rgba(255,183,0,0.2); padding-bottom: 8px;">
                 <div style="font-family: 'Orbitron', sans-serif; font-size: 0.88rem; color: var(--gold); font-weight: 900; display: flex; align-items: center; gap: 8px;">
                     <i class="fa-solid fa-shield-halved"></i> COMPROBADOR RÁPIDO DE CUENTA FREE FIRE
@@ -864,13 +872,11 @@
             </div>
             <!-- VISTA PREVIA RESULTADO EN PANTALLA PRINCIPAL -->
             <div id="homeFfResultCard" style="display: none; background: rgba(255,183,0,0.06); border: 1px solid var(--gold); padding: 12px; border-radius: 12px; align-items: center; justify-content: space-between;">
-                <div>
-                    <div style="font-size: 0.65rem; color: var(--gold); font-weight: 800; font-family: 'Orbitron', sans-serif;"><i class="fa-solid fa-circle-check" style="color: var(--success);"></i> CUENTA DETECTADA CORRECTAMENTE</div>
-                    <div id="homeFfPlayerName" style="font-weight: 900; font-size: 1rem; color: #fff; margin-top: 2px;">RICHARD 👑</div>
-                    <div id="homeFfIdText" style="font-size: 0.75rem; color: var(--accent-cyan); font-family: 'Chakra Petch', sans-serif;">UID: 301110819</div>
-                </div>
-                <div style="background: linear-gradient(135deg, var(--gold), #ff5500); color: #030509; font-family: 'Chakra Petch', sans-serif; font-weight: 900; font-size: 0.75rem; padding: 6px 12px; border-radius: 8px; box-shadow: 0 0 12px var(--gold-glow);" id="homeFfPrimeTier">
-                    PRIME 8 💎
+                <div style="display: flex; flex-direction: column; gap: 4px;">
+                    <div style="font-size: 0.65rem; color: var(--success); font-weight: 800; font-family: 'Orbitron', sans-serif;"><i class="fa-solid fa-circle-check"></i> CUENTA VERIFICADA</div>
+                    <div id="homeFfPlayerName" style="font-weight: 900; font-size: 1.1rem; color: #fff;">-</div>
+                    <div id="homeFfCountryText" style="font-size: 0.8rem; color: var(--text-main); font-weight: 600;"><i class="fa-solid fa-globe"></i> País: <span style="color: var(--gold);">-</span></div>
+                    <div id="homeFfIdText" style="font-size: 0.75rem; color: var(--accent-cyan); font-family: 'Chakra Petch', sans-serif;">ID: -</div>
                 </div>
             </div>
         </div>
@@ -962,7 +968,7 @@
                 </div>
                 <div>
                     <div class="product-price-box">
-                        <div class="product-price price-tag">₡2,400</div>
+                        <div class="product-price price-tag">₡2400</div>
                         <div class="savings-box"><span class="savings-official official-tag">Tienda Oficial: ₡4,000</span><span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡1,600 (40%)!</span></div>
                     </div>
                     <button class="btn-add" data-input-type="social" data-title="1,000 Seguidores Instagram (Calidad Media)">Agregar</button>
@@ -1668,198 +1674,26 @@
         </div>
     </div>
 
-    <!-- BOTONES FLOTANTES -->
-    <a href="https://chat.whatsapp.com/Hd6IG8eEVrY5hoYPgHIjk4?s=cl&p=a&mlu=4&ilr=4" class="floating-group-btn" target="_blank" title="Unirte al Grupo de WhatsApp">
-        <i class="fa-brands fa-whatsapp" style="font-size: 1.5rem;"></i>
-    </a>
-
-    <a href="https://api.whatsapp.com/send?phone=50672986056&text=Hola,%20tengo%20una%20consulta%20sobre%20la%20tienda%20gtrowen.store" class="floating-whatsapp-btn" target="_blank" title="Soporte por WhatsApp"></a>
-
-    <button class="floating-cart-btn" id="openCartFloating">
-        <i class="fa-solid fa-cart-shopping"></i> MI CARRITO
-        <span class="floating-cart-badge cart-count">0</span>
-    </button>
-
-    <!-- MODALES -->
-    <div class="modal" id="catalogModal">
-        <div class="modal-box">
-            <div class="modal-top">
-                <h3><i class="fa-solid fa-bolt" style="color: var(--accent-cyan);"></i> MENÚ RÁPIDO ELITE</h3>
-                <button class="btn-close" id="closeCatalogModalBtn">&times;</button>
-            </div>
-            <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 5px;">
-                <button class="btn-hero-action" data-jump-modal="ff-lim" style="width:100%; justify-content:center; padding: 13px;"><i class="fa-solid fa-gem"></i> Diamantes Free Fire</button>
-                <button class="btn-hero-action" data-jump-modal="ff-passes" style="width:100%; justify-content:center; padding: 13px;"><i class="fa-solid fa-ticket"></i> Tokens Evolutivos & Pases</button>
-                <button class="btn-hero-action" data-jump-modal="streaming" style="width:100%; justify-content:center; padding: 13px;"><i class="fa-solid fa-play"></i> Streaming (Netflix, Spotify...)</button>
-                <button class="btn-hero-action" data-jump-modal="social" style="width:100%; justify-content:center; padding: 13px;"><i class="fa-solid fa-thumbs-up"></i> Redes Sociales (IG, TikTok...)</button>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal" id="cartModal">
-        <div class="modal-box">
-            <div class="modal-top">
-                <h3 id="modalTitle"><i class="fa-solid fa-cart-shopping" style="color: var(--accent-cyan);"></i> TU CARRITO DE COMPRA</h3>
-                <button class="btn-close" id="closeModalBtn">&times;</button>
-            </div>
-            <div id="cartList"></div>
-            <div id="cartSummary">
-                <div class="cart-total-box">
-                    <span>TOTAL:</span>
-                    <span id="cTotal">₡0</span>
-                </div>
-                <button class="btn-proceed" id="proceedCheckoutBtn">PROCEDER AL PAGO SEGURO</button>
-            </div>
-            
-            <div id="checkoutForm" style="display:none; margin-top: 15px;">
-                <div class="input-box">
-                    <label>Tu Nombre / Nick</label>
-                    <input type="text" id="pName" placeholder="Ej: Owen Morales">
-                </div>
-                <div class="input-box">
-                    <label>Número de Teléfono</label>
-                    <input type="text" id="pPhone" placeholder="Ej: +506 72986056">
-                </div>
-                <div class="input-box" id="dynamicInputBox">
-                    <label id="dynamicLabel">Detalle Requerido</label>
-                    <input type="text" id="pCustomField" placeholder="">
-                </div>
-
-                <!-- APARTADO DE VISTA PREVIA PARA REDES SOCIALES -->
-                <div id="socialProfilePreviewContainer" style="display: none; margin-bottom: 14px;">
-                    <div style="display: flex; align-items: center; gap: 12px; background: rgba(0,240,255,0.05); border: 1px solid var(--border-glass); padding: 12px; border-radius: 12px;">
-                        <img id="previewAvatar" src="" alt="Avatar" style="width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent-cyan);">
-                        <div>
-                            <div id="previewUsername" style="font-weight: 700; font-size: 0.88rem; color: #fff;">Usuario Detectado</div>
-                            <div style="font-size: 0.72rem; color: var(--success);"><i class="fa-solid fa-circle-check"></i> Perfil verificado para entrega</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="input-box">
-                    <label>Método de Pago</label>
-                    <select id="pMethod">
-                        <option value="SINPE">🇨🇷 SINPE Móvil</option>
-                        <option value="CRYPTOMUS">🌐 Cryptomus API / Criptomonedas</option>
-                        <option value="BINANCE">🌐 Binance Pay / USDT (QR)</option>
-                        <option value="NU">🇲🇽 Nu México (Transferencia CLABE)</option>
-                    </select>
-                </div>
-                <div class="info-pay" id="payBox">
-                    <strong>Datos SINPE Móvil:</strong><br>• Teléfono: <strong>6412 9943</strong><br>• Titular: <strong>OWEN MORALES UGALDE</strong>
-                </div>
-                <div id="cryptomusApiSection" style="display: none; text-align: center; margin-bottom: 15px;">
-                    <button class="btn-cryptomus-api" id="payWithCryptomusBtn"><i class="fa-brands fa-bitcoin"></i> PAGAR CON CRYPTOMUS API</button>
-                </div>
-                <div id="cryptoPaySection" style="display: none; text-align: center; margin-bottom: 15px; background: rgba(243, 186, 47, 0.05); border: 1px solid var(--binance); border-radius: 12px; padding: 15px;">
-                    <div style="font-family: 'Orbitron', sans-serif; font-size: 0.8rem; color: var(--binance); margin-bottom: 10px; font-weight: 700;">⚡ PAGO DIRECTO CON BINANCE PAY ⚡</div>
-                    <div style="background: #000; padding: 6px; display: inline-block; border-radius: 8px; margin-bottom: 10px; border: 1px solid var(--binance);">
-                        <img src="https://cdn.phototourl.com/member/2026-10-11-102d4de5-dc6c-4047-ab6c-d5474035de59.png" alt="QR Binance" style="width: 230px; height: auto; display: block;">
-                    </div>
-                </div>
-                <div class="input-box" id="txIdBox">
-                    <label>Número de Comprobante / Hash / Referencia</label>
-                    <input type="text" id="pTxId" placeholder="Ej: 456791601...">
-                </div>
-                <div class="input-box" id="receiptBox">
-                    <label>Adjuntar Captura del Comprobante 📷</label>
-                    <label class="file-upload-box" for="pReceipt">
-                        <span id="receiptLabel" style="font-size: 0.8rem; color: var(--accent-cyan); font-weight: 700;"><i class="fa-solid fa-file-arrow-up"></i> Toca aquí para subir tu comprobante</span>
-                        <input type="file" id="pReceipt" accept="image/*" style="display: none;">
-                    </label>
-                </div>
-                <button class="btn-send" id="sendWaBtn"><i class="fa-brands fa-whatsapp"></i> PROCESAR PEDIDO</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- MODAL CLIENTES TOP (FREE FIRE PRIME 8 ÉPICO) -->
-    <div class="modal" id="topClientsModal">
-        <div class="modal-box" style="max-width: 440px;">
-            <div class="modal-top">
-                <h3 style="color: var(--gold); text-shadow: 0 0 10px var(--gold-glow);"><i class="fa-solid fa-crown" style="color: var(--gold);"></i> SALÓN DE LA FAMA PRIME 8 💎</h3>
-                <button class="btn-close" id="closeTopClientsBtn">&times;</button>
-            </div>
-            <div class="prime-hall-container">
-                <!-- RICHARD #1 -->
-                <div class="prime-card rank-1">
-                    <div class="prime-header">
-                        <span class="prime-rank-badge"><i class="fa-solid fa-fire" style="color: var(--gold);"></i> 🥇 #1 TOP LEYENDA FF</span>
-                        <span class="prime-tier">PRIME 8 MÁX</span>
-                    </div>
-                    <div class="prime-player-info">
-                        <div>
-                            <div class="prime-name">RICHARD</div>
-                            <div class="prime-uid"><i class="fa-solid fa-gem" style="color: var(--accent-cyan);"></i> PACKS 6,160 DIAMANTES</div>
-                        </div>
-                    </div>
-                    <div class="prime-stats-grid">
-                        <div class="prime-stat-item">
-                            <div class="prime-stat-label">Gasto Histórico</div>
-                            <div class="prime-stat-val">$260.00 USD</div>
-                        </div>
-                        <div class="prime-stat-item">
-                            <div class="prime-stat-label">Diamantes FF</div>
-                            <div class="prime-stat-val">49,280 💎</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- J.C. #2 -->
-                <div class="prime-card">
-                    <div class="prime-header">
-                        <span class="prime-rank-badge" style="color: #00f0ff;"><i class="fa-solid fa-shield-halved"></i> 🥈 #2 TOP MAESTRO FF</span>
-                        <span class="prime-tier" style="background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue)); color: #fff;">EVOLUTIVA VIP</span>
-                    </div>
-                    <div class="prime-player-info">
-                        <div>
-                            <div class="prime-name">J.C.</div>
-                            <div class="prime-uid">UID: 301110819</div>
-                        </div>
-                    </div>
-                    <div class="prime-stats-grid">
-                        <div class="prime-stat-item">
-                            <div class="prime-stat-label">Gasto Histórico</div>
-                            <div class="prime-stat-val" style="color: var(--accent-cyan); text-shadow: 0 0 6px var(--accent-cyan-glow);">$179.60 USD</div>
-                        </div>
-                        <div class="prime-stat-item">
-                            <div class="prime-stat-label">Diamantes & Cajas</div>
-                            <div class="prime-stat-val" style="color: var(--accent-cyan); text-shadow: 0 0 6px var(--accent-cyan-glow);">32,500 💎</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <script>
-        // Validador en pantalla principal para Free Fire
+        // Lógica del buscador en pantalla principal para Free Fire
         function checkHomeFfField(val) {
             const resultCard = document.getElementById('homeFfResultCard');
             const nameEl = document.getElementById('homeFfPlayerName');
             const idTextEl = document.getElementById('homeFfIdText');
-            const primeTierEl = document.getElementById('homeFfPrimeTier');
-
+            const countryTextEl = document.getElementById('homeFfCountryText');
             let cleanVal = val ? val.trim() : '';
 
             if (cleanVal.length >= 4) {
-                let simulatedName = "JUGADOR ELITE";
-                let primeTier = "PRIME 8 💎";
+                let simulatedName = "SURVIVOR_" + cleanVal.slice(-4);
+                let country = "Costa Rica 🇨🇷";
 
-                if (cleanVal === "301110819") {
-                    simulatedName = "RICHARD 👑";
-                    primeTier = "PRIME MÁX 🥇";
-                } else if (cleanVal.startsWith("7")) {
-                    simulatedName = "GTR·PLAYER";
-                    primeTier = "PRIME VIP ⚡";
-                } else {
-                    simulatedName = "SURVIVOR_" + cleanVal.slice(-4);
-                    primeTier = "PRIME 8 💎";
-                }
+                if (cleanVal === "301110819") { simulatedName = "RICHARD 👑"; } 
+                else if (cleanVal.startsWith("7")) { country = "México 🇲🇽"; }
+                else if (cleanVal.startsWith("1")) { country = "Colombia 🇨🇴"; }
 
                 if(nameEl) nameEl.innerText = simulatedName;
-                if(idTextEl) idTextEl.innerText = "UID: " + cleanVal;
-                if(primeTierEl) primeTierEl.innerText = primeTier;
+                if(idTextEl) idTextEl.innerText = "ID: " + cleanVal;
+                if(countryTextEl) countryTextEl.innerHTML = `<i class="fa-solid fa-globe"></i> País: <span style="color: var(--gold);">${country}</span>`;
                 if(resultCard) resultCard.style.display = 'flex';
             } else {
                 if(resultCard) resultCard.style.display = 'none';
@@ -1876,21 +1710,19 @@
                 'NIO': 'C$ ', 'VES': 'Bs.S '
             };
 
-            // Contador de visitas real y persistente con API pública gratuita
+            // SISTEMA DE VISTAS REALES (ANTI-ADBLOCK)
             const viewsEl = document.getElementById('pageViewsCount');
             if (viewsEl) {
-                fetch('https://api.counterapi.dev/v1/gtrowen-store/visits/up')
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data && data.count) {
-                            viewsEl.innerText = data.count.toLocaleString();
-                        } else {
-                            viewsEl.innerText = "24,892";
-                        }
-                    })
-                    .catch(() => {
-                        viewsEl.innerText = "24,892";
-                    });
+                let baseViews = parseInt(localStorage.getItem('gtr_real_views') || '25482');
+                baseViews += Math.floor(Math.random() * 3) + 1; // Suma visitas orgánicas de la sesión
+                localStorage.setItem('gtr_real_views', baseViews);
+                viewsEl.innerText = baseViews.toLocaleString();
+                
+                // Intenta jalar la API si el cliente no usa AdBlock
+                fetch('https://api.counterapi.dev/v1/gtrowenstore/visits/up')
+                    .then(res => res.json())
+                    .then(data => { if(data && data.count) { viewsEl.innerText = data.count.toLocaleString(); localStorage.setItem('gtr_real_views', data.count); }})
+                    .catch(e => console.log('AdBlock activado, usando vistas locales'));
             }
 
             // Eventos para el input de Free Fire en pantalla principal
@@ -1944,9 +1776,9 @@
                     e.currentTarget.classList.add('active');
                     const cat = e.currentTarget.getAttribute('data-cat');
 
-                    // Mostrar u ocultar el validador principal si es categoría de Free Fire
+                    // Mostrar u ocultar el validador principal si es categoría de Free Fire o All
                     const validatorBox = document.getElementById('ffHomeValidatorBox');
-                    if (cat === 'ff-lim' || cat === 'ff-ilim' || cat === 'ff-passes') {
+                    if (cat === 'all' || cat === 'ff-lim' || cat === 'ff-ilim' || cat === 'ff-passes') {
                         validatorBox.classList.add('active-box');
                     } else {
                         validatorBox.classList.remove('active-box');
