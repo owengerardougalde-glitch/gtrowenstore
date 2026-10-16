@@ -13,27 +13,26 @@ export default async function handler(req, res) {
 
     const playerId = req.query.player_id || req.query.id;
 
-    if (!playerId || isNaN(playerId) || playerId.length < 5) {
-        return res.status(400).json({ error: true, message: 'ID inválido' });
+    if (!playerId) {
+        return res.status(400).json({ error: true, message: 'ID no proporcionado' });
     }
 
     try {
-        const response = await fetch(`https://api.freefireinfo.tech/gg/info?uid=${playerId}`, {
-            method: 'GET',
+        const apiResponse = await fetch(`https://api.freefireinfo.tech/gg/info?uid=${playerId}`, {
             headers: {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
             }
         });
 
-        if (!response.ok) {
-            return res.status(404).json({ error: true, status: "failed", message: "Jugador no encontrado" });
+        if (!apiResponse.ok) {
+            return res.status(404).json({ error: true, message: "Jugador no encontrado en el sistema" });
         }
 
-        const data = await response.json();
+        const data = await apiResponse.json();
         const nickname = data.nickname || data.AccountName || data.name || data.player_name;
 
         if (!nickname) {
-            return res.status(404).json({ error: true, status: "failed", message: "El ID no existe en los registros" });
+            return res.status(404).json({ error: true, message: "El ID no arrojó ningún resultado" });
         }
 
         return res.status(200).json({
@@ -42,7 +41,7 @@ export default async function handler(req, res) {
             status: "success"
         });
 
-    } catch (err) {
-        return res.status(500).json({ error: true, status: "failed", message: "Error interno del servidor" });
+    } catchn (error) {
+        return res.status(500).json({ error: true, message: "Falla de comunicación en el servidor" });
     }
 }
