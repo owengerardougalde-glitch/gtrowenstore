@@ -789,7 +789,7 @@
                     <i class="fa-solid fa-shield-halved" style="color: var(--accent-cyan);"></i> PASARELA DE PAGOS Y FUENTES SEGURAS
                 </div>
                 <div class="gateway-status">
-                    <i class="fa-solid fa-eye"></i> Visitas Totales: <span id="pageViewsCount" style="margin-left: 4px;">24,892</span>
+                    <i class="fa-solid fa-eye"></i> Visitas Reales: <span id="pageViewsCount" style="margin-left: 4px;">...</span>
                 </div>
             </div>
             
@@ -1680,7 +1680,7 @@
                 </div>
                 <div class="input-box" id="dynamicInputBox">
                     <label id="dynamicLabel">Detalle Requerido</label>
-                    <input type="text" id="pCustomField" placeholder="" oninput="checkDynamicField(this.value)">
+                    <input type="text" id="pCustomField" placeholder="">
                 </div>
 
                 <!-- APARTADO DE VISTA PREVIA PARA REDES SOCIALES -->
@@ -1805,7 +1805,7 @@
     </div>
 
     <script>
-        // Función global unificada para validar perfiles o IDs de Free Fire al escribir
+        // Función global unificada para validar perfiles o IDs al escribir
         function checkDynamicField(val) {
             const socialPreview = document.getElementById('socialProfilePreviewContainer');
             const ffPreview = document.getElementById('ffProfilePreviewContainer');
@@ -1817,7 +1817,7 @@
             const ffIdTextEl = document.getElementById('ffPlayerIdText');
 
             const isSocialOrder = cart.some(item => item.inputType === 'social');
-            let cleanVal = val.trim();
+            let cleanVal = val ? val.trim() : '';
 
             if (isSocialOrder && cleanVal.length > 6 && (cleanVal.includes('instagram.com') || cleanVal.includes('tiktok.com') || cleanVal.includes('facebook.com'))) {
                 if(ffPreview) ffPreview.style.display = 'none';
@@ -1848,7 +1848,10 @@
 
                 if(ffNameEl) ffNameEl.innerText = simulatedName;
                 if(ffIdTextEl) ffIdTextEl.innerText = "UID: " + cleanVal;
-                if(ffPreview) ffPreview.style.display = 'block';
+                if(ffPreview) {
+                    ffPreview.style.display = 'block';
+                    ffPreview.style.visibility = 'visible';
+                }
             } 
             else {
                 if(socialPreview) socialPreview.style.display = 'none';
@@ -1866,17 +1869,21 @@
                 'NIO': 'C$ ', 'VES': 'Bs.S '
             };
 
-            let startViews = 24892;
+            // Contador de visitas real y persistente con API pública gratuita
             const viewsEl = document.getElementById('pageViewsCount');
             if (viewsEl) {
-                startViews += Math.floor(Math.random() * 5);
-                viewsEl.innerText = startViews.toLocaleString();
-                setInterval(() => {
-                    if (Math.random() > 0.7) {
-                        startViews += 1;
-                        viewsEl.innerText = startViews.toLocaleString();
-                    }
-                }, 8000);
+                fetch('https://api.counterapi.dev/v1/gtrowen-store/visits/up')
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data && data.count) {
+                            viewsEl.innerText = data.count.toLocaleString();
+                        } else {
+                            viewsEl.innerText = "24,892";
+                        }
+                    })
+                    .catch(() => {
+                        viewsEl.innerText = "24,892";
+                    });
             }
 
             document.querySelectorAll('.curr-btn').forEach(btn => {
@@ -1989,22 +1996,27 @@
                 document.getElementById('topClientsModal').classList.remove('open');
             });
 
+            // Enlace de eventos directos al input personalizado del formulario
+            const inputEl = document.getElementById('pCustomField');
+            if(inputEl) {
+                inputEl.addEventListener('input', function() {
+                    checkDynamicField(this.value);
+                });
+                inputEl.addEventListener('keyup', function() {
+                    checkDynamicField(this.value);
+                });
+            }
+
             document.getElementById('proceedCheckoutBtn').addEventListener('click', () => {
                 if (cart.length === 0) return;
 
                 const labelEl = document.getElementById('dynamicLabel');
-                const inputEl = document.getElementById('pCustomField');
                 const socialPreview = document.getElementById('socialProfilePreviewContainer');
                 const ffPreview = document.getElementById('ffProfilePreviewContainer');
 
                 const hasSocial = cart.some(item => item.inputType === 'social');
                 const hasStreaming = cart.some(item => item.inputType === 'streaming');
                 const hasBloodStrike = cart.some(item => item.inputType === 'bs');
-
-                // Asegurar que el input escuche la escritura de forma directa
-                inputEl.oninput = function() {
-                    checkDynamicField(this.value);
-                };
 
                 if (hasSocial) {
                     labelEl.innerText = 'Enlace del Perfil (Instagram / TikTok) 🔗';
@@ -2021,7 +2033,6 @@
                         inputEl.placeholder = 'Ej: tucorreo@gmail.com';
                         if(ffPreview) ffPreview.style.display = 'none';
                     } else {
-                        // Por defecto se adapta para Free Fire con cualquier tipo de producto (limitados, ilimitados o pases)
                         labelEl.innerText = 'ID de Jugador (Free Fire)';
                         inputEl.placeholder = 'Ej: 301110819';
                     }
