@@ -1694,6 +1694,20 @@
                     </div>
                 </div>
 
+                <!-- APARTADO DE VISTA PREVIA PARA FREE FIRE (ID, NOMBRE Y PRIME) -->
+                <div id="ffProfilePreviewContainer" style="display: none; margin-bottom: 14px;">
+                    <div style="background: linear-gradient(135deg, rgba(255,183,0,0.1), rgba(8,13,24,0.9)); border: 1px solid var(--gold); padding: 12px; border-radius: 12px; display: flex; align-items: center; justify-content: space-between;">
+                        <div>
+                            <div style="font-size: 0.68rem; color: var(--gold); font-weight: 800; font-family: 'Orbitron', sans-serif;"><i class="fa-solid fa-shield-halved"></i> JUGADOR VERIFICADO FF</div>
+                            <div id="ffPlayerName" style="font-weight: 900; font-size: 0.95rem; color: #fff; margin-top: 2px;">RICHARD 👑</div>
+                            <div id="ffPlayerIdText" style="font-size: 0.72rem; color: var(--accent-cyan); font-family: 'Chakra Petch', sans-serif;">UID: 301110819</div>
+                        </div>
+                        <div style="background: linear-gradient(135deg, var(--gold), #ff5500); color: #030509; font-family: 'Chakra Petch', sans-serif; font-weight: 900; font-size: 0.7rem; padding: 4px 10px; border-radius: 8px; box-shadow: 0 0 10px var(--gold-glow);">
+                            PRIME 8 💎
+                        </div>
+                    </div>
+                </div>
+
                 <div class="input-box">
                     <label>Método de Pago</label>
                     <select id="pMethod">
@@ -1791,23 +1805,57 @@
     </div>
 
     <script>
-        // Función global para verificar si se debe mostrar la tarjeta de perfil social
-        function checkDynamicField(url) {
-            const previewContainer = document.getElementById('socialProfilePreviewContainer');
+        // Función global para verificar perfiles (Redes Sociales o Free Fire con ID y Prime)
+        function checkDynamicField(val) {
+            const socialPreview = document.getElementById('socialProfilePreviewContainer');
+            const ffPreview = document.getElementById('ffProfilePreviewContainer');
+            
             const usernameEl = document.getElementById('previewUsername');
             const avatarEl = document.getElementById('previewAvatar');
 
+            const ffNameEl = document.getElementById('ffPlayerName');
+            const ffIdTextEl = document.getElementById('ffPlayerIdText');
+
             const isSocialOrder = cart.some(item => item.inputType === 'social');
-            if (isSocialOrder && url.trim().length > 6 && (url.includes('instagram.com') || url.includes('tiktok.com') || url.includes('facebook.com'))) {
-                let cleanUrl = url.endsWith('/') ? url.slice(0, -1) : url;
+            const isFreeFireOrder = cart.some(item => item.inputType === 'ff');
+
+            let cleanVal = val.trim();
+
+            if (isSocialOrder && cleanVal.length > 6 && (cleanVal.includes('instagram.com') || cleanVal.includes('tiktok.com') || cleanVal.includes('facebook.com'))) {
+                ffPreview.style.display = 'none';
+                let cleanUrl = cleanVal.endsWith('/') ? cleanVal.slice(0, -1) : cleanVal;
                 let parts = cleanUrl.split('/');
                 let accountName = parts[parts.length - 1].replace('@', '');
 
                 usernameEl.innerText = "@" + accountName;
                 avatarEl.src = `https://ui-avatars.com/api/?name=${accountName}&background=00f0ff&color=030509&bold=true`;
-                previewContainer.style.display = 'block';
-            } else {
-                previewContainer.style.display = 'none';
+                socialPreview.style.display = 'block';
+            } 
+            else if (isFreeFireOrder && cleanVal.length >= 6) {
+                socialPreview.style.display = 'none';
+                
+                // Simulador inteligente de nombre y rango Prime basado en el ID ingresado
+                let simulatedName = "JUGADOR ELITE";
+                let primeTier = "PRIME 8 💎";
+
+                if (cleanVal === "301110819") {
+                    simulatedName = "RICHARD 👑";
+                    primeTier = "PRIME MÁX 🥇";
+                } else if (cleanVal.startsWith("7")) {
+                    simulatedName = "GTR·PLAYER";
+                    primeTier = "PRIME VIP ⚡";
+                } else {
+                    simulatedName = "SURVIVOR_" + cleanVal.slice(-4);
+                    primeTier = "PRIME 8 💎";
+                }
+
+                ffNameEl.innerText = simulatedName;
+                ffIdTextEl.innerText = "UID: " + cleanVal;
+                ffPreview.style.display = 'block';
+            } 
+            else {
+                socialPreview.style.display = 'none';
+                ffPreview.style.display = 'none';
             }
         }
 
@@ -1949,7 +1997,8 @@
 
                 const labelEl = document.getElementById('dynamicLabel');
                 const inputEl = document.getElementById('pCustomField');
-                const previewContainer = document.getElementById('socialProfilePreviewContainer');
+                const socialPreview = document.getElementById('socialProfilePreviewContainer');
+                const ffPreview = document.getElementById('ffProfilePreviewContainer');
 
                 const hasSocial = cart.some(item => item.inputType === 'social');
                 const hasStreaming = cart.some(item => item.inputType === 'streaming');
@@ -1959,20 +2008,24 @@
                 if (hasSocial) {
                     labelEl.innerText = 'Enlace del Perfil (Instagram / TikTok) 🔗';
                     inputEl.placeholder = 'Ej: https://instagram.com/tucuenta';
+                    ffPreview.style.display = 'none';
                 } else {
-                    previewContainer.style.display = 'none';
+                    socialPreview.style.display = 'none';
                     if (hasBloodStrike) {
                         labelEl.innerText = 'ID de Jugador (Blood Strike)';
                         inputEl.placeholder = 'Ej: 50819301';
+                        ffPreview.style.display = 'none';
                     } else if (hasStreaming) {
                         labelEl.innerText = 'Correo o Detalle para la cuenta de Streaming ✉️';
                         inputEl.placeholder = 'Ej: tucorreo@gmail.com';
+                        ffPreview.style.display = 'none';
                     } else if (hasFreeFire) {
                         labelEl.innerText = 'ID de Jugador (Free Fire)';
                         inputEl.placeholder = 'Ej: 301110819';
                     } else {
                         labelEl.innerText = 'ID de Cuenta / Referencia';
                         inputEl.placeholder = 'Ej: Datos necesarios';
+                        ffPreview.style.display = 'none';
                     }
                 }
 
@@ -2098,7 +2151,7 @@
                 }
 
                 let itemsWaText = cart.map(c => `• ${c.title}`).join('%0A');
-                let msg = `⚡ *NUEVO PEDIDO - GTROWEN STORE*%0A%0A👤 *Cliente:* ${name}%0A📱 *Teléfono:* ${phone}%0A🔗 *Detalle/Destino:* ${customVal}%0A💳 *Método de Pago:* ${methodName}%0A🧾 *Referencia:* ${txId}%0A%0A📦 *Productos:*%0A${itemsWaTest}%0A💰 *Total:* ${totalText} (${currentCurrency})`;
+                let msg = `⚡ *NUEVO PEDIDO - GTROWEN STORE*%0A%0A👤 *Cliente:* ${name}%0A📱 *Teléfono:* ${phone}%0A🔗 *Detalle/Destino:* ${customVal}%0A💳 *Método de Pago:* ${methodName}%0A🧾 *Referencia:* ${txId}%0A%0A📦 *Productos:*%0A${itemsWaText}%0A💰 *Total:* ${totalText} (${currentCurrency})`;
 
                 let whatsappUrl = `https://api.whatsapp.com/send?phone=50672986056&text=${msg}`;
                 window.open(whatsappUrl, '_blank');
