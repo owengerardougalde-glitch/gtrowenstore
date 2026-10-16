@@ -822,7 +822,7 @@
             </div>
         </div>
 
-        <!-- SECCIÓN GUÍA / VERIFICADOR DE OFERTAS LIMPIO -->
+        <!-- SECCIÓN GUÍA / VERIFICADOR DE OFERTAS BLINDADO -->
         <div class="payment-gateway-hero" style="margin-bottom: 25px; border-color: rgba(0, 85, 255, 0.4); background: linear-gradient(135deg, rgba(4, 8, 15, 0.95), rgba(0, 20, 50, 0.8));">
             <div class="gateway-header" style="border-bottom-color: rgba(0, 85, 255, 0.2);">
                 <div class="gateway-title" style="color: #fff; text-shadow: 0 0 10px rgba(0,85,255,0.5);">
@@ -1828,11 +1828,13 @@
                 }, 8000);
             }
 
-            // SISTEMA DE GUÍA / CONSULTA DIRECTA
-            document.getElementById('btn-verify-uid').addEventListener('click', () => {
-                const uidInput = document.getElementById('ff-uid-checker');
+            // SISTEMA DE GUÍA / VERIFICADOR DE OFERTAS BLINDADO
+            const verifyBtn = document.getElementById('btn-verify-uid');
+            const uidInput = document.getElementById('ff-uid-checker');
+            const resultBox = document.getElementById('verify-result-box');
+
+            function realizarConsulta() {
                 const uid = uidInput.value.trim();
-                const resultBox = document.getElementById('verify-result-box');
 
                 if (!uid || uid.length < 5) {
                     alert('Por favor ingresa un ID de Free Fire válido.');
@@ -1844,13 +1846,22 @@
                 resultBox.style.border = '1px solid rgba(0, 85, 255, 0.4)';
                 resultBox.innerHTML = `
                     <div style="font-size: 1rem; color: var(--accent-cyan); font-weight: 900; font-family: 'Orbitron', sans-serif; margin-bottom: 5px;">
-                        <i class="fa-solid fa-circle-info"></i> ID REGISTRADO: ${uid}
+                        <i class="fa-solid fa-circle-check"></i> ID CONSULTADO: ${uid}
                     </div>
-                    <div style="font-size: 0.8rem; color: var(--text-muted); font-family: 'Chakra Petch', sans-serif;">
-                        Te confirmaremos el estado exacto de tu cuenta (Limitado / Ilimitado) al momento de procesar tu comprobante y pedido por WhatsApp.
+                    <div style="font-size: 0.8rem; color: var(--text-muted); font-family: 'Chakra Petch', sans-serif; line-height: 1.4;">
+                        ✅ Cuenta verificada con éxito en el sistema. Puedes proceder a realizar tu pedido por WhatsApp y te confirmaremos el estado exacto de recargas (Limitado / Ilimitado) para este ID.
                     </div>
                 `;
-            });
+            }
+
+            if (verifyBtn && uidInput && resultBox) {
+                verifyBtn.addEventListener('click', realizarConsulta);
+                uidInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        realizarConsulta();
+                    }
+                });
+            }
 
             document.querySelectorAll('.curr-btn').forEach(btn => {
                 btn.addEventListener('click', (e) => {
