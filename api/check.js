@@ -18,53 +18,25 @@ export default async function handler(req, res) {
     }
 
     try {
-        // Petición POST estructurada con headers de la app oficial de Garena Topup
-        const response = await fetch('https://api.kudos.com.tr/gg/info', { // o pasarela de respaldo oficial
-            method: 'POST',
+        const response = await fetch(`https://api.freefireinfo.tech/gg/info?uid=${playerId}`, {
+            method: 'GET',
             headers: {
-                'Content-Type': 'application/json',
-                'User-Agent': 'Mozilla/5.0 (Linux; Android 14) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36',
-                'Referer': 'https://shop2game.com/'
-            },
-            body: JSON.stringify({
-                app_id: 100067,
-                login_id: playerId,
-                region: 'US'
-            })
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+            }
         });
 
-        const textCheck = await response.text();
-        let data;
-        
-        try {
-            data = JSON.parse(textCheck);
-        } catch (e) {
-            data = {};
+        if (!response.ok) {
+            throw new Error('Servidor externo no disponible');
         }
 
-        const nickname = data.player_name || data.nickname || data.AccountName || data.name;
+        const data = await response.json();
+        const nickname = data.nickname || data.AccountName || data.name || data.player_name;
 
-        if (!response.ok || !nickname) {
-            // Respaldo secundario si la pasarela principal requiere token de región dinámico
-            const backupRes = await fetch(`https://api.freefireinfo.tech/gg/info?uid=${playerId}`, {
-                headers: { 'User-Agent': 'Mozilla/5.0' }
-            });
-            const backupData = await backupRes.json();
-            const backupName = backupData.nickname || backupData.AccountName || backupData.name || backupData.player_name;
-
-            if (!backupName) {
-                return res.status(404).json({ 
-                    error: true, 
-                    status: "failed", 
-                    message: "El ID no existe o no se pudo verificar en los registros oficiales." 
-                });
-            }
-
-            return res.status(200).json({
-                error: false,
-                nickname: backupName,
-                bonus_available: true,
-                status: "ilimitado"
+        if (!nickname) {
+            return res.status(404).json({ 
+                error: true, 
+                status: "failed", 
+                message: "El ID no existe o no se pudo verificar en los registros de Free Fire." 
             });
         }
 
@@ -76,10 +48,32 @@ export default async function handler(req, res) {
         });
 
     } catch (err) {
-        return res.status(500).json({ 
+        try {
+            const backupRes = await fetch(`https://shop2game.com/api/player/check?app_id=100067&login_id=${playerId}`, {
+                headers: {
+                    'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15',
+                    'Referer': 'https://shop2game.com/'
+                }
+            });
+            const backupData = await backupRes.json();
+            const realName = backupData.player_name || backupData.nickname;
+
+            if (realName) {
+                return res.status(200).json({
+                    error: false,
+                    nickname: realName,
+                    bonus_available: true,
+                    status: "ilimitado"
+                });
+            }
+        } catch (e) {
+            // Ignoramos el respaldo si falla
+        }
+
+        return res.status(404).json({ 
             error: true, 
             status: "failed", 
-            message: "Error al conectar con el servidor oficial de validación." 
+            message: "Jugador no encontrado en los registros de Free Fire." 
         });
     }
 }
