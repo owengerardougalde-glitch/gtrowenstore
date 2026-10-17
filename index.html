@@ -765,6 +765,8 @@
             justify-content: space-between;
             gap: 12px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            grid-column: 1 / -1;
+            width: 100%;
         }
         @media(max-width: 600px) {
             .id-consult-banner { flex-direction: column; text-align: center; }
@@ -1373,17 +1375,15 @@
                 </div>
             </div>
 
-            <!-- AVISO WHATSAPP ANTES DE DIAMANTES ILIMITADOS -->
-            <div style="grid-column: 1 / -1; width: 100%;">
-                <div class="id-consult-banner">
-                    <div class="id-consult-text">
-                        <i class="fa-brands fa-whatsapp"></i>
-                        <span>¿No sabes si tu ID tiene la oferta de diamantes ilimitados? Consulta acá</span>
-                    </div>
-                    <a href="https://api.whatsapp.com/send?phone=50672986056&text=Hola,%20quiero%20consultar%20si%20mi%20ID%20de%20Free%20Fire%20tiene%20la%20oferta%20de%20diamantes%20ilimitados." class="btn-consult-wa" target="_blank">
-                        <i class="fa-solid fa-comments"></i> Consultar ID
-                    </a>
+            <!-- AVISO WHATSAPP AL INICIO DE DIAMANTES ILIMITADOS -->
+            <div class="id-consult-banner">
+                <div class="id-consult-text">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <span>¿No sabes si tu ID tiene la oferta de diamantes ilimitados? Consulta acá</span>
                 </div>
+                <a href="https://api.whatsapp.com/send?phone=50672986056&text=Hola,%20quiero%20consultar%20si%20mi%20ID%20de%20Free%20Fire%20tiene%20la%20oferta%20de%20diamantes%20ilimitados." class="btn-consult-wa" target="_blank">
+                    <i class="fa-solid fa-comments"></i> Consultar ID
+                </a>
             </div>
 
             <!-- FF ILIMITADOS -->
