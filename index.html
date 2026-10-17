@@ -303,6 +303,65 @@
             box-shadow: 0 0 15px var(--accent-cyan-glow);
         }
 
+        /* BANNER DE REFERIDOS / INVITA A UN AMIGO */
+        .referral-banner {
+            background: linear-gradient(135deg, rgba(255, 183, 0, 0.12), rgba(0, 240, 255, 0.08));
+            border: 1px solid var(--border-premium);
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 22px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .referral-banner::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 4px; height: 100%;
+            background: var(--gold);
+        }
+
+        .referral-icon {
+            font-size: 2rem;
+            color: var(--gold);
+            filter: drop-shadow(0 0 10px var(--gold-glow));
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .referral-content {
+            flex: 1;
+        }
+
+        .referral-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 900;
+            color: var(--gold);
+            margin-bottom: 4px;
+            text-shadow: 0 0 8px var(--gold-glow);
+        }
+
+        .referral-text {
+            font-size: 0.78rem;
+            color: var(--text-main);
+            line-height: 1.4;
+            font-weight: 600;
+        }
+
+        .referral-text span {
+            color: var(--accent-cyan);
+            font-weight: 800;
+        }
+
+        @media(max-width: 600px) {
+            .referral-banner { flex-direction: column; text-align: center; }
+        }
+
         .category-scroll {
             display: flex;
             gap: 10px;
@@ -877,6 +936,19 @@
             <div class="hero-actions-row">
                 <button class="btn-hero-action" id="btnOpenCatalogModal"><i class="fa-solid fa-bars-staggered"></i> Menú Rápido</button>
                 <button class="btn-hero-action" id="btnOpenTopClients" style="border-color: rgba(255, 183, 0, 0.4); color: var(--gold);"><i class="fa-solid fa-trophy"></i> Salón de la Fama Prime</button>
+            </div>
+        </div>
+
+        <!-- BANNER DE PROGRAMA DE REFERIDOS / INVITA A UN AMIGO -->
+        <div class="referral-banner">
+            <div class="referral-icon"><i class="fa-solid fa-user-plus"></i></div>
+            <div class="referral-content">
+                <div class="referral-title">🎁 ¡INVITA A UN AMIGO Y GANA DIAMANTES!</div>
+                <div class="referral-text">
+                    ¡Invita a un amigo a recargar en la página y ambos se llevan premios! 
+                    Tú te llevas <span>341 diamantes gratis</span> y tu amigo se puede llevar <span>110 diamantes gratis</span>. 
+                    Aplica para recargas desde <span>1,060 hasta 6,160 diamantes</span>. 🚀
+                </div>
             </div>
         </div>
 
