@@ -753,6 +753,51 @@
         .prime-stat-item { background: rgba(0, 0, 0, 0.6); border: 1px solid rgba(255, 183, 0, 0.15); border-radius: 10px; padding: 9px 11px; }
         .prime-stat-label { font-size: 0.62rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; }
         .prime-stat-val { font-family: 'Chakra Petch', sans-serif; font-size: 1.02rem; font-weight: 900; color: var(--gold); text-shadow: 0 0 6px var(--gold-glow); }
+
+        .id-consult-banner {
+            background: linear-gradient(135deg, rgba(0, 240, 255, 0.08), rgba(0, 85, 255, 0.12));
+            border: 1px solid var(--border-glass);
+            border-radius: 14px;
+            padding: 16px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        }
+        @media(max-width: 600px) {
+            .id-consult-banner { flex-direction: column; text-align: center; }
+        }
+        .id-consult-text {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            line-height: 1.4;
+        }
+        .id-consult-text i { font-size: 1.3rem; color: var(--accent-cyan); }
+        .btn-consult-wa {
+            background: #25d366;
+            color: #fff;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 10px;
+            font-family: 'Chakra Petch', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 800;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+            text-decoration: none;
+            box-shadow: 0 0 12px rgba(37, 211, 102, 0.4);
+            transition: 0.2s;
+        }
+        .btn-consult-wa:hover { transform: scale(1.05); }
     </style>
     <script src="//code.tidio.co/gcscrd4peehpejmvje2jrp2vof5cpe3w.js" async></script>
 </head>
@@ -1328,17 +1373,30 @@
                 </div>
             </div>
 
+            <!-- AVISO WHATSAPP ANTES DE DIAMANTES ILIMITADOS -->
+            <div style="grid-column: 1 / -1; width: 100%;">
+                <div class="id-consult-banner">
+                    <div class="id-consult-text">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <span>¿No sabes si tu ID tiene la oferta de diamantes ilimitados? Consulta acá</span>
+                    </div>
+                    <a href="https://api.whatsapp.com/send?phone=50672986056&text=Hola,%20quiero%20consultar%20si%20mi%20ID%20de%20Free%20Fire%20tiene%20la%20oferta%20de%20diamantes%20ilimitados." class="btn-consult-wa" target="_blank">
+                        <i class="fa-solid fa-comments"></i> Consultar ID
+                    </a>
+                </div>
+            </div>
+
             <!-- FF ILIMITADOS -->
             <div class="product-card premium-deal" data-cat="ff-ilim" 
-                 data-crc="1200" data-official-crc="1900" data-usd="2.50" data-official-usd="4.00" data-mxn="35" data-official-mxn="55" data-cop="12000" data-official-cop="19000" data-ars="2500" data-official-ars="4000" data-pen="10.00" data-official-pen="16.00" data-dop="100" data-official-dop="160" data-bob="16.5" data-official-bob="26.0" data-gtq="18.5" data-official-gtq="29.0" data-nio="87" data-official-nio="138" data-ves="89" data-official-ves="140">
+                 data-crc="1600" data-official-crc="2500" data-usd="3.00" data-official-usd="5.00" data-mxn="50" data-official-mxn="85" data-cop="12000" data-official-cop="19000" data-ars="3200" data-official-ars="5200" data-pen="11.00" data-official-pen="18.00" data-dop="130" data-official-dop="210" data-bob="21" data-official-bob="35" data-gtq="23" data-official-gtq="38" data-nio="110" data-official-nio="180" data-ves="115" data-official-ves="190">
                 <div>
                     <div class="product-badge">💎 FF ILIMITADO</div>
-                    <div class="product-name">💎 341 Diamantes (Pila peq.)</div>
+                    <div class="product-name">💎 341 Diamantes</div>
                 </div>
                 <div>
                     <div class="product-price-box">
-                        <div class="product-price price-tag">₡1,200</div>
-                        <div class="savings-box"><span class="savings-official official-tag">Tienda Oficial: ₡1,900</span><span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡700 (36%)!</span></div>
+                        <div class="product-price price-tag">₡1,600</div>
+                        <div class="savings-box"><span class="savings-official official-tag">Tienda Oficial: ₡2,500</span><span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡900 (36%)!</span></div>
                     </div>
                     <button class="btn-add premium-btn" data-input-type="ff" data-title="341 Diamantes FF (Ilimitado)">Comprar Oferta</button>
                 </div>
@@ -1405,17 +1463,17 @@
             </div>
 
             <div class="product-card premium-deal" data-cat="ff-ilim" 
-                 data-crc="37500" data-official-crc="60000" data-usd="70.00" data-official-usd="112.00" data-mxn="1220" data-official-mxn="1950" data-cop="370000" data-official-cop="590000" data-ars="69000" data-official-ars="110000" data-pen="280.00" data-official-pen="450.00" data-dop="3100" data-official-dop="4950" data-bob="480" data-official-bob="770" data-gtq="538" data-official-gtq="860" data-nio="2625" data-official-nio="4200" data-ves="2680" data-official-ves="4300">
+                 data-crc="35000" data-official-crc="60000" data-usd="68.00" data-official-usd="112.00" data-mxn="1180" data-official-mxn="1950" data-cop="360000" data-official-cop="590000" data-ars="67000" data-official-ars="110000" data-pen="270.00" data-official-pen="450.00" data-dop="3000" data-official-dop="4950" data-bob="465" data-official-bob="770" data-gtq="520" data-official-gtq="860" data-nio="2550" data-official-nio="4200" data-ves="2600" data-official-ves="4300">
                 <div>
-                    <div class="product-badge" style="color: var(--accent-cyan);">⚡ MEGA PACK ÉLITE ⚡</div>
-                    <div class="product-name">💎 12,343 Diamantes</div>
+                    <div class="product-badge" style="color: var(--accent-cyan);">⚡ MEGA PACK ILIMITADO ⚡</div>
+                    <div class="product-name">💎 12,320 Diamantes Ilimitados</div>
                 </div>
                 <div>
                     <div class="product-price-box">
-                        <div class="product-price price-tag">₡37,500</div>
-                        <div class="savings-box"><span class="savings-official official-tag">Tienda Oficial: ₡60,000</span><span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡22,500 (38%)!</span></div>
+                        <div class="product-price price-tag">₡35,000</div>
+                        <div class="savings-box"><span class="savings-official official-tag">Tienda Oficial: ₡60,000</span><span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡25,000 (42%)!</span></div>
                     </div>
-                    <button class="btn-add premium-btn" data-input-type="ff" data-title="12,343 Diamantes FF (Mega Pack)">¡Comprar Mega Pack!</button>
+                    <button class="btn-add premium-btn" data-input-type="ff" data-title="12,320 Diamantes FF Ilimitados">¡Comprar Mega Ilimitado!</button>
                 </div>
             </div>
 
@@ -1640,6 +1698,7 @@
             </div>
             <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 5px;">
                 <button class="btn-hero-action" data-jump-modal="ff-lim" style="width:100%; justify-content:center; padding: 13px;"><i class="fa-solid fa-gem"></i> Diamantes Free Fire</button>
+                <button class="btn-hero-action" data-jump-modal="ff-ilim" style="width:100%; justify-content:center; padding: 13px;"><i class="fa-solid fa-fire"></i> Diamantes Ilimitados</button>
                 <button class="btn-hero-action" data-jump-modal="ff-passes" style="width:100%; justify-content:center; padding: 13px;"><i class="fa-solid fa-ticket"></i> Tokens Evolutivos & Pases</button>
                 <button class="btn-hero-action" data-jump-modal="streaming" style="width:100%; justify-content:center; padding: 13px;"><i class="fa-solid fa-play"></i> Streaming (Netflix, Spotify...)</button>
                 <button class="btn-hero-action" data-jump-modal="social" style="width:100%; justify-content:center; padding: 13px;"><i class="fa-solid fa-thumbs-up"></i> Redes Sociales (IG, TikTok...)</button>
