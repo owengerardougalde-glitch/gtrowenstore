@@ -195,7 +195,7 @@
             background: linear-gradient(135deg, rgba(8, 13, 24, 0.95), rgba(4, 8, 15, 0.95));
             border: 1px solid var(--border-premium);
             border-radius: 18px;
-            padding: 22px;
+            padding: 18px;
             margin-bottom: 25px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
             position: relative;
@@ -213,33 +213,36 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
+            margin-bottom: 14px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            padding-bottom: 12px;
+            padding-bottom: 10px;
+            gap: 8px;
         }
 
         .gateway-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.95rem;
+            font-size: 0.76rem;
             color: var(--text-main);
-            font-weight: 900;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .gateway-status {
-            font-family: 'Chakra Petch', sans-serif;
-            font-size: 0.72rem;
-            background: rgba(0, 240, 255, 0.1);
-            color: var(--accent-cyan);
-            border: 1px solid var(--border-glass);
-            padding: 5px 12px;
-            border-radius: 20px;
             font-weight: 800;
             display: flex;
             align-items: center;
             gap: 6px;
+            line-height: 1.3;
+        }
+
+        .gateway-status {
+            font-family: 'Chakra Petch', sans-serif;
+            font-size: 0.68rem;
+            background: rgba(0, 240, 255, 0.1);
+            color: var(--accent-cyan);
+            border: 1px solid var(--border-glass);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            white-space: nowrap;
             box-shadow: 0 0 10px var(--accent-cyan-glow);
         }
 
@@ -841,10 +844,10 @@
         <div class="payment-gateway-hero">
             <div class="gateway-header">
                 <div class="gateway-title">
-                    <i class="fa-solid fa-shield-halved" style="color: var(--accent-cyan);"></i> PASARELA DE PAGOS Y FUENTES SEGURAS
+                    <i class="fa-solid fa-shield-halved" style="color: var(--accent-cyan); font-size: 1rem;"></i> PASARELA DE PAGOS Y FUENTES SEGURAS
                 </div>
                 <div class="gateway-status">
-                    <i class="fa-solid fa-eye"></i> Visitas Reales: <span id="pageViewsCount" style="margin-left: 4px;">...</span>
+                    <i class="fa-solid fa-eye"></i> Visitas Reales: <span id="pageViewsCount" style="margin-left: 2px;">...</span>
                 </div>
             </div>
             
@@ -1907,7 +1910,6 @@
                     e.currentTarget.classList.add('active');
                     const cat = e.currentTarget.getAttribute('data-cat');
 
-                    // Mostrar banner SOLO en "ff-lim" (Diamantes Limitados) o en "all" (Todo el catálogo) arriba de sus productos
                     if (cat === 'ff-lim') {
                         if (bannerEl) bannerEl.style.display = 'flex';
                     } else {
