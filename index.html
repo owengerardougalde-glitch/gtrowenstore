@@ -1299,6 +1299,17 @@
                 </div>
             </div>
 
+            <!-- AVISO WHATSAPP AL INICIO DE DIAMANTES LIMITADOS -->
+            <div class="id-consult-banner" id="limConsultBanner" style="display: none;">
+                <div class="id-consult-text">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <span>¿No sabes si tu ID tiene la oferta de diamantes limitados? Consulta acá</span>
+                </div>
+                <a href="https://api.whatsapp.com/send?phone=50672986056&text=Hola,%20quiero%20consultar%20si%20mi%20ID%20de%20Free%20Fire%20tiene%20la%20oferta%20de%20diamantes%20limitados." class="btn-consult-wa" target="_blank">
+                    <i class="fa-solid fa-comments"></i> Consultar ID
+                </a>
+            </div>
+
             <!-- FF LIMITADOS -->
             <div class="product-card premium-deal" data-cat="ff-lim" 
                  data-crc="500" data-official-crc="800" data-usd="1.00" data-official-usd="1.70" data-mxn="18" data-official-mxn="30" data-cop="4000" data-official-cop="6500" data-ars="1200" data-official-ars="1900" data-pen="3.50" data-official-pen="6.00" data-dop="60" data-official-dop="95" data-bob="6.8" data-official-bob="11.0" data-gtq="7.7" data-official-gtq="12.5" data-nio="36" data-official-nio="58" data-ves="37" data-official-ves="60">
@@ -1373,17 +1384,6 @@
                     </div>
                     <button class="btn-add premium-btn" data-input-type="ff" data-title="6,160 Diamantes FF (Limitado)">Comprar Oferta</button>
                 </div>
-            </div>
-
-            <!-- AVISO WHATSAPP AL INICIO DE DIAMANTES ILIMITADOS -->
-            <div class="id-consult-banner">
-                <div class="id-consult-text">
-                    <i class="fa-brands fa-whatsapp"></i>
-                    <span>¿No sabes si tu ID tiene la oferta de diamantes ilimitados? Consulta acá</span>
-                </div>
-                <a href="https://api.whatsapp.com/send?phone=50672986056&text=Hola,%20quiero%20consultar%20si%20mi%20ID%20de%20Free%20Fire%20tiene%20la%20oferta%20de%20diamantes%20ilimitados." class="btn-consult-wa" target="_blank">
-                    <i class="fa-solid fa-comments"></i> Consultar ID
-                </a>
             </div>
 
             <!-- FF ILIMITADOS -->
@@ -1899,11 +1899,20 @@
                 });
             });
 
+            const bannerEl = document.getElementById('limConsultBanner');
+
             document.querySelectorAll('.cat-btn').forEach(btn => {
                 btn.addEventListener('click', (e) => {
                     document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
                     e.currentTarget.classList.add('active');
                     const cat = e.currentTarget.getAttribute('data-cat');
+
+                    // Mostrar banner SOLO en "ff-lim" (Diamantes Limitados) o en "all" (Todo el catálogo) arriba de sus productos
+                    if (cat === 'ff-lim') {
+                        if (bannerEl) bannerEl.style.display = 'flex';
+                    } else {
+                        if (bannerEl) bannerEl.style.display = 'none';
+                    }
 
                     document.querySelectorAll('.product-card').forEach(card => {
                         if (cat === 'all' || card.getAttribute('data-cat') === cat) {
@@ -2125,7 +2134,7 @@
                 }
 
                 let itemsWaText = cart.map(c => `• ${c.title}`).join('%0A');
-                let msg = `⚡ *NUEVO PEDIDO - GTROWEN STORE*%0A%0A👤 *Cliente:* ${name}%0A📱 *Teléfono:* ${phone}%0A🔗 *Detalle/Destino:* ${customVal}%0A💳 *Método de Pago:* ${methodName}%0A🧾 *Referencia:* ${txId}%0A%0A📦 *Productos:*%0A${itemsWaText}%0A💰 *Total:* ${totalText} (${currentCurrency})`;
+                let msg = `⚡ *NUEVO PEDIDO - GTROWEN STORE*%0A%0A👤 *Cliente:* ${name}%0A📱 *Teléfono:* ${phone}%0A🔗 *Detalle/Destino:* ${customVal}%0A💳 *Método de Pago:* ${methodName}%0A🧾 *Referencia:* ${txId}%0A%0A📦 *Productos:*%0A${itemsWaTest}%0A💰 *Total:* ${totalText} (${currentCurrency})`;
 
                 let whatsappUrl = `https://api.whatsapp.com/send?phone=50672986056&text=${msg}`;
                 window.open(whatsappUrl, '_blank');
