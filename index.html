@@ -1845,7 +1845,7 @@
                     <label>Número de Comprobante / Hash / Referencia</label>
                     <input type="text" id="pTxId" placeholder="Ej: 456791601...">
                 </div>
-                <div class="input-box" id="receiptBox">
+                <div id="receiptBox" class="input-box">
                     <label>Adjuntar Captura del Comprobante 📷</label>
                     <label class="file-upload-box" for="pReceipt">
                         <span id="receiptLabel" style="font-size: 0.8rem; color: var(--accent-cyan); font-weight: 700;"><i class="fa-solid fa-file-arrow-up"></i> Toca aquí para subir tu comprobante</span>
@@ -1920,13 +1920,51 @@
         let cart = [];
         let currentCurrency = 'CRC';
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const currencySymbols = {
-                'CRC': '₡', 'USD': '$', 'MXN': '$', 'COP': '$', 'ARS': '$', 
-                'PEN': 'S/ ', 'DOP': 'RD$ ', 'BOB': 'Bs. ', 'GTQ': 'Q ', 
-                'NIO': 'C$ ', 'VES': 'Bs.S '
-            };
+        const currencySymbols = {
+            'CRC': '₡', 'USD': '$', 'MXN': '$', 'COP': '$', 'ARS': '$', 
+            'PEN': 'S/ ', 'DOP': 'RD$ ', 'BOB': 'Bs. ', 'GTQ': 'Q ', 
+            'NIO': 'C$ ', 'VES': 'Bs.S '
+        };
 
+        function changeCurrency(targetCurr) {
+            currentCurrency = targetCurr;
+            document.querySelectorAll('.curr-btn').forEach(b => {
+                if(b.getAttribute('data-curr') === targetCurr) {
+                    b.classList.add('active');
+                } else {
+                    b.classList.remove('active');
+                }
+            });
+
+            const prefix = currencySymbols[currentCurrency] || '';
+
+            document.querySelectorAll('.product-card').forEach(card => {
+                const tag = card.querySelector('.price-tag');
+                const officialTag = card.querySelector('.official-tag');
+                const savingsTag = card.querySelector('.savings-tag');
+
+                const val = parseFloat(card.getAttribute('data-' + currentCurrency.toLowerCase()));
+                const officialVal = parseFloat(card.getAttribute('data-official-' + currentCurrency.toLowerCase()));
+
+                if (!isNaN(val)) {
+                    let isDec = ['USD', 'PEN', 'BOB', 'GTQ'].includes(currentCurrency);
+                    tag.innerText = prefix + (isDec ? val.toFixed(2) : val.toLocaleString());
+
+                    if (officialTag && !isNaN(officialVal)) {
+                        officialTag.innerText = 'Tienda Oficial: ' + prefix + (isDec ? officialVal.toFixed(2) : officialVal.toLocaleString());
+                    }
+
+                    if (savingsTag && !isNaN(officialVal)) {
+                        let diff = officialVal - val;
+                        let pct = Math.round((diff / officialVal) * 100);
+                        savingsTag.innerText = `⚡ ¡Te ahorras ${prefix}${isDec ? diff.toFixed(2) : diff.toLocaleString()} (${pct}%)!`;
+                    }
+                }
+            });
+            renderCart();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
             const viewsEl = document.getElementById('pageViewsCount');
             if (viewsEl) {
                 let baseViews = parseInt(localStorage.getItem('gtr_real_views') || '25482');
@@ -1940,37 +1978,35 @@
                     .catch(e => console.log('AdBlock activo'));
             }
 
+            // DETECCIÓN AUTOMÁTICA DE PAÍS POR IP
+            fetch('https://ipapi.co/json/')
+                .then(res => res.json())
+                .then(data => {
+                    if (data && data.country_code) {
+                        const country = data.country_code;
+                        let detectedCurr = 'USD'; // Por defecto si no está registrado
+
+                        if (country === 'CO') detectedCurr = 'COP';
+                        else if (country === 'PE') detectedCurr = 'PEN';
+                        else if (country === 'MX') detectedCurr = 'MXN';
+                        else if (country === 'VE') detectedCurr = 'VES';
+                        else if (country === 'CR') detectedCurr = 'CRC';
+                        else if (country === 'AR') detectedCurr = 'ARS';
+                        else if (country === 'DO') detectedCurr = 'DOP';
+                        else if (country === 'BO') detectedCurr = 'BOB';
+                        else if (country === 'GT') detectedCurr = 'GTQ';
+                        else if (country === 'NI') detectedCurr = 'NIO';
+
+                        changeCurrency(detectedCurr);
+                    }
+                })
+                .catch(e => {
+                    console.log('No se pudo detectar la IP, usando moneda por defecto.');
+                });
+
             document.querySelectorAll('.curr-btn').forEach(btn => {
                 btn.addEventListener('click', (e) => {
-                    document.querySelectorAll('.curr-btn').forEach(b => b.classList.remove('active'));
-                    e.target.classList.add('active');
-                    currentCurrency = e.target.getAttribute('data-curr');
-                    const prefix = currencySymbols[currentCurrency] || '';
-
-                    document.querySelectorAll('.product-card').forEach(card => {
-                        const tag = card.querySelector('.price-tag');
-                        const officialTag = card.querySelector('.official-tag');
-                        const savingsTag = card.querySelector('.savings-tag');
-
-                        const val = parseFloat(card.getAttribute('data-' + currentCurrency.toLowerCase()));
-                        const officialVal = parseFloat(card.getAttribute('data-official-' + currentCurrency.toLowerCase()));
-
-                        if (!isNaN(val)) {
-                            let isDec = ['USD', 'PEN', 'BOB', 'GTQ'].includes(currentCurrency);
-                            tag.innerText = prefix + (isDec ? val.toFixed(2) : val.toLocaleString());
-
-                            if (officialTag && !isNaN(officialVal)) {
-                                officialTag.innerText = 'Tienda Oficial: ' + prefix + (isDec ? officialVal.toFixed(2) : officialVal.toLocaleString());
-                            }
-
-                            if (savingsTag && !isNaN(officialVal)) {
-                                let diff = officialVal - val;
-                                let pct = Math.round((diff / officialVal) * 100);
-                                savingsTag.innerText = `⚡ ¡Te ahorras ${prefix}${isDec ? diff.toFixed(2) : diff.toLocaleString()} (${pct}%)!`;
-                            }
-                        }
-                    });
-                    renderCart();
+                    changeCurrency(e.target.getAttribute('data-curr'));
                 });
             });
 
@@ -2208,7 +2244,7 @@
                 }
 
                 let itemsWaText = cart.map(c => `• ${c.title}`).join('%0A');
-                let msg = `⚡ *NUEVO PEDIDO - GTROWEN STORE*%0A%0A👤 *Cliente:* ${name}%0A📱 *Teléfono:* ${phone}%0A🔗 *Detalle/Destino:* ${customVal}%0A💳 *Método de Pago:* ${methodName}%0A🧾 *Referencia:* ${txId}%0A%0A📦 *Productos:*%0A${itemsWaTest}%0A💰 *Total:* ${totalText} (${currentCurrency})`;
+                let msg = `⚡ *NUEVO PEDIDO - GTROWEN STORE*%0A%0A👤 *Cliente:* ${name}%0A📱 *Teléfono:* ${phone}%0A🔗 *Detalle/Destino:* ${customVal}%0A💳 *Método de Pago:* ${methodName}%0A🧾 *Referencia:* ${txId}%0A%0A📦 *Productos:*%0A${itemsWaText}%0A💰 *Total:* ${totalText} (${currentCurrency})`;
 
                 let whatsappUrl = `https://api.whatsapp.com/send?phone=50672986056&text=${msg}`;
                 window.open(whatsappUrl, '_blank');
