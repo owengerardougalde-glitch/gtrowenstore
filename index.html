@@ -417,7 +417,6 @@
             .products-grid { grid-template-columns: 1fr; }
         }
 
-        /* TARJETAS ULTRAMODERNAS AZABACHE */
         .product-card {
             background: var(--bg-card);
             border: 1px solid var(--border-glass);
@@ -463,7 +462,6 @@
             letter-spacing: 0.8px;
         }
 
-        /* BADGES DE STOCK */
         .stock-badge {
             font-family: 'Chakra Petch', sans-serif;
             font-size: 0.62rem;
@@ -505,7 +503,6 @@
             gap: 10px;
         }
 
-        /* ESTILOS Y LOGOS OFICIALES */
         .brand-logo-icon {
             font-size: 1.3rem;
             width: 28px;
@@ -994,7 +991,7 @@
             </div>
         </div>
 
-        <!-- CATEGORÍAS SIN STREAMING PERMANENTE -->
+        <!-- CATEGORÍAS -->
         <div class="category-scroll">
             <button class="cat-btn active" data-cat="all"><i class="fa-solid fa-border-all"></i> Todo el Catálogo</button>
             <button class="cat-btn" data-cat="streaming"><i class="fa-solid fa-play"></i> Streaming Mensual</button>
@@ -1008,7 +1005,7 @@
         <div class="section-h2" id="catalogTitle"><i class="fa-solid fa-fire" style="color: var(--accent-cyan);"></i> CATÁLOGO OFICIAL & OFERTAS ÉPICAS</div>
         <div class="products-grid" id="productsGrid">
 
-            <!-- STREAMING MENSUAL REESTRUCTURADO CON LOGOS OFICIALES Y BADGES DE STOCK -->
+            <!-- STREAMING MENSUAL REESTRUCTURADO -->
             <!-- 1. NETFLIX FAMILIAR -->
             <div class="product-card" data-cat="streaming" 
                  data-crc="6500" data-official-crc="11000" data-usd="13.00" data-official-usd="22.00" data-mxn="235" data-official-mxn="400" data-cop="54000" data-official-cop="90000" data-ars="16500" data-official-ars="28000" data-pen="48.00" data-official-pen="80.00" data-dop="540" data-official-dop="900" data-bob="90" data-official-bob="150" data-gtq="100" data-official-gtq="170" data-nio="475" data-official-nio="800" data-ves="480" data-official-ves="810">
@@ -1470,7 +1467,24 @@
                 </div>
             </div>
 
-            <!-- FF ILIMITADOS -->
+            <!-- FF ILIMITADOS (NUEVOS PRECIOS Y TARJETAS ACTUALIZADAS) -->
+            <!-- 110 DIAMANTES -->
+            <div class="product-card premium-deal" data-cat="ff-ilim" 
+                 data-crc="450" data-official-crc="800" data-usd="0.80" data-official-usd="1.70" data-mxn="15" data-official-mxn="30" data-cop="3400" data-official-cop="6500" data-ars="1000" data-official-ars="1900" data-pen="3.00" data-official-pen="6.00" data-dop="50" data-official-dop="95" data-bob="5.5" data-official-bob="11.0" data-gtq="6.2" data-official-gtq="12.5" data-nio="29" data-official-nio="58" data-ves="30" data-official-ves="60">
+                <div>
+                    <div class="product-badge">💎 FF ILIMITADO</div>
+                    <div class="product-name"><i class="fa-solid fa-gem" style="color: var(--accent-cyan);"></i> 110 Diamantes</div>
+                </div>
+                <div>
+                    <div class="product-price-box">
+                        <div class="product-price price-tag">₡450</div>
+                        <div class="savings-box"><span class="savings-official official-tag">Tienda Oficial: ₡800</span><span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡350 (44%)!</span></div>
+                    </div>
+                    <button class="btn-add premium-btn" data-input-type="ff" data-title="110 Diamantes FF (Ilimitado)">Comprar Oferta</button>
+                </div>
+            </div>
+
+            <!-- 341 DIAMANTES -->
             <div class="product-card premium-deal" data-cat="ff-ilim" 
                  data-crc="1600" data-official-crc="2500" data-usd="3.00" data-official-usd="5.00" data-mxn="50" data-official-mxn="85" data-cop="12000" data-official-cop="19000" data-ars="3200" data-official-ars="5200" data-pen="11.00" data-official-pen="18.00" data-dop="130" data-official-dop="210" data-bob="21" data-official-bob="35" data-gtq="23" data-official-gtq="38" data-nio="110" data-official-nio="180" data-ves="115" data-official-ves="190">
                 <div>
@@ -1486,78 +1500,67 @@
                 </div>
             </div>
 
+            <!-- 541 DIAMANTES -->
             <div class="product-card premium-deal" data-cat="ff-ilim" 
-                 data-crc="2400" data-official-crc="3800" data-usd="5.00" data-official-usd="8.00" data-mxn="88" data-official-mxn="140" data-cop="18000" data-official-cop="29000" data-ars="3410" data-official-ars="5500" data-pen="14.00" data-official-pen="22.50" data-dop="200" data-official-dop="320" data-bob="34" data-official-bob="55" data-gtq="38" data-official-gtq="62" data-nio="180" data-official-nio="290" data-ves="185" data-official-ves="295">
+                 data-crc="2150" data-official-crc="3800" data-usd="4.00" data-official-usd="8.00" data-mxn="70" data-official-mxn="140" data-cop="15000" data-official-cop="29000" data-ars="3800" data-official-ars="5500" data-pen="14.50" data-official-pen="22.50" data-dop="170" data-official-dop="320" data-bob="27" data-official-bob="55" data-gtq="31" data-official-gtq="62" data-nio="145" data-official-nio="290" data-ves="150" data-official-ves="295">
                 <div>
                     <div class="product-badge">💎 FF ILIMITADO</div>
-                    <div class="product-name"><i class="fa-solid fa-gem" style="color: var(--accent-cyan);"></i> 520 Diamantes</div>
+                    <div class="product-name"><i class="fa-solid fa-gem" style="color: var(--accent-cyan);"></i> 541 Diamantes</div>
                 </div>
                 <div>
                     <div class="product-price-box">
-                        <div class="product-price price-tag">₡2,400</div>
-                        <div class="savings-box"><span class="savings-official official-tag">Tienda Oficial: ₡3,800</span><span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡1,400 (36%)!</span></div>
+                        <div class="product-price price-tag">₡2,150</div>
+                        <div class="savings-box"><span class="savings-official official-tag">Tienda Oficial: ₡3,800</span><span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡1,650 (43%)!</span></div>
                     </div>
-                    <button class="btn-add premium-btn" data-input-type="ff" data-title="520 Diamantes FF (Ilimitado)">Comprar Oferta</button>
+                    <button class="btn-add premium-btn" data-input-type="ff" data-title="541 Diamantes FF (Ilimitado)">Comprar Oferta</button>
                 </div>
             </div>
 
+            <!-- 1,160 DIAMANTES -->
             <div class="product-card premium-deal" data-cat="ff-ilim" 
-                 data-crc="4200" data-official-crc="7200" data-usd="8.00" data-official-usd="14.50" data-mxn="135" data-official-mxn="225" data-cop="32000" data-official-cop="60000" data-ars="7500" data-official-ars="13000" data-pen="30.00" data-official-pen="52.00" data-dop="330" data-official-dop="600" data-bob="55" data-official-bob="95" data-gtq="62" data-official-gtq="110" data-nio="290" data-official-nio="520" data-ves="295" data-official-ves="530">
+                 data-crc="3700" data-official-crc="7200" data-usd="7.00" data-official-usd="14.50" data-mxn="120" data-official-mxn="225" data-cop="28000" data-official-cop="60000" data-ars="6600" data-official-ars="13000" data-pen="26.00" data-official-pen="52.00" data-dop="290" data-official-dop="600" data-bob="48" data-official-bob="95" data-gtq="54" data-official-gtq="110" data-nio="255" data-official-nio="520" data-ves="260" data-official-ves="530">
                 <div>
                     <div class="product-badge">💎 FF ILIMITADO</div>
                     <div class="product-name"><i class="fa-solid fa-gem" style="color: var(--accent-cyan);"></i> 1,160 Diamantes</div>
                 </div>
                 <div>
                     <div class="product-price-box">
-                        <div class="product-price price-tag">₡4,200</div>
-                        <div class="savings-box"><span class="savings-official official-tag">Tienda Oficial: ₡7,200</span><span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡3,000 (41%)!</span></div>
+                        <div class="product-price price-tag">₡3,700</div>
+                        <div class="savings-box"><span class="savings-official official-tag">Tienda Oficial: ₡7,200</span><span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡3,500 (49%)!</span></div>
                     </div>
                     <button class="btn-add premium-btn" data-input-type="ff" data-title="1,160 Diamantes FF (Ilimitado)">Comprar Oferta</button>
                 </div>
             </div>
 
+            <!-- 2,398 DIAMANTES -->
             <div class="product-card premium-deal" data-cat="ff-ilim" 
-                 data-crc="6500" data-official-crc="14000" data-usd="13.00" data-official-usd="22.50" data-mxn="225" data-official-mxn="390" data-cop="50000" data-official-cop="86000" data-ars="14400" data-official-ars="25000" data-pen="44.50" data-official-pen="77.00" data-dop="680" data-official-dop="1170" data-bob="89" data-official-bob="154" data-gtq="100" data-official-gtq="173" data-nio="480" data-official-nio="830" data-ves="490" data-official-ves="850">
+                 data-crc="6800" data-official-crc="14000" data-usd="13.00" data-official-usd="22.50" data-mxn="225" data-official-mxn="390" data-cop="50000" data-official-cop="86000" data-ars="14400" data-official-ars="25000" data-pen="44.50" data-official-pen="77.00" data-dop="680" data-official-dop="1170" data-bob="89" data-official-bob="154" data-gtq="100" data-official-gtq="173" data-nio="480" data-official-nio="830" data-ves="490" data-official-ves="850">
                 <div>
                     <div class="product-badge">💎 FF ILIMITADO</div>
                     <div class="product-name"><i class="fa-solid fa-gem" style="color: var(--accent-cyan);"></i> 2,398 Diamantes</div>
                 </div>
                 <div>
                     <div class="product-price-box">
-                        <div class="product-price price-tag">₡6,500</div>
-                        <div class="savings-box"><span class="savings-official official-tag">Tienda Oficial: ₡14,000</span><span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡7,500 (54%)!</span></div>
+                        <div class="product-price price-tag">₡6,800</div>
+                        <div class="savings-box"><span class="savings-official official-tag">Tienda Oficial: ₡14,000</span><span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡7,200 (51%)!</span></div>
                     </div>
                     <button class="btn-add premium-btn" data-input-type="ff" data-title="2,398 Diamantes FF (Ilimitado)">Comprar Oferta</button>
                 </div>
             </div>
 
+            <!-- 6,160 DIAMANTES -->
             <div class="product-card premium-deal" data-cat="ff-ilim" 
-                 data-crc="18100" data-official-crc="29000" data-usd="34.00" data-official-usd="55.00" data-mxn="595" data-official-mxn="960" data-cop="180000" data-official-cop="290000" data-ars="33300" data-official-ars="53000" data-pen="135.50" data-official-pen="218.00" data-dop="1500" data-official-dop="2400" data-bob="233" data-official-bob="375" data-gtq="261" data-official-gtq="420" data-nio="1275" data-official-nio="2050" data-ves="1300" data-official-ves="2100">
+                 data-crc="17500" data-official-crc="29000" data-usd="33.00" data-official-usd="55.00" data-mxn="575" data-official-mxn="960" data-cop="175000" data-official-cop="290000" data-ars="32300" data-official-ars="53000" data-pen="131.00" data-official-pen="218.00" data-dop="1450" data-official-dop="2400" data-bob="226" data-official-bob="375" data-gtq="253" data-official-gtq="420" data-nio="1235" data-official-nio="2050" data-ves="1260" data-official-ves="2100">
                 <div>
                     <div class="product-badge">💎 FF ILIMITADO</div>
                     <div class="product-name"><i class="fa-solid fa-gem" style="color: var(--accent-cyan);"></i> 6,160 Diamantes</div>
                 </div>
                 <div>
                     <div class="product-price-box">
-                        <div class="product-price price-tag">₡18,100</div>
-                        <div class="savings-box"><span class="savings-official official-tag">Tienda Oficial: ₡29,000</span><span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡10,900 (38%)!</span></div>
+                        <div class="product-price price-tag">₡17,500</div>
+                        <div class="savings-box"><span class="savings-official official-tag">Tienda Oficial: ₡29,000</span><span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡11,500 (40%)!</span></div>
                     </div>
                     <button class="btn-add premium-btn" data-input-type="ff" data-title="6,160 Diamantes FF (Ilimitado)">Comprar Oferta</button>
-                </div>
-            </div>
-
-            <div class="product-card premium-deal" data-cat="ff-ilim" 
-                 data-crc="35000" data-official-crc="60000" data-usd="68.00" data-official-usd="112.00" data-mxn="1180" data-official-mxn="1950" data-cop="360000" data-official-cop="590000" data-ars="67000" data-official-ars="110000" data-pen="270.00" data-official-pen="450.00" data-dop="3000" data-official-dop="4950" data-bob="465" data-official-bob="770" data-gtq="520" data-official-gtq="860" data-nio="2550" data-official-nio="4200" data-ves="2600" data-official-ves="4300">
-                <div>
-                    <div class="product-badge" style="color: var(--accent-cyan);">⚡ MEGA PACK ILIMITADO ⚡</div>
-                    <div class="product-name"><i class="fa-solid fa-gem" style="color: var(--accent-cyan);"></i> 12,320 Diamantes Ilimitados</div>
-                </div>
-                <div>
-                    <div class="product-price-box">
-                        <div class="product-price price-tag">₡35,000</div>
-                        <div class="savings-box"><span class="savings-official official-tag">Tienda Oficial: ₡60,000</span><span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡25,000 (42%)!</span></div>
-                    </div>
-                    <button class="btn-add premium-btn" data-input-type="ff" data-title="12,320 Diamantes FF Ilimitados">¡Comprar Mega Ilimitado!</button>
                 </div>
             </div>
 
