@@ -1,66 +1,62 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta name="cryptomus" content="a2afb2a9" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>GTROWEN.STORE | Elite Gaming & Digital Hub</title>
-    <!-- FUENTES Y LOGOS OFICIALES (FontAwesome) -->
-    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700;800&family=Orbitron:wght@500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>GTROWEN.STORE | Digital Gaming Store</title>
+    <!-- FUENTES Y LOGOS OFICIALES -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Chakra+Petch:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            --bg-deep: #030509;
-            --bg-card: #080d18;
-            --bg-card-hover: #0c1528;
-            --accent-cyan: #00f0ff;
-            --accent-cyan-glow: rgba(0, 240, 255, 0.4);
-            --accent-blue: #0055ff;
-            --accent-blue-glow: rgba(0, 85, 255, 0.4);
-            --gold: #ffb700;
-            --gold-glow: rgba(255, 183, 0, 0.4);
+            --bg-black: #070709;
+            --bg-surface: #0f1015;
+            --bg-card: #14161f;
+            --bg-card-hover: #1a1c28;
+            --accent: #3b82f6;
+            --accent-glow: rgba(59, 130, 246, 0.25);
+            --gold: #f59e0b;
+            --gold-glow: rgba(245, 158, 11, 0.2);
             --binance: #f3ba2f;
-            --success: #00ff88;
-            --text-main: #ffffff;
-            --text-muted: #798ba8;
-            --border-glass: rgba(0, 240, 255, 0.2);
-            --border-premium: rgba(255, 183, 0, 0.5);
+            --success: #10b981;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(255, 255, 255, 0.18);
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             -webkit-tap-highlight-color: transparent;
         }
 
         html, body {
-            background-color: var(--bg-deep);
+            background-color: var(--bg-black);
             color: var(--text-main);
             width: 100%;
             margin: 0;
             padding: 0;
             padding-bottom: 120px;
-            position: relative;
             overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 10% 10%, rgba(255, 183, 0, 0.04) 0%, transparent 40%),
-                radial-gradient(circle at 90% 90%, rgba(0, 240, 255, 0.04) 0%, transparent 40%);
-            background-attachment: fixed;
         }
 
         .num-font, .product-price, .cart-total-box, .curr-btn, .header-cart, .floating-cart-btn {
             font-family: 'Chakra Petch', sans-serif !important;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.3px;
         }
 
         header {
-            background: rgba(3, 5, 9, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border-glass);
-            padding: 10px 12px;
+            background: rgba(15, 16, 21, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 12px 16px;
             position: sticky;
             top: 0;
             z-index: 900;
@@ -68,188 +64,165 @@
             align-items: center;
             justify-content: space-between;
             width: 100%;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
         }
 
         .brand-box {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             min-width: max-content;
         }
 
         .brand-icon {
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, var(--gold), #ff5500);
-            color: #030509;
-            border-radius: 8px;
+            width: 34px;
+            height: 34px;
+            background: var(--accent);
+            color: #fff;
+            border-radius: 9px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1rem;
-            box-shadow: 0 0 15px var(--gold-glow);
+            font-size: 0.95rem;
+            box-shadow: 0 4px 12px var(--accent-glow);
         }
 
         .brand-title {
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 900;
             font-size: 0.95rem;
-            color: var(--text-main);
-            letter-spacing: 1px;
-            line-height: 1;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: -0.2px;
+            line-height: 1.1;
         }
 
-        .brand-title span { color: var(--gold); text-shadow: 0 0 10px var(--gold-glow); }
+        .brand-title span { color: var(--accent); }
 
         .brand-sub {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.45rem;
+            font-size: 0.65rem;
             color: var(--text-muted);
-            letter-spacing: 1.5px;
-            margin-top: 2px;
+            font-weight: 500;
         }
 
         .header-actions {
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
             flex: 1;
             justify-content: flex-end;
             overflow: hidden;
         }
 
         .currency-switch {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border-glass);
-            border-radius: 16px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
             padding: 3px;
             display: flex;
             gap: 2px;
             overflow-x: auto;
-            max-width: 58vw;
-            scrollbar-width: thin;
-            scrollbar-color: var(--accent-cyan) rgba(255,255,255,0.05);
-            -webkit-overflow-scrolling: touch;
+            max-width: 55vw;
+            scrollbar-width: none;
         }
-        .currency-switch::-webkit-scrollbar { height: 3px; }
-        .currency-switch::-webkit-scrollbar-thumb { background: var(--accent-cyan); border-radius: 10px; }
+        .currency-switch::-webkit-scrollbar { display: none; }
 
         .curr-btn {
             background: none;
             border: none;
             color: var(--text-muted);
-            font-size: 0.65rem;
-            font-weight: 800;
-            padding: 3px 7px;
-            border-radius: 12px;
+            font-size: 0.68rem;
+            font-weight: 700;
+            padding: 4px 8px;
+            border-radius: 8px;
             cursor: pointer;
             white-space: nowrap;
-            transition: 0.2s;
+            transition: all 0.15s ease;
         }
 
         .curr-btn.active {
-            background: var(--accent-cyan);
-            color: #030509;
-            box-shadow: 0 0 10px var(--accent-cyan-glow);
+            background: var(--bg-card);
+            color: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+            border: 1px solid var(--border-subtle);
         }
 
         .header-cart {
-            background: rgba(0, 240, 255, 0.08);
-            border: 1px solid var(--border-glass);
-            border-radius: 16px;
-            padding: 5px 10px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 6px 12px;
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 6px;
             cursor: pointer;
-            color: var(--accent-cyan);
-            font-size: 0.78rem;
+            color: #fff;
+            font-size: 0.8rem;
             font-weight: 700;
             white-space: nowrap;
-            min-width: max-content;
         }
 
         .header-cart-badge {
-            background: var(--accent-cyan);
-            color: #030509;
-            width: 16px;
-            height: 16px;
+            background: var(--accent);
+            color: #fff;
+            width: 18px;
+            height: 18px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.68rem;
-            font-weight: 900;
+            font-size: 0.65rem;
+            font-weight: 800;
         }
 
         .container {
-            max-width: 950px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 18px;
-            position: relative;
-            z-index: 10;
+            padding: 20px 16px;
         }
 
         .payment-gateway-hero {
-            background: linear-gradient(135deg, rgba(8, 13, 24, 0.95), rgba(4, 8, 15, 0.95));
-            border: 1px solid var(--border-premium);
-            border-radius: 18px;
-            padding: 18px;
-            margin-bottom: 25px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .payment-gateway-hero::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 5px; height: 100%;
-            background: linear-gradient(to bottom, var(--gold), #ff5500);
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 24px;
         }
 
         .gateway-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 14px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            padding-bottom: 10px;
+            margin-bottom: 16px;
+            border-bottom: 1px solid var(--border-subtle);
+            padding-bottom: 12px;
             gap: 8px;
         }
 
         .gateway-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.76rem;
+            font-size: 0.82rem;
             color: var(--text-main);
-            font-weight: 800;
+            font-weight: 700;
             display: flex;
             align-items: center;
-            gap: 6px;
-            line-height: 1.3;
+            gap: 8px;
         }
 
         .gateway-status {
-            font-family: 'Chakra Petch', sans-serif;
-            font-size: 0.68rem;
-            background: rgba(0, 240, 255, 0.1);
-            color: var(--accent-cyan);
-            border: 1px solid var(--border-glass);
+            font-size: 0.72rem;
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+            border: 1px solid rgba(16, 185, 129, 0.2);
             padding: 4px 10px;
             border-radius: 20px;
-            font-weight: 800;
+            font-weight: 600;
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 6px;
             white-space: nowrap;
-            box-shadow: 0 0 10px var(--accent-cyan-glow);
         }
 
         .gateway-methods-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
+            gap: 10px;
             margin-bottom: 16px;
         }
 
@@ -258,10 +231,10 @@
         }
 
         .gateway-method-card {
-            background: rgba(3, 5, 9, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.04);
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
             border-radius: 12px;
-            padding: 12px;
+            padding: 12px 10px;
             text-align: center;
             display: flex;
             flex-direction: column;
@@ -269,92 +242,74 @@
             gap: 4px;
         }
 
-        .gateway-method-card span { font-size: 1.4rem; }
-        .gateway-method-name { font-family: 'Chakra Petch', sans-serif; font-size: 0.78rem; font-weight: 700; color: var(--text-main); }
-        .gateway-method-desc { font-size: 0.62rem; color: var(--text-muted); }
+        .gateway-method-card span { font-size: 1.3rem; }
+        .gateway-method-name { font-size: 0.78rem; font-weight: 700; color: #fff; }
+        .gateway-method-desc { font-size: 0.65rem; color: var(--text-muted); }
 
         .hero-actions-row {
             display: flex;
             gap: 10px;
             justify-content: center;
             flex-wrap: wrap;
-            margin-top: 12px;
         }
 
         .btn-hero-action {
-            background: rgba(0, 240, 255, 0.08);
-            border: 1px solid var(--border-glass);
-            color: var(--accent-cyan);
-            padding: 9px 16px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-main);
+            padding: 10px 16px;
             border-radius: 10px;
-            font-family: 'Chakra Petch', sans-serif;
             font-size: 0.78rem;
-            font-weight: 800;
+            font-weight: 600;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 6px;
-            transition: 0.2s;
+            gap: 8px;
+            transition: all 0.15s ease;
         }
 
         .btn-hero-action:hover {
-            background: var(--accent-cyan);
-            color: #030509;
-            box-shadow: 0 0 15px var(--accent-cyan-glow);
+            border-color: var(--border-hover);
+            background: var(--bg-card-hover);
         }
 
         .referral-banner {
-            background: linear-gradient(135deg, rgba(255, 183, 0, 0.12), rgba(0, 240, 255, 0.08));
-            border: 1px solid var(--border-premium);
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.08), rgba(59, 130, 246, 0.08));
+            border: 1px solid rgba(245, 158, 11, 0.25);
             border-radius: 16px;
-            padding: 16px;
-            margin-bottom: 22px;
+            padding: 16px 20px;
+            margin-bottom: 24px;
             display: flex;
             align-items: center;
-            gap: 14px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .referral-banner::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 4px; height: 100%;
-            background: var(--gold);
+            gap: 16px;
         }
 
         .referral-icon {
-            font-size: 2rem;
+            font-size: 1.8rem;
             color: var(--gold);
-            filter: drop-shadow(0 0 10px var(--gold-glow));
-            min-width: 40px;
+            min-width: 36px;
             text-align: center;
         }
 
-        .referral-content {
-            flex: 1;
-        }
+        .referral-content { flex: 1; }
 
         .referral-title {
-            font-family: 'Orbitron', sans-serif;
             font-size: 0.85rem;
-            font-weight: 900;
+            font-weight: 800;
             color: var(--gold);
             margin-bottom: 4px;
-            text-shadow: 0 0 8px var(--gold-glow);
+            letter-spacing: -0.1px;
         }
 
         .referral-text {
             font-size: 0.78rem;
-            color: var(--text-main);
-            line-height: 1.4;
-            font-weight: 600;
+            color: var(--text-muted);
+            line-height: 1.45;
         }
 
         .referral-text span {
-            color: var(--accent-cyan);
-            font-weight: 800;
+            color: #fff;
+            font-weight: 700;
         }
 
         @media(max-width: 600px) {
@@ -363,57 +318,50 @@
 
         .category-scroll {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             overflow-x: auto;
-            padding-bottom: 10px;
-            margin-bottom: 22px;
-            position: relative;
-            z-index: 10;
+            padding-bottom: 8px;
+            margin-bottom: 24px;
             scrollbar-width: none;
         }
         .category-scroll::-webkit-scrollbar { display: none; }
 
         .cat-btn {
-            background: var(--bg-card);
-            border: 1px solid var(--border-glass);
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
             color: var(--text-muted);
-            padding: 10px 18px;
-            border-radius: 12px;
-            font-family: 'Chakra Petch', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 700;
+            padding: 9px 16px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 600;
             white-space: nowrap;
             cursor: pointer;
-            transition: 0.2s;
+            transition: all 0.15s ease;
         }
 
         .cat-btn.active {
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
-            color: #fff;
-            border-color: var(--accent-cyan);
-            box-shadow: 0 0 18px var(--accent-cyan-glow);
-            font-weight: 900;
+            background: #fff;
+            color: #000;
+            border-color: #fff;
+            font-weight: 700;
         }
 
         .section-h2 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.05rem;
-            font-weight: 900;
-            color: var(--text-main);
+            font-size: 1rem;
+            font-weight: 800;
+            color: #fff;
             margin-bottom: 16px;
             display: flex;
             align-items: center;
-            gap: 10px;
-            margin-top: 24px;
+            gap: 8px;
+            letter-spacing: -0.2px;
         }
 
         .products-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
+            gap: 14px;
             margin-bottom: 30px;
-            position: relative;
-            z-index: 10;
         }
 
         @media(max-width: 550px) {
@@ -422,83 +370,68 @@
 
         .product-card {
             background: var(--bg-card);
-            border: 1px solid var(--border-glass);
-            border-radius: 16px;
+            border: 1px solid var(--border-subtle);
+            border-radius: 14px;
             padding: 18px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            position: relative;
-            transition: all 0.25s ease;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            transition: all 0.15s ease;
         }
 
         .product-card:hover {
-            border-color: var(--accent-cyan);
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0, 240, 255, 0.15);
+            border-color: var(--border-hover);
+            background: var(--bg-card-hover);
         }
 
         .product-card.premium-deal {
-            background: linear-gradient(145deg, rgba(0, 85, 255, 0.15), var(--bg-card));
-            border: 1px solid var(--border-premium);
-            box-shadow: 0 8px 30px rgba(0, 85, 255, 0.2);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            background: linear-gradient(180deg, rgba(59, 130, 246, 0.06), var(--bg-card));
         }
 
         .product-badge {
-            font-size: 0.7rem;
-            font-weight: 800;
-            color: var(--accent-cyan);
+            font-size: 0.68rem;
+            font-weight: 700;
+            color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 0.8px;
+            letter-spacing: 0.5px;
             margin-bottom: 8px;
         }
 
         .premium-deal .product-badge {
-            color: var(--accent-blue);
-            text-shadow: 0 0 10px var(--accent-blue-glow);
+            color: var(--accent);
         }
 
         .product-name {
             font-size: 0.92rem;
             font-weight: 700;
-            color: var(--text-main);
-            margin-bottom: 12px;
+            color: #fff;
+            margin-bottom: 14px;
             line-height: 1.35;
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
-        .product-name i {
-            font-size: 1.15rem;
-            filter: drop-shadow(0 0 5px rgba(255,255,255,0.3));
-        }
-
         .product-price-box {
             display: flex;
             flex-direction: column;
             gap: 4px;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
         }
 
         .product-price {
             font-size: 1.25rem;
-            color: var(--accent-cyan);
-            font-weight: 900;
-        }
-
-        .premium-deal .product-price {
             color: #fff;
-            text-shadow: 0 0 12px var(--accent-blue-glow);
+            font-weight: 800;
         }
 
         .savings-box {
-            background: rgba(0, 255, 136, 0.08);
-            border: 1px dashed rgba(0, 255, 136, 0.4);
-            border-radius: 8px;
-            padding: 6px 10px;
-            font-size: 0.72rem;
+            background: rgba(16, 185, 129, 0.08);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 6px;
+            padding: 5px 8px;
+            font-size: 0.7rem;
             display: flex;
             flex-direction: column;
             gap: 2px;
@@ -511,173 +444,171 @@
 
         .savings-highlight {
             color: var(--success);
-            font-weight: 800;
-            font-family: 'Chakra Petch', sans-serif;
+            font-weight: 700;
         }
 
         .btn-add {
-            background: linear-gradient(135deg, rgba(0, 240, 255, 0.15), rgba(0, 240, 255, 0.3));
-            color: var(--accent-cyan);
-            border: 1px solid var(--border-glass);
-            border-radius: 10px;
-            padding: 11px 0;
-            font-weight: 900;
-            font-size: 0.8rem;
-            font-family: 'Chakra Petch', sans-serif;
+            background: var(--bg-surface);
+            color: #fff;
+            border: 1px solid var(--border-subtle);
+            border-radius: 9px;
+            padding: 10px 0;
+            font-weight: 700;
+            font-size: 0.78rem;
             cursor: pointer;
             width: 100%;
-            text-transform: uppercase;
-            transition: 0.2s;
+            transition: all 0.15s ease;
         }
 
         .btn-add:hover {
-            background: var(--accent-cyan);
-            color: #030509;
-            box-shadow: 0 0 15px var(--accent-cyan-glow);
+            background: #fff;
+            color: #000;
+            border-color: #fff;
         }
 
         .btn-add.premium-btn {
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            background: var(--accent);
             color: #fff;
             border: none;
-            box-shadow: 0 0 15px var(--accent-blue-glow);
+        }
+
+        .btn-add.premium-btn:hover {
+            background: #2563eb;
         }
 
         .floating-cart-btn {
             position: fixed;
-            bottom: 95px;
+            bottom: 90px;
             right: 20px;
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
-            color: #fff;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            width: 60px;
-            height: 60px;
+            background: #fff;
+            color: #000;
+            border: none;
+            width: 54px;
+            height: 54px;
             border-radius: 50%;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 10px 30px rgba(0, 240, 255, 0.4);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
             z-index: 998;
-            font-size: 1.4rem;
-            transition: transform 0.2s ease;
+            font-size: 1.25rem;
+            transition: transform 0.15s ease;
         }
         
-        .floating-cart-btn:hover { transform: scale(1.08); }
+        .floating-cart-btn:hover { transform: scale(1.05); }
 
         .floating-cart-badge {
             position: absolute;
-            top: -5px;
-            right: -5px;
-            background: #030509;
-            color: var(--accent-cyan);
-            font-size: 0.85rem;
-            width: 26px;
-            height: 26px;
+            top: -3px;
+            right: -3px;
+            background: var(--accent);
+            color: #fff;
+            font-size: 0.75rem;
+            width: 22px;
+            height: 22px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 900;
-            font-family: 'Chakra Petch', sans-serif;
-            border: 2px solid var(--accent-cyan);
+            font-weight: 800;
         }
 
         .floating-whatsapp-btn {
             position: fixed;
             bottom: 20px;
             left: 20px;
-            width: 58px;
-            height: 58px;
+            width: 52px;
+            height: 52px;
             border-radius: 50%;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 25px rgba(37, 211, 102, 0.8);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
             z-index: 1000;
             text-decoration: none;
             background: url('https://i.postimg.cc/kDQPMdkG/kDQPMdkG.png') no-repeat center center;
             background-size: cover;
             border: 2px solid #ffffff;
-            transition: transform 0.2s ease;
+            transition: transform 0.15s ease;
         }
 
-        .floating-whatsapp-btn:hover { transform: scale(1.1); }
+        .floating-whatsapp-btn:hover { transform: scale(1.05); }
 
         .floating-group-btn {
             position: fixed;
-            bottom: 88px;
+            bottom: 82px;
             left: 20px;
             background: #128c7e;
             color: #fff;
-            border: 2px solid rgba(255, 255, 255, 0.4);
-            width: 48px;
-            height: 48px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 15px rgba(18, 140, 126, 0.7);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
             z-index: 1000;
             text-decoration: none;
-            transition: transform 0.2s;
+            transition: transform 0.15s;
         }
-        .floating-group-btn:hover { transform: scale(1.1); }
-        .floating-group-btn svg { width: 24px; height: 24px; fill: #ffffff; }
+        .floating-group-btn:hover { transform: scale(1.05); }
 
         .modal {
             position: fixed;
             inset: 0;
-            background: rgba(3, 5, 9, 0.88);
-            backdrop-filter: blur(12px);
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             z-index: 2000;
             display: none;
             align-items: center;
             justify-content: center;
-            padding: 15px;
+            padding: 16px;
         }
 
         .modal.open { display: flex; }
 
         .modal-box {
-            background: var(--bg-card);
-            border: 1px solid var(--border-glass);
-            border-radius: 20px;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: 18px;
             width: 100%;
             max-width: 440px;
-            padding: 24px;
+            padding: 20px;
             max-height: 85vh;
             overflow-y: auto;
             position: relative;
             z-index: 2001;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
         }
 
         .modal-top {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 18px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 16px;
+            border-bottom: 1px solid var(--border-subtle);
             padding-bottom: 12px;
         }
 
         .modal-top h3 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1rem;
-            color: var(--text-main);
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #fff;
         }
 
-        .btn-close { background: none; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer; }
+        .btn-close { background: none; border: none; color: var(--text-muted); font-size: 1.4rem; cursor: pointer; }
 
         .cart-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 12px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            border-bottom: 1px solid var(--border-subtle);
             font-size: 0.85rem;
         }
 
@@ -685,31 +616,31 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 1.15rem;
-            color: var(--accent-cyan);
-            margin: 18px 0;
-            padding-top: 14px;
-            border-top: 1px solid var(--border-glass);
-            font-weight: 700;
+            font-size: 1.1rem;
+            color: #fff;
+            margin: 16px 0;
+            padding-top: 12px;
+            border-top: 1px solid var(--border-subtle);
+            font-weight: 800;
         }
 
         .input-box { margin-bottom: 14px; }
-        .input-box label { display: block; font-size: 0.75rem; color: var(--text-muted); margin-bottom: 5px; font-weight: 600; }
+        .input-box label { display: block; font-size: 0.75rem; color: var(--text-muted); margin-bottom: 6px; font-weight: 600; }
         .input-box input, .input-box select {
             width: 100%;
             padding: 11px 14px;
-            background: rgba(3, 5, 9, 0.8);
-            border: 1px solid var(--border-glass);
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
             border-radius: 10px;
             color: #fff;
-            font-size: 0.88rem;
+            font-size: 0.85rem;
             outline: none;
         }
 
         .file-upload-box {
-            background: rgba(0, 240, 255, 0.03);
-            border: 2px dashed var(--border-glass);
-            border-radius: 12px;
+            background: var(--bg-card);
+            border: 1px dashed var(--border-subtle);
+            border-radius: 10px;
             padding: 14px;
             text-align: center;
             cursor: pointer;
@@ -718,57 +649,53 @@
         }
 
         .info-pay {
-            background: rgba(0, 240, 255, 0.05);
-            border: 1px solid var(--border-glass);
-            border-radius: 12px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 10px;
             padding: 14px;
-            font-size: 0.82rem;
+            font-size: 0.8rem;
             margin-bottom: 16px;
-            line-height: 1.6;
+            line-height: 1.5;
+            color: var(--text-muted);
         }
 
         .btn-proceed {
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
-            color: #030509;
+            background: #fff;
+            color: #000;
             border: none;
             width: 100%;
-            padding: 13px;
-            border-radius: 12px;
-            font-family: 'Chakra Petch', sans-serif;
-            font-weight: 900;
-            font-size: 0.92rem;
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: 800;
+            font-size: 0.88rem;
             cursor: pointer;
-            text-transform: uppercase;
         }
 
         .btn-send {
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            background: var(--accent);
             color: #fff;
             border: none;
             width: 100%;
-            padding: 13px;
-            border-radius: 12px;
-            font-family: 'Chakra Petch', sans-serif;
-            font-weight: 900;
-            font-size: 0.92rem;
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: 800;
+            font-size: 0.88rem;
             cursor: pointer;
             margin-top: 10px;
-            text-transform: uppercase;
         }
 
         #topClientsModal .modal-box {
-            background: linear-gradient(145deg, #050811, #0a0e1c);
-            border: 2px solid var(--gold);
+            background: var(--bg-surface);
+            border: 1px solid var(--gold);
             padding: 0;
             display: flex;
             flex-direction: column;
             max-height: 85vh;
-            box-shadow: 0 0 40px rgba(255, 183, 0, 0.25);
         }
 
         #topClientsModal .modal-top {
-            background: rgba(8, 13, 24, 0.98);
-            border-bottom: 2px solid var(--gold);
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--gold);
             padding: 14px 18px;
         }
 
@@ -777,55 +704,43 @@
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            gap: 14px;
-            background: radial-gradient(circle at 50% 0%, rgba(255, 183, 0, 0.08) 0%, transparent 60%);
+            gap: 12px;
         }
 
         .prime-card {
-            background: linear-gradient(145deg, #0c1222, #060913);
-            border: 1px solid var(--gold);
-            border-radius: 16px;
-            padding: 16px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 14px;
+            padding: 14px;
             position: relative;
-            overflow: hidden;
-        }
-
-        .prime-card::after {
-            content: '';
-            position: absolute;
-            top: 0; right: 0; width: 60px; height: 60px;
-            background: radial-gradient(circle, rgba(255, 183, 0, 0.2) 0%, transparent 70%);
-            pointer-events: none;
         }
 
         .prime-card.rank-1 {
-            border: 2px solid var(--gold);
-            background: linear-gradient(135deg, rgba(255, 183, 0, 0.18), #0a0e1c);
-            box-shadow: 0 0 25px var(--gold-glow);
+            border: 1px solid var(--gold);
+            background: linear-gradient(180deg, rgba(245, 158, 11, 0.08), var(--bg-card));
         }
 
-        .prime-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255, 183, 0, 0.3); padding-bottom: 8px; margin-bottom: 10px; }
-        .prime-rank-badge { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 0.85rem; color: var(--gold); text-shadow: 0 0 8px var(--gold-glow); display: flex; align-items: center; gap: 6px; }
-        .prime-tier { background: linear-gradient(135deg, var(--gold), #ff8800); color: #030509; font-family: 'Chakra Petch', sans-serif; font-weight: 900; font-size: 0.7rem; padding: 3px 10px; border-radius: 8px; box-shadow: 0 0 10px var(--gold-glow); letter-spacing: 1px; }
+        .prime-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-subtle); padding-bottom: 8px; margin-bottom: 10px; }
+        .prime-rank-badge { font-weight: 800; font-size: 0.8rem; color: var(--gold); display: flex; align-items: center; gap: 6px; }
+        .prime-tier { background: var(--gold); color: #000; font-weight: 800; font-size: 0.65rem; padding: 2px 8px; border-radius: 6px; }
         .prime-player-info { display: flex; justify-content: space-between; align-items: flex-end; }
-        .prime-name { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.15rem; color: #fff; text-transform: uppercase; letter-spacing: 0.5px; }
-        .prime-uid { font-family: 'Chakra Petch', sans-serif; font-size: 0.78rem; color: var(--accent-cyan); font-weight: 700; margin-top: 2px; }
-        .prime-stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; padding-top: 10px; border-top: 1px dashed rgba(255, 183, 0, 0.2); }
-        .prime-stat-item { background: rgba(0, 0, 0, 0.6); border: 1px solid rgba(255, 183, 0, 0.15); border-radius: 10px; padding: 9px 11px; }
-        .prime-stat-label { font-size: 0.62rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; }
-        .prime-stat-val { font-family: 'Chakra Petch', sans-serif; font-size: 1.02rem; font-weight: 900; color: var(--gold); text-shadow: 0 0 6px var(--gold-glow); }
+        .prime-name { font-weight: 800; font-size: 1.05rem; color: #fff; }
+        .prime-uid { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; margin-top: 2px; }
+        .prime-stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; padding-top: 8px; border-top: 1px dashed var(--border-subtle); }
+        .prime-stat-item { background: rgba(0, 0, 0, 0.3); border-radius: 8px; padding: 8px; }
+        .prime-stat-label { font-size: 0.6rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; }
+        .prime-stat-val { font-size: 0.95rem; font-weight: 800; color: #fff; }
 
         .id-consult-banner {
-            background: linear-gradient(135deg, rgba(0, 240, 255, 0.08), rgba(0, 85, 255, 0.12));
-            border: 1px solid var(--border-glass);
-            border-radius: 14px;
-            padding: 16px;
-            margin-bottom: 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 14px;
+            margin-bottom: 18px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 12px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
             grid-column: 1 / -1;
             width: 100%;
         }
@@ -833,34 +748,30 @@
             .id-consult-banner { flex-direction: column; text-align: center; }
         }
         .id-consult-text {
-            font-size: 0.85rem;
-            font-weight: 700;
+            font-size: 0.8rem;
+            font-weight: 600;
             color: var(--text-main);
             display: flex;
             align-items: center;
             gap: 10px;
             line-height: 1.4;
         }
-        .id-consult-text i { font-size: 1.3rem; color: var(--accent-cyan); }
+        .id-consult-text i { font-size: 1.2rem; color: var(--success); }
         .btn-consult-wa {
             background: #25d366;
             color: #fff;
             border: none;
             padding: 8px 14px;
-            border-radius: 10px;
-            font-family: 'Chakra Petch', sans-serif;
-            font-size: 0.78rem;
-            font-weight: 800;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 700;
             cursor: pointer;
             display: flex;
             align-items: center;
             gap: 6px;
             white-space: nowrap;
             text-decoration: none;
-            box-shadow: 0 0 12px rgba(37, 211, 102, 0.4);
-            transition: 0.2s;
         }
-        .btn-consult-wa:hover { transform: scale(1.05); }
     </style>
     <script src="//code.tidio.co/gcscrd4peehpejmvje2jrp2vof5cpe3w.js" async></script>
 </head>
@@ -902,10 +813,10 @@
         <div class="payment-gateway-hero">
             <div class="gateway-header">
                 <div class="gateway-title">
-                    <i class="fa-solid fa-shield-halved" style="color: var(--accent-cyan); font-size: 1rem;"></i> PASARELA DE PAGOS Y FUENTES SEGURAS
+                    <i class="fa-solid fa-shield-halved" style="color: var(--accent);"></i> MÉTODOS DE PAGO SEGURO
                 </div>
                 <div class="gateway-status">
-                    <i class="fa-solid fa-eye"></i> Visitas Reales: <span id="pageViewsCount" style="margin-left: 2px;">...</span>
+                    <i class="fa-solid fa-eye"></i> Visitas: <span id="pageViewsCount" style="margin-left: 2px;">...</span>
                 </div>
             </div>
             
@@ -934,7 +845,7 @@
 
             <div class="hero-actions-row">
                 <button class="btn-hero-action" id="btnOpenCatalogModal"><i class="fa-solid fa-bars-staggered"></i> Menú Rápido</button>
-                <button class="btn-hero-action" id="btnOpenTopClients" style="border-color: rgba(255, 183, 0, 0.4); color: var(--gold);"><i class="fa-solid fa-trophy"></i> Salón de la Fama Prime</button>
+                <button class="btn-hero-action" id="btnOpenTopClients" style="border-color: rgba(245, 158, 11, 0.3); color: var(--gold);"><i class="fa-solid fa-trophy"></i> Salón de la Fama Prime</button>
             </div>
         </div>
 
@@ -962,7 +873,7 @@
             <button class="cat-btn" data-cat="bs"><i class="fa-solid fa-coins"></i> Blood Strike Oro</button>
         </div>
 
-        <div class="section-h2" id="catalogTitle"><i class="fa-solid fa-fire" style="color: var(--accent-cyan);"></i> CATÁLOGO OFICIAL & OFERTAS ÉPICAS</div>
+        <div class="section-h2" id="catalogTitle"><i class="fa-solid fa-fire" style="color: var(--accent);"></i> CATÁLOGO OFICIAL & OFERTAS ÉPICAS</div>
         <div class="products-grid" id="productsGrid">
 
             <!-- REDES SOCIALES -->
@@ -1460,7 +1371,7 @@
                 </div>
             </div>
 
-            <!-- FF ILIMITADOS -->
+            <!-- FF ILIMITADOS (MANTENIENDO VALORES EXACTOS DE DATA) -->
             <div class="product-card premium-deal" data-cat="ff-ilim" 
                  data-crc="1600" data-official-crc="2500" data-usd="3.00" data-official-usd="5.00" data-mxn="50" data-official-mxn="85" data-cop="12000" data-official-cop="19000" data-ars="3200" data-official-ars="5200" data-pen="11.00" data-official-pen="18.00" data-dop="130" data-official-dop="210" data-bob="21" data-official-bob="35" data-gtq="23" data-official-gtq="38" data-nio="110" data-official-nio="180" data-ves="115" data-official-ves="190">
                 <div>
@@ -1539,7 +1450,7 @@
             <div class="product-card premium-deal" data-cat="ff-ilim" 
                  data-crc="35000" data-official-crc="60000" data-usd="68.00" data-official-usd="112.00" data-mxn="1180" data-official-mxn="1950" data-cop="360000" data-official-cop="590000" data-ars="67000" data-official-ars="110000" data-pen="270.00" data-official-pen="450.00" data-dop="3000" data-official-dop="4950" data-bob="465" data-official-bob="770" data-gtq="520" data-official-gtq="860" data-nio="2550" data-official-nio="4200" data-ves="2600" data-official-ves="4300">
                 <div>
-                    <div class="product-badge" style="color: var(--accent-cyan);">⚡ MEGA PACK ILIMITADO ⚡</div>
+                    <div class="product-badge" style="color: var(--accent);">⚡ MEGA PACK ILIMITADO ⚡</div>
                     <div class="product-name">💎 12,320 Diamantes Ilimitados</div>
                 </div>
                 <div>
@@ -1753,7 +1664,7 @@
 
     <!-- BOTONES FLOTANTES -->
     <a href="https://chat.whatsapp.com/Hd6IG8eEVrY5hoYPgHIjk4?s=cl&p=a&mlu=4&ilr=4" class="floating-group-btn" target="_blank" title="Unirte al Grupo de WhatsApp">
-        <i class="fa-brands fa-whatsapp" style="font-size: 1.5rem;"></i>
+        <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i>
     </a>
 
     <a href="https://api.whatsapp.com/send?phone=50672986056&text=Hola,%20tengo%20una%20consulta%20sobre%20la%20tienda%20gtrowen.store" class="floating-whatsapp-btn" target="_blank" title="Soporte por WhatsApp"></a>
@@ -1767,15 +1678,15 @@
     <div class="modal" id="catalogModal">
         <div class="modal-box">
             <div class="modal-top">
-                <h3><i class="fa-solid fa-bolt" style="color: var(--accent-cyan);"></i> MENÚ RÁPIDO ELITE</h3>
+                <h3><i class="fa-solid fa-bolt" style="color: var(--accent);"></i> MENÚ RÁPIDO ELITE</h3>
                 <button class="btn-close" id="closeCatalogModalBtn">&times;</button>
             </div>
-            <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 5px;">
-                <button class="btn-hero-action" data-jump-modal="ff-lim" style="width:100%; justify-content:center; padding: 13px;"><i class="fa-solid fa-gem"></i> Diamantes Free Fire</button>
-                <button class="btn-hero-action" data-jump-modal="ff-ilim" style="width:100%; justify-content:center; padding: 13px;"><i class="fa-solid fa-fire"></i> Diamantes Ilimitados</button>
-                <button class="btn-hero-action" data-jump-modal="ff-passes" style="width:100%; justify-content:center; padding: 13px;"><i class="fa-solid fa-ticket"></i> Tokens Evolutivos & Pases</button>
-                <button class="btn-hero-action" data-jump-modal="streaming" style="width:100%; justify-content:center; padding: 13px;"><i class="fa-solid fa-play"></i> Streaming (Netflix, Spotify...)</button>
-                <button class="btn-hero-action" data-jump-modal="social" style="width:100%; justify-content:center; padding: 13px;"><i class="fa-solid fa-thumbs-up"></i> Redes Sociales (IG, TikTok...)</button>
+            <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 5px;">
+                <button class="btn-hero-action" data-jump-modal="ff-lim" style="width:100%; justify-content:center; padding: 12px;"><i class="fa-solid fa-gem"></i> Diamantes Free Fire</button>
+                <button class="btn-hero-action" data-jump-modal="ff-ilim" style="width:100%; justify-content:center; padding: 12px;"><i class="fa-solid fa-fire"></i> Diamantes Ilimitados</button>
+                <button class="btn-hero-action" data-jump-modal="ff-passes" style="width:100%; justify-content:center; padding: 12px;"><i class="fa-solid fa-ticket"></i> Tokens Evolutivos & Pases</button>
+                <button class="btn-hero-action" data-jump-modal="streaming" style="width:100%; justify-content:center; padding: 12px;"><i class="fa-solid fa-play"></i> Streaming (Netflix, Spotify...)</button>
+                <button class="btn-hero-action" data-jump-modal="social" style="width:100%; justify-content:center; padding: 12px;"><i class="fa-solid fa-thumbs-up"></i> Redes Sociales (IG, TikTok...)</button>
             </div>
         </div>
     </div>
@@ -1783,7 +1694,7 @@
     <div class="modal" id="cartModal">
         <div class="modal-box">
             <div class="modal-top">
-                <h3 id="modalTitle"><i class="fa-solid fa-cart-shopping" style="color: var(--accent-cyan);"></i> TU CARRITO DE COMPRA</h3>
+                <h3 id="modalTitle"><i class="fa-solid fa-cart-shopping" style="color: var(--accent);"></i> TU CARRITO DE COMPRA</h3>
                 <button class="btn-close" id="closeModalBtn">&times;</button>
             </div>
             <div id="cartList"></div>
@@ -1810,10 +1721,10 @@
                 </div>
 
                 <div id="socialProfilePreviewContainer" style="display: none; margin-bottom: 14px;">
-                    <div style="display: flex; align-items: center; gap: 12px; background: rgba(0,240,255,0.05); border: 1px solid var(--border-glass); padding: 12px; border-radius: 12px;">
-                        <img id="previewAvatar" src="" alt="Avatar" style="width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent-cyan);">
+                    <div style="display: flex; align-items: center; gap: 12px; background: var(--bg-card); border: 1px solid var(--border-subtle); padding: 12px; border-radius: 12px;">
+                        <img id="previewAvatar" src="" alt="Avatar" style="width: 42px; height: 42px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent);">
                         <div>
-                            <div id="previewUsername" style="font-weight: 700; font-size: 0.88rem; color: #fff;">Usuario Detectado</div>
+                            <div id="previewUsername" style="font-weight: 700; font-size: 0.85rem; color: #fff;">Usuario Detectado</div>
                             <div style="font-size: 0.72rem; color: var(--success);"><i class="fa-solid fa-circle-check"></i> Perfil verificado para entrega</div>
                         </div>
                     </div>
@@ -1832,479 +1743,5 @@
                     <strong>Datos SINPE Móvil:</strong><br>• Teléfono: <strong>6412 9943</strong><br>• Titular: <strong>OWEN MORALES UGALDE</strong>
                 </div>
                 <div id="cryptomusApiSection" style="display: none; text-align: center; margin-bottom: 15px;">
-                    <button class="btn-cryptomus-api" id="payWithCryptomusBtn"><i class="fa-brands fa-bitcoin"></i> PAGAR CON CRYPTOMUS API</button>
-                </div>
-                <div id="cryptoPaySection" style="display: none; text-align: center; margin-bottom: 15px; background: rgba(243, 186, 47, 0.05); border: 1px solid var(--binance); border-radius: 12px; padding: 15px;">
-                    <div style="font-family: 'Orbitron', sans-serif; font-size: 0.8rem; color: var(--binance); margin-bottom: 10px; font-weight: 700;">⚡ PAGO DIRECTO CON BINANCE PAY ⚡</div>
-                    <div style="background: #000; padding: 6px; display: inline-block; border-radius: 8px; margin-bottom: 10px; border: 1px solid var(--binance);">
-                        <img src="https://cdn.phototourl.com/member/2026-10-11-102d4de5-dc6c-4047-ab6c-d5474035de59.png" alt="QR Binance" style="width: 230px; height: auto; display: block;">
-                    </div>
-                </div>
-                <div class="input-box" id="txIdBox">
-                    <label>Número de Comprobante / Hash / Referencia</label>
-                    <input type="text" id="pTxId" placeholder="Ej: 456791601...">
-                </div>
-                <div id="receiptBox" class="input-box">
-                    <label>Adjuntar Captura del Comprobante 📷</label>
-                    <label class="file-upload-box" for="pReceipt">
-                        <span id="receiptLabel" style="font-size: 0.8rem; color: var(--accent-cyan); font-weight: 700;"><i class="fa-solid fa-file-arrow-up"></i> Toca aquí para subir tu comprobante</span>
-                        <input type="file" id="pReceipt" accept="image/*" style="display: none;">
-                    </label>
-                </div>
-                <button class="btn-send" id="sendWaBtn"><i class="fa-brands fa-whatsapp"></i> PROCESAR PEDIDO</button>
-            </div>
-        </div>
-    </div>
 
-    <!-- MODAL CLIENTES TOP -->
-    <div class="modal" id="topClientsModal">
-        <div class="modal-box" style="max-width: 440px;">
-            <div class="modal-top">
-                <h3 style="color: var(--gold); text-shadow: 0 0 10px var(--gold-glow);"><i class="fa-solid fa-crown" style="color: var(--gold);"></i> SALÓN DE LA FAMA PRIME 8 💎</h3>
-                <button class="btn-close" id="closeTopClientsBtn">&times;</button>
-            </div>
-            <div class="prime-hall-container">
-                <!-- RICHARD #1 -->
-                <div class="prime-card rank-1">
-                    <div class="prime-header">
-                        <span class="prime-rank-badge"><i class="fa-solid fa-fire" style="color: var(--gold);"></i> 🥇 #1 TOP LEYENDA FF</span>
-                        <span class="prime-tier">PRIME 8 MÁX</span>
-                    </div>
-                    <div class="prime-player-info">
-                        <div>
-                            <div class="prime-name">RICHARD</div>
-                            <div class="prime-uid"><i class="fa-solid fa-gem" style="color: var(--accent-cyan);"></i> PACKS 6,160 DIAMANTES</div>
-                        </div>
-                    </div>
-                    <div class="prime-stats-grid">
-                        <div class="prime-stat-item">
-                            <div class="prime-stat-label">Gasto Histórico</div>
-                            <div class="prime-stat-val">$260.00 USD</div>
-                        </div>
-                        <div class="prime-stat-item">
-                            <div class="prime-stat-label">Diamantes FF</div>
-                            <div class="prime-stat-val">49,280 💎</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- J.C. #2 -->
-                <div class="prime-card">
-                    <div class="prime-header">
-                        <span class="prime-rank-badge" style="color: #00f0ff;"><i class="fa-solid fa-shield-halved"></i> 🥈 #2 TOP MAESTRO FF</span>
-                        <span class="prime-tier" style="background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue)); color: #fff;">EVOLUTIVA VIP</span>
-                    </div>
-                    <div class="prime-player-info">
-                        <div>
-                            <div class="prime-name">J.C.</div>
-                            <div class="prime-uid">UID: 301110819</div>
-                        </div>
-                    </div>
-                    <div class="prime-stats-grid">
-                        <div class="prime-stat-item">
-                            <div class="prime-stat-label">Gasto Histórico</div>
-                            <div class="prime-stat-val" style="color: var(--accent-cyan); text-shadow: 0 0 6px var(--accent-cyan-glow);">$179.60 USD</div>
-                        </div>
-                        <div class="prime-stat-item">
-                            <div class="prime-stat-label">Diamantes & Cajas</div>
-                            <div class="prime-stat-val" style="color: var(--accent-cyan); text-shadow: 0 0 6px var(--accent-cyan-glow);">32,500 💎</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- #3 TOP ÉPICO FF (^^ㅤSANDIA❀) -->
-                <div class="prime-card">
-                    <div class="prime-header">
-                        <span class="prime-rank-badge" style="color: #ff8800;"><i class="fa-solid fa-medal"></i> 🥉 #3 TOP ÉPICO FF</span>
-                        <span class="prime-tier" style="background: linear-gradient(135deg, #ff5500, #ffb700); color: #030509;">VIP MASTER</span>
-                    </div>
-                    <div class="prime-player-info">
-                        <div>
-                            <div class="prime-name">^^ㅤSANDIA❀</div>
-                            <div class="prime-uid"><i class="fa-solid fa-gem" style="color: var(--accent-cyan);"></i> ID: 2278520632</div>
-                        </div>
-                    </div>
-                    <div class="prime-stats-grid">
-                        <div class="prime-stat-item">
-                            <div class="prime-stat-label">Gasto Histórico</div>
-                            <div class="prime-stat-val" style="color: var(--gold);">$78.50 USD</div>
-                        </div>
-                        <div class="prime-stat-item">
-                            <div class="prime-stat-label">Diamantes FF</div>
-                            <div class="prime-stat-val" style="color: var(--gold);">24,436 💎</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- #4 TOP SAKURA FF (ᴵᵀᴾㅤҳ̸Sebas con Logo Prime 8) -->
-                <div class="prime-card">
-                    <div class="prime-header">
-                        <span class="prime-rank-badge" style="color: #ff3366;"><i class="fa-solid fa-award"></i> 🏅 #4 TOP SAKURA FF</span>
-                        <span class="prime-tier" style="background: linear-gradient(135deg, #ff3366, #ff99cc); color: #030509;">LEGEND SAKURA</span>
-                    </div>
-                    <div class="prime-player-info">
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <img src="https://i.postimg.cc/TYMs36HS/4cfd83ae8d77b832418505ef33ecef8d.jpg" alt="Sakura Skin" style="width: 38px; height: 38px; border-radius: 50%; object-fit: cover; border: 2px solid #ff3366; box-shadow: 0 0 10px rgba(255, 51, 102, 0.5);">
-                            <div>
-                                <div class="prime-name" style="display: flex; align-items: center; gap: 6px;">
-                                    ᴵᵀᴾㅤҳ̸Sebas 
-                                    <img src="https://i.postimg.cc/KjZg04Yz/ff3be362a4c8dd728e10b0b28c154973.jpg" alt="Logo Prime 8" style="width: 22px; height: 22px; border-radius: 50%; object-fit: cover; border: 1px solid var(--gold);">
-                                </div>
-                                <div class="prime-uid"><i class="fa-solid fa-id-badge" style="color: #ff3366;"></i> ID: 22715023</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="prime-stats-grid">
-                        <div class="prime-stat-item">
-                            <div class="prime-stat-label">Gasto Histórico</div>
-                            <div class="prime-stat-val" style="color: #ff3366; text-shadow: 0 0 6px rgba(255,51,102,0.4);">$28.20 USD</div>
-                        </div>
-                        <div class="prime-stat-item">
-                            <div class="prime-stat-label">Diamantes FF</div>
-                            <div class="prime-stat-val" style="color: #ff3366; text-shadow: 0 0 6px rgba(255,51,102,0.4);">8,558 💎</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        let cart = [];
-        let currentCurrency = 'CRC';
-
-        const currencySymbols = {
-            'CRC': '₡', 'USD': '$', 'MXN': '$', 'COP': '$', 'ARS': '$', 
-            'PEN': 'S/ ', 'DOP': 'RD$ ', 'BOB': 'Bs. ', 'GTQ': 'Q ', 
-            'NIO': 'C$ ', 'VES': 'Bs.S '
-        };
-
-        function changeCurrency(targetCurr) {
-            currentCurrency = targetCurr;
-            document.querySelectorAll('.curr-btn').forEach(b => {
-                if(b.getAttribute('data-curr') === targetCurr) {
-                    b.classList.add('active');
-                } else {
-                    b.classList.remove('active');
-                }
-            });
-
-            const prefix = currencySymbols[currentCurrency] || '';
-
-            document.querySelectorAll('.product-card').forEach(card => {
-                const tag = card.querySelector('.price-tag');
-                const officialTag = card.querySelector('.official-tag');
-                const savingsTag = card.querySelector('.savings-tag');
-
-                const val = parseFloat(card.getAttribute('data-' + currentCurrency.toLowerCase()));
-                const officialVal = parseFloat(card.getAttribute('data-official-' + currentCurrency.toLowerCase()));
-
-                if (!isNaN(val)) {
-                    let isDec = ['USD', 'PEN', 'BOB', 'GTQ'].includes(currentCurrency);
-                    tag.innerText = prefix + (isDec ? val.toFixed(2) : val.toLocaleString());
-
-                    if (officialTag && !isNaN(officialVal)) {
-                        officialTag.innerText = 'Tienda Oficial: ' + prefix + (isDec ? officialVal.toFixed(2) : officialVal.toLocaleString());
-                    }
-
-                    if (savingsTag && !isNaN(officialVal)) {
-                        let diff = officialVal - val;
-                        let pct = Math.round((diff / officialVal) * 100);
-                        savingsTag.innerText = `⚡ ¡Te ahorras ${prefix}${isDec ? diff.toFixed(2) : diff.toLocaleString()} (${pct}%)!`;
-                    }
-                }
-            });
-            renderCart();
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const viewsEl = document.getElementById('pageViewsCount');
-            if (viewsEl) {
-                let baseViews = parseInt(localStorage.getItem('gtr_real_views') || '25482');
-                baseViews += Math.floor(Math.random() * 3) + 1;
-                localStorage.setItem('gtr_real_views', baseViews);
-                viewsEl.innerText = baseViews.toLocaleString();
-                
-                fetch('https://api.counterapi.dev/v1/gtrowenstore/visits/up')
-                    .then(res => res.json())
-                    .then(data => { if(data && data.count) { viewsEl.innerText = data.count.toLocaleString(); localStorage.setItem('gtr_real_views', data.count); }})
-                    .catch(e => console.log('AdBlock activo'));
-            }
-
-            // DETECCIÓN AUTOMÁTICA DE PAÍS POR IP
-            fetch('https://ipapi.co/json/')
-                .then(res => res.json())
-                .then(data => {
-                    if (data && data.country_code) {
-                        const country = data.country_code;
-                        let detectedCurr = 'USD'; // Por defecto si no está registrado
-
-                        if (country === 'CO') detectedCurr = 'COP';
-                        else if (country === 'PE') detectedCurr = 'PEN';
-                        else if (country === 'MX') detectedCurr = 'MXN';
-                        else if (country === 'VE') detectedCurr = 'VES';
-                        else if (country === 'CR') detectedCurr = 'CRC';
-                        else if (country === 'AR') detectedCurr = 'ARS';
-                        else if (country === 'DO') detectedCurr = 'DOP';
-                        else if (country === 'BO') detectedCurr = 'BOB';
-                        else if (country === 'GT') detectedCurr = 'GTQ';
-                        else if (country === 'NI') detectedCurr = 'NIO';
-
-                        changeCurrency(detectedCurr);
-                    }
-                })
-                .catch(e => {
-                    console.log('No se pudo detectar la IP, usando moneda por defecto.');
-                });
-
-            document.querySelectorAll('.curr-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    changeCurrency(e.target.getAttribute('data-curr'));
-                });
-            });
-
-            const bannerEl = document.getElementById('limConsultBanner');
-
-            document.querySelectorAll('.cat-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-                    e.currentTarget.classList.add('active');
-                    const cat = e.currentTarget.getAttribute('data-cat');
-
-                    if (cat === 'ff-lim') {
-                        if (bannerEl) bannerEl.style.display = 'flex';
-                    } else {
-                        if (bannerEl) bannerEl.style.display = 'none';
-                    }
-
-                    document.querySelectorAll('.product-card').forEach(card => {
-                        if (cat === 'all' || card.getAttribute('data-cat') === cat) {
-                            card.style.display = 'flex';
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    });
-                });
-            });
-
-            const catalogModal = document.getElementById('catalogModal');
-            document.getElementById('btnOpenCatalogModal').addEventListener('click', () => catalogModal.classList.add('open'));
-            document.getElementById('closeCatalogModalBtn').addEventListener('click', () => catalogModal.classList.remove('open'));
-
-            document.querySelectorAll('[data-jump-modal]').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    const cat = e.currentTarget.getAttribute('data-jump-modal');
-                    const targetBtn = document.querySelector(`.cat-btn[data-cat="${cat}"]`);
-                    if (targetBtn) targetBtn.click();
-                    catalogModal.classList.remove('open');
-                    const titleEl = document.getElementById('catalogTitle');
-                    if (titleEl) titleEl.scrollIntoView({ behavior: 'smooth' });
-                });
-            });
-
-            document.querySelectorAll('.btn-add').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    const b = e.currentTarget;
-                    const card = b.closest('.product-card');
-                    const inputType = b.getAttribute('data-input-type') || 'ff';
-
-                    cart.push({
-                        title: b.getAttribute('data-title'),
-                        inputType: inputType,
-                        crc: parseFloat(card.getAttribute('data-crc')),
-                        usd: parseFloat(card.getAttribute('data-usd')),
-                        mxn: parseFloat(card.getAttribute('data-mxn')),
-                        cop: parseFloat(card.getAttribute('data-cop')),
-                        ars: parseFloat(card.getAttribute('data-ars')),
-                        pen: parseFloat(card.getAttribute('data-pen')),
-                        dop: parseFloat(card.getAttribute('data-dop')),
-                        bob: parseFloat(card.getAttribute('data-bob') || 0),
-                        gtq: parseFloat(card.getAttribute('data-gtq') || 0),
-                        nio: parseFloat(card.getAttribute('data-nio') || 0),
-                        ves: parseFloat(card.getAttribute('data-ves') || 0)
-                    });
-                    renderCart();
-                });
-            });
-
-            const openModal = () => {
-                document.getElementById('cartModal').classList.add('open');
-                document.getElementById('cartSummary').style.display = cart.length > 0 ? 'block' : 'none';
-                document.getElementById('checkoutForm').style.display = 'none';
-                document.getElementById('modalTitle').innerHTML = '<i class="fa-solid fa-cart-shopping" style="color: var(--accent-cyan);"></i> TU CARRITO DE COMPRA';
-                renderCart();
-            };
-            const closeModal = () => document.getElementById('cartModal').classList.remove('open');
-
-            document.getElementById('openCartHeader').addEventListener('click', openModal);
-            document.getElementById('openCartFloating').addEventListener('click', openModal);
-            document.getElementById('closeModalBtn').addEventListener('click', closeModal);
-
-            document.getElementById('btnOpenTopClients').addEventListener('click', () => {
-                document.getElementById('topClientsModal').classList.add('open');
-            });
-            document.getElementById('closeTopClientsBtn').addEventListener('click', () => {
-                document.getElementById('topClientsModal').classList.remove('open');
-            });
-
-            document.getElementById('proceedCheckoutBtn').addEventListener('click', () => {
-                if (cart.length === 0) return;
-
-                const labelEl = document.getElementById('dynamicLabel');
-                const inputEl = document.getElementById('pCustomField');
-                const socialPreview = document.getElementById('socialProfilePreviewContainer');
-
-                const hasSocial = cart.some(item => item.inputType === 'social');
-                const hasStreaming = cart.some(item => item.inputType === 'streaming');
-                const hasBloodStrike = cart.some(item => item.inputType === 'bs');
-
-                if (hasSocial) {
-                    labelEl.innerText = 'Enlace del Perfil (Instagram / TikTok) 🔗';
-                    inputEl.placeholder = 'Ej: https://instagram.com/tucuenta';
-                } else {
-                    if(socialPreview) socialPreview.style.display = 'none';
-                    if (hasBloodStrike) {
-                        labelEl.innerText = 'ID de Jugador (Blood Strike)';
-                        inputEl.placeholder = 'Ej: 50819301';
-                    } else if (hasStreaming) {
-                        labelEl.innerText = 'Correo o Detalle para la cuenta de Streaming ✉️';
-                        inputEl.placeholder = 'Ej: tucorreo@gmail.com';
-                    } else {
-                        labelEl.innerText = 'ID de Jugador (Free Fire)';
-                        inputEl.placeholder = 'Ej: 3925829005';
-                    }
-                }
-
-                document.getElementById('cartSummary').style.display = 'none';
-                document.getElementById('checkoutForm').style.display = 'block';
-                document.getElementById('modalTitle').innerHTML = '<i class="fa-solid fa-lock" style="color: var(--accent-cyan);"></i> FINALIZAR COMPRA SEGURA';
-            });
-
-            document.getElementById('pMethod').addEventListener('change', (e) => {
-                const m = e.target.value;
-                const box = document.getElementById('payBox');
-                const txBox = document.getElementById('txIdBox');
-                const receiptBox = document.getElementById('receiptBox');
-                const cryptoSec = document.getElementById('cryptoPaySection');
-                const cryptomusSec = document.getElementById('cryptomusApiSection');
-                
-                txBox.style.display = 'block';
-                receiptBox.style.display = 'block';
-                cryptoSec.style.display = 'none';
-                cryptomusSec.style.display = 'none';
-                box.style.display = 'block';
-
-                if (m === 'SINPE') {
-                    box.innerHTML = '<strong>Datos SINPE Móvil:</strong><br>• Teléfono: <strong>6412 9943</strong><br>• Titular: <strong>OWEN MORALES UGALDE</strong>';
-                } else if (m === 'CRYPTOMUS') {
-                    box.style.display = 'none';
-                    txBox.style.display = 'none';
-                    receiptBox.style.display = 'none';
-                    cryptomusSec.style.display = 'block';
-                } else if (m === 'BINANCE') {
-                    box.style.display = 'none';
-                    cryptoSec.style.display = 'block';
-                } else if (m === 'NU') {
-                    box.innerHTML = '<strong>Nu México:</strong><br>• Transferencia CLABE disponible para México.';
-                }
-            });
-
-            document.getElementById('payWithCryptomusBtn').addEventListener('click', () => {
-                const name = document.getElementById('pName').value.trim();
-                const customField = document.getElementById('pCustomField').value.trim();
-                if (!name || !customField) {
-                    alert('Por favor completa tu Nombre y el campo requerido antes de pagar.');
-                    return;
-                }
-                window.open('https://app.cryptomus.com/', '_blank');
-            });
-
-            document.getElementById('pReceipt').addEventListener('change', (e) => {
-                const file = e.target.files[0];
-                const label = document.getElementById('receiptLabel');
-                if (file) {
-                    label.innerHTML = '<i class="fa-solid fa-check"></i> Comprobante adjuntado: ' + file.name;
-                    label.style.color = '#00f0ff';
-                }
-            });
-
-            function renderCart() {
-                document.querySelectorAll('.cart-count').forEach(el => el.innerText = cart.length);
-                const list = document.getElementById('cartList');
-                if (!list) return;
-
-                if (cart.length === 0) {
-                    list.innerHTML = '<p style="text-align:center; color:var(--text-muted); padding:20px; font-size:0.85rem;">Tu carrito está vacío</p>';
-                    return;
-                }
-
-                list.innerHTML = '';
-                let totalVal = 0;
-                const prefix = currencySymbols[currentCurrency] || '';
-
-                cart.forEach((item, i) => {
-                    let rawPrice = item[currentCurrency.toLowerCase()] || item.crc;
-                    totalVal += rawPrice;
-
-                    let isDec = ['USD', 'PEN', 'BOB', 'GTQ'].includes(currentCurrency);
-                    let priceFormatted = prefix + (isDec ? rawPrice.toFixed(2) : rawPrice.toLocaleString());
-
-                    const row = document.createElement('div');
-                    row.className = 'cart-row';
-                    row.innerHTML = `
-                        <div>
-                            <strong>${item.title}</strong><br>
-                            <span style="color:var(--accent-cyan); font-family:'Chakra Petch',sans-serif; font-size:0.85rem; font-weight:700;">${priceFormatted}</span>
-                        </div>
-                    `;
-                    const delBtn = document.createElement('button');
-                    delBtn.innerHTML = '<i class="fa-solid fa-trash"></i>';
-                    delBtn.style.cssText = 'background:none; border:none; color:#ff3333; font-size:1.1rem; cursor:pointer; padding: 4px 8px; transition: 0.2s;';
-                    delBtn.addEventListener('click', () => {
-                        cart.splice(i, 1);
-                        renderCart();
-                    });
-                    row.appendChild(delBtn);
-                    list.appendChild(row);
-                });
-
-                let isDecTotal = ['USD', 'PEN', 'BOB', 'GTQ'].includes(currentCurrency);
-                document.getElementById('cTotal').innerText = prefix + (isDecTotal ? totalVal.toFixed(2) : totalVal.toLocaleString());
-            }
-
-            document.getElementById('sendWaBtn').addEventListener('click', () => {
-                const nameInput = document.getElementById('pName');
-                const name = nameInput.value.trim();
-                if (!name) { alert('Por favor ingresa tu nombre'); return; }
-
-                const phoneInput = document.getElementById('pPhone');
-                const phone = phoneInput.value.trim();
-                if (!phone) { alert('Por favor ingresa tu número de teléfono'); return; }
-
-                const customInput = document.getElementById('pCustomField');
-                const customVal = customInput.value.trim();
-                if (!customVal) { alert('Por favor completa el campo requerido'); return; }
-
-                const methodSelect = document.getElementById('pMethod');
-                const methodName = methodSelect.options[methodSelect.selectedIndex].text;
-                let totalText = document.getElementById('cTotal').innerText;
-
-                let txId = 'N/A';
-                const txInput = document.getElementById('pTxId');
-                if (methodSelect.value !== 'CRYPTOMUS') {
-                    txId = txInput.value.trim();
-                    if (!txId) { alert('Por favor ingresa el número de comprobante o referencia de pago'); return; }
-                }
-
-                let itemsWaTest = cart.map(c => `• ${c.title}`).join('%0A');
-                let msg = `⚡ *NUEVO PEDIDO - GTROWEN STORE*%0A%0A👤 *Cliente:* ${name}%0A📱 *Teléfono:* ${phone}%0A🔗 *Detalle/Destino:* ${customVal}%0A💳 *Método de Pago:* ${methodName}%0A🧾 *Referencia:* ${txId}%0A%0A📦 *Productos:*%0A${itemsWaTest}%0A💰 *Total:* ${totalText} (${currentCurrency})`;
-
-                let whatsappUrl = `https://api.whatsapp.com/send?phone=50672986056&text=${msg}`;
-                window.open(whatsappUrl, '_blank');
-            });
-        });
-    </script>
-</body>
-</html>
-
-Lo actualizas con los nuevos precios q te dije
+                    <button class="btn-send" id="payWithCryptomusBtn" style="background: #eab308; color: #000;"><i class="fa-brands fa-bitcoin"></i> PA
