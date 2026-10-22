@@ -1,2059 +1,466 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta name="cryptomus" content="a2afb2a9" />
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>GTROWEN STORE | Elite Digital Hub</title>
-    <!-- FUENTES Y LOGOS OFICIALES -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        :root {
-            --bg-deep: #0b0c10;
-            --bg-card: #1f2833;
-            --bg-card-hover: #2d3748;
-            --accent: #ff4500; /* Naranja fuego */
-            --accent-glow: rgba(255, 69, 0, 0.15);
-            --red-fire: #e63946; /* Rojo fuego */
-            --gold: #f59e0b;
-            --gold-glow: rgba(245, 158, 11, 0.15);
-            --success: #10b981;
-            --danger: #ef4444;
-            --warning: #f59e0b;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --border-color: rgba(255, 69, 0, 0.12);
-            --border-hover: rgba(255, 69, 0, 0.35);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Inter', sans-serif;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        html, body {
-            background-color: var(--bg-deep);
-            color: var(--text-main);
-            width: 100%;
-            margin: 0;
-            padding: 0;
-            padding-bottom: 120px;
-            position: relative;
-            overflow-x: hidden;
-        }
-
-        header {
-            background: rgba(11, 12, 16, 0.95);
-            backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--border-color);
-            padding: 12px 16px;
-            position: sticky;
-            top: 0;
-            z-index: 900;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.5);
-        }
-
-        .brand-box {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            min-width: max-content;
-        }
-
-        .brand-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #100f0f;
-            border: 1px solid var(--accent);
-            box-shadow: 0 0 12px rgba(255, 69, 0, 0.4);
-        }
-
-        .brand-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .brand-title {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-weight: 800;
-            font-size: 1rem;
-            color: var(--text-main);
-            letter-spacing: -0.3px;
-            line-height: 1.1;
-        }
-
-        .brand-title span { color: var(--accent); }
-
-        .brand-sub {
-            font-size: 0.58rem;
-            color: var(--text-muted);
-            letter-spacing: 1.2px;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            flex: 1;
-            justify-content: flex-end;
-            overflow: hidden;
-        }
-
-        .currency-switch {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 3px;
-            display: flex;
-            gap: 2px;
-            overflow-x: auto;
-            max-width: 58vw;
-            scrollbar-width: thin;
-            -webkit-overflow-scrolling: touch;
-        }
-        .currency-switch::-webkit-scrollbar { height: 2px; }
-
-        .curr-btn {
-            background: none;
-            border: none;
-            color: var(--text-muted);
-            font-size: 0.7rem;
-            font-weight: 700;
-            padding: 4px 10px;
-            border-radius: 8px;
-            cursor: pointer;
-            white-space: nowrap;
-            transition: all 0.2s;
-        }
-
-        .curr-btn.active {
-            background: var(--accent);
-            color: #fff;
-            box-shadow: 0 2px 10px rgba(255, 69, 0, 0.4);
-        }
-
-        .header-cart {
-            background: rgba(255, 69, 0, 0.1);
-            border: 1px solid rgba(255, 69, 0, 0.2);
-            border-radius: 12px;
-            padding: 6px 14px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            cursor: pointer;
-            color: var(--accent);
-            font-size: 0.82rem;
-            font-weight: 700;
-            white-space: nowrap;
-        }
-
-        .header-cart-badge {
-            background: var(--accent);
-            color: #fff;
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.65rem;
-            font-weight: 800;
-        }
-
-        .container {
-            max-width: 950px;
-            margin: 0 auto;
-            padding: 20px 16px;
-            position: relative;
-            z-index: 10;
-        }
-
-        .payment-gateway-hero {
-            background: linear-gradient(145deg, rgba(31, 40, 51, 0.95), rgba(11, 12, 16, 0.98));
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 20px;
-            margin-bottom: 24px;
-            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.4);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .gateway-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 14px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 10px;
-            gap: 12px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .gateway-title {
-            font-size: 0.82rem;
-            color: var(--text-main);
-            font-weight: 800;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            letter-spacing: -0.2px;
-        }
-
-        .gateway-status {
-            font-size: 0.72rem;
-            background: rgba(16, 185, 129, 0.1);
-            color: var(--success);
-            border: 1px solid rgba(16, 185, 129, 0.2);
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            white-space: nowrap;
-        }
-
-        .banner-game-visuals {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 16px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .visual-side {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            max-width: 60%;
-        }
-
-        .visual-main-text {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 1.15rem;
-            font-weight: 800;
-            color: #fff;
-            line-height: 1.2;
-            text-transform: uppercase;
-        }
-
-        .visual-sub-text {
-            font-size: 0.72rem;
-            color: var(--accent);
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-
-        .btn-view-offers {
-            background: linear-gradient(135deg, var(--accent), var(--red-fire));
-            color: #fff;
-            border: none;
-            padding: 9px 16px;
-            border-radius: 10px;
-            font-weight: 800;
-            font-size: 0.75rem;
-            cursor: pointer;
-            box-shadow: 0 4px 14px rgba(255, 69, 0, 0.4);
-            white-space: nowrap;
-            transition: transform 0.2s;
-        }
-
-        .btn-view-offers:hover {
-            transform: translateY(-2px);
-        }
-
-        .referral-banner {
-            background: linear-gradient(135deg, rgba(255, 69, 0, 0.08), rgba(11, 12, 16, 0.95));
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 16px 20px;
-            margin-bottom: 24px;
-            display: flex;
-            align-items: center;
-            gap: 18px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-        }
-
-        .referral-icon {
-            font-size: 1.8rem;
-            color: var(--accent);
-            min-width: 44px;
-            height: 44px;
-            background: rgba(255, 69, 0, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .referral-content { flex: 1; }
-
-        .referral-title {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 800;
-            color: var(--accent);
-            margin-bottom: 4px;
-        }
-
-        .referral-text {
-            font-size: 0.78rem;
-            color: var(--text-muted);
-            line-height: 1.45;
-        }
-
-        .referral-text span {
-            color: var(--text-main);
-            font-weight: 700;
-        }
-
-        @media(max-width: 600px) {
-            .referral-banner { flex-direction: column; text-align: center; }
-        }
-
-        .category-scroll {
-            display: flex;
-            gap: 8px;
-            overflow-x: auto;
-            padding-bottom: 10px;
-            margin-bottom: 24px;
-            scrollbar-width: none;
-        }
-        .category-scroll::-webkit-scrollbar { display: none; }
-
-        .cat-btn {
-            background: var(--bg-card);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            color: var(--text-muted);
-            padding: 10px 18px;
-            border-radius: 12px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            white-space: nowrap;
-            cursor: pointer;
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .cat-btn:hover {
-            color: var(--text-main);
-            border-color: rgba(255, 69, 0, 0.2);
-        }
-
-        .cat-btn.active {
-            background: linear-gradient(135deg, var(--accent), var(--red-fire));
-            color: #fff;
-            border-color: var(--accent);
-            box-shadow: 0 4px 14px rgba(255, 69, 0, 0.35);
-        }
-
-        .section-h2 {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 800;
-            color: var(--text-main);
-            margin-bottom: 18px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            letter-spacing: -0.3px;
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-            margin-bottom: 30px;
-        }
-
-        @media(max-width: 550px) {
-            .products-grid { grid-template-columns: 1fr; }
-        }
-
-        .product-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            position: relative;
-            transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
-            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
-        }
-
-        .product-card::before {
-            content: '';
-            position: absolute;
-            top: 0; right: 0; bottom: 0; left: 0;
-            border-radius: 20px;
-            background: linear-gradient(to bottom, rgba(255, 69, 0, 0.05), transparent);
-            opacity: 0;
-            transition: opacity 0.25s ease;
-            pointer-events: none;
-        }
-
-        .product-card:hover {
-            border-color: var(--border-hover);
-            transform: translateY(-3px);
-            background: var(--bg-card-hover);
-            box-shadow: 0 8px 30px rgba(255, 69, 0, 0.15);
-        }
-
-        .product-card:hover::before { opacity: 1; }
-
-        .product-card.premium-deal {
-            background: linear-gradient(145deg, rgba(255, 69, 0, 0.08), var(--bg-card));
-            border-color: rgba(255, 69, 0, 0.3);
-        }
-
-        .product-card.out-of-stock { opacity: 0.55; }
-
-        .product-top-info {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 12px;
-            gap: 6px;
-        }
-
-        .product-badge {
-            font-size: 0.65rem;
-            font-weight: 800;
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 0.6px;
-        }
-
-        .stock-badge {
-            font-size: 0.62rem;
-            font-weight: 700;
-            padding: 4px 8px;
-            border-radius: 6px;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            white-space: nowrap;
-        }
-
-        .stock-badge.available {
-            background: rgba(16, 185, 129, 0.1);
-            color: var(--success);
-        }
-
-        .stock-badge.low {
-            background: rgba(255, 69, 0, 0.1);
-            color: var(--accent);
-        }
-
-        .stock-badge.empty {
-            background: rgba(239, 68, 68, 0.1);
-            color: var(--danger);
-        }
-
-        .product-name {
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: var(--text-main);
-            margin-bottom: 16px;
-            line-height: 1.45;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .brand-logo-icon {
-            font-size: 1.1rem;
-            width: 32px;
-            height: 32px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            transition: all 0.25s;
-        }
-
-        .product-card:hover .brand-logo-icon {
-            transform: scale(1.05);
-            border-color: var(--accent);
-        }
-
-        .brand-logo-icon.netflix { color: #E50914; }
-        .brand-logo-icon.disney { color: #113CCF; }
-        .brand-logo-icon.prime { color: #00A8E1; }
-        .brand-logo-icon.max { color: #002BE7; }
-        .brand-logo-icon.paramount { color: #0064FF; }
-        .brand-logo-icon.crunchyroll { color: #FF6200; }
-        .brand-logo-icon.youtube { color: #FF0000; }
-        .brand-logo-icon.spotify { color: #1DB954; }
-        .brand-logo-icon.apple { color: #FFFFFF; }
-        .brand-logo-icon.canva { color: #00C4CC; }
-        .brand-logo-icon.chatgpt { color: #10A37F; }
-        .brand-logo-icon.vix { color: #FF4500; }
-        .brand-logo-icon.iptv { color: #3b82f6; }
-        .brand-logo-icon.plex { color: #E5A00D; }
-
-        .product-price-box {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            margin-bottom: 16px;
-        }
-
-        .product-price {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 1.25rem;
-            color: var(--text-main);
-            font-weight: 800;
-            letter-spacing: -0.2px;
-        }
-
-        .savings-box {
-            background: rgba(255, 69, 0, 0.04);
-            border: 1px solid rgba(255, 69, 0, 0.1);
-            border-radius: 8px;
-            padding: 6px 12px;
-            font-size: 0.72rem;
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-        }
-
-        .savings-official {
-            color: var(--text-muted);
-            text-decoration: line-through;
-        }
-
-        .savings-highlight {
-            color: var(--accent);
-            font-weight: 700;
-        }
-
-        .btn-add {
-            background: rgba(255, 69, 0, 0.1);
-            color: var(--accent);
-            border: 1px solid rgba(255, 69, 0, 0.25);
-            border-radius: 12px;
-            padding: 11px 0;
-            font-weight: 800;
-            font-size: 0.78rem;
-            cursor: pointer;
-            width: 100%;
-            text-transform: uppercase;
-            letter-spacing: 0.6px;
-            transition: all 0.2s ease;
-        }
-
-        .btn-add:hover {
-            background: linear-gradient(135deg, var(--accent), var(--red-fire));
-            color: #fff;
-            border-color: var(--accent);
-            box-shadow: 0 4px 14px rgba(255, 69, 0, 0.35);
-        }
-
-        .btn-add.disabled {
-            background: rgba(255, 255, 255, 0.03);
-            color: var(--text-muted);
-            border-color: rgba(255, 255, 255, 0.05);
-            cursor: not-allowed;
-        }
-
-        .btn-add.premium-btn {
-            background: linear-gradient(135deg, var(--accent), var(--red-fire));
-            color: #fff;
-            border: none;
-        }
-
-        .btn-add.premium-btn:hover {
-            box-shadow: 0 5px 15px rgba(255, 69, 0, 0.4);
-        }
-
-        /* Botones Flotantes */
-        .floating-cart-btn {
-            position: fixed;
-            bottom: 95px;
-            right: 20px;
-            background: linear-gradient(135deg, var(--accent), var(--red-fire));
-            color: #fff;
-            border: none;
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 8px 24px rgba(255, 69, 0, 0.4);
-            z-index: 998;
-            font-size: 1.35rem;
-            transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
-        
-        .floating-cart-btn:hover { transform: scale(1.08); }
-
-        .floating-cart-badge {
-            position: absolute;
-            top: -4px;
-            right: -4px;
-            background: var(--gold);
-            color: #0b0c10;
-            font-size: 0.72rem;
-            width: 22px;
-            height: 22px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            border: 2px solid var(--bg-deep);
-        }
-
-        .floating-whatsapp-btn {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 18px rgba(37, 211, 102, 0.4);
-            z-index: 1000;
-            text-decoration: none;
-            background: #25d366;
-            color: #fff;
-            font-size: 1.45rem;
-            border: none;
-            transition: transform 0.2s;
-        }
-
-        .floating-whatsapp-btn:hover { transform: scale(1.08); }
-
-        .floating-group-btn {
-            position: fixed;
-            bottom: 80px;
-            left: 20px;
-            background: #128c7e;
-            color: #fff;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 14px rgba(18, 140, 126, 0.4);
-            z-index: 1000;
-            text-decoration: none;
-            font-size: 1.15rem;
-            transition: transform 0.2s;
-        }
-        
-        .floating-group-btn:hover { transform: scale(1.08); }
-
-        /* Estructura Modal */
-        .modal {
-            position: fixed;
-            inset: 0;
-            background: rgba(11, 12, 16, 0.85);
-            backdrop-filter: blur(8px);
-            z-index: 2000;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 16px;
-        }
-
-        .modal.open { display: flex; }
-
-        .modal-box {
-            background: #1f2833;
-            border: 1px solid var(--border-color);
-            border-radius: 24px;
-            width: 100%;
-            max-width: 440px;
-            padding: 24px;
-            max-height: 85vh;
-            overflow-y: auto;
-            position: relative;
-            z-index: 2001;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
-        }
-
-        .modal-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 18px;
-            border-bottom: 1px solid rgba(255, 69, 0, 0.1);
-            padding-bottom: 14px;
-        }
-
-        .modal-top h3 {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 0.98rem;
-            font-weight: 800;
-            color: var(--text-main);
-        }
-
-        .btn-close { background: none; border: none; color: var(--text-muted); font-size: 1.4rem; cursor: pointer; }
-
-        .cart-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(255, 69, 0, 0.05);
-            font-size: 0.85rem;
-        }
-
-        .cart-total-box {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 1.15rem;
-            color: var(--text-main);
-            margin: 18px 0;
-            padding-top: 14px;
-            border-top: 1px solid rgba(255, 69, 0, 0.1);
-            font-weight: 800;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
-
-        .input-box { margin-bottom: 14px; }
-        .input-box label { display: block; font-size: 0.75rem; color: var(--text-muted); margin-bottom: 6px; font-weight: 700; }
-        .input-box input, .input-box select {
-            width: 100%;
-            padding: 12px 14px;
-            background: rgba(11, 12, 16, 0.5);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            color: #fff;
-            font-size: 0.88rem;
-            outline: none;
-            transition: border-color 0.2s;
-        }
-        .input-box input:focus, .input-box select:focus { border-color: var(--accent); }
-
-        .file-upload-box {
-            background: rgba(255, 69, 0, 0.02);
-            border: 2px dashed var(--border-color);
-            border-radius: 14px;
-            padding: 16px;
-            text-align: center;
-            cursor: pointer;
-            margin-bottom: 14px;
-            display: block;
-            transition: border-color 0.2s;
-        }
-        .file-upload-box:hover { border-color: var(--accent); }
-
-        .info-pay {
-            background: rgba(255, 69, 0, 0.05);
-            border: 1px solid rgba(255, 69, 0, 0.15);
-            border-radius: 14px;
-            padding: 14px;
-            font-size: 0.82rem;
-            margin-bottom: 16px;
-            line-height: 1.6;
-            color: var(--text-muted);
-        }
-        .info-pay strong { color: var(--text-main); }
-
-        .btn-proceed, .btn-send {
-            background: linear-gradient(135deg, var(--accent), var(--red-fire));
-            color: #fff;
-            border: none;
-            width: 100%;
-            padding: 13px;
-            border-radius: 12px;
-            font-weight: 800;
-            font-size: 0.88rem;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 0.6px;
-            transition: opacity 0.2s;
-            box-shadow: 0 4px 14px rgba(255, 69, 0, 0.3);
-        }
-        .btn-proceed:hover, .btn-send:hover { opacity: 0.95; }
-
-        /* Consultar ID Banner */
-        .id-consult-banner {
-            background: rgba(255, 69, 0, 0.03);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 16px;
-            margin-bottom: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 16px;
-            grid-column: 1 / -1;
-            width: 100%;
-        }
-        @media(max-width: 600px) {
-            .id-consult-banner { flex-direction: column; text-align: center; }
-        }
-        .id-consult-text {
-            font-size: 0.82rem;
-            font-weight: 700;
-            color: var(--text-main);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            line-height: 1.45;
-        }
-        .id-consult-text i { font-size: 1.25rem; color: var(--accent); }
-        .btn-consult-wa {
-            background: #25d366;
-            color: #fff;
-            border: none;
-            padding: 9px 16px;
-            border-radius: 10px;
-            font-size: 0.75rem;
-            font-weight: 800;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            white-space: nowrap;
-            text-decoration: none;
-            transition: opacity 0.2s;
-        }
-        .btn-consult-wa:hover { opacity: 0.9; }
-    </style>
-    <script src="//code.tidio.co/gcscrd4peehpejmvje2jrp2vof5cpe3w.js" async></script>
+<meta name="cryptomus" content="a2afb2a9" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GTROWEN STORE | Elite Digital Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root{
+  --bg:#0b0c10; --surface:#151a22; --surface-2:#1f2833; --line:rgba(255,255,255,.07);
+  --text:#f8fafc; --muted:#94a3b8; --accent:#ff4500; --accent-2:#e63946;
+  --ok:#10b981; --warn:#f59e0b; --bad:#ef4444; --gold:#f59e0b; --r:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Inter',sans-serif;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;
+  background-image:radial-gradient(900px 500px at 8% -10%,rgba(255,69,0,.16),transparent 60%),radial-gradient(800px 500px at 100% 0,rgba(230,57,70,.10),transparent 60%);
+  background-repeat:no-repeat}
+h1,h2,h3,.num{font-family:'Plus Jakarta Sans','Inter',sans-serif}
+button{cursor:pointer;border:0;color:inherit;background:none}
+
+header{position:sticky;top:0;z-index:50;background:rgba(11,12,16,.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.nav{max-width:1100px;margin:0 auto;padding:10px 18px;display:flex;align-items:center;gap:12px}
+.logo{display:flex;align-items:center;gap:11px}
+.logo img{width:42px;height:42px;border-radius:50%;object-fit:cover;border:1px solid var(--accent);box-shadow:0 0 12px rgba(255,69,0,.4);background:#100f0f}
+.logo-t{font-family:'Plus Jakarta Sans';font-weight:800;font-size:1rem;line-height:1.1;letter-spacing:-.3px}
+.logo-t b{color:var(--accent)}
+.logo-s{font-size:.58rem;color:var(--muted);letter-spacing:1.2px;font-weight:700}
+.nav-spacer{flex:1}
+.select{background:var(--surface);border:1px solid var(--line);color:var(--text);padding:9px 12px;border-radius:12px;font-size:.82rem;font-weight:600;outline:none}
+.cart-btn{position:relative;background:rgba(255,69,0,.1);border:1px solid rgba(255,69,0,.25);color:var(--accent);width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:1rem;transition:.2s}
+.cart-btn:hover{background:var(--accent);color:#fff}
+.cart-btn .count{position:absolute;top:-6px;right:-6px;min-width:20px;height:20px;border-radius:10px;background:var(--gold);color:#0b0c10;font-size:.7rem;font-weight:800;display:grid;place-items:center;padding:0 5px}
+
+.wrap{max-width:1100px;margin:0 auto;padding:0 18px}
+
+.hero{padding:30px 0 8px}
+.hero-card{background:linear-gradient(135deg,rgba(255,69,0,.20),rgba(230,57,70,.08)),var(--surface);border:1px solid rgba(255,69,0,.22);border-radius:26px;padding:34px 28px;position:relative;overflow:hidden}
+.hero-card::after{content:'';position:absolute;right:-60px;top:-60px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(255,69,0,.4),transparent 70%)}
+.pill{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.07);border:1px solid var(--line);padding:6px 12px;border-radius:99px;font-size:.74rem;font-weight:600;color:var(--accent);position:relative;z-index:1}
+.hero h1{font-size:clamp(1.8rem,5vw,2.9rem);line-height:1.08;margin:14px 0 10px;max-width:640px;position:relative;z-index:1;text-transform:uppercase}
+.hero h1 span{background:linear-gradient(90deg,var(--accent),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);max-width:520px;line-height:1.55;font-size:.95rem;position:relative;z-index:1}
+.hero-cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px;position:relative;z-index:1}
+.btn{padding:12px 20px;border-radius:12px;font-weight:700;font-size:.88rem;display:inline-flex;align-items:center;gap:8px;transition:.2s;text-decoration:none}
+.btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;box-shadow:0 8px 24px rgba(255,69,0,.35)}
+.btn-primary:hover{transform:translateY(-2px)}
+.btn-ghost{background:rgba(255,255,255,.06);border:1px solid var(--line);color:var(--text)}
+.btn-wa{background:#25d366;color:#04230f}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+
+.trust{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0 6px}
+.trust div{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px;display:flex;align-items:center;gap:10px;font-size:.78rem;font-weight:600}
+.trust i{color:var(--accent);font-size:1.1rem}
+.trust small{display:block;color:var(--muted);font-weight:500;font-size:.68rem;margin-top:1px}
+@media(max-width:700px){.trust{grid-template-columns:repeat(2,1fr)}}
+
+.promo{display:flex;align-items:center;gap:14px;background:linear-gradient(90deg,rgba(255,69,0,.12),rgba(255,69,0,.03));border:1px solid rgba(255,69,0,.3);border-radius:16px;padding:14px 18px;margin:14px 0;font-size:.84rem;line-height:1.45}
+.promo i{font-size:1.5rem;color:var(--accent)}
+.promo b{color:var(--gold)}
+
+.toolbar{position:sticky;top:67px;z-index:40;background:rgba(11,12,16,.92);backdrop-filter:blur(12px);padding:12px 0;margin-top:10px}
+.search{display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:0 14px;margin-bottom:10px}
+.search input{flex:1;background:none;border:0;outline:0;color:var(--text);padding:13px 0;font-size:.9rem}
+.search i{color:var(--muted)}
+.chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{white-space:nowrap;padding:9px 15px;border-radius:99px;background:var(--surface);border:1px solid var(--line);color:var(--muted);font-size:.8rem;font-weight:600;transition:.2s}
+.chip.active{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;border-color:transparent}
+
+.section-title{display:flex;align-items:center;justify-content:space-between;margin:20px 0 14px;font-size:1.1rem}
+.section-title small{color:var(--muted);font-family:'Inter';font-weight:500;font-size:.78rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.card{background:var(--surface-2);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:flex;flex-direction:column;gap:14px;position:relative;transition:.22s;overflow:hidden}
+.card:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--c,#ff4500) 60%,transparent);box-shadow:0 14px 34px rgba(0,0,0,.45)}
+.card::before{content:'';position:absolute;inset:0 0 auto 0;height:3px;background:var(--c,#ff4500)}
+.card.sold{opacity:.55}
+.card-head{display:flex;gap:12px;align-items:center}
+.ico{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;font-size:1.3rem;background:color-mix(in srgb,var(--c,#ff4500) 18%,transparent);color:var(--c,#ff4500);flex-shrink:0}
+.card h3{font-size:.98rem;line-height:1.25}
+.card .sub{font-size:.74rem;color:var(--muted);margin-top:2px}
+.tags{display:flex;justify-content:space-between;align-items:center;gap:6px}
+.tag{font-size:.66rem;font-weight:800;text-transform:uppercase;letter-spacing:.6px;color:var(--c,#ff4500)}
+.stock{font-size:.68rem;font-weight:700;padding:3px 9px;border-radius:99px}
+.stock.ok{background:rgba(16,185,129,.12);color:var(--ok)}
+.stock.low{background:rgba(255,69,0,.14);color:var(--accent)}
+.stock.out{background:rgba(239,68,68,.14);color:var(--bad)}
+.price-row{display:flex;align-items:flex-end;justify-content:space-between;gap:8px}
+.price{font-size:1.5rem;font-weight:800}
+.old{font-size:.74rem;color:var(--muted);text-decoration:line-through}
+.save{font-size:.7rem;font-weight:800;color:var(--ok);background:rgba(16,185,129,.12);padding:4px 9px;border-radius:8px;white-space:nowrap}
+.add{width:100%;padding:12px;border-radius:12px;background:rgba(255,255,255,.05);border:1px solid var(--line);font-weight:700;font-size:.84rem;transition:.2s}
+.add:hover:not(:disabled){background:var(--c,#ff4500);border-color:var(--c,#ff4500);color:#fff}
+.add:disabled{cursor:not-allowed;color:var(--muted)}
+.card.hot .add{background:linear-gradient(135deg,var(--accent),var(--accent-2));border:0;color:#fff}
+.wa-note{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;background:var(--surface);border:1px dashed rgba(255,69,0,.35);border-radius:14px;padding:14px 16px;font-size:.84rem}
+.empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:40px 0}
+
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);z-index:90;opacity:0;pointer-events:none;transition:.25s}
+.overlay.open{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;height:100%;width:min(440px,100%);background:var(--surface);border-left:1px solid var(--line);z-index:100;transform:translateX(100%);transition:.3s;display:flex;flex-direction:column}
+.drawer.open{transform:none}
+.drawer-head{display:flex;justify-content:space-between;align-items:center;padding:18px 20px;border-bottom:1px solid var(--line)}
+.drawer-head h3{font-size:1.05rem}
+.x{width:36px;height:36px;border-radius:10px;background:var(--surface-2);font-size:1.1rem}
+.drawer-body{flex:1;overflow-y:auto;padding:18px 20px}
+.drawer-foot{padding:16px 20px;border-top:1px solid var(--line)}
+.steps{display:flex;gap:6px;margin-bottom:16px}
+.steps span{flex:1;height:4px;border-radius:4px;background:var(--surface-2)}
+.steps span.on{background:var(--accent)}
+.line{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid var(--line);font-size:.85rem}
+.line small{color:var(--accent);font-weight:700}
+.del{color:var(--bad);padding:6px 8px}
+.total{display:flex;justify-content:space-between;font-size:1.2rem;font-weight:800;margin-bottom:12px}
+.field{margin-bottom:13px}
+.field label{display:block;font-size:.74rem;color:var(--muted);font-weight:600;margin-bottom:5px}
+.field input,.field select{width:100%;padding:12px 14px;background:var(--bg);border:1px solid var(--line);border-radius:12px;color:var(--text);font-size:.88rem;outline:none}
+.field input:focus,.field select:focus{border-color:var(--accent)}
+.paybox{background:rgba(255,69,0,.07);border:1px solid rgba(255,69,0,.22);border-radius:12px;padding:14px;font-size:.83rem;line-height:1.7;margin-bottom:13px;color:var(--muted)}
+.paybox strong{color:var(--text)}
+.qr{text-align:center;margin-bottom:13px;background:rgba(255,69,0,.05);border:1px solid rgba(255,69,0,.2);border-radius:12px;padding:14px}
+.qr div{font-size:.8rem;color:var(--accent);margin-bottom:10px;font-weight:800}
+.qr img{width:210px;max-width:100%;border-radius:10px;background:#000;padding:6px;border:1px solid var(--line)}
+.upload{display:block;border:2px dashed rgba(255,69,0,.3);border-radius:12px;padding:14px;text-align:center;font-size:.8rem;color:var(--accent);font-weight:700;cursor:pointer}
+.link-back{font-size:.78rem;color:var(--muted);margin-bottom:12px;display:inline-block}
+.btn-full{width:100%;justify-content:center}
+
+.fabs{position:fixed;left:16px;bottom:16px;display:flex;flex-direction:column;gap:10px;z-index:60}
+.fab{width:50px;height:50px;border-radius:50%;display:grid;place-items:center;font-size:1.4rem;text-decoration:none;color:#fff;box-shadow:0 8px 22px rgba(0,0,0,.5);transition:.2s}
+.fab:hover{transform:scale(1.08)}
+.fab.wa{background:#25d366}
+.fab.grp{background:#128c7e;width:44px;height:44px;font-size:1.2rem}
+.toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,120px);background:var(--text);color:#0b0c10;padding:12px 18px;border-radius:12px;font-weight:700;font-size:.84rem;z-index:200;transition:.3s}
+.toast.show{transform:translate(-50%,0)}
+footer{margin-top:50px;border-top:1px solid var(--line);padding:26px 0 90px;text-align:center;color:var(--muted);font-size:.78rem}
+</style>
+<script src="//code.tidio.co/gcscrd4peehpejmvje2jrp2vof5cpe3w.js" async></script>
 </head>
 <body>
 
-    <header>
-        <div class="brand-box">
-            <div class="brand-icon">
-                <img src="https://i.postimg.cc/qRhmb2Gf/fire-texture.jpg" alt="Logo">
-            </div>
-            <div class="brand-text">
-                <div class="brand-title">GTROWEN <span>STORE</span></div>
-                <div class="brand-sub">ELITE DIGITAL HUB</div>
-            </div>
-        </div>
-
-        <div class="header-actions">
-            <div class="currency-switch">
-                <button class="curr-btn active" data-curr="CRC">CRC</button>
-                <button class="curr-btn" data-curr="USD">USD</button>
-                <button class="curr-btn" data-curr="MXN">MXN</button>
-                <button class="curr-btn" data-curr="COP">COP</button>
-                <button class="curr-btn" data-curr="ARS">ARS</button>
-                <button class="curr-btn" data-curr="PEN">PEN</button>
-                <button class="curr-btn" data-curr="DOP">DOP</button>
-                <button class="curr-btn" data-curr="BOB">BOB</button>
-                <button class="curr-btn" data-curr="GTQ">GTQ</button>
-                <button class="curr-btn" data-curr="NIO">NIO</button>
-                <button class="curr-btn" data-curr="VES">VES</button>
-            </div>
-
-            <div class="header-cart" id="openCartHeader">
-                <i class="fa-solid fa-cart-shopping"></i>
-                <span class="header-cart-badge cart-count">0</span>
-            </div>
-        </div>
-    </header>
-
-    <div class="container">
-        <!-- Banner Principal e Identidad -->
-        <div class="payment-gateway-hero">
-            <div class="gateway-header">
-                <div class="gateway-title">
-                    <i class="fa-solid fa-fire" style="color: var(--accent);"></i> ADQUIERE TUS JUEGOS Y SERVICIOS DIGITALES SEGUROS
-                </div>
-                <div class="gateway-status">
-                    <i class="fa-solid fa-eye"></i> Visitas: <span id="pageViewsCount" style="margin-left: 2px;">...</span>
-                </div>
-            </div>
-            
-            <div class="banner-game-visuals">
-                <div class="visual-side">
-                    <div class="visual-main-text">¡Recupera tu nivel!</div>
-                    <div class="visual-sub-text">DIAMANTES & SERVICIOS DIGITALES</div>
-                </div>
-                <button class="btn-view-offers" id="btnScrollToGrid"><i class="fa-solid fa-bolt"></i> Ver Ofertas</button>
-            </div>
-        </div>
-
-        <div class="referral-banner">
-            <div class="referral-icon"><i class="fa-solid fa-user-plus"></i></div>
-            <div class="referral-content">
-                <div class="referral-title">🎁 ¡INVITA A UN AMIGO Y GANA DIAMANTES!</div>
-                <div class="referral-text">
-                    ¡Invita a un amigo a recargar en la página y ambos se llevan premios! 
-                    Tú te llevas <span>341 diamantes gratis</span> y tu amigo se puede llevar <span>110 diamantes gratis</span>. 
-                    Aplica para recargas desde <span>1,060 hasta 6,160 diamantes</span>. 🔥
-                </div>
-            </div>
-        </div>
-
-        <!-- Categorías en Deslizador -->
-        <div class="category-scroll">
-            <button class="cat-btn active" data-cat="all"><i class="fa-solid fa-border-all"></i> Todo el Catálogo</button>
-            <button class="cat-btn" data-cat="streaming"><i class="fa-solid fa-play"></i> Streaming Mensual</button>
-            <button class="cat-btn" data-cat="ff-lim"><i class="fa-solid fa-bolt"></i> FF Limitados</button>
-            <button class="cat-btn" data-cat="ff-ilim"><i class="fa-solid fa-gem"></i> FF Ilimitados</button>
-            <button class="cat-btn" data-cat="ff-passes"><i class="fa-solid fa-ticket"></i> FF Pases & Tokens</button>
-            <button class="cat-btn" data-cat="bs"><i class="fa-solid fa-coins"></i> Blood Strike Oro</button>
-            <button class="cat-btn" data-cat="social"><i class="fa-solid fa-thumbs-up"></i> Redes Sociales</button>
-        </div>
-
-        <div class="section-h2" id="catalogTitle"><i class="fa-solid fa-fire" style="color: var(--accent);"></i> CATÁLOGO OFICIAL & OFERTAS ÉPICAS</div>
-        <div class="products-grid" id="productsGrid">
-
-            <!-- STREAMING MENSUAL -->
-            <div class="product-card" data-cat="streaming" 
-                 data-crc="6500" data-official-crc="11000" data-usd="13.00" data-official-usd="22.00" data-mxn="235" data-official-mxn="400" data-cop="54000" data-official-cop="90000" data-ars="16500" data-official-ars="28000" data-pen="48.00" data-official-pen="80.00" data-dop="540" data-official-dop="900" data-bob="90" data-official-bob="150" data-gtq="100" data-official-gtq="170" data-nio="475" data-official-nio="800" data-ves="480" data-official-ves="810">
-                <div>
-                    <div class="product-top-info">
-                        <div class="product-badge">Netflix Original</div>
-                        <span class="stock-badge low"><i class="fa-solid fa-fire"></i> 1 En Stock</span>
-                    </div>
-                    <div class="product-name">
-                        <span class="brand-logo-icon netflix"><i class="fa-solid fa-film"></i></span> 
-                        <div><strong>Netflix Familiar</strong> <span style="font-size: 0.72rem; color: var(--text-muted); display: block;">4 Dispositivos para ti [1 MES]</span></div>
-                    </div>
-                </div>
-                <div>
-                    <div class="product-price-box">
-                        <div class="product-price price-tag">₡6,500</div>
-                        <div class="savings-box"><span class="savings-official official-tag">Oficial: ₡11,000</span><span class="savings-highlight savings-tag">⚡ Ahorras ₡4,500</span></div>
-                    </div>
-                    <button class="btn-add" data-input-type="streaming" data-title="Netflix Familiar (4 Dispositivos - 1 Mes)">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="streaming" 
-                 data-crc="2500" data-official-crc="4500" data-usd="5.00" data-official-usd="9.00" data-mxn="90" data-official-mxn="160" data-cop="21000" data-official-cop="37000" data-ars="6300" data-official-ars="11500" data-pen="18.50" data-official-pen="33.00" data-dop="210" data-official-dop="370" data-bob="35" data-official-bob="62" data-gtq="38" data-official-gtq="68" data-nio="180" data-official-nio="330" data-ves="185" data-official-ves="335">
-                <div>
-                    <div class="product-top-info">
-                        <div class="product-badge">Netflix Personal</div>
-                        <span class="stock-badge available"><i class="fa-solid fa-circle-check"></i> 3 En Stock</span>
-                    </div>
-                    <div class="product-name">
-                        <span class="brand-logo-icon netflix"><i class="fa-solid fa-tv"></i></span> 
-                        <div><strong>Netflix Pantalla</strong> <span style="font-size: 0.72rem; color: var(--text-muted); display: block;">Original Personal [1 MES]</span></div>
-                    </div>
-                </div>
-                <div>
-                    <div class="product-price-box">
-                        <div class="product-price price-tag">₡2,500</div>
-                        <div class="savings-box"><span class="savings-official official-tag">Oficial: ₡4,500</span><span class="savings-highlight savings-tag">⚡ Ahorras ₡2,000</span></div>
-                    </div>
-                    <button class="btn-add" data-input-type="streaming" data-title="Netflix Pantalla Personal (1 Mes)">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="streaming" 
-                 data-crc="6000" data-official-crc="10000" data-usd="12.00" data-official-usd="20.00" data-mxn="215" data-official-mxn="360" data-cop="50000" data-official-cop="82000" data-ars="15200" data-official-ars="25000" data-pen="44.00" data-official-pen="74.00" data-dop="500" data-official-dop="820" data-bob="83" data-official-bob="138" data-gtq="92" data-official-gtq="154" data-nio="440" data-official-nio="730" data-ves="445" data-official-ves="740">
-                <div>
-                    <div class="product-top-info">
-                        <div class="product-badge">Disney Original</div>
-                        <span class="stock-badge low"><i class="fa-solid fa-fire"></i> 1 En Stock</span>
-                    </div>
-                    <div class="product-name">
-                        <span class="brand-logo-icon disney"><i class="fa-solid fa-castle"></i></span> 
-                        <div><strong>Disney+ Premium</strong> <span style="font-size: 0.72rem; color: var(--text-muted); display: block;">Completa + 2 ESPN [1 MES]</span></div>
-                    </div>
-                </div>
-                <div>
-                    <div class="product-price-box">
-                        <div class="product-price price-tag">₡6,000</div>
-                        <div class="savings-box"><span class="savings-official official-tag">Oficial: ₡10,000</span><span class="savings-highlight savings-tag">⚡ Ahorras ₡4,000</span></div>
-                    </div>
-                    <button class="btn-add" data-input-type="streaming" data-title="Disney+ Premium 2 ESPN (1 Mes)">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="streaming" 
-                 data-crc="5500" data-official-crc="9500" data-usd="11.00" data-official-usd="19.00" data-mxn="198" data-official-mxn="340" data-cop="46000" data-official-cop="78000" data-ars="14000" data-official-ars="24000" data-pen="40.50" data-official-pen="70.00" data-dop="460" data-official-dop="780" data-bob="76" data-official-bob="130" data-gtq="85" data-official-gtq="145" data-nio="400" data-official-nio="700" data-ves="405" data-official-ves="710">
-                <div>
-                    <div class="product-top-info">
-                        <div class="product-badge">Disney Full Sports</div>
-                        <span class="stock-badge available"><i class="fa-solid fa-circle-check"></i> 7 En Stock</span>
-                    </div>
-                    <div class="product-name">
-                        <span class="brand-logo-icon disney"><i class="fa-solid fa-futbol"></i></span> 
-                        <div><strong>Disney+ Premium</strong> <span style="font-size: 0.72rem; color: var(--text-muted); display: block;">Completa + 7 ESPN [1 MES]</span></div>
-                    </div>
-                </div>
-                <div>
-                    <div class="product-price-box">
-                        <div class="product-price price-tag">₡5,500</div>
-                        <div class="savings-box"><span class="savings-official official-tag">Oficial: ₡9,500</span><span class="savings-highlight savings-tag">⚡ Ahorras ₡4,000</span></div>
-                    </div>
-                    <button class="btn-add" data-input-type="streaming" data-title="Disney+ Premium 7 ESPN (1 Mes)">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="streaming" 
-                 data-crc="2500" data-official-crc="4500" data-usd="5.00" data-official-usd="9.00" data-mxn="90" data-official-mxn="160" data-cop="21000" data-official-cop="37000" data-ars="6300" data-official-ars="11500" data-pen="18.50" data-official-pen="33.00" data-dop="210" data-official-dop="370" data-bob="35" data-official-bob="62" data-gtq="38" data-official-gtq="68" data-nio="180" data-official-nio="330" data-ves="185" data-official-ves="335">
-                <div>
-                    <div class="product-top-info">
-                        <div class="product-badge">Amazon</div>
-                        <span class="stock-badge available"><i class="fa-solid fa-circle-check"></i> Disponible</span>
-                    </div>
-                    <div class="product-name">
-                        <span class="brand-logo-icon prime"><i class="fa-brands fa-amazon"></i></span> 
-                        <div><strong>Prime Video</strong> <span style="font-size: 0.72rem; color: var(--text-muted); display: block;">Pantalla HD/4K [1 MES]</span></div>
-                    </div>
-                </div>
-                <div>
-                    <div class="product-price-box">
-                        <div class="product-price price-tag">₡2,500</div>
-                        <div class="savings-box"><span class="savings-official official-tag">Oficial: ₡4,500</span><span class="savings-highlight savings-tag">⚡ Ahorras ₡2,000</span></div>
-                    </div>
-                    <button class="btn-add" data-input-type="streaming" data-title="Prime Video Pantalla (1 Mes)">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="streaming" 
-                 data-crc="2500" data-official-crc="5000" data-usd="5.00" data-official-usd="10.00" data-mxn="90" data-official-mxn="180" data-cop="21000" data-official-cop="40000" data-ars="6300" data-official-ars="12500" data-pen="18.50" data-official-pen="36.00" data-dop="210" data-official-dop="420" data-bob="35" data-official-bob="68" data-gtq="38" data-official-gtq="75" data-nio="180" data-official-nio="360" data-ves="185" data-official-ves="370">
-                <div>
-                    <div class="product-top-info">
-                        <div class="product-badge">HBO Max</div>
-                        <span class="stock-badge available"><i class="fa-solid fa-circle-check"></i> 3 En Stock</span>
-                    </div>
-                    <div class="product-name">
-                        <span class="brand-logo-icon max"><i class="fa-solid fa-clapperboard"></i></span> 
-                        <div><strong>Max Platino</strong> <span style="font-size: 0.72rem; color: var(--text-muted); display: block;">Cuenta Completa [1 MES]</span></div>
-                    </div>
-                </div>
-                <div>
-                    <div class="product-price-box">
-                        <div class="product-price price-tag">₡2,500</div>
-                        <div class="savings-box"><span class="savings-official official-tag">Oficial: ₡5,000</span><span class="savings-highlight savings-tag">⚡ Ahorras ₡2,500</span></div>
-                    </div>
-                    <button class="btn-add" data-input-type="streaming" data-title="Max Platino Completa (1 Mes)">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card out-of-stock" data-cat="streaming" 
-                 data-crc="2500" data-official-crc="4500" data-usd="5.00" data-official-usd="9.00" data-mxn="90" data-official-mxn="160" data-cop="21000" data-official-cop="37000" data-ars="6300" data-official-ars="11500" data-pen="18.50" data-official-pen="33.00" data-dop="210" data-official-dop="370" data-bob="35" data-official-bob="62" data-gtq="38" data-official-gtq="68" data-nio="180" data-official-nio="330" data-ves="185" data-official-ves="335">
-                <div>
-                    <div class="product-top-info">
-                        <div class="product-badge">Paramount</div>
-                        <span class="stock-badge empty"><i class="fa-solid fa-circle-xmark"></i> AGOTADO</span>
-                    </div>
-                    <div class="product-name">
-                        <span class="brand-logo-icon paramount"><i class="fa-solid fa-mountain"></i></span> 
-                        <div><strong>Paramount+</strong> <span style="font-size: 0.72rem; color: var(--text-muted); display: block;">Cuenta Completa [1 MES]</span></div>
-                    </div>
-                </div>
-                <div>
-                    <div class="product-price-box">
-                        <div class="product-price price-tag">₡2,500</div>
-                        <div class="savings-box"><span class="savings-official official-tag">Oficial: ₡4,500</span><span class="savings-highlight savings-tag">⚡ Ahorras ₡2,000</span></div>
-                    </div>
-                    <button class="btn-add disabled" disabled>Agotado Temporalmente</button>
-                </div>
-            </div>
-
-            <!-- PRODUCTOS RESTAURADOS DE STREAMING -->
-            <div class="product-card" data-cat="streaming" 
-                 data-crc="2000" data-official-crc="4000" data-usd="4.00" data-official-usd="8.00" data-mxn="72" data-official-mxn="140" data-cop="16800" data-official-cop="33000" data-ars="5000" data-official-ars="10000" data-pen="14.80" data-official-pen="29.00" data-dop="170" data-official-dop="330" data-bob="28" data-official-bob="55" data-gtq="31" data-official-gtq="62" data-nio="146" data-official-nio="290" data-ves="150" data-official-ves="295">
-                <div>
-                    <div class="product-top-info">
-                        <div class="product-badge">Anime VIP</div>
-                        <span class="stock-badge low"><i class="fa-solid fa-fire"></i> 1 En Stock</span>
-                    </div>
-                    <div class="product-name">
-                        <span class="brand-logo-icon crunchyroll"><i class="fa-solid fa-ghost"></i></span> 
-                        <div><strong>Crunchyroll Original</strong> <span style="font-size: 0.72rem; color: var(--text-muted); display: block;">Cuenta Completa [1 MES]</span></div>
-                    </div>
-                </div>
-                <div>
-                    <div class="product-price-box">
-                        <div class="product-price price-tag">₡2,000</div>
-                        <div class="savings-box"><span class="savings-official official-tag">Oficial: ₡4,000</span><span class="savings-highlight savings-tag">⚡ Ahorras ₡2,000</span></div>
-                    </div>
-                    <button class="btn-add" data-input-type="streaming" data-title="Crunchyroll Original Completa (1 Mes)">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="streaming" 
-                 data-crc="2500" data-official-crc="5000" data-usd="5.00" data-official-usd="10.00" data-mxn="90" data-official-mxn="180" data-cop="21000" data-official-cop="40000" data-ars="6300" data-official-ars="12500" data-pen="18.50" data-official-pen="36.00" data-dop="210" data-official-dop="420" data-bob="35" data-official-bob="68" data-gtq="38" data-official-gtq="75" data-nio="180" data-official-nio="360" data-ves="185" data-official-ves="370">
-                <div>
-                    <div class="product-top-info">
-                        <div class="product-badge">Cine & Series</div>
-                        <span class="stock-badge available"><i class="fa-solid fa-circle-check"></i> 4 En Stock</span>
-                    </div>
-                    <div class="product-name">
-                        <span class="brand-logo-icon plex"><i class="fa-solid fa-play"></i></span> 
-                        <div><strong>Plex Completa</strong> <span style="font-size: 0.72rem; color: var(--text-muted); display: block;">13 Dispositivos [1 MES]</span></div>
-                    </div>
-                </div>
-                <div>
-                    <div class="product-price-box">
-                        <div class="product-price price-tag">₡2,500</div>
-                        <div class="savings-box"><span class="savings-official official-tag">Oficial: ₡5,000</span><span class="savings-highlight savings-tag">⚡ Ahorras ₡2,500</span></div>
-                    </div>
-                    <button class="btn-add" data-input-type="streaming" data-title="Plex Completa 13 Dispositivos (1 Mes)">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="streaming" 
-                 data-crc="1500" data-official-crc="3000" data-usd="3.00" data-official-usd="6.00" data-mxn="54" data-official-mxn="110" data-cop="12500" data-official-cop="25000" data-ars="3800" data-official-ars="7500" data-pen="11.00" data-official-pen="22.00" data-dop="130" data-official-dop="250" data-bob="21" data-official-bob="42" data-gtq="23" data-official-gtq="46" data-nio="110" data-official-nio="220" data-ves="115" data-official-ves="220">
-                <div>
-                    <div class="product-top-info">
-                        <div class="product-badge">Liga & Novelas</div>
-                        <span class="stock-badge available"><i class="fa-solid fa-circle-check"></i> 3 En Stock</span>
-                    </div>
-                    <div class="product-name">
-                        <span class="brand-logo-icon vix"><i class="fa-solid fa-tv"></i></span> 
-                        <div><strong>ViX+ Completa</strong> <span style="font-size: 0.72rem; color: var(--text-muted); display: block;">Deportes & Cine [1 MES]</span></div>
-                    </div>
-                </div>
-                <div>
-                    <div class="product-price-box">
-                        <div class="product-price price-tag">₡1,500</div>
-                        <div class="savings-box"><span class="savings-official official-tag">Oficial: ₡3,000</span><span class="savings-highlight savings-tag">⚡ Ahorras ₡1,500</span></div>
-                    </div>
-                    <button class="btn-add" data-input-type="streaming" data-title="ViX+ Completa (1 Mes)">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="streaming" 
-                 data-crc="1500" data-official-crc="3500" data-usd="3.00" data-official-usd="7.00" data-mxn="54" data-official-mxn="125" data-cop="12500" data-official-cop="28000" data-ars="3800" data-official-ars="8500" data-pen="11.00" data-official-pen="25.00" data-dop="130" data-official-dop="300" data-bob="21" data-official-bob="48" data-gtq="23" data-official-gtq="54" data-nio="110" data-official-nio="255" data-ves="115" data-official-ves="260">
-                <div>
-                    <div class="product-top-info">
-                        <div class="product-badge">TV en Vivo & Canales</div>
-                        <span class="stock-badge available"><i class="fa-solid fa-circle-check"></i> 8 En Stock</span>
-                    </div>
-                    <div class="product-name">
-                        <span class="brand-logo-icon iptv"><i class="fa-solid fa-satellite-dish"></i></span> 
-                        <div><strong>IPTV Smarters Pro</strong> <span style="font-size: 0.72rem; color: var(--text-muted); display: block;">Cuenta Completa HD</span></div>
-                    </div>
-                </div>
-                <div>
-                    <div class="product-price-box">
-                        <div class="product-price price-tag">₡1,500</div>
-                        <div class="savings-box"><span class="savings-official official-tag">Oficial: ₡3,500</span><span class="savings-highlight savings-tag">⚡ Ahorras ₡2,000</span></div>
-                    </div>
-                    <button class="btn-add" data-input-type="streaming" data-title="IPTV Smarters Pro Completa">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="streaming" 
-                 data-crc="2000" data-official-crc="4000" data-usd="4.00" data-official-usd="8.00" data-mxn="72" data-official-mxn="140" data-cop="16800" data-official-cop="33000" data-ars="5000" data-official-ars="10000" data-pen="14.80" data-official-pen="29.00" data-dop="170" data-official-dop="330" data-bob="28" data-official-bob="55" data-gtq="31" data-official-gtq="62" data-nio="146" data-official-nio="290" data-ves="150" data-official-ves="295">
-                <div>
-                    <div class="product-top-info">
-                        <div class="product-badge">YouTube Sin Anuncios</div>
-                        <span class="stock-badge low"><i class="fa-solid fa-fire"></i> 1 En Stock</span>
-                    </div>
-                    <div class="product-name">
-                        <span class="brand-logo-icon youtube"><i class="fa-brands fa-youtube"></i></span> 
-                        <div><strong>YouTube Premium</strong> <span style="font-size: 0.72rem; color: var(--text-muted); display: block;">Individual [1 MES]</span></div>
-                    </div>
-                </div>
-                <div>
-                    <div class="product-price-box">
-                        <div class="product-price price-tag">₡2,000</div>
-                        <div class="savings-box"><span class="savings-official official-tag">Oficial: ₡4,000</span><span class="savings-highlight savings-tag">⚡ Ahorras ₡2,000</span></div>
-                    </div>
-                    <button class="btn-add" data-input-type="streaming" data-title="YouTube Premium Individual (1 Mes)">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="streaming" 
-                 data-crc="2500" data-official-crc="6000" data-usd="5.00" data-official-usd="12.00" data-mxn="90" data-official-mxn="210" data-cop="21000" data-official-cop="50000" data-ars="6300" data-official-ars="15000" data-pen="18.50" data-official-pen="44.00" data-dop="210" data-official-dop="500" data-bob="35" data-official-bob="82" data-gtq="38" data-official-gtq="92" data-nio="180" data-official-nio="440" data-ves="185" data-official-ves="450">
-                <div>
-                    <div class="product-top-info">
-                        <div class="product-badge">Música Offline</div>
-                        <span class="stock-badge available"><i class="fa-solid fa-circle-check"></i> 2 En Stock</span>
-                    </div>
-                    <div class="product-name">
-                        <span class="brand-logo-icon spotify"><i class="fa-brands fa-spotify"></i></span> 
-                        <div><strong>Spotify Premium</strong> <span style="font-size: 0.72rem; color: var(--text-muted); display: block;">Plan [2 MESES]</span></div>
-                    </div>
-                </div>
-                <div>
-                    <div class="product-price-box">
-                        <div class="product-price price-tag">₡2,500</div>
-                        <div class="savings-box"><span class="savings-official official-tag">Oficial: ₡6,000</span><span class="savings-highlight savings-tag">⚡ Ahorras ₡3,500</span></div>
-                    </div>
-                    <button class="btn-add" data-input-type="streaming" data-title="Spotify Premium Plan (2 Meses)">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card premium-deal" data-cat="streaming" 
-                 data-crc="2500" data-official-crc="28000" data-usd="5.00" data-official-usd="55.00" data-mxn="90" data-official-mxn="950" data-cop="21000" data-official-cop="220000" data-ars="6300" data-official-ars="68000" data-pen="18.50" data-official-pen="200.00" data-dop="210" data-official-dop="3200" data-bob="35" data-official-bob="380" data-gtq="38" data-official-gtq="420" data-nio="180" data-official-nio="2000" data-ves="185" data-official-ves="2100">
-                <div>
-                    <div class="product-top-info">
-                        <div class="product-badge" style="color: var(--gold);">🔥 MEGA OFERTA ANUAL</div>
-                        <span class="stock-badge available"><i class="fa-solid fa-circle-check"></i> 33 En Stock</span>
-                    </div>
-                    <div class="product-name">
-                        <span class="brand-logo-icon canva"><i class="fa-solid fa-palette"></i></span> 
-                        <div><strong>Canva Pro Anual</strong> <span style="font-size: 0.72rem; color: var(--text-muted); display: block;">Activación a tu Correo [1 AÑO]</span></div>
-                    </div>
-                </div>
-                <div>
-                    <div class="product-price-box">
-                        <div class="product-price price-tag">₡2,500</div>
-                        <div class="savings-box"><span class="savings-official official-tag">Oficial: ₡28,000</span><span class="savings-highlight savings-tag">⚡ Ahorras ₡25,500 (91%)</span></div>
-                    </div>
-                    <button class="btn-add premium-btn" data-input-type="streaming" data-title="Canva Pro Anual a tu Correo (1 Año)">¡Comprar Oferta Anual!</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="streaming" 
-                 data-crc="2000" data-official-crc="4000" data-usd="4.00" data-official-usd="8.00" data-mxn="72" data-official-mxn="140" data-cop="16800" data-official-cop="33000" data-ars="5000" data-official-ars="10000" data-pen="14.80" data-official-pen="29.00" data-dop="170" data-official-dop="330" data-bob="28" data-official-bob="55" data-gtq="31" data-official-gtq="62" data-nio="146" data-official-nio="290" data-ves="150" data-official-ves="295">
-                <div>
-                    <div class="product-top-info">
-                        <div class="product-badge">Diseño Pro</div>
-                        <span class="stock-badge available"><i class="fa-solid fa-circle-check"></i> 14 En Stock</span>
-                    </div>
-                    <div class="product-name">
-                        <span class="brand-logo-icon canva"><i class="fa-solid fa-pen-nib"></i></span> 
-                        <div><strong>Canva Pro Mes</strong> <span style="font-size: 0.72rem; color: var(--text-muted); display: block;">Plan Individual [1 MES]</span></div>
-                    </div>
-                </div>
-                <div>
-                    <div class="product-price-box">
-                        <div class="product-price price-tag">₡2,000</div>
-                        <div class="savings-box"><span class="savings-official official-tag">Oficial: ₡4,000</span><span class="savings-highlight savings-tag">⚡ Ahorras ₡2,000</span></div>
-                    </div>
-                    <button class="btn-add" data-input-type="streaming" data-title="Canva Pro (1 Mes)">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="streaming" 
-                 data-crc="1500" data-official-crc="4000" data-usd="3.00" data-official-usd="8.00" data-mxn="54" data-official-mxn="140" data-cop="12500" data-official-cop="33000" data-ars="3800" data-official-ars="10000" data-pen="11.00" data-official-pen="29.00" data-dop="130" data-official-dop="330" data-bob="21" data-official-bob="55" data-gtq="23" data-official-gtq="62" data-nio="110" data-official-nio="290" data-ves="115" data-official-ves="295">
-                <div>
-                    <div class="product-top-info">
-                        <div class="product-badge">Apple Original</div>
-                        <span class="stock-badge available"><i class="fa-solid fa-circle-check"></i> 8 En Stock</span>
-                    </div>
-                    <div class="product-name">
-                        <span class="brand-logo-icon apple"><i class="fa-brands fa-apple"></i></span> 
-                        <div><strong>Apple TV+</strong> <span style="font-size: 0.72rem; color: var(--text-muted); display: block;">Pantalla x 2 Meses</span></div>
-                    </div>
-                </div>
-                <div>
-                    <div class="product-price-box">
-                        <div class="product-price price-tag">₡1,500</div>
-                        <div class="savings-box"><span class="savings-official official-tag">Oficial: ₡4,000</span><span class="savings-highlight savings-tag">⚡ Ahorras ₡2,500</span></div>
-                    </div>
-                    <button class="btn-add" data-input-type="streaming" data-title="Apple TV+ Pantalla x 2 Meses">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="streaming" 
-                 data-crc="5000" data-official-crc="10000" data-usd="10.00" data-official-usd="20.00" data-mxn="180" data-official-mxn="360" data-cop="41000" data-official-cop="82000" data-ars="12500" data-official-ars="25000" data-pen="36.00" data-official-pen="74.00" data-dop="420" data-official-dop="820" data-bob="68" data-official-bob="138" data-gtq="75" data-official-gtq="154" data-nio="360" data-official-nio="730" data-ves="370" data-official-ves="740">
-                <div>
-                    <div class="product-top-info">
-                        <div class="product-badge">IA Avanzada</div>
-                        <span class="stock-badge available"><i class="fa-solid fa-circle-check"></i> 2 En Stock</span>
-                    </div>
-                    <div class="product-name">
-                        <span class="brand-logo-icon chatgpt"><i class="fa-solid fa-robot"></i></span> 
-                        <div><strong>ChatGPT Plus</strong> <span style="font-size: 0.72rem; color: var(--text-muted); display: block;">Individual [1 MES]</span></div>
-                    </div>
-                </div>
-                <div>
-                    <div class="product-price-box">
-                        <div class="product-price price-tag">₡5,000</div>
-                        <div class="savings-box"><span class="savings-official official-tag">Oficial: ₡10,000</span><span class="savings-highlight savings-tag">⚡ Ahorras ₡5,000</span></div>
-                    </div>
-                    <button class="btn-add" data-input-type="streaming" data-title="ChatGPT Plus Individual (1 Mes)">Agregar</button>
-                </div>
-            </div>
-
-            <!-- FF LIMITADOS -->
-            <div class="id-consult-banner" id="limConsultBanner" style="display: none;">
-                <div class="id-consult-text"><i class="fa-brands fa-whatsapp"></i><span>¿No sabes si tu ID tiene la oferta de diamantes limitados? Consulta acá</span></div>
-                <a href="https://api.whatsapp.com/send?phone=50672986056&text=Hola,%20quiero%20consultar%20si%20mi%20ID%20de%20Free%20Fire%20tiene%20la%20oferta%20de%20diamantes%20limitados." class="btn-consult-wa" target="_blank"><i class="fa-solid fa-comments"></i> Consultar ID</a>
-            </div>
-
-            <div class="product-card premium-deal" data-cat="ff-lim" 
-                 data-crc="500" data-official-crc="800" data-usd="1.00" data-official-usd="1.70" data-mxn="18" data-official-mxn="30" data-cop="4000" data-official-cop="6500" data-ars="1200" data-official-ars="1900" data-pen="3.50" data-official-pen="6.00" data-dop="60" data-official-dop="95" data-bob="6.8" data-official-bob="11.0" data-gtq="7.7" data-official-gtq="12.5" data-nio="36" data-official-nio="58" data-ves="37" data-official-ves="60">
-                <div>
-                    <div class="product-badge">⚡ OFERTA FLASH FF</div>
-                    <div class="product-name"><i class="fa-solid fa-gem" style="color: var(--accent);"></i> 110 Diamantes (100 + 10%)</div>
-                </div>
-                <div>
-                    <div class="product-price-box">
-                        <div class="product-price price-tag">₡500</div>
-                        <div class="savings-box"><span class="savings-official official-tag">Tienda Oficial: ₡800</span><span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡300 (37%)!</span></div>
-                    </div>
-                    <button class="btn-add premium-btn" data-input-type="ff" data-title="110 Diamantes FF (Limitado)">Comprar Oferta</button>
-                </div>
-            </div>
-
-            <div class="product-card premium-deal" data-cat="ff-lim" 
-                 data-crc="1800" data-official-crc="2900" data-usd="3.50" data-official-usd="5.80" data-mxn="60" data-official-mxn="100" data-cop="14000" data-official-cop="23000" data-ars="4200" data-official-ars="6900" data-pen="12.50" data-official-pen="20.00" data-dop="210" data-official-dop="340" data-bob="24" data-official-bob="39" data-gtq="27" data-official-gtq="44" data-nio="130" data-official-nio="210" data-ves="132" data-official-ves="215">
-                <div>
-                    <div class="product-badge">⚡ OFERTA FLASH FF</div>
-                    <div class="product-name"><i class="fa-solid fa-gem" style="color: var(--accent);"></i> 572 Diamantes</div>
-                </div>
-                <div>
-                    <div class="product-price-box">
-                        <div class="product-price price-tag">₡1,800</div>
-                        <div class="savings-box"><span class="savings-official official-tag">Tienda Oficial: ₡2,900</span><span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡1,100 (38%)!</span></div>
-                    </div>
-                    <button class="btn-add premium-btn" data-input-type="ff" data-title="572 Diamantes FF (Limitado)">Comprar Oferta</button>
-                </div>
-            </div>
-
-            <div class="product-card premium-deal" data-cat="ff-lim" 
-                 data-crc="4200" data-official-crc="6500" data-usd="8.00" data-official-usd="13.00" data-mxn="140" data-official-mxn="220" data-cop="32000" data-official-cop="50000" data-ars="9600" data-official-ars="15000" data-pen="30.00" data-official-pen="48.00" data-dop="480" data-official-dop="750" data-bob="55" data-official-bob="85" data-gtq="62" data-official-gtq="98" data-nio="306" data-official-nio="475" data-ves="310" data-official-ves="480">
-                <div>
-                    <div class="product-badge">⚡ OFERTA FLASH FF</div>
-                    <div class="product-name"><i class="fa-solid fa-gem" style="color: var(--accent);"></i> 1,160 Diamantes</div>
-                </div>
-                <div>
-                    <div class="product-price-box">
-                        <div class="product-price price-tag">₡4,200</div>
-                        <div class="savings-box"><span class="savings-official official-tag">Tienda Oficial: ₡6,500</span><span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡2,300 (35%)!</span></div>
-                    </div>
-                    <button class="btn-add premium-btn" data-input-type="ff" data-title="1,160 Diamantes FF (Limitado)">Comprar Oferta</button>
-                </div>
-            </div>
-
-            <div class="product-card premium-deal" data-cat="ff-lim" 
-                 data-crc="6200" data-official-crc="10800" data-usd="12.00" data-official-usd="21.00" data-mxn="210" data-official-mxn="370" data-cop="48000" data-official-cop="84000" data-ars="14200" data-official-ars="25000" data-pen="45.00" data-official-pen="78.00" data-dop="720" data-official-dop="1250" data-bob="82" data-official-bob="143" data-gtq="92" data-official-gtq="160" data-nio="445" data-official-nio="780" data-ves="450" data-official-ves="790">
-                <div>
-                    <div class="product-badge">⚡ OFERTA FLASH FF</div>
-                    <div class="product-name"><i class="fa-solid fa-gem" style="color: var(--accent);"></i> 2,398 Diamantes</div>
-                </div>
-                <div>
-                    <div class="product-price-box">
-                        <div class="product-price price-tag">₡6,200</div>
-                        <div class="savings-box"><span class="savings-official official-tag">Tienda Oficial: ₡10,800</span><span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡4,600 (42%)!</span></div>
-                    </div>
-                    <button class="btn-add premium-btn" data-input-type="ff" data-title="2,398 Diamantes FF (Limitado)">Comprar Oferta</button>
-                </div>
-            </div>
-
-            <div class="product-card premium-deal" data-cat="ff-lim" 
-                 data-crc="15000" data-official-crc="24000" data-usd="28.00" data-official-usd="45.00" data-mxn="500" data-official-mxn="800" data-cop="112000" data-official-cop="180000" data-ars="33000" data-official-ars="53000" data-pen="108.00" data-official-pen="172.00" data-dop="1680" data-official-dop="2700" data-bob="192" data-official-bob="308" data-gtq="215" data-official-gtq="345" data-nio="1050" data-official-nio="1680" data-ves="1070" data-official-ves="1700">
-                <div>
-                    <div class="product-badge">⚡ MÁXIMA OFERTA FF</div>
-                    <div class="product-name"><i class="fa-solid fa-gem" style="color: var(--accent);"></i> 6,160 Diamantes</div>
-                </div>
-                <div>
-                    <div class="product-price-box">
-                        <div class="product-price price-tag">₡15,000</div>
-                        <div class="savings-box"><span class="savings-official official-tag">Tienda Oficial: ₡24,000</span><span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡9,000 (37%)!</span></div>
-                    </div>
-                    <button class="btn-add premium-btn" data-input-type="ff" data-title="6,160 Diamantes FF (Limitado)">Comprar Oferta</button>
-                </div>
-            </div>
-
-            <!-- FF ILIMITADOS -->
-            <div class="product-card premium-deal" data-cat="ff-ilim" 
-                 data-crc="450" data-official-crc="800" data-usd="0.80" data-official-usd="1.70" data-mxn="15" data-official-mxn="30" data-cop="3400" data-official-cop="6500" data-ars="1000" data-official-ars="1900" data-pen="3.00" data-official-pen="6.00" data-dop="50" data-official-dop="95" data-bob="5.5" data-official-bob="11.0" data-gtq="6.2" data-official-gtq="12.5" data-nio="29" data-official-nio="58" data-ves="30" data-official-ves="60">
-                <div>
-                    <div class="product-badge">💎 FF ILIMITADO</div>
-                    <div class="product-name"><i class="fa-solid fa-gem" style="color: var(--accent);"></i> 110 Diamantes</div>
-                </div>
-                <div>
-                    <div class="product-price-box">
-                        <div class="product-price price-tag">₡450</div>
-                        <div class="savings-box"><span class="savings-official official-tag">Tienda Oficial: ₡800</span><span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡350 (44%)!</span></div>
-                    </div>
-                    <button class="btn-add premium-btn" data-input-type="ff" data-title="110 Diamantes FF (Ilimitado)">Comprar Oferta</button>
-                </div>
-            </div>
-
-            <div class="product-card premium-deal" data-cat="ff-ilim" 
-                 data-crc="1600" data-official-crc="2500" data-usd="3.00" data-official-usd="5.00" data-mxn="50" data-official-mxn="85" data-cop="12000" data-official-cop="19000" data-ars="3200" data-official-ars="5200" data-pen="11.00" data-official-pen="18.00" data-dop="130" data-official-dop="210" data-bob="21" data-official-bob="35" data-gtq="23" data-official-gtq="38" data-nio="110" data-official-nio="180" data-ves="115" data-official-ves="190">
-                <div>
-                    <div class="product-badge">💎 FF ILIMITADO</div>
-                    <div class="product-name"><i class="fa-solid fa-gem" style="color: var(--accent);"></i> 341 Diamantes</div>
-                </div>
-                <div>
-                    <div class="product-price-box">
-                        <div class="product-price price-tag">₡1,600</div>
-                        <div class="savings-box"><span class="savings-official official-tag">Tienda Oficial: ₡2,500</span><span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡900 (36%)!</span></div>
-                    </div>
-                    <button class="btn-add premium-btn" data-input-type="ff" data-title="341 Diamantes FF (Ilimitado)">Comprar Oferta</button>
-                </div>
-            </div>
-
-            <div class="product-card premium-deal" data-cat="ff-ilim" 
-                 data-crc="2150" data-official-crc="3800" data-usd="4.00" data-official-usd="8.00" data-mxn="70" data-official-mxn="140" data-cop="15000" data-official-cop="29000" data-ars="3800" data-official-ars="5500" data-pen="14.50" data-official-pen="22.50" data-dop="170" data-official-dop="320" data-bob="27" data-official-bob="55" data-gtq="31" data-official-gtq="62" data-nio="145" data-official-nio="290" data-ves="150" data-official-ves="295">
-                <div>
-                    <div class="product-badge">💎 FF ILIMITADO</div>
-                    <div class="product-name"><i class="fa-solid fa-gem" style="color: var(--accent);"></i> 541 Diamantes</div>
-                </div>
-                <div>
-                    <div class="product-price-box">
-                        <div class="product-price price-tag">₡2,150</div>
-                        <div class="savings-box"><span class="savings-official official-tag">Tienda Oficial: ₡3,800</span><span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡1,650 (43%)!</span></div>
-                    </div>
-                    <button class="btn-add premium-btn" data-input-type="ff" data-title="541 Diamantes FF (Ilimitado)">Comprar Oferta</button>
-                </div>
-            </div>
-
-            <div class="product-card premium-deal" data-cat="ff-ilim" 
-                 data-crc="3700" data-official-crc="7200" data-usd="7.00" data-official-usd="14.50" data-mxn="120" data-official-mxn="225" data-cop="28000" data-official-cop="60000" data-ars="6600" data-official-ars="13000" data-pen="26.00" data-official-pen="52.00" data-dop="290" data-official-dop="600" data-bob="48" data-official-bob="95" data-gtq="54" data-official-gtq="110" data-nio="255" data-official-nio="520" data-ves="260" data-official-ves="530">
-                <div>
-                    <div class="product-badge">💎 FF ILIMITADO</div>
-                    <div class="product-name"><i class="fa-solid fa-gem" style="color: var(--accent);"></i> 1,160 Diamantes</div>
-                </div>
-                <div>
-                    <div class="product-price-box">
-                        <div class="product-price price-tag">₡3,700</div>
-                        <div class="savings-box"><span class="savings-official official-tag">Tienda Oficial: ₡7,200</span><span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡3,500 (49%)!</span></div>
-                    </div>
-                    <button class="btn-add premium-btn" data-input-type="ff" data-title="1,160 Diamantes FF (Ilimitado)">Comprar Oferta</button>
-                </div>
-            </div>
-
-            <div class="product-card premium-deal" data-cat="ff-ilim" 
-                 data-crc="6800" data-official-crc="14000" data-usd="13.00" data-official-usd="22.50" data-mxn="225" data-official-mxn="390" data-cop="50000" data-official-cop="86000" data-ars="14400" data-official-ars="25000" data-pen="44.50" data-official-pen="77.00" data-dop="680" data-official-dop="1170" data-bob="89" data-official-bob="154" data-gtq="100" data-official-gtq="173" data-nio="480" data-official-nio="830" data-ves="490" data-official-ves="850">
-                <div>
-                    <div class="product-badge">💎 FF ILIMITADO</div>
-                    <div class="product-name"><i class="fa-solid fa-gem" style="color: var(--accent);"></i> 2,398 Diamantes</div>
-                </div>
-                <div>
-                    <div class="product-price-box">
-                        <div class="product-price price-tag">₡6,800</div>
-                        <div class="savings-box"><span class="savings-official official-tag">Tienda Oficial: ₡14,000</span><span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡7,200 (51%)!</span></div>
-                    </div>
-                    <button class="btn-add premium-btn" data-input-type="ff" data-title="2,398 Diamantes FF (Ilimitado)">Comprar Oferta</button>
-                </div>
-            </div>
-
-            <div class="product-card premium-deal" data-cat="ff-ilim" 
-                 data-crc="17500" data-official-crc="29000" data-usd="33.00" data-official-usd="55.00" data-mxn="575" data-official-mxn="960" data-cop="175000" data-official-cop="290000" data-ars="32300" data-official-ars="53000" data-pen="131.00" data-official-pen="218.00" data-dop="1450" data-official-dop="2400" data-bob="226" data-official-bob="375" data-gtq="253" data-official-gtq="420" data-nio="1235" data-official-nio="2050" data-ves="1260" data-official-ves="2100">
-                <div>
-                    <div class="product-badge">💎 FF ILIMITADO</div>
-                    <div class="product-name"><i class="fa-solid fa-gem" style="color: var(--accent);"></i> 6,160 Diamantes</div>
-                </div>
-                <div>
-                    <div class="product-price-box">
-                        <div class="product-price price-tag">₡17,500</div>
-                        <div class="savings-box"><span class="savings-official official-tag">Tienda Oficial: ₡29,000</span><span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡11,500 (40%)!</span></div>
-                    </div>
-                    <button class="btn-add premium-btn" data-input-type="ff" data-title="6,160 Diamantes FF (Ilimitado)">Comprar Oferta</button>
-                </div>
-            </div>
-
-            <!-- PASES & MEMBRESÍAS FF RESTAURADOS -->
-            <div class="product-card" data-cat="ff-passes" 
-                 data-crc="1200" data-official-crc="1900" data-usd="2.00" data-official-usd="3.50" data-mxn="35" data-official-mxn="60" data-cop="8300" data-official-cop="14000" data-ars="2500" data-official-ars="4200" data-pen="7.30" data-official-pen="12.00" data-dop="100" data-official-dop="170" data-bob="14" data-official-bob="24" data-gtq="15" data-official-gtq="26" data-nio="73" data-official-nio="125" data-ves="74" data-official-ves="130">
-                <div>
-                    <div class="product-badge">🎫 Membresía FF</div>
-                    <div class="product-name"><i class="fa-solid fa-id-card"></i> Tarjeta Semanal</div>
-                </div>
-                <div>
-                    <div class="product-price-box">
-                        <div class="product-price price-tag">₡1,200</div>
-                        <div class="savings-box"><span class="savings-official official-tag">Tienda Oficial: ₡1,900</span><span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡700 (36%)!</span></div>
-                    </div>
-                    <button class="btn-add" data-input-type="ff" data-title="Tarjeta Semanal FF">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="ff-passes" 
-                 data-crc="1500" data-official-crc="2400" data-usd="3.00" data-official-usd="4.80" data-mxn="55" data-official-mxn="88" data-cop="12500" data-official-cop="20000" data-ars="3800" data-official-ars="6100" data-pen="11.00" data-official-pen="17.50" data-dop="125" data-official-dop="200" data-bob="21" data-official-bob="33" data-gtq="23" data-official-gtq="37" data-nio="112" data-official-nio="180" data-ves="115" data-official-ves="185">
-                <div>
-                    <div class="product-badge">🎫 Pase Especial FF</div>
-                    <div class="product-name"><i class="fa-solid fa-star"></i> Pase Booyah Premium</div>
-                </div>
-                <div>
-                    <div class="product-price-box">
-                        <div class="product-price price-tag">₡1,500</div>
-                        <div class="savings-box"><span class="savings-official official-tag">Tienda Oficial: ₡2,400</span><span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡900 (38%)!</span></div>
-                    </div>
-                    <button class="btn-add" data-input-type="ff" data-title="Pase Booyah Premium FF">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="ff-passes" 
-                 data-crc="4300" data-official-crc="6900" data-usd="8.00" data-official-usd="13.00" data-mxn="140" data-official-mxn="225" data-cop="33500" data-official-cop="54000" data-ars="10200" data-official-ars="16500" data-pen="29.00" data-official-pen="47.00" data-dop="325" data-official-dop="520" data-bob="55" data-official-bob="88" data-gtq="62" data-official-gtq="99" data-nio="300" data-official-nio="480" data-ves="305" data-official-ves="490">
-                <div>
-                    <div class="product-badge">🎫 Membresía FF</div>
-                    <div class="product-name"><i class="fa-solid fa-id-badge"></i> Tarjeta Mensual</div>
-                </div>
-                <div>
-                    <div class="product-price-box">
-                        <div class="product-price price-tag">₡4,300</div>
-                        <div class="savings-box"><span class="savings-official official-tag">Tienda Oficial: ₡6,900</span><span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡2,600 (38%)!</span></div>
-                    </div>
-                    <button class="btn-add" data-input-type="ff" data-title="Tarjeta Mensual FF">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="ff-passes" 
-                 data-crc="300" data-official-crc="500" data-usd="0.40" data-official-usd="0.70" data-mxn="10" data-official-mxn="16" data-cop="1700" data-official-cop="2800" data-ars="500" data-official-ars="820" data-pen="1.50" data-official-pen="2.50" data-dop="25" data-official-dop="40" data-bob="2.7" data-official-bob="4.5" data-gtq="3.0" data-official-gtq="5.0" data-nio="15" data-official-nio="24" data-ves="15" data-official-ves="25">
-                <div>
-                    <div class="product-badge">🎫 Membresía FF</div>
-                    <div class="product-name"><i class="fa-solid fa-address-card"></i> Basic Card</div>
-                </div>
-                <div>
-                    <div class="product-price-box">
-                        <div class="product-price price-tag">₡300</div>
-                        <div class="savings-box"><span class="savings-official official-tag">Tienda Oficial: ₡500</span><span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡200 (40%)!</span></div>
-                    </div>
-                    <button class="btn-add" data-input-type="ff" data-title="Basic Card FF">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="ff-passes" 
-                 data-crc="1000" data-official-crc="1600" data-usd="1.8" data-official-usd="3.0" data-mxn="35" data-official-mxn="56" data-cop="7500" data-official-cop="12000" data-ars="2300" data-official-ars="3700" data-pen="6.60" data-official-pen="11.00" data-dop="85" data-official-dop="140" data-bob="12" data-official-bob="20" data-gtq="14" data-official-gtq="22" data-nio="67" data-official-nio="110" data-ves="68" data-official-ves="112">
-                <div>
-                    <div class="product-badge">⚙️ Evolutivas FF</div>
-                    <div class="product-name"><i class="fa-solid fa-puzzle-piece"></i> 35 Fragmentos Univ.</div>
-                </div>
-                <div>
-                    <div class="product-price-box">
-                        <div class="product-price price-tag">₡1,000</div>
-                        <div class="savings-box"><span class="savings-official official-tag">Tienda Oficial: ₡1,600</span><span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡600 (38%)!</span></div>
-                    </div>
-                    <button class="btn-add" data-input-type="ff" data-title="35 Fragmentos Universales FF">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="ff-passes" 
-                 data-crc="1200" data-official-crc="1900" data-usd="2.40" data-official-usd="3.80" data-mxn="44" data-official-mxn="70" data-cop="10000" data-official-cop="16000" data-ars="3050" data-official-ars="4900" data-pen="8.90" data-official-pen="14.20" data-dop="100" data-official-dop="160" data-bob="16" data-official-bob="26" data-gtq="18" data-official-gtq="29" data-nio="87" data-official-nio="138" data-ves="89" data-official-ves="140">
-                <div>
-                    <div class="product-badge">⚙️ Cajas Evolutivas</div>
-                    <div class="product-name"><i class="fa-solid fa-box-open"></i> 10 Cajas Evolutivas</div>
-                </div>
-                <div>
-                    <div class="product-price-box">
-                        <div class="product-price price-tag">₡1,200</div>
-                        <div class="savings-box"><span class="savings-official official-tag">Tienda Oficial: ₡1,900</span><span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡700 (36%)!</span></div>
-                    </div>
-                    <button class="btn-add" data-input-type="ff" data-title="10 Cajas de Tokens Evolutivos FF">Agregar</button>
-                </div>
-            </div>
-
-            <!-- BLOOD STRIKE ORO -->
-            <div class="product-card" data-cat="bs" 
-                 data-crc="1600" data-official-crc="2500" data-usd="3.00" data-official-usd="4.80" data-mxn="54" data-official-mxn="85" data-cop="12500" data-official-cop="19500" data-ars="3800" data-official-ars="6000" data-pen="11.00" data-official-pen="17.00" data-dop="130" data-official-dop="200" data-bob="21" data-official-bob="33" data-gtq="24" data-official-gtq="38" data-nio="116" data-official-nio="180" data-ves="118" data-official-ves="185">
-                <div>
-                    <div class="product-badge">🪙 Blood Strike</div>
-                    <div class="product-name"><i class="fa-solid fa-coins" style="color: var(--gold);"></i> 341 de Oro</div>
-                </div>
-                <div>
-                    <div class="product-price-box">
-                        <div class="product-price price-tag">₡1,600</div>
-                        <div class="savings-box"><span class="savings-official official-tag">Precio Oficial: ₡2,500</span><span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡900 (36%)!</span></div>
-                    </div>
-                    <button class="btn-add" data-input-type="bs" data-title="341 de Oro Blood Strike">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="bs" 
-                 data-crc="2700" data-official-crc="4200" data-usd="5.00" data-official-usd="8.00" data-mxn="90" data-official-mxn="140" data-cop="21000" data-official-cop="33000" data-ars="6300" data-official-ars="10000" data-pen="18.00" data-official-pen="28.50" data-dop="220" data-official-dop="350" data-bob="34" data-official-bob="55" data-gtq="38" data-official-gtq="62" data-nio="180" data-official-nio="290" data-ves="185" data-official-ves="295">
-                <div>
-                    <div class="product-badge">🪙 Blood Strike</div>
-                    <div class="product-name"><i class="fa-solid fa-coins" style="color: var(--gold);"></i> 572 de Oro</div>
-                </div>
-                <div>
-                    <div class="product-price-box">
-                        <div class="product-price price-tag">₡2,700</div>
-                        <div class="savings-box"><span class="savings-official official-tag">Precio Oficial: ₡4,200</span><span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡1,500 (36%)!</span></div>
-                    </div>
-                    <button class="btn-add" data-input-type="bs" data-title="572 de Oro Blood Strike">Agregar</button>
-                </div>
-            </div>
-
-            <!-- REDES SOCIALES Y COMBOS RESTAURADOS -->
-            <div class="product-card premium-deal" data-cat="social" 
-                 data-crc="2900" data-official-crc="5500" data-usd="4.50" data-official-usd="8.00" data-mxn="85" data-official-mxn="150" data-cop="19000" data-official-cop="34000" data-ars="5800" data-official-ars="11000" data-pen="17.00" data-official-pen="30.00" data-dop="240" data-official-dop="450" data-bob="32" data-official-bob="60" data-gtq="35" data-official-gtq="65" data-nio="170" data-official-nio="320" data-ves="175" data-official-ves="330">
-                <div>
-                    <div class="product-top-info">
-                        <div class="product-badge" style="color: var(--accent);"><i class="fa-brands fa-tiktok"></i> MEGA COMBO</div>
-                        <span class="stock-badge available"><i class="fa-solid fa-fire"></i> Alta Demanda</span>
-                    </div>
-                    <div class="product-name">
-                        <span class="brand-logo-icon" style="color: #fff;"><i class="fa-brands fa-tiktok"></i></span>
-                        <div><strong>Combo Viral TikTok</strong> <span style="font-size: 0.72rem; color: var(--text-muted); display: block;">1K Seguidores + 1K Vistas + 1K Likes</span></div>
-                    </div>
-                </div>
-                <div>
-                    <div class="product-price-box">
-                        <div class="product-price price-tag">₡2,900</div>
-                        <div class="savings-box"><span class="savings-official official-tag">Por separado: ₡5,500</span><span class="savings-highlight savings-tag">⚡ ¡Ahorras ₡2,600!</span></div>
-                    </div>
-                    <button class="btn-add premium-btn" data-input-type="social" data-title="Combo Viral TikTok (1K Seg, Vistas, Likes)">¡Comprar Combo!</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="social" 
-                 data-crc="3000" data-official-crc="5000" data-usd="5.00" data-official-usd="8.50" data-mxn="90" data-official-mxn="150" data-cop="20000" data-official-cop="35000" data-ars="6000" data-official-ars="10500" data-pen="18.00" data-official-pen="30.00" data-dop="250" data-official-dop="420" data-bob="34" data-official-bob="58" data-gtq="38" data-official-gtq="65" data-nio="180" data-official-nio="310" data-ves="185" data-official-ves="320">
-                <div>
-                    <div class="product-top-info">
-                        <div class="product-badge">Instagram Pro</div>
-                        <span class="stock-badge available"><i class="fa-solid fa-circle-check"></i> Buena Calidad</span>
-                    </div>
-                    <div class="product-name">
-                        <span class="brand-logo-icon" style="color: #E1306C;"><i class="fa-brands fa-instagram"></i></span>
-                        <div><strong>1,000 Seguidores Instagram</strong> <span style="font-size: 0.72rem; color: var(--text-muted); display: block;">Buena Calidad [1K]</span></div>
-                    </div>
-                </div>
-                <div>
-                    <div class="product-price-box">
-                        <div class="product-price price-tag">₡3,000</div>
-                        <div class="savings-box"><span class="savings-official official-tag">Tienda Oficial: ₡5,000</span><span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡2,000 (40%)!</span></div>
-                    </div>
-                    <button class="btn-add" data-input-type="social" data-title="1,000 Seguidores Instagram (Buena Calidad)">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="social" 
-                 data-crc="1800" data-official-crc="3200" data-usd="3.00" data-official-usd="5.50" data-mxn="54" data-official-mxn="95" data-cop="12500" data-official-cop="22500" data-ars="3800" data-official-ars="6800" data-pen="11.00" data-official-pen="19.50" data-dop="150" data-official-dop="270" data-bob="21" data-official-bob="38" data-gtq="24" data-official-gtq="42" data-nio="110" data-official-nio="200" data-ves="115" data-official-ves="205">
-                <div>
-                    <div class="product-top-info">
-                        <div class="product-badge">TikTok Calidad Nueva</div>
-                        <span class="stock-badge available"><i class="fa-solid fa-circle-check"></i> Stock Disponible</span>
-                    </div>
-                    <div class="product-name">
-                        <span class="brand-logo-icon" style="color: #fff;"><i class="fa-brands fa-tiktok"></i></span>
-                        <div><strong>1,000 Seguidores TikTok</strong> <span style="font-size: 0.72rem; color: var(--text-muted); display: block;">Calidad Nueva [1K]</span></div>
-                    </div>
-                </div>
-                <div>
-                    <div class="product-price-box">
-                        <div class="product-price price-tag">₡1,800</div>
-                        <div class="savings-box"><span class="savings-official official-tag">Tienda Oficial: ₡3,200</span><span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡1,400 (44%)!</span></div>
-                    </div>
-                    <button class="btn-add" data-input-type="social" data-title="1,000 Seguidores TikTok (Calidad Nueva)">Agregar</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-cat="social" 
-                 data-crc="600" data-official-crc="1000" data-usd="1.00" data-official-usd="1.80" data-mxn="18" data-official-mxn="30" data-cop="4100" data-official-cop="7000" data-ars="1250" data-official-ars="2100" data-pen="3.65" data-official-pen="6.00" data-dop="50" data-official-dop="85" data-bob="7" data-official-bob="12" data-gtq="7.5" data-official-gtq="13" data-nio="36" data-official-nio="62" data-ves="37" data-official-ves="65">
-                <div>
-                    <div class="product-badge">TikTok Vistas</div>
-                    <div class="product-name"><i class="fa-brands fa-tiktok" style="color: #fff;"></i> 1,000 Vistas TikTok</div>
-                </div>
-                <div>
-                    <div class="product-price-box">
-                        <div class="product-price price-tag">₡600</div>
-                        <div class="savings-box"><span class="savings-official official-tag">Tienda Oficial: ₡1,000</span><span class="savings-highlight savings-tag">⚡ ¡Te ahorras ₡400 (40%)!</span></div>
-                    </div>
-                    <button class="btn-add" data-input-type="social" data-title="1,000 Vistas TikTok">Agregar</button>
-                </div>
-            </div>
-
-        </div>
+<header>
+  <div class="nav">
+    <div class="logo">
+      <img src="https://i.postimg.cc/qRhmb2Gf/fire-texture.jpg" alt="Logo GTROWEN">
+      <div><div class="logo-t">GTROWEN <b>STORE</b></div><div class="logo-s">ELITE DIGITAL HUB</div></div>
     </div>
+    <div class="nav-spacer"></div>
+    <select class="select" id="currency" aria-label="Moneda">
+      <option value="USD">$ USD</option><option value="CRC">₡ CRC</option><option value="MXN">$ MXN</option>
+      <option value="COP">$ COP</option><option value="ARS">$ ARS</option><option value="PEN">S/ PEN</option>
+      <option value="DOP">RD$ DOP</option><option value="BOB">Bs. BOB</option><option value="GTQ">Q GTQ</option>
+      <option value="NIO">C$ NIO</option><option value="VES">Bs.S VES</option>
+    </select>
+    <button class="cart-btn" id="openCart" aria-label="Carrito"><i class="fa-solid fa-cart-shopping"></i><span class="count" id="cartCount">0</span></button>
+  </div>
+</header>
 
-    <!-- BOTONES FLOTANTES -->
-    <a href="https://chat.whatsapp.com/Hd6IG8eEVrY5hoYPgHIjk4" class="floating-group-btn" target="_blank" title="Unirse al Grupo de WhatsApp">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
-
-    <a href="https://api.whatsapp.com/send?phone=50672986056&text=Hola,%20tengo%20una%20consulta%20sobre%20la%20tienda%20gtrowen.store" class="floating-whatsapp-btn" target="_blank" title="Soporte por WhatsApp">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
-
-    <button class="floating-cart-btn" id="openCartFloating">
-        <i class="fa-solid fa-cart-shopping"></i>
-        <span class="floating-cart-badge cart-count" id="cartBadgeCount">0</span>
-    </button>
-
-    <!-- MODAL CARRITO -->
-    <div class="modal" id="cartModal">
-        <div class="modal-box">
-            <div class="modal-top">
-                <h3 id="modalTitle"><i class="fa-solid fa-cart-shopping" style="color: var(--accent);"></i> TU CARRITO DE COMPRA</h3>
-                <button class="btn-close" id="closeModalBtn">&times;</button>
-            </div>
-            <div id="cartList"></div>
-            <div id="cartSummary">
-                <div class="cart-total-box">
-                    <span>TOTAL:</span>
-                    <span id="cTotal">₡0</span>
-                </div>
-                <button class="btn-proceed" id="proceedCheckoutBtn">PROCEDER AL PAGO SEGURO</button>
-            </div>
-            
-            <div id="checkoutForm" style="display:none; margin-top: 15px;">
-                <div class="input-box">
-                    <label>Tu Nombre / Nick</label>
-                    <input type="text" id="pName" placeholder="Ej: Owen Morales">
-                </div>
-                <div class="input-box">
-                    <label>Número de Teléfono</label>
-                    <input type="text" id="pPhone" placeholder="Ej: +506 72986056">
-                </div>
-                <div class="input-box" id="dynamicInputBox">
-                    <label id="dynamicLabel">Detalle Requerido</label>
-                    <input type="text" id="pCustomField" placeholder="">
-                </div>
-
-                <div class="input-box">
-                    <label>Método de Pago</label>
-                    <select id="pMethod">
-                        <option value="SINPE">🇨🇷 SINPE Móvil</option>
-                        <option value="CRYPTOMUS">🌐 Cryptomus API / Criptomonedas</option>
-                        <option value="BINANCE">🌐 Binance Pay / USDT (QR)</option>
-                        <option value="NU">🇲🇽 Nu México (Transferencia CLABE)</option>
-                    </select>
-                </div>
-                <div class="info-pay" id="payBox">
-                    <strong>Datos SINPE Móvil:</strong><br>• Teléfono: <strong>6412 9943</strong><br>• Titular: <strong>OWEN MORALES UGALDE</strong>
-                </div>
-                <div id="cryptomusApiSection" style="display: none; text-align: center; margin-bottom: 15px;">
-                    <button class="btn-cryptomus-api" id="payWithCryptomusBtn" style="background: var(--accent); color: #fff; border: none; width: 100%; padding: 12px; border-radius: 12px; font-weight: 800; cursor: pointer; text-transform: uppercase;"><i class="fa-brands fa-bitcoin"></i> PAGAR CON CRYPTOMUS API</button>
-                </div>
-                <div id="cryptoPaySection" style="display: none; text-align: center; margin-bottom: 15px; background: rgba(255, 69, 0, 0.05); border: 1px solid rgba(255, 69, 0, 0.2); border-radius: 12px; padding: 15px;">
-                    <div style="font-size: 0.8rem; color: var(--accent); margin-bottom: 10px; font-weight: 800;">⚡ PAGO DIRECTO CON BINANCE PAY ⚡</div>
-                    <div style="background: #000; padding: 6px; display: inline-block; border-radius: 8px; margin-bottom: 10px; border: 1px solid rgba(255, 69, 0, 0.3);">
-                        <img src="https://cdn.phototourl.com/member/2026-10-11-102d4de5-dc6c-4047-ab6c-d5474035de59.png" alt="QR Binance" style="width: 230px; height: auto; display: block;">
-                    </div>
-                </div>
-                <div class="input-box" id="txIdBox">
-                    <label>Número de Comprobante / Hash / Referencia</label>
-                    <input type="text" id="pTxId" placeholder="Ej: 456791601...">
-                </div>
-                <div id="receiptBox" class="input-box">
-                    <label>Adjuntar Captura del Comprobante 📷</label>
-                    <label class="file-upload-box" for="pReceipt">
-                        <span id="receiptLabel" style="font-size: 0.78rem; color: var(--accent); font-weight: 700;"><i class="fa-solid fa-file-arrow-up"></i> Toca aquí para subir tu comprobante</span>
-                        <input type="file" id="pReceipt" accept="image/*" style="display: none;">
-                    </label>
-                </div>
-                <button class="btn-send" id="sendWaBtn"><i class="fa-brands fa-whatsapp"></i> PROCESAR PEDIDO</button>
-            </div>
-        </div>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-card">
+      <span class="pill"><i class="fa-solid fa-fire"></i> Juegos y servicios digitales</span>
+      <h1>¡Recupera tu nivel! <span>Diamantes y servicios digitales</span></h1>
+      <p>Free Fire, Blood Strike, streaming, Canva y más. Paga con SINPE, Binance, Cryptomus, México o Nequi y recibe tu pedido por WhatsApp.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#catalogo"><i class="fa-solid fa-bolt"></i> Ver ofertas</a>
+        <a class="btn btn-ghost" href="https://api.whatsapp.com/send?phone=50672986056&text=Hola,%20tengo%20una%20consulta%20sobre%20la%20tienda%20gtrowen.store" target="_blank"><i class="fa-brands fa-whatsapp"></i> Soporte</a>
+      </div>
     </div>
+    <div class="trust">
+      <div><i class="fa-solid fa-bolt"></i><span>Entrega rápida<small>Por WhatsApp</small></span></div>
+      <div><i class="fa-solid fa-wallet"></i><span>6 métodos de pago<small>SINPE · Binance · Cripto · México · Nequi</small></span></div>
+      <div><i class="fa-solid fa-globe"></i><span>Tu moneda<small>Detección automática</small></span></div>
+      <div><i class="fa-solid fa-headset"></i><span>Soporte directo<small>Chat y WhatsApp</small></span></div>
+    </div>
+    <div class="promo">
+      <i class="fa-solid fa-gift"></i>
+      <div><b>¡Invita a un amigo y gana diamantes!</b> Tú te llevas <b>341 diamantes gratis</b> y tu amigo se puede llevar <b>110 diamantes gratis</b>. Aplica para recargas desde <b>1,060 hasta 6,160 diamantes</b>.</div>
+    </div>
+  </section>
 
-    <script>
-        let cart = [];
-        let currentCurrency = 'CRC';
+  <div class="toolbar" id="catalogo">
+    <label class="search"><i class="fa-solid fa-magnifying-glass"></i><input id="q" type="search" placeholder="Buscar Netflix, 572 diamantes, Canva..."></label>
+    <div class="chips" id="chips"></div>
+  </div>
 
-        const currencySymbols = {
-            'CRC': '₡', 'USD': '$', 'MXN': '$', 'COP': '$', 'ARS': '$', 
-            'PEN': 'S/ ', 'DOP': 'RD$ ', 'BOB': 'Bs. ', 'GTQ': 'Q ', 
-            'NIO': 'C$ ', 'VES': 'Bs.S '
-        };
+  <div class="section-title"><h2 id="secTitle">Todo el catálogo</h2><small id="secCount"></small></div>
+  <div class="grid" id="grid"></div>
+</main>
 
-        function changeCurrency(targetCurr) {
-            currentCurrency = targetCurr;
-            document.querySelectorAll('.curr-btn').forEach(b => {
-                if(b.getAttribute('data-curr') === targetCurr) {
-                    b.classList.add('active');
-                } else {
-                    b.classList.remove('active');
-                }
-            });
+<footer>© GTROWEN STORE · Todos los derechos reservados · <span id="views"></span></footer>
 
-            const prefix = currencySymbols[currentCurrency] || '';
+<div class="fabs">
+  <a class="fab grp" href="https://chat.whatsapp.com/Hd6IG8eEVrY5hoYPgHIjk4" target="_blank" title="Grupo de WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+  <a class="fab wa" href="https://api.whatsapp.com/send?phone=50672986056&text=Hola,%20tengo%20una%20consulta%20sobre%20la%20tienda%20gtrowen.store" target="_blank" title="Soporte"><i class="fa-brands fa-whatsapp"></i></a>
+</div>
 
-            document.querySelectorAll('.product-card').forEach(card => {
-                const tag = card.querySelector('.price-tag');
-                const officialTag = card.querySelector('.official-tag');
-                const savingsTag = card.querySelector('.savings-tag');
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer">
+  <div class="drawer-head"><h3 id="dTitle">Tu carrito</h3><button class="x" id="closeCart">&times;</button></div>
+  <div class="drawer-body">
+    <div class="steps"><span class="on"></span><span id="s2"></span></div>
+    <div id="viewCart"><div id="cartList"></div></div>
+    <div id="viewPay" style="display:none">
+      <button class="link-back" id="backCart"><i class="fa-solid fa-arrow-left"></i> Volver al carrito</button>
+      <div class="field"><label>Tu nombre o nick</label><input id="pName" placeholder="Ej: Owen Morales"></div>
+      <div class="field"><label>Teléfono</label><input id="pPhone" placeholder="Ej: +506 7298 6056"></div>
+      <div class="field"><label id="dynLabel">Detalle requerido</label><input id="pCustom"></div>
+      <div class="field"><label>Método de pago</label>
+        <select id="pMethod">
+          <option value="SINPE">🇨🇷 SINPE Móvil</option>
+          <option value="CRYPTOMUS">🌐 Cryptomus API / Criptomonedas</option>
+          <option value="BINANCE">⚡ Binance Pay / USDT (QR)</option>
+          <option value="NU">🇲🇽 México (Nu / Spin by OXXO)</option>
+          <option value="NEQUI">🇨🇴 Nequi Colombia</option>
+        </select>
+      </div>
+      <div class="paybox" id="payBox"></div>
+      <div class="qr" id="qrBox" style="display:none"><div>⚡ PAGO DIRECTO CON BINANCE PAY ⚡</div><img src="https://cdn.phototourl.com/member/2026-10-11-102d4de5-dc6c-4047-ab6c-d5474035de59.png" alt="QR Binance Pay"></div>
+      <div id="cryptomusBox" style="display:none;margin-bottom:13px"><button class="btn btn-primary btn-full" id="payCryptomus"><i class="fa-brands fa-bitcoin"></i> Pagar con Cryptomus</button></div>
+      <div class="field" id="txBox"><label>Número de comprobante, hash o referencia</label><input id="pTx" placeholder="Ej: 456791601"></div>
+      <div class="field" id="rcBox"><label class="upload" for="pReceipt"><i class="fa-solid fa-camera"></i> <span id="rcLabel">Adjuntar captura del comprobante</span><input id="pReceipt" type="file" accept="image/*" hidden></label>
+        <small style="color:var(--muted);font-size:.7rem;display:block;margin-top:6px">Recuerda enviar la captura por WhatsApp al confirmar tu pedido.</small></div>
+    </div>
+  </div>
+  <div class="drawer-foot">
+    <div class="total"><span>Total</span><span class="num" id="cTotal">$0</span></div>
+    <button class="btn btn-primary btn-full" id="goPay">Continuar al pago <i class="fa-solid fa-arrow-right"></i></button>
+    <button class="btn btn-wa btn-full" id="sendWa" style="display:none"><i class="fa-brands fa-whatsapp"></i> Enviar pedido por WhatsApp</button>
+  </div>
+</aside>
 
-                const val = parseFloat(card.getAttribute('data-' + currentCurrency.toLowerCase()));
-                const officialVal = parseFloat(card.getAttribute('data-official-' + currentCurrency.toLowerCase()));
+<div class="toast" id="toast">Agregado al carrito ✓</div>
 
-                if (!isNaN(val)) {
-                    let isDec = ['USD', 'PEN', 'BOB', 'GTQ'].includes(currentCurrency);
-                    tag.innerText = prefix + (isDec ? val.toFixed(2) : val.toLocaleString());
+<script>
+/* ============ PRECIOS ============
+   Cada tier = "precios|precios oficiales" en este orden de monedas: */
+const CUR=['CRC','USD','MXN','COP','ARS','PEN','DOP','BOB','GTQ','NIO','VES'];
+const TIER={
+ A:"6500,13,235,54000,16500,48,540,90,100,475,480|11000,22,400,90000,28000,80,900,150,170,800,810",
+ B:"2500,5,90,21000,6300,18.5,210,35,38,180,185|4500,9,160,37000,11500,33,370,62,68,330,335",
+ C:"6000,12,215,50000,15200,44,500,83,92,440,445|10000,20,360,82000,25000,74,820,138,154,730,740",
+ D:"5500,11,198,46000,14000,40.5,460,76,85,400,405|9500,19,340,78000,24000,70,780,130,145,700,710",
+ E:"2500,5,90,21000,6300,18.5,210,35,38,180,185|5000,10,180,40000,12500,36,420,68,75,360,370",
+ F:"2000,4,72,16800,5000,14.8,170,28,31,146,150|4000,8,140,33000,10000,29,330,55,62,290,295",
+ G:"1500,3,54,12500,3800,11,130,21,23,110,115|3000,6,110,25000,7500,22,250,42,46,220,220",
+ H:"1500,3,54,12500,3800,11,130,21,23,110,115|3500,7,125,28000,8500,25,300,48,54,255,260",
+ I:"2500,5,90,21000,6300,18.5,210,35,38,180,185|6000,12,210,50000,15000,44,500,82,92,440,450",
+ J:"2500,5,90,21000,6300,18.5,210,35,38,180,185|28000,55,950,220000,68000,200,3200,380,420,2000,2100",
+ K:"1500,3,54,12500,3800,11,130,21,23,110,115|4000,8,140,33000,10000,29,330,55,62,290,295",
+ L:"5000,10,180,41000,12500,36,420,68,75,360,370|10000,20,360,82000,25000,74,820,138,154,730,740",
+ L1:"500,1,18,4000,1200,3.5,60,6.8,7.7,36,37|800,1.7,30,6500,1900,6,95,11,12.5,58,60",
+ L2:"1800,3.5,60,14000,4200,12.5,210,24,27,130,132|2900,5.8,100,23000,6900,20,340,39,44,210,215",
+ L3:"4200,8,140,32000,9600,30,480,55,62,306,310|6500,13,220,50000,15000,48,750,85,98,475,480",
+ L4:"6200,12,210,48000,14200,45,720,82,92,445,450|10800,21,370,84000,25000,78,1250,143,160,780,790",
+ L5:"15000,28,500,112000,33000,108,1680,192,215,1050,1070|24000,45,800,180000,53000,172,2700,308,345,1680,1700",
+ U1:"450,0.8,15,3400,1000,3,50,5.5,6.2,29,30|800,1.7,30,6500,1900,6,95,11,12.5,58,60",
+ U2:"1600,3,50,12000,3200,11,130,21,23,110,115|2500,5,85,19000,5200,18,210,35,38,180,190",
+ U3:"2150,4,70,15000,3800,14.5,170,27,31,145,150|3800,8,140,29000,5500,22.5,320,55,62,290,295",
+ U4:"3700,7,120,28000,6600,26,290,48,54,255,260|7200,14.5,225,60000,13000,52,600,95,110,520,530",
+ U5:"6800,13,225,50000,14400,44.5,680,89,100,480,490|14000,22.5,390,86000,25000,77,1170,154,173,830,850",
+ U6:"17500,33,575,175000,32300,131,1450,226,253,1235,1260|29000,55,960,290000,53000,218,2400,375,420,2050,2100",
+ S1:"1200,2,35,8300,2500,7.3,100,14,15,73,74|1900,3.5,60,14000,4200,12,170,24,26,125,130",
+ S2:"1500,3,55,12500,3800,11,125,21,23,112,115|2400,4.8,88,20000,6100,17.5,200,33,37,180,185",
+ S3:"4300,8,140,33500,10200,29,325,55,62,300,305|6900,13,225,54000,16500,47,520,88,99,480,490",
+ S4:"300,0.4,10,1700,500,1.5,25,2.7,3,15,15|500,0.7,16,2800,820,2.5,40,4.5,5,24,25",
+ S5:"1000,1.8,35,7500,2300,6.6,85,12,14,67,68|1600,3,56,12000,3700,11,140,20,22,110,112",
+ S6:"1200,2.4,44,10000,3050,8.9,100,16,18,87,89|1900,3.8,70,16000,4900,14.2,160,26,29,138,140",
+ B1:"1600,3,54,12500,3800,11,130,21,24,116,118|2500,4.8,85,19500,6000,17,200,33,38,180,185",
+ B2:"2700,5,90,21000,6300,18,220,34,38,180,185|4200,8,140,33000,10000,28.5,350,55,62,290,295",
+ X1:"2900,4.5,85,19000,5800,17,240,32,35,170,175|5500,8,150,34000,11000,30,450,60,65,320,330",
+ X2:"3000,5,90,20000,6000,18,250,34,38,180,185|5000,8.5,150,35000,10500,30,420,58,65,310,320",
+ X3:"1800,3,54,12500,3800,11,150,21,24,110,115|3200,5.5,95,22500,6800,19.5,270,38,42,200,205",
+ X4:"600,1,18,4100,1250,3.65,50,7,7.5,36,37|1000,1.8,30,7000,2100,6,85,12,13,62,65"
+};
+/* [categoría, etiqueta, nombre, subtítulo, stock(null=disponible,0=agotado,n=unidades), icono, color, tipoCampo, tier, título para WhatsApp, destacado] */
+const P=[
+ ['streaming','Netflix Original','Netflix Familiar','4 dispositivos para ti · 1 mes',1,'fa-solid fa-film','#e50914','streaming','A','Netflix Familiar (4 Dispositivos - 1 Mes)'],
+ ['streaming','Netflix Personal','Netflix Pantalla','Original personal · 1 mes',3,'fa-solid fa-tv','#e50914','streaming','B','Netflix Pantalla Personal (1 Mes)'],
+ ['streaming','Disney Original','Disney+ Premium','Completa + 2 ESPN · 1 mes',1,'fa-solid fa-wand-magic-sparkles','#3b6bff','streaming','C','Disney+ Premium 2 ESPN (1 Mes)'],
+ ['streaming','Disney Full Sports','Disney+ Premium','Completa + 7 ESPN · 1 mes',7,'fa-solid fa-futbol','#3b6bff','streaming','D','Disney+ Premium 7 ESPN (1 Mes)'],
+ ['streaming','Amazon','Prime Video','Pantalla HD/4K · 1 mes',null,'fa-brands fa-amazon','#00a8e1','streaming','B','Prime Video Pantalla (1 Mes)'],
+ ['streaming','HBO Max','Max Platino','Cuenta completa · 1 mes',3,'fa-solid fa-clapperboard','#7b5cff','streaming','E','Max Platino Completa (1 Mes)'],
+ ['streaming','Paramount','Paramount+','Cuenta completa · 1 mes',0,'fa-solid fa-mountain','#0064ff','streaming','B','Paramount+ (1 Mes)'],
+ ['streaming','Anime VIP','Crunchyroll Original','Cuenta completa · 1 mes',1,'fa-solid fa-ghost','#ff6200','streaming','F','Crunchyroll Original Completa (1 Mes)'],
+ ['streaming','Cine y series','Plex Completa','13 dispositivos · 1 mes',4,'fa-solid fa-play','#e5a00d','streaming','E','Plex Completa 13 Dispositivos (1 Mes)'],
+ ['streaming','Liga y novelas','ViX+ Completa','Deportes y cine · 1 mes',3,'fa-solid fa-tv','#ff4500','streaming','G','ViX+ Completa (1 Mes)'],
+ ['streaming','TV en vivo y canales','IPTV Smarters Pro','Cuenta completa HD',8,'fa-solid fa-satellite-dish','#3b82f6','streaming','H','IPTV Smarters Pro Completa'],
+ ['streaming','YouTube sin anuncios','YouTube Premium','Individual · 1 mes',1,'fa-brands fa-youtube','#ff0000','streaming','F','YouTube Premium Individual (1 Mes)'],
+ ['streaming','Música offline','Spotify Premium','Plan · 2 meses',2,'fa-brands fa-spotify','#1db954','streaming','I','Spotify Premium Plan (2 Meses)'],
+ ['streaming','🔥 Mega oferta anual','Canva Pro Anual','Activación a tu correo · 1 año',33,'fa-solid fa-palette','#00c4cc','streaming','J','Canva Pro Anual a tu Correo (1 Año)',1],
+ ['streaming','Diseño Pro','Canva Pro Mes','Plan individual · 1 mes',14,'fa-solid fa-pen-nib','#00c4cc','streaming','F','Canva Pro (1 Mes)'],
+ ['streaming','Apple Original','Apple TV+','Pantalla · 2 meses',8,'fa-brands fa-apple','#e5e7eb','streaming','K','Apple TV+ Pantalla x 2 Meses'],
+ ['streaming','IA avanzada','ChatGPT Plus','Individual · 1 mes',2,'fa-solid fa-robot','#10a37f','streaming','L','ChatGPT Plus Individual (1 Mes)'],
 
-                    if (officialTag && !isNaN(officialVal)) {
-                        officialTag.innerText = 'Oficial: ' + prefix + (isDec ? officialVal.toFixed(2) : officialVal.toLocaleString());
-                    }
+ ['ff-lim','⚡ Oferta flash FF','110 Diamantes','100 + 10%',null,'fa-solid fa-gem','#ff4500','ff','L1','110 Diamantes FF (Limitado)',1],
+ ['ff-lim','⚡ Oferta flash FF','572 Diamantes','Free Fire · limitado',null,'fa-solid fa-gem','#ff4500','ff','L2','572 Diamantes FF (Limitado)',1],
+ ['ff-lim','⚡ Oferta flash FF','1,160 Diamantes','Free Fire · limitado',null,'fa-solid fa-gem','#ff4500','ff','L3','1,160 Diamantes FF (Limitado)',1],
+ ['ff-lim','⚡ Oferta flash FF','2,398 Diamantes','Free Fire · limitado',null,'fa-solid fa-gem','#ff4500','ff','L4','2,398 Diamantes FF (Limitado)',1],
+ ['ff-lim','⚡ Máxima oferta FF','6,160 Diamantes','Free Fire · limitado',null,'fa-solid fa-gem','#ff4500','ff','L5','6,160 Diamantes FF (Limitado)',1],
 
-                    if (savingsTag && !isNaN(officialVal)) {
-                        let diff = officialVal - val;
-                        let pct = Math.round((diff / officialVal) * 100);
-                        savingsTag.innerText = `⚡ Ahorras ${prefix}${isDec ? diff.toFixed(2) : diff.toLocaleString()} (${pct}%)`;
-                    }
-                }
-            });
-            renderCart();
-        }
+ ['ff-ilim','💎 FF ilimitado','110 Diamantes','Free Fire · ilimitado',null,'fa-solid fa-gem','#f59e0b','ff','U1','110 Diamantes FF (Ilimitado)',1],
+ ['ff-ilim','💎 FF ilimitado','341 Diamantes','Free Fire · ilimitado',null,'fa-solid fa-gem','#f59e0b','ff','U2','341 Diamantes FF (Ilimitado)',1],
+ ['ff-ilim','💎 FF ilimitado','541 Diamantes','Free Fire · ilimitado',null,'fa-solid fa-gem','#f59e0b','ff','U3','541 Diamantes FF (Ilimitado)',1],
+ ['ff-ilim','💎 FF ilimitado','1,160 Diamantes','Free Fire · ilimitado',null,'fa-solid fa-gem','#f59e0b','ff','U4','1,160 Diamantes FF (Ilimitado)',1],
+ ['ff-ilim','💎 FF ilimitado','2,398 Diamantes','Free Fire · ilimitado',null,'fa-solid fa-gem','#f59e0b','ff','U5','2,398 Diamantes FF (Ilimitado)',1],
+ ['ff-ilim','💎 FF ilimitado','6,160 Diamantes','Free Fire · ilimitado',null,'fa-solid fa-gem','#f59e0b','ff','U6','6,160 Diamantes FF (Ilimitado)',1],
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const viewsEl = document.getElementById('pageViewsCount');
-            if (viewsEl) {
-                let baseViews = parseInt(localStorage.getItem('gtr_real_views') || '25482');
-                baseViews += Math.floor(Math.random() * 3) + 1;
-                localStorage.setItem('gtr_real_views', baseViews);
-                viewsEl.innerText = baseViews.toLocaleString();
-                
-                fetch('https://ipapi.co/json/')
-                    .then(res => res.json())
-                    .then(data => {
-                        if (data && data.country_code) {
-                            const country = data.country_code;
-                            let detectedCurr = 'USD';
-                            if (country === 'CO') detectedCurr = 'COP';
-                            else if (country === 'PE') detectedCurr = 'PEN';
-                            else if (country === 'MX') detectedCurr = 'MXN';
-                            else if (country === 'VE') detectedCurr = 'VES';
-                            else if (country === 'CR') detectedCurr = 'CRC';
-                            else if (country === 'AR') detectedCurr = 'ARS';
-                            else if (country === 'DO') detectedCurr = 'DOP';
-                            else if (country === 'BO') detectedCurr = 'BOB';
-                            else if (country === 'GT') detectedCurr = 'GTQ';
-                            else if (country === 'NI') detectedCurr = 'NIO';
+ ['ff-passes','🎫 Membresía FF','Tarjeta Semanal','Free Fire',null,'fa-solid fa-id-card','#fb923c','ff','S1','Tarjeta Semanal FF'],
+ ['ff-passes','🎫 Pase especial FF','Pase Booyah Premium','Free Fire',null,'fa-solid fa-star','#fb923c','ff','S2','Pase Booyah Premium FF'],
+ ['ff-passes','🎫 Membresía FF','Tarjeta Mensual','Free Fire',null,'fa-solid fa-id-badge','#fb923c','ff','S3','Tarjeta Mensual FF'],
+ ['ff-passes','🎫 Membresía FF','Basic Card','Free Fire',null,'fa-solid fa-address-card','#fb923c','ff','S4','Basic Card FF'],
+ ['ff-passes','⚙️ Evolutivas FF','35 Fragmentos Univ.','Free Fire',null,'fa-solid fa-puzzle-piece','#fb923c','ff','S5','35 Fragmentos Universales FF'],
+ ['ff-passes','⚙️ Cajas evolutivas','10 Cajas Evolutivas','Free Fire',null,'fa-solid fa-box-open','#fb923c','ff','S6','10 Cajas de Tokens Evolutivos FF'],
 
-                            changeCurrency(detectedCurr);
-                        }
-                    })
-                    .catch(e => { console.log('Uso de moneda predeterminada.'); });
-            }
+ ['bs','🪙 Blood Strike','341 de Oro','Blood Strike',null,'fa-solid fa-coins','#f59e0b','bs','B1','341 de Oro Blood Strike'],
+ ['bs','🪙 Blood Strike','572 de Oro','Blood Strike',null,'fa-solid fa-coins','#f59e0b','bs','B2','572 de Oro Blood Strike'],
 
-            document.getElementById('btnScrollToGrid').addEventListener('click', () => {
-                const titleEl = document.getElementById('catalogTitle');
-                if (titleEl) titleEl.scrollIntoView({ behavior: 'smooth' });
-            });
+ ['social','Mega combo','Combo Viral TikTok','1K seguidores + 1K vistas + 1K likes',null,'fa-brands fa-tiktok','#ff4500','social','X1','Combo Viral TikTok (1K Seg, Vistas, Likes)',1],
+ ['social','Instagram Pro','1,000 Seguidores Instagram','Buena calidad [1K]',null,'fa-brands fa-instagram','#e1306c','social','X2','1,000 Seguidores Instagram (Buena Calidad)'],
+ ['social','TikTok calidad nueva','1,000 Seguidores TikTok','Calidad nueva [1K]',null,'fa-brands fa-tiktok','#f8fafc','social','X3','1,000 Seguidores TikTok (Calidad Nueva)'],
+ ['social','TikTok vistas','1,000 Vistas TikTok','Alcance',null,'fa-brands fa-tiktok','#f8fafc','social','X4','1,000 Vistas TikTok'],
+];
+P.forEach(p=>{ const [a,b]=TIER[p[8]].split('|'); p.price=a.split(',').map(Number); p.off=b.split(',').map(Number); });
 
-            document.querySelectorAll('.curr-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    changeCurrency(e.target.getAttribute('data-curr'));
-                });
-            });
+const CATS=[['all','Todo el catálogo'],['streaming','Streaming y apps'],['ff-lim','FF Limitados'],['ff-ilim','FF Ilimitados'],['ff-passes','FF Pases y Tokens'],['bs','Blood Strike Oro'],['social','Redes sociales']];
+const SYM={CRC:'₡',USD:'$',MXN:'$',COP:'$',ARS:'$',PEN:'S/ ',DOP:'RD$ ',BOB:'Bs. ',GTQ:'Q ',NIO:'C$ ',VES:'Bs.S '};
+const DEC=['USD','PEN','BOB','GTQ'];
+const LABEL={ff:['ID de jugador (Free Fire)','Ej: 3925829005'],bs:['ID de jugador (Blood Strike)','Ej: 50819301'],
+  social:['Enlace del perfil o video 🔗','Ej: https://instagram.com/tucuenta'],streaming:['Correo o detalle para la cuenta ✉️','Ej: tucorreo@gmail.com']};
 
-            const bannerEl = document.getElementById('limConsultBanner');
+let cur='USD', cat='all', cart=[];
+const $=id=>document.getElementById(id);
+const idx=()=>CUR.indexOf(cur);
+function fmtRaw(v){ return SYM[cur]+(DEC.includes(cur)?v.toFixed(2):v.toLocaleString()); }
+function stockBadge(s){
+  if(s===0) return '<span class="stock out">Agotado</span>';
+  if(s===null||s===undefined) return '<span class="stock ok">Disponible</span>';
+  return s<=1?`<span class="stock low">🔥 ${s} en stock</span>`:`<span class="stock ok">${s} en stock</span>`;
+}
+function renderChips(){ $('chips').innerHTML=CATS.map(([k,l])=>`<button class="chip ${k===cat?'active':''}" data-c="${k}">${l}</button>`).join(''); }
+function renderGrid(){
+  const q=$('q').value.trim().toLowerCase(), i=idx();
+  const list=P.map((p,n)=>({p,n})).filter(({p})=>(cat==='all'||p[0]===cat)&&(!q||(p[2]+' '+p[1]+' '+p[3]).toLowerCase().includes(q)));
+  let html='';
+  if(cat==='ff-lim') html+=`<div class="wa-note"><span><i class="fa-brands fa-whatsapp" style="color:#25d366"></i> ¿No sabes si tu ID tiene la oferta de diamantes limitados? Consulta acá</span><a class="btn btn-wa" target="_blank" href="https://api.whatsapp.com/send?phone=50672986056&text=Hola,%20quiero%20consultar%20si%20mi%20ID%20de%20Free%20Fire%20tiene%20la%20oferta%20de%20diamantes%20limitados."><i class="fa-solid fa-comments"></i> Consultar ID</a></div>`;
+  html+=list.map(({p,n})=>{
+    const [,tag,name,sub,stock,icon,color,,,,hot]=p;
+    const v=p.price[i], o=p.off[i], pct=Math.round((1-v/o)*100), out=stock===0;
+    return `<article class="card ${out?'sold':''} ${hot?'hot':''}" style="--c:${color}">
+      <div class="tags"><span class="tag">${tag}</span>${stockBadge(stock)}</div>
+      <div class="card-head"><div class="ico"><i class="${icon}"></i></div><div><h3>${name}</h3><div class="sub">${sub}</div></div></div>
+      <div class="price-row"><div><div class="old">${fmtRaw(o)}</div><div class="price num">${fmtRaw(v)}</div></div><span class="save">-${pct}%</span></div>
+      <button class="add" data-i="${n}" ${out?'disabled':''}>${out?'Agotado temporalmente':(hot?'Comprar oferta':'Agregar')}</button>
+    </article>`;
+  }).join('');
+  if(!list.length) html+='<div class="empty">No encontramos productos con esa búsqueda.</div>';
+  $('grid').innerHTML=html;
+  $('secTitle').textContent=(CATS.find(c=>c[0]===cat)||[])[1];
+  $('secCount').textContent=list.length+' productos';
+}
+function renderCart(){
+  $('cartCount').textContent=cart.length;
+  const l=$('cartList'), i=idx();
+  if(!cart.length) l.innerHTML='<p class="empty" style="padding:50px 0">Tu carrito está vacío</p>';
+  else l.innerHTML=cart.map((n,k)=>`<div class="line"><div><strong>${P[n][9]}</strong><br><small>${fmtRaw(P[n].price[i])}</small></div><button class="del" data-d="${k}"><i class="fa-solid fa-trash"></i></button></div>`).join('');
+  const t=cart.reduce((a,n)=>a+P[n].price[i],0);
+  $('cTotal').textContent=fmtRaw(t);
+  $('goPay').disabled=!cart.length;
+}
+function openDrawer(){ $('drawer').classList.add('open'); $('overlay').classList.add('open'); showStep(1); renderCart(); }
+function closeDrawer(){ $('drawer').classList.remove('open'); $('overlay').classList.remove('open'); }
+function showStep(n){
+  $('viewCart').style.display=n===1?'block':'none';
+  $('viewPay').style.display=n===2?'block':'none';
+  $('goPay').style.display=n===1?'inline-flex':'none';
+  $('sendWa').style.display=n===2?'inline-flex':'none';
+  $('s2').classList.toggle('on',n===2);
+  $('dTitle').textContent=n===1?'Tu carrito':'Finalizar compra';
+  if(n===2){
+    const type=['social','bs','streaming'].find(t=>cart.some(x=>P[x][7]===t))||'ff';
+    $('dynLabel').textContent=LABEL[type][0]; $('pCustom').placeholder=LABEL[type][1];
+    updatePay();
+  }
+}
+function copyBtn(t){ return `<strong>${t}</strong> <button type="button" data-copy="${t}" style="color:var(--accent);font-size:.8rem;margin-left:4px" aria-label="Copiar"><i class="fa-regular fa-copy"></i></button>`; }
+function updatePay(){
+  const m=$('pMethod').value, box=$('payBox');
+  $('qrBox').style.display=m==='BINANCE'?'block':'none';
+  $('cryptomusBox').style.display=m==='CRYPTOMUS'?'block':'none';
+  $('txBox').style.display=$('rcBox').style.display=m==='CRYPTOMUS'?'none':'block';
+  box.style.display=(m==='SINPE'||m==='NU'||m==='NEQUI')?'block':'none';
+  if(m==='SINPE') box.innerHTML='<strong>Datos SINPE Móvil</strong><br>• Teléfono: <strong>6412 9943</strong><br>• Titular: <strong>OWEN MORALES UGALDE</strong>';
+  else if(m==='NU') box.innerHTML=`<strong>🇲🇽 Transferencia (Nu México)</strong><br>Beneficiario: <strong>Brandon Vazquez Moreno</strong><br>CLABE: ${copyBtn('638180000144588877')}<br>Entidad: <strong>Nu México</strong><hr style="border:0;border-top:1px solid var(--line);margin:10px 0"><strong>🏪 Depósito (Spin by OXXO)</strong><br>Número de cuenta: ${copyBtn('4217470278990896')}<br>Titular: <strong>Brandon Vazquez Moreno</strong>`;
+  else if(m==='NEQUI') box.innerHTML=`<strong>🇨🇴 Nequi Colombia</strong><br>Número: ${copyBtn('3218791357')}<br>Titular: <strong>Andres Villar</strong>`;
+}
+function toast(t){ const e=$('toast'); e.textContent=t; e.classList.add('show'); setTimeout(()=>e.classList.remove('show'),1400); }
 
-            document.querySelectorAll('.cat-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-                    e.currentTarget.classList.add('active');
-                    const cat = e.currentTarget.getAttribute('data-cat');
+$('chips').addEventListener('click',e=>{ const b=e.target.closest('.chip'); if(!b) return; cat=b.dataset.c; renderChips(); renderGrid(); });
+$('q').addEventListener('input',renderGrid);
+$('grid').addEventListener('click',e=>{
+  const b=e.target.closest('.add'); if(!b||b.disabled) return;
+  cart.push(+b.dataset.i); renderCart(); toast('Agregado al carrito ✓');
+});
+$('cartList').addEventListener('click',e=>{ const d=e.target.closest('.del'); if(!d) return; cart.splice(+d.dataset.d,1); renderCart(); });
+$('payBox').addEventListener('click',e=>{
+  const c=e.target.closest('[data-copy]'); if(!c) return;
+  try{ navigator.clipboard.writeText(c.dataset.copy); toast('Copiado ✓'); }catch(_){ toast('Copia el número manualmente'); }
+});
+$('currency').addEventListener('change',e=>{ cur=e.target.value; try{localStorage.setItem('gtr_cur',cur)}catch(_){}; renderGrid(); renderCart(); });
+$('openCart').addEventListener('click',openDrawer);
+$('closeCart').addEventListener('click',closeDrawer);
+$('overlay').addEventListener('click',closeDrawer);
+$('goPay').addEventListener('click',()=>{ if(cart.length) showStep(2); });
+$('backCart').addEventListener('click',()=>showStep(1));
+$('pMethod').addEventListener('change',updatePay);
+$('payCryptomus').addEventListener('click',()=>{
+  if(!$('pName').value.trim()||!$('pCustom').value.trim()){ alert('Completa tu nombre y el campo requerido antes de pagar.'); return; }
+  window.open('https://app.cryptomus.com/','_blank');
+});
+$('pReceipt').addEventListener('change',e=>{ const f=e.target.files[0]; if(f) $('rcLabel').textContent='✓ '+f.name; });
 
-                    if (cat === 'ff-lim') {
-                        if (bannerEl) bannerEl.style.display = 'flex';
-                    } else {
-                        if (bannerEl) bannerEl.style.display = 'none';
-                    }
+$('sendWa').addEventListener('click',()=>{
+  const name=$('pName').value.trim(), phone=$('pPhone').value.trim(), custom=$('pCustom').value.trim(), m=$('pMethod');
+  if(!name) return alert('Por favor ingresa tu nombre');
+  if(!phone) return alert('Por favor ingresa tu número de teléfono');
+  if(!custom) return alert('Por favor completa el campo requerido');
+  let tx='N/A';
+  if(m.value!=='CRYPTOMUS'){ tx=$('pTx').value.trim(); if(!tx) return alert('Por favor ingresa el número de comprobante o referencia de pago'); }
+  const items=cart.map(n=>'• '+P[n][9]).join('\n');
+  const msg=`⚡ *NUEVO PEDIDO - GTROWEN STORE*\n\n👤 *Cliente:* ${name}\n📱 *Teléfono:* ${phone}\n🔗 *Detalle/Destino:* ${custom}\n💳 *Método de Pago:* ${m.options[m.selectedIndex].text}\n🧾 *Referencia:* ${tx}\n\n📦 *Productos:*\n${items}\n💰 *Total:* ${$('cTotal').textContent} (${cur})`;
+  window.open('https://api.whatsapp.com/send?phone=50672986056&text='+encodeURIComponent(msg),'_blank');
+});
 
-                    document.querySelectorAll('.product-card').forEach(card => {
-                        if (cat === 'all' || card.getAttribute('data-cat') === cat) {
-                            card.style.display = 'flex';
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    });
-                });
-            });
+/* INICIO */
+renderChips(); renderGrid(); renderCart();
 
-            document.querySelectorAll('.btn-add:not(.disabled)').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    const b = e.currentTarget;
-                    const card = b.closest('.product-card');
-                    const inputType = b.getAttribute('data-input-type') || 'ff';
+/* Moneda automática por país. Si el país no tiene moneda en la tienda → USD.
+   Si el visitante eligió moneda a mano, se respeta. */
+(function(){
+  let saved=null; try{saved=localStorage.getItem('gtr_cur')}catch(_){}
+  if(saved&&CUR.includes(saved)){ cur=saved; $('currency').value=saved; renderGrid(); renderCart(); return; }
+  const MAP={CO:'COP',PE:'PEN',MX:'MXN',VE:'VES',CR:'CRC',AR:'ARS',DO:'DOP',BO:'BOB',GT:'GTQ',NI:'NIO'};
+  const TZ={'America/Mexico_City':'MX','America/Cancun':'MX','America/Monterrey':'MX','America/Merida':'MX','America/Tijuana':'MX','America/Chihuahua':'MX','America/Hermosillo':'MX','America/Mazatlan':'MX',
+    'America/Bogota':'CO','America/Lima':'PE','America/Caracas':'VE','America/Costa_Rica':'CR','America/Argentina/Buenos_Aires':'AR','America/Buenos_Aires':'AR','America/Santo_Domingo':'DO',
+    'America/La_Paz':'BO','America/Guatemala':'GT','America/Managua':'NI'};
+  function apply(country){
+    const c=MAP[country]||'USD';
+    if(c===cur) return;
+    cur=c; $('currency').value=c; renderGrid(); renderCart();
+  }
+  let guess=null;
+  try{ guess=TZ[Intl.DateTimeFormat().resolvedOptions().timeZone]; }catch(_){}
+  if(!guess){ try{ const r=(navigator.language||'').split('-')[1]; if(r) guess=r.toUpperCase(); }catch(_){} }
+  apply(guess);
+  fetch('https://ipapi.co/json/').then(r=>r.json()).then(d=>{ if(d&&d.country_code) apply(d.country_code); })
+    .catch(()=>{ fetch('https://api.country.is/').then(r=>r.json()).then(d=>{ if(d&&d.country) apply(d.country); }).catch(()=>{}); });
+})();
 
-                    cart.push({
-                        title: b.getAttribute('data-title'),
-                        inputType: inputType,
-                        crc: parseFloat(card.getAttribute('data-crc')),
-                        usd: parseFloat(card.getAttribute('data-usd')),
-                        mxn: parseFloat(card.getAttribute('data-mxn')),
-                        cop: parseFloat(card.getAttribute('data-cop')),
-                        ars: parseFloat(card.getAttribute('data-ars')),
-                        pen: parseFloat(card.getAttribute('data-pen')),
-                        dop: parseFloat(card.getAttribute('data-dop')),
-                        bob: parseFloat(card.getAttribute('data-bob') || 0),
-                        gtq: parseFloat(card.getAttribute('data-gtq') || 0),
-                        nio: parseFloat(card.getAttribute('data-nio') || 0),
-                        ves: parseFloat(card.getAttribute('data-ves') || 0)
-                    });
-                    renderCart();
-                });
-            });
-
-            const openModal = () => {
-                document.getElementById('cartModal').classList.add('open');
-                document.getElementById('cartSummary').style.display = cart.length > 0 ? 'block' : 'none';
-                document.getElementById('checkoutForm').style.display = 'none';
-                document.getElementById('modalTitle').innerHTML = '<i class="fa-solid fa-cart-shopping" style="color: var(--accent);"></i> TU CARRITO DE COMPRA';
-                renderCart();
-            };
-            const closeModal = () => document.getElementById('cartModal').classList.remove('open');
-
-            document.getElementById('openCartHeader').addEventListener('click', openModal);
-            document.getElementById('openCartFloating').addEventListener('click', openModal);
-            document.getElementById('closeModalBtn').addEventListener('click', closeModal);
-
-            document.getElementById('proceedCheckoutBtn').addEventListener('click', () => {
-                if (cart.length === 0) return;
-
-                const labelEl = document.getElementById('dynamicLabel');
-                const inputEl = document.getElementById('pCustomField');
-
-                const hasSocial = cart.some(item => item.inputType === 'social');
-                const hasStreaming = cart.some(item => item.inputType === 'streaming');
-                const hasBloodStrike = cart.some(item => item.inputType === 'bs');
-
-                if (hasSocial) {
-                    labelEl.innerText = 'Enlace del Perfil (Instagram / TikTok) 🔗';
-                    inputEl.placeholder = 'Ej: https://instagram.com/tucuenta';
-                } else if (hasBloodStrike) {
-                    labelEl.innerText = 'ID de Jugador (Blood Strike)';
-                    inputEl.placeholder = 'Ej: 50819301';
-                } else if (hasStreaming) {
-                    labelEl.innerText = 'Correo o Detalle para la cuenta de Streaming ✉️';
-                    inputEl.placeholder = 'Ej: tucorreo@gmail.com';
-                } else {
-                    labelEl.innerText = 'ID de Jugador (Free Fire)';
-                    inputEl.placeholder = 'Ej: 3925829005';
-                }
-
-                document.getElementById('cartSummary').style.display = 'none';
-                document.getElementById('checkoutForm').style.display = 'block';
-                document.getElementById('modalTitle').innerHTML = '<i class="fa-solid fa-lock" style="color: var(--accent);"></i> FINALIZAR COMPRA SEGURA';
-            });
-
-            document.getElementById('pMethod').addEventListener('change', (e) => {
-                const m = e.target.value;
-                const box = document.getElementById('payBox');
-                const txBox = document.getElementById('txIdBox');
-                const receiptBox = document.getElementById('receiptBox');
-                const cryptoSec = document.getElementById('cryptoPaySection');
-                const cryptomusSec = document.getElementById('cryptomusApiSection');
-                
-                txBox.style.display = 'block';
-                receiptBox.style.display = 'block';
-                cryptoSec.style.display = 'none';
-                cryptomusSec.style.display = 'none';
-                box.style.display = 'block';
-
-                if (m === 'SINPE') {
-                    box.innerHTML = '<strong>Datos SINPE Móvil:</strong><br>• Teléfono: <strong>6412 9943</strong><br>• Titular: <strong>OWEN MORALES UGALDE</strong>';
-                } else if (m === 'CRYPTOMUS') {
-                    box.style.display = 'none';
-                    txBox.style.display = 'none';
-                    receiptBox.style.display = 'none';
-                    cryptomusSec.style.display = 'block';
-                } else if (m === 'BINANCE') {
-                    box.style.display = 'none';
-                    cryptoSec.style.display = 'block';
-                } else if (m === 'NU') {
-                    box.innerHTML = '<strong>Nu México:</strong><br>• Transferencia CLABE disponible para México.';
-                }
-            });
-
-            document.getElementById('payWithCryptomusBtn').addEventListener('click', () => {
-                const name = document.getElementById('pName').value.trim();
-                const customField = document.getElementById('pCustomField').value.trim();
-                if (!name || !customField) {
-                    alert('Por favor completa tu Nombre y el campo requerido antes de pagar.');
-                    return;
-                }
-                window.open('https://app.cryptomus.com/', '_blank');
-            });
-
-            document.getElementById('pReceipt').addEventListener('change', (e) => {
-                const file = e.target.files[0];
-                const label = document.getElementById('receiptLabel');
-                if (file) {
-                    label.innerHTML = '<i class="fa-solid fa-check"></i> Comprobante adjuntado: ' + file.name;
-                    label.style.color = '#10b981';
-                }
-            });
-
-            function renderCart() {
-                document.querySelectorAll('.cart-count').forEach(el => el.innerText = cart.length);
-                const list = document.getElementById('cartList');
-                if (!list) return;
-
-                if (cart.length === 0) {
-                    list.innerHTML = '<p style="text-align:center; color:var(--text-muted); padding:20px; font-size:0.85rem;">Tu carrito está vacío</p>';
-                    return;
-                }
-
-                list.innerHTML = '';
-                let totalVal = 0;
-                const prefix = currencySymbols[currentCurrency] || '';
-
-                cart.forEach((item, i) => {
-                    let rawPrice = item[currentCurrency.toLowerCase()] || item.crc;
-                    totalVal += rawPrice;
-
-                    let isDec = ['USD', 'PEN', 'BOB', 'GTQ'].includes(currentCurrency);
-                    let priceFormatted = prefix + (isDec ? rawPrice.toFixed(2) : rawPrice.toLocaleString());
-
-                    const row = document.createElement('div');
-                    row.className = 'cart-row';
-                    row.innerHTML = `
-                        <div>
-                            <strong>${item.title}</strong><br>
-                            <span style="color:var(--accent); font-weight:700; font-size:0.85rem;">${priceFormatted}</span>
-                        </div>
-                    `;
-                    const delBtn = document.createElement('button');
-                    delBtn.innerHTML = '<i class="fa-solid fa-trash"></i>';
-                    delBtn.style.cssText = 'background:none; border:none; color:#ef4444; font-size:1rem; cursor:pointer; padding: 4px 8px;';
-                    delBtn.addEventListener('click', () => {
-                        cart.splice(i, 1);
-                        renderCart();
-                    });
-                    row.appendChild(delBtn);
-                    list.appendChild(row);
-                });
-
-                let isDecTotal = ['USD', 'PEN', 'BOB', 'GTQ'].includes(currentCurrency);
-                document.getElementById('cTotal').innerText = prefix + (isDecTotal ? totalVal.toFixed(2) : totalVal.toLocaleString());
-            }
-
-            document.getElementById('sendWaBtn').addEventListener('click', () => {
-                const nameInput = document.getElementById('pName');
-                const name = nameInput.value.trim();
-                if (!name) { alert('Por favor ingresa tu nombre'); return; }
-
-                const phoneInput = document.getElementById('pPhone');
-                const phone = phoneInput.value.trim();
-                if (!phone) { alert('Por favor ingresa tu número de teléfono'); return; }
-
-                const customInput = document.getElementById('pCustomField');
-                const customVal = customInput.value.trim();
-                if (!customVal) { alert('Por favor completa el campo requerido'); return; }
-
-                const methodSelect = document.getElementById('pMethod');
-                const methodName = methodSelect.options[methodSelect.selectedIndex].text;
-                let totalText = document.getElementById('cTotal').innerText;
-
-                let txId = 'N/A';
-                const txInput = document.getElementById('pTxId');
-                if (methodSelect.value !== 'CRYPTOMUS') {
-                    txId = txInput.value.trim();
-                    if (!txId) { alert('Por favor ingresa el número de comprobante o referencia de pago'); return; }
-                }
-
-                let itemsWaTest = cart.map(c => `• ${c.title}`).join('%0A');
-                let msg = `⚡ *NUEVO PEDIDO - GTROWEN STORE*%0A%0A👤 *Cliente:* ${name}%0A📱 *Teléfono:* ${phone}%0A🔗 *Detalle/Destino:* ${customVal}%0A💳 *Método de Pago:* ${methodName}%0A🧾 *Referencia:* ${txId}%0A%0A📦 *Productos:*%0A${itemsWaTest}%0A💰 *Total:* ${totalText} (${currentCurrency})`;
-
-                let whatsappUrl = `https://api.whatsapp.com/send?phone=50672986056&text=${msg}`;
-                window.open(whatsappUrl, '_blank');
-            });
-        });
-    </script>
+fetch('https://api.counterapi.dev/v1/gtrowenstore/visits/up').then(r=>r.json()).then(d=>{
+  if(d&&d.count) $('views').textContent=d.count.toLocaleString()+' visitas';
+}).catch(()=>{});
+</script>
 </body>
 </html>
