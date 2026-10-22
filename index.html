@@ -417,27 +417,33 @@
             .products-grid { grid-template-columns: 1fr; }
         }
 
+        /* DISEÑO GLASSMORPHISM APLICADO */
         .product-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-glass);
+            background: rgba(11, 15, 25, 0.45);
+            backdrop-filter: blur(12px) saturate(150%);
+            -webkit-backdrop-filter: blur(12px) saturate(150%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            border-left: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 16px;
             padding: 18px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             position: relative;
-            transition: all 0.25s ease;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.02);
         }
 
         .product-card:hover {
-            border-color: rgba(0, 240, 255, 0.4);
-            transform: translateY(-3px);
-            background: var(--bg-card-hover);
+            border-color: rgba(0, 240, 255, 0.5);
+            transform: translateY(-5px);
+            background: rgba(16, 22, 37, 0.6);
+            box-shadow: 0 15px 35px rgba(0, 240, 255, 0.15), inset 0 0 20px rgba(255, 255, 255, 0.05);
         }
 
         .product-card.premium-deal {
-            background: linear-gradient(145deg, rgba(0, 85, 255, 0.1), var(--bg-card));
+            background: linear-gradient(145deg, rgba(0, 85, 255, 0.12), rgba(11, 15, 25, 0.5));
             border: 1px solid var(--border-premium);
         }
 
@@ -637,7 +643,6 @@
             border: 2px solid var(--accent-cyan);
         }
 
-        /* Botones flotantes separados para evitar solapamiento */
         .floating-whatsapp-btn {
             position: fixed;
             bottom: 20px;
@@ -696,9 +701,13 @@
 
         .modal.open { display: flex; }
 
+        /* MODAL GLASSMORPHISM APLICADO */
         .modal-box {
-            background: var(--bg-card);
-            border: 1px solid var(--border-glass);
+            background: rgba(11, 15, 25, 0.75);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 20px;
             width: 100%;
             max-width: 440px;
@@ -707,7 +716,7 @@
             overflow-y: auto;
             position: relative;
             z-index: 2001;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(255, 255, 255, 0.03);
         }
 
         .modal-top {
@@ -812,7 +821,7 @@
         }
 
         #topClientsModal .modal-box {
-            background: linear-gradient(145deg, #050811, #0a0e1c);
+            background: linear-gradient(145deg, rgba(5, 8, 17, 0.85), rgba(10, 14, 28, 0.85));
             border: 2px solid var(--gold);
             padding: 0;
             display: flex;
@@ -1658,7 +1667,28 @@
                 </div>
             </div>
 
-            <!-- REDES SOCIALES -->
+            <!-- REDES SOCIALES & COMBO VIRAL TIKTOK -->
+            <div class="product-card premium-deal" data-cat="social" 
+                 data-crc="2900" data-official-crc="5500" data-usd="4.50" data-official-usd="8.00" data-mxn="85" data-official-mxn="150" data-cop="19000" data-official-cop="34000" data-ars="5800" data-official-ars="11000" data-pen="17.00" data-official-pen="30.00" data-dop="240" data-official-dop="450" data-bob="32" data-official-bob="60" data-gtq="35" data-official-gtq="65" data-nio="170" data-official-nio="320" data-ves="175" data-official-ves="330">
+                <div>
+                    <div class="product-top-info">
+                        <div class="product-badge" style="color: #ff0050;"><i class="fa-brands fa-tiktok"></i> MEGA COMBO</div>
+                        <span class="stock-badge available"><i class="fa-solid fa-fire"></i> Alta Demanda</span>
+                    </div>
+                    <div class="product-name">
+                        <span class="brand-logo-icon" style="color: #fff;"><i class="fa-brands fa-tiktok"></i></span>
+                        <div><strong>Combo Viral TikTok</strong> <span style="font-size: 0.75rem; color: var(--text-muted); display: block;">1K Seguidores + 1K Vistas + 1K Likes</span></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="product-price-box">
+                        <div class="product-price price-tag">₡2,900</div>
+                        <div class="savings-box"><span class="savings-official official-tag">Por separado: ₡5,500</span><span class="savings-highlight savings-tag">⚡ ¡Ahorras ₡2,600!</span></div>
+                    </div>
+                    <button class="btn-add premium-btn" data-input-type="social" data-title="Combo Viral TikTok (1K Seg, Vistas, Likes)">¡Comprar Combo!</button>
+                </div>
+            </div>
+
             <div class="product-card" data-cat="social" 
                  data-crc="3000" data-official-crc="5000" data-usd="5.00" data-official-usd="8.50" data-mxn="90" data-official-mxn="150" data-cop="20000" data-official-cop="35000" data-ars="6000" data-official-ars="10500" data-pen="18.00" data-official-pen="30.00" data-dop="250" data-official-dop="420" data-bob="34" data-official-bob="58" data-gtq="38" data-official-gtq="65" data-nio="180" data-official-nio="310" data-ves="185" data-official-ves="320">
                 <div>
@@ -1980,33 +2010,28 @@
                 localStorage.setItem('gtr_real_views', baseViews);
                 viewsEl.innerText = baseViews.toLocaleString();
                 
-                fetch('https://api.counterapi.dev/v1/gtrowenstore/visits/up')
+                fetch('https://ipapi.co/json/')
                     .then(res => res.json())
-                    .then(data => { if(data && data.count) { viewsEl.innerText = data.count.toLocaleString(); localStorage.setItem('gtr_real_views', data.count); }})
-                    .catch(e => console.log('AdBlock activo'));
+                    .then(data => {
+                        if (data && data.country_code) {
+                            const country = data.country_code;
+                            let detectedCurr = 'USD';
+                            if (country === 'CO') detectedCurr = 'COP';
+                            else if (country === 'PE') detectedCurr = 'PEN';
+                            else if (country === 'MX') detectedCurr = 'MXN';
+                            else if (country === 'VE') detectedCurr = 'VES';
+                            else if (country === 'CR') detectedCurr = 'CRC';
+                            else if (country === 'AR') detectedCurr = 'ARS';
+                            else if (country === 'DO') detectedCurr = 'DOP';
+                            else if (country === 'BO') detectedCurr = 'BOB';
+                            else if (country === 'GT') detectedCurr = 'GTQ';
+                            else if (country === 'NI') detectedCurr = 'NIO';
+
+                            changeCurrency(detectedCurr);
+                        }
+                    })
+                    .catch(e => { console.log('Uso de moneda predeterminada.'); });
             }
-
-            fetch('https://ipapi.co/json/')
-                .then(res => res.json())
-                .then(data => {
-                    if (data && data.country_code) {
-                        const country = data.country_code;
-                        let detectedCurr = 'USD';
-                        if (country === 'CO') detectedCurr = 'COP';
-                        else if (country === 'PE') detectedCurr = 'PEN';
-                        else if (country === 'MX') detectedCurr = 'MXN';
-                        else if (country === 'VE') detectedCurr = 'VES';
-                        else if (country === 'CR') detectedCurr = 'CRC';
-                        else if (country === 'AR') detectedCurr = 'ARS';
-                        else if (country === 'DO') detectedCurr = 'DOP';
-                        else if (country === 'BO') detectedCurr = 'BOB';
-                        else if (country === 'GT') detectedCurr = 'GTQ';
-                        else if (country === 'NI') detectedCurr = 'NIO';
-
-                        changeCurrency(detectedCurr);
-                    }
-                })
-                .catch(e => { console.log('Uso de moneda predeterminada.'); });
 
             document.querySelectorAll('.curr-btn').forEach(btn => {
                 btn.addEventListener('click', (e) => {
