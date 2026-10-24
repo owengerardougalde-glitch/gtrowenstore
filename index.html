@@ -416,9 +416,10 @@ footer{border-top-color:rgba(255,122,0,.2)}
        diamantes → diamantes recargados en total
        ===================================================== */
     var CLIENTES_PRIME = [
-      { nombre:"Richard",    id:"855612362",  prime:8, usd:433.33, diamantes:80080 },
-      { nombre:"RANGOVILLA", id:"301110819",  prime:8, usd:199.60, diamantes:33198 },
-      { nombre:"ᴿanishita7", id:"5141436212", prime:8, usd:92.00,  diamantes:17253 }
+      { nombre:"Richard",      id:"855612362",  prime:8, usd:433.33, diamantes:80080 },
+      { nombre:"^^ㅤSANDIA❀",  id:"2278520632", prime:7, usd:270.50, diamantes:49785 },
+      { nombre:"RANGOVILLA",   id:"301110819",  prime:8, usd:199.60, diamantes:33198 },
+      { nombre:"ᴿanishita7",   id:"5141436212", prime:8, usd:92.00,  diamantes:17253 }
     ];
     var OCULTAR_PARTE_DEL_ID = false; // true → muestra 12••••7890
 
@@ -435,7 +436,7 @@ footer{border-top-color:rgba(255,122,0,.2)}
     function money(n){return '$'+n.toLocaleString('es-CR',{minimumFractionDigits:2,maximumFractionDigits:2});}
     function pcls(p){return p>=8?'cp-p-max':p>=6?'cp-p-high':p>=4?'cp-p-mid':'cp-p-low';}
     function maskId(id){return id.length>6?id.slice(0,2)+'••••'+id.slice(-4):id;}
-    function ini(n){return (String(n).normalize('NFKD').trim().charAt(0)||'?').toUpperCase();}
+    function ini(n){var s=String(n).normalize('NFKD'),m=s.match(/[A-Za-z0-9\u00C0-\u024F]/);return (m?m[0]:(s.trim().charAt(0)||'?')).toUpperCase();}
     function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e;}
     function icon(svg){var s=el('span');s.style.display='inline-flex';s.innerHTML=svg;return s;}
 
