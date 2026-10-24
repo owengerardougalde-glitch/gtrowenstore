@@ -413,11 +413,7 @@ footer{border-top-color:rgba(255,122,0,.2)}
        diamantes → diamantes recargados en total
        ===================================================== */
     var CLIENTES_PRIME = [
-      { nombre:"ShadowKing",   id:"1234567890", prime:8, usd:485.50, diamantes:52400 },
-      { nombre:"NovaGamer_CR", id:"2345678901", prime:8, usd:362.00, diamantes:38900 },
-      { nombre:"ElPatrón",     id:"3456789012", prime:7, usd:241.75, diamantes:25600 },
-      { nombre:"LunaFF",       id:"4567890123", prime:6, usd:168.20, diamantes:17800 },
-      { nombre:"Sniper_X",     id:"5678901234", prime:5, usd:96.40,  diamantes:10200 }
+      { nombre:"Richard", id:"855612362", prime:null, usd:433.33, diamantes:80080 }
     ];
     var OCULTAR_PARTE_DEL_ID = false; // true → muestra 12••••7890
 
@@ -450,7 +446,7 @@ footer{border-top-color:rgba(255,122,0,.2)}
       });
       return b;
     }
-    function prime(c){var p=el('span','cp-prime '+pcls(c.prime));p.appendChild(icon(SVG_STAR));p.appendChild(document.createTextNode('Prime '+c.prime));return p;}
+    function prime(c){if(!c.prime)return document.createTextNode('');var p=el('span','cp-prime '+pcls(c.prime));p.appendChild(icon(SVG_STAR));p.appendChild(document.createTextNode('Prime '+c.prime));return p;}
 
     /* Podio: top 3 */
     datos.slice(0,3).forEach(function(c,i){
