@@ -292,7 +292,8 @@ footer{border-top-color:rgba(255,122,0,.2)}
 const CUR=['CRC','USD','MXN','COP','ARS','PEN','DOP','BOB','GTQ','NIO','VES'];
 
 // Tasa de cambio aproximada. ¡Edítala cuando quieras!
-const TASAS = { CRC: 510, USD: 1, MXN: 19.5, COP: 4100, ARS: 1550, PEN: 3.8, DOP: 60, BOB: 7, GTQ: 7.8, NIO: 37, VES: 40 };
+// Tasas del dólar actualizadas el 23-oct-2026 (BCCR, Banxico, TRM, BNA, SUNAT, BCRD, BCB, Banguat, BCN, BCV). Revísalas cada semana.
+const TASAS = { CRC: 457, USD: 1, MXN: 18.42, COP: 3165, ARS: 1550, PEN: 3.44, DOP: 61.85, BOB: 11.73, GTQ: 7.65, NIO: 36.8, VES: 881 };
 
 // Formato: TIER: [Precio de Venta USD, Precio Oficial Tachado USD]
 const PRECIOS_USD = {
@@ -306,7 +307,9 @@ const PRECIOS_USD = {
 
 const TIER = {};
 const redondear = (val, moneda) => {
-  if(['COP','CRC','ARS'].includes(moneda)) return Math.ceil(val / 100) * 100; // Redondea a cientos (ej. 135,300)
+  if(moneda==='CRC') return Math.ceil(val / 10) * 10;   // Colones: redondea a decenas (ej. ₡1,370)
+  if(moneda==='ARS') return Math.ceil(val / 50) * 50;   // Pesos argentinos: redondea a 50
+  if(moneda==='COP') return Math.ceil(val / 100) * 100; // Pesos colombianos: redondea a cientos
   if(['MXN','DOP','NIO','VES'].includes(moneda)) return Math.ceil(val); // Redondea a enteros
   return Number(val.toFixed(2)); // Conserva 2 decimales para USD, PEN, etc.
 };
