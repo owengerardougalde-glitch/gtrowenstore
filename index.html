@@ -184,6 +184,7 @@ footer{border-top-color:rgba(255,122,0,.2)}
 </style>
 <script src="//code.tidio.co/gcscrd4peehpejmvje2jrp2vof5cpe3w.js" async></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Bebas+Neue&display=swap">
+<meta name="color-scheme" content="dark">
 </head>
 <body>
 <div class="bats" aria-hidden="true"><span>🦇</span><span>🦇</span><span>🦇</span><span>🦇</span><span>🦇</span></div>
@@ -226,7 +227,8 @@ footer{border-top-color:rgba(255,122,0,.2)}
 
 <section id="clientes-prime" class="cp">
   <style>
-.cp *{font-family:'Rajdhani',system-ui,sans-serif}
+.cp{color-scheme:dark}
+    .cp *{font-family:'Rajdhani',system-ui,sans-serif}
     .cp{
       --o:#ff6a00; --g:#ffc83d; --r:#ff2e4d; --p:#8b5cf6; --bg:#07070c; --line:#2b2740; --mute:#a09cb8; --tx:#f4f2ff;
       position:relative; overflow:hidden; isolation:isolate; margin:36px 0; padding:56px 16px 64px;
@@ -315,9 +317,9 @@ footer{border-top-color:rgba(255,122,0,.2)}
       animation:cpShine 3s linear infinite;box-shadow:0 0 18px rgba(255,170,40,.5)}
     @keyframes cpShine{to{background-position:-220% 0}}
 
-    .cp-vals{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
-    .cp-val{border-radius:12px;padding:8px 6px;background:rgba(255,255,255,.04);border:1px solid var(--line)}
-    .cp-val b{display:block;font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:1.45rem;letter-spacing:.03em;color:var(--g);line-height:1.1}
+    .cp-vals{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px;margin-top:12px}
+    .cp-val{min-width:0;border-radius:12px;padding:8px 6px;background:rgba(255,255,255,.04);border:1px solid var(--line)}
+    .cp-val b{display:block;font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(1.15rem,5.4vw,1.45rem);letter-spacing:.03em;color:var(--g);line-height:1.1}
     .cp-pos1 .cp-val b{font-size:1.75rem}
     .cp-val span{display:flex;align-items:center;justify-content:center;gap:4px;font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
     .cp-val svg{width:12px;height:12px}
@@ -347,6 +349,13 @@ footer{border-top-color:rgba(255,122,0,.2)}
       background:#1d1a30;color:#fff;border:1px solid var(--o);padding:9px 16px;border-radius:12px;font-weight:700;transition:.25s}
     .cp-toast.show{opacity:1;transform:translateX(-50%)}
 
+    @media (max-width:759px){
+      .cp-pos2 .cp-vals,.cp-pos3 .cp-vals{grid-template-columns:minmax(0,1fr)}
+      .cp-pos2,.cp-pos3{padding-left:8px;padding-right:8px}
+      .cp-pos2 .cp-id,.cp-pos3 .cp-id{font-size:.74rem;padding:3px 7px;gap:4px;max-width:100%;flex-wrap:wrap;justify-content:center}
+      .cp-pos2 .cp-id b,.cp-pos3 .cp-id b{letter-spacing:0}
+      .cp-pos2 .cp-name,.cp-pos3 .cp-name{font-size:1.15rem}
+    }
     @media (min-width:760px){
       .cp{padding:76px 24px 84px}
       .cp-podium{grid-template-columns:1fr 1.18fr 1fr;grid-template-areas:"b a c";align-items:end;gap:16px}
