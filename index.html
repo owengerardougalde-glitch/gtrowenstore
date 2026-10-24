@@ -82,7 +82,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(7,5,13,.85);backdrop-fil
 .promo i{font-size:1.5rem;color:var(--accent)}
 .promo b{color:var(--gold)}
 
-.toolbar{position:sticky;top:67px;z-index:40;background:rgba(7,5,13,.92);backdrop-filter:blur(12px);padding:12px 0;margin-top:10px}
+.toolbar{position:sticky;top:var(--tb,67px);transition:top .25s ease;z-index:40;background:rgba(7,5,13,.92);backdrop-filter:blur(12px);padding:12px 0;margin-top:10px}
 .search{display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:0 14px;margin-bottom:10px}
 .search input{flex:1;background:none;border:0;outline:0;color:var(--text);padding:13px 0;font-size:.9rem}
 .search i{color:var(--muted)}
@@ -181,6 +181,24 @@ footer{border-top-color:rgba(255,122,0,.2)}
 .fabs{z-index:60}.toast{z-index:200}.drawer{z-index:100}.sheet{z-index:130}
 @media(prefers-reduced-motion:reduce){.bats span,.pk{animation:none}.bats{display:none}}
 @media(max-width:520px){.hero-card::after{width:58px;height:58px;right:16px;top:16px}.web{width:90px;height:90px}.pill{max-width:calc(100% - 78px)}}
+
+/* ===== Barra superior de navegación ===== */
+.topnav-wrap{position:sticky;top:var(--h1,67px);z-index:49;background:rgba(7,5,13,.92);backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--line);transition:transform .25s ease}
+.topnav-wrap.hide{transform:translateY(-100%)}
+.topnav{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:4px;padding:5px 10px}
+.topnav button{display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 2px;border-radius:12px;color:var(--muted);
+  font-size:.7rem;font-weight:600;transition:.2s}
+.topnav button i{font-size:1.1rem}
+.topnav button span{font-family:'Inter',sans-serif}
+.topnav button:hover{color:#fff}
+.topnav button.on{color:#fff;background:linear-gradient(180deg,rgba(255,122,0,.24),rgba(255,122,0,.05));box-shadow:inset 0 0 0 1px rgba(255,122,0,.4)}
+.topnav button.on i{color:var(--accent)}
+.topnav button.top-b i{color:var(--gold)}
+@media (min-width:760px){
+  .topnav{display:flex;justify-content:center;gap:10px;padding:6px 18px}
+  .topnav button{flex-direction:row;gap:8px;padding:8px 18px;font-size:.88rem}
+}
 </style>
 <script src="//code.tidio.co/gcscrd4peehpejmvje2jrp2vof5cpe3w.js" async></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Bebas+Neue&display=swap">
@@ -200,6 +218,16 @@ footer{border-top-color:rgba(255,122,0,.2)}
     <button class="cart-btn" id="openCart" aria-label="Carrito"><i class="fa-solid fa-cart-shopping"></i><span class="count" id="cartCount">0</span></button>
   </div>
 </header>
+
+<div class="topnav-wrap" id="topnavWrap">
+  <nav class="topnav" id="topnav" aria-label="Navegación principal">
+    <button type="button" data-nav="home" class="on"><i class="fa-solid fa-house"></i><span>Inicio</span></button>
+    <button type="button" data-nav="shop"><i class="fa-solid fa-gem"></i><span>Recargas</span></button>
+    <button type="button" data-nav="top" class="top-b"><i class="fa-solid fa-trophy"></i><span>Top</span></button>
+    <button type="button" data-nav="community"><i class="fa-solid fa-users"></i><span>Comunidad</span></button>
+    <button type="button" data-nav="support"><i class="fa-brands fa-whatsapp"></i><span>Soporte</span></button>
+  </nav>
+</div>
 
 <main class="wrap">
   <section class="hero">
@@ -715,6 +743,9 @@ markCur(); renderChips(); renderGrid(); renderCart();
     @keyframes cpFadeIn{from{opacity:0}to{opacity:1}}
     .cp-scroll{position:absolute;inset:0;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
     .cp-modal .cp{margin:0;border:0;min-height:100%;padding-top:64px}
+    .cp-mascot{width:128px;height:128px;margin:0 auto 14px;padding:3px;border-radius:50%;
+      background:conic-gradient(from 0deg,#ffd35c,#ff6a00,#ff2e4d,#8b5cf6,#ffd35c);box-shadow:0 0 34px rgba(255,122,24,.5)}
+    .cp-mascot img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block;background:#0b1730}
     .cp-close{position:fixed;top:12px;right:12px;z-index:6;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,200,61,.55);
       background:rgba(15,13,26,.88);color:#ffd35c;font-size:1.15rem;font-weight:700;cursor:pointer;backdrop-filter:blur(8px);display:grid;place-items:center}
     .cp-close:active{transform:scale(.95)}
@@ -734,6 +765,7 @@ markCur(); renderChips(); renderGrid(); renderCart();
       <canvas class="cp-fx" id="cpFx"></canvas>
       <div class="cp-wrap">
         <div class="cp-head">
+          <div class="cp-mascot"><img data-mascot alt="Mascota de GTROWEN STORE"></div>
           <span class="cp-kicker">🔥 Salón de la fama 🦇</span>
           <h2 class="cp-title">Clientes Prime<br>que más recargan</h2>
           <p class="cp-sub">Los jugadores de Free Fire que más confían en GTROWEN STORE</p>
@@ -963,5 +995,81 @@ markCur(); renderChips(); renderGrid(); renderCart();
 })();
 </script>
 
-</body>
-</html>
+
+<!-- ============ BIENVENIDA / COMUNIDAD ============ -->
+<div class="wl" id="wlModal" role="dialog" aria-modal="true" aria-labelledby="wlTitle" aria-hidden="true">
+  <style>
+    .wl{position:fixed;inset:0;z-index:500;display:none;align-items:center;justify-content:center;padding:16px;
+      background:rgba(4,2,10,.74);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+    .wl.open{display:flex;animation:wlFade .25s ease}
+    @keyframes wlFade{from{opacity:0}to{opacity:1}}
+    .wl-card{position:relative;width:100%;max-width:410px;max-height:92vh;max-height:92dvh;overflow-y:auto;border-radius:26px;padding:22px 18px 16px;text-align:center;
+      background:
+        radial-gradient(420px 220px at 50% -10%,rgba(255,122,0,.30),transparent 70%),
+        radial-gradient(360px 200px at 100% 100%,rgba(139,47,201,.28),transparent 70%),
+        #0f0a1a;
+      border:1px solid rgba(255,122,0,.35);box-shadow:0 30px 80px rgba(0,0,0,.6);animation:wlPop .35s cubic-bezier(.2,.9,.3,1.2)}
+    @keyframes wlPop{from{transform:translateY(24px) scale(.96);opacity:0}to{transform:none;opacity:1}}
+    .wl-x{position:absolute;top:10px;right:10px;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.07);
+      border:1px solid rgba(255,255,255,.1);color:#fff;font-size:1rem;display:grid;place-items:center}
+    .wl-mascot{position:relative;width:150px;height:150px;margin:2px auto 10px;padding:3px;border-radius:50%;
+      background:conic-gradient(from 0deg,#ffb347,#ff7a00,#8b2fc9,#ffb347);box-shadow:0 0 40px rgba(255,122,0,.55);animation:wlSpin 8s linear infinite}
+    .wl-mascot img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block;background:#0b1730;animation:wlSpin 8s linear infinite reverse}
+    @keyframes wlSpin{to{transform:rotate(360deg)}}
+    .wl-bubble{display:inline-block;margin-bottom:8px;padding:5px 14px;border-radius:999px;font-size:.78rem;font-weight:700;color:#ffb347;
+      background:rgba(255,122,0,.12);border:1px solid rgba(255,122,0,.35)}
+    .wl-card h2{font-family:'Plus Jakarta Sans','Inter',sans-serif;font-size:1.45rem;font-weight:800;line-height:1.15;letter-spacing:-.3px}
+    .wl-card h2 b{background:linear-gradient(90deg,#ffb347,#ff7a00);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .wl-sub{margin:8px 4px 14px;color:#a8a3bd;font-size:.9rem;line-height:1.45}
+    .wl-list{display:grid;gap:9px;margin-bottom:14px}
+    .wl-link{display:flex;align-items:center;gap:12px;padding:11px 12px;border-radius:16px;text-align:left;text-decoration:none;color:#fff;
+      background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);transition:.2s}
+    .wl-link:hover,.wl-link:active{transform:translateY(-1px);border-color:rgba(255,122,0,.55);background:rgba(255,255,255,.08)}
+    .wl-ico{flex:none;width:44px;height:44px;border-radius:13px;display:grid;place-items:center;font-size:1.45rem}
+    .wl-link.g .wl-ico{background:#0f3d22;color:#34d27b}
+    .wl-link.w .wl-ico{background:#123a33;color:#25d366}
+    .wl-link.t .wl-ico{background:#1b1b24;color:#fff;box-shadow:inset 2px 0 0 #25f4ee,inset -2px 0 0 #fe2c55}
+    .wl-txt{flex:1;min-width:0}
+    .wl-txt b{display:block;font-size:.95rem;font-weight:700}
+    .wl-txt small{display:block;margin-top:1px;color:#9a95b0;font-size:.76rem}
+    .wl-go{color:#7d7894;font-size:.85rem}
+    .wl-link.g{border-color:rgba(52,210,123,.4);background:linear-gradient(90deg,rgba(52,210,123,.14),rgba(255,255,255,.04))}
+    .wl-enter{width:100%;padding:13px;border-radius:14px;font-weight:800;font-size:.95rem;color:#fff;
+      background:linear-gradient(90deg,#ff7a00,#8b2fc9);box-shadow:0 8px 26px rgba(255,122,0,.3)}
+    .wl-skip{margin-top:8px;padding:8px;font-size:.78rem;color:#8d88a3;font-weight:600}
+    .wl-card,.wl-card *{font-family:'Inter',sans-serif}
+    .wl-card h2{font-family:'Plus Jakarta Sans','Inter',sans-serif}
+  </style>
+  <div class="wl-card">
+    <button type="button" class="wl-x" id="wlX" aria-label="Cerrar">✕</button>
+    <div class="wl-mascot"><img data-mascot alt="Mascota de GTROWEN STORE"></div>
+    <div><span class="wl-bubble">🎃 ¡Qué bueno verte por aquí!</span></div>
+    <h2 id="wlTitle">Bienvenido a <b>GTROWEN STORE</b></h2>
+    <p class="wl-sub">Diamantes de Free Fire y servicios digitales con entrega por WhatsApp. Únete a la comunidad para enterarte de las ofertas primero.</p>
+    <div class="wl-list">
+      <a class="wl-link g" href="https://chat.whatsapp.com/Hd6IG8eEVrY5hoYPgHIjk4" target="_blank" rel="noopener">
+        <span class="wl-ico"><i class="fa-brands fa-whatsapp"></i></span>
+        <span class="wl-txt"><b>Grupo de WhatsApp</b><small>Ofertas y avisos de la tienda</small></span>
+        <i class="fa-solid fa-arrow-right wl-go"></i>
+      </a>
+      <a class="wl-link w" href="https://api.whatsapp.com/send?phone=50672986056&text=Hola%2C%20tengo%20una%20consulta%20sobre%20la%20tienda%20gtrowen.store" target="_blank" rel="noopener">
+        <span class="wl-ico"><i class="fa-solid fa-headset"></i></span>
+        <span class="wl-txt"><b>Escríbeme por WhatsApp</b><small>Pedidos y soporte directo</small></span>
+        <i class="fa-solid fa-arrow-right wl-go"></i>
+      </a>
+      <a class="wl-link t" href="https://www.tiktok.com/@gtrstorelatam" target="_blank" rel="noopener">
+        <span class="wl-ico"><i class="fa-brands fa-tiktok"></i></span>
+        <span class="wl-txt"><b>TikTok @gtrstorelatam</b><small>Síguenos y mira las novedades</small></span>
+        <i class="fa-solid fa-arrow-right wl-go"></i>
+      </a>
+    </div>
+    <button type="button" class="wl-enter" id="wlEnter">Entrar a la tienda</button>
+    <button type="button" class="wl-skip" id="wlSkip">No mostrar más hoy</button>
+  </div>
+</div>
+<script>
+(function(){
+  /* ✏️ Mascota: por defecto es el carnero de la tienda. Si tienes tu propia imagen, súbela (ej: img/mascota.png)
+     y escribe la ruta aquí abajo. Si el archivo falla, vuelve solo al carnero. */
+  var MASCOTA_IMG = '';
+  var MASCOT = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgNDAwIj48ZGVmcz48cmFkaWFsR3JhZGllbnQgaWQ9ImJnIiBjeD0iNTAlIiBjeT0iMzglIiByPSI3NSUiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzNmMjM4MCIvPjxzdG9wIG9mZnNldD0iLjYiIHN0b3AtY29sb3I9IiMxYTBmM2EiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwYjA3MTYiLz48L3JhZGlhbEdyYWRpZW50PjxyYWRpYWxHcmFkaWVudCBpZD0iZ2xvdyIgY3g9IjUwJSIgY3k9IjUwJSIgcj0iNTAlIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNmZjdhMTgiIHN0b3Atb3BhY2l0eT0iLjUiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNmZjdhMTgiIHN0b3Atb3BhY2l0eT0iMCIvPjwvcmFkaWFsR3JhZGllbnQ+PGxpbmVhckdyYWRpZW50IGlkPSJob3JuIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZmZlMDhhIi8+PHN0b3Agb2Zmc2V0PSIuNTUiIHN0b3AtY29sb3I9IiNmZmE2MmIiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNlMjY1MGEiLz48L2xpbmVhckdyYWRpZW50PjxyYWRpYWxHcmFkaWVudCBpZD0iZnVyIiBjeD0iNDUlIiBjeT0iMzIlIiByPSI3OCUiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2Q5Y2JmNiIvPjwvcmFkaWFsR3JhZGllbnQ+PHJhZGlhbEdyYWRpZW50IGlkPSJpcmlzIiBjeD0iNTAlIiBjeT0iMzAlIiByPSI3NSUiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZmZDM1YyIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2ZmNWYwMCIvPjwvcmFkaWFsR3JhZGllbnQ+PGxpbmVhckdyYWRpZW50IGlkPSJob29kIiB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjNDYyOThhIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMWQxMDQwIi8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9ImdlbSIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2M4ZjRmZiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzJhYTZlMCIvPjwvbGluZWFyR3JhZGllbnQ+PHBhdGggaWQ9Imhvcm5wIiBkPSJNMTUwIDE0MiBDOTggMTA0IDM2IDEyOCA0MCAxOTAgQzQ0IDI0MCAxMTAgMjUwIDEyMiAyMDYgQzEzMCAxNzYgOTggMTYwIDg0IDE4NCIvPjxzdHlsZT4uYm9ie2FuaW1hdGlvbjpib2IgMy4ycyBlYXNlLWluLW91dCBpbmZpbml0ZX0uYmxpbmt7dHJhbnNmb3JtLWJveDpmaWxsLWJveDt0cmFuc2Zvcm0tb3JpZ2luOmNlbnRlcjt0cmFuc2Zvcm06c2NhbGVZKDApO2FuaW1hdGlvbjpibGluayA0LjRzIGluZmluaXRlfS53YXZle3RyYW5zZm9ybS1vcmlnaW46MzA0cHggMzMwcHg7YW5pbWF0aW9uOndhdmUgMS41cyBlYXNlLWluLW91dCBpbmZpbml0ZX0udHd7YW5pbWF0aW9uOnR3IDIuNHMgZWFzZS1pbi1vdXQgaW5maW5pdGV9QGtleWZyYW1lcyBib2J7MCUsMTAwJXt0cmFuc2Zvcm06dHJhbnNsYXRlWSgwKX01MCV7dHJhbnNmb3JtOnRyYW5zbGF0ZVkoLTVweCl9fUBrZXlmcmFtZXMgYmxpbmt7MCUsOTElLDEwMCV7dHJhbnNmb3JtOnNjYWxlWSgwKX05NCUsOTcle3RyYW5zZm9ybTpzY2FsZVkoMSl9fUBrZXlmcmFtZXMgd2F2ZXswJSwxMDAle3RyYW5zZm9ybTpyb3RhdGUoLTdkZWcpfTUwJXt0cmFuc2Zvcm06cm90YXRlKDExZGVnKX19QGtleWZyYW1lcyB0d3swJSwxMDAle29wYWNpdHk6LjI1fTUwJXtvcGFjaXR5OjF9fUBtZWRpYSAocHJlZmVycy1yZWR1Y2VkLW1vdGlvbjpyZWR1Y2Upey5ib2IsLmJsaW5rLC53YXZlLC50d3thbmltYXRpb246bm9uZX19PC9zdHlsZT48L2RlZnM+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSI0MDAiIGZpbGw9InVybCgjYmcpIi8+PGNpcmNsZSBjeD0iMjAwIiBjeT0iMjMwIiByPSIxOTAiIGZpbGw9InVybCgjZ2xvdykiLz48ZyBmaWxsPSIjZmZkMzVjIj48cGF0aCBjbGFzcz0idHciIGQ9Ik0zMzAgODAgbDUgMTQgMTQgNSAtMTQgNSAtNSAxNCAtNSAtMTQgLTE0IC01IDE0IC01eiIvPjxwYXRoIGNsYXNzPSJ0dyIgc3R5bGU9ImFuaW1hdGlvbi1kZWxheTouOHMiIGQ9Ik02NCAyOTIgbDQgMTAgMTAgNCAtMTAgNCAtNCAxMCAtNCAtMTAgLTEwIC00IDEwIC00eiIvPjxwYXRoIGNsYXNzPSJ0dyIgc3R5bGU9ImFuaW1hdGlvbi1kZWxheToxLjRzIiBkPSJNMzUyIDE5NiBsMyA4IDggMyAtOCAzIC0zIDggLTMgLTggLTggLTMgOCAtM3oiLz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzQgNTIpIj48cGF0aCBkPSJNMCAyMiBDMTAgMiAyNiA2IDMyIDIwIEMzOCA2IDU0IDIgNjQgMjIgQzU1IDE5IDUxIDI1IDQ3IDM1IEM0MiAyOCAzNyAyOCAzMiAzNSBDMjcgMjggMjIgMjggMTcgMzUgQzEzIDI1IDkgMTkgMCAyMloiIGZpbGw9IiMwZDA4MTgiLz48Y2lyY2xlIGN4PSIyNyIgY3k9IjE5IiByPSIyLjIiIGZpbGw9IiNmZjdhMTgiLz48Y2lyY2xlIGN4PSIzNyIgY3k9IjE5IiByPSIyLjIiIGZpbGw9IiNmZjdhMTgiLz48L2c+PGcgY2xhc3M9ImJvYiI+PCEtLSBjYXB1Y2hhIGF0csOhcyArIHRvcnNvIC0tPjxlbGxpcHNlIGN4PSIyMDAiIGN5PSIyODgiIHJ4PSIxMzYiIHJ5PSI2MiIgZmlsbD0iIzJiMTk1NyIvPjxwYXRoIGQ9Ik0zMCA0MTAgQzMwIDMyNCAxMDAgMjkyIDIwMCAyOTIgQzMwMCAyOTIgMzcwIDMyNCAzNzAgNDEwWiIgZmlsbD0idXJsKCNob29kKSIvPjxwYXRoIGQ9Ik0xMTYgMzAyIEMxNjAgMzM2IDI0MCAzMzYgMjg0IDMwMiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmY3YTE4IiBzdHJva2Utd2lkdGg9IjciIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxwYXRoIGQ9Ik0xODAgMzI2IEwxNzQgMzY2IE0yMjAgMzI2IEwyMjYgMzY2IiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PGNpcmNsZSBjeD0iMTc0IiBjeT0iMzY5IiByPSI2IiBmaWxsPSIjZmY3YTE4Ii8+PGNpcmNsZSBjeD0iMjI2IiBjeT0iMzY5IiByPSI2IiBmaWxsPSIjZmY3YTE4Ii8+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjcwIDM2NikiPjxwb2x5Z29uIHBvaW50cz0iMCwtMjQgMjIsLTEwIDAsMjIgLTIyLC0xMCIgZmlsbD0idXJsKCNnZW0pIiBzdHJva2U9IiMwZTVhODIiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjxwb2x5Z29uIHBvaW50cz0iLTIyLC0xMCAwLC0yNCAyMiwtMTAgMCwtNiIgZmlsbD0iI2U2ZmJmZiIgb3BhY2l0eT0iLjc1Ii8+PC9nPjwhLS0gYnJhem8gc2FsdWRhbmRvIC0tPjxnIGNsYXNzPSJ3YXZlIj48cGF0aCBkPSJNMzAyIDMzMCBDMzQwIDMxOCAzNTYgMjkyIDM1MiAyNjAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzM1MjA3YSIgc3Ryb2tlLXdpZHRoPSI0NiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHBhdGggZD0iTTMzNCAyNzAgTDM2OCAyNzYiIHN0cm9rZT0iI2ZmN2ExOCIgc3Ryb2tlLXdpZHRoPSI3IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48Y2lyY2xlIGN4PSIzNTIiIGN5PSIyMzYiIHI9IjI2IiBmaWxsPSJ1cmwoI2Z1cikiIHN0cm9rZT0iI2NiYmNmMCIgc3Ryb2tlLXdpZHRoPSIyIi8+PHBhdGggZD0iTTM0MyAyMjYgcTIgMTAgMCAxOCBNMzU1IDIyNCBxMiAxMCAwIDIwIiBzdHJva2U9IiNiZmIwZTgiIHN0cm9rZS13aWR0aD0iMyIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PC9nPjwhLS0gY3Vlcm5vcyAtLT48dXNlIGhyZWY9IiNob3JucCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI2hvcm4pIiBzdHJva2Utd2lkdGg9IjMwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48dXNlIGhyZWY9IiNob3JucCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjOWE0MjA1IiBzdHJva2Utd2lkdGg9IjMwIiBzdHJva2UtZGFzaGFycmF5PSIyIDE2IiBvcGFjaXR5PSIuNDIiLz48dXNlIGhyZWY9IiNob3JucCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmM2M0IiBzdHJva2Utd2lkdGg9IjUiIG9wYWNpdHk9Ii41IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtNCAtNCkiLz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0MDAgMCkgc2NhbGUoLTEgMSkiPjx1c2UgaHJlZj0iI2hvcm5wIiBmaWxsPSJub25lIiBzdHJva2U9InVybCgjaG9ybikiIHN0cm9rZS13aWR0aD0iMzAiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjx1c2UgaHJlZj0iI2hvcm5wIiBmaWxsPSJub25lIiBzdHJva2U9IiM5YTQyMDUiIHN0cm9rZS13aWR0aD0iMzAiIHN0cm9rZS1kYXNoYXJyYXk9IjIgMTYiIG9wYWNpdHk9Ii40MiIvPjx1c2UgaHJlZj0iI2hvcm5wIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYzYzQiIHN0cm9rZS13aWR0aD0iNSIgb3BhY2l0eT0iLjUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC00IC00KSIvPjwvZz48IS0tIG9yZWphcyAtLT48ZyB0cmFuc2Zvcm09InJvdGF0ZSgtMjQgOTggMjE0KSI+PGVsbGlwc2UgY3g9Ijk4IiBjeT0iMjE0IiByeD0iNDIiIHJ5PSIxOSIgZmlsbD0iI2Q5Y2JmNiIgc3Ryb2tlPSIjYmZiMGU4IiBzdHJva2Utd2lkdGg9IjIiLz48ZWxsaXBzZSBjeD0iOTgiIGN5PSIyMTQiIHJ4PSIyNiIgcnk9IjkiIGZpbGw9IiNmZmIzY2YiIG9wYWNpdHk9Ii44Ii8+PC9nPjxnIHRyYW5zZm9ybT0icm90YXRlKDI0IDMwMiAyMTQpIj48ZWxsaXBzZSBjeD0iMzAyIiBjeT0iMjE0IiByeD0iNDIiIHJ5PSIxOSIgZmlsbD0iI2Q5Y2JmNiIgc3Ryb2tlPSIjYmZiMGU4IiBzdHJva2Utd2lkdGg9Ij
