@@ -352,12 +352,15 @@ footer{border-top-color:rgba(255,122,0,.2)}
     @media (max-width:759px){
       .cp-pos2 .cp-vals,.cp-pos3 .cp-vals{grid-template-columns:minmax(0,1fr)}
       .cp-pos2,.cp-pos3{padding-left:8px;padding-right:8px}
+      .cp-two .cp-pos2{grid-column:1 / -1;padding-left:12px;padding-right:12px}
       .cp-pos2 .cp-id,.cp-pos3 .cp-id{font-size:.74rem;padding:3px 7px;gap:4px;max-width:100%;flex-wrap:wrap;justify-content:center}
       .cp-pos2 .cp-id b,.cp-pos3 .cp-id b{letter-spacing:0}
       .cp-pos2 .cp-name,.cp-pos3 .cp-name{font-size:1.15rem}
     }
     @media (min-width:760px){
       .cp{padding:76px 24px 84px}
+      .cp-podium.cp-two{grid-template-columns:1fr 1fr;grid-template-areas:"a b"}
+      .cp-podium.cp-one{grid-template-columns:minmax(0,440px);justify-content:center;grid-template-areas:"a"}
       .cp-podium{grid-template-columns:1fr 1.18fr 1fr;grid-template-areas:"b a c";align-items:end;gap:16px}
       .cp-rows{gap:12px}
       .cp-row{grid-template-columns:auto auto 1fr auto;padding:12px 18px}
@@ -413,7 +416,9 @@ footer{border-top-color:rgba(255,122,0,.2)}
        diamantes → diamantes recargados en total
        ===================================================== */
     var CLIENTES_PRIME = [
-      { nombre:"Richard", id:"855612362", prime:null, usd:433.33, diamantes:80080 }
+      { nombre:"Richard",    id:"855612362",  prime:8, usd:433.33, diamantes:80080 },
+      { nombre:"RANGOVILLA", id:"301110819",  prime:8, usd:199.60, diamantes:33198 },
+      { nombre:"ᴿanishita7", id:"5141436212", prime:8, usd:92.00,  diamantes:17253 }
     ];
     var OCULTAR_PARTE_DEL_ID = false; // true → muestra 12••••7890
 
@@ -430,7 +435,7 @@ footer{border-top-color:rgba(255,122,0,.2)}
     function money(n){return '$'+n.toLocaleString('es-CR',{minimumFractionDigits:2,maximumFractionDigits:2});}
     function pcls(p){return p>=8?'cp-p-max':p>=6?'cp-p-high':p>=4?'cp-p-mid':'cp-p-low';}
     function maskId(id){return id.length>6?id.slice(0,2)+'••••'+id.slice(-4):id;}
-    function ini(n){return (String(n).trim().charAt(0)||'?').toUpperCase();}
+    function ini(n){return (String(n).normalize('NFKD').trim().charAt(0)||'?').toUpperCase();}
     function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e;}
     function icon(svg){var s=el('span');s.style.display='inline-flex';s.innerHTML=svg;return s;}
 
@@ -463,6 +468,8 @@ footer{border-top-color:rgba(255,122,0,.2)}
       vals.appendChild(v1);vals.appendChild(v2);card.appendChild(vals);
       podium.appendChild(card);
     });
+
+    if(datos.length===2) podium.className+=' cp-two'; else if(datos.length===1) podium.className+=' cp-one';
 
     /* Resto: #4 en adelante */
     datos.slice(3).forEach(function(c,i){
