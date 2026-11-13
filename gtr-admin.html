@@ -8,7 +8,7 @@
 const API='https://gtr-recargas-america.anonimoustugfa.workers.dev';
 const $=id=>document.getElementById(id); const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 try{$('token').value=localStorage.getItem('gtr_ord_tok')||''}catch(e){}
-const ST={PENDING_PAYMENT:'⏳ Esperando tu confirmación de pago',PROCESSING:'⚙️ Procesando',PROCESSING_PROVIDER:'🕓 El proveedor lo está procesando',ERROR:'❌ Rechazado (se puede reintentar)',NEEDS_REVIEW:'⚠️ Requiere revisión (NO reintentar)'};
+const ST={PENDING_PAYMENT:'⏳ Esperando tu confirmación de pago',PROCESSING:'⚙️ Procesando',PROCESSING_PROVIDER:'🕓 El proveedor lo está procesando',ERROR:'❌ Rechazado (se puede reintentar)',NEEDS_REVIEW:'⚠️ Requiere revisión (NO reintentar)',ARCHIVED:'🗂️ Quitado de la lista'};
 const IT={PENDING:'pendiente',COMPLETED:'entregado',PROCESSING_PROVIDER:'procesando',REJECTED:'rechazado',REVIEW:'revisar',REFUNDED:'reembolsado'};
 function tk(){return $('token').value.trim()}
 async function call(path,method){const r=await fetch(API+path,{method:method||'GET',headers:{Authorization:'Bearer '+tk()}});const d=await r.json().catch(()=>({}));return {r,d}}
@@ -23,6 +23,7 @@ async function load(){if(!tk()){$('msg').textContent='Escribe tu clave.';return}
   ${o.status==='ERROR'?`<button data-a="deliver" data-id="${esc(o.order_id)}">Reintentar entrega</button>`:''}
   ${['PROCESSING','PROCESSING_PROVIDER','NEEDS_REVIEW'].includes(o.status)?`<button class="g" data-a="check" data-id="${esc(o.order_id)}">Consultar a Central One</button>`:''}
   ${['PENDING_PAYMENT','ERROR'].includes(o.status)?`<button class="r" data-a="cancel" data-id="${esc(o.order_id)}">Cancelar pedido</button>`:''}
+  <button class="r" data-a="archive" data-id="${esc(o.order_id)}">Quitar de la lista</button>
   ${o.status==='NEEDS_REVIEW'?'<p class="error">No lo reintentes: puede estar cobrado. Revisa en el panel de Central One (Pedidos) antes de decidir.</p>':''}</article>`).join('')||'<div class="card">No hay pedidos pendientes.</div>';
   $('msg').textContent='Pedidos cargados.'}catch(e){$('msg').innerHTML='<span class="error">'+esc(e.message)+'</span>'}}
 $('load').onclick=load;
@@ -30,7 +31,7 @@ $('wal').onclick=async()=>{const {d}=await call('/admin/wallet');$('msg').innerH
 $('cat').onclick=async()=>{const {d}=await call('/admin/catalog');if(!d.success){$('msg').innerHTML='<span class="error">No se pudo cargar.</span>';return}
  const map=d.map||{};$('msg').innerHTML='<div class="card"><b>En uso por la tienda:</b><pre>'+esc(Object.entries(map).map(([k,v])=>{const p=(d.products||[]).find(x=>x.id==v);return k+' → '+v+' · '+(p?p.name+' · costo $'+p.cost:'NO EXISTE')}).join('\n'))+'</pre><b>Catálogo:</b><pre>'+esc((d.products||[]).map(p=>p.id+' | '+p.sku+' | '+p.name+' | $'+p.cost).join('\n'))+'</pre></div>'};
 $('orders').onclick=async e=>{const b=e.target.closest('[data-a]');if(!b)return;const a=b.dataset.a,id=b.dataset.id;
- const q={deliver:'¿Confirmaste que el dinero ya llegó? Esto enviará la recarga al ID del cliente.',cancel:'¿Cancelar este pedido?',check:''}[a];if(q&&!confirm(q))return;
+ const q={deliver:'¿Confirmaste que el dinero ya llegó? Esto enviará la recarga al ID del cliente.',cancel:'¿Cancelar este pedido?',archive:'¿Quitar este pedido de la lista? No se borra nada del cliente ni de Central One, solo deja de aparecer aquí. Hazlo solo si ya lo entregaste o ya lo revisaste.',check:''}[a];if(q&&!confirm(q))return;
  b.disabled=true;const t=b.textContent;b.textContent='Procesando…';
  try{const {r,d}=await call('/admin/orders/'+encodeURIComponent(id)+'/'+a,'POST');if(!r.ok&&!d.status)throw Error(d.error||'Error');alert((a==='deliver'?'Resultado: ':'Estado: ')+(ST[d.status]||d.status||d.error)+(d.items?'\n'+d.items.map(i=>i.sku+': '+(IT[i.state]||i.state)+(i.error?' ('+i.error+')':'')).join('\n'):''));}
  catch(err){alert('No se pudo: '+err.message)}
