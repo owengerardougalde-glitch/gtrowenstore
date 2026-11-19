@@ -303,7 +303,7 @@ body.gtr-tidio-open #tidio-chat{opacity:1!important;pointer-events:auto!importan
       MAP.forEach(function(it){
         if(q&&(it.name+' '+it.sub).toLowerCase().indexOf(q)<0)return;
         var logo=it.img
-          ? '<span class="pm-logo"><img src="'+it.img+'" alt="'+it.name+'"></span>'
+          ? '<span class="pm-logo"><img decoding="async" src="'+it.img+'" alt="'+it.name+'"></span>'
           : '<span class="pm-logo" style="background:'+it.bg+'">'+it.logo+'</span>';
         box.appendChild(row(logo,it.name,it.sub,function(){
           if(it.k==='redes'){close();if(window.GTR_SMM)GTR_SMM.open();return}
@@ -368,7 +368,7 @@ body.gtr-tidio-open #tidio-chat{opacity:1!important;pointer-events:auto!importan
 <header>
   <div class="nav">
     <div class="logo">
-      <img src="/gtr-img-11.jpg" alt="Carnero musculoso con espadas y neón rojo y azul de GTROWEN STORE">
+      <img decoding="async" src="/gtr-img-11.jpg" alt="Carnero musculoso con espadas y neón rojo y azul de GTROWEN STORE">
       <div><div class="logo-t">GTROWEN <b>STORE</b></div><div class="logo-s">ELITE DIGITAL HUB</div></div>
     </div>
     <div class="nav-spacer"></div>
@@ -422,7 +422,7 @@ body.gtr-tidio-open #tidio-chat{opacity:1!important;pointer-events:auto!importan
     <div class="chips" id="chips"></div>
   </div>
 
-  <div class="section-title"><h2 id="secTitle">Todo el catálogo</h2><div class="sec-tools"><span class="sec-lbl">Precios en</span><button class="curr-btn" id="currBtn" aria-haspopup="dialog" aria-label="Elegir moneda"><img id="currFlag" alt=""><span id="currCode">USD</span><i class="fa-solid fa-chevron-down"></i></button><small id="secCount"></small></div></div>
+  <div class="section-title"><h2 id="secTitle">Todo el catálogo</h2><div class="sec-tools"><span class="sec-lbl">Precios en</span><button class="curr-btn" id="currBtn" aria-haspopup="dialog" aria-label="Elegir moneda"><img decoding="async" id="currFlag" alt=""><span id="currCode">USD</span><i class="fa-solid fa-chevron-down"></i></button><small id="secCount"></small></div></div>
 
   <div class="svc-wrap" id="svcWrap" hidden>
     <div class="svc-title"><b>Elige tu streaming</b><span>Toca uno para ver sus planes</span></div>
@@ -770,7 +770,7 @@ const FLAG={
 const flag=c=>'data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20">'+FLAG[c]+'</svg>');
 function markCur(){
   $('currFlag').src=flag(cur); $('currCode').textContent=cur;
-  $('currList').innerHTML=CUR.slice().sort((a,b)=>a==='USD'?-1:b==='USD'?1:0).map(c=>`<button class="cur-item ${c===cur?'sel':''}" data-cur="${c}"><img src="${flag(c)}" alt="" loading="lazy"><span><b>${c} · ${CM[c][1]}</b><small>${CM[c][2]}</small></span><span class="sym">${SYM[c].trim()}</span><span class="ck">${c===cur?'<i class="fa-solid fa-check"></i>':''}</span></button>`).join('');
+  $('currList').innerHTML=CUR.slice().sort((a,b)=>a==='USD'?-1:b==='USD'?1:0).map(c=>`<button class="cur-item ${c===cur?'sel':''}" data-cur="${c}"><img decoding="async" src="${flag(c)}" alt="" loading="lazy"><span><b>${c} · ${CM[c][1]}</b><small>${CM[c][2]}</small></span><span class="sym">${SYM[c].trim()}</span><span class="ck">${c===cur?'<i class="fa-solid fa-check"></i>':''}</span></button>`).join('');
 }
 function openCur(o){ $('currSheet').classList.toggle('open',o); $('currOv').classList.toggle('open',o); }
 function fmtRaw(v){ return SYM[cur]+(DEC.includes(cur)?v.toFixed(2):v.toLocaleString()); }
@@ -846,8 +846,8 @@ function renderGrid(){
       const stv=out?'out':(typeof stock==='number'?(stock<=5?'low':'ok'):(stock==='unknown'?'low':'ok'));
       const stt=out?'Agotado':(typeof stock==='number'?stock.toLocaleString('en-US')+' en stock':(stock==='unknown'?(window.GTR_STOCK_STATE==='load'?'Verificando…':'Stock por confirmar'):'Disponible'));
       const art=lim
-        ?('<div class="fx-art lim"><img src="'+window.GTR_FF_GEMS+'" alt="Diamantes limitados"><span class="fx-qty">x'+nn.toLocaleString('en-US')+'</span></div>')
-        :('<div class="fx-art unl"><img src="'+window.GTR_FF_CHEST+'" alt="Caja de diamantes"><span class="fx-qty">x'+nn.toLocaleString('en-US')+'</span></div>');
+        ?('<div class="fx-art lim"><img decoding="async" src="'+window.GTR_FF_GEMS+'" alt="Diamantes limitados"><span class="fx-qty">x'+nn.toLocaleString('en-US')+'</span></div>')
+        :('<div class="fx-art unl"><img decoding="async" src="'+window.GTR_FF_CHEST+'" alt="Caja de diamantes"><span class="fx-qty">x'+nn.toLocaleString('en-US')+'</span></div>');
       return `<article class="card ff ff2 ${lim?'lim':'unl'} ${out?'sold':''} ${hot?'hot':''}">
         <div class="fx-top"><span class="fx-brand">FREE FIRE</span>${kind}</div>
         ${art}
@@ -1331,7 +1331,7 @@ document.addEventListener('visibilitychange',function(){if(!document.hidden)gtrR
           <p class="cpm-foot" id="cpmFoot">Ranking automático por recargas · se actualiza al instante al pagar</p>
         </div>
         <div class="cp-head">
-          <div class="cp-mascot"><img data-mascot alt="Mascota de GTROWEN STORE"></div>
+          <div class="cp-mascot"><img decoding="async" data-mascot alt="Mascota de GTROWEN STORE"></div>
           <span class="cp-kicker">🔥 Salón de la fama 🏆</span>
           <h2 class="cp-title">Clientes Prime<br>que más recargan</h2>
           <p class="cp-sub">Hall of fame · quienes más han recargado en la historia de la tienda</p>
@@ -1674,7 +1674,7 @@ document.addEventListener('visibilitychange',function(){if(!document.hidden)gtrR
   </style>
   <div class="wl-card">
     <button type="button" class="wl-x" id="wlX" aria-label="Cerrar">✕</button>
-    <div class="wl-mascot"><img data-mascot alt="Mascota de GTROWEN STORE"></div><span class="wl-bubble">Qué bueno verte por aquí</span>
+    <div class="wl-mascot"><img decoding="async" data-mascot alt="Mascota de GTROWEN STORE"></div><span class="wl-bubble">Qué bueno verte por aquí</span>
     <h2 id="wlTitle">Bienvenido a <b>GTROWEN STORE</b></h2>
     <p class="wl-sub">Recargas de Free Fire, juegos y streaming. Entrega rápida y atención por WhatsApp.</p>
     <ul class="wl-perks"><li><i>⚡</i>Entrega en minutos</li><li><i>💎</i>5 recargas = 541 💎 gratis</li><li><i>🎄</i>Ofertas de temporada</li></ul><div class="wl-list">
@@ -2001,7 +2001,7 @@ body{background-color:var(--bg);background-image:radial-gradient(900px 520px at 
 .gtev{border-color:rgba(255,200,70,.4)}
 
 /* Prime 8 en lugar del diamante */
-.hero-card::after{background:url(/gtr-img-16.png) center/contain no-repeat!important;width:120px;height:120px;right:20px;top:14px;
+.hero-card::after{background:url(/gtr-img-16.webp) center/contain no-repeat!important;width:120px;height:120px;right:20px;top:14px;
   filter:drop-shadow(0 0 20px rgba(255,190,60,.55)) drop-shadow(0 8px 16px rgba(0,0,0,.55))}
 @media(max-width:520px){.hero-card::after{width:88px;height:88px;right:12px;top:12px}.pill{max-width:calc(100% - 104px)}}
 
@@ -2081,7 +2081,7 @@ var HOME_LOGOS={};
       tiles.push({n:sv[0],q:sv[1],ic:m[0][5],c:m[0][6],price:fmtRaw(min)});
     });
     function t(x,dup){
-      var ico=HOME_LOGOS[x.n]?'<img src="'+HOME_LOGOS[x.n]+'" alt="">':'<i class="'+x.ic+'"></i>';
+      var ico=HOME_LOGOS[x.n]?'<img decoding="async" src="'+HOME_LOGOS[x.n]+'" alt="">':'<i class="'+x.ic+'"></i>';
       return '<button type="button" class="svc-t" style="--c:'+x.c+'" data-q="'+x.q+'"'+(dup?' aria-hidden="true" tabindex="-1"':'')+'><span class="svc-i">'+ico+'</span><b>'+x.n+'</b><small>desde <em>'+x.price+'</em></small></button>';
     }
     function row(list,cls){ return '<div class="svc-row '+cls+'">'+list.map(function(x){return t(x,false);}).join('')+list.map(function(x){return t(x,true);}).join('')+'</div>'; }
@@ -2196,7 +2196,7 @@ var HOME_LOGOS={};
 <div class="win-ov" id="winOv" role="dialog" aria-modal="true" aria-label="Felicidades">
   <div class="win-conf" id="winConf"></div>
   <div class="win-card">
-    <div class="loy-goat"><span class="ring"></span><span class="ring b"></span><img id="winImg" alt=""></div>
+    <div class="loy-goat"><span class="ring"></span><span class="ring b"></span><img decoding="async" id="winImg" alt=""></div>
     <h3 id="winT">¡Felicidades!</h3>
     <p id="winP"></p>
     <button type="button" class="loy-b" id="winGo" data-au="claim">Reclamar mis 541 💎</button>
@@ -2245,7 +2245,7 @@ var HOME_LOGOS={};
     bar.className='loy'+(done?' win':'');
     var logo=(document.querySelector('.logo img')||{}).src||'';
     if(done){
-      bar.innerHTML='<div class="loy-goat"><span class="ring"></span><span class="ring b"></span><img src="'+logo+'" alt=""></div><div class="loy-t"><b>🎉 ¡Felicidades, '+esc(st.name||st.key)+'!</b><small>'+(pend?'Ya estamos procesando tu premio. Te avisamos por WhatsApp. 💎':'¡Ya casi está tu premio! Reclama tu '+PREMIO+'.')+'</small><div class="loy-dots">'+dots+'</div></div>'+
+      bar.innerHTML='<div class="loy-goat"><span class="ring"></span><span class="ring b"></span><img decoding="async" src="'+logo+'" alt=""></div><div class="loy-t"><b>🎉 ¡Felicidades, '+esc(st.name||st.key)+'!</b><small>'+(pend?'Ya estamos procesando tu premio. Te avisamos por WhatsApp. 💎':'¡Ya casi está tu premio! Reclama tu '+PREMIO+'.')+'</small><div class="loy-dots">'+dots+'</div></div>'+
         (pend?'':'<button class="loy-b" type="button" data-au="claim">Reclamar Spotify 🎵</button>')+'<button class="loy-x" type="button" data-au="out">Cerrar sesión</button>';
       if(!pend&&lsg('gtr_win_'+st.key)!==String(eff)){ lss('gtr_win_'+st.key,String(eff)); setTimeout(function(){winShow('ready')},400); }
       return;
@@ -4247,7 +4247,7 @@ html.gx-lite .fx-gem,html.gx-lite .fx-gem .sp{animation:none!important}
     opts.forEach(function(o,i){
       var m=META[o.value]||{t:o.text.replace(/^[^\wÁ-ú]+/,''),i:'fa-solid fa-credit-card',bg:'linear-gradient(135deg,#475569,#1e293b)',s:''};
       var b=document.createElement('button');b.type='button';b.setAttribute('data-v',o.value);b.style.setProperty('--i',i);
-      var ic=m.f&&typeof flag==='function'?'<span class="pi"><img alt="" src="'+flag(m.f)+'"></span>':'<span class="pi" style="background:'+m.bg+'"><i class="'+m.i+'"></i></span>';
+      var ic=m.f&&typeof flag==='function'?'<span class="pi"><img decoding="async" alt="" src="'+flag(m.f)+'"></span>':'<span class="pi" style="background:'+m.bg+'"><i class="'+m.i+'"></i></span>';
       b.innerHTML=ic+'<span><b>'+m.t+'</b><small>'+m.s+'</small></span><span class="pc"><i class="fa-solid fa-check"></i></span>';
       b.addEventListener('click',function(){ sel.value=o.value; sel.dispatchEvent(new Event('change',{bubbles:true})); paint(); });
       box.appendChild(b);
@@ -5030,6 +5030,8 @@ html body .loy-b{
 #smmM .sm-go[disabled]{opacity:.5;cursor:default}
 #smmM .sm-msg{margin-top:10px;font-size:.88rem;min-height:1em}
 #smmM .sm-msg.err{color:#ff8a8a}#smmM .sm-msg.ok{color:#62e6a5}
+#smmM .sm-box.sm-off>:not(.sm-h):not(#smmKd){display:none}
+#smmM .sm-box.sm-off #smmKd{display:block;padding:18px 4px 24px;font-size:1rem;text-align:center}
 #smmM small{color:var(--muted,#b8a998);display:block;margin-top:8px;line-height:1.4}
 </style>
 <div id="smmM" role="dialog" aria-modal="true" aria-label="Redes sociales"><div class="sm-box">
@@ -5061,7 +5063,8 @@ html body .loy-b{
   function msg(t,c){var m=$('smmMsg');m.textContent=t||'';m.className='sm-msg'+(c?' '+c:'')}
   function price(){var it=cur();if(!it||!S.qty)return 0;return Math.max(10,Math.ceil(it.unit*S.qty*100-1e-6))/100}
   function draw(){
-    if(!items||!items.length){$('smmPl').innerHTML='';$('smmKd').innerHTML='<small>Este servicio estará disponible muy pronto.</small>';$('smmQp').innerHTML='';$('smmGo').disabled=true;return}
+    document.querySelector('#smmM .sm-box').classList.toggle('sm-off',!items||!items.length);
+    if(!items||!items.length){$('smmPl').innerHTML='';$('smmKd').innerHTML='<b>Muy pronto</b><br><small>Estamos activando seguidores, likes y vistas de TikTok e Instagram.</small>';$('smmQp').innerHTML='';$('smmGo').disabled=true;return}
     var pls=[];items.forEach(function(x){if(pls.indexOf(x.platform)<0)pls.push(x.platform)});
     if(pls.indexOf(S.pl)<0)S.pl=pls[0];
     $('smmPl').innerHTML=pls.map(function(p){return '<button type="button" class="sm-chip'+(p===S.pl?' sel':'')+'" data-pl="'+p+'"><i class="fa-brands fa-'+p+'"></i> '+(p==='tiktok'?'TikTok':'Instagram')+'</button>'}).join('');
