@@ -1076,6 +1076,7 @@ async function gtrRefreshCentralStock(){
         else v=typeof s.stock==='number'?s.stock:(s.in_stock?null:0);
         if(p[4]!==v){p[4]=v;changed=true}
       });
+      (function(){var miss=new Set(Array.isArray(j.missing)?j.missing:[]);P.forEach(function(p){if(miss.has(p[8])){if(p[4]!==0){p[4]=0;p._miss=1;changed=true}}else if(p._miss){p[4]=null;p._miss=0;changed=true}})})();
       [['L1','U1'],['L6','U2'],['L2','U3'],['L3','U4'],['L4','U5'],['L5','U6']].forEach(function(x){
         const u=P.find(p=>p[8]===x[1]),l=P.find(p=>p[8]===x[0]);
         if(u&&l&&l[4]!==u[4]){l[4]=u[4];changed=true}
