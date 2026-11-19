@@ -265,6 +265,7 @@ body.gtr-tidio-open #tidio-chat{opacity:1!important;pointer-events:auto!importan
 <script id="gtr-catlist">
 (function(){
   var MAP=[
+    {k:'tiktok',name:'TIKTOK',sub:'Seguidores · Likes · Vistas',logo:'TT',bg:'linear-gradient(135deg,#25f4ee,#fe2c55)',img:'data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2096%2096%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%2325F4EE%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FE2C55%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D%2296%22%20height%3D%2296%22%20rx%3D%2222%22%20fill%3D%22%230a0a0a%22/%3E%3Cpath%20fill%3D%22url%28%23g%29%22%20d%3D%22M62%2028c3.2%202.7%207.2%204.6%2011.6%205.2v10.2c-4.1-.2-7.9-1.4-11.2-3.4v18.6c0%2012.2-9.9%2022.1-22.1%2022.1S18.2%2071%2018.2%2058.6%2028.1%2036.5%2040.3%2036.5c1.4%200%202.8.2%204.1.5v10.8a11.3%2011.3%200%2000-4.1-.8c-6.2%200-11.2%205-11.2%2011.2s5%2011.2%2011.2%2011.2%2011.2-5%2011.2-11.2V20h10.5c0%202.8.3%205.5%201%208z%22/%3E%3C/svg%3E'},
     {k:'ff-diamonds',name:'FREE FIRE',sub:'Diamantes',logo:'FF',bg:'linear-gradient(135deg,#ff8a2a,#e63b2e)',img:'/gtr-img-01.jpg'},
     {k:'ff-passes',name:'FF PASES',sub:'Tokens y pases',logo:'PASS',bg:'linear-gradient(135deg,#ffb347,#c2410c)',img:'/gtr-img-02.jpg'},
     {k:'streaming',name:'STREAMING',sub:'Netflix, Disney+, Max',logo:'TV',bg:'linear-gradient(135deg,#e50914,#7f0000)',img:'/gtr-img-03.jpg'},
@@ -552,6 +553,8 @@ const PRECIOS_USD = {
  MLW1:[2.36,2.70], MLW2:[3.90,4.30], MLW3:[5.36,5.80], MLW4:[6.78,7.20], MLW5:[8.23,8.70], MLBR:[2.32,2.70], MLID:[2.78,3.20], MLMY:[3.06,3.50], MLPH:[2.72,3.10], MLRU:[2.97,3.40], MLSG:[2.99,3.40], MLTR:[2.58,3.00], MLUS:[2.72,3.10], MLEX:[2.84,3.20], MLSPECIAL:[3.02,3.40], LORDM:[22.56,25], LORDW:[2.97,3.40], LINEAGE:[14.51,16],
  CI88:[2.0897,3.0897],  CI460:[6.5091,7.5091],  CI960:[12.0183,13.0183],  CI2600:[28.5760,29.5760],  CI5400:[56.1620,57.1620],  CI11200:[110.2343,111.2343],  CI22400:[221.6683,222.6683],  CI33600:[332.0125,333.0125],  CI56000:[552.6909,553.6909],  NS300:[1.2388,2.9888],  NS1580:[5.9441,6.9441],  NS3850:[12.8658,13.8658],  NS10230:[31.6534,32.6534],  NS16800:[50.4410,51.4410],  NS35000:[99.8820,100.8820],  GI60:[1.2388,2.9888],  GI300:[5.9340,6.9340],  GI980:[15.7819,16.7819],  GI1980:[30.5637,31.5637],  GI3280:[50.2695,51.2695],  GI6480:[99.5289,100.5289],  GIWELKIN:[5.9340,6.9340],  PUC60:[1.1463,2.8963],  PUC325:[5.5040,6.5040],  PUC660:[10.0196,11.0196],  PUC1800:[24.0371,25.0371],  PUC3850:[46.1228,47.1228],  PUC8100:[90.0513,91.0513],  PWW60:[1.1362,2.8862],  PWW325:[5.5521,6.5521],  PWW660:[10.1042,11.1042],  PWW1800:[23.7705,24.7705],  PWW3850:[46.6015,47.6015],  PWW8100:[92.2130,93.2130],  P_ELITE100:[11.2422,12.2422],  P_ELITE50:[6.1261,7.1261],  P_ELITEPLUS:[26.6408,27.6408],  P_FIRST:[1.0859,2.8359],  P_MYTHIC:[5.2298,6.2298],  P_PRIME1:[1.0859,2.8359],  P_PRIME3:[3.5379,4.5379],  P_PRIME6:[6.0758,7.0758],  P_PRIME12:[11.1516,12.1516],  P_PRIMEPLUS1:[9.4596,10.4596],  P_PRIMEPLUS3:[26.3789,27.3789],  P_PRIMEPLUS6:[51.7578,52.7578],  P_PRIMEPLUS12:[102.5258,103.5258],  P_FIREARM:[3.5379,4.5379],  P_WEEKLY1:[1.0960,2.8460],  P_WEEKLY2:[3.5580,4.5580],  P_WEEKLYMYTHIC:[3.5580,4.5580],
  SP1:[10,16], SP2:[15,24], CC1:[10,16], CR1:[6,9],
+ TT_F500:[11,16], TT_F1K:[20,28], TT_F2K:[38,52], TT_F5K:[45,65], TT_F10K:[85,120],
+ TT_L1K:[2.5,4], TT_L5K:[11,16], TT_V10K:[2,3.5], TT_V50K:[8,12], TT_V100K:[15,22],
 };
 
 const TIER = {};
@@ -602,6 +605,19 @@ const P=[
  ['streaming','Diseño Pro','Canva Pro Mes','Plan individual · 1 mes',14,'fa-solid fa-pen-nib','#00c4cc','streaming','F','Canva Pro (1 Mes)'],
  ['streaming','Apple Original','Apple TV+','Pantalla · 2 meses',8,'fa-brands fa-apple','#e5e7eb','streaming','K','Apple TV+ Pantalla x 2 Meses'],
  ['streaming','IA avanzada','ChatGPT Plus','Individual · 1 mes',2,'fa-solid fa-robot','#10a37f','streaming','L','ChatGPT Plus Individual (1 Mes)'],
+
+
+ /* —— TikTok SMM (SMMYFIT · HQ) —— */
+ ['tiktok','🎵 TikTok Seguidores','500 Seguidores','HQ Real · Non Drop · 0% drop · Refill 365 días · Inicio 0–2 h · Entrega ~1–24 h',null,'fa-brands fa-tiktok','#fe2c55','tt','TT_F500','TikTok 500 Seguidores HQ Real Non-Drop Refill 365d',1],
+ ['tiktok','🎵 TikTok Seguidores','1,000 Seguidores','HQ Real · Non Drop · 0% drop · Refill 365 días · Inicio 0–2 h · Entrega ~1–48 h',null,'fa-brands fa-tiktok','#fe2c55','tt','TT_F1K','TikTok 1,000 Seguidores HQ Real Non-Drop Refill 365d',1],
+ ['tiktok','🎵 TikTok Seguidores','2,000 Seguidores','HQ Real · Non Drop · 0% drop · Refill 365 días · Inicio 0–2 h · Entrega ~1–72 h',null,'fa-brands fa-tiktok','#fe2c55','tt','TT_F2K','TikTok 2,000 Seguidores HQ Real Non-Drop Refill 365d',1],
+ ['tiktok','🎵 TikTok Seguidores','5,000 Seguidores','HQ · No Drop · Refill 365 días · Inicio 0–2 h · Entrega ~1–5 días',null,'fa-brands fa-tiktok','#fe2c55','tt','TT_F5K','TikTok 5,000 Seguidores HQ No-Drop Refill 365d',1],
+ ['tiktok','🎵 TikTok Seguidores','10,000 Seguidores','HQ · No Drop · Refill 365 días · Inicio 0–2 h · Entrega ~2–7 días',null,'fa-brands fa-tiktok','#fe2c55','tt','TT_F10K','TikTok 10,000 Seguidores HQ No-Drop Refill 365d',1],
+ ['tiktok','❤️ TikTok Likes','1,000 Likes','Real likes · 0% drop · Lifetime refill · Inicio instantáneo · Entrega ~0–12 h',null,'fa-solid fa-heart','#fe2c55','tt','TT_L1K','TikTok 1,000 Likes Real 0% Drop Lifetime',1],
+ ['tiktok','❤️ TikTok Likes','5,000 Likes','Real likes · 0% drop · Lifetime refill · Inicio instantáneo · Entrega ~0–24 h',null,'fa-solid fa-heart','#fe2c55','tt','TT_L5K','TikTok 5,000 Likes Real 0% Drop Lifetime',1],
+ ['tiktok','▶️ TikTok Vistas','10,000 Vistas','HQ · 0% drop · Lifetime · Inicio 0–1 h · Entrega ~0–12 h',null,'fa-solid fa-eye','#25f4ee','tt','TT_V10K','TikTok 10,000 Vistas HQ Lifetime',1],
+ ['tiktok','▶️ TikTok Vistas','50,000 Vistas','HQ · 0% drop · Lifetime · Inicio 0–1 h · Entrega ~0–24 h',null,'fa-solid fa-eye','#25f4ee','tt','TT_V50K','TikTok 50,000 Vistas HQ Lifetime',1],
+ ['tiktok','▶️ TikTok Vistas','100,000 Vistas','HQ · 0% drop · Lifetime · Inicio 0–1 h · Entrega ~1–48 h',null,'fa-solid fa-eye','#25f4ee','tt','TT_V100K','TikTok 100,000 Vistas HQ Lifetime',1],
 
  ['ff-lim','⚡ Oferta flash FF','110 Diamantes','100 + 10%',null,'fa-solid fa-gem','#ff7a00','ff','L1','110 Diamantes FF (Limitado)',1],
  ['ff-lim','⚡ Oferta flash FF','341 Diamantes','Free Fire · limitado',null,'fa-solid fa-gem','#ff7a00','ff','L6','341 Diamantes FF (Limitado)',1],
@@ -743,12 +759,12 @@ const P=[
 P.forEach(p=>{ const [a,b]=TIER[p[8]].split('|'); p.price=a.split(',').map(Number); p.off=b.split(',').map(Number); });
 if(OFERTA_ON){ const o=P.find(p=>p[8]==='U6'); if(o){ o[1]='🔥 OFERTA · solo hoy y mañana'; o[9]='6,160 Diamantes FF (Ilimitado) - OFERTA'; } }
 
-const CATS=[['ff-diamonds','Diamantes Free Fire'],['streaming','Streaming y apps'],['ff-passes','FF Pases y Tokens'],['bs','Blood Strike Oro'],['ff-id','Free Fire Indonesia'],['bs-x','Blood Strike PH/MENA'],['cod','Call of Duty Mobile'],['fc','FC Mobile'],['clash','Clash Royale'],['ml','Mobile Legends'],['lords','Lords Mobile'],['lineage','Lineage W'],['pubg','PUBG Mobile'],['newstate','New State Mobile'],['genshin','Genshin Impact'],['cod-in','Call of Duty Mobile India'],['all','Todo el catálogo']];
+const CATS=[['tiktok','TikTok Seguidores'],['ff-diamonds','Diamantes Free Fire'],['streaming','Streaming y apps'],['ff-passes','FF Pases y Tokens'],['bs','Blood Strike Oro'],['ff-id','Free Fire Indonesia'],['bs-x','Blood Strike PH/MENA'],['cod','Call of Duty Mobile'],['fc','FC Mobile'],['clash','Clash Royale'],['ml','Mobile Legends'],['lords','Lords Mobile'],['lineage','Lineage W'],['pubg','PUBG Mobile'],['newstate','New State Mobile'],['genshin','Genshin Impact'],['cod-in','Call of Duty Mobile India'],['all','Todo el catálogo']];
 const SYM={CRC:'₡',USD:'$',MXN:'$',COP:'$',ARS:'$',PEN:'S/ ',DOP:'RD$ ',BOB:'Bs. ',GTQ:'Q ',NIO:'C$ ',VES:'Bs.S '};
 const DEC=['USD','PEN','BOB','GTQ'];
 const LABEL={cod:['ID de jugador (Call of Duty Mobile)','Ej: 6890123456789'],fc:['ID de jugador (FC Mobile)','Ej: 1234567890'],ff:['ID de jugador (Free Fire)','Ej: 3925829005'],bs:['ID de jugador (Blood Strike)','Ej: 50819301'],
   cr:['Tag de jugador (Clash Royale)','Ej: #2PP0LL8Y'], ml:['ID de jugador (Mobile Legends)','Ej: 123456789'], lords:['ID de jugador (Lords Mobile)','Ej: 123456789'], lineage:['ID de jugador (Lineage W)','Ej: 123456789'], pubg:['ID de jugador (PUBG Mobile)','Ej: 5123456789'], newstate:['ID de cuenta (New State)','Ej: 123456789'], genshin:['ID de jugador (Genshin Impact)','Ej: 123456789'], codin:['ID de jugador (CoD Mobile India)','Ej: 123456789'],
-  social:['Enlace del perfil o video 🔗','Ej: https://instagram.com/tucuenta'],streaming:['Correo o detalle para la cuenta ✉️','Ej: tucorreo@gmail.com']};
+  tt:['Link de TikTok (perfil o video) 🔗','Ej: https://www.tiktok.com/@usuario'],social:['Enlace del perfil o video 🔗','Ej: https://instagram.com/tucuenta'],streaming:['Correo o detalle para la cuenta ✉️','Ej: tucorreo@gmail.com']};
 
 let cur='USD', cat='ff-diamonds', cart=[];
 const $=id=>document.getElementById(id);
@@ -1005,7 +1021,7 @@ document.querySelectorAll('[data-nav]').forEach(function(btn){
 });
 
 
-window.GTR_TARGET_PAYLOAD=function(p,id,server){const code=p[8];if(code==='S1'||code==='S3')return {game_user_id:id};if(p[7]==='ml'){const zoneKey=['MLW1','MLW2','MLW3','MLW4','MLW5','MLID','MLRU','MLTR'].includes(code);return zoneKey?{game_user_id:id,game_zone_id:server}:{player_id:id,server_id:server};}if(p[7]==='lineage')return {game_user_id:id,game_zone_id:server};if(p[7]==='pubg')return {game_user_id:id};if(p[7]==='newstate')return {account_id:id};if(p[7]==='genshin')return {player_id:id,server:server};return {player_id:id};};
+window.GTR_TARGET_PAYLOAD=function(p,id,server){const code=p[8];if(p[7]==='tt'||String(code||'').indexOf('TT_')===0){var u=String(id||'').trim();if(/^@[\w._]{2,30}$/i.test(u))u='https://www.tiktok.com/'+u;else if(u&&!/^https?:\/\//i.test(u))u='https://'+u;return {url:u,player_id:u};}if(code==='S1'||code==='S3')return {game_user_id:id};if(p[7]==='ml'){const zoneKey=['MLW1','MLW2','MLW3','MLW4','MLW5','MLID','MLRU','MLTR'].includes(code);return zoneKey?{game_user_id:id,game_zone_id:server}:{player_id:id,server_id:server};}if(p[7]==='lineage')return {game_user_id:id,game_zone_id:server};if(p[7]==='pubg')return {game_user_id:id};if(p[7]==='newstate')return {account_id:id};if(p[7]==='genshin')return {player_id:id,server:server};return {player_id:id};};
 $('sendWa').addEventListener('click',async()=>{
   const custom=$('pCustom').value.replace(/\s+/g,''), m=$('pMethod'), isFF=window.GTR_CART_TYPE==='ff';
   if(!custom) return alert(isFF?'Escribe tu ID de Free Fire.':'Por favor completa el campo requerido.');
