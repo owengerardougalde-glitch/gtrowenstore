@@ -817,7 +817,7 @@ function renderGrid(){
     if(window.GTR_DOM_CHECKED===true){
       const available=window.GTR_DOM_CODES instanceof Set ? window.GTR_DOM_CODES : new Set();
       list=ffPairs.map(([limited,unlimited,diamonds])=>{
-        const isLimited=available.has(limited);
+        const isLimited=available.has(limited)&&P.some(x=>x[8]===limited);
         const code=isLimited?limited:unlimited;
         const n=P.findIndex(p=>p[8]===code);
         if(n<0) return null;
@@ -2917,7 +2917,7 @@ input::placeholder,textarea::placeholder{color:#b9a8f0!important}
   function wf(path,body,tok){
     return fetch(WAL+path,{method:body?'POST':'GET',headers:Object.assign({'Content-Type':'application/json'},tok?{Authorization:'Bearer '+tok}:{}),body:body?JSON.stringify(body):undefined})
       .then(function(r){return r.json().catch(function(){return {}}).then(function(j){return {s:r.status,j:j}})})
-      .catch(function(){return {s:0,j:{ok:false,message:'No hay conexión con el servicio de saldo. Intenta de nuevo.'}}});
+      .catch(function(){return {s:0,j:{ok:false,message:body?'No pudimos confirmar la respuesta. Tu pedido puede estar en proceso: revisa tu historial y tu saldo antes de volver a pagar.':'No hay conexión con el servicio de saldo. Intenta de nuevo.'}}});
   }
   var W={tok:'',u:'',bal:null,codes:null};
   try{ var sv=JSON.parse(lsg('gtr_wt')||'null'); if(sv&&sv.t){ W.tok=sv.t; W.u=sv.u; } }catch(e){}
