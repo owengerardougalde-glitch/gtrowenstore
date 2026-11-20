@@ -2158,8 +2158,8 @@ var HOME_LOGOS={};
     <input id="auU" type="text" placeholder="Usuario" autocomplete="username" maxlength="20">
     <div id="auFFbox">
       <input id="auEm" type="email" placeholder="Tu correo electrónico (te llegan tus compras y tu PIN)" autocomplete="email" maxlength="80">
-      <input id="auFF" type="text" inputmode="numeric" placeholder="Tu ID de Free Fire" autocomplete="off" maxlength="15">
-      <input id="auFN" type="text" placeholder="Tu nombre en Free Fire (como sale en el juego)" autocomplete="off" maxlength="30">
+      <input id="auFF" style="display:none" type="text" inputmode="numeric" placeholder="Tu ID de Free Fire" autocomplete="off" maxlength="15">
+      <input id="auFN" style="display:none" type="text" placeholder="Tu nombre en Free Fire (como sale en el juego)" autocomplete="off" maxlength="30">
       <div class="au-msg ok" id="auFFmsg"></div>
     </div>
     <input id="auP" type="password" placeholder="Contraseña (mín. 4)" autocomplete="current-password" maxlength="40">
@@ -2345,8 +2345,6 @@ var HOME_LOGOS={};
     var em=($('auEm').value||'').trim().toLowerCase();
     if(tab==='new'){
       if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)){ bad('Escribe un correo electrónico válido, ahí te llegan tus compras y tu PIN.'); return; }
-      if(!/^\d{6,15}$/.test(ff)){ bad('Escribe tu ID de Free Fire (solo números).'); return; }
-      if(!ffn){ bad('Escribe tu nombre en Free Fire, como sale en el juego.'); return; }
     }
     $('auGo').disabled=true;
     var fail=function(){ bad('No pudimos conectar. Revisa tu internet e intenta de nuevo.'); };
