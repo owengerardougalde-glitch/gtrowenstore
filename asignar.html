@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Asignar servicios</title>
+<style>
+:root{
+  --bg:#f5f6f4; --card:#ffffff; --ink:#16201c; --muted:#5d6b64; --line:#d9dfdb;
+  --accent:#0d6b4f; --accent-ink:#ffffff; --ok:#0d6b4f; --bad:#b3261e;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#101613; --card:#18211c; --ink:#e8efe9; --muted:#9baba2; --line:#2a3630;
+    --accent:#3fcf9c; --accent-ink:#06150f; --ok:#3fcf9c; --bad:#ff8a80;
+    color-scheme:dark;
+  }
+}
+*,*::before,*::after{box-sizing:inherit}
+html{height:100%}
+body{
+  margin:0; min-height:100%; background:var(--bg); color:var(--ink);
+  font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+main{max-width:560px; margin:0 auto; padding:20px 16px 40px}
+h1{font-size:22px; margin:0 0 4px}
+p.lead{margin:0 0 20px; color:var(--muted)}
+label{display:block; font-weight:600; margin-bottom:6px}
+input{
+  width:100%; padding:12px; font:inherit; color:var(--ink); background:var(--card);
+  border:1px solid var(--line); border-radius:8px;
+}
+input:focus-visible,button:focus-visible{outline:3px solid var(--accent); outline-offset:2px}
+button{
+  font:inherit; font-weight:600; padding:12px 16px; border-radius:8px; border:0;
+  background:var(--accent); color:var(--accent-ink); cursor:pointer;
+}
+button.ghost{background:transparent; color:var(--ink); border:1px solid var(--line)}
+button:disabled{opacity:.55}
+.token{margin-bottom:16px}
+.row{
+  background:var(--card); border:1px solid var(--line); border-radius:12px;
+  padding:12px; margin-bottom:10px;
+}
+.row h2{font-size:16px; margin:0 0 8px}
+.inline{display:flex; gap:8px}
+.inline input{flex:1; min-width:0}
+.msg{min-height:1.2em; margin-top:6px; font-size:14px; color:var(--muted)}
+.msg.ok{color:var(--ok)} .msg.bad{color:var(--bad)}
+.actions{display:flex; gap:8px; margin:16px 0}
+.actions button{flex:1}
+#estado{
+  background:var(--card); border:1px solid var(--line); border-radius:12px;
+  padding:12px; font-size:14px; margin-top:12px; overflow-x:auto;
+}
+details{margin-top:8px}
+pre{margin:8px 0 0; white-space:pre-wrap; word-break:break-word; font-size:12px}
+</style>
+</head>
+<body>
+<main>
+  <h1>Asignar servicios de redes</h1>
+  <p class="lead">Escribe tu clave de administrador, revisa los números y toca Guardar. La clave no se guarda en esta página.</p>
+
+  <div class="token">
+    <label for="tok">Clave de administrador</label>
+    <input id="tok" type="password" autocomplete="off" autocapitalize="off" spellcheck="false">
+  </div>
+
+  <div class="actions">
+    <button class="ghost" id="chk">Revisar conexión</button>
+    <button id="all">Guardar los 6</button>
+  </div>
+
+  <div id="rows"></div>
+  <div id="estado" hidden></div>
+</main>
+
+<script>
+(function(){
+  var API = 'https://gtr-worker.anonimoustugfa.workers.dev';
+  var ITEMS = [
+    {key:'TTF', label:'Seguidores de TikTok', id:13236},
+    {key:'TTL', label:'Likes de TikTok', id:17778},
+    {key:'TTV', label:'Vistas de TikTok', id:12974},
+    {key:'IGF', label:'Seguidores de Instagram', id:16344},
+    {key:'IGL', label:'Likes de Instagram', id:18104},
+    {key:'IGV', label:'Vistas de Instagram', id:5905}
+  ];
+  var tok = document.getElementById('tok');
+  var rows = document.getElementById('rows');
+  var estado = document.getElementById('estado');
+
+  function call(path, body){
+    return fetch(API + path, {
+      method:'POST',
+      headers:{'Content-Type':'application/json','Authorization':'Bearer ' + tok.value.trim()},
+      body:JSON.stringify(body || {})
+    }).then(function(r){
+      return r.json().catch(function(){ return {ok:false, message:'Respuesta inesperada (' + r.status + ')'}; });
+    });
+  }
+
+  function setMsg(el, text, kind){
+    el.textContent = text;
+    el.className = 'msg' + (kind ? ' ' + kind : '');
+  }
+
+  ITEMS.forEach(function(it){
+    var d = document.createElement('div');
+    d.className = 'row';
+    d.innerHTML =
+      '<h2></h2>' +
+      '<div class="inline"><input inputmode="numeric" pattern="[0-9]*" aria-label="Número de servicio"><button>Guardar</button></div>' +
+      '<div class="msg" role="status"></div>';
+    d.querySelector('h2').textContent = it.label;
+    var inp = d.querySelector('input');
+    inp.value = it.id;
+    it.input = inp;
+    it.btn = d.querySelector('button');
+    it.msg = d.querySelector('.msg');
+    it.btn.addEventListener('click', function(){ return save(it); });
+    rows.appendChild(d);
+  });
+
+  function save(it){
+    var n = parseInt(it.input.value, 10);
+    if(!tok.value.trim()){ setMsg(it.msg, 'Escribe primero la clave de administrador.', 'bad'); return Promise.resolve(false); }
+    if(!n){ setMsg(it.msg, 'Escribe un número de servicio válido.', 'bad'); return Promise.resolve(false); }
+    it.btn.disabled = true;
+    setMsg(it.msg, 'Guardando…');
+    return call('/a/smm-pin', {key:it.key, service:n}).then(function(r){
+      it.btn.disabled = false;
+      if(r && r.ok){ setMsg(it.msg, 'Guardado.', 'ok'); return true; }
+      setMsg(it.msg, (r && r.message) || (r && r.error) || 'No se pudo guardar.', 'bad');
+      return false;
+    }).catch(function(){
+      it.btn.disabled = false;
+      setMsg(it.msg, 'Sin conexión con el servidor. Intenta de nuevo.', 'bad');
+      return false;
+    });
+  }
+
+  document.getElementById('all').addEventListener('click', function(){
+    var b = this; b.disabled = true;
+    var p = Promise.resolve();
+    ITEMS.forEach(function(it){ p = p.then(function(){ return save(it); }); });
+    p.then(function(){ b.disabled = false; });
+  });
+
+  document.getElementById('chk').addEventListener('click', function(){
+    var b = this;
+    if(!tok.value.trim()){ estado.hidden = false; estado.textContent = 'Escribe primero la clave de administrador.'; return; }
+    b.disabled = true; estado.hidden = false; estado.textContent = 'Revisando…';
+    call('/a/smm-info', {}).then(function(r){
+      b.disabled = false;
+      if(!r || r.ok === false){
+        estado.textContent = (r && (r.message || r.error)) || 'No se pudo revisar.';
+        return;
+      }
+      var lines = [];
+      lines.push('Clave del proveedor cargada: ' + (r.key_set ? 'sí' : 'no'));
+      lines.push('Conexión con el proveedor: ' + (r.provider_ok ? 'correcta' : 'sin respuesta'));
+      if(r.balance !== null && r.balance !== undefined) lines.push('Saldo: ' + r.balance + (r.currency ? ' ' + r.currency : ''));
+      estado.textContent = lines.join('\n');
+      estado.style.whiteSpace = 'pre-line';
+      var det = document.createElement('details');
+      var sm = document.createElement('summary'); sm.textContent = 'Ver detalle por producto';
+      var pre = document.createElement('pre'); pre.textContent = JSON.stringify(r.products || r, null, 1);
+      det.appendChild(sm); det.appendChild(pre); estado.appendChild(det);
+    }).catch(function(){
+      b.disabled = false;
+      estado.textContent = 'Sin conexión con el servidor. Intenta de nuevo.';
+    });
+  });
+})();
+</script>
+</body>
+</html>
