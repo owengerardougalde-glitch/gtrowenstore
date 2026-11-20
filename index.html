@@ -2157,6 +2157,7 @@ var HOME_LOGOS={};
     <div class="au-tabs"><button type="button" data-t="new" class="on">Soy nuevo</button><button type="button" data-t="in">Ya tengo usuario</button></div>
     <input id="auU" type="text" placeholder="Usuario" autocomplete="username" maxlength="20">
     <div id="auFFbox">
+      <input id="auEm" type="email" placeholder="Tu correo electrónico (te llegan tus compras y tu PIN)" autocomplete="email" maxlength="80">
       <input id="auFF" type="text" inputmode="numeric" placeholder="Tu ID de Free Fire" autocomplete="off" maxlength="15">
       <input id="auFN" type="text" placeholder="Tu nombre en Free Fire (como sale en el juego)" autocomplete="off" maxlength="30">
       <div class="au-msg ok" id="auFFmsg"></div>
@@ -2341,7 +2342,9 @@ var HOME_LOGOS={};
     if(!/^[A-Za-z0-9_\-]{3,20}$/.test(u)){ bad('El usuario debe tener de 3 a 20 caracteres: solo letras, números, guion o guion bajo.'); return; }
     if(p.length<4){ bad('La contraseña debe tener al menos 4 caracteres.'); return; }
     var ff=$('auFF').value.replace(/\D/g,''), ffn=$('auFN').value.trim().slice(0,30);
+    var em=($('auEm').value||'').trim().toLowerCase();
     if(tab==='new'){
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)){ bad('Escribe un correo electrónico válido, ahí te llegan tus compras y tu PIN.'); return; }
       if(!/^\d{6,15}$/.test(ff)){ bad('Escribe tu ID de Free Fire (solo números).'); return; }
       if(!ffn){ bad('Escribe tu nombre en Free Fire, como sale en el juego.'); return; }
     }
@@ -2352,8 +2355,8 @@ var HOME_LOGOS={};
         if(ex){ bad('Ese usuario ya existe. Toca "Ya tengo usuario" o elige otro nombre.'); return; }
         var salt=Math.random().toString(36).slice(2)+Date.now().toString(36);
         return hash(salt,p).then(function(h){
-          return api('claves/'+key,'PUT',{salt:salt,h:h}).then(function(){ return api('perfiles/'+key,'PUT',{name:u,t:Date.now(),ff:ff,ffn:ffn}); }).then(function(){
-            setSes(key,u); open(false); $('auP').value=''; $('auFF').value=''; $('auFN').value=''; $('auFFmsg').textContent=''; $('auGo').disabled=false; refresh(); toast('¡Listo! Usuario creado: '+u);
+          return api('claves/'+key,'PUT',{salt:salt,h:h}).then(function(){ return api('perfiles/'+key,'PUT',{name:u,t:Date.now(),ff:ff,ffn:ffn}).then(function(){ try{ fetch('https://gtr-worker.anonimoustugfa.workers.dev/w/email',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({u:key,email:em})}).catch(function(){}); }catch(_){} }); }).then(function(){
+            setSes(key,u); open(false); $('auP').value=''; $('auFF').value=''; $('auFN').value=''; $('auEm').value=''; $('auFFmsg').textContent=''; $('auGo').disabled=false; refresh(); toast('¡Listo! Usuario creado: '+u);
           });
         });
       }).catch(function(err){ if(err&&err.status===401||err&&err.status===403) bad('Ese usuario ya existe. Elige otro nombre.'); else fail(); });
