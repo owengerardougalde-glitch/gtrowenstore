@@ -5078,7 +5078,7 @@ html body .loy-b{
 </div></div>
 <script id="gtr-smm-js">
 (function(){
-  var W=window.GTR_WALLET; var WAL='https://gtr-recargas-america.anonimoustugfa.workers.dev';
+  var W=window.GTR_WALLET; var WAL='https://gtr-worker.anonimoustugfa.workers.dev';
   var $=function(i){return document.getElementById(i)};
   var items=null,S={pl:'tiktok',key:null,qty:0};
   function usd(n){return '$'+Number(n).toFixed(2)}
@@ -5091,7 +5091,7 @@ html body .loy-b{
   function price(){var it=cur();if(!it||!S.qty)return 0;var c=it.unit*S.qty,pr=Math.min(it.pmax||2,Math.max(it.pmin||1,c*((it.mk||1.3)-1)));return Math.max(10,Math.ceil((c+pr)*100-1e-6))/100}
   function draw(){
     document.querySelector('#smmM .sm-box').classList.toggle('sm-off',!items||!items.length);
-    if(!items||!items.length){$('smmPl').innerHTML='';$('smmKd').innerHTML='<b>Muy pronto</b><br><small>Estamos activando seguidores, likes y vistas de TikTok e Instagram.</small>';$('smmQp').innerHTML='';$('smmGo').disabled=true;return}
+    if(!items||!items.length){$('smmPl').innerHTML='';$('smmKd').innerHTML=items===null?'<b>No pudimos cargar los servicios</b><br><small>Revisa tu internet, cierra esta ventana y vuelve a abrirla.</small>':'<b>Muy pronto</b><br><small>Estamos activando seguidores, likes y vistas de TikTok e Instagram.</small>';$('smmQp').innerHTML='';$('smmGo').disabled=true;return}
     var pls=[];items.forEach(function(x){if(pls.indexOf(x.platform)<0)pls.push(x.platform)});
     if(pls.indexOf(S.pl)<0)S.pl=pls[0];
     $('smmPl').innerHTML=pls.map(function(p){return '<button type="button" class="sm-chip'+(p===S.pl?' sel':'')+'" data-pl="'+p+'"><i class="fa-brands fa-'+p+'"></i> '+(p==='tiktok'?'TikTok':'Instagram')+'</button>'}).join('');
@@ -5111,7 +5111,7 @@ html body .loy-b{
   function openAuth(){var b=document.createElement('button');b.setAttribute('data-au','open');b.style.display='none';document.body.appendChild(b);b.click();b.remove()}
   function open(){
     W=window.GTR_WALLET;$('smmM').classList.add('open');msg('');
-    load().then(function(){if(items===null){items=[];}draw()});
+    load().then(function(){draw()});
     if(W&&W.tok()) W.refresh().then(function(){draw()});
   }
   function close(){$('smmM').classList.remove('open')}
