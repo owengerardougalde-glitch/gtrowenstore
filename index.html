@@ -2970,7 +2970,7 @@ input::placeholder,textarea::placeholder{color:#b9a8f0!important}
     $('bnCreate').disabled=true;$('bnCreate').textContent='Creando solicitud…';$('bnError').textContent='';
     wf('/w/topup',{usd:amount},W.tok).then(function(r){$('bnCreate').disabled=false;$('bnCreate').textContent='Continuar con Binance Pay';
       if(!r.j||!r.j.ok){$('bnError').textContent=(r.j&&r.j.message)||'No se pudo crear la recarga.';return;}
-      var j=r.j;bnState.id=j.id;bnState.tries=0;bnState.amount=j.amount;$('bnChoose').hidden=true;$('bnPayStage').hidden=false;$('bnPayAmount').innerHTML=esc(j.amount)+' <small>USDT</small>';$('bnPayId').textContent=j.pay_id;$('bnStatus').textContent='Esperando pago';$('bnHint').textContent='Solicitud válida por 30 minutos. No envíes otro monto.';$('bnProgress').style.width='8%';pollTop();
+      var j=r.j;bnState.id=j.id;bnState.tries=0;bnState.amount=j.amount;$('bnChoose').hidden=true;$('bnPayStage').hidden=false;$('bnPayAmount').innerHTML=esc(j.amount)+' <small>USDT</small>';$('bnPayId').textContent=j.pay_id;$('bnStatus').textContent='Esperando pago';$('bnHint').textContent='Envía exactamente este monto, con todos los decimales. Si mandas otro, escríbenos por WhatsApp con tu usuario y te lo acreditamos.';$('bnProgress').style.width='8%';pollTop();
     }).catch(function(){$('bnCreate').disabled=false;$('bnCreate').textContent='Continuar con Binance Pay';$('bnError').textContent='Error de conexión. Intenta nuevamente.';});
   });
   $('bnCopy').addEventListener('click',function(){var v=$('bnPayId').textContent; if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(v).then(function(){$('bnCopy').textContent='Copiado';setTimeout(function(){$('bnCopy').textContent='Copiar';},1600);}).catch(function(){$('bnHint').textContent='Mantén presionado el ID para copiarlo.';});}else{$('bnHint').textContent='Mantén presionado el ID para copiarlo.';}});
@@ -5212,6 +5212,17 @@ html body #grid .card.ff2.unl .fx-amt span{color:#ffc547!important}
 html body .section-title h2{font-weight:800}
 html body .section-title h2 i{color:var(--gold)!important}
 html body .card:not(.ff2):hover{border-color:rgba(255,184,77,.45)!important;transform:translateY(-3px);transition:transform .2s,border-color .2s}
+/* ---- polish 3: Free Fire hero y barra de saldo en la misma paleta ---- */
+html body #ffHero h1 span{color:var(--gold)!important;-webkit-text-fill-color:var(--gold)!important;background:none!important}
+html body #ffHero .hero-card,html body #ffHero .idbox{border-color:rgba(255,184,77,.38)!important}
+html body #ffHero .hero-card{background:radial-gradient(120% 70% at 0 0,rgba(255,130,40,.16),transparent 62%),linear-gradient(180deg,#151c30,#0d1220)!important;box-shadow:0 18px 44px rgba(0,0,0,.5),0 0 34px rgba(255,120,30,.14)!important}
+html body #ffHero .idbox{background:rgba(5,8,16,.55)!important}
+html body #ffHero .pill{background:rgba(255,197,71,.12)!important;border:1px solid rgba(255,197,71,.34)!important;color:#ffd77a!important}
+html body #ffHero .idrow .btn-primary,html body .walbar button:not(.ghost){background:linear-gradient(135deg,#ffd15c,#ff8a1f 60%,#f0502a)!important;color:#2a1000!important;font-weight:800!important;box-shadow:0 8px 20px rgba(255,120,30,.32)!important;border:0!important}
+html body .walbar{border-color:rgba(255,184,77,.28)!important;background:linear-gradient(180deg,#151c30,#0f1526)!important}
+html body .walbar .wal-amt{color:var(--gold)!important}
+html body .walbar .wal-ic{background:rgba(255,197,71,.14)!important;color:var(--gold)!important}
+html body .toolbar .search{background:#111827!important;border:1px solid rgba(255,255,255,.12)!important;border-radius:14px!important}
 </style>
 <style id="gtr-ord-css">
 #ordM{position:fixed;inset:0;z-index:9500;display:none;align-items:flex-end;justify-content:center;background:rgba(4,6,12,.72);backdrop-filter:blur(6px)}
