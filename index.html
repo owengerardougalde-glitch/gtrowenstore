@@ -5037,44 +5037,73 @@ html body .loy-b{
 
 <!-- REDES SOCIALES (TikTok / Instagram) -->
 <style id="gtr-smm-css">
-.sm-ban{display:flex;gap:12px;align-items:center;margin:0 0 12px;padding:10px;border-radius:16px;background:linear-gradient(135deg,rgba(255,122,0,.16),rgba(230,59,46,.12));border:1px solid rgba(255,179,71,.28)}.sm-ban img{width:64px;height:64px;border-radius:14px;flex:none;box-shadow:0 6px 18px rgba(230,59,46,.35)}.sm-ban div{display:flex;flex-direction:column;gap:3px;min-width:0}.sm-ban b{font-size:.98rem;color:#fff7ec}.sm-ban span{font-size:.76rem;line-height:1.35;color:#d8c8b4}
-#smmM{position:fixed;inset:0;z-index:99990;display:none;align-items:flex-end;justify-content:center;background:rgba(0,0,0,.72);backdrop-filter:blur(4px)}
+#smmM{position:fixed;inset:0;z-index:99990;display:none;align-items:flex-end;justify-content:center;background:rgba(3,6,14,.78);backdrop-filter:blur(6px)}
 #smmM.open{display:flex}
-#smmM .sm-box{width:100%;max-width:520px;max-height:92vh;overflow:auto;background:var(--surface,#15100c);border:1px solid rgba(255,122,0,.25);border-radius:20px 20px 0 0;padding:18px 16px 22px;color:var(--text,#fff7ec);font-family:inherit}
-@media(min-width:640px){#smmM{align-items:center}#smmM .sm-box{border-radius:20px}}
-#smmM .sm-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
-#smmM .sm-h b{font-size:1.1rem}
-#smmM .sm-x{background:rgba(255,255,255,.06);border:0;color:inherit;width:34px;height:34px;border-radius:10px;cursor:pointer;font-size:1rem}
-#smmM .sm-row{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
-#smmM .sm-chip{flex:1 1 auto;padding:10px 12px;border-radius:12px;border:1px solid var(--line,rgba(255,255,255,.1));background:rgba(255,255,255,.03);color:inherit;font:inherit;font-size:.9rem;cursor:pointer;text-align:center}
-#smmM .sm-chip.sel{border-color:var(--accent,#ff7a00);background:rgba(255,122,0,.14);color:#fff}
-#smmM .sm-l{display:block;margin:14px 0 4px;font-size:.8rem;color:var(--muted,#b8a998)}
-#smmM input{width:100%;box-sizing:border-box;padding:12px;border-radius:12px;border:1px solid var(--line,rgba(255,255,255,.12));background:rgba(0,0,0,.35);color:inherit;font:inherit;font-size:16px}
-#smmM .sm-tot{display:flex;justify-content:space-between;align-items:baseline;margin:16px 0 4px;padding:12px;border-radius:12px;background:rgba(255,122,0,.08)}
-#smmM .sm-tot b{font-size:1.4rem;color:var(--accent,#ff7a00)}
-#smmM .sm-go{width:100%;margin-top:10px;padding:14px;border:0;border-radius:14px;background:linear-gradient(135deg,var(--accent,#ff7a00),var(--accent-2,#e63b2e));color:#fff;font:inherit;font-weight:700;font-size:1rem;cursor:pointer}
-#smmM .sm-go[disabled]{opacity:.5;cursor:default}
-#smmM .sm-msg{margin-top:10px;font-size:.88rem;min-height:1em}
-#smmM .sm-msg.err{color:#ff8a8a}#smmM .sm-msg.ok{color:#62e6a5}
-#smmM .sm-box.sm-off>:not(.sm-h):not(#smmKd){display:none}
-#smmM .sm-box.sm-off #smmKd{display:block;padding:18px 4px 24px;font-size:1rem;text-align:center}
-#smmM small{color:var(--muted,#b8a998);display:block;margin-top:8px;line-height:1.4}
+#smmM .sm-box{width:100%;max-width:520px;max-height:94vh;overflow:auto;background:linear-gradient(180deg,#131b2e,#0c1220 60%);border:1px solid rgba(148,163,184,.22);border-bottom:0;border-radius:26px 26px 0 0;color:#f4f7ff;font-family:inherit;box-shadow:0 -20px 60px rgba(0,0,0,.55);scrollbar-width:none}
+#smmM .sm-box::-webkit-scrollbar{display:none}
+@media(min-width:640px){#smmM{align-items:center}#smmM .sm-box{border-radius:26px;border-bottom:1px solid rgba(148,163,184,.22)}}
+#smmM .sm-hero{position:relative;display:flex;gap:14px;align-items:center;padding:20px 54px 18px 18px;background:radial-gradient(120% 140% at 100% 0,rgba(255,138,31,.34),transparent 55%),radial-gradient(90% 120% at 0 100%,rgba(56,182,255,.16),transparent 60%),linear-gradient(135deg,#1b2340,#26163a);border-bottom:1px solid rgba(255,255,255,.07)}
+#smmM .sm-hero img{width:74px;height:74px;border-radius:20px;flex:none;box-shadow:0 10px 28px rgba(230,59,46,.4),0 0 0 1px rgba(255,255,255,.14)}
+#smmM .sm-hero h3{margin:0 0 5px;font-size:1.28rem;line-height:1.15;color:#fff}
+#smmM .sm-hero p{margin:0;font-size:.82rem;line-height:1.45;color:#cfd7ec}
+#smmM .sm-x{position:absolute;top:12px;right:12px;width:36px;height:36px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:rgba(8,12,24,.5);color:#fff;font-size:.95rem;cursor:pointer}
+#smmM .sm-trust{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:12px 16px 0}
+#smmM .sm-trust span{display:flex;flex-direction:column;align-items:center;gap:5px;padding:9px 4px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);font-size:.7rem;font-weight:700;line-height:1.25;text-align:center;color:#dbe3f5}
+#smmM .sm-trust i{font-size:1rem;color:#ffc547}
+#smmM .sm-body{padding:6px 16px 20px}
+#smmM .sm-l{display:flex;align-items:center;gap:7px;margin:16px 0 8px;font-size:.78rem;font-weight:800;letter-spacing:.2px;color:#aab6d3}
+#smmM .sm-l i{color:#38b6ff}
+#smmM .sm-pls{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+#smmM .sm-pl{display:flex;align-items:center;gap:10px;padding:12px;border-radius:16px;border:1px solid rgba(148,163,184,.2);background:rgba(255,255,255,.035);color:inherit;font:inherit;cursor:pointer;text-align:left;transition:.18s}
+#smmM .sm-pi{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;font-size:1.25rem;color:#fff;flex:none;background:linear-gradient(135deg,#25f4ee,#fe2c55)}
+#smmM .sm-pl.instagram .sm-pi{background:linear-gradient(135deg,#feda75,#fa7e1e 35%,#d62976 65%,#4f5bd5)}
+#smmM .sm-pt{display:flex;flex-direction:column;gap:2px;min-width:0}#smmM .sm-pt b{font-size:.98rem}#smmM .sm-pt span{font-size:.72rem;color:#9fb0d0}
+#smmM .sm-pl.sel{border-color:#ffc547;background:linear-gradient(135deg,rgba(255,197,71,.16),rgba(255,138,31,.07));box-shadow:0 0 0 3px rgba(255,197,71,.12)}
+#smmM .sm-kds{display:grid;grid-template-columns:repeat(auto-fit,minmax(96px,1fr));gap:8px}
+#smmM .sm-kd{display:flex;align-items:center;justify-content:center;gap:8px;padding:11px 8px;border-radius:14px;border:1px solid rgba(148,163,184,.2);background:rgba(255,255,255,.035);color:#cfd7ec;font:inherit;font-weight:700;font-size:.88rem;cursor:pointer;transition:.18s}
+#smmM .sm-kd.sel{background:linear-gradient(135deg,#ffc83a,#ff8a1f 60%,#f0502a);border-color:transparent;color:#1a0f05;box-shadow:0 8px 20px rgba(255,138,31,.28)}
+#smmM .sm-qs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+#smmM .sm-q{display:flex;flex-direction:column;align-items:center;gap:3px;padding:11px 4px;border-radius:14px;border:1px solid rgba(148,163,184,.2);background:rgba(255,255,255,.035);color:inherit;font:inherit;cursor:pointer;transition:.18s}
+#smmM .sm-q b{font-size:1.02rem}#smmM .sm-q span{font-size:.74rem;color:#ffc547;font-weight:800}
+#smmM .sm-q.sel{border-color:#ffc547;background:rgba(255,197,71,.13);box-shadow:0 0 0 3px rgba(255,197,71,.12)}
+#smmM input{width:100%;box-sizing:border-box;padding:13px 14px;border-radius:14px;border:1px solid rgba(148,163,184,.26);background:rgba(4,8,18,.55);color:inherit;font:inherit;font-size:16px;margin-top:8px}
+#smmM input:focus{outline:0;border-color:#38b6ff;box-shadow:0 0 0 3px rgba(56,182,255,.18)}
+#smmM .sm-tot{display:flex;justify-content:space-between;align-items:center;margin:18px 0 0;padding:14px 16px;border-radius:16px;background:linear-gradient(135deg,rgba(255,197,71,.12),rgba(255,138,31,.05));border:1px solid rgba(255,197,71,.28)}
+#smmM .sm-tot span{font-size:.86rem;font-weight:700;color:#dbe3f5}
+#smmM .sm-tot b{font-size:1.7rem;line-height:1;color:#ffc547}
+#smmM #smmBal{display:block;margin:8px 2px 0;font-size:.8rem;color:#9fb0d0}
+#smmM .sm-go{width:100%;margin-top:12px;min-height:54px;padding:0 16px;border:0;border-radius:16px;background:linear-gradient(135deg,#ffc83a,#ff8a1f 60%,#f0502a);color:#1a0f05;font:inherit;font-weight:900;font-size:1.02rem;cursor:pointer;box-shadow:0 12px 30px rgba(255,138,31,.34)}
+#smmM .sm-go:active{transform:translateY(1px)}
+#smmM .sm-go[disabled]{opacity:.5;cursor:default;box-shadow:none}
+#smmM .sm-msg{margin-top:10px;font-size:.88rem;min-height:1em;line-height:1.4}
+#smmM .sm-msg.err{color:#ff9aa6}#smmM .sm-msg.ok{color:#62e6a5}
+#smmM .sm-notes{display:grid;gap:7px;margin:14px 2px 0;padding:0;list-style:none}
+#smmM .sm-notes li{display:flex;gap:9px;align-items:flex-start;font-size:.76rem;line-height:1.4;color:#9fb0d0}
+#smmM .sm-notes i{color:#34d399;margin-top:2px}
+#smmM .sm-box.sm-off .sm-trust,#smmM .sm-box.sm-off .sm-body>:not(#smmKd){display:none}
+#smmM .sm-box.sm-off #smmKd{display:block;padding:26px 8px 30px;font-size:1.02rem;text-align:center;color:#dbe3f5}
+#smmM .sm-box.sm-off #smmKd small{display:block;margin-top:8px;font-size:.84rem;line-height:1.45;color:#9fb0d0}
+@media(prefers-reduced-motion:reduce){#smmM *{transition:none!important}}
 </style>
 <div id="smmM" role="dialog" aria-modal="true" aria-label="Redes sociales"><div class="sm-box">
- <div class="sm-ban"><img decoding="async" alt="" src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20120%20120%22%3E%3Cdefs%3E%3ClinearGradient%20id=%22g%22%20x1=%220%22%20y1=%220%22%20x2=%221%22%20y2=%221%22%3E%3Cstop%20offset=%220%22%20stop-color=%22%23ff9a1f%22/%3E%3Cstop%20offset=%22.55%22%20stop-color=%22%23e63b2e%22/%3E%3Cstop%20offset=%221%22%20stop-color=%22%237a1f6b%22/%3E%3C/linearGradient%3E%3CradialGradient%20id=%22r%22%20cx=%22.3%22%20cy=%22.2%22%20r=%22.9%22%3E%3Cstop%20offset=%220%22%20stop-color=%22%23fff%22%20stop-opacity=%22.35%22/%3E%3Cstop%20offset=%221%22%20stop-color=%22%23fff%22%20stop-opacity=%220%22/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect%20width=%22120%22%20height=%22120%22%20rx=%2222%22%20fill=%22url(%23g)%22/%3E%3Crect%20width=%22120%22%20height=%22120%22%20rx=%2222%22%20fill=%22url(%23r)%22/%3E%3Ccircle%20cx=%2296%22%20cy=%2222%22%20r=%2226%22%20fill=%22%23fff%22%20opacity=%22.08%22/%3E%3Ccircle%20cx=%2218%22%20cy=%22104%22%20r=%2230%22%20fill=%22%23fff%22%20opacity=%22.07%22/%3E%3Cg%20fill=%22%23fff%22%3E%3Ccircle%20cx=%2260%22%20cy=%2244%22%20r=%2215%22%20opacity=%22.95%22/%3E%3Cpath%20d=%22M30%2092c2-17%2014-26%2030-26s28%209%2030%2026z%22%20opacity=%22.95%22/%3E%3C/g%3E%3Cg%3E%3Ccircle%20cx=%2294%22%20cy=%2230%22%20r=%2213%22%20fill=%22%23fff%22/%3E%3Cpath%20d=%22M94%2038.5%2086.2%2030.8a4.6%204.6%200%200%201%206.5-6.5l1.3%201.3%201.3-1.3a4.6%204.6%200%200%201%206.5%206.5z%22%20fill=%22%23e63b2e%22/%3E%3C/g%3E%3Cg%3E%3Ccircle%20cx=%2224%22%20cy=%2238%22%20r=%2212%22%20fill=%22%23fff%22/%3E%3Cpath%20d=%22M21%2031.5v13l11-6.5z%22%20fill=%22%23e63b2e%22/%3E%3C/g%3E%3Cg%3E%3Ccircle%20cx=%2293%22%20cy=%2290%22%20r=%2212%22%20fill=%22%23ffd166%22/%3E%3Cpath%20d=%22M93%2083v14M86%2090h14%22%20stroke=%22%237a1f6b%22%20stroke-width=%223.4%22%20stroke-linecap=%22round%22/%3E%3C/g%3E%3Cpath%20d=%22M18%2062l2.2%205%205%202.2-5%202.2-2.2%205-2.2-5-5-2.2%205-2.2z%22%20fill=%22%23fff%22%20opacity=%22.85%22/%3E%3Cpath%20d=%22M104%2062l1.6%203.6%203.6%201.6-3.6%201.6-1.6%203.6-1.6-3.6-3.6-1.6%203.6-1.6z%22%20fill=%22%23fff%22%20opacity=%22.7%22/%3E%3C/svg%3E"><div><b>Crece tu cuenta</b><span>Seguidores, likes y vistas de TikTok e Instagram. Pagas con tu saldo y solo pegas tu @usuario o enlace.</span></div></div>
- <div class="sm-h"><b><i class="fa-solid fa-share-nodes"></i> Redes sociales</b><button type="button" class="sm-x" id="smmX" aria-label="Cerrar">✕</button></div>
- <div class="sm-row" id="smmPl"></div>
- <div class="sm-row" id="smmKd"></div>
- <label class="sm-l">Cantidad</label>
- <div class="sm-row" id="smmQp"></div>
- <input id="smmQ" type="number" inputmode="numeric" placeholder="Otra cantidad">
- <label class="sm-l" id="smmLl">Enlace</label>
- <input id="smmLk" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="@usuario o enlace">
- <div class="sm-tot"><span>Total a pagar con tu saldo</span><b id="smmP">$0.00</b></div>
- <small id="smmBal"></small>
- <button type="button" class="sm-go" id="smmGo">Comprar con mi saldo</button>
- <div class="sm-msg" id="smmMsg"></div>
- <small>La cuenta o publicación debe ser pública. No pedimos tu contraseña. Si el pedido falla, tu saldo se devuelve solo. Puede tardar de minutos a unas horas.</small>
+ <div class="sm-hero"><img decoding="async" alt="" src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20120%20120%22%3E%3Cdefs%3E%3ClinearGradient%20id=%22g%22%20x1=%220%22%20y1=%220%22%20x2=%221%22%20y2=%221%22%3E%3Cstop%20offset=%220%22%20stop-color=%22%23ff9a1f%22/%3E%3Cstop%20offset=%22.55%22%20stop-color=%22%23e63b2e%22/%3E%3Cstop%20offset=%221%22%20stop-color=%22%237a1f6b%22/%3E%3C/linearGradient%3E%3CradialGradient%20id=%22r%22%20cx=%22.3%22%20cy=%22.2%22%20r=%22.9%22%3E%3Cstop%20offset=%220%22%20stop-color=%22%23fff%22%20stop-opacity=%22.35%22/%3E%3Cstop%20offset=%221%22%20stop-color=%22%23fff%22%20stop-opacity=%220%22/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect%20width=%22120%22%20height=%22120%22%20rx=%2222%22%20fill=%22url(%23g)%22/%3E%3Crect%20width=%22120%22%20height=%22120%22%20rx=%2222%22%20fill=%22url(%23r)%22/%3E%3Ccircle%20cx=%2296%22%20cy=%2222%22%20r=%2226%22%20fill=%22%23fff%22%20opacity=%22.08%22/%3E%3Ccircle%20cx=%2218%22%20cy=%22104%22%20r=%2230%22%20fill=%22%23fff%22%20opacity=%22.07%22/%3E%3Cg%20fill=%22%23fff%22%3E%3Ccircle%20cx=%2260%22%20cy=%2244%22%20r=%2215%22%20opacity=%22.95%22/%3E%3Cpath%20d=%22M30%2092c2-17%2014-26%2030-26s28%209%2030%2026z%22%20opacity=%22.95%22/%3E%3C/g%3E%3Cg%3E%3Ccircle%20cx=%2294%22%20cy=%2230%22%20r=%2213%22%20fill=%22%23fff%22/%3E%3Cpath%20d=%22M94%2038.5%2086.2%2030.8a4.6%204.6%200%200%201%206.5-6.5l1.3%201.3%201.3-1.3a4.6%204.6%200%200%201%206.5%206.5z%22%20fill=%22%23e63b2e%22/%3E%3C/g%3E%3Cg%3E%3Ccircle%20cx=%2224%22%20cy=%2238%22%20r=%2212%22%20fill=%22%23fff%22/%3E%3Cpath%20d=%22M21%2031.5v13l11-6.5z%22%20fill=%22%23e63b2e%22/%3E%3C/g%3E%3Cg%3E%3Ccircle%20cx=%2293%22%20cy=%2290%22%20r=%2212%22%20fill=%22%23ffd166%22/%3E%3Cpath%20d=%22M93%2083v14M86%2090h14%22%20stroke=%22%237a1f6b%22%20stroke-width=%223.4%22%20stroke-linecap=%22round%22/%3E%3C/g%3E%3Cpath%20d=%22M18%2062l2.2%205%205%202.2-5%202.2-2.2%205-2.2-5-5-2.2%205-2.2z%22%20fill=%22%23fff%22%20opacity=%22.85%22/%3E%3Cpath%20d=%22M104%2062l1.6%203.6%203.6%201.6-3.6%201.6-1.6%203.6-1.6-3.6-3.6-1.6%203.6-1.6z%22%20fill=%22%23fff%22%20opacity=%22.7%22/%3E%3C/svg%3E"><div><h3>Crece tu cuenta</h3><p>Seguidores, likes y vistas para TikTok e Instagram. Pagas con tu saldo y solo pegas tu enlace.</p></div><button type="button" class="sm-x" id="smmX" aria-label="Cerrar">✕</button></div>
+ <div class="sm-trust"><span><i class="fa-solid fa-bolt"></i>Entrega automática</span><span><i class="fa-solid fa-user-shield"></i>Sin pedir tu contraseña</span><span><i class="fa-solid fa-rotate-left"></i>Reembolso si falla</span></div>
+ <div class="sm-body">
+  <label class="sm-l"><i class="fa-solid fa-layer-group"></i>Red social</label>
+  <div class="sm-pls" id="smmPl"></div>
+  <label class="sm-l"><i class="fa-solid fa-wand-magic-sparkles"></i>Qué quieres conseguir</label>
+  <div class="sm-kds" id="smmKd"></div>
+  <label class="sm-l"><i class="fa-solid fa-hashtag"></i>Cantidad</label>
+  <div class="sm-qs" id="smmQp"></div>
+  <input id="smmQ" type="number" inputmode="numeric" placeholder="Otra cantidad">
+  <label class="sm-l" id="smmLl"><i class="fa-solid fa-link"></i><span>Enlace</span></label>
+  <input id="smmLk" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="@usuario o enlace">
+  <div class="sm-tot"><span>Total con tu saldo</span><b id="smmP">$0.00</b></div>
+  <small id="smmBal"></small>
+  <button type="button" class="sm-go" id="smmGo">Comprar con mi saldo</button>
+  <div class="sm-msg" id="smmMsg"></div>
+  <ul class="sm-notes"><li><i class="fa-solid fa-circle-check"></i>La cuenta o publicación debe ser pública.</li><li><i class="fa-solid fa-circle-check"></i>Puede tardar de minutos a unas horas.</li><li><i class="fa-solid fa-circle-check"></i>Si el pedido falla, tu saldo se devuelve solo.</li></ul>
+ </div>
 </div></div>
 <script id="gtr-smm-js">
 (function(){
@@ -5088,21 +5117,22 @@ html body .loy-b{
   }
   function cur(){return (items||[]).filter(function(x){return x.key===S.key})[0]}
   function msg(t,c){var m=$('smmMsg');m.textContent=t||'';m.className='sm-msg'+(c?' '+c:'')}
-  function price(){var it=cur();if(!it||!S.qty)return 0;var c=it.unit*S.qty,pr=Math.min(it.pmax||2,Math.max(it.pmin||1,c*((it.mk||1.3)-1)));return Math.max(10,Math.ceil((c+pr)*100-1e-6))/100}
+  function pf(it,q){var c=it.unit*q,pr=Math.min(it.pmax||2,Math.max(it.pmin||1,c*((it.mk||1.3)-1)));return Math.max(10,Math.ceil((c+pr)*100-1e-6))/100}
+  function price(){var it=cur();if(!it||!S.qty)return 0;return pf(it,S.qty)}
   function draw(){
     document.querySelector('#smmM .sm-box').classList.toggle('sm-off',!items||!items.length);
-    if(!items||!items.length){$('smmPl').innerHTML='';$('smmKd').innerHTML=items===null?'<b>No pudimos cargar los servicios</b><br><small>Revisa tu internet, cierra esta ventana y vuelve a abrirla.</small>':'<b>Muy pronto</b><br><small>Estamos activando seguidores, likes y vistas de TikTok e Instagram.</small>';$('smmQp').innerHTML='';$('smmGo').disabled=true;return}
+    if(!items||!items.length){$('smmPl').innerHTML='';$('smmKd').innerHTML=items===null?'<b>No pudimos cargar los servicios</b><small>Revisa tu internet, cierra esta ventana y vuelve a abrirla.</small>':'<b>Muy pronto</b><small>Estamos activando seguidores, likes y vistas de TikTok e Instagram.</small>';$('smmQp').innerHTML='';$('smmGo').disabled=true;return}
     var pls=[];items.forEach(function(x){if(pls.indexOf(x.platform)<0)pls.push(x.platform)});
     if(pls.indexOf(S.pl)<0)S.pl=pls[0];
-    $('smmPl').innerHTML=pls.map(function(p){return '<button type="button" class="sm-chip'+(p===S.pl?' sel':'')+'" data-pl="'+p+'"><i class="fa-brands fa-'+p+'"></i> '+(p==='tiktok'?'TikTok':'Instagram')+'</button>'}).join('');
+    $('smmPl').innerHTML=pls.map(function(p){var n=items.filter(function(x){return x.platform===p}).length;return '<button type="button" class="sm-pl '+p+(p===S.pl?' sel':'')+'" data-pl="'+p+'"><span class="sm-pi"><i class="fa-brands fa-'+p+'"></i></span><span class="sm-pt"><b>'+(p==='tiktok'?'TikTok':'Instagram')+'</b><span>'+n+(n===1?' servicio':' servicios')+'</span></span></button>'}).join('');
     var its=items.filter(function(x){return x.platform===S.pl});
     if(!its.some(function(x){return x.key===S.key})){S.key=its[0].key;S.qty=0}
-    $('smmKd').innerHTML=its.map(function(x){return '<button type="button" class="sm-chip'+(x.key===S.key?' sel':'')+'" data-k="'+x.key+'">'+x.label.replace(/ de (TikTok|Instagram)/,'').replace(' (Reels)','')+'</button>'}).join('');
+    var KI={followers:'fa-user-plus',likes:'fa-heart',views:'fa-eye'};$('smmKd').innerHTML=its.map(function(x){return '<button type="button" class="sm-kd'+(x.key===S.key?' sel':'')+'" data-k="'+x.key+'"><i class="fa-solid '+(KI[x.kind]||'fa-star')+'"></i>'+x.label.replace(/ de (TikTok|Instagram)/,'').replace(' (Reels)','')+'</button>'}).join('');
     var it=cur();
     if(!S.qty)S.qty=it.presets[1]||it.presets[0]||it.min;
-    $('smmQp').innerHTML=it.presets.map(function(q){return '<button type="button" class="sm-chip'+(q===S.qty?' sel':'')+'" data-q="'+q+'">'+q.toLocaleString('en-US')+'</button>'}).join('');
+    $('smmQp').innerHTML=it.presets.map(function(q){return '<button type="button" class="sm-q'+(q===S.qty?' sel':'')+'" data-q="'+q+'"><b>'+q.toLocaleString('en-US')+'</b><span>'+usd(pf(it,q))+'</span></button>'}).join('');
     $('smmQ').min=it.min;$('smmQ').max=it.max;$('smmQ').placeholder='Otra cantidad ('+it.min+' – '+it.max.toLocaleString('en-US')+')';
-    $('smmLl').textContent=it.need==='profile'?'Tu usuario o enlace del perfil':'Enlace de la publicación / video';
+    $('smmLl').lastChild.textContent=it.need==='profile'?'Tu usuario o enlace del perfil':'Enlace de la publicación o video';
     $('smmLk').placeholder=it.need==='profile'?'@tuusuario':(S.pl==='tiktok'?'https://www.tiktok.com/@usuario/video/…':'https://www.instagram.com/p/… o /reel/…');
     $('smmP').textContent=usd(price());
     var b=W&&W.bal();$('smmBal').textContent=(b==null)?'':'Tu saldo: '+usd(b);
@@ -5122,7 +5152,7 @@ html body .loy-b{
     else if(t.dataset.k){S.key=t.dataset.k;S.qty=0;$('smmQ').value=''}
     else if(t.dataset.q){S.qty=+t.dataset.q;$('smmQ').value=''}
     draw()});
-  $('smmQ').addEventListener('input',function(){var v=parseInt(this.value,10);S.qty=v>0?v:0;$('smmP').textContent=usd(price());document.querySelectorAll('#smmQp .sm-chip').forEach(function(c){c.classList.toggle('sel',+c.dataset.q===S.qty)})});
+  $('smmQ').addEventListener('input',function(){var v=parseInt(this.value,10);S.qty=v>0?v:0;$('smmP').textContent=usd(price());document.querySelectorAll('#smmQp .sm-q').forEach(function(c){c.classList.toggle('sel',+c.dataset.q===S.qty)})});
   $('smmGo').onclick=function(){
     var it=cur();if(!it)return;W=window.GTR_WALLET;
     if(!window.GTR_USER){close();openAuth();return}
@@ -5147,5 +5177,30 @@ html body .loy-b{
 })();
 </script>
 
+<style id="gtr-polish">
+/* ===== GTR polish: colores mas vivos y profesionales (solo estilo; no cambia estructura ni el samurai) ===== */
+:root{--bg:#080a12;--surface:#111623;--surface-2:#171d2e;--line:rgba(255,255,255,.10);--text:#f8fafc;--muted:#a9b3c8;--accent:#ff7a1a;--accent-2:#ff3d5a;--gold:#ffc547}
+html body{background-color:#080a12!important;background-image:radial-gradient(900px 540px at 0% -8%,rgba(255,96,40,.27),transparent 60%),radial-gradient(780px 520px at 100% 0%,rgba(99,102,241,.22),transparent 60%),radial-gradient(700px 520px at 50% 112%,rgba(255,170,40,.10),transparent 60%)!important;background-attachment:fixed!important;color:var(--text)}
+html body header,html body .topnav-wrap{background:rgba(8,10,18,.88)!important;border-bottom:1px solid rgba(255,255,255,.09)!important;backdrop-filter:blur(18px) saturate(140%)}
+html body .logo-t b{color:var(--gold)}
+html body .hero-card{border-color:rgba(255,160,60,.45)!important;box-shadow:0 18px 50px rgba(0,0,0,.5),0 0 44px rgba(255,90,40,.22)!important}
+html body .btn-primary,html body .loy-b:not(.ghost){background:linear-gradient(135deg,#ffd15c,#ff8a1f 58%,#ff4f2a)!important;color:#2a1000!important;font-weight:800;box-shadow:0 10px 26px rgba(255,120,30,.38),inset 0 1px 0 rgba(255,255,255,.55)}
+html body .btn-ghost,html body .loy-b.ghost{background:rgba(255,255,255,.07)!important;border:1px solid rgba(255,255,255,.16)!important;color:#fff!important}
+html body .card:not(.ff2){background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.012)),var(--surface-2)!important;border:1px solid rgba(255,255,255,.11)!important;border-radius:20px!important;box-shadow:0 12px 30px rgba(0,0,0,.38)}
+html body .card:not(.ff2) .add{background:linear-gradient(135deg,#ffd15c,#ff8a1f)!important;color:#2a1000!important;border:0!important;font-weight:800;box-shadow:0 8px 20px rgba(255,138,31,.30)}
+html body .card:not(.ff2) .add[disabled]{background:rgba(255,255,255,.08)!important;color:#8b95aa!important;box-shadow:none}
+html body .card .price{color:#fff;letter-spacing:-.01em}
+html body .card .old{color:#7f8aa1}
+html body .card .save{background:rgba(34,224,161,.16)!important;color:#3be8ad!important;border:1px solid rgba(34,224,161,.28)}
+html body .card.ff2{border-radius:22px!important;box-shadow:0 14px 34px rgba(0,0,0,.45)}
+html body .section-title h2{letter-spacing:-.015em}
+html body .topnav-wrap .topnav button.on{background:linear-gradient(180deg,rgba(255,170,50,.30),rgba(255,120,30,.08))!important;box-shadow:inset 0 0 0 1px rgba(255,170,60,.55),0 6px 16px rgba(255,110,30,.20)!important}
+html body .topnav button.on i{color:#ffc547!important}
+html body input[type=text],html body input[type=email],html body input[type=password],html body input[type=number]{background:rgba(5,8,16,.65)!important;border-color:rgba(255,255,255,.14)!important}
+html body input:focus{border-color:#ffb347!important;box-shadow:0 0 0 3px rgba(255,170,60,.18)!important;outline:0}
+/* modal de registro */
+html body .au-card{background:linear-gradient(180deg,rgba(255,255,255,.05),transparent 40%),#111623!important;border:1px solid rgba(255,170,60,.45)!important;box-shadow:0 30px 90px rgba(0,0,0,.65),0 0 50px rgba(255,100,40,.16)!important}
+html body .au-tabs button.on{background:linear-gradient(135deg,#ffd15c,#ff8a1f)!important;color:#2a1000!important}
+</style>
 </body>
 </html>
