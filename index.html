@@ -2139,7 +2139,7 @@ var HOME_LOGOS={};
 .au-chk svg{width:74px;height:74px}.au-chk circle{fill:none;stroke:#34d399;stroke-width:3;stroke-dasharray:145;stroke-dashoffset:145;animation:auD .6s ease forwards}.au-chk path{fill:none;stroke:#34d399;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:40;stroke-dashoffset:40;animation:auD .45s .5s ease forwards}
 @keyframes auD{to{stroke-dashoffset:0}}
 .au-done h4{margin:10px 0 6px;font-size:1.2rem;color:#fff7ec}.au-done p{margin:0 0 12px;font-size:.86rem;line-height:1.45;color:#d8c8b4;word-break:break-word}
-.au-spam{display:flex;gap:10px;align-items:flex-start;text-align:left;margin:0 0 16px;padding:12px;border-radius:14px;background:rgba(255,179,71,.1);border:1px solid rgba(255,179,71,.32);font-size:.82rem;line-height:1.4;color:#f3e3c9}.au-spam i{color:#ffb347;font-size:1.15rem;margin-top:2px}
+.au-pin{display:block;margin:12px auto 6px;padding:12px 8px;border-radius:14px;background:rgba(255,197,71,.1);border:1px dashed rgba(255,197,71,.6);color:#ffd15c;font-size:2rem;font-weight:900;letter-spacing:.35em;text-indent:.35em;font-variant-numeric:tabular-nums;user-select:all}.au-pinh{display:block;font-size:.78rem;color:#aab6cc;line-height:1.35}.au-spam{display:flex;gap:10px;align-items:flex-start;text-align:left;margin:0 0 16px;padding:12px;border-radius:14px;background:rgba(255,179,71,.1);border:1px solid rgba(255,179,71,.32);font-size:.82rem;line-height:1.4;color:#f3e3c9}.au-spam i{color:#ffb347;font-size:1.15rem;margin-top:2px}
 .au-msg{margin:-2px 0 10px;font-size:.84rem;font-weight:700;line-height:1.4;color:#ff8a80}.au-msg:empty{display:none}.au-msg.ok{color:#34d399}
 .gtoast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);z-index:400;max-width:90vw;padding:12px 18px;border-radius:14px;background:#1c150f;border:1px solid rgba(255,179,71,.5);color:#ffd35c;font-weight:800;font-size:.88rem;box-shadow:0 14px 40px rgba(0,0,0,.5)}
 .au-row{display:flex;gap:8px}
@@ -2152,14 +2152,13 @@ var HOME_LOGOS={};
     <div class="au-tabs"><button type="button" data-t="new" class="on">Soy nuevo</button><button type="button" data-t="in">Ya tengo usuario</button></div>
     <input id="auU" type="text" placeholder="Usuario" autocomplete="username" maxlength="20">
     <div id="auFFbox">
-      <input id="auEm" type="email" placeholder="Tu correo electrónico (te llegan tus compras y tu PIN)" autocomplete="email" maxlength="80">
       <input id="auFF" style="display:none" type="text" inputmode="numeric" placeholder="Tu ID de Free Fire" autocomplete="off" maxlength="15">
       <input id="auFN" style="display:none" type="text" placeholder="Tu nombre en Free Fire (como sale en el juego)" autocomplete="off" maxlength="30">
       <div class="au-msg ok" id="auFFmsg"></div>
     </div>
     <input id="auP" type="password" placeholder="Contraseña (mín. 4)" autocomplete="current-password" maxlength="40">
     <div class="au-load" id="auLoad"><div class="au-spin"><i></i><i></i><i></i></div><b id="auLoadT">Creando tu usuario…</b><small>Esto toma unos segundos</small></div>
-    <div class="au-done" id="auDone"><div class="au-chk"><svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="23"/><path d="M15 27l8 8 15-17"/></svg></div><h4>¡Tu usuario está listo!</h4><p id="auDoneP"></p><div class="au-spam"><i class="fa-solid fa-envelope-circle-check"></i><span>Si no ves nuestro correo, revisa tu carpeta de <b>spam</b> o <b>promociones</b> y márcalo como <b>"No es spam"</b>.</span></div><button type="button" class="loy-b" id="auDoneBtn">Continuar</button></div>
+    <div class="au-done" id="auDone"><div class="au-chk"><svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="23"/><path d="M15 27l8 8 15-17"/></svg></div><h4>¡Tu usuario está listo!</h4><p id="auDoneP"></p><button type="button" class="loy-b" id="auDoneBtn">Continuar</button></div>
     <div class="au-msg" id="auMsg"></div>
     <div class="au-row"><button type="button" class="loy-b ghost" id="auCancel">Cancelar</button><button type="submit" class="loy-b" id="auGo">Crear usuario</button></div>
   </form>
@@ -2340,22 +2339,21 @@ var HOME_LOGOS={};
     if(!/^[A-Za-z0-9_\-]{3,20}$/.test(u)){ bad('El usuario debe tener de 3 a 20 caracteres: solo letras, números, guion o guion bajo.'); return; }
     if(p.length<4){ bad('La contraseña debe tener al menos 4 caracteres.'); return; }
     var ff=$('auFF').value.replace(/\D/g,''), ffn=$('auFN').value.trim().slice(0,30);
-    var em=($('auEm').value||'').trim().toLowerCase();
-    if(tab==='new'){
-      if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)){ bad('Escribe un correo electrónico válido, ahí te llegan tus compras y tu PIN.'); return; }
-    }
     $('auGo').disabled=true;
     var T0=Date.now(), card=$('auModal').querySelector('.au-card');
-    if(tab==='new'){ card.classList.add('ld'); var ms=['Creando tu usuario…','Guardando tu correo…','Preparando tu cuenta…'],mi=0; $('auLoadT').textContent=ms[0]; clearInterval(window._auT); window._auT=setInterval(function(){ mi=Math.min(mi+1,ms.length-1); $('auLoadT').textContent=ms[mi]; },1100); }
-    function showOk(name,mail){ var w=Math.max(0,1800-(Date.now()-T0)); setTimeout(function(){ clearInterval(window._auT); card.classList.remove('ld'); card.classList.add('ok'); $('auDoneP').innerHTML='Usuario <b>'+name.replace(/[<>&"]/g,'')+'</b>. Guardamos tu correo <b>'+mail.replace(/[<>&"]/g,'')+'</b>: ahí te llegan tus compras y tu PIN.'; },w); }
+    if(tab==='new'){ card.classList.add('ld'); var ms=['Creando tu usuario…','Generando tu PIN de saldo…','Preparando tu cuenta…'],mi=0; $('auLoadT').textContent=ms[0]; clearInterval(window._auT); window._auT=setInterval(function(){ mi=Math.min(mi+1,ms.length-1); $('auLoadT').textContent=ms[mi]; },1100); }
+    function showOk(name,pin){ var w=Math.max(0,1800-(Date.now()-T0)); setTimeout(function(){ clearInterval(window._auT); card.classList.remove('ld'); card.classList.add('ok'); var nm=name.replace(/[<>&"]/g,''); $('auDoneP').innerHTML= pin ? 'Usuario <b>'+nm+'</b>. Este es tu <b>PIN de saldo</b>, lo necesitas para pagar con Saldo GTR:<span class="au-pin" id="auPin">'+pin+'</span><span class="au-pinh">Guárdalo o tómale captura. No se vuelve a mostrar; si lo pierdes, Owen te genera otro.</span>' : 'Usuario <b>'+nm+'</b> creado. Para tu PIN de saldo escríbele a Owen por WhatsApp.'; },w); }
     var fail=function(){ bad('No pudimos conectar. Revisa tu internet e intenta de nuevo.'); };
     if(tab==='new'){
       api('claves/'+key).then(function(ex){
         if(ex){ bad('Ese usuario ya existe. Toca "Ya tengo usuario" o elige otro nombre.'); return; }
         var salt=Math.random().toString(36).slice(2)+Date.now().toString(36);
         return hash(salt,p).then(function(h){
-          return api('claves/'+key,'PUT',{salt:salt,h:h}).then(function(){ return api('perfiles/'+key,'PUT',{name:u,t:Date.now(),ff:ff,ffn:ffn}).then(function(){ try{ fetch('https://gtr-worker.anonimoustugfa.workers.dev/w/email',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({u:key,email:em})}).catch(function(){}); }catch(_){} }); }).then(function(){
-            setSes(key,u); showOk(u,em); $('auP').value=''; $('auFF').value=''; $('auFN').value=''; $('auEm').value=''; $('auFFmsg').textContent=''; $('auGo').disabled=false; refresh(); toast('¡Listo! Usuario creado: '+u);
+          return api('claves/'+key,'PUT',{salt:salt,h:h}).then(function(){ return api('perfiles/'+key,'PUT',{name:u,t:Date.now(),ff:ff,ffn:ffn}).then(function(){ try{ }catch(_){} }); }).then(function(){
+            setSes(key,u); $('auP').value=''; $('auFF').value=''; $('auFN').value=''; $('auFFmsg').textContent=''; $('auGo').disabled=false; refresh();
+            var pin=''; try{ var ar=new Uint32Array(1); crypto.getRandomValues(ar); pin=String(100000+ar[0]%900000); }catch(_){ pin=String(100000+Math.floor(Math.random()*900000)); }
+            fetch('https://gtr-worker.anonimoustugfa.workers.dev/w/register',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({u:key,pin:pin})}).then(function(r){return r.json()}).then(function(j){ showOk(u,j&&j.ok?pin:''); if(j&&j.ok&&window.GTR_WALLET&&GTR_WALLET.refresh){ try{GTR_WALLET.refresh()}catch(_){} } }).catch(function(){ showOk(u,''); });
+            toast('¡Listo! Usuario creado: '+u);
           });
         });
       }).catch(function(err){ if(err&&err.status===401||err&&err.status===403) bad('Ese usuario ya existe. Elige otro nombre.'); else fail(); });
@@ -2952,14 +2950,14 @@ input::placeholder,textarea::placeholder{color:#b9a8f0!important}
     if(!user){
       h=ic+'<div class="wal-tx"><small>Tu saldo GTR</small><div class="wal-amt">$0.00 <em>USD</em></div><small>Crea tu usuario para recargar saldo y comprar diamantes al instante.</small></div><div class="wal-ac"><button type="button" data-au="open">Crear mi usuario</button></div>';
     } else if(W.tok){
-      h=ic+'<div class="wal-tx"><small>Tu saldo GTR</small><div class="wal-amt">'+(W.bal==null?'…':usd(W.bal))+' <em>USD</em></div><small>Compra productos al instante con tu saldo.</small></div><div class="wal-ac"><button type="button" data-w="topup">Agregar saldo automáticamente · Binance</button><a class="wal-b ghost" target="_blank" rel="noopener" href="'+wa('Hola, quiero pedir saldo en mi cuenta ('+user+').')+'">Pedir saldo por WhatsApp</a><button type="button" class="ghost" data-w="out">Salir</button></div>';
+      h=ic+'<div class="wal-tx"><small>Tu saldo GTR</small><div class="wal-amt">'+(W.bal==null?'…':usd(W.bal))+' <em>USD</em></div><small>Compra productos al instante con tu saldo.</small></div><div class="wal-ac"><button type="button" data-w="topup">Agregar saldo automáticamente · Binance</button><button type="button" class="wal-b ghost" data-w="orders"><i class="fa-solid fa-truck-fast"></i> Mis pedidos</button><a class="wal-b ghost" target="_blank" rel="noopener" href="'+wa('Hola, quiero pedir saldo en mi cuenta ('+user+').')+'">Pedir saldo por WhatsApp</a><button type="button" class="ghost" data-w="out">Salir</button></div>';
     } else {
       h=ic+'<div class="wal-tx"><small>Tu saldo GTR</small><div class="wal-amt wal-hid">$ •••</div><small>Entra con tu PIN para ver tu saldo y pagar al instante.</small></div><div class="wal-ac"><button type="button" data-w="in">Entrar con mi PIN</button></div>';
     }
     barKey=user+'|'+(W.tok?1:0)+'|'+W.bal;
     bar.innerHTML=h;
   }
-  bar.addEventListener('click',function(e){ var b=e.target.closest('button[data-w]'); if(!b) return; var a=b.getAttribute('data-w'); if(a==='out') logout(); else if(a==='topup') startWalletTopup(); else openM(true); });
+  bar.addEventListener('click',function(e){ var b=e.target.closest('button[data-w]'); if(!b) return; var a=b.getAttribute('data-w'); if(a==='out') logout(); else if(a==='orders'){ if(window.GTR_ORDERS) GTR_ORDERS.open(); } else if(a==='topup') startWalletTopup(); else openM(true); });
   var bnState={id:'',tries:0,timer:null,amount:''};
   function bnOpen(){var m=$('bnTopup');m.classList.add('open');m.setAttribute('aria-hidden','false');$('bnChoose').hidden=false;$('bnPayStage').hidden=true;$('bnError').textContent='';$('bnAmount').value='15';}
   function bnClose(){if(bnState.timer)clearTimeout(bnState.timer);bnState.timer=null;$('bnTopup').classList.remove('open');$('bnTopup').setAttribute('aria-hidden','true');}
@@ -3053,7 +3051,7 @@ input::placeholder,textarea::placeholder{color:#b9a8f0!important}
       var doneCodes=res.filter(function(x){return x.ok&&x.status==='completed'}).map(function(x){return x.code}).filter(Boolean);
       if(okN&&!j.top_done&&window.GTR_TOP_FROM_CART&&doneCodes.length){ try{ window.GTR_TOP_FROM_CART({name:window.GTR_USER||W.u||'',items:doneCodes}); }catch(e){} }
       if(okN&&typeof cart!=='undefined'){ cart.length=0; if(typeof renderCart==='function') renderCart(); }
-      lastMsg=msgs.join('<br>'); if(okN&&window.GTR_FX){ try{ GTR_FX.order(res.filter(function(x){return x.ok}),ff); }catch(e){} } else if(okN&&typeof toast==='function') toast('¡Pedido enviado! ⚡'); if(okN&&window.GTR_LOY_REFRESH){ setTimeout(window.GTR_LOY_REFRESH,1500); setTimeout(window.GTR_LOY_REFRESH,6000); } sync();
+      lastMsg=msgs.join('<br>'); if(okN&&window.GTR_FX){ try{ GTR_FX.order(res.filter(function(x){return x.ok}),ff); }catch(e){} } else if(okN&&typeof toast==='function') toast('¡Pedido enviado! ⚡'); if(okN&&window.GTR_ORDERS){ setTimeout(function(){ GTR_ORDERS.open(); },2600); } if(okN&&window.GTR_LOY_REFRESH){ setTimeout(window.GTR_LOY_REFRESH,1500); setTimeout(window.GTR_LOY_REFRESH,6000); } sync();
     });
   });
   function poll(id,code){
@@ -5215,5 +5213,80 @@ html body .section-title h2{font-weight:800}
 html body .section-title h2 i{color:var(--gold)!important}
 html body .card:not(.ff2):hover{border-color:rgba(255,184,77,.45)!important;transform:translateY(-3px);transition:transform .2s,border-color .2s}
 </style>
+<style id="gtr-ord-css">
+#ordM{position:fixed;inset:0;z-index:9500;display:none;align-items:flex-end;justify-content:center;background:rgba(4,6,12,.72);backdrop-filter:blur(6px)}
+#ordM.open{display:flex}
+.ord-card{width:100%;max-width:460px;max-height:88vh;display:flex;flex-direction:column;background:linear-gradient(180deg,rgba(255,255,255,.05),transparent 30%),#101827;border:1px solid rgba(255,184,77,.35);border-radius:24px 24px 0 0;box-shadow:0 -20px 60px rgba(0,0,0,.6);color:#f8fafc}
+@media(min-width:560px){#ordM{align-items:center}.ord-card{border-radius:24px;max-height:82vh}}
+.ord-h{display:flex;align-items:center;gap:10px;padding:16px 18px 10px}
+.ord-h h3{flex:1;margin:0;font-size:1.1rem;font-weight:800}
+.ord-live{display:inline-flex;align-items:center;gap:6px;font-size:.7rem;color:#3be8ad;font-weight:700}
+.ord-live i{width:8px;height:8px;border-radius:50%;background:#3be8ad;box-shadow:0 0 0 0 rgba(59,232,173,.6);animation:ordP 1.6s infinite}
+@keyframes ordP{70%{box-shadow:0 0 0 8px rgba(59,232,173,0)}100%{box-shadow:0 0 0 0 rgba(59,232,173,0)}}
+.ord-x{background:rgba(255,255,255,.08);border:0;color:#fff;width:34px;height:34px;border-radius:50%;font-size:1rem;cursor:pointer}
+.ord-l{overflow:auto;padding:4px 14px 16px;display:grid;gap:12px}
+.ord-e{padding:28px 10px;text-align:center;color:#aab6cc;font-size:.9rem}
+.ord-i{padding:14px;border-radius:18px;background:#131b2e;border:1px solid rgba(148,163,184,.2)}
+.ord-i.ok{border-color:rgba(59,232,173,.4)}.ord-i.bad{border-color:rgba(255,100,120,.4)}
+.ord-t{display:flex;justify-content:space-between;gap:8px;font-weight:800;font-size:.95rem}
+.ord-t small{font-weight:600;color:#aab6cc}
+.ord-st{margin:12px 0 10px;display:grid;grid-template-columns:repeat(3,1fr);gap:4px;font-size:.68rem;text-align:center;color:#7f8aa1}
+.ord-st span{display:flex;flex-direction:column;align-items:center;gap:6px;line-height:1.15}
+.ord-st b{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:#1c2540;border:2px solid #2b3658;font-size:.65rem;color:#7f8aa1}
+.ord-st .on{color:#ffd15c}.ord-st .on b{background:linear-gradient(135deg,#ffd15c,#ff8a1f);border-color:transparent;color:#2a1000}
+.ord-st .act b{animation:ordP2 1.4s infinite}
+@keyframes ordP2{50%{transform:scale(1.18)}}
+.ord-st .done{color:#3be8ad}.ord-st .done b{background:#1fc48d;border-color:transparent;color:#04281c}
+.ord-st .fail{color:#ff8a9a}.ord-st .fail b{background:#ff5d73;border-color:transparent;color:#2a0006}
+.ord-bar{height:7px;border-radius:99px;background:#1c2540;overflow:hidden}
+.ord-bar i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,#ffd15c,#ff8a1f);transition:width 1s linear}
+.ord-i.ok .ord-bar i{background:#1fc48d}
+.ord-m{margin-top:9px;font-size:.8rem;color:#aab6cc;line-height:1.4}
+.ord-m b{color:#fff}.ord-eta{display:block;margin-top:3px;color:#ffd15c;font-weight:700}
+.ord-i.ok .ord-eta{color:#3be8ad}.ord-i.bad .ord-eta{color:#ff8a9a}
+</style>
+<div id="ordM" aria-hidden="true"><div class="ord-card" role="dialog" aria-label="Mis pedidos">
+  <div class="ord-h"><h3>Mis pedidos</h3><span class="ord-live"><i></i>En vivo</span><button type="button" class="ord-x" id="ordX" aria-label="Cerrar">✕</button></div>
+  <div class="ord-l" id="ordL"><div class="ord-e">Cargando…</div></div>
+</div></div>
+<script id="gtr-ord-js">
+(function(){
+  var $=function(i){return document.getElementById(i)}, M=$('ordM'), L=$('ordL'), data=[], off=0, tp=null, tt=null;
+  var NAMES={U1:'110 diamantes',U2:'341 diamantes',U3:'572 diamantes',U4:'1,166 diamantes',U5:'2,398 diamantes',U6:'6,160 diamantes',TTF:'Seguidores TikTok',TTL:'Likes TikTok',TTV:'Vistas TikTok',IGF:'Seguidores Instagram',IGL:'Likes Instagram',IGV:'Vistas Instagram'};
+  function esc(t){return String(t==null?'':t).replace(/[<>&"]/g,'')}
+  // minutos: [normal desde, normal hasta, maximo]
+  function eta(code){ if(/^(TT|IG)[FLV]$/.test(code)) return [10,60,360]; return [1,15,360]; }
+  function fmt(m){ m=Math.max(1,Math.round(m)); if(m<60) return m+' min'; var h=Math.floor(m/60), r=m%60; return h+(h===1?' hora':' horas')+(r?' y '+r+' min':''); }
+  function spent(m){ if(m<1) return 'menos de 1 min'; return fmt(m); }
+  function final(st){return st==='completed'||st==='refunded'}
+  function card(o){
+    var e=Math.max(0,(Date.now()/1000+off-o.created_at)/60), E=eta(o.code), a=E[0], b=E[1], mx=E[2], st=o.status, nm=NAMES[o.code]||o.code;
+    var cls='', s2='act', s3='', pct=0, txt='';
+    if(st==='completed'){ cls='ok'; s2='done'; s3='done'; pct=100; txt='<b>Entregado ✅</b><span class="ord-eta">Tu pedido ya llegó. Tardó '+spent((o.updated_at-o.created_at)/60)+'.</span>'; }
+    else if(st==='refunded'){ cls='bad'; s2='fail'; s3='fail'; pct=100; txt='<b>No se pudo entregar</b><span class="ord-eta">Te devolvimos el saldo a tu cuenta.</span>'; }
+    else {
+      pct=Math.min(95,Math.max(4,e/b*90));
+      var r;
+      if(e<a) r='Faltan aprox. <b>'+Math.max(1,Math.ceil(a-e))+' a '+fmt(b-e)+'</b>';
+      else if(e<b) r='Faltan menos de <b>'+fmt(b-e)+'</b>';
+      else if(e<mx) r='Se está tardando más de lo normal, pero sigue avanzando. Faltan como máximo <b>'+fmt(mx-e)+'</b>';
+      else r='Lo estamos revisando. Si no llega pronto, escríbenos por WhatsApp y te ayudamos.';
+      txt='Llevas <b>'+spent(e)+'</b> · Normalmente tarda '+(b<60?a+' a '+b+' min':fmt(a)+' a '+fmt(b))+' (máximo '+fmt(mx)+')<span class="ord-eta">'+r+'</span>';
+    }
+    return '<div class="ord-i '+cls+'"><div class="ord-t"><span>'+esc(nm)+'</span><small>$'+esc(o.price)+'</small></div>'
+     +'<div class="ord-st"><span class="done"><b>✓</b>Pedido recibido</span><span class="'+s2+' '+(s2==='act'?'on':'')+'"><b>'+(s2==='done'?'✓':s2==='fail'?'✕':'2')+'</b>'+(s2==='fail'?'Cancelado':'Procesando')+'</span><span class="'+s3+'"><b>'+(s3==='done'?'✓':s3==='fail'?'✕':'3')+'</b>'+(s3==='fail'?'Saldo devuelto':'Entregado')+'</span></div>'
+     +'<div class="ord-bar"><i style="width:'+pct+'%"></i></div><div class="ord-m">'+txt+'</div></div>';
+  }
+  function draw(){ if(!data.length){ L.innerHTML='<div class="ord-e">Todavía no tienes pedidos con Saldo GTR.</div>'; return; } L.innerHTML=data.map(card).join(''); }
+  function load(){
+    var W=window.GTR_WALLET; if(!W||!W.tok()){ L.innerHTML='<div class="ord-e">Entra con tu PIN para ver tus pedidos.</div>'; return; }
+    W.call('/w/orders',{}, W.tok()).then(function(r){ var j=r&&r.j; if(j&&j.ok){ off=j.now-Date.now()/1000; data=j.orders||[]; draw(); } else if(r&&r.s===401){ L.innerHTML='<div class="ord-e">Tu sesión venció. Entra con tu PIN otra vez.</div>'; } }).catch(function(){});
+  }
+  function open(){ M.classList.add('open'); M.setAttribute('aria-hidden','false'); load(); clearInterval(tp); clearInterval(tt); tp=setInterval(function(){ if(data.some(function(o){return !final(o.status)})||!data.length) load(); },8000); tt=setInterval(draw,1000); }
+  function close(){ M.classList.remove('open'); M.setAttribute('aria-hidden','true'); clearInterval(tp); clearInterval(tt); }
+  $('ordX').addEventListener('click',close); M.addEventListener('click',function(e){ if(e.target===M) close(); });
+  window.GTR_ORDERS={open:open,close:close};
+})();
+</script>
 </body>
 </html>
