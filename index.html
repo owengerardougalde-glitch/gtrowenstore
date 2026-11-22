@@ -509,10 +509,10 @@ body.gtr-tidio-open #tidio-chat{opacity:1!important;pointer-events:auto!importan
   </div>
 </div>
       <div id="cryptomusBox" style="display:none;margin-bottom:13px"><button class="btn btn-primary btn-full" id="payCryptomus"><i class="fa-brands fa-bitcoin"></i> Pagar con Cryptomus</button></div>
-      <div class="paynote" id="payNote"><b>Cómo terminar tu pedido</b><ol><li>Haz el pago con los datos de arriba.</li><li>Toca <em>Enviar pedido por WhatsApp</em> y manda tu comprobante en el chat.</li><li>Entregamos en cuanto confirmemos tu pago.</li></ol></div>
+      <div class="paynote" id="payNote"><b>Cómo terminar tu pedido</b><ol><li>Haz el pago con los datos de arriba.</li><li>Adjunta la captura del comprobante aquí abajo, se envía sola.</li><li>Toca <em>Enviar pedido por WhatsApp</em> para avisarnos.</li><li>Entregamos en cuanto confirmemos tu pago.</li></ol></div>
       <div class="field" id="txBox"><label>Número de comprobante, hash o referencia</label><input id="pTx" placeholder="Ej: 456791601"></div>
       <div class="field" id="rcBox"><label class="upload" for="pReceipt"><i class="fa-solid fa-camera"></i> <span id="rcLabel">Adjuntar captura del comprobante</span><input id="pReceipt" type="file" accept="image/*" hidden></label>
-        <small style="color:var(--muted);font-size:.7rem;display:block;margin-top:6px">Tu pedido quedará pendiente hasta que GTR STORE confirme el pago.</small></div>
+        <small style="color:var(--muted);font-size:.7rem;display:block;margin-top:6px">La captura le llega directo a GTR STORE. Tu pedido queda pendiente hasta confirmar el pago.</small></div>
     </div>
   </div>
   <div class="drawer-foot">
@@ -913,15 +913,19 @@ function showStep(n){
   }
 }
 function copyBtn(t){ return `<strong>${t}</strong> <button type="button" data-copy="${t}" style="color:var(--accent);font-size:.8rem;margin-left:4px" aria-label="Copiar"><i class="fa-regular fa-copy"></i></button>`; }
+function payHtml(m){
+  if(m==='SINPE') return '<strong>Datos SINPE Móvil</strong><br>• Teléfono: <strong>6412 9943</strong><br>• Titular: <strong>OWEN MORALES UGALDE</strong>';
+  if(m==='NU') return `<strong>🇲🇽 Transferencia (Nu México)</strong><br>Beneficiario: <strong>Brandon Vazquez Moreno</strong><br>CLABE: ${copyBtn('638180000144588877')}<br>Entidad: <strong>Nu México</strong><hr style="border:0;border-top:1px solid var(--line);margin:10px 0"><strong>🏪 Depósito (Spin by OXXO)</strong><br>Número de cuenta: ${copyBtn('4217470278990896')}<br>Titular: <strong>Brandon Vazquez Moreno</strong>`;
+  if(m==='NEQUI') return `<strong>🇨🇴 Nequi Colombia</strong><br>Número: ${copyBtn('3218791357')}<br>Titular: <strong>Andres Villar</strong>`;
+  return '';
+}
 function updatePay(){
   const m=$('pMethod').value, box=$('payBox');
   $('qrBox').style.display=m==='BINANCE'?'block':'none';
   $('cryptomusBox').style.display=m==='CRYPTOMUS'?'block':'none';
-  $('txBox').style.display=$('rcBox').style.display='none'; $('payNote').style.display=(m==='CRYPTOMUS'||m==='SALDO')?'none':'block';
+  $('txBox').style.display='none'; $('rcBox').style.display=(m==='SINPE'||m==='NU'||m==='NEQUI')?'block':'none'; window.GTR_RC_ID=''; try{ $('rcLabel').textContent='Adjuntar comprobante de pago'; $('rcBox').querySelector('.upload').classList.remove('ok','bad'); }catch(_){} $('payNote').style.display=(m==='CRYPTOMUS'||m==='SALDO')?'none':'block';
   box.style.display=(m==='SINPE'||m==='NU'||m==='NEQUI')?'block':'none';
-  if(m==='SINPE') box.innerHTML='<strong>Datos SINPE Móvil</strong><br>• Teléfono: <strong>6412 9943</strong><br>• Titular: <strong>OWEN MORALES UGALDE</strong>';
-  else if(m==='NU') box.innerHTML=`<strong>🇲🇽 Transferencia (Nu México)</strong><br>Beneficiario: <strong>Brandon Vazquez Moreno</strong><br>CLABE: ${copyBtn('638180000144588877')}<br>Entidad: <strong>Nu México</strong><hr style="border:0;border-top:1px solid var(--line);margin:10px 0"><strong>🏪 Depósito (Spin by OXXO)</strong><br>Número de cuenta: ${copyBtn('4217470278990896')}<br>Titular: <strong>Brandon Vazquez Moreno</strong>`;
-  else if(m==='NEQUI') box.innerHTML=`<strong>🇨🇴 Nequi Colombia</strong><br>Número: ${copyBtn('3218791357')}<br>Titular: <strong>Andres Villar</strong>`;
+  const h=payHtml(m); if(h) box.innerHTML=h;
 }
 const FFV_BASE='https://shrill-king-f8d3.anonimoustugfa.workers.dev';
 const ffState={id:'',status:'idle',name:'',region:''};
@@ -991,7 +995,11 @@ $('payCryptomus').addEventListener('click',()=>{
   if(!$('pCustom').value.trim()||(window.GTR_CART_TYPE!=='ff'&&!$('pName').value.trim())){ alert('Completa los datos requeridos antes de pagar.'); return; }
   window.open('https://app.cryptomus.com/','_blank');
 });
-$('pReceipt').addEventListener('change',e=>{ const f=e.target.files[0]; if(f) $('rcLabel').textContent='✓ '+f.name; });
+$('pReceipt').addEventListener('change',e=>{ const f=e.target.files[0]; if(!f) return; const up=$('rcBox').querySelector('.upload'); up.classList.remove('ok','bad'); $('rcLabel').textContent='Enviando comprobante…';
+  const mm=$('pMethod'); const u=window.GTR_USER||''; const name=($('pName').value||'').trim()||(window.ffName||''); const cur=($('currBtn')&&$('currBtn').textContent||'').trim();
+  const info='Pedido: '+cart.map(n=>P[n][9]).join(', ')+' | Destino: '+(($('pCustom').value||'').trim()||'—')+(name?' | Nombre: '+name:'');
+  GTR_sendReceipt(f,{kind:'order',u:u||name,method:mm.options[mm.selectedIndex].text,total:$('cTotal').textContent+' '+cur,info:info}).then(j=>{ if(j&&j.ok){ window.GTR_RC_ID=j.id; up.classList.add('ok'); $('rcLabel').textContent='✓ Comprobante enviado (#'+j.id+')'; } else { up.classList.add('bad'); $('rcLabel').textContent=(j&&j.message)||'No se pudo enviar. Toca para reintentar.'; } }).catch(()=>{ up.classList.add('bad'); $('rcLabel').textContent='Error al enviar. Toca para reintentar.'; });
+});
 
 const NUMERO_PRINCIPAL = '50670253356';
 const NUMERO_ASISTENTE = '50688888888';
@@ -1044,7 +1052,7 @@ $('sendWa').addEventListener('click',async()=>{
     }
   }
   const items=cart.map(n=>'• '+P[n][9]).join('\n');
-  const msg=`⚡ *NUEVO PEDIDO - GTROWEN STORE*\n\n🧾 *Pedido GTR:* ${window.GTR_PENDING_ORDER||'Manual'}\n\n👤 *Cliente:* ${name}\n🔗 *${isFF?'ID de Free Fire':'Detalle/Destino'}:* ${custom}${ffName?' · Nombre: '+ffName:''}\n💳 *Método de Pago:* ${m.options[m.selectedIndex].text}\n🧾 *Comprobante:* lo envío en este chat\n\n📦 *Productos:*\n${items}\n💰 *Total:* ${$('cTotal').textContent} (${cur})${window.GTR_USER?'\n🪪 *Usuario:* '+window.GTR_USER:''}`;
+  const msg=`⚡ *NUEVO PEDIDO - GTROWEN STORE*\n\n🧾 *Pedido GTR:* ${window.GTR_PENDING_ORDER||'Manual'}\n\n👤 *Cliente:* ${name}\n🔗 *${isFF?'ID de Free Fire':'Detalle/Destino'}:* ${custom}${ffName?' · Nombre: '+ffName:''}\n💳 *Método de Pago:* ${m.options[m.selectedIndex].text}\n🧾 *Comprobante:* ${window.GTR_RC_ID?'ya enviado desde la tienda (#'+window.GTR_RC_ID+')':'lo envío en este chat'}\n\n📦 *Productos:*\n${items}\n💰 *Total:* ${$('cTotal').textContent} (${cur})${window.GTR_USER?'\n🪪 *Usuario:* '+window.GTR_USER:''}`;
   { const wurl='https://api.whatsapp.com/send?phone='+NUMERO_PRINCIPAL+'&text='+encodeURIComponent(msg); const wn=window.open(wurl,'_blank'); if(!wn) location.href=wurl; }
   if(window.gtrLoyOrder) window.gtrLoyOrder(cart.filter(n=>P[n][0]==='ff-lim'||P[n][0]==='ff-ilim').length);
 });
@@ -2950,14 +2958,14 @@ input::placeholder,textarea::placeholder{color:#b9a8f0!important}
     if(!user){
       h=ic+'<div class="wal-tx"><small>Tu saldo GTR</small><div class="wal-amt">$0.00 <em>USD</em></div><small>Crea tu usuario para recargar saldo y comprar diamantes al instante.</small></div><div class="wal-ac"><button type="button" data-au="open">Crear mi usuario</button></div>';
     } else if(W.tok){
-      h=ic+'<div class="wal-tx"><small>Tu saldo GTR</small><div class="wal-amt">'+(W.bal==null?'…':usd(W.bal))+' <em>USD</em></div><small>Compra productos al instante con tu saldo.</small></div><div class="wal-ac"><button type="button" data-w="topup">Agregar saldo automáticamente · Binance</button><button type="button" class="wal-b ghost" data-w="orders"><i class="fa-solid fa-truck-fast"></i> Mis pedidos</button><a class="wal-b ghost" target="_blank" rel="noopener" href="'+wa('Hola, quiero pedir saldo en mi cuenta ('+user+').')+'">Pedir saldo por WhatsApp</a><button type="button" class="ghost" data-w="out">Salir</button></div>';
+      h=ic+'<div class="wal-tx"><small>Tu saldo GTR</small><div class="wal-amt">'+(W.bal==null?'…':usd(W.bal))+' <em>USD</em></div><small>Compra productos al instante con tu saldo.</small></div><div class="wal-ac"><button type="button" data-w="topup">Agregar saldo automáticamente · Binance</button><button type="button" class="wal-b ghost" data-w="manual">Recargar con SINPE, México o Nequi</button><button type="button" class="wal-b ghost" data-w="orders"><i class="fa-solid fa-truck-fast"></i> Mis pedidos</button><a class="wal-b ghost" target="_blank" rel="noopener" href="'+wa('Hola, quiero pedir saldo en mi cuenta ('+user+').')+'">Pedir saldo por WhatsApp</a><button type="button" class="ghost" data-w="out">Salir</button></div>';
     } else {
       h=ic+'<div class="wal-tx"><small>Tu saldo GTR</small><div class="wal-amt wal-hid">$ •••</div><small>Entra con tu PIN para ver tu saldo y pagar al instante.</small></div><div class="wal-ac"><button type="button" data-w="in">Entrar con mi PIN</button></div>';
     }
     barKey=user+'|'+(W.tok?1:0)+'|'+W.bal;
     bar.innerHTML=h;
   }
-  bar.addEventListener('click',function(e){ var b=e.target.closest('button[data-w]'); if(!b) return; var a=b.getAttribute('data-w'); if(a==='out') logout(); else if(a==='orders'){ if(window.GTR_ORDERS) GTR_ORDERS.open(); } else if(a==='topup') startWalletTopup(); else openM(true); });
+  bar.addEventListener('click',function(e){ var b=e.target.closest('button[data-w]'); if(!b) return; var a=b.getAttribute('data-w'); if(a==='out') logout(); else if(a==='manual'){ if(window.GTR_RC) GTR_RC.open(); } else if(a==='orders'){ if(window.GTR_ORDERS) GTR_ORDERS.open(); } else if(a==='topup') startWalletTopup(); else openM(true); });
   var bnState={id:'',tries:0,timer:null,amount:''};
   function bnOpen(){var m=$('bnTopup');m.classList.add('open');m.setAttribute('aria-hidden','false');$('bnChoose').hidden=false;$('bnPayStage').hidden=true;$('bnError').textContent='';$('bnAmount').value='15';}
   function bnClose(){if(bnState.timer)clearTimeout(bnState.timer);bnState.timer=null;$('bnTopup').classList.remove('open');$('bnTopup').setAttribute('aria-hidden','true');}
@@ -4716,6 +4724,8 @@ html body #grid .card.ff2 .fx-amt span{
   text-transform:uppercase;
   font-weight:700;
 }
+html body .upload.ok{border-color:#1fc48d!important;color:#3be8ad!important}
+html body .upload.bad{border-color:#ff5d73!important;color:#ff8a9a!important}
 html body #grid .card.ff2.unl .fx-amt span{color:#4ec9ff !important}
 html body #grid .card.ff2.lim .fx-amt span{color:#ffb347 !important}
 html body #grid .card.ff2 .fx-sub{
@@ -5297,6 +5307,57 @@ html body .toolbar .search{background:#111827!important;border:1px solid rgba(25
   function close(){ M.classList.remove('open'); M.setAttribute('aria-hidden','true'); clearInterval(tp); clearInterval(tt); }
   $('ordX').addEventListener('click',close); M.addEventListener('click',function(e){ if(e.target===M) close(); });
   window.GTR_ORDERS={open:open,close:close};
+})();
+</script>
+<style id="gtr-rc-css">
+#rcM{position:fixed;inset:0;z-index:9400;display:none;align-items:flex-end;justify-content:center;background:rgba(4,6,12,.72);backdrop-filter:blur(6px)}
+#rcM.open{display:flex}
+.rc-card{width:100%;max-width:460px;max-height:90vh;overflow:auto;background:linear-gradient(180deg,rgba(255,255,255,.05),transparent 30%),#101827;border:1px solid rgba(255,184,77,.35);border-radius:24px 24px 0 0;padding:18px;color:#f8fafc;box-shadow:0 -20px 60px rgba(0,0,0,.6)}
+@media(min-width:560px){#rcM{align-items:center}.rc-card{border-radius:24px}}
+.rc-card h3{margin:0 0 4px;font-size:1.1rem;font-weight:800}.rc-card p.s{margin:0 0 12px;color:#aab6cc;font-size:.84rem;line-height:1.4}
+.rc-card label{display:block;margin:10px 0 5px;font-size:.78rem;font-weight:700;color:#cbd5e6}
+.rc-card select,.rc-card input[type=text],.rc-card input[type=number]{width:100%;padding:12px;border-radius:12px;border:1px solid rgba(148,163,184,.28);background:#0b1120;color:#fff;font-size:.95rem}
+.rc-data{margin-top:10px;padding:12px;border-radius:14px;background:#131b2e;border:1px solid rgba(255,184,77,.25);font-size:.86rem;line-height:1.6}
+.rc-up{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:12px;padding:14px;border-radius:14px;border:1.5px dashed rgba(255,184,77,.55);color:#ffd77a;font-weight:800;cursor:pointer;text-align:center}
+.rc-up.ok{border-style:solid;border-color:#1fc48d;color:#3be8ad;background:rgba(31,196,141,.08)}.rc-up.bad{border-color:#ff5d73;color:#ff8a9a}
+.rc-note{margin-top:8px;font-size:.74rem;color:#8f9bb3;line-height:1.35}
+.rc-x{float:right;background:rgba(255,255,255,.08);border:0;color:#fff;width:34px;height:34px;border-radius:50%;cursor:pointer}
+.rc-wa{display:none;margin-top:12px;text-align:center;padding:12px;border-radius:12px;background:#1fc48d;color:#04281c;font-weight:800;text-decoration:none}
+</style>
+<div id="rcM" aria-hidden="true"><div class="rc-card" role="dialog" aria-label="Recargar saldo con otro método">
+  <button type="button" class="rc-x" id="rcX" aria-label="Cerrar">✕</button>
+  <h3>Recargar saldo GTR</h3><p class="s">Paga con tu método, adjunta la captura y listo: te llega a Owen al instante con tu usuario.</p>
+  <label for="rcMeth">Método de pago</label>
+  <select id="rcMeth"><option value="SINPE">🇨🇷 SINPE Móvil (Costa Rica)</option><option value="NU">🇲🇽 México (Nu / Spin by OXXO)</option><option value="NEQUI">🇨🇴 Nequi (Colombia)</option></select>
+  <div class="rc-data" id="rcData"></div>
+  <label for="rcAmt">¿Cuánto pagaste? (con moneda)</label>
+  <input id="rcAmt" type="text" placeholder="Ej: ₡5000 o $10 USD" maxlength="30">
+  <label class="rc-up" id="rcUp" for="rcFile"><span id="rcUpT">📎 Adjuntar comprobante de pago</span><input id="rcFile" type="file" accept="image/*" hidden></label>
+  <a class="rc-wa" id="rcWa" target="_blank" rel="noopener">Avisar por WhatsApp (opcional)</a>
+  <p class="rc-note">La captura se envía sola. Acreditamos tu saldo en cuanto revisemos el pago.</p>
+</div></div>
+<script id="gtr-rc-js">
+(function(){
+  var $=function(i){return document.getElementById(i)}, URL_W='https://gtr-worker.anonimoustugfa.workers.dev/w/receipt';
+  function compress(file){ return new Promise(function(res,rej){ var fr=new FileReader(); fr.onerror=rej; fr.onload=function(){ var im=new Image(); im.onerror=rej; im.onload=function(){ var s=Math.min(1,1280/Math.max(im.width,im.height)), c=document.createElement('canvas'); c.width=Math.round(im.width*s); c.height=Math.round(im.height*s); var x=c.getContext('2d'); x.fillStyle='#fff'; x.fillRect(0,0,c.width,c.height); x.drawImage(im,0,0,c.width,c.height); var q=.75, d=c.toDataURL('image/jpeg',q); while(d.length>800000&&q>.35){ q-=.1; d=c.toDataURL('image/jpeg',q); } res(d); }; im.src=fr.result; }; fr.readAsDataURL(file); }); }
+  window.GTR_sendReceipt=function(file,ctx){ return compress(file).then(function(img){ return fetch(URL_W,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({image:img,kind:ctx.kind,u:ctx.u||window.GTR_USER||'',method:ctx.method,total:ctx.total,info:ctx.info})}).then(function(r){return r.json()}); }); };
+  /* ventana: recargar saldo con otro metodo */
+  var M=$('rcM'), done=false;
+  function data(){ $('rcData').innerHTML=(window.payHtml?payHtml($('rcMeth').value):''); }
+  function reset(){ done=false; $('rcUp').className='rc-up'; $('rcUpT').textContent='📎 Adjuntar comprobante de pago'; $('rcWa').style.display='none'; $('rcFile').value=''; }
+  window.GTR_RC={open:function(){ M.classList.add('open'); M.setAttribute('aria-hidden','false'); reset(); data(); }};
+  $('rcMeth').addEventListener('change',function(){ data(); });
+  $('rcX').addEventListener('click',function(){ M.classList.remove('open'); });
+  M.addEventListener('click',function(e){ if(e.target===M) M.classList.remove('open'); });
+  $('rcFile').addEventListener('change',function(e){ var f=e.target.files[0]; if(!f) return;
+    var u=window.GTR_USER||''; if(!u){ $('rcUp').className='rc-up bad'; $('rcUpT').textContent='Primero crea tu usuario o entra'; return; }
+    $('rcUpT').textContent='Enviando comprobante…';
+    var amt=($('rcAmt').value||'').trim(), meth=$('rcMeth').options[$('rcMeth').selectedIndex].text;
+    GTR_sendReceipt(f,{kind:'topup',u:u,method:meth,total:amt,info:'Recarga de saldo GTR'}).then(function(j){
+      if(j&&j.ok){ $('rcUp').className='rc-up ok'; $('rcUpT').textContent='✓ Comprobante enviado (#'+j.id+')'; var a=$('rcWa'); a.style.display='block'; a.href='https://api.whatsapp.com/send?phone='+(window.NUMERO_PRINCIPAL||'50670253356')+'&text='+encodeURIComponent('Hola, ya envié mi comprobante #'+j.id+' desde la tienda para recargar saldo. Usuario: '+u+(amt?' · Monto: '+amt:'')+' · '+meth); }
+      else{ $('rcUp').className='rc-up bad'; $('rcUpT').textContent=(j&&j.message)||'No se pudo enviar. Toca para reintentar.'; }
+    }).catch(function(){ $('rcUp').className='rc-up bad'; $('rcUpT').textContent='Error al enviar. Toca para reintentar.'; });
+  });
 })();
 </script>
 </body>
