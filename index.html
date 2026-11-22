@@ -543,7 +543,7 @@ for (const c in TASAS_MERCADO) TASAS[c] = c === 'USD' ? 1 : (TASAS_PROPIAS[c] ||
 const PRECIOS_USD = {
  A:[13,22], B:[5,9], C:[12,20], D:[11,19], E:[5,10], F:[4,8], G:[3,6], H:[3,7], I:[5,12], J:[5,55], K:[3,8], L:[10,20],
  L1:[0.60,1.4], L2:[4.00,5.8], L3:[6.00,10], L4:[11.00,18], L5:[26.00,42], L6:[3.00,5],
- U1:[0.8,1.7], U2:[3,5], U3:[4,8], U4:[7,14.5], U5:[13,22.5], U6:[33,55],
+ U1:[0.72,1.7], U2:[2.15,5], U3:[3.6,8], U4:[6.6,14.5], U5:[12.7,22.5], U6:[31.9,55],
  S1:[2,3.5], S2:[2,2.6], S3:[7.3,13], S4:[0.65,0.85], S5:[1.8,3], S6:[1.5,1.95],
  /* Oro Blood Strike: [precio de venta USD, precio en el juego]. Costo proveedor -> ganancia:
     100+5: 0.72 -> 0.17 | 300+20: 2.15 -> 0.44 | 500+40: 3.59 -> 0.60 | 1000+100: 7.17 -> 1.02 | 2000+260: 14.34 -> 1.85 | 5000+800: 35.85 -> 3.84 */
@@ -570,8 +570,11 @@ for (const [tier, [usd, usd_tachado]] of Object.entries(PRECIOS_USD)) {
   TIER[tier] = p1 + '|' + p2;
 }
 /* Precios fijos en MXN (solo diamantes ilimitados) */
-const MXN_FIJO = { U2:60, U3:75, U4:130, U5:245, U6:625, L1:13, L2:75, L3:113, L4:206, L5:485, L6:57 };
+const MXN_FIJO = { U2:45, U3:75, U4:130, U5:245, U6:625, L1:13, L2:75, L3:113, L4:206, L5:485, L6:57 };
 for (const t in MXN_FIJO) { const [a,b] = TIER[t].split('|'); const arr = a.split(','); arr[CUR.indexOf('MXN')] = MXN_FIJO[t]; TIER[t] = arr.join(',') + '|' + b; }
+/* Guatemala (GTQ) conserva sus precios anteriores en los diamantes ilimitados */
+const GTQ_PREV = { U1:0.8, U2:3, U3:4, U4:7, U5:13, U6:33 };
+for (const t in GTQ_PREV) { const [a,b] = TIER[t].split('|'); const arr = a.split(','); arr[CUR.indexOf('GTQ')] = redondear(GTQ_PREV[t] * TASAS.GTQ, 'GTQ'); TIER[t] = arr.join(',') + '|' + b; }
 /* OFERTA 6,160 ilimitados: $33 / 620 MXN, solo hoy (1 nov) y mañana (2 nov). Termina sola; el precio normal ($34 / 640 MXN) queda tachado. */
 const OFERTA_FIN = new Date('2026-11-02T23:59:00-06:00');
 const OFERTA_ON = Date.now() < OFERTA_FIN.getTime();
@@ -860,6 +863,7 @@ function renderGrid(){
       return `<article class="card ff ff2 ${lim?'lim':'unl'} ${out?'sold':''} ${hot?'hot':''}">
         <div class="fx-top"><span class="fx-brand">FREE FIRE</span>${kind}</div>
         ${art}
+        ${lim?'':'<span class="fx-super">🔥 SÚPER OFERTA</span>'}
         <div class="fx-amt"><b>${Number(nn).toLocaleString('en-US')}</b><span>diamantes</span></div>
         <div class="fx-sub">${lim?'Oferta limitada para tu cuenta':'Sin límite de recarga'}</div>
         <div class="fx-stk ${stv}"><i></i>${stt}</div>
@@ -5282,6 +5286,10 @@ html body #grid .card:not(.ff2) h3{font-weight:800!important;font-size:1.02rem!i
 html body #grid .card:not(.ff2) .sub{color:#aab6cc!important}
 html body #grid .card:not(.ff2) .price{color:#fff!important;font-weight:900}
 #smmM .sm-pi{width:48px!important;height:48px!important;font-size:1.5rem!important;box-shadow:0 8px 18px rgba(0,0,0,.35)}
+html body #grid .card.ff2.unl{position:relative}
+html body #grid .card.ff2 .fx-super{position:absolute;top:44px;left:12px;z-index:3;font-size:.6rem;font-weight:900;letter-spacing:.02em;padding:5px 9px;border-radius:99px;background:linear-gradient(135deg,#ff3d5a,#ff8a1f);color:#fff;box-shadow:0 6px 16px rgba(255,61,90,.45);animation:fxSup 2.4s ease-in-out infinite}
+@keyframes fxSup{50%{transform:scale(1.07)}}
+@media(prefers-reduced-motion:reduce){html body #grid .card.ff2 .fx-super{animation:none}}
 </style>
 <style id="gtr-ord-css">
 #ordM{position:fixed;inset:0;z-index:9500;display:none;align-items:flex-end;justify-content:center;background:rgba(4,6,12,.72);backdrop-filter:blur(6px)}
