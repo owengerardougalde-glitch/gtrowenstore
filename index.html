@@ -5233,6 +5233,25 @@ html body .walbar{border-color:rgba(255,184,77,.28)!important;background:linear-
 html body .walbar .wal-amt{color:var(--gold)!important}
 html body .walbar .wal-ic{background:rgba(255,197,71,.14)!important;color:var(--gold)!important}
 html body .toolbar .search{background:#111827!important;border:1px solid rgba(255,255,255,.12)!important;border-radius:14px!important}
+/* ---- polish 4: rediseño visual (fondo, tarjetas de vidrio, secciones, pasos) ---- */
+html body{background:radial-gradient(900px 520px at 8% -6%,rgba(255,122,26,.17),transparent 60%),radial-gradient(800px 560px at 108% 12%,rgba(88,101,242,.16),transparent 62%),radial-gradient(700px 500px at 50% 112%,rgba(255,61,90,.10),transparent 60%),#070a12!important;background-attachment:fixed!important}
+html body #grid .card{background:linear-gradient(165deg,rgba(255,255,255,.07),rgba(255,255,255,.015) 38%),#0f1526!important;border:1px solid rgba(255,255,255,.09)!important;border-radius:22px!important;box-shadow:0 14px 34px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.08)!important}
+html body #grid .card:hover{border-color:rgba(255,184,77,.5)!important;box-shadow:0 20px 44px rgba(0,0,0,.55),0 0 30px rgba(255,140,40,.2),inset 0 1px 0 rgba(255,255,255,.12)!important}
+html body .section-title{position:relative;padding-left:14px}
+html body .section-title:before{content:"";position:absolute;left:0;top:6px;bottom:6px;width:4px;border-radius:4px;background:linear-gradient(180deg,#ffd15c,#ff5d2a)}
+html body .trust{display:grid!important;grid-template-columns:1fr 1fr;gap:10px!important;background:none!important;border:0!important;padding:0!important}
+html body .trust>div{display:flex;align-items:center;gap:11px;padding:14px!important;border-radius:18px!important;background:linear-gradient(165deg,rgba(255,255,255,.06),rgba(255,255,255,.015)),#0f1526!important;border:1px solid rgba(255,255,255,.09)!important}
+html body .trust>div i{flex:none;width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(255,209,92,.22),rgba(255,93,42,.18));color:#ffd15c;font-size:1rem}
+html body .trust>div span{display:block;font-weight:800;font-size:.86rem;line-height:1.2}
+html body .trust>div small{display:block;margin-top:3px;font-weight:500;color:#9aa6bd;font-size:.7rem}
+html body .promo{border-radius:20px!important;background:linear-gradient(135deg,rgba(255,197,71,.16),rgba(255,93,42,.08)),#121829!important;border:1px solid rgba(255,184,77,.38)!important}
+html body .how h2{font-weight:800}
+html body .how-grid{position:relative;display:grid;gap:12px}
+html body .how-step{border-radius:18px!important;background:linear-gradient(165deg,rgba(255,255,255,.06),rgba(255,255,255,.015)),#0f1526!important;border:1px solid rgba(255,255,255,.09)!important}
+html body .how-step>b{background:linear-gradient(135deg,#ffd15c,#ff8a1f)!important;color:#2a1000!important;box-shadow:0 8px 18px rgba(255,120,30,.3)}
+html body .pay span{background:rgba(255,255,255,.06)!important;border:1px solid rgba(255,255,255,.12)!important;color:#dbe3f3!important;border-radius:99px!important}
+html body footer{color:#7f8aa1!important;border-top:1px solid rgba(255,255,255,.07)}
+html body nav.bottom,html body .bnav{backdrop-filter:blur(16px) saturate(1.3)!important;background:rgba(12,17,30,.82)!important;border:1px solid rgba(255,255,255,.1)!important}
 </style>
 <style id="gtr-ord-css">
 #ordM{position:fixed;inset:0;z-index:9500;display:none;align-items:flex-end;justify-content:center;background:rgba(4,6,12,.72);backdrop-filter:blur(6px)}
