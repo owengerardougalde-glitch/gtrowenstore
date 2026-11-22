@@ -392,7 +392,7 @@ body.gtr-tidio-open #tidio-chat{opacity:1!important;pointer-events:auto!importan
     <div class="hero-card home">
       <div class="xm-snow" aria-hidden="true" id="xmSnow"></div>
       <span class="pill"><span class="pk">❄</span> Navidad en GTR · Entrega automática</span>
-      <h1>Diamantes Free Fire al instante</h1>
+      <h1>Diamantes Free Fire <span>al instante</span></h1>
       <p>Pon tu ID, paga con SINPE o Binance y recibe tus diamantes en minutos. Sin esperas, a cualquier hora.</p>
       <div class="hero-cta sv">
         <button class="btn btn-primary" type="button" id="goRecarga"><i class="fa-solid fa-gem"></i> Recargar ahora</button>
@@ -5252,6 +5252,22 @@ html body .how-step>b{background:linear-gradient(135deg,#ffd15c,#ff8a1f)!importa
 html body .pay span{background:rgba(255,255,255,.06)!important;border:1px solid rgba(255,255,255,.12)!important;color:#dbe3f3!important;border-radius:99px!important}
 html body footer{color:#7f8aa1!important;border-top:1px solid rgba(255,255,255,.07)}
 html body nav.bottom,html body .bnav{backdrop-filter:blur(16px) saturate(1.3)!important;background:rgba(12,17,30,.82)!important;border:1px solid rgba(255,255,255,.1)!important}
+/* ---- polish 5: hero y catálogo, cambio visible desde el primer vistazo ---- */
+@property --gang{syntax:'<angle>';initial-value:0deg;inherits:false}
+html body .hero-card.home{position:relative;border:1px solid transparent!important;background:linear-gradient(180deg,rgba(10,14,26,.78),rgba(10,14,26,.9)) padding-box,conic-gradient(from var(--gang),#ffd15c,#ff5d2a,#7c5cff,#2fd5ff,#ffd15c) border-box!important;animation:gang 7s linear infinite;box-shadow:0 0 50px rgba(255,120,30,.22),0 24px 60px rgba(0,0,0,.55)!important;border-radius:28px!important}
+@keyframes gang{to{--gang:360deg}}
+html body .hero-card.home h1{font-size:clamp(1.9rem,7.7vw,3.3rem)!important;font-weight:900!important;letter-spacing:-.03em;line-height:1.02!important}
+html body .hero-card.home h1 span{display:block;background:linear-gradient(90deg,#ffd15c,#ff8a1f 55%,#ff3d5a)!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important;-webkit-text-fill-color:transparent!important;filter:none!important}
+html body .hero-card.home .pill{background:rgba(255,197,71,.14)!important;border:1px solid rgba(255,197,71,.4)!important;color:#ffd77a!important;font-weight:800}
+html body .hero-card.home #goRecarga{position:relative;overflow:hidden;padding:16px 22px!important;font-size:1.05rem!important;font-weight:900!important;border-radius:16px!important;background:linear-gradient(135deg,#ffd15c,#ff8a1f 58%,#f0502a)!important;color:#2a1000!important;box-shadow:0 14px 34px rgba(255,120,30,.45),inset 0 1px 0 rgba(255,255,255,.55)!important}
+html body .hero-card.home #goRecarga:after{content:"";position:absolute;top:0;bottom:0;width:60px;left:-80px;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-18deg);animation:gshine 3.8s ease-in-out infinite}
+@keyframes gshine{0%,55%{left:-80px}100%{left:130%}}
+html body .hero-card.home .btn-ghost{background:rgba(255,255,255,.07)!important;border:1px solid rgba(255,255,255,.18)!important;border-radius:14px!important;backdrop-filter:blur(8px)}
+html body header{background:rgba(8,11,20,.72)!important;backdrop-filter:blur(18px) saturate(1.4)!important;border-bottom:1px solid rgba(255,255,255,.08)!important}
+html body .toolbar .chips{gap:8px!important}
+html body .toolbar .chip,html body #chips button{border-radius:99px!important;background:rgba(255,255,255,.06)!important;border:1px solid rgba(255,255,255,.14)!important;color:#dbe3f3!important;font-weight:700!important;padding:9px 16px!important}
+html body .toolbar .chip.on,html body .toolbar .chip.active,html body #chips button.on,html body #chips button.active,html body #chips button[aria-pressed="true"]{background:linear-gradient(135deg,#ffd15c,#ff8a1f)!important;color:#2a1000!important;border-color:transparent!important;box-shadow:0 8px 20px rgba(255,120,30,.35)!important}
+@media(prefers-reduced-motion:reduce){html body .hero-card.home,html body .hero-card.home #goRecarga:after{animation:none}}
 </style>
 <style id="gtr-ord-css">
 #ordM{position:fixed;inset:0;z-index:9500;display:none;align-items:flex-end;justify-content:center;background:rgba(4,6,12,.72);backdrop-filter:blur(6px)}
