@@ -855,8 +855,8 @@ function renderGrid(){
       const stv=out?'out':(typeof stock==='number'?(stock<=5?'low':'ok'):(stock==='unknown'?'low':'ok'));
       const stt=out?'Agotado':(typeof stock==='number'?stock.toLocaleString('en-US')+' en stock':(stock==='unknown'?(window.GTR_STOCK_STATE==='load'?'Verificando…':'Stock por confirmar'):'Disponible'));
       const art=lim
-        ?('<div class="fx-art lim"><img decoding="async" src="'+window.GTR_FF_GEMS+'" alt="Diamantes limitados"><span class="fx-qty">x'+nn.toLocaleString('en-US')+'</span></div>')
-        :('<div class="fx-art unl"><img decoding="async" src="'+window.GTR_FF_CHEST+'" alt="Caja de diamantes"><span class="fx-qty">x'+nn.toLocaleString('en-US')+'</span></div>');
+        ?('<div class="fx-art lim"><img decoding="async" src="'+(window.GTR_FF_GEMS||'/gtr-gems.webp')+'" alt="Diamantes limitados"><span class="fx-qty">x'+nn.toLocaleString('en-US')+'</span></div>')
+        :('<div class="fx-art unl"><img decoding="async" src="'+(window.GTR_FF_CHEST||'/gtr-chest.webp')+'" alt="Caja de diamantes"><span class="fx-qty">x'+nn.toLocaleString('en-US')+'</span></div>');
       return `<article class="card ff ff2 ${lim?'lim':'unl'} ${out?'sold':''} ${hot?'hot':''}">
         <div class="fx-top"><span class="fx-brand">FREE FIRE</span>${kind}</div>
         ${art}
@@ -3982,7 +3982,8 @@ html body .hero-card.ffhero,html body section .hero-card.ffhero{background:trans
     (function f(t){var p=Math.min(1,(t-t0)/D),e=1-Math.pow(1-p,3);$('gxB').textContent='$'+(a+(b-a)*e).toFixed(2);if(p<1)requestAnimationFrame(f)})(t0);
     celebrate('gold');
   }
-  window.GTR_FX={order:order,delivered:delivered,failed:failed,topup:topup,burst:burst};
+  function social(label){ open();ov.classList.add('ok');$('gxT').textContent='¡Pedido recibido!';$('gxS').innerHTML=esc(label)+'<br><small style="opacity:.7">Empieza a llegar en unos minutos</small>';steps(['Pago con saldo recibido','Pedido enviado','Entrega en progreso'],['done','done','act']);$('gxB').hidden=true;$('gxOk').textContent='Listo';celebrate('gold'); }
+  window.GTR_FX={order:order,delivered:delivered,failed:failed,topup:topup,burst:burst,social:social};
   /* --- Barra de recargas: destello cuando sube --- */
   var lb=$('loyBar'),prev=null;
   if(lb&&window.MutationObserver){ new MutationObserver(function(){ var on=lb.querySelectorAll('.loy-dots i.on'),n=on.length; if(prev!==null&&n>prev&&n>0){ var el=on[n-1];el.classList.add('gx-pop'); var r=el.getBoundingClientRect(); burst(r.left+r.width/2,r.top+r.height/2,'gold',26); } prev=n; }).observe(lb,{childList:true,subtree:true}); }
@@ -4890,8 +4891,8 @@ html body .hero-card.home::after{opacity:.35 !important}
 
 <script id="gtr-pro-final-js">
 (function(){
-  window.GTR_FF_CHEST="/gtr-img-17.jpg";
-  window.GTR_FF_GEMS="/gtr-img-18.jpg";
+  window.GTR_FF_CHEST="/gtr-chest.webp";
+  window.GTR_FF_GEMS="/gtr-gems.webp";
 
   function flash(){
     var e=document.createElement('div'); e.className='gtr-flash'; document.body.appendChild(e);
@@ -5176,7 +5177,7 @@ html body .loy-b{
       var j=r.j||{};$('smmGo').disabled=false;
       if(typeof j.balance==='number')W.setBal(j.balance);
       if(r.s===401){msg('Vuelve a entrar con tu PIN.','err');W.pin();return}
-      if(j.ok){msg(j.message||'¡Pedido enviado!','ok');$('smmLk').value='';draw()}
+      if(j.ok){msg(j.message||'¡Pedido enviado!','ok');var _q=S.qty,_l=it.label;$('smmLk').value='';draw();if(window.GTR_FX&&GTR_FX.social){try{close();GTR_FX.social(_q.toLocaleString('en-US')+' '+_l)}catch(e){}}}
       else msg(j.message||'No se pudo hacer el pedido.','err');
       draw();
     });
@@ -5268,6 +5269,19 @@ html body .toolbar .chips{gap:8px!important}
 html body .toolbar .chip,html body #chips button{border-radius:99px!important;background:rgba(255,255,255,.06)!important;border:1px solid rgba(255,255,255,.14)!important;color:#dbe3f3!important;font-weight:700!important;padding:9px 16px!important}
 html body .toolbar .chip.on,html body .toolbar .chip.active,html body #chips button.on,html body #chips button.active,html body #chips button[aria-pressed="true"]{background:linear-gradient(135deg,#ffd15c,#ff8a1f)!important;color:#2a1000!important;border-color:transparent!important;box-shadow:0 8px 20px rgba(255,120,30,.35)!important}
 @media(prefers-reduced-motion:reduce){html body .hero-card.home,html body .hero-card.home #goRecarga:after{animation:none}}
+/* ---- polish 6: cajas, diamantes y tarjetas de tokens / cajas evolutivas ---- */
+html body #grid .card.ff2 .fx-art{height:150px!important;background:radial-gradient(60% 60% at 50% 55%,rgba(255,170,60,.22),rgba(70,120,255,.10) 55%,transparent 75%)!important;border-radius:18px!important;overflow:visible!important}
+html body #grid .card.ff2 .fx-art img{max-height:138px!important;width:auto;filter:drop-shadow(0 12px 22px rgba(0,0,0,.55)) drop-shadow(0 0 18px rgba(80,150,255,.35))!important}
+html body #grid .card.ff2.lim .fx-art img{max-height:128px!important}
+html body #grid .card.ff2 .fx-qty{position:absolute;right:4px;bottom:0}
+html body #grid .card:not(.ff2){padding-top:16px}
+html body #grid .card:not(.ff2) .card-head{align-items:center;gap:12px}
+html body #grid .card:not(.ff2) .ico{width:56px!important;height:56px!important;border-radius:18px!important;display:grid;place-items:center;font-size:1.5rem!important;color:#fff!important;flex:none;background:linear-gradient(145deg,color-mix(in srgb,var(--c,#fb923c) 85%,#fff 10%),color-mix(in srgb,var(--c,#fb923c) 45%,#0b1020))!important;box-shadow:0 10px 22px color-mix(in srgb,var(--c,#fb923c) 40%,transparent),inset 0 1px 0 rgba(255,255,255,.45)!important}
+html body #grid .card:not(.ff2) .ico i{filter:drop-shadow(0 2px 4px rgba(0,0,0,.35))}
+html body #grid .card:not(.ff2) h3{font-weight:800!important;font-size:1.02rem!important}
+html body #grid .card:not(.ff2) .sub{color:#aab6cc!important}
+html body #grid .card:not(.ff2) .price{color:#fff!important;font-weight:900}
+#smmM .sm-pi{width:48px!important;height:48px!important;font-size:1.5rem!important;box-shadow:0 8px 18px rgba(0,0,0,.35)}
 </style>
 <style id="gtr-ord-css">
 #ordM{position:fixed;inset:0;z-index:9500;display:none;align-items:flex-end;justify-content:center;background:rgba(4,6,12,.72);backdrop-filter:blur(6px)}
