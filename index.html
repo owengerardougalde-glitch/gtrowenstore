@@ -864,7 +864,7 @@ function renderGrid(){
       const stt=out?'Agotado':(typeof stock==='number'?stock.toLocaleString('en-US')+' en stock':(stock==='unknown'?(window.GTR_STOCK_STATE==='load'?'Verificando…':'Stock por confirmar'):'Disponible'));
       const art=lim
         ?('<div class="fx-art lim">'+gemArt(nn,'lim')+'<span class="fx-qty">x'+nn.toLocaleString('en-US')+'</span></div>')
-        :('<div class="fx-art unl">'+gemArt(nn,'unl')+'<span class="fx-qty">x'+nn.toLocaleString('en-US')+'</span></div>');
+          :('<div class="fx-art unl"><img decoding="async" src="'+gemImg(nn)+'" alt="'+nn.toLocaleString('en-US')+' diamantes"><span class="fx-qty">x'+nn.toLocaleString('en-US')+'</span></div>');
       return `<article class="card ff ff2 ${lim?'lim':'unl'} ${out?'sold':''} ${hot?'hot':''}">
         <div class="fx-top"><span class="fx-brand">FREE FIRE</span>${kind}</div>
         ${art}
@@ -891,6 +891,7 @@ function renderGrid(){
   $('secCount').textContent=list.length+' productos';
 }
 /* Ilustración propia de diamantes: más diamantes mientras más grande el paquete */
+function gemImg(n){return n>=5000?'/gtr-d6160.webp':n>=1000?'/gtr-dcofre.webp':n>=400?'/gtr-d572.webp':'/gtr-dsolo.webp'}
 let _gid=0;
 function gemArt(n,kind){
   const id='g'+(++_gid), pal=kind==='lim'?['#ffe9a8','#ffc24a','#ff8a1f','#c4560f','#7a2d08']:['#e9fbff','#7fe3ff','#2fa8ff','#1b63e8','#0f2f9c'];
