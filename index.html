@@ -323,6 +323,11 @@ body.gtr-tidio-open #tidio-chat{opacity:1!important;pointer-events:auto!importan
       box.appendChild(row('<span class="pm-logo" style="background:#4f46e5"><i class="fa-solid fa-comments"></i></span>','Chat en vivo','Tidio',function(){try{document.body.classList.add('gtr-tidio-open');if(window.tidioChatApi){window.tidioChatApi.show();window.tidioChatApi.open()}else{var t=document.querySelector('#tidio-chat');if(t){t.style.opacity='1';t.style.pointerEvents='auto';t.style.transform='none'}}}catch(e){}close()}));
     }
     renderPlat('');renderSup();
+    (function rail(){ if(document.getElementById('platRail'))return; var host=document.getElementById('catalogo'); if(!host)return; var sec=document.createElement('section'); sec.id='platRail'; sec.setAttribute('aria-label','Plataformas');
+      sec.innerHTML='<div class="pr-h"><h2>Elige tu plataforma</h2><span>Desliza →</span></div><div class="pr-l"></div>'; var l=sec.querySelector('.pr-l');
+      MAP.forEach(function(it){ if(it.k==='all')return; var b=document.createElement('button'); b.type='button'; b.className='pr-i'; b.innerHTML=(it.img?'<span class="pr-p"><img decoding="async" loading="lazy" src="'+it.img+'" alt=""></span>':'<span class="pr-p" style="background:'+it.bg+'">'+it.logo+'</span>')+'<b></b>'; b.querySelector('b').textContent=it.name;
+        b.onclick=function(){ if(it.k==='redes'){ if(window.GTR_SMM)GTR_SMM.open(); return; } var chip=document.querySelector('#chips .chip[data-c="'+it.k+'"]'); if(chip)chip.click(); var t=document.getElementById('catalogo'); if(t)t.scrollIntoView({behavior:'smooth',block:'start'}); }; l.appendChild(b); });
+      host.parentNode.insertBefore(sec,host); })();
     document.getElementById('gtrPlatQ').oninput=function(e){renderPlat(e.target.value)};
     menu.querySelectorAll('.pm-tabs button').forEach(function(tb){
       tb.onclick=function(){
@@ -391,7 +396,7 @@ body.gtr-tidio-open #tidio-chat{opacity:1!important;pointer-events:auto!importan
   <section class="hero">
     <div class="hero-card home">
       <div class="xm-snow" aria-hidden="true" id="xmSnow"></div>
-      <span class="pill"><span class="pk">❄</span> Navidad en GTR · Entrega automática</span>
+      <span class="pill"><span class="pk">⚡</span> Entrega automática · 24/7</span>
       <h1>Diamantes Free Fire <span>al instante</span></h1>
       <p>Pon tu ID, paga con SINPE o Binance y recibe tus diamantes en minutos. Sin esperas, a cualquier hora.</p>
       <div class="hero-cta sv">
@@ -888,8 +893,9 @@ function renderGrid(){
 function renderCart(){
   $('cartCount').textContent=cart.length;
   const l=$('cartList'), i=idx();
-  if(!cart.length) l.innerHTML='<p class="empty" style="padding:50px 0">Tu carrito está vacío</p>';
-  else l.innerHTML=cart.map((n,k)=>`<div class="line"><div><strong>${P[n][9]}</strong><br><small>${fmtRaw(P[n].price[i])}</small></div><button class="del" data-d="${k}"><i class="fa-solid fa-trash"></i></button></div>`).join('');
+  if(!cart.length) l.innerHTML='<div class="cx-empty"><span><i class="fa-solid fa-cart-shopping"></i></span><b>Tu carrito está vacío</b><small>Agrega una recarga y págala en minutos.</small><button type="button" class="btn btn-primary" id="cxGo">Ver recargas</button></div>';
+  else l.innerHTML='<div class="cx-top"><b>'+cart.length+(cart.length===1?' producto':' productos')+'</b><span><i class="fa-solid fa-bolt"></i> Entrega automática</span></div>'+cart.map((n,k)=>`<div class="line cx-line" style="--c:${P[n][6]||'#fb923c'}"><span class="cx-ic"><i class="${P[n][5]||'fa-solid fa-gem'}"></i></span><div class="cx-t"><strong>${P[n][9]}</strong><small>${String(P[n][1]).replace(/[<>&]/g,'')}</small></div><div class="cx-r"><b>${fmtRaw(P[n].price[i])}</b><button class="del" data-d="${k}" aria-label="Quitar"><i class="fa-solid fa-trash"></i></button></div></div>`).join('')+'<div class="cx-note"><i class="fa-solid fa-shield-halved"></i> Pago seguro. Si algo falla, te devolvemos tu dinero.</div>';
+  const cg=$('cxGo'); if(cg) cg.onclick=()=>{ closeDrawer(); const t=document.getElementById('catalogo'); if(t) t.scrollIntoView({behavior:'smooth'}); };
   const t=cart.reduce((a,n)=>a+P[n].price[i],0);
   $('cTotal').textContent=fmtRaw(t);
   $('goPay').disabled=!cart.length;
@@ -5290,6 +5296,51 @@ html body #grid .card.ff2.unl{position:relative}
 html body #grid .card.ff2 .fx-super{position:absolute;top:44px;left:12px;z-index:3;font-size:.6rem;font-weight:900;letter-spacing:.02em;padding:5px 9px;border-radius:99px;background:linear-gradient(135deg,#ff3d5a,#ff8a1f);color:#fff;box-shadow:0 6px 16px rgba(255,61,90,.45);animation:fxSup 2.4s ease-in-out infinite}
 @keyframes fxSup{50%{transform:scale(1.07)}}
 @media(prefers-reduced-motion:reduce){html body #grid .card.ff2 .fx-super{animation:none}}
+/* ---- polish 7: sin Navidad, plataformas en una franja, carrito y cabecera ---- */
+html body .gx-gar,html body .xm-snow,html body header::after,html body header::before{display:none!important}
+html body .loy-dots{gap:8px!important;margin-top:12px!important;padding-top:0!important}
+html body .loy-dots::before{display:none!important}
+html body .loy-dots i{flex:1 1 0!important;width:auto!important;height:8px!important;max-width:none!important;border-radius:99px!important;background:rgba(255,255,255,.12)!important;box-shadow:none!important;animation:none!important}
+html body .loy-dots i::before,html body .loy-dots i::after{display:none!important}
+html body .loy-dots i.on{background:linear-gradient(90deg,#ffd15c,#ff8a1f)!important;box-shadow:0 0 10px rgba(255,138,31,.5)!important;animation:none!important}
+html body #gtrPlatBtn{display:none!important}
+html body header{padding:2px 0}
+html body header .nav{padding:12px 16px!important}
+html body .logo{gap:12px}
+html body .logo img{width:54px!important;height:54px!important;border-radius:16px!important;border:1.5px solid rgba(255,184,77,.55)!important;box-shadow:0 0 0 3px rgba(255,138,31,.12),0 8px 22px rgba(255,120,30,.35)!important}
+html body .logo-t{font-size:1.18rem!important;font-weight:900!important;letter-spacing:-.02em!important}
+html body .logo-t b{background:linear-gradient(90deg,#ffd15c,#ff8a1f);-webkit-background-clip:text;background-clip:text;color:transparent!important}
+html body .logo-s{font-size:.6rem!important;letter-spacing:.22em!important;color:#8f9bb3!important;margin-top:3px}
+html body .cart-btn{width:50px!important;height:50px!important;border-radius:16px!important;background:linear-gradient(145deg,rgba(255,197,71,.2),rgba(255,93,42,.12))!important;border:1px solid rgba(255,184,77,.5)!important;color:#ffd15c!important;font-size:1.15rem!important;box-shadow:0 8px 20px rgba(255,120,30,.22)}
+html body .cart-btn .count{background:linear-gradient(135deg,#ff3d5a,#ff8a1f)!important;color:#fff!important;border:2px solid #0b0f1c}
+#platRail{margin:6px 0 4px}
+#platRail .pr-h{display:flex;align-items:baseline;justify-content:space-between;padding:0 4px 10px}
+#platRail h2{margin:0;font-size:1.05rem;font-weight:800}
+#platRail .pr-h span{font-size:.72rem;color:#8f9bb3}
+#platRail .pr-l{display:flex;gap:12px;overflow-x:auto;padding:2px 2px 12px;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+#platRail .pr-l::-webkit-scrollbar{display:none}
+#platRail .pr-i{flex:0 0 84px;scroll-snap-align:start;display:flex;flex-direction:column;align-items:center;gap:8px;background:none;border:0;color:#e6ebf5;cursor:pointer;padding:0}
+#platRail .pr-p{width:76px;height:76px;border-radius:22px;overflow:hidden;display:grid;place-items:center;font-weight:900;font-size:.9rem;color:#fff;border:1px solid rgba(255,255,255,.14);box-shadow:0 10px 22px rgba(0,0,0,.45);transition:transform .15s,border-color .15s}
+#platRail .pr-p img{width:100%;height:100%;object-fit:cover}
+#platRail .pr-i:active .pr-p,#platRail .pr-i:hover .pr-p{transform:translateY(-3px);border-color:rgba(255,184,77,.7)}
+#platRail .pr-i b{font-size:.66rem;font-weight:800;line-height:1.15;text-align:center;letter-spacing:.01em}
+html body .drawer{background:linear-gradient(180deg,#121a2e,#0b0f1c)!important;border-left:1px solid rgba(255,184,77,.25)!important}
+html body .drawer-head{padding:18px 20px!important;border-bottom:1px solid rgba(255,255,255,.08)!important}
+html body .drawer-head h3{font-size:1.2rem!important;font-weight:900}
+html body .drawer-head .x{width:38px;height:38px;border-radius:12px;background:rgba(255,255,255,.08);border:0;color:#fff;font-size:1.3rem}
+.cx-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:.84rem}
+.cx-top span{color:#3be8ad;font-weight:700;font-size:.76rem}
+.cx-line{display:flex!important;align-items:center;gap:12px;padding:12px!important;margin-bottom:10px;border-radius:18px!important;background:linear-gradient(165deg,rgba(255,255,255,.06),rgba(255,255,255,.015)),#0f1526!important;border:1px solid rgba(255,255,255,.09)!important}
+.cx-ic{flex:none;width:48px;height:48px;border-radius:15px;display:grid;place-items:center;font-size:1.25rem;color:#fff;background:linear-gradient(145deg,color-mix(in srgb,var(--c) 85%,#fff 10%),color-mix(in srgb,var(--c) 45%,#0b1020));box-shadow:0 8px 18px color-mix(in srgb,var(--c) 35%,transparent)}
+.cx-t{flex:1;min-width:0}.cx-t strong{display:block;font-size:.88rem;line-height:1.25}.cx-t small{display:block;margin-top:3px;color:#8f9bb3;font-size:.7rem}
+.cx-r{display:flex;flex-direction:column;align-items:flex-end;gap:8px}.cx-r b{font-size:.95rem;color:#ffd15c;white-space:nowrap}
+.cx-r .del{width:30px;height:30px;border-radius:10px;border:0;background:rgba(255,93,115,.14);color:#ff8a9a}
+.cx-note{margin-top:6px;padding:12px;border-radius:14px;background:rgba(31,196,141,.08);border:1px solid rgba(31,196,141,.25);color:#9fe9cf;font-size:.76rem;line-height:1.4}
+.cx-empty{display:flex;flex-direction:column;align-items:center;gap:8px;padding:48px 10px;text-align:center}
+.cx-empty span{width:76px;height:76px;border-radius:24px;display:grid;place-items:center;font-size:1.8rem;color:#ffd15c;background:rgba(255,197,71,.1);border:1px dashed rgba(255,197,71,.45)}
+.cx-empty b{font-size:1.05rem;margin-top:6px}.cx-empty small{color:#9aa6bd;margin-bottom:10px}
+html body .drawer-foot{background:rgba(8,11,20,.7);backdrop-filter:blur(10px)}
+html body .drawer-foot #goPay,html body .drawer-foot #sendWa{padding:16px!important;font-size:1rem!important;font-weight:900!important;border-radius:16px!important}
 </style>
 <style id="gtr-ord-css">
 #ordM{position:fixed;inset:0;z-index:9500;display:none;align-items:flex-end;justify-content:center;background:rgba(4,6,12,.72);backdrop-filter:blur(6px)}
