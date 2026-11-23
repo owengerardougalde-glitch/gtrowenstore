@@ -540,7 +540,7 @@ body.gtr-tidio-open #tidio-chat{opacity:1!important;pointer-events:auto!importan
 const CUR=['CRC','USD','MXN','COP','ARS','PEN','DOP','BOB','GTQ','NIO','VES'];
 /* Tasas de mercado (Google) + margen para cubrir lo que Binance paga de menos. MXN usa tasa propia medida: Binance pagó 19.83 -> cobramos 20.6 */
 const TASAS_MERCADO = { CRC: 457, USD: 1, MXN: 18.42, COP: 3165, ARS: 1550, PEN: 3.44, DOP: 61.85, BOB: 11.73, GTQ: 7.65, NIO: 36.8, VES: 881 };
-const MARGEN_CAMBIO = 1.12;
+const MARGEN_CAMBIO = 1.06;
 const TASAS_PROPIAS = { MXN: 20.6 };
 const TASAS = {};
 for (const c in TASAS_MERCADO) TASAS[c] = c === 'USD' ? 1 : (TASAS_PROPIAS[c] || TASAS_MERCADO[c] * MARGEN_CAMBIO);
@@ -5359,6 +5359,31 @@ html body .gtr-ghost img.gg-vid{object-fit:cover!important;object-position:50% 1
 html body .gtr-ghost .gg-glow{display:none}
 @media(max-width:699px){html body .gtr-ghost{height:100%!important;top:0!important;width:70%!important}}
 html body .hero-card.home::before{background:linear-gradient(90deg,rgba(8,10,16,.92) 0%,rgba(8,10,16,.55) 42%,transparent 70%)!important}
+/* ---- polish 8: animaciones ---- */
+html body{--ease:cubic-bezier(.22,1,.36,1)}
+html body button,html body .card,html body .chip,html body .pr-i{transition:transform .18s var(--ease),box-shadow .25s,border-color .25s,background .25s,filter .2s}
+html body button:active:not(:disabled),html body .pr-i:active{transform:scale(.95)}
+html body #grid .card:hover{transform:translateY(-5px)}
+html body .drawer{transition:transform .42s var(--ease)!important}
+html body .overlay{transition:opacity .3s}
+html body .cart-btn.bump{animation:cartBump .6s var(--ease)}
+@keyframes cartBump{0%{transform:scale(1)}30%{transform:scale(1.22) rotate(-8deg)}60%{transform:scale(.95) rotate(4deg)}100%{transform:scale(1)}}
+html body .cart-btn .count.pop{animation:cntPop .5s var(--ease)}
+@keyframes cntPop{0%{transform:scale(.4)}60%{transform:scale(1.5)}100%{transform:scale(1)}}
+.fly{position:fixed;z-index:9999;width:16px;height:16px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,#fff2c8,#ffb02e 55%,#ff5d2a);box-shadow:0 0 14px 4px rgba(255,150,40,.7);transition:transform .75s cubic-bezier(.5,-.1,.7,.4),opacity .75s}
+.cx-line{animation:cxIn .45s var(--ease) both}
+.cx-line:nth-child(2){animation-delay:.05s}.cx-line:nth-child(3){animation-delay:.1s}.cx-line:nth-child(4){animation-delay:.15s}.cx-line:nth-child(5){animation-delay:.2s}
+@keyframes cxIn{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}
+#platRail .pr-i{animation:prIn .55s var(--ease) both}
+#platRail .pr-i:nth-child(2){animation-delay:.05s}#platRail .pr-i:nth-child(3){animation-delay:.1s}#platRail .pr-i:nth-child(4){animation-delay:.15s}#platRail .pr-i:nth-child(5){animation-delay:.2s}#platRail .pr-i:nth-child(n+6){animation-delay:.25s}
+@keyframes prIn{from{opacity:0;transform:translateY(14px) scale(.9)}to{opacity:1;transform:none}}
+html body .gtr-ghost img.gg-vid{animation:ggBreath 9s ease-in-out infinite}
+html body .section-title:before{animation:barGrow .8s var(--ease) both}
+@keyframes barGrow{from{transform:scaleY(0);transform-origin:top}to{transform:scaleY(1)}}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.rv.in{opacity:1;transform:none}
+html body .price{transition:transform .2s}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.cx-line,#platRail .pr-i,html body .cart-btn.bump,html body .cart-btn .count.pop{animation:none!important}}
 </style>
 <style id="gtr-ord-css">
 #ordM{position:fixed;inset:0;z-index:9500;display:none;align-items:flex-end;justify-content:center;background:rgba(4,6,12,.72);backdrop-filter:blur(6px)}
@@ -5484,6 +5509,27 @@ html body .hero-card.home::before{background:linear-gradient(90deg,rgba(8,10,16,
       else{ $('rcUp').className='rc-up bad'; $('rcUpT').textContent=(j&&j.message)||'No se pudo enviar. Toca para reintentar.'; }
     }).catch(function(){ $('rcUp').className='rc-up bad'; $('rcUpT').textContent='Error al enviar. Toca para reintentar.'; });
   });
+})();
+</script>
+<script id="gtr-anim-js">
+(function(){
+  var rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  /* carrito: la bolita vuela y el icono rebota */
+  var cc=document.getElementById('cartCount'),cb=document.getElementById('openCart');
+  if(cc&&cb&&window.MutationObserver){var last=cc.textContent;new MutationObserver(function(){var n=cc.textContent;if(n!==last&&+n>+last){cb.classList.remove('bump');cc.classList.remove('pop');void cb.offsetWidth;cb.classList.add('bump');cc.classList.add('pop')}last=n}).observe(cc,{childList:true,characterData:true,subtree:true});}
+  document.addEventListener('click',function(e){
+    if(rm||!cb)return; var b=e.target.closest('#grid .add'); if(!b||b.disabled)return;
+    var r=b.getBoundingClientRect(),t=cb.getBoundingClientRect(),d=document.createElement('i');d.className='fly';
+    d.style.left=(r.left+r.width/2-8)+'px';d.style.top=(r.top+r.height/2-8)+'px';document.body.appendChild(d);
+    requestAnimationFrame(function(){requestAnimationFrame(function(){d.style.transform='translate('+(t.left+t.width/2-r.left-r.width/2)+'px,'+(t.top+t.height/2-r.top-r.height/2)+'px) scale(.3)';d.style.opacity='.2'})});
+    setTimeout(function(){d.remove()},850);
+  },true);
+  /* secciones que aparecen al hacer scroll */
+  if(!rm&&'IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.12});
+    function arm(){['#platRail','.trust','.promo','.how','.ref','.pay','#loyBar'].forEach(function(q){document.querySelectorAll(q).forEach(function(el){if(el.classList.contains('rv')||el.closest('.hero-card'))return;el.classList.add('rv');io.observe(el)})})}
+    arm();setTimeout(arm,1200);
+  }
 })();
 </script>
 </body>
