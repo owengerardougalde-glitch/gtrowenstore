@@ -863,8 +863,8 @@ function renderGrid(){
       const stv=out?'out':(typeof stock==='number'?(stock<=5?'low':'ok'):(stock==='unknown'?'low':'ok'));
       const stt=out?'Agotado':(typeof stock==='number'?stock.toLocaleString('en-US')+' en stock':(stock==='unknown'?(window.GTR_STOCK_STATE==='load'?'Verificando…':'Stock por confirmar'):'Disponible'));
       const art=lim
-        ?('<div class="fx-art lim"><img decoding="async" src="'+(window.GTR_FF_GEMS||'/gtr-gems.webp')+'" alt="Diamantes limitados"><span class="fx-qty">x'+nn.toLocaleString('en-US')+'</span></div>')
-        :('<div class="fx-art unl"><img decoding="async" src="'+(window.GTR_FF_CHEST||'/gtr-chest.webp')+'" alt="Caja de diamantes"><span class="fx-qty">x'+nn.toLocaleString('en-US')+'</span></div>');
+        ?('<div class="fx-art lim">'+gemArt(nn,'lim')+'<span class="fx-qty">x'+nn.toLocaleString('en-US')+'</span></div>')
+        :('<div class="fx-art unl">'+gemArt(nn,'unl')+'<span class="fx-qty">x'+nn.toLocaleString('en-US')+'</span></div>');
       return `<article class="card ff ff2 ${lim?'lim':'unl'} ${out?'sold':''} ${hot?'hot':''}">
         <div class="fx-top"><span class="fx-brand">FREE FIRE</span>${kind}</div>
         ${art}
@@ -889,6 +889,32 @@ function renderGrid(){
   const fh=$('ffHero'); if(fh) fh.hidden=!(cat==='ff-diamonds'||cat==='ff-lim'||cat==='ff-ilim');
   $('secTitle').textContent=(CATS.find(c=>c[0]===cat)||[])[1];
   $('secCount').textContent=list.length+' productos';
+}
+/* Ilustración propia de diamantes: más diamantes mientras más grande el paquete */
+let _gid=0;
+function gemArt(n,kind){
+  const id='g'+(++_gid), pal=kind==='lim'?['#ffe9a8','#ffc24a','#ff8a1f','#c4560f','#7a2d08']:['#e9fbff','#7fe3ff','#2fa8ff','#1b63e8','#0f2f9c'];
+  const k=n<150?1:n<400?3:n<700?5:n<1500?7:n<3000?9:13;
+  const rows=k===1?[1]:k===3?[2,1]:k===5?[3,2]:k===7?[4,3]:k===9?[5,3,1]:[5,4,3,1];
+  const W=240,H=170,wmax=Math.max.apply(null,rows),gw=Math.min(k===1?96:64,(W-30)/wmax),gh=gw*.9;
+  let out='',i=0;
+  for(let r=0;r<rows.length;r++){
+    const c=rows[r],y=H-14-gh*(.72*(r+1)),x0=(W-c*gw*.86)/2+gw*.43;
+    for(let q=0;q<c;q++){
+      const x=x0+q*gw*.86-gw/2, d=((i*37)%11)*.28; i++;
+      out+='<g class="gm" style="animation-delay:-'+d.toFixed(2)+'s" transform="translate('+x.toFixed(1)+' '+y.toFixed(1)+') scale('+(gw/100).toFixed(3)+')"><use href="#'+id+'"/></g>';
+    }
+  }
+  out='<g>'+out+'</g>';
+  const sp='<path class="gs" d="M205 26l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" fill="#fff"/><path class="gs b" d="M32 44l2 6 6 2-6 2-2 6-2-6-6-2 6-2z" fill="#fff"/>';
+  return '<svg class="gem-svg" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+n+' diamantes"><defs>'
+   +'<linearGradient id="'+id+'a" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="'+pal[0]+'"/><stop offset="1" stop-color="'+pal[2]+'"/></linearGradient>'
+   +'<linearGradient id="'+id+'b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="'+pal[1]+'"/><stop offset="1" stop-color="'+pal[3]+'"/></linearGradient>'
+   +'<linearGradient id="'+id+'c" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="'+pal[2]+'"/><stop offset="1" stop-color="'+pal[4]+'"/></linearGradient>'
+   +'<g id="'+id+'"><polygon points="20,8 50,8 34,34" fill="url(#'+id+'a)"/><polygon points="50,8 80,8 66,34" fill="'+pal[1]+'"/><polygon points="20,8 34,34 2,34" fill="'+pal[2]+'"/><polygon points="80,8 98,34 66,34" fill="url(#'+id+'b)"/><polygon points="34,34 50,8 66,34" fill="'+pal[0]+'" opacity=".92"/>'
+   +'<polygon points="2,34 34,34 50,88" fill="url(#'+id+'b)"/><polygon points="34,34 66,34 50,88" fill="url(#'+id+'a)"/><polygon points="66,34 98,34 50,88" fill="url(#'+id+'c)"/>'
+   +'<polygon points="20,8 80,8 98,34 50,88 2,34" fill="none" stroke="rgba(255,255,255,.75)" stroke-width="2" stroke-linejoin="round"/><polygon points="24,12 40,12 30,28" fill="#fff" opacity=".7"/></g>'
+   +'</defs><ellipse cx="120" cy="'+(H-8)+'" rx="92" ry="9" fill="rgba(0,0,0,.35)"/>'+out+sp+'</svg>';
 }
 function renderCart(){
   $('cartCount').textContent=cart.length;
@@ -5384,6 +5410,15 @@ html body .section-title:before{animation:barGrow .8s var(--ease) both}
 .rv.in{opacity:1;transform:none}
 html body .price{transition:transform .2s}
 @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.cx-line,#platRail .pr-i,html body .cart-btn.bump,html body .cart-btn .count.pop{animation:none!important}}
+html body #grid .card.ff2 .fx-art .gem-svg{width:100%;height:100%;max-height:150px;overflow:visible;filter:drop-shadow(0 8px 14px rgba(0,0,0,.55))}
+html body #grid .card.ff2.unl .fx-art .gem-svg{filter:drop-shadow(0 8px 14px rgba(0,0,0,.55)) drop-shadow(0 0 16px rgba(60,160,255,.55))}
+html body #grid .card.ff2.lim .fx-art .gem-svg{filter:drop-shadow(0 8px 14px rgba(0,0,0,.55)) drop-shadow(0 0 16px rgba(255,150,40,.6))}
+.gem-svg .gm{animation:gmF 3.6s ease-in-out infinite;transform-box:fill-box}
+@keyframes gmF{50%{translate:0 -4px}}
+.gem-svg .gs{transform-box:fill-box;transform-origin:center;animation:gsT 2.4s ease-in-out infinite;opacity:0}
+.gem-svg .gs.b{animation-delay:1.1s}
+@keyframes gsT{0%,100%{opacity:0;transform:scale(.3) rotate(0)}50%{opacity:1;transform:scale(1) rotate(45deg)}}
+@media(prefers-reduced-motion:reduce){.gem-svg .gm,.gem-svg .gs{animation:none}.gem-svg .gs{opacity:.8}}
 </style>
 <style id="gtr-ord-css">
 #ordM{position:fixed;inset:0;z-index:9500;display:none;align-items:flex-end;justify-content:center;background:rgba(4,6,12,.72);backdrop-filter:blur(6px)}
