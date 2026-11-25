@@ -269,8 +269,8 @@ textarea:focus{border-color:var(--sea);box-shadow:0 0 0 4px rgba(11,110,122,.14)
   function lss(k,v){try{if(v)localStorage.setItem(k,v);else localStorage.removeItem(k)}catch(e){}}
   var S={tok:'',u:'',bal:0};
   try{var sv=JSON.parse(lsg('gtr_wt')||'null');if(sv&&sv.t){S.tok=sv.t;S.u=sv.u}}catch(e){}
-  function api(path,body){
-    return fetch(base+path,{method:'POST',headers:Object.assign({'Content-Type':'application/json'},S.tok?{Authorization:'Bearer '+S.tok}:{}),body:JSON.stringify(body||{})})
+  function api(path,body,b){
+    return fetch((b||base)+path,{method:'POST',headers:Object.assign({'Content-Type':'application/json'},S.tok?{Authorization:'Bearer '+S.tok}:{}),body:JSON.stringify(body||{})})
       .then(function(r){return r.json().catch(function(){return {}}).then(function(j){return {s:r.status,j:j}})})
       .catch(function(){return {s:0,j:{ok:false,message:'Sin conexión. Intentá de nuevo.'}}});
   }
@@ -283,30 +283,48 @@ textarea:focus{border-color:var(--sea);box-shadow:0 0 0 4px rgba(11,110,122,.14)
     if(!u||!/^\d{4,12}$/.test(p)){$('lm').textContent='Escribí tu usuario y tu PIN (solo números).';return}
     $('lgo').disabled=true;$('lm').className='msg';$('lm').textContent='Entrando…';
     S.tok='';
-    api('/w/login',{u:u,pin:p}).then(function(r){
-      $('lgo').disabled=false;
-      if(r.j&&r.j.ok){S.tok=r.j.token;S.u=r.j.u;S.bal=r.j.balance;save();$('lm').textContent='';boot()}
-      else $('lm').textContent=(r.j&&r.j.message)||'No se pudo entrar. Revisá tu usuario y PIN.';
-    });
+    var i=0,lastErr='';
+    (function tryB(){
+      if(i>=BASES.length){$('lgo').disabled=false;$('lm').textContent=lastErr||'No se pudo entrar. Revisá tu usuario y PIN.';return}
+      var b=BASES[i++];
+      api('/w/login',{u:u,pin:p},b).then(function(r){
+        if(!(r.j&&r.j.ok)){lastErr=(r.j&&r.j.message)||('No se pudo entrar ('+r.s+').');return tryB()}
+        S.tok=r.j.token;S.u=r.j.u;S.bal=r.j.balance;
+        api('/w/reseller',{},b).then(function(q){
+          if(q.j&&q.j.ok){base=b;lss('gtr_rs_base',b);save();$('lgo').disabled=false;$('lm').textContent='';boot(q);return}
+          lastErr='Entraste, pero el servidor ('+b.replace('https://','').split('.')[0]+') no tiene la función de revendedores todavía (código '+q.s+').';S.tok='';tryB();
+        });
+      });
+    })();
   });
   $('out').addEventListener('click',function(e){e.preventDefault();S.tok='';S.u='';save();show('vLogin')});
 
   /* ---- estado ---- */
   var P=null,info=null;
-  function boot(){
+  function boot(pre){
     if(!S.tok){show('vLogin');return}
-    api('/w/reseller').then(function(r){
-      if(r.s===401){S.tok='';save();show('vLogin');$('lm').textContent='Tu sesión venció. Entrá de nuevo.';return}
-      var j=r.j||{};
-      if(!j.ok){show('vLogin');$('lm').textContent=j.message||'No pudimos revisar tu cuenta. Intentá de nuevo.';return}
-      info=j;
+    var sb=lsg('gtr_rs_base');if(sb&&BASES.indexOf(sb)>-1)base=sb;
+    function use(r){
+      var j=r.j||{};info=j;
       if(!j.active){
         show('vLocked');var d=$('dots').children;for(var i=0;i<3;i++)d[i].classList.toggle('on',i<j.n);
         $('pg').textContent=j.n+' de '+j.need;return;
       }
       P=j.prices;show('vOn');api('/w/me').then(function(m){if(m.j&&m.j.ok){S.bal=m.j.balance;$('bal').textContent=usd(S.bal)}});
       $('bal').textContent=usd(S.bal);buildNotes();render();
-    });
+    }
+    if(pre){use(pre);return}
+    var order=[base].concat(BASES.filter(function(x){return x!==base})),k=0,err='';
+    (function nx(){
+      if(k>=order.length){show('vLogin');$('lm').textContent=err||'No pudimos revisar tu cuenta. Entrá de nuevo.';S.tok='';save();return}
+      var b=order[k++];
+      api('/w/reseller',{},b).then(function(r){
+        if(r.j&&r.j.ok){base=b;lss('gtr_rs_base',b);use(r);return}
+        err=(r.s===401?'Tu sesión venció. Entrá de nuevo.':'El servidor no respondió bien (código '+r.s+').');
+        if(r.s===401){k=order.length}
+        nx();
+      });
+    })();
   }
 
   /* ---- paquetes ---- */
