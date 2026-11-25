@@ -5554,6 +5554,15 @@ html body .topnav button.on{background:linear-gradient(135deg,rgba(255,209,92,.2
 html body .card:active,html body .pcard:active{transform:scale(.985)}
 @media (prefers-reduced-motion:reduce){html body .btn-primary::after{animation:none}}
 @media(max-width:480px){html body header .logo .logo-t{font-size:18px!important}html body header .logo .logo-s{display:block!important;font-size:9px!important;margin-top:2px}html body header .logo .logo-t b{-webkit-text-fill-color:transparent!important;color:transparent!important;background:linear-gradient(90deg,#ffd15c,#ff8a1f)!important;-webkit-background-clip:text!important;background-clip:text!important}}
+
+/* ---- polish 11: la portada cambia según la sección ---- */
+html body[data-sec="streaming"] .gtr-ghost,html body[data-sec="otros"] .gtr-ghost,html body[data-sec="streaming"] .xm-snow,html body[data-sec="otros"] .xm-snow{display:none!important}
+html body[data-sec="streaming"] .hero-card.home::before,html body[data-sec="otros"] .hero-card.home::before{display:none}
+html body[data-sec="streaming"] .hero-card.home{background:radial-gradient(120% 90% at 85% 0%,rgba(229,9,20,.38),transparent 60%),radial-gradient(90% 80% at 0% 100%,rgba(29,185,84,.22),transparent 60%),linear-gradient(180deg,#120a1c,#0a0c18) padding-box,conic-gradient(from var(--gang),#e50914,#7c5cff,#1ed760,#2fd5ff,#e50914) border-box!important;min-height:0!important}
+html body[data-sec="otros"] .hero-card.home{background:radial-gradient(120% 90% at 85% 0%,rgba(47,213,255,.28),transparent 60%),radial-gradient(90% 80% at 0% 100%,rgba(255,138,31,.22),transparent 60%),linear-gradient(180deg,#0d1020,#090b16) padding-box,conic-gradient(from var(--gang),#2fd5ff,#7c5cff,#ffd15c,#ff5d2a,#2fd5ff) border-box!important}
+html body[data-sec="streaming"] .hero-card.home p,html body[data-sec="otros"] .hero-card.home p{max-width:92%}
+html body .hero-card.home h1,html body .hero-card.home p,html body .hero-card.home .pill{transition:opacity .25s ease}
+html body .hero-card.home.swap h1,html body .hero-card.home.swap p{opacity:0}
 </style>
 <div id="rcM" aria-hidden="true"><div class="rc-card" role="dialog" aria-label="Recargar saldo con otro método">
   <button type="button" class="rc-x" id="rcX" aria-label="Cerrar">✕</button>
@@ -5615,6 +5624,40 @@ html body .card:active,html body .pcard:active{transform:scale(.985)}
 <script id="gtr-zk-js">
 (function(){var h=document.querySelector('#ffHero .hero-card.ffhero');if(!h||h.querySelector('.zk-p'))return;
 for(var i=0;i<14;i++){var p=document.createElement('i');p.className='zk-p';p.style.cssText='left:'+(Math.random()*96).toFixed(0)+'%;--s:'+(7+Math.random()*8).toFixed(0)+'px;--d:'+(8+Math.random()*7).toFixed(1)+'s;--l:-'+(Math.random()*12).toFixed(1)+'s;--x:'+(-60+Math.random()*120).toFixed(0)+'px';h.appendChild(p)}})();
+</script>
+<script id="gtr-sec-js">
+(function(){
+  var T={
+    ff:null,
+    streaming:{pill:'🎬 Cuentas premium',h:'Streaming <span>sin complicaciones</span>',p:'Netflix, Spotify, Disney+ y más. Eliges tu plan, pagas y recibes tu cuenta por WhatsApp.',b:'<i class="fa-solid fa-play"></i> Ver planes',to:'catalogo'},
+    otros:{pill:'🎮 Pases y más',h:'Todo para tu <span>juego</span>',p:'Pases, tokens y recargas con entrega rápida y soporte directo.',b:'<i class="fa-solid fa-bolt"></i> Ver productos',to:'catalogo'}
+  };
+  var saved=null,cur='';
+  function secOf(c){ if(c==='ff-diamonds'||c==='ff-lim'||c==='ff-ilim') return 'ff'; return c==='streaming'?'streaming':'otros'; }
+  function apply(){
+    var c=''; try{c=cat}catch(e){return}
+    var k=secOf(c); if(k===cur) return; cur=k;
+    document.body.setAttribute('data-sec',k);
+    var h=document.querySelector('.hero-card.home'); if(!h) return;
+    var H=h.querySelector('h1'),P=h.querySelector('p'),L=h.querySelector('.pill'),B=document.getElementById('goRecarga');
+    if(!saved) saved={h:H.innerHTML,p:P.innerHTML,l:L.innerHTML,b:B.innerHTML};
+    h.classList.add('swap');
+    setTimeout(function(){
+      var t=T[k];
+      H.innerHTML=t?t.h:saved.h; P.innerHTML=t?t.p:saved.p; L.innerHTML=t?t.pill:saved.l; B.innerHTML=t?t.b:saved.b;
+      B.setAttribute('data-to',t?t.to:'');
+      h.classList.remove('swap');
+    },220);
+  }
+  document.addEventListener('click',function(e){
+    var B=e.target.closest&&e.target.closest('#goRecarga'); if(!B||!B.getAttribute('data-to')) return;
+    e.stopImmediatePropagation(); e.preventDefault();
+    var t=document.getElementById(B.getAttribute('data-to')); if(t) t.scrollIntoView({behavior:'smooth',block:'start'});
+  },true);
+  var t=document.getElementById('secTitle');
+  if(t) new MutationObserver(apply).observe(t,{childList:true,characterData:true,subtree:true});
+  setTimeout(apply,600);
+})();
 </script>
 </body>
 </html>
