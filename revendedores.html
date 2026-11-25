@@ -142,61 +142,118 @@ textarea:focus{border-color:var(--sea);box-shadow:0 0 0 4px rgba(11,110,122,.14)
 .bene div{display:flex;gap:14px;align-items:flex-start;background:#fff;border-radius:16px;padding:14px 16px}
 .bene svg{flex:0 0 28px;width:28px;height:28px;stroke:var(--sea);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .bene b{display:block;font-weight:600}.bene small{color:var(--ink2);font-size:14px}
+
+.lock{background:#fff;border-radius:20px;padding:22px 18px;margin-top:6px;box-shadow:0 10px 24px -14px rgba(10,37,64,.3)}
+.lock h3{font:800 20px/1.1 var(--disp);letter-spacing:-.02em}
+.lock p{color:var(--ink2);font-size:14.5px;margin-top:6px}
+.lk{display:grid;gap:10px;margin-top:14px}
+.lk input{border:1.5px solid var(--line);border-radius:14px;padding:13px 14px;font:500 17px var(--body);outline:0;background:var(--paper);color:var(--ink);transition:border-color .2s,box-shadow .2s}
+.lk input:focus{border-color:var(--sea);box-shadow:0 0 0 4px rgba(11,110,122,.14)}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;background:var(--ink);color:#fff;border-radius:14px;padding:14px 18px;font:800 17px var(--disp);text-decoration:none;transition:transform .2s var(--ease)}
+.btn:active{transform:scale(.97)}.btn[disabled]{opacity:.5}
+.btn.sun{background:var(--sun);color:var(--ink)}
+.msg{font-size:13.5px;min-height:18px;color:#b42318;margin-top:2px}.msg.ok{color:#0a7a58}
+.dots{display:flex;gap:10px;margin:16px 0 4px}
+.dots i{flex:1;height:12px;border-radius:99px;background:var(--line);position:relative;overflow:hidden}
+.dots i.on{background:linear-gradient(90deg,var(--quet),var(--sun))}
+.prog{display:flex;justify-content:space-between;font-size:14px;color:var(--ink2)}.prog b{color:var(--ink)}
+.bal{display:flex;justify-content:space-between;align-items:center;background:var(--ink);color:#fff;border-radius:16px;padding:12px 16px;margin-top:16px}
+.bal small{opacity:.7;font-size:12px;display:block}.bal b{font:800 24px var(--disp);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.bal a{color:var(--sun);font-size:13.5px;font-weight:600}
+.pk{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.pk span{background:var(--paper);border-radius:99px;padding:5px 12px;font-weight:600;font-size:14px}
+.rw{padding:12px 0;border-bottom:1.5px dashed var(--line)}
+.rw .t{display:flex;justify-content:space-between;align-items:center;gap:8px;font-weight:600}
+.rw .t b{font-variant-numeric:tabular-nums}
+.rw .x{width:28px;height:28px;border-radius:50%;background:var(--paper);font-size:16px;line-height:1}
+.rw input{margin-top:8px;width:100%;border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;font:600 16px var(--body);letter-spacing:.04em;background:var(--paper);outline:0;color:var(--ink);font-variant-numeric:tabular-nums}
+.rw input:focus{border-color:var(--sea)}
+.rw .r{font-size:13px;margin-top:6px;color:var(--ink2)}.rw .r.ok{color:#0a7a58;font-weight:600}.rw .r.bad{color:#b42318}
+.gainrow{margin-top:14px;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(120deg,rgba(18,184,134,.14),rgba(255,201,60,.22));border-radius:12px;padding:11px 14px;font-size:14px}
+.gainrow b{font:800 20px var(--disp);letter-spacing:-.02em;color:#0a7a58;font-variant-numeric:tabular-nums}
+.empty{padding:18px 0;color:var(--ink2);text-align:center;font-size:14px}
+.note .st{position:absolute;right:16px;top:14px;font-size:12px;font-weight:600;background:rgba(255,255,255,.2);padding:2px 9px;border-radius:99px;backdrop-filter:blur(4px)}
+.note .big{position:absolute;right:16px;top:44px;font-size:11px;text-decoration:line-through;opacity:.85}
+.note .qty{position:absolute;left:-1px;top:-1px;min-width:30px;height:30px;padding:0 9px;border-radius:14px 0 14px 0;background:var(--sun);color:var(--ink);font:800 15px/30px var(--disp);text-align:center;transform:scale(0);transform-origin:top left;transition:transform .35s var(--ease);z-index:3}
+.note.has .qty{transform:scale(1)}
+.note .gain{position:absolute;right:14px;bottom:56px;font-size:11px;font-weight:600;color:var(--ink);background:var(--sun);padding:1px 8px;border-radius:99px}
+.cta .btn{width:100%;font-size:18px;padding:17px 20px;border-radius:18px;box-shadow:0 18px 30px -12px rgba(10,37,64,.6)}
+.alt{display:block;text-align:center;margin-top:12px;font-size:14px;color:var(--ink2)}.alt a{color:var(--ink);font-weight:600}
+.steps b{display:block;font-weight:600}
+[hidden]{display:none!important}
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
     <div class="mark">GTR<i>.</i>mayorista</div>
-    <span class="tag">Revendedores</span>
+    <span class="tag" id="who">Revendedores</span>
   </header>
 
   <section class="hero">
     <h1>Comprá por mayor, <em>vendé con ganancia.</em></h1>
-    <p class="lead">Precios de revendedor en diamantes Free Fire, entrega automática y pedidos de varios jugadores en un solo mensaje.</p>
+    <p class="lead">Precios de revendedor en diamantes Free Fire. Pagás con tu Saldo GTR y la entrega es automática.</p>
   </section>
 
-  <section class="sec" aria-labelledby="t1">
-    <h2 id="t1">1. Armá tu pedido</h2>
-    <p class="s">Tocá un billete para sumar uno. Podés ajustar cantidades en el recibo.</p>
-    <div class="notes" id="notes" role="group" aria-label="Paquetes de diamantes"></div>
-  </section>
-
-  <section class="sec" style="margin-top:0" aria-labelledby="t2">
-    <h2 id="t2">2. IDs de tus jugadores</h2>
-    <p class="s" style="margin-bottom:12px">Uno por línea. Si no los tenés a mano, los mandás después por WhatsApp.</p>
-    <textarea id="ids" inputmode="numeric" placeholder="1234567890&#10;9876543210"></textarea>
-  </section>
-
-  <section class="sec" aria-labelledby="t3">
-    <h2 id="t3">3. Tu recibo</h2>
-    <div class="rcpt-wrap"><div class="rcpt" id="rcpt">
-      <div id="lines"></div>
-      <div class="tot"><span>Total a pagar (USD)</span><b id="rT">$0.00</b></div>
-      <div class="gainrow" id="gainrow" hidden><span>Ganancia si vendés a precio de tienda</span><b id="rG">$0.00</b></div>
-      <div class="eta"><i></i>Entrega automática una vez confirmado el pago</div>
-    </div></div>
-    <div class="cta"><a href="#" id="go" class="off" target="_blank" rel="noopener"><span style="all:unset;flex:1" id="goT">Elegí al menos un billete</span><span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div>
-    <p class="alt">¿Es tu primera vez? <a href="#empezar">Mirá cómo empezar</a></p>
-  </section>
-
-  <section class="sec rise" id="empezar" aria-labelledby="t4">
-    <h2 id="t4">Cómo empezar</h2>
-    <ol class="steps">
-      <li><span class="d">1</span><div><b>Escribinos por WhatsApp</b><small>Decinos que querés ser revendedor y te activamos.</small></div></li>
-      <li><span class="d">2</span><div><b>Cargá saldo o pagá por pedido</b><small>SINPE, Binance, Nequi o Saldo GTR.</small></div></li>
-      <li><span class="d">3</span><div><b>Mandá tu pedido y vendé</b><small>Armás el recibo acá y se envía listo por WhatsApp.</small></div></li>
-    </ol>
-  </section>
-
-  <section class="sec rise" aria-labelledby="t5">
-    <h2 id="t5">Lo que ganás</h2>
-    <div class="bene">
-      <div><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></svg><span><b>Margen en cada paquete</b><small>Precio por debajo de la tienda, para que vos pongas el tuyo.</small></span></div>
-      <div><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span><b>Entrega a cualquier hora</b><small>El proceso es automático, de día y de noche.</small></span></div>
-      <div><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg><span><b>Varios jugadores, un pedido</b><small>Pegás la lista de IDs y listo.</small></span></div>
+  <!-- 1. entrar -->
+  <section id="vLogin" class="sec" hidden>
+    <div class="lock">
+      <h3>Entrá a tu cuenta</h3>
+      <p>Usá el mismo usuario y PIN con el que comprás en la tienda.</p>
+      <div class="lk">
+        <input id="lu" placeholder="Usuario" autocomplete="username" autocapitalize="none">
+        <input id="lp" placeholder="PIN" inputmode="numeric" type="password" autocomplete="current-password">
+        <button class="btn" id="lgo" type="button">Entrar</button>
+        <div class="msg" id="lm"></div>
+        <a class="alt" href="/" style="margin:0">¿No tenés usuario? <b style="color:var(--ink)">Creá uno en la tienda</b></a>
+      </div>
     </div>
-    <p class="hint" style="margin-top:14px">¿Streaming, TikTok o seguidores al por mayor? Escribinos y te pasamos la lista.</p>
+  </section>
+
+  <!-- 2. bloqueado -->
+  <section id="vLocked" class="sec" hidden>
+    <div class="lock">
+      <h3>Desbloqueá precios de revendedor</h3>
+      <p>Completá <b>3 compras</b> en la tienda de estos paquetes y se activa solo, sin que tengas que pedirlo:</p>
+      <div class="pk"><span>1,166 💎</span><span>2,398 💎</span><span>6,160 💎</span></div>
+      <div class="dots" id="dots"><i></i><i></i><i></i></div>
+      <div class="prog"><span>Tu avance</span><b id="pg">0 de 3</b></div>
+      <a class="btn sun" href="/" style="margin-top:18px">Ir a comprar a la tienda</a>
+      <p style="font-size:13px;margin-top:12px">Cuentan las compras ya entregadas, con cualquiera de esos tres paquetes.</p>
+    </div>
+  </section>
+
+  <!-- 3. activo -->
+  <div id="vOn" hidden>
+    <div class="bal"><div><small>Tu Saldo GTR</small><b id="bal">$0.00</b></div><a href="/">Agregar saldo</a></div>
+
+    <section class="sec" aria-labelledby="t1">
+      <h2 id="t1">1. Elegí los paquetes</h2>
+      <p class="s">Cada toque agrega un jugador a tu pedido.</p>
+      <div class="notes" id="notes" role="group" aria-label="Paquetes de diamantes"></div>
+    </section>
+
+    <section class="sec" style="margin-top:0" aria-labelledby="t3">
+      <h2 id="t3">2. IDs y recibo</h2>
+      <div class="rcpt-wrap"><div class="rcpt" id="rcpt">
+        <div id="rows"></div>
+        <div class="tot"><span>Total (USD)</span><b id="rT">$0.00</b></div>
+        <div class="gainrow" id="gainrow" hidden><span>Ganancia a precio de tienda</span><b id="rG">$0.00</b></div>
+        <div class="eta"><i></i>Entrega automática al pagar con tu saldo</div>
+      </div></div>
+      <div class="cta"><button class="btn" id="pay" type="button" disabled>Elegí al menos un paquete</button></div>
+      <div class="msg" id="pm" style="text-align:center;margin-top:10px"></div>
+      <p class="alt"><a href="#" id="out">Cerrar sesión</a></p>
+    </section>
+  </div>
+
+  <section class="sec rise" aria-labelledby="t4">
+    <h2 id="t4">Cómo funciona</h2>
+    <ol class="steps">
+      <li><span class="d">1</span><div><b>Comprás 3 veces en la tienda</b><small>Paquetes de 1,166, 2,398 o 6,160 💎.</small></div></li>
+      <li><span class="d">2</span><div><b>Se activa tu cuenta de revendedor</b><small>Automático, sin pedir permiso a nadie.</small></div></li>
+      <li><span class="d">3</span><div><b>Comprás a precio mayorista</b><small>Con tu Saldo GTR y entrega al instante.</small></div></li>
+    </ol>
   </section>
 
   <footer><span>Hecho en Costa Rica 🇨🇷</span><a href="/">Ir a la tienda</a></footer>
@@ -204,62 +261,127 @@ textarea:focus{border-color:var(--sea);box-shadow:0 0 0 4px rgba(11,110,122,.14)
 
 <script>
 (function(){
-  var WA='50670253356';
-  /* Precios editables. t = precio en la tienda (USD), r = precio revendedor (USD). */
-  var P=[
-    {n:110,t:0.80,r:0.71,a:'#0b6e7a',b:'#12b886'},
-    {n:341,t:3.00,r:2.36,a:'#3b5bdb',b:'#2fd5ff'},
-    {n:572,t:4.00,r:3.56,a:'#7a2cbf',b:'#ff5a8a'},
-    {n:1166,t:7.00,r:6.44,a:'#c2410c',b:'#ffc93c'},
-    {n:2398,t:13.00,r:12.43,a:'#0a2540',b:'#0b6e7a'},
-    {n:6160,t:33.00,r:31.59,a:'#8a1c1c',b:'#ff5a36'}
+  var BASES=['https://gtr-recargas-america.anonimoustugfa.workers.dev','https://gtr-worker.anonimoustugfa.workers.dev'];
+  var base=BASES[0];
+  function $(i){return document.getElementById(i)}
+  function usd(v){return '$'+Number(v).toFixed(2)}
+  function lsg(k){try{return localStorage.getItem(k)||''}catch(e){return ''}}
+  function lss(k,v){try{if(v)localStorage.setItem(k,v);else localStorage.removeItem(k)}catch(e){}}
+  var S={tok:'',u:'',bal:0};
+  try{var sv=JSON.parse(lsg('gtr_wt')||'null');if(sv&&sv.t){S.tok=sv.t;S.u=sv.u}}catch(e){}
+  function api(path,body){
+    return fetch(base+path,{method:'POST',headers:Object.assign({'Content-Type':'application/json'},S.tok?{Authorization:'Bearer '+S.tok}:{}),body:JSON.stringify(body||{})})
+      .then(function(r){return r.json().catch(function(){return {}}).then(function(j){return {s:r.status,j:j}})})
+      .catch(function(){return {s:0,j:{ok:false,message:'Sin conexión. Intentá de nuevo.'}}});
+  }
+  function show(v){['vLogin','vLocked','vOn'].forEach(function(k){$(k).hidden=(k!==v)});$('who').textContent=S.u&&v!=='vLogin'?S.u:'Revendedores'}
+  function save(){lss('gtr_wt',S.tok?JSON.stringify({t:S.tok,u:S.u}):'')}
+
+  /* ---- entrar ---- */
+  $('lgo').addEventListener('click',function(){
+    var u=$('lu').value.trim().toLowerCase(),p=$('lp').value.trim();
+    if(!u||!/^\d{4,12}$/.test(p)){$('lm').textContent='Escribí tu usuario y tu PIN (solo números).';return}
+    $('lgo').disabled=true;$('lm').className='msg';$('lm').textContent='Entrando…';
+    S.tok='';
+    api('/w/login',{u:u,pin:p}).then(function(r){
+      $('lgo').disabled=false;
+      if(r.j&&r.j.ok){S.tok=r.j.token;S.u=r.j.u;S.bal=r.j.balance;save();$('lm').textContent='';boot()}
+      else $('lm').textContent=(r.j&&r.j.message)||'No se pudo entrar. Revisá tu usuario y PIN.';
+    });
+  });
+  $('out').addEventListener('click',function(e){e.preventDefault();S.tok='';S.u='';save();show('vLogin')});
+
+  /* ---- estado ---- */
+  var P=null,info=null;
+  function boot(){
+    if(!S.tok){show('vLogin');return}
+    api('/w/reseller').then(function(r){
+      if(r.s===401){S.tok='';save();show('vLogin');$('lm').textContent='Tu sesión venció. Entrá de nuevo.';return}
+      var j=r.j||{};
+      if(!j.ok){show('vLogin');$('lm').textContent=j.message||'No pudimos revisar tu cuenta. Intentá de nuevo.';return}
+      info=j;
+      if(!j.active){
+        show('vLocked');var d=$('dots').children;for(var i=0;i<3;i++)d[i].classList.toggle('on',i<j.n);
+        $('pg').textContent=j.n+' de '+j.need;return;
+      }
+      P=j.prices;show('vOn');api('/w/me').then(function(m){if(m.j&&m.j.ok){S.bal=m.j.balance;$('bal').textContent=usd(S.bal)}});
+      $('bal').textContent=usd(S.bal);buildNotes();render();
+    });
+  }
+
+  /* ---- paquetes ---- */
+  var PK=[
+    {c:'U1',n:110,a:'#0b6e7a',b:'#12b886'},{c:'U2',n:341,a:'#3b5bdb',b:'#2fd5ff'},{c:'U3',n:572,a:'#7a2cbf',b:'#ff5a8a'},
+    {c:'U4',n:1166,a:'#c2410c',b:'#ffc93c'},{c:'U5',n:2398,a:'#0a2540',b:'#0b6e7a'},{c:'U6',n:6160,a:'#8a1c1c',b:'#ff5a36'}
   ];
   var gem='<svg class="gem" viewBox="0 0 48 48"><path d="M14 8h20l9 11-19 22L5 19z" fill="#9fe8ff"/><path d="M5 19h38L24 41z" fill="#33b8e8"/><path d="M14 8l-3 11h26l-3-11" fill="#d6f6ff"/><path d="M24 8l-5 11 5 22 5-22z" fill="#6cd3f5" opacity=".7"/></svg>';
-  function usd(v){return '$'+v.toFixed(2)}
-  function guil(seed){
-    var d='',W=220,H=134;
-    for(var k=0;k<14;k++){var amp=10+((seed*7+k*3)%14),ph=k*.55+seed,fr=.03+((k%4)*.008),y0=(H/14)*k,p='M0 '+y0;
-      for(var x=0;x<=W;x+=4)p+=' L'+x+' '+(y0+Math.sin(x*fr+ph)*amp).toFixed(1);d+='<path d="'+p+'"/>';}
-    return '<svg class="g" viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="none" fill="none" stroke="#fff" stroke-width=".8">'+d+'</svg>';
-  }
-  var q=P.map(function(){return 0}),box=document.getElementById('notes'),btns=[];
-  P.forEach(function(o,i){
-    var b=document.createElement('button');b.className='note';b.type='button';
-    b.style.setProperty('--c1',o.a);b.style.setProperty('--c2',o.b);
-    b.setAttribute('aria-label',o.n+' diamantes a '+usd(o.r));
-    b.innerHTML=guil(i+1)+'<span class="qty">0</span><span class="u">DIAMANTES</span><span class="st">'+usd(o.r)+'</span><span class="big">Tienda '+usd(o.t)+'</span><span class="n">'+o.n.toLocaleString('es-CR')+'</span><span class="gain">Ganás '+usd(o.t-o.r)+'</span>'+gem;
-    b.addEventListener('click',function(){q[i]++;render(true,i)});
-    box.appendChild(b);btns.push(b);
-  });
-  var lines=document.getElementById('lines'),rt=document.getElementById('rT'),rg=document.getElementById('rG'),gr=document.getElementById('gainrow'),rc=document.getElementById('rcpt'),go=document.getElementById('go'),goT=document.getElementById('goT'),ids=document.getElementById('ids');
-  var cur=0,raf;
-  function count(to){cancelAnimationFrame(raf);var from=cur,t0=performance.now();(function s(t){var k=Math.min(1,(t-t0)/450),e=1-Math.pow(1-k,3);cur=from+(to-from)*e;rt.textContent=usd(cur);if(k<1)raf=requestAnimationFrame(s);else rt.textContent=usd(to)})(t0)}
-  function msg(){
-    var L=[],tot=0,units=0;
-    P.forEach(function(o,i){if(q[i]){L.push('• '+q[i]+' × '+o.n+' 💎  ('+usd(o.r)+' c/u)');tot+=q[i]*o.r;units+=q[i]}});
-    var list=ids.value.split(/\n/).map(function(x){return x.replace(/\D/g,'')}).filter(Boolean);
-    var t='Hola, quiero hacer un pedido de revendedor:\n'+L.join('\n')+'\n\nTotal: '+usd(tot);
-    if(list.length)t+='\n\nIDs de jugador:\n'+list.join('\n');
-    else t+='\n\nTe mando los IDs enseguida.';
-    return t;
-  }
-  function render(pop,i){
-    var tot=0,gain=0,units=0,h='';
-    P.forEach(function(o,j){
-      btns[j].classList.toggle('has',q[j]>0);btns[j].querySelector('.qty').textContent=q[j];
-      if(q[j]){tot+=q[j]*o.r;gain+=q[j]*(o.t-o.r);units+=q[j];
-        h+='<div class="line"><div class="nm">'+o.n.toLocaleString('es-CR')+' diamantes<small>'+usd(o.r)+' c/u</small></div><div class="stp"><button type="button" data-d="-1" data-i="'+j+'" aria-label="Quitar uno">−</button><span>'+q[j]+'</span><button type="button" data-d="1" data-i="'+j+'" aria-label="Sumar uno">+</button></div><b>'+usd(q[j]*o.r)+'</b></div>';}
+  function guil(seed){var d='',W=220,H=134;for(var k=0;k<14;k++){var amp=10+((seed*7+k*3)%14),ph=k*.55+seed,fr=.03+((k%4)*.008),y0=(H/14)*k,p='M0 '+y0;for(var x=0;x<=W;x+=4)p+=' L'+x+' '+(y0+Math.sin(x*fr+ph)*amp).toFixed(1);d+='<path d="'+p+'"/>'}return '<svg class="g" viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="none" fill="none" stroke="#fff" stroke-width=".8">'+d+'</svg>'}
+  var rows=[],uid=0,paying=false;
+  function pr(c){return P&&P[c]}
+  function buildNotes(){
+    var box=$('notes');box.innerHTML='';
+    PK.forEach(function(o,i){
+      var p=pr(o.c);if(!p)return;
+      var b=document.createElement('button');b.type='button';b.className='note';b.style.setProperty('--c1',o.a);b.style.setProperty('--c2',o.b);b.dataset.c=o.c;
+      b.setAttribute('aria-label',o.n+' diamantes a '+usd(p.revendedor));
+      b.innerHTML=guil(i+1)+'<span class="qty">0</span><span class="u">DIAMANTES</span><span class="st">'+usd(p.revendedor)+'</span><span class="big">Tienda '+usd(p.tienda)+'</span><span class="n">'+o.n.toLocaleString('es-CR')+'</span><span class="gain">Ganás '+usd(p.tienda-p.revendedor)+'</span>'+gem;
+      b.addEventListener('click',function(){if(paying)return;rows.push({k:++uid,c:o.c,n:o.n,id:'',st:''});render(true)});
+      box.appendChild(b);
     });
-    lines.innerHTML=h||'<div class="empty">Tu recibo está vacío. Tocá un billete de arriba.</div>';
-    count(tot);gr.hidden=!units;rg.textContent=usd(gain);
-    if(pop){rc.classList.add('re');rc.classList.remove('go');void rc.offsetWidth;rc.classList.add('go')}
-    go.classList.toggle('off',!units);
-    goT.textContent=units?'Enviar pedido por WhatsApp':'Elegí al menos un billete';
-    go.href=units?'https://api.whatsapp.com/send?phone='+WA+'&text='+encodeURIComponent(msg()):'#';
   }
-  lines.addEventListener('click',function(e){var b=e.target.closest('button[data-i]');if(!b)return;var i=+b.dataset.i;q[i]=Math.max(0,q[i]+(+b.dataset.d));render(false)});
-  ids.addEventListener('input',function(){render(false)});
-  render(false);
+  function find(c){for(var i=0;i<PK.length;i++)if(PK[i].c===c)return PK[i]}
+  var cur=0,raf;
+  function count(to){cancelAnimationFrame(raf);var from=cur,t0=performance.now();(function s(t){var k=Math.min(1,(t-t0)/450),e=1-Math.pow(1-k,3);cur=from+(to-from)*e;$('rT').textContent=usd(cur);if(k<1)raf=requestAnimationFrame(s);else $('rT').textContent=usd(to)})(t0)}
+  function totals(){var t=0,g=0;rows.forEach(function(r){var p=pr(r.c);t+=p.revendedor;g+=p.tienda-p.revendedor});return {t:t,g:g}}
+  function validIds(){return rows.length&&rows.every(function(r){return r.st==='ok'||/^\d{6,14}$/.test(r.id)})}
+  function refreshPay(){
+    var T=totals(),pending=rows.filter(function(r){return r.st!=='ok'});
+    var b=$('pay');
+    if(!rows.length){b.disabled=true;b.textContent='Elegí al menos un paquete';return}
+    if(!pending.length){b.disabled=true;b.textContent='Pedido entregado ✓';return}
+    var tp=0;pending.forEach(function(r){tp+=pr(r.c).revendedor});
+    var ok=pending.every(function(r){return /^\d{6,14}$/.test(r.id)});
+    b.disabled=paying||!ok||tp>S.bal+0.0001;
+    b.textContent=paying?'Procesando…':(!ok?'Poné el ID de cada jugador':(tp>S.bal+0.0001?'Saldo insuficiente · falta '+usd(tp-S.bal):'Pagar '+usd(tp)+' con mi saldo'));
+  }
+  function render(pop){
+    var h='';
+    rows.forEach(function(r){var p=pr(r.c);
+      h+='<div class="rw" data-k="'+r.k+'"><div class="t"><span>'+r.n.toLocaleString('es-CR')+' 💎</span><span><b>'+usd(p.revendedor)+'</b> '+(r.st==='ok'?'':'<button class="x" type="button" data-x="'+r.k+'" aria-label="Quitar">×</button>')+'</span></div>'+
+        '<input inputmode="numeric" placeholder="ID del jugador" value="'+r.id+'" data-k="'+r.k+'" '+(r.st==='ok'?'disabled':'')+' maxlength="14"><div class="r '+(r.st==='ok'?'ok':(r.st&&r.st!=='wait'?'bad':''))+'" id="s'+r.k+'">'+(r.st==='ok'?'✓ Entregado / en proceso':(r.st==='wait'?'Enviando…':(r.st||'')))+'</div></div>';
+    });
+    $('rows').innerHTML=h||'<div class="empty">Tocá un paquete de arriba para empezar.</div>';
+    var T=totals();count(T.t);$('gainrow').hidden=!rows.length;$('rG').textContent=usd(T.g);
+    var cnt={};rows.forEach(function(r){cnt[r.c]=(cnt[r.c]||0)+1});
+    document.querySelectorAll('#notes .note').forEach(function(n){var c=cnt[n.dataset.c]||0;n.classList.toggle('has',c>0);n.querySelector('.qty').textContent=c});
+    if(pop){var rc=$('rcpt');rc.classList.add('re');rc.classList.remove('go');void rc.offsetWidth;rc.classList.add('go')}
+    refreshPay();
+  }
+  $('rows').addEventListener('click',function(e){var b=e.target.closest('button[data-x]');if(!b||paying)return;var k=+b.dataset.x;rows=rows.filter(function(r){return r.k!==k});render(false)});
+  $('rows').addEventListener('input',function(e){var i=e.target;if(i.tagName!=='INPUT')return;i.value=i.value.replace(/\D/g,'');var r=rows.filter(function(x){return x.k===+i.dataset.k})[0];if(r){r.id=i.value;r.st=''}refreshPay()});
+
+  /* ---- pagar ---- */
+  $('pay').addEventListener('click',function(){
+    if(paying)return;paying=true;$('pm').className='msg';$('pm').textContent='';refreshPay();
+    var list=rows.filter(function(r){return r.st!=='ok'}),i=0,okN=0,stop=false;
+    (function next(){
+      if(i>=list.length||stop){paying=false;render(false);
+        $('pm').className='msg'+(okN&&!stop?' ok':'');
+        $('pm').textContent=okN?(okN+' recarga'+(okN>1?'s':'')+' enviada'+(okN>1?'s':'')+'. Mirá el estado en "Mis pedidos" de la tienda.'):$('pm').textContent;
+        return}
+      var r=list[i++];r.st='wait';$('s'+r.k)&&($('s'+r.k).textContent='Enviando…');
+      api('/w/buy',{items:[r.c],ff_id:r.id}).then(function(x){
+        var j=x.j||{};
+        if(x.s===401){stop=true;r.st='Sesión vencida';S.tok='';save();show('vLogin');$('lm').textContent='Tu sesión venció. Entrá de nuevo (no se cobró nada más).';return}
+        if(typeof j.balance==='number'){S.bal=j.balance;$('bal').textContent=usd(S.bal)}
+        if(j.ok){r.st='ok';okN++}
+        else{r.st=(j.results&&j.results[0]&&j.results[0].message)||j.message||'No se pudo. Revisá el ID.';if(x.s===402||j.error==='SALDO_INSUFICIENTE')stop=true;if(x.s===0)stop=true}
+        render(false);next();
+      });
+    })();
+  });
+
+  boot();
   if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15});document.querySelectorAll('.rise').forEach(function(e){io.observe(e)})}
   else document.querySelectorAll('.rise').forEach(function(e){e.classList.add('in')});
 })();

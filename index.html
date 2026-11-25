@@ -442,6 +442,11 @@ body.gtr-tidio-open #tidio-chat{opacity:1!important;pointer-events:auto!importan
       <div><i class="fa-solid fa-globe"></i><span>Tu moneda<small>Detección automática</small></span></div>
       <div><i class="fa-solid fa-headset"></i><span>Soporte directo<small>Chat y WhatsApp</small></span></div>
     </div>
+    <a class="rsl" id="rslCard" href="/revendedores.html" aria-label="Hazte revendedor">
+      <span class="rsl-ic">💎</span>
+      <span class="rsl-tx"><b id="rslT">Hazte revendedor</b><small id="rslS">Compra 3 veces paquetes de 1,166, 2,398 o 6,160 💎 y desbloqueas precios mayoristas con entrega automática.</small><span class="rsl-d" id="rslD" hidden><i></i><i></i><i></i></span></span>
+      <span class="rsl-go" aria-hidden="true">›</span>
+    </a>
     <div class="promo">
       <i class="fa-solid fa-gift"></i>
       <div><b>¡Invita a un amigo y gana diamantes!</b> Tú te llevas <b>341 diamantes gratis</b> y tu amigo se puede llevar <b>110 diamantes gratis</b>. Aplica para recargas desde <b>1,060 hasta 6,160 diamantes</b>.</div>
@@ -5563,6 +5568,20 @@ html body[data-sec="otros"] .hero-card.home{background:radial-gradient(120% 90% 
 html body[data-sec="streaming"] .hero-card.home p,html body[data-sec="otros"] .hero-card.home p{max-width:92%}
 html body .hero-card.home h1,html body .hero-card.home p,html body .hero-card.home .pill{transition:opacity .25s ease}
 html body .hero-card.home.swap h1,html body .hero-card.home.swap p{opacity:0}
+
+/* ---- revendedor en la portada ---- */
+html body .rsl{display:flex;align-items:center;gap:14px;margin:14px 0;padding:14px 16px;border-radius:20px;text-decoration:none;color:#fff;position:relative;overflow:hidden;
+  background:linear-gradient(120deg,rgba(255,209,92,.16),rgba(124,92,255,.2)) padding-box;border:1px solid rgba(255,209,92,.35);box-shadow:0 10px 30px rgba(0,0,0,.35);transition:transform .2s ease}
+html body .rsl:active{transform:scale(.985)}
+html body .rsl-ic{flex:0 0 46px;height:46px;border-radius:15px;display:grid;place-items:center;font-size:24px;background:linear-gradient(135deg,#ffd15c,#ff8a1f);box-shadow:0 6px 18px rgba(255,138,31,.4)}
+html body .rsl-tx{flex:1;min-width:0;display:block}
+html body .rsl-tx b{display:block;font-size:16px;font-weight:800;letter-spacing:-.01em}
+html body .rsl-tx small{display:block;margin-top:2px;font-size:12.5px;line-height:1.35;color:#cfd6e6}
+html body .rsl-go{font-size:26px;color:#ffd15c;line-height:1}
+html body .rsl-d{display:flex;gap:6px;margin-top:8px}
+html body .rsl-d[hidden]{display:none}
+html body .rsl-d i{flex:1;height:7px;border-radius:99px;background:rgba(255,255,255,.18)}
+html body .rsl-d i.on{background:linear-gradient(90deg,#3be8ad,#ffd15c)}
 </style>
 <div id="rcM" aria-hidden="true"><div class="rc-card" role="dialog" aria-label="Recargar saldo con otro método">
   <button type="button" class="rc-x" id="rcX" aria-label="Cerrar">✕</button>
@@ -5657,6 +5676,23 @@ for(var i=0;i<14;i++){var p=document.createElement('i');p.className='zk-p';p.sty
   var t=document.getElementById('secTitle');
   if(t) new MutationObserver(apply).observe(t,{childList:true,characterData:true,subtree:true});
   setTimeout(apply,600);
+})();
+</script>
+<script id="gtr-rsl-js">
+(function(){
+  function go(){
+    var W=window.GTR_WALLET; if(!W||!W.tok||!W.tok()) return;
+    W.call('/w/reseller',{},W.tok()).then(function(r){
+      var j=r&&r.j; if(!j||!j.ok) return;
+      var T=document.getElementById('rslT'),S=document.getElementById('rslS'),D=document.getElementById('rslD');
+      if(j.active){T.textContent='Eres revendedor ✓';S.textContent='Ya tienes precios mayoristas. Entra y compra con tu saldo.';return;}
+      T.textContent='Revendedor: '+j.n+' de '+j.need+' compras';
+      S.textContent='Te faltan '+(j.need-j.n)+' compras de 1,166, 2,398 o 6,160 💎 para desbloquear precios mayoristas.';
+      D.hidden=false;var d=D.children;for(var i=0;i<d.length;i++)d[i].classList.toggle('on',i<j.n);
+    });
+  }
+  setTimeout(go,1800);
+  document.addEventListener('click',function(e){ if(e.target.closest&&e.target.closest('#walGo')) setTimeout(go,2500); });
 })();
 </script>
 </body>
