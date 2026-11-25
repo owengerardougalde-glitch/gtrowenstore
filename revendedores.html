@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#0a2540">
+<title>GTR · Revendedores</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f1f5f2;--ink:#0a2540;--ink2:#40566e;--line:#d5dfd9;
+  --coral:#ff5a36;--sun:#ffc93c;--quet:#12b886;--sea:#0b6e7a;--white:#fff;
+  --disp:'Bricolage Grotesque','Trebuchet MS',system-ui,sans-serif;
+  --body:'Instrument Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
+*{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font:400 16px/1.5 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:env(safe-area-inset-bottom)}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
+.wrap{max-width:520px;margin:0 auto;padding:0 16px}
+
+/* encabezado */
+header{display:flex;align-items:center;justify-content:space-between;padding:18px 0 6px}
+.mark{font:800 22px/1 var(--disp);letter-spacing:-.03em}
+.mark i{font-style:normal;color:var(--coral)}
+.tag{font-size:12px;color:var(--ink2);border:1px solid var(--line);border-radius:99px;padding:5px 11px;background:#fff}
+
+/* portada */
+.hero{padding:30px 0 6px}
+h1{font:800 clamp(36px,11vw,56px)/.98 var(--disp);letter-spacing:-.045em;max-width:11em}
+h1 em{font-style:normal;position:relative;white-space:normal;background:linear-gradient(var(--sun),var(--sun)) 0 92%/100% .2em no-repeat;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+h1 em::after{display:none;content:"";position:absolute;left:-2%;right:-2%;bottom:.04em;height:.2em;background:var(--sun);z-index:-1;border-radius:3px;transform-origin:left;animation:ul .9s .3s var(--ease) both}
+@keyframes ul{from{transform:scaleX(0)}}
+.lead{margin-top:16px;color:var(--ink2);max-width:30em}
+
+/* billetes */
+.sec{margin-top:34px}
+.sec h2{font:800 20px/1.1 var(--disp);letter-spacing:-.02em}
+.sec p.s{font-size:14px;color:var(--ink2);margin-top:4px}
+.notes{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:20px 16px 26px;margin:0 -16px;scrollbar-width:none}
+.notes::-webkit-scrollbar{display:none}
+.note{--c1:#0b6e7a;--c2:#12b886;flex:0 0 218px;height:134px;border-radius:14px;position:relative;overflow:hidden;scroll-snap-align:center;text-align:left;color:#fff;
+  background:linear-gradient(120deg,var(--c1),var(--c2));box-shadow:0 1px 0 rgba(255,255,255,.4) inset,0 10px 24px -10px rgba(10,37,64,.55);
+  transition:transform .45s var(--ease),box-shadow .45s var(--ease);outline-offset:3px}
+.note svg.g{position:absolute;inset:0;width:100%;height:100%;opacity:.5;mix-blend-mode:soft-light}
+.note::before{content:"";position:absolute;inset:6px;border:1.5px solid rgba(255,255,255,.55);border-radius:9px;pointer-events:none}
+.note .n{position:absolute;left:18px;bottom:12px;font:800 54px/1 var(--disp);letter-spacing:-.05em;text-shadow:0 2px 0 rgba(0,0,0,.12)}
+.note .u{position:absolute;left:19px;top:15px;font-size:11px;font-weight:600;letter-spacing:.04em;opacity:.9}
+.note .p{position:absolute;right:16px;top:14px;font-size:13px;font-weight:600;background:rgba(255,255,255,.2);padding:2px 9px;border-radius:99px;backdrop-filter:blur(4px)}
+.note .gem{position:absolute;right:14px;bottom:12px;width:40px;height:40px;filter:drop-shadow(0 4px 6px rgba(0,0,0,.25))}
+.note[aria-pressed=true]{transform:translateY(-10px) rotate(-1.5deg) scale(1.03);box-shadow:0 1px 0 rgba(255,255,255,.4) inset,0 24px 34px -14px rgba(10,37,64,.7)}
+.note:active{transform:scale(.97)}
+.note[aria-pressed=true]:active{transform:translateY(-8px) rotate(-1.5deg) scale(1)}
+.hot{position:absolute;left:0;top:44px;background:var(--sun);color:var(--ink);font-size:11px;font-weight:600;padding:2px 10px 2px 17px;border-radius:0 99px 99px 0}
+
+/* campo ID */
+.field{display:flex;align-items:center;gap:10px;background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:6px 6px 6px 16px;transition:border-color .2s,box-shadow .2s}
+.field:focus-within{border-color:var(--sea);box-shadow:0 0 0 4px rgba(11,110,122,.14)}
+.field label{font-size:12px;font-weight:600;color:var(--ink2)}
+.field input{flex:1;min-width:0;border:0;outline:0;background:none;font:600 19px var(--body);letter-spacing:.04em;padding:10px 0;color:var(--ink);font-variant-numeric:tabular-nums}
+.field .ok{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--line);transition:background .3s,transform .4s var(--ease)}
+.field .ok svg{width:16px;stroke:#fff;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:24;stroke-dashoffset:24;transition:stroke-dashoffset .4s .1s}
+.field.valid .ok{background:var(--quet);transform:scale(1.08)}
+.field.valid .ok svg{stroke-dashoffset:0}
+
+/* recibo */
+.rcpt-wrap{margin-top:22px;perspective:900px}
+.rcpt{background:#fff;border-radius:6px 6px 0 0;padding:22px 20px 30px;position:relative;filter:drop-shadow(0 14px 18px rgba(10,37,64,.16));
+  -webkit-mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) 50%/14px 100%;mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) 50%/14px 100%;
+  -webkit-mask-composite:source-in;transform-origin:top;animation:print .7s var(--ease) both}
+@keyframes print{from{clip-path:inset(0 0 100% 0);transform:translateY(-14px) rotateX(-8deg)}to{clip-path:inset(0);transform:none}}
+.rcpt.re{animation:none}.rcpt.re.go{animation:print .6s var(--ease) both}
+.row{display:flex;justify-content:space-between;align-items:baseline;padding:9px 0;border-bottom:1.5px dashed var(--line);font-size:15px}
+.row span:first-child{color:var(--ink2)}
+.row b{font-weight:600;font-variant-numeric:tabular-nums}
+.tot{display:flex;justify-content:space-between;align-items:flex-end;padding-top:16px}
+.tot span{font-size:13px;color:var(--ink2);font-weight:600}
+.tot b{font:800 44px/1 var(--disp);letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.eta{display:flex;align-items:center;gap:8px;margin-top:14px;font-size:13px;color:var(--ink2)}
+.eta i{width:8px;height:8px;border-radius:50%;background:var(--quet);box-shadow:0 0 0 0 rgba(18,184,134,.6);animation:pl 1.8s infinite}
+@keyframes pl{70%{box-shadow:0 0 0 9px rgba(18,184,134,0)}100%{box-shadow:0 0 0 0 rgba(18,184,134,0)}}
+
+.cta{position:sticky;bottom:14px;margin-top:22px;z-index:5}
+.cta a{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--ink);color:#fff;text-decoration:none;border-radius:18px;padding:17px 20px;font:800 18px var(--disp);letter-spacing:-.01em;
+  box-shadow:0 18px 30px -12px rgba(10,37,64,.6);transition:transform .25s var(--ease),background .25s}
+.cta a:active{transform:scale(.97)}
+.cta a span{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--coral);transition:transform .35s var(--ease)}
+.cta a:hover span{transform:translateX(4px)}
+.cta svg{width:16px;stroke:#fff;fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+
+/* pasos y sellos */
+.steps{list-style:none;padding:0;margin-top:14px;position:relative}
+.steps::before{content:"";position:absolute;left:15px;top:18px;bottom:18px;width:2px;background:repeating-linear-gradient(var(--line) 0 5px,transparent 5px 10px)}
+.steps li{display:flex;gap:16px;padding:10px 0;position:relative}
+.steps .d{flex:0 0 32px;height:32px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font:800 14px var(--disp);position:relative;z-index:1}
+.steps li:nth-child(2) .d{background:var(--sea)}.steps li:nth-child(3) .d{background:var(--coral)}
+.steps b{display:block;font-weight:600}.steps small{color:var(--ink2);font-size:14px}
+
+.stamps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.stamp{aspect-ratio:1;background:#fff;padding:9px;position:relative;transition:transform .4s var(--ease);box-shadow:0 8px 16px -10px rgba(10,37,64,.4)}
+.stamp::before{content:"";position:absolute;inset:-5px;pointer-events:none;z-index:2;background:radial-gradient(circle at 5px 5px,var(--paper) 3.4px,transparent 3.9px) 0 0/10px 10px;
+  clip-path:polygon(evenodd,0 0,100% 0,100% 100%,0 100%,0 0,10px 10px,10px calc(100% - 10px),calc(100% - 10px) calc(100% - 10px),calc(100% - 10px) 10px,10px 10px)}
+.stamp:nth-child(odd){transform:rotate(-2deg)}.stamp:nth-child(even){transform:rotate(1.6deg)}
+.stamp:hover{transform:rotate(0) translateY(-4px)}
+.stamp div{width:100%;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:9px;border-radius:2px;color:#fff;font:800 15px/1.05 var(--disp);letter-spacing:-.02em}
+.stamp small{font:500 11px var(--body);opacity:.85;margin-top:3px;letter-spacing:0}
+
+footer{margin:44px 0 30px;font-size:13px;color:var(--ink2);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1.5px solid var(--ink);padding-top:14px}
+footer a{color:var(--ink)}
+
+.rise{opacity:0;transform:translateY(16px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.rise.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rise{opacity:1;transform:none}}
+
+.note .st{position:absolute;right:16px;top:14px;font-size:12px;font-weight:600;background:rgba(255,255,255,.2);padding:2px 9px;border-radius:99px;backdrop-filter:blur(4px)}
+.note .big{position:absolute;right:16px;top:44px;font-size:11px;text-decoration:line-through;opacity:.8}
+.note .qty{position:absolute;left:-1px;top:-1px;min-width:30px;height:30px;padding:0 9px;border-radius:14px 0 14px 0;background:var(--sun);color:var(--ink);font:800 15px/30px var(--disp);text-align:center;transform:scale(0);transform-origin:top left;transition:transform .35s var(--ease);z-index:3}
+.note.has .qty{transform:scale(1)}
+.note .gain{position:absolute;right:14px;bottom:56px;font-size:11px;font-weight:600;color:var(--ink);background:var(--sun);padding:1px 8px;border-radius:99px}
+.hint{font-size:13px;color:var(--ink2);margin-top:-12px}
+.line{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1.5px dashed var(--line);font-size:15px}
+.line .nm{flex:1;min-width:0}.line .nm small{display:block;color:var(--ink2);font-size:12px}
+.line b{font-weight:600;font-variant-numeric:tabular-nums}
+.stp{display:flex;align-items:center;gap:2px;background:var(--paper);border-radius:99px;padding:2px}
+.stp button{width:30px;height:30px;border-radius:50%;background:#fff;font:800 18px/1 var(--disp);display:grid;place-items:center;box-shadow:0 1px 2px rgba(10,37,64,.15);transition:transform .2s var(--ease)}
+.stp button:active{transform:scale(.88)}
+.stp span{min-width:24px;text-align:center;font-weight:600;font-variant-numeric:tabular-nums}
+.empty{padding:18px 0;color:var(--ink2);text-align:center;font-size:14px}
+.gainrow{margin-top:14px;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(120deg,rgba(18,184,134,.14),rgba(255,201,60,.22));border-radius:12px;padding:11px 14px;font-size:14px}
+.gainrow b{font:800 20px var(--disp);letter-spacing:-.02em;color:#0a7a58;font-variant-numeric:tabular-nums}
+textarea{width:100%;min-height:104px;resize:vertical;border:1.5px solid var(--line);border-radius:16px;padding:14px 16px;font:500 16px/1.5 var(--body);background:#fff;color:var(--ink);outline:0;transition:border-color .2s,box-shadow .2s;font-variant-numeric:tabular-nums}
+textarea:focus{border-color:var(--sea);box-shadow:0 0 0 4px rgba(11,110,122,.14)}
+.cta a.off{background:#8fa0b2;pointer-events:none;box-shadow:none}
+.cta a.off span{background:#b9c5d1}
+.alt{display:block;text-align:center;margin-top:12px;font-size:14px;color:var(--ink2)}
+.alt a{color:var(--ink);font-weight:600}
+.bene{display:grid;gap:10px;margin-top:14px}
+.bene div{display:flex;gap:14px;align-items:flex-start;background:#fff;border-radius:16px;padding:14px 16px}
+.bene svg{flex:0 0 28px;width:28px;height:28px;stroke:var(--sea);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.bene b{display:block;font-weight:600}.bene small{color:var(--ink2);font-size:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="mark">GTR<i>.</i>mayorista</div>
+    <span class="tag">Revendedores</span>
+  </header>
+
+  <section class="hero">
+    <h1>Comprá por mayor, <em>vendé con ganancia.</em></h1>
+    <p class="lead">Precios de revendedor en diamantes Free Fire, entrega automática y pedidos de varios jugadores en un solo mensaje.</p>
+  </section>
+
+  <section class="sec" aria-labelledby="t1">
+    <h2 id="t1">1. Armá tu pedido</h2>
+    <p class="s">Tocá un billete para sumar uno. Podés ajustar cantidades en el recibo.</p>
+    <div class="notes" id="notes" role="group" aria-label="Paquetes de diamantes"></div>
+  </section>
+
+  <section class="sec" style="margin-top:0" aria-labelledby="t2">
+    <h2 id="t2">2. IDs de tus jugadores</h2>
+    <p class="s" style="margin-bottom:12px">Uno por línea. Si no los tenés a mano, los mandás después por WhatsApp.</p>
+    <textarea id="ids" inputmode="numeric" placeholder="1234567890&#10;9876543210"></textarea>
+  </section>
+
+  <section class="sec" aria-labelledby="t3">
+    <h2 id="t3">3. Tu recibo</h2>
+    <div class="rcpt-wrap"><div class="rcpt" id="rcpt">
+      <div id="lines"></div>
+      <div class="tot"><span>Total a pagar (USD)</span><b id="rT">$0.00</b></div>
+      <div class="gainrow" id="gainrow" hidden><span>Ganancia si vendés a precio de tienda</span><b id="rG">$0.00</b></div>
+      <div class="eta"><i></i>Entrega automática una vez confirmado el pago</div>
+    </div></div>
+    <div class="cta"><a href="#" id="go" class="off" target="_blank" rel="noopener"><span style="all:unset;flex:1" id="goT">Elegí al menos un billete</span><span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div>
+    <p class="alt">¿Es tu primera vez? <a href="#empezar">Mirá cómo empezar</a></p>
+  </section>
+
+  <section class="sec rise" id="empezar" aria-labelledby="t4">
+    <h2 id="t4">Cómo empezar</h2>
+    <ol class="steps">
+      <li><span class="d">1</span><div><b>Escribinos por WhatsApp</b><small>Decinos que querés ser revendedor y te activamos.</small></div></li>
+      <li><span class="d">2</span><div><b>Cargá saldo o pagá por pedido</b><small>SINPE, Binance, Nequi o Saldo GTR.</small></div></li>
+      <li><span class="d">3</span><div><b>Mandá tu pedido y vendé</b><small>Armás el recibo acá y se envía listo por WhatsApp.</small></div></li>
+    </ol>
+  </section>
+
+  <section class="sec rise" aria-labelledby="t5">
+    <h2 id="t5">Lo que ganás</h2>
+    <div class="bene">
+      <div><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></svg><span><b>Margen en cada paquete</b><small>Precio por debajo de la tienda, para que vos pongas el tuyo.</small></span></div>
+      <div><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span><b>Entrega a cualquier hora</b><small>El proceso es automático, de día y de noche.</small></span></div>
+      <div><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg><span><b>Varios jugadores, un pedido</b><small>Pegás la lista de IDs y listo.</small></span></div>
+    </div>
+    <p class="hint" style="margin-top:14px">¿Streaming, TikTok o seguidores al por mayor? Escribinos y te pasamos la lista.</p>
+  </section>
+
+  <footer><span>Hecho en Costa Rica 🇨🇷</span><a href="/">Ir a la tienda</a></footer>
+</div>
+
+<script>
+(function(){
+  var WA='50670253356';
+  /* Precios editables. t = precio en la tienda (USD), r = precio revendedor (USD). */
+  var P=[
+    {n:110,t:0.80,r:0.71,a:'#0b6e7a',b:'#12b886'},
+    {n:341,t:3.00,r:2.36,a:'#3b5bdb',b:'#2fd5ff'},
+    {n:572,t:4.00,r:3.56,a:'#7a2cbf',b:'#ff5a8a'},
+    {n:1166,t:7.00,r:6.44,a:'#c2410c',b:'#ffc93c'},
+    {n:2398,t:13.00,r:12.43,a:'#0a2540',b:'#0b6e7a'},
+    {n:6160,t:33.00,r:31.59,a:'#8a1c1c',b:'#ff5a36'}
+  ];
+  var gem='<svg class="gem" viewBox="0 0 48 48"><path d="M14 8h20l9 11-19 22L5 19z" fill="#9fe8ff"/><path d="M5 19h38L24 41z" fill="#33b8e8"/><path d="M14 8l-3 11h26l-3-11" fill="#d6f6ff"/><path d="M24 8l-5 11 5 22 5-22z" fill="#6cd3f5" opacity=".7"/></svg>';
+  function usd(v){return '$'+v.toFixed(2)}
+  function guil(seed){
+    var d='',W=220,H=134;
+    for(var k=0;k<14;k++){var amp=10+((seed*7+k*3)%14),ph=k*.55+seed,fr=.03+((k%4)*.008),y0=(H/14)*k,p='M0 '+y0;
+      for(var x=0;x<=W;x+=4)p+=' L'+x+' '+(y0+Math.sin(x*fr+ph)*amp).toFixed(1);d+='<path d="'+p+'"/>';}
+    return '<svg class="g" viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="none" fill="none" stroke="#fff" stroke-width=".8">'+d+'</svg>';
+  }
+  var q=P.map(function(){return 0}),box=document.getElementById('notes'),btns=[];
+  P.forEach(function(o,i){
+    var b=document.createElement('button');b.className='note';b.type='button';
+    b.style.setProperty('--c1',o.a);b.style.setProperty('--c2',o.b);
+    b.setAttribute('aria-label',o.n+' diamantes a '+usd(o.r));
+    b.innerHTML=guil(i+1)+'<span class="qty">0</span><span class="u">DIAMANTES</span><span class="st">'+usd(o.r)+'</span><span class="big">Tienda '+usd(o.t)+'</span><span class="n">'+o.n.toLocaleString('es-CR')+'</span><span class="gain">Ganás '+usd(o.t-o.r)+'</span>'+gem;
+    b.addEventListener('click',function(){q[i]++;render(true,i)});
+    box.appendChild(b);btns.push(b);
+  });
+  var lines=document.getElementById('lines'),rt=document.getElementById('rT'),rg=document.getElementById('rG'),gr=document.getElementById('gainrow'),rc=document.getElementById('rcpt'),go=document.getElementById('go'),goT=document.getElementById('goT'),ids=document.getElementById('ids');
+  var cur=0,raf;
+  function count(to){cancelAnimationFrame(raf);var from=cur,t0=performance.now();(function s(t){var k=Math.min(1,(t-t0)/450),e=1-Math.pow(1-k,3);cur=from+(to-from)*e;rt.textContent=usd(cur);if(k<1)raf=requestAnimationFrame(s);else rt.textContent=usd(to)})(t0)}
+  function msg(){
+    var L=[],tot=0,units=0;
+    P.forEach(function(o,i){if(q[i]){L.push('• '+q[i]+' × '+o.n+' 💎  ('+usd(o.r)+' c/u)');tot+=q[i]*o.r;units+=q[i]}});
+    var list=ids.value.split(/\n/).map(function(x){return x.replace(/\D/g,'')}).filter(Boolean);
+    var t='Hola, quiero hacer un pedido de revendedor:\n'+L.join('\n')+'\n\nTotal: '+usd(tot);
+    if(list.length)t+='\n\nIDs de jugador:\n'+list.join('\n');
+    else t+='\n\nTe mando los IDs enseguida.';
+    return t;
+  }
+  function render(pop,i){
+    var tot=0,gain=0,units=0,h='';
+    P.forEach(function(o,j){
+      btns[j].classList.toggle('has',q[j]>0);btns[j].querySelector('.qty').textContent=q[j];
+      if(q[j]){tot+=q[j]*o.r;gain+=q[j]*(o.t-o.r);units+=q[j];
+        h+='<div class="line"><div class="nm">'+o.n.toLocaleString('es-CR')+' diamantes<small>'+usd(o.r)+' c/u</small></div><div class="stp"><button type="button" data-d="-1" data-i="'+j+'" aria-label="Quitar uno">−</button><span>'+q[j]+'</span><button type="button" data-d="1" data-i="'+j+'" aria-label="Sumar uno">+</button></div><b>'+usd(q[j]*o.r)+'</b></div>';}
+    });
+    lines.innerHTML=h||'<div class="empty">Tu recibo está vacío. Tocá un billete de arriba.</div>';
+    count(tot);gr.hidden=!units;rg.textContent=usd(gain);
+    if(pop){rc.classList.add('re');rc.classList.remove('go');void rc.offsetWidth;rc.classList.add('go')}
+    go.classList.toggle('off',!units);
+    goT.textContent=units?'Enviar pedido por WhatsApp':'Elegí al menos un billete';
+    go.href=units?'https://api.whatsapp.com/send?phone='+WA+'&text='+encodeURIComponent(msg()):'#';
+  }
+  lines.addEventListener('click',function(e){var b=e.target.closest('button[data-i]');if(!b)return;var i=+b.dataset.i;q[i]=Math.max(0,q[i]+(+b.dataset.d));render(false)});
+  ids.addEventListener('input',function(){render(false)});
+  render(false);
+  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15});document.querySelectorAll('.rise').forEach(function(e){io.observe(e)})}
+  else document.querySelectorAll('.rise').forEach(function(e){e.classList.add('in')});
+})();
+</script>
+</body>
+</html>
