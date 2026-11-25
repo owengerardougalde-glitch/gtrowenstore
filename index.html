@@ -5337,7 +5337,7 @@ html body .logo{gap:12px}
 html body .logo img{width:54px!important;height:54px!important;border-radius:16px!important;border:1.5px solid rgba(255,184,77,.55)!important;box-shadow:0 0 0 3px rgba(255,138,31,.12),0 8px 22px rgba(255,120,30,.35)!important}
 html body .logo-t{font-size:1.18rem!important;font-weight:900!important;letter-spacing:-.02em!important}
 html body .logo-t b{background:linear-gradient(90deg,#ffd15c,#ff8a1f);-webkit-background-clip:text;background-clip:text;color:transparent!important}
-html body .logo-s{font-size:.6rem!important;letter-spacing:.22em!important;color:#8f9bb3!important;margin-top:3px}
+html body .logo-s{font-size:9.5px!important;letter-spacing:.22em!important;color:#8f9bb3!important;margin-top:3px}
 html body .cart-btn{width:50px!important;height:50px!important;border-radius:16px!important;background:linear-gradient(145deg,rgba(255,197,71,.2),rgba(255,93,42,.12))!important;border:1px solid rgba(255,184,77,.5)!important;color:#ffd15c!important;font-size:1.15rem!important;box-shadow:0 8px 20px rgba(255,120,30,.22)}
 html body .cart-btn .count{background:linear-gradient(135deg,#ff3d5a,#ff8a1f)!important;color:#fff!important;border:2px solid #0b0f1c}
 #platRail{margin:6px 0 4px}
@@ -5532,6 +5532,28 @@ html body #ffHero .walbar small,html body #ffHero .walbar>div>small{color:#cdbfe
 .rc-note{margin-top:8px;font-size:.74rem;color:#8f9bb3;line-height:1.35}
 .rc-x{float:right;background:rgba(255,255,255,.08);border:0;color:#fff;width:34px;height:34px;border-radius:50%;cursor:pointer}
 .rc-wa{display:none;margin-top:12px;text-align:center;padding:12px;border-radius:12px;background:#1fc48d;color:#04281c;font-weight:800;text-decoration:none}
+
+/* ---- polish 10: glow up ---- */
+html body header{background:linear-gradient(180deg,rgba(8,6,20,.92),rgba(8,6,20,.55))!important;backdrop-filter:blur(16px) saturate(1.4)!important;-webkit-backdrop-filter:blur(16px) saturate(1.4)!important;border-bottom:1px solid rgba(255,255,255,.06)!important}
+html body .logo img{width:50px!important;height:50px!important;border-radius:15px!important;box-shadow:0 0 0 1.5px rgba(255,200,90,.55),0 6px 22px rgba(164,92,255,.45)!important}
+html body .logo-t{font-size:19px!important;font-weight:900!important;letter-spacing:.02em!important;color:#fff!important;text-shadow:0 0 18px rgba(164,92,255,.55)}
+html body .logo-t b{background:linear-gradient(90deg,#ffd15c,#ff8a1f);-webkit-background-clip:text;background-clip:text;color:transparent!important}
+html body .logo-s{font-size:9.5px!important;letter-spacing:.2em!important;color:#b9a9ff!important;opacity:.85}
+html body .hero-card.home,html body #ffHero .hero-card.ffhero{position:relative}
+html body .hero-card.home::before,html body #ffHero .hero-card.ffhero::before{content:"";position:absolute;inset:0;z-index:0;border-radius:inherit;pointer-events:none;background:linear-gradient(90deg,rgba(6,4,18,.88) 0%,rgba(6,4,18,.62) 48%,rgba(6,4,18,0) 78%)}
+html body .hero-card.home>*,html body #ffHero .hero-card.ffhero>*{position:relative;z-index:1}
+html body .hero-card.home h1{text-shadow:0 2px 18px rgba(0,0,0,.6)}
+html body .hero-card.home p{max-width:60%;text-shadow:0 1px 10px rgba(0,0,0,.7)}
+html body .btn-primary{position:relative;overflow:hidden;box-shadow:0 10px 28px rgba(255,138,31,.35),inset 0 1px 0 rgba(255,255,255,.45)!important;transition:transform .15s ease,box-shadow .2s ease}
+html body .btn-primary::after{content:"";position:absolute;top:0;left:-70%;width:45%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);animation:gtrShine 4.5s ease-in-out infinite;pointer-events:none}
+@keyframes gtrShine{0%,60%{left:-70%}100%{left:130%}}
+html body .btn-primary:active{transform:scale(.97)}
+html body .trust>*{background:linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.02))!important;border:1px solid rgba(255,255,255,.09)!important;border-radius:18px!important;backdrop-filter:blur(8px)}
+html body .topnav{background:rgba(14,10,30,.78)!important;backdrop-filter:blur(18px) saturate(1.5)!important;-webkit-backdrop-filter:blur(18px) saturate(1.5)!important;border:1px solid rgba(255,255,255,.1)!important;box-shadow:0 12px 36px rgba(0,0,0,.55),0 0 0 1px rgba(164,92,255,.15)!important}
+html body .topnav button.on{background:linear-gradient(135deg,rgba(255,209,92,.22),rgba(164,92,255,.22))!important;box-shadow:0 0 18px rgba(255,209,92,.25)}
+html body .card:active,html body .pcard:active{transform:scale(.985)}
+@media (prefers-reduced-motion:reduce){html body .btn-primary::after{animation:none}}
+@media(max-width:480px){html body header .logo .logo-t{font-size:18px!important}html body header .logo .logo-s{display:block!important;font-size:9px!important;margin-top:2px}html body header .logo .logo-t b{-webkit-text-fill-color:transparent!important;color:transparent!important;background:linear-gradient(90deg,#ffd15c,#ff8a1f)!important;-webkit-background-clip:text!important;background-clip:text!important}}
 </style>
 <div id="rcM" aria-hidden="true"><div class="rc-card" role="dialog" aria-label="Recargar saldo con otro método">
   <button type="button" class="rc-x" id="rcX" aria-label="Cerrar">✕</button>
