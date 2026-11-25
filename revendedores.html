@@ -165,6 +165,7 @@ textarea:focus{border-color:var(--sea);box-shadow:0 0 0 4px rgba(11,110,122,.14)
 .rw{padding:12px 0;border-bottom:1.5px dashed var(--line)}
 .rw .t{display:flex;justify-content:space-between;align-items:center;gap:8px;font-weight:600}
 .rw .t b{font-variant-numeric:tabular-nums}
+.gh{font:800 15px var(--disp);letter-spacing:-.01em;margin:20px 0 -8px;color:var(--ink2)}
 .rw .x{width:28px;height:28px;border-radius:50%;background:var(--paper);font-size:16px;line-height:1}
 .rw input{margin-top:8px;width:100%;border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;font:600 16px var(--body);letter-spacing:.04em;background:var(--paper);outline:0;color:var(--ink);font-variant-numeric:tabular-nums}
 .rw input:focus{border-color:var(--sea)}
@@ -192,7 +193,7 @@ textarea:focus{border-color:var(--sea);box-shadow:0 0 0 4px rgba(11,110,122,.14)
 
   <section class="hero">
     <h1>Comprá por mayor, <em>vendé con ganancia.</em></h1>
-    <p class="lead">Precios de revendedor en diamantes Free Fire. Pagás con tu Saldo GTR y la entrega es automática.</p>
+    <p class="lead">Precios de revendedor en diamantes, cajas evo, fragmentos y pases de Free Fire. Pagás con tu Saldo GTR y la entrega es automática.</p>
   </section>
 
   <!-- 1. entrar -->
@@ -229,8 +230,8 @@ textarea:focus{border-color:var(--sea);box-shadow:0 0 0 4px rgba(11,110,122,.14)
 
     <section class="sec" aria-labelledby="t1">
       <h2 id="t1">1. Elegí los paquetes</h2>
-      <p class="s">Cada toque agrega un jugador a tu pedido.</p>
-      <div class="notes" id="notes" role="group" aria-label="Paquetes de diamantes"></div>
+      <p class="s">Diamantes, cajas, fragmentos y pases. Cada toque agrega un jugador a tu pedido.</p>
+      <div id="notes" role="group" aria-label="Productos"></div>
     </section>
 
     <section class="sec" style="margin-top:0" aria-labelledby="t3">
@@ -328,9 +329,13 @@ textarea:focus{border-color:var(--sea);box-shadow:0 0 0 4px rgba(11,110,122,.14)
   }
 
   /* ---- paquetes ---- */
+  var GR=[['d','Diamantes'],['c','Cajas evolutivas'],['f','Fragmentos de arma Evo'],['p','Pases y membresías']];
   var PK=[
-    {c:'U1',n:110,a:'#0b6e7a',b:'#12b886'},{c:'U2',n:341,a:'#3b5bdb',b:'#2fd5ff'},{c:'U3',n:572,a:'#7a2cbf',b:'#ff5a8a'},
-    {c:'U4',n:1166,a:'#c2410c',b:'#ffc93c'},{c:'U5',n:2398,a:'#0a2540',b:'#0b6e7a'},{c:'U6',n:6160,a:'#8a1c1c',b:'#ff5a36'}
+    {g:'d',c:'U1',big:'110',u:'DIAMANTES',nm:'110 💎',a:'#0b6e7a',b:'#12b886'},{g:'d',c:'U2',big:'341',u:'DIAMANTES',nm:'341 💎',a:'#3b5bdb',b:'#2fd5ff'},{g:'d',c:'U3',big:'572',u:'DIAMANTES',nm:'572 💎',a:'#7a2cbf',b:'#ff5a8a'},
+    {g:'d',c:'U4',big:'1 166',u:'DIAMANTES',nm:'1,166 💎',a:'#c2410c',b:'#ffc93c'},{g:'d',c:'U5',big:'2 398',u:'DIAMANTES',nm:'2,398 💎',a:'#0a2540',b:'#0b6e7a'},{g:'d',c:'U6',big:'6 160',u:'DIAMANTES',nm:'6,160 💎',a:'#8a1c1c',b:'#ff5a36'},
+    {g:'c',c:'S7',big:'1',u:'CAJA EVOLUTIVA',nm:'1 Caja evolutiva',a:'#9a3412',b:'#fb923c'},{g:'c',c:'EB5',big:'5',u:'CAJAS EVOLUTIVAS',nm:'5 Cajas evolutivas',a:'#9a3412',b:'#fdba74'},{g:'c',c:'S6',big:'10',u:'CAJAS EVOLUTIVAS',nm:'10 Cajas evolutivas',a:'#7c2d12',b:'#f97316'},{g:'c',c:'EB50',big:'50',u:'CAJAS EVOLUTIVAS',nm:'50 Cajas evolutivas',a:'#7c2d12',b:'#fbbf24'},
+    {g:'f',c:'FW10',big:'10',u:'FRAGMENTOS EVO',nm:'10 Fragmentos Evo',a:'#134e4a',b:'#2dd4bf'},{g:'f',c:'FW50',big:'50',u:'FRAGMENTOS EVO',nm:'50 Fragmentos Evo',a:'#1e3a8a',b:'#38bdf8'},{g:'f',c:'FW100',big:'100',u:'FRAGMENTOS EVO',nm:'100 Fragmentos Evo',a:'#4c1d95',b:'#a78bfa'},{g:'f',c:'FW500',big:'500',u:'FRAGMENTOS EVO',nm:'500 Fragmentos Evo',a:'#831843',b:'#f472b6'},
+    {g:'p',c:'S4',big:'Basic',u:'MEMBRESÍA',nm:'Basic Card',a:'#1e293b',b:'#64748b'},{g:'p',c:'S2',big:'Booyah',u:'PASE PREMIUM',nm:'Pase Booyah Premium',a:'#7c2d12',b:'#ea580c'}
   ];
   var gem='<svg class="gem" viewBox="0 0 48 48"><path d="M14 8h20l9 11-19 22L5 19z" fill="#9fe8ff"/><path d="M5 19h38L24 41z" fill="#33b8e8"/><path d="M14 8l-3 11h26l-3-11" fill="#d6f6ff"/><path d="M24 8l-5 11 5 22 5-22z" fill="#6cd3f5" opacity=".7"/></svg>';
   function guil(seed){var d='',W=220,H=134;for(var k=0;k<14;k++){var amp=10+((seed*7+k*3)%14),ph=k*.55+seed,fr=.03+((k%4)*.008),y0=(H/14)*k,p='M0 '+y0;for(var x=0;x<=W;x+=4)p+=' L'+x+' '+(y0+Math.sin(x*fr+ph)*amp).toFixed(1);d+='<path d="'+p+'"/>'}return '<svg class="g" viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="none" fill="none" stroke="#fff" stroke-width=".8">'+d+'</svg>'}
@@ -338,13 +343,17 @@ textarea:focus{border-color:var(--sea);box-shadow:0 0 0 4px rgba(11,110,122,.14)
   function pr(c){return P&&P[c]}
   function buildNotes(){
     var box=$('notes');box.innerHTML='';
-    PK.forEach(function(o,i){
-      var p=pr(o.c);if(!p)return;
-      var b=document.createElement('button');b.type='button';b.className='note';b.style.setProperty('--c1',o.a);b.style.setProperty('--c2',o.b);b.dataset.c=o.c;
-      b.setAttribute('aria-label',o.n+' diamantes a '+usd(p.revendedor));
-      b.innerHTML=guil(i+1)+'<span class="qty">0</span><span class="u">DIAMANTES</span><span class="st">'+usd(p.revendedor)+'</span><span class="big">Tienda '+usd(p.tienda)+'</span><span class="n">'+o.n.toLocaleString('es-CR')+'</span><span class="gain">Ganás '+usd(p.tienda-p.revendedor)+'</span>'+gem;
-      b.addEventListener('click',function(){if(paying)return;rows.push({k:++uid,c:o.c,n:o.n,id:'',st:''});render(true)});
-      box.appendChild(b);
+    GR.forEach(function(G){
+      var items=PK.filter(function(o){return o.g===G[0]&&pr(o.c)});if(!items.length)return;
+      var h=document.createElement('h3');h.className='gh';h.textContent=G[1];box.appendChild(h);
+      var sc=document.createElement('div');sc.className='notes';box.appendChild(sc);
+      items.forEach(function(o,i){
+        var p=pr(o.c),b=document.createElement('button');b.type='button';b.className='note';b.style.setProperty('--c1',o.a);b.style.setProperty('--c2',o.b);b.dataset.c=o.c;
+        b.setAttribute('aria-label',o.nm+' a '+usd(p.revendedor));
+        b.innerHTML=guil(i+1+G[0].charCodeAt(0))+'<span class="qty">0</span><span class="u">'+o.u+'</span><span class="st">'+usd(p.revendedor)+'</span><span class="big">Tienda '+usd(p.tienda)+'</span><span class="n" style="'+(/[a-z]/i.test(o.big)?'font-size:34px;bottom:16px':'')+'">'+o.big+'</span><span class="gain">Ganás '+usd(p.tienda-p.revendedor)+'</span>'+(o.g==='d'?gem:'');
+        b.addEventListener('click',function(){if(paying)return;rows.push({k:++uid,c:o.c,n:o.nm,id:'',st:''});render(true)});
+        sc.appendChild(b);
+      });
     });
   }
   function find(c){for(var i=0;i<PK.length;i++)if(PK[i].c===c)return PK[i]}
@@ -365,7 +374,7 @@ textarea:focus{border-color:var(--sea);box-shadow:0 0 0 4px rgba(11,110,122,.14)
   function render(pop){
     var h='';
     rows.forEach(function(r){var p=pr(r.c);
-      h+='<div class="rw" data-k="'+r.k+'"><div class="t"><span>'+r.n.toLocaleString('es-CR')+' 💎</span><span><b>'+usd(p.revendedor)+'</b> '+(r.st==='ok'?'':'<button class="x" type="button" data-x="'+r.k+'" aria-label="Quitar">×</button>')+'</span></div>'+
+      h+='<div class="rw" data-k="'+r.k+'"><div class="t"><span>'+r.n+'</span><span><b>'+usd(p.revendedor)+'</b> '+(r.st==='ok'?'':'<button class="x" type="button" data-x="'+r.k+'" aria-label="Quitar">×</button>')+'</span></div>'+
         '<input inputmode="numeric" placeholder="ID del jugador" value="'+r.id+'" data-k="'+r.k+'" '+(r.st==='ok'?'disabled':'')+' maxlength="14"><div class="r '+(r.st==='ok'?'ok':(r.st&&r.st!=='wait'?'bad':''))+'" id="s'+r.k+'">'+(r.st==='ok'?'✓ Entregado / en proceso':(r.st==='wait'?'Enviando…':(r.st||'')))+'</div></div>';
     });
     $('rows').innerHTML=h||'<div class="empty">Tocá un paquete de arriba para empezar.</div>';
