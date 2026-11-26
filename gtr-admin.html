@@ -3,7 +3,7 @@
 <div class="card"><h2 style="margin:0 0 8px">💰 Saldo de clientes</h2><p class="muted">Cuando un cliente te pague, súmale saldo aquí. La primera vez sale un PIN: mándaselo por WhatsApp.</p>
 <div class="row"><input id="awU" placeholder="Usuario del cliente"><input id="awA" type="number" inputmode="decimal" step="0.01" placeholder="Monto en USD"></div>
 <div class="row" style="margin-top:8px"><input id="awN" placeholder="Nota (ej. SINPE 5000)"></div>
-<button id="awGo">Acreditar saldo</button><button class="g" id="awList">Ver saldos</button><button class="g" id="awRev">Compras con saldo</button><button class="g" id="awRc">Comprobantes</button><button class="g" id="awBn">Pagos Binance sin dueño</button><button class="g" id="awAv">Revisar productos</button><br><button id="awRsOn">Activar revendedor</button><button class="r" id="awRsOff">Quitar revendedor</button><button class="g" id="awRsAuto">Dejar automático</button>
+<button id="awGo">Acreditar saldo</button><button class="g" id="awList">Ver saldos</button><button class="g" id="awRev">Compras con saldo</button><button class="g" id="awRc">Comprobantes</button><button class="g" id="awBn">Pagos Binance sin dueño</button><button class="g" id="awAv">Revisar productos</button>
 <div id="awOut" class="muted" style="margin-top:8px"></div><div id="awRes"></div></div><div id="msg" class="muted"></div><div id="orders"></div></main><script>
 const API='https://gtr-recargas-america.anonimoustugfa.workers.dev';
 const $=id=>document.getElementById(id); const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -49,8 +49,6 @@ $('orders').onclick=async e=>{const b=e.target.closest('[data-a]');if(!b)return;
  await load()};
 
 async function adm(path,body){const r=await fetch(API+path,{method:body?'POST':'GET',headers:{Authorization:'Bearer '+tk(),'Content-Type':'application/json'},body:body?JSON.stringify(body):undefined});const d=await r.json().catch(()=>({}));return {r,d}}
-const rsSet=async(on)=>{const u=$('awU').value.trim().toLowerCase();if(!u){$('awOut').textContent='Escribe el usuario.';return}const {d}=await adm('/a/reseller',{u,on});$('awOut').textContent=d&&d.ok?('Revendedor '+u+': '+(d.estado||'automático')+' · avance '+d.info.n+'/'+d.info.need+' · '+(d.info.active?'ACTIVO':'bloqueado')):'No se pudo: '+((d&&d.error)||'error')};
-$('awRsOn').onclick=()=>rsSet(true);$('awRsOff').onclick=()=>rsSet(false);$('awRsAuto').onclick=()=>rsSet(null);
 $('awAv').onclick=async()=>{$('awOut').textContent='Revisando Central One…';const {d}=await adm('/a/avail');$('awOut').textContent='';$('awRes').innerHTML=(d.items||[]).map(x=>`<p style="color:${x.ok?'#6ee7b7':'#fca5a5'}"><b>${x.code}</b> · tienda $${Number(x.precio).toFixed(2)} · costo ${x.costo==null?'?':'$'+x.costo.toFixed(2)} · ${x.ok?'OK':x.why}</p>`).join('')||'Sin datos.'};
 $('awGo').onclick=async()=>{const u=$('awU').value.trim(),a=parseFloat($('awA').value);if(!u||!a){$('awOut').textContent='Escribe el usuario y el monto.';return}
  $('awOut').textContent='Acreditando…';const {d}=await adm('/a/credit',{u,usd:a,note:$('awN').value});
