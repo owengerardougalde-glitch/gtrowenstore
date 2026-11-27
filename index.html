@@ -371,7 +371,7 @@ body.gtr-tidio-open #tidio-chat{opacity:1!important;pointer-events:auto!importan
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script>try{var q=location.search;if(/tema=oscuro/.test(q))localStorage.setItem("gtr_tema","oscuro");else if(/tema=zakura|tema=claro/.test(q))localStorage.removeItem("gtr_tema");try{localStorage.removeItem("gtr_tema_v")}catch(e){}if(localStorage.getItem("gtr_tema")!=="oscuro")document.documentElement.classList.add("bill")}catch(e){document.documentElement.classList.add("bill")}</script>
-<link rel="stylesheet" href="/gtr-billete.css?v=8">
+<link rel="stylesheet" href="/gtr-billete.css?v=9">
 </head>
 <body>
 <header>
@@ -551,7 +551,7 @@ for (const c in TASAS_MERCADO) TASAS[c] = c === 'USD' ? 1 : (TASAS_PROPIAS[c] ||
 const PRECIOS_USD = {
  A:[13,22], B:[5,9], C:[12,20], D:[11,19], E:[5,10], F:[4,8], G:[3,6], H:[3,7], I:[5,12], J:[5,55], K:[3,8], L:[10,20],
  L1:[0.60,1.4], L2:[4.00,5.8], L3:[6.00,10], L4:[11.00,18], L5:[26.00,42], L6:[3.00,5],
- U1:[0.8,1.7], U2:[3,5], U3:[4,8], U4:[7,14.5], U5:[13,22.5], U6:[33,55],
+ U1:[0.75,1.7], U2:[2.25,5], U3:[3.6,8], U4:[6.6,14.5], U5:[12.95,22.5], U6:[32.9,55],
  S1:[2,3.5], S2:[2,2.6], S3:[7.3,13], S4:[0.65,0.85], S5:[1.8,3], S6:[1.5,1.95],
  /* Oro Blood Strike: [precio de venta USD, precio en el juego]. Costo proveedor -> ganancia:
     100+5: 0.72 -> 0.17 | 300+20: 2.15 -> 0.44 | 500+40: 3.59 -> 0.60 | 1000+100: 7.17 -> 1.02 | 2000+260: 14.34 -> 1.85 | 5000+800: 35.85 -> 3.84 */
@@ -578,10 +578,10 @@ for (const [tier, [usd, usd_tachado]] of Object.entries(PRECIOS_USD)) {
   TIER[tier] = p1 + '|' + p2;
 }
 /* Precios fijos en MXN (solo diamantes ilimitados) */
-const MXN_FIJO = { U2:60, U3:75, U4:130, U5:245, U6:625, L1:13, L2:75, L3:113, L4:206, L5:485, L6:57 };
+const MXN_FIJO = { U2:45, U3:68, U4:123, U5:244, U6:623, L1:13, L2:75, L3:113, L4:206, L5:485, L6:57 };
 for (const t in MXN_FIJO) { const [a,b] = TIER[t].split('|'); const arr = a.split(','); arr[CUR.indexOf('MXN')] = MXN_FIJO[t]; TIER[t] = arr.join(',') + '|' + b; }
 /* Guatemala (GTQ) conserva sus precios anteriores en los diamantes ilimitados */
-const GTQ_PREV = { U1:0.8, U2:3, U3:4, U4:7, U5:13, U6:33, S7:0.15, EB5:0.75, S6:1.5, EB50:7.5, FW10:0.35, FW50:1.7, FW100:3.35, FW500:16.7, S2:2, S4:0.65 };
+const GTQ_PREV = { S7:0.15, EB5:0.75, S6:1.5, EB50:7.5, FW10:0.35, FW50:1.7, FW100:3.35, FW500:16.7, S2:2, S4:0.65 };
 for (const t in GTQ_PREV) { const [a,b] = TIER[t].split('|'); const arr = a.split(','); arr[CUR.indexOf('GTQ')] = redondear(GTQ_PREV[t] * TASAS.GTQ, 'GTQ'); TIER[t] = arr.join(',') + '|' + b; }
 /* OFERTA 6,160 ilimitados: $33 / 620 MXN, solo hoy (1 nov) y mañana (2 nov). Termina sola; el precio normal ($34 / 640 MXN) queda tachado. */
 const OFERTA_FIN = new Date('2026-11-02T23:59:00-06:00');
