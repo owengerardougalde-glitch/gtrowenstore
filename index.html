@@ -371,7 +371,7 @@ body.gtr-tidio-open #tidio-chat{opacity:1!important;pointer-events:auto!importan
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script>try{var q=location.search;if(/tema=oscuro/.test(q))localStorage.setItem("gtr_tema","oscuro");else if(/tema=zakura|tema=claro/.test(q))localStorage.removeItem("gtr_tema");try{localStorage.removeItem("gtr_tema_v")}catch(e){}if(localStorage.getItem("gtr_tema")!=="oscuro")document.documentElement.classList.add("bill")}catch(e){document.documentElement.classList.add("bill")}</script>
-<link rel="stylesheet" href="/gtr-billete.css?v=7">
+<link rel="stylesheet" href="/gtr-billete.css?v=8">
 </head>
 <body>
 <header>
@@ -5136,24 +5136,86 @@ html body .loy-b{
 </style>
 <div id="smmM" role="dialog" aria-modal="true" aria-label="Redes sociales"><div class="sm-box">
  <div class="sm-hero"><img decoding="async" alt="" src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20120%20120%22%3E%3Cdefs%3E%3ClinearGradient%20id=%22g%22%20x1=%220%22%20y1=%220%22%20x2=%221%22%20y2=%221%22%3E%3Cstop%20offset=%220%22%20stop-color=%22%23ff9a1f%22/%3E%3Cstop%20offset=%22.55%22%20stop-color=%22%23e63b2e%22/%3E%3Cstop%20offset=%221%22%20stop-color=%22%237a1f6b%22/%3E%3C/linearGradient%3E%3CradialGradient%20id=%22r%22%20cx=%22.3%22%20cy=%22.2%22%20r=%22.9%22%3E%3Cstop%20offset=%220%22%20stop-color=%22%23fff%22%20stop-opacity=%22.35%22/%3E%3Cstop%20offset=%221%22%20stop-color=%22%23fff%22%20stop-opacity=%220%22/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect%20width=%22120%22%20height=%22120%22%20rx=%2222%22%20fill=%22url(%23g)%22/%3E%3Crect%20width=%22120%22%20height=%22120%22%20rx=%2222%22%20fill=%22url(%23r)%22/%3E%3Ccircle%20cx=%2296%22%20cy=%2222%22%20r=%2226%22%20fill=%22%23fff%22%20opacity=%22.08%22/%3E%3Ccircle%20cx=%2218%22%20cy=%22104%22%20r=%2230%22%20fill=%22%23fff%22%20opacity=%22.07%22/%3E%3Cg%20fill=%22%23fff%22%3E%3Ccircle%20cx=%2260%22%20cy=%2244%22%20r=%2215%22%20opacity=%22.95%22/%3E%3Cpath%20d=%22M30%2092c2-17%2014-26%2030-26s28%209%2030%2026z%22%20opacity=%22.95%22/%3E%3C/g%3E%3Cg%3E%3Ccircle%20cx=%2294%22%20cy=%2230%22%20r=%2213%22%20fill=%22%23fff%22/%3E%3Cpath%20d=%22M94%2038.5%2086.2%2030.8a4.6%204.6%200%200%201%206.5-6.5l1.3%201.3%201.3-1.3a4.6%204.6%200%200%201%206.5%206.5z%22%20fill=%22%23e63b2e%22/%3E%3C/g%3E%3Cg%3E%3Ccircle%20cx=%2224%22%20cy=%2238%22%20r=%2212%22%20fill=%22%23fff%22/%3E%3Cpath%20d=%22M21%2031.5v13l11-6.5z%22%20fill=%22%23e63b2e%22/%3E%3C/g%3E%3Cg%3E%3Ccircle%20cx=%2293%22%20cy=%2290%22%20r=%2212%22%20fill=%22%23ffd166%22/%3E%3Cpath%20d=%22M93%2083v14M86%2090h14%22%20stroke=%22%237a1f6b%22%20stroke-width=%223.4%22%20stroke-linecap=%22round%22/%3E%3C/g%3E%3Cpath%20d=%22M18%2062l2.2%205%205%202.2-5%202.2-2.2%205-2.2-5-5-2.2%205-2.2z%22%20fill=%22%23fff%22%20opacity=%22.85%22/%3E%3Cpath%20d=%22M104%2062l1.6%203.6%203.6%201.6-3.6%201.6-1.6%203.6-1.6-3.6-3.6-1.6%203.6-1.6z%22%20fill=%22%23fff%22%20opacity=%22.7%22/%3E%3C/svg%3E"><div><h3>Crece tu cuenta</h3><p>Seguidores, likes y vistas para TikTok e Instagram. Pagas con tu saldo y solo pegas tu enlace.</p></div><button type="button" class="sm-x" id="smmX" aria-label="Cerrar">✕</button></div>
- <div class="sm-trust"><span><i class="fa-solid fa-bolt"></i>Entrega automática</span><span><i class="fa-solid fa-user-shield"></i>Sin pedir tu contraseña</span><span><i class="fa-solid fa-rotate-left"></i>Reembolso si falla</span></div>
+ <div class="sm-trust"><span><i class="fa-solid fa-bolt"></i>Entrega automática</span><span><i class="fa-solid fa-user-shield"></i>Sin tu contraseña</span><span><i class="fa-solid fa-rotate-left"></i>Reembolso si falla</span></div>
  <div class="sm-body">
-  <label class="sm-l"><i class="fa-solid fa-layer-group"></i>Red social</label>
+  <div class="sm-pv" id="smmPv"><div class="pv-ring"><i class="fa-brands fa-tiktok" id="smmPvI"></i></div><div class="pv-n"><small>Tu cuenta recibe</small><b id="smmPvN">+0</b><span id="smmPvK">seguidores</span></div><div class="pv-pr" id="smmPvP">$0.00</div></div>
+  <div class="sm-st"><i>1</i>Elige la red</div>
   <div class="sm-pls" id="smmPl"></div>
-  <label class="sm-l"><i class="fa-solid fa-wand-magic-sparkles"></i>Qué quieres conseguir</label>
+  <div class="sm-st"><i>2</i>Qué quieres</div>
   <div class="sm-kds" id="smmKd"></div>
-  <label class="sm-l"><i class="fa-solid fa-hashtag"></i>Cantidad</label>
+  <div class="sm-st"><i>3</i>Cuántos</div>
   <div class="sm-qs" id="smmQp"></div>
   <input id="smmQ" type="number" inputmode="numeric" placeholder="Otra cantidad">
-  <label class="sm-l" id="smmLl"><i class="fa-solid fa-link"></i><span>Enlace</span></label>
+  <div class="sm-st" id="smmLl"><i>4</i><span>Enlace</span></div>
   <input id="smmLk" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="@usuario o enlace">
-  <div class="sm-tot"><span>Total con tu saldo</span><b id="smmP">$0.00</b></div>
-  <small id="smmBal"></small>
-  <button type="button" class="sm-go" id="smmGo">Comprar con mi saldo</button>
-  <div class="sm-msg" id="smmMsg"></div>
   <ul class="sm-notes"><li><i class="fa-solid fa-circle-check"></i>La cuenta o publicación debe ser pública.</li><li><i class="fa-solid fa-circle-check"></i>Puede tardar de minutos a unas horas.</li><li><i class="fa-solid fa-circle-check"></i>Si el pedido falla, tu saldo se devuelve solo.</li></ul>
  </div>
+ <div class="sm-foot">
+  <div class="sm-msg" id="smmMsg"></div>
+  <div class="sm-tot"><div><span>Total con tu saldo</span><small id="smmBal"></small></div><b id="smmP">$0.00</b></div>
+  <button type="button" class="sm-go" id="smmGo">Comprar con mi saldo</button>
+ </div>
 </div></div>
+<style id="gtr-smm2">
+html body #smmM{align-items:stretch!important;justify-content:center;background:rgba(6,2,18,.8)!important;padding:0!important}
+html body #smmM .sm-box{display:flex!important;flex-direction:column;width:100%!important;max-width:520px;height:100dvh;max-height:100dvh!important;margin:0 auto;border-radius:0!important;border:0!important;overflow:hidden!important;background:radial-gradient(90% 35% at 100% 0%,rgba(255,111,216,.22),transparent 60%),radial-gradient(80% 30% at 0% 40%,rgba(76,141,255,.16),transparent 60%),#0f0724!important;box-shadow:none!important;color:#f6ecff!important}
+html body #smmM .sm-hero{flex:none;display:flex;align-items:center;gap:12px;padding:calc(env(safe-area-inset-top) + 14px) 56px 12px 16px!important;background:none!important;border:0!important;border-radius:0!important}
+html body #smmM .sm-hero img{width:44px!important;height:44px!important;border-radius:14px!important;box-shadow:0 0 0 2px #ff7be0!important}
+html body #smmM .sm-hero h3{font-size:1.25rem!important;margin:0!important;color:#fff!important}
+html body #smmM .sm-hero p{display:none!important}
+html body #smmM .sm-x{top:calc(env(safe-area-inset-top) + 14px)!important;right:14px!important;width:40px!important;height:40px!important;border-radius:50%!important;background:rgba(255,255,255,.1)!important;border:1px solid rgba(255,255,255,.2)!important;color:#fff!important}
+html body #smmM .sm-trust{flex:none;display:flex!important;gap:14px;padding:0 16px 10px!important;overflow-x:auto;scrollbar-width:none}
+html body #smmM .sm-trust span{flex:none;display:flex!important;flex-direction:row!important;align-items:center;gap:6px!important;background:none!important;border:0!important;padding:0!important;font-size:.74rem!important;font-weight:600;color:#bba9e8!important;white-space:nowrap}
+html body #smmM .sm-trust i{font-size:.8rem!important;color:#ff9be8!important}
+html body #smmM .sm-body{flex:1;overflow-y:auto;padding:4px 16px 24px!important;-webkit-overflow-scrolling:touch}
+/* vista previa en vivo */
+html body #smmM .sm-pv{position:relative;display:flex;align-items:center;gap:16px;padding:18px 16px;border-radius:26px;margin-bottom:6px;overflow:hidden;color:#fff;background:linear-gradient(135deg,#25f4ee22,#fe2c5533),linear-gradient(160deg,#2a1263,#170a3a);border:1.5px solid #6a45c9;box-shadow:0 14px 34px rgba(0,0,0,.45)}
+html body #smmM .sm-pv[data-pl=instagram]{background:linear-gradient(135deg,#feda7533,#d6297644),linear-gradient(160deg,#2a1263,#170a3a)}
+html body #smmM .pv-ring{flex:none;width:74px;height:74px;border-radius:50%;display:grid;place-items:center;font-size:30px;color:#fff;background:#120a2a;position:relative;box-shadow:0 0 0 3px #120a2a,0 0 0 6px #ff7be0;animation:pvp 2.4s ease-in-out infinite}
+html body #smmM .sm-pv[data-pl=instagram] .pv-ring{box-shadow:0 0 0 3px #120a2a,0 0 0 6px #fa7e1e}
+@keyframes pvp{50%{transform:scale(1.05)}}
+html body #smmM .pv-n{flex:1;min-width:0}
+html body #smmM .pv-n small{display:block;font-size:.74rem;color:#bba9e8}
+html body #smmM .pv-n b{display:block;font:800 2.5rem/1 'Bricolage Grotesque',system-ui,sans-serif;letter-spacing:-.04em;font-variant-numeric:tabular-nums;background:linear-gradient(90deg,#fff,#ffb8ec);-webkit-background-clip:text;background-clip:text;color:transparent}
+html body #smmM .pv-n span{font-size:.82rem;color:#e7d9ff;text-transform:capitalize}
+html body #smmM .pv-pr{position:absolute;top:12px;right:12px;padding:4px 11px;border-radius:99px;background:#ff9be8;color:#1a0b33;font-weight:800;font-size:.82rem}
+/* pasos */
+html body #smmM .sm-st{display:flex;align-items:center;gap:10px;margin:22px 0 10px;font:800 1rem 'Bricolage Grotesque',system-ui,sans-serif;color:#fff}
+html body #smmM .sm-st i{font-style:normal;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-size:.8rem;background:#ff9be8;color:#1a0b33}
+html body #smmM .sm-st span{font:inherit}
+/* red social: dos pestañas grandes */
+html body #smmM .sm-pls{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+html body #smmM .sm-pl{flex-direction:column;justify-content:center;text-align:center;gap:6px;padding:16px 8px!important;border-radius:20px!important;background:rgba(255,255,255,.05)!important;border:1.5px solid rgba(255,255,255,.12)!important;box-shadow:none!important;color:#fff!important;transform:none!important}
+html body #smmM .sm-pi{width:52px!important;height:52px!important;border-radius:50%!important;font-size:1.5rem!important}
+html body #smmM .sm-pt{align-items:center}
+html body #smmM .sm-pt b{font-size:1rem}html body #smmM .sm-pt span{color:#bba9e8!important;font-size:.72rem}
+html body #smmM .sm-pl.sel{background:linear-gradient(160deg,rgba(255,111,216,.28),rgba(164,92,255,.22))!important;border-color:#ff9be8!important;box-shadow:0 0 0 3px rgba(255,155,232,.2)!important}
+/* qué quieres: píldoras */
+html body #smmM .sm-kds{display:flex!important;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+html body #smmM .sm-kd{flex:none;display:flex;align-items:center;gap:8px;padding:11px 16px!important;border-radius:99px!important;background:rgba(255,255,255,.05)!important;border:1.5px solid rgba(255,255,255,.12)!important;color:#e7d9ff!important;box-shadow:none!important;transform:none!important;white-space:nowrap}
+html body #smmM .sm-kd.sel{background:#ff9be8!important;color:#1a0b33!important;border-color:#ff9be8!important}
+/* cantidades: mosaico */
+html body #smmM .sm-qs{display:grid!important;grid-template-columns:repeat(3,1fr);gap:8px}
+html body #smmM .sm-q{padding:12px 4px!important;border-radius:16px!important;background:rgba(255,255,255,.05)!important;border:1.5px solid rgba(255,255,255,.12)!important;color:#fff!important;box-shadow:none!important;transform:none!important}
+html body #smmM .sm-q b{font:800 1.15rem 'Bricolage Grotesque',system-ui,sans-serif}
+html body #smmM .sm-q span{color:#ff9be8!important;font-weight:700}
+html body #smmM .sm-q.sel{background:linear-gradient(160deg,rgba(255,111,216,.3),rgba(76,141,255,.22))!important;border-color:#ff9be8!important;box-shadow:0 0 0 3px rgba(255,155,232,.2)!important}
+html body #smmM input{background:rgba(255,255,255,.06)!important;color:#fff!important;border:1.5px solid rgba(255,255,255,.16)!important;border-radius:16px!important;margin-top:10px}
+html body #smmM input:focus{border-color:#ff9be8!important;box-shadow:0 0 0 3px rgba(255,155,232,.2)!important}
+html body #smmM input::placeholder{color:#8e7fbb!important}
+html body #smmM .sm-notes li{color:#bba9e8!important}html body #smmM .sm-notes i{color:#62e6a5!important}
+/* barra de pago fija */
+html body #smmM .sm-foot{flex:none;padding:12px 16px calc(env(safe-area-inset-bottom) + 14px);background:rgba(15,7,36,.94);backdrop-filter:blur(14px);border-top:1.5px solid #3b2a6b}
+html body #smmM .sm-tot{margin:0 0 10px!important;padding:0!important;background:none!important;border:0!important;display:flex;justify-content:space-between;align-items:center}
+html body #smmM .sm-tot span{color:#e7d9ff!important;font-weight:700;font-size:.9rem;display:block}
+html body #smmM .sm-tot small{display:block;color:#bba9e8!important;font-size:.76rem;margin:1px 0 0}
+html body #smmM .sm-tot b{font:800 2rem/1 'Bricolage Grotesque',system-ui,sans-serif!important;color:#fff!important}
+html body #smmM .sm-go{margin:0!important;min-height:56px;border-radius:18px!important;background:linear-gradient(135deg,#ff7be0,#a45cff 60%,#4c8dff)!important;color:#1a0b33!important;box-shadow:0 10px 26px rgba(164,92,255,.45)!important;font-weight:900!important}
+html body #smmM .sm-msg{margin:0 0 8px!important;text-align:center}
+html body #smmM .sm-box.sm-off .sm-trust,html body #smmM .sm-box.sm-off .sm-foot,html body #smmM .sm-box.sm-off .sm-pv,html body #smmM .sm-box.sm-off .sm-body>:not(#smmKd){display:none!important}
+html body #smmM .sm-box.sm-off #smmKd{display:block!important;padding:40px 12px!important;text-align:center;color:#fff!important}
+@media(prefers-reduced-motion:reduce){html body #smmM .pv-ring{animation:none}}
+</style>
 <script id="gtr-smm-js">
 (function(){
   var W=window.GTR_WALLET; var WAL='https://gtr-worker.anonimoustugfa.workers.dev';
@@ -5168,6 +5230,15 @@ html body .loy-b{
   function msg(t,c){var m=$('smmMsg');m.textContent=t||'';m.className='sm-msg'+(c?' '+c:'')}
   function pf(it,q){var c=it.unit*q,pr=Math.min(it.pmax||2,Math.max(it.pmin||1,c*((it.mk||1.3)-1)));return Math.max(10,Math.ceil((c+pr)*100-1e-6))/100}
   function price(){var it=cur();if(!it||!S.qty)return 0;return pf(it,S.qty)}
+  var pvc=0,pvr;
+  function pv(){
+    var it=cur();if(!$('smmPvN'))return;var q=(it&&S.qty)||0;
+    var I=$('smmPvI');if(I)I.className='fa-brands fa-'+(S.pl||'tiktok');
+    $('smmPv').setAttribute('data-pl',S.pl||'tiktok');
+    $('smmPvK').textContent=it?it.label.replace(/ de (TikTok|Instagram)/,'').replace(' (Reels)','').toLowerCase():'';
+    $('smmPvP').textContent=usd(price());
+    cancelAnimationFrame(pvr);var f=pvc,t0=performance.now();(function st(t){var k=Math.min(1,(t-t0)/500),e=1-Math.pow(1-k,3);pvc=Math.round(f+(q-f)*e);$('smmPvN').textContent='+'+pvc.toLocaleString('en-US');if(k<1)pvr=requestAnimationFrame(st)})(t0);
+  }
   function draw(){
     document.querySelector('#smmM .sm-box').classList.toggle('sm-off',!items||!items.length);
     if(!items||!items.length){$('smmPl').innerHTML='';$('smmKd').innerHTML=items===null?'<b>No pudimos cargar los servicios</b><small>Revisa tu internet, cierra esta ventana y vuelve a abrirla.</small>':'<b>Muy pronto</b><small>Estamos activando seguidores, likes y vistas de TikTok e Instagram.</small>';$('smmQp').innerHTML='';$('smmGo').disabled=true;return}
@@ -5181,9 +5252,9 @@ html body .loy-b{
     if(!S.qty)S.qty=it.presets[1]||it.presets[0]||it.min;
     $('smmQp').innerHTML=it.presets.map(function(q){return '<button type="button" class="sm-q'+(q===S.qty?' sel':'')+'" data-q="'+q+'"><b>'+q.toLocaleString('en-US')+'</b><span>'+usd(pf(it,q))+'</span></button>'}).join('');
     $('smmQ').min=it.min;$('smmQ').max=it.max;$('smmQ').placeholder='Otra cantidad ('+it.min+' – '+it.max.toLocaleString('en-US')+')';
-    $('smmLl').lastChild.textContent=it.need==='profile'?'Tu usuario o enlace del perfil':'Enlace de la publicación o video';
+    $('smmLl').lastElementChild.textContent=it.need==='profile'?'Tu usuario o enlace del perfil':'Enlace de la publicación o video';
     $('smmLk').placeholder=it.need==='profile'?'@tuusuario':(S.pl==='tiktok'?'https://www.tiktok.com/@usuario/video/…':'https://www.instagram.com/p/… o /reel/…');
-    $('smmP').textContent=usd(price());
+    $('smmP').textContent=usd(price());pv();
     var b=W&&W.bal();$('smmBal').textContent=(b==null)?'':'Tu saldo: '+usd(b);
     $('smmGo').disabled=false;
   }
@@ -5201,7 +5272,7 @@ html body .loy-b{
     else if(t.dataset.k){S.key=t.dataset.k;S.qty=0;$('smmQ').value=''}
     else if(t.dataset.q){S.qty=+t.dataset.q;$('smmQ').value=''}
     draw()});
-  $('smmQ').addEventListener('input',function(){var v=parseInt(this.value,10);S.qty=v>0?v:0;$('smmP').textContent=usd(price());document.querySelectorAll('#smmQp .sm-q').forEach(function(c){c.classList.toggle('sel',+c.dataset.q===S.qty)})});
+  $('smmQ').addEventListener('input',function(){var v=parseInt(this.value,10);S.qty=v>0?v:0;$('smmP').textContent=usd(price());pv();document.querySelectorAll('#smmQp .sm-q').forEach(function(c){c.classList.toggle('sel',+c.dataset.q===S.qty)})});
   $('smmGo').onclick=function(){
     var it=cur();if(!it)return;W=window.GTR_WALLET;
     if(!window.GTR_USER){close();openAuth();return}

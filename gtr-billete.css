@@ -88,34 +88,6 @@ html.bill.bill.bill.bill body .topnav{background:var(--surf)!important;border:1.
 html.bill.bill.bill.bill body .topnav button{color:var(--ink2)!important;background:none!important;box-shadow:none!important}
 html.bill.bill.bill.bill body .topnav button.on{background:var(--sun)!important;color:var(--txt)!important;border-radius:14px!important;box-shadow:none!important}
 
-/* redes sociales: seguidores, likes y vistas */
-html.bill.bill.bill.bill body #smmM{background:rgba(8,4,24,.65)!important}
-html.bill.bill.bill.bill body #smmM .sm-box{background:var(--paper)!important;color:var(--txt)!important;border:1.5px solid var(--ink)!important;box-shadow:none!important;border-radius:26px 26px 0 0!important}
-html.bill.bill.bill.bill body #smmM .sm-hero{background:var(--panel)!important;color:var(--txt)!important;border-radius:24px 24px 0 0!important;border:0!important}
-html.bill.bill.bill.bill body #smmM .sm-hero h3{color:var(--txt)!important;font-size:24px!important}
-html.bill.bill.bill.bill body #smmM .sm-hero p{color:#c9d6e6!important}
-html.bill.bill.bill.bill body #smmM .sm-hero img{box-shadow:0 0 0 2px var(--sun)!important}
-html.bill.bill.bill.bill body #smmM .sm-x{background:var(--surf)!important;color:var(--txt)!important;border:1.5px solid var(--ink)!important}
-html.bill.bill.bill.bill body #smmM .sm-trust span{background:var(--surf)!important;color:var(--txt)!important;border:1.5px solid var(--line)!important}
-html.bill.bill.bill.bill body #smmM .sm-trust i{color:var(--coral)!important}
-html.bill.bill.bill.bill body #smmM .sm-l{color:var(--txt)!important;font-family:var(--disp)!important;font-size:.95rem!important;letter-spacing:-.01em!important}
-html.bill.bill.bill.bill body #smmM .sm-l i{color:var(--coral)!important}
-html.bill.bill.bill.bill body #smmM .sm-pl,html.bill.bill.bill.bill body #smmM .sm-kd,html.bill.bill.bill.bill body #smmM .sm-q{background:var(--surf)!important;color:var(--txt)!important;border:1.5px solid var(--ink)!important;box-shadow:3px 3px 0 var(--ink)!important;border-radius:16px!important}
-html.bill.bill.bill.bill body #smmM .sm-pt span{color:var(--ink2)!important}
-html.bill.bill.bill.bill body #smmM .sm-pl.sel,html.bill.bill.bill.bill body #smmM .sm-kd.sel,html.bill.bill.bill.bill body #smmM .sm-q.sel{background:var(--sun)!important;color:var(--txt)!important;box-shadow:1px 1px 0 var(--ink)!important;transform:translate(2px,2px)}
-html.bill.bill.bill.bill body #smmM .sm-q span{color:var(--coral)!important}
-html.bill.bill.bill.bill body #smmM .sm-q b{font-family:var(--disp)!important;font-size:1.15rem!important}
-html.bill.bill.bill.bill body #smmM input{background:var(--surf)!important;color:var(--txt)!important;border:1.5px solid var(--ink)!important}
-html.bill.bill.bill.bill body #smmM input::placeholder{color:#8a9bb0!important}
-html.bill.bill.bill.bill body #smmM .sm-tot{background:var(--surf)!important;border:1.5px dashed var(--ink)!important;border-radius:6px!important}
-html.bill.bill.bill.bill body #smmM .sm-tot span{color:var(--ink2)!important}
-html.bill.bill.bill.bill body #smmM .sm-tot b{color:var(--txt)!important;font-family:var(--disp)!important;font-size:2rem!important}
-html.bill.bill.bill.bill body #smmM #smmBal,html.bill.bill.bill.bill body #smmM .sm-notes li{color:var(--ink2)!important}
-html.bill.bill.bill.bill body #smmM .sm-notes i{color:var(--quet)!important}
-html.bill.bill.bill.bill body #smmM .sm-msg.err{color:#b42318!important}html.bill.bill.bill.bill body #smmM .sm-msg.ok{color:#0a7a58!important}
-html.bill.bill.bill.bill body #smmM .sm-box.sm-off #smmKd{color:var(--txt)!important}
-html.bill.bill.bill.bill body #smmM .sm-box.sm-off #smmKd small{color:var(--ink2)!important}
-
 /* pie y textos sueltos */
 html.bill.bill.bill.bill body footer,html.bill.bill.bill.bill body .foot{color:var(--ink2)!important}
 html.bill.bill.bill.bill body .section-title small,html.bill.bill.bill.bill body .hero p small{color:var(--ink2)!important}
@@ -146,8 +118,7 @@ html.bill.bill.bill.bill body #grid .card .old{color:#8a9bb0!important}
 /* ---- zakura nocturno: ajustes finales ---- */
 html.bill.bill.bill.bill body .hero-card.home{background:linear-gradient(135deg,#2e1370,#170a3a 70%)!important;box-shadow:6px 6px 0 #ff7be0!important}
 html.bill.bill.bill.bill body .hero-card.home h1 span,html.bill.bill.bill.bill body .hero-card.home h1 em{color:#ff9be8!important;-webkit-text-fill-color:#ff9be8!important}
-html.bill.bill.bill.bill body .hero-card .pill,html.bill.bill.bill.bill body #ffHero .pill,html.bill.bill.bill.bill body #grid .fx-kind,html.bill.bill.bill.bill body .chip.active,html.bill.bill.bill.bill body .topnav button.on,html.bill.bill.bill.bill body #smmM .sm-pl.sel,html.bill.bill.bill.bill body #smmM .sm-kd.sel,html.bill.bill.bill.bill body #smmM .sm-q.sel,html.bill.bill.bill.bill body .wal-ac button:first-child{background:#ff9be8!important;color:#1a0b33!important;-webkit-text-fill-color:#1a0b33!important;border-color:#ff9be8!important}
-html.bill.bill.bill.bill body #grid .save{background:rgba(98,230,165,.16)!important;color:#62e6a5!important}
+html.bill.bill.bill.bill body .hero-card .pill,html.bill.bill.bill.bill body #ffHero .pill,html.bill.bill.bill.bill body #grid .fx-kind,html.bill.bill.bill.bill body .chip.active,html.bill.bill.bill.bill body .topnav button.on,html.bill.bill.bill.bill body #grid .save{background:rgba(98,230,165,.16)!important;color:#62e6a5!important}
 html.bill.bill.bill.bill body #grid .fx-qty{background:rgba(18,10,42,.78)!important;color:#fff!important}
 html.bill.bill.bill.bill body #ffHero .hero-card.ffhero{background:linear-gradient(160deg,rgba(255,111,216,.14),rgba(76,141,255,.12)),var(--surf)!important;box-shadow:6px 6px 0 #a45cff!important}
 html.bill.bill.bill.bill body #ffHero h1 span,html.bill.bill.bill.bill body #ffHero h1 em{-webkit-text-fill-color:#ff9be8!important}
@@ -160,9 +131,4 @@ html.bill.bill.bill.bill body .logo img{box-shadow:0 0 0 2px #ff7be0!important}
 html.bill.bill.bill.bill body header{border-bottom:1.5px solid #6a45c9!important}
 html.bill.bill.bill.bill body #grid .card .price,html.bill.bill.bill.bill body #grid .fx-amt b{-webkit-text-fill-color:#fff!important;color:#fff!important}
 html.bill.bill.bill.bill body #grid .fx-amt span{color:#ff9be8!important}
-html.bill.bill.bill.bill body #smmM .sm-hero{background:linear-gradient(135deg,#2e1370,#170a3a)!important}
-html.bill.bill.bill.bill body #smmM .sm-box{border-color:#6a45c9!important}
-html.bill.bill.bill.bill body #smmM .sm-pl,html.bill.bill.bill.bill body #smmM .sm-kd,html.bill.bill.bill.bill body #smmM .sm-q{border-color:#6a45c9!important;box-shadow:3px 3px 0 #6a45c9!important}
-html.bill.bill.bill.bill body #smmM .sm-tot{border-color:#a45cff!important}
-html.bill.bill.bill.bill body #smmM .sm-q span,html.bill.bill.bill.bill body #smmM .sm-l i{color:#ff9be8!important}
 html.bill.bill.bill.bill body .svc-t{border-color:#6a45c9!important}
