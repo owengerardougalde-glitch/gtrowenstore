@@ -920,12 +920,17 @@ function gemArt(n,kind){
    +'<polygon points="20,8 80,8 98,34 50,88 2,34" fill="none" stroke="rgba(255,255,255,.75)" stroke-width="2" stroke-linejoin="round"/><polygon points="24,12 40,12 30,28" fill="#fff" opacity=".7"/></g>'
    +'</defs><ellipse cx="120" cy="'+(H-8)+'" rx="92" ry="9" fill="rgba(0,0,0,.35)"/>'+out+sp+'</svg>';
 }
+const GTR_LU={L1:'U1',L6:'U2',L2:'U3',L3:'U4',L4:'U5',L5:'U6'};
+function gtrCartFix(){const seen={};for(let k=0;k<cart.length;k++){const p=P[cart[k]],c=p&&p[8];if(c&&GTR_LU[c]){if(seen[c]){const u=P.findIndex(x=>x[8]===GTR_LU[c]);if(u>=0)cart[k]=u}else seen[c]=1}}}
+function gtrCartSave(){if(!window.GTR_CART_READY)return;try{localStorage.setItem('gtr_cart',JSON.stringify({t:Date.now(),c:cart.map(n=>P[n][8])}))}catch(_){}}
 function renderCart(){
+  gtrCartFix();
   $('cartCount').textContent=cart.length;
   const l=$('cartList'), i=idx();
   if(!cart.length) l.innerHTML='<div class="cx-empty"><span><i class="fa-solid fa-cart-shopping"></i></span><b>Tu carrito está vacío</b><small>Agrega una recarga y págala en minutos.</small><button type="button" class="btn btn-primary" id="cxGo">Ver recargas</button></div>';
   else l.innerHTML='<div class="cx-top"><b>'+cart.length+(cart.length===1?' producto':' productos')+'</b><span><i class="fa-solid fa-bolt"></i> Entrega automática</span></div>'+cart.map((n,k)=>`<div class="line cx-line" style="--c:${P[n][6]||'#fb923c'}"><span class="cx-ic"><i class="${P[n][5]||'fa-solid fa-gem'}"></i></span><div class="cx-t"><strong>${P[n][9]}</strong><small>${String(P[n][1]).replace(/[<>&]/g,'')}</small></div><div class="cx-r"><b>${fmtRaw(P[n].price[i])}</b><button class="del" data-d="${k}" aria-label="Quitar"><i class="fa-solid fa-trash"></i></button></div></div>`).join('')+'<div class="cx-note"><i class="fa-solid fa-shield-halved"></i> Pago seguro. Si algo falla, te devolvemos tu dinero.</div>';
   const cg=$('cxGo'); if(cg) cg.onclick=()=>{ closeDrawer(); const t=document.getElementById('catalogo'); if(t) t.scrollIntoView({behavior:'smooth'}); };
+  gtrCartSave();
   const t=cart.reduce((a,n)=>a+P[n].price[i],0);
   $('cTotal').textContent=fmtRaw(t);
   $('goPay').disabled=!cart.length;
@@ -1007,6 +1012,12 @@ $('grid').addEventListener('click',e=>{
   { const pr=P[+b.dataset.i];
     if(pr && /^L\d$/.test(pr[8]||'') && !(window.GTR_DOM_CHECKED===true && window.GTR_DOM_CODES instanceof Set && window.GTR_DOM_CODES.has(pr[8]))){
       toast('Verifica tu ID de Free Fire para usar esta oferta'); return;
+    }
+  }
+  { const pr=P[+b.dataset.i], code=pr&&pr[8];
+    if(code&&GTR_LU[code]&&cart.some(c=>P[c][8]===code)){
+      const u=P.findIndex(x=>x[8]===GTR_LU[code]);
+      if(u>=0){ cart.push(u); renderCart(); toast('El limitado es solo 1 vez. Agregué el mismo paquete en ilimitado ⚡'); return; }
     }
   }
   cart.push(+b.dataset.i); renderCart(); toast('Agregado al carrito ⚡');
@@ -2015,6 +2026,7 @@ header{background:rgba(11,8,6,.82)}
         if (code && active) window.GTR_DOM_CODES.add(code);
       });
       window.GTR_DOM_CHECKED = true;
+      try{localStorage.setItem('gtr_ffv',JSON.stringify({id:id,name:username,region:region,codes:Array.from(window.GTR_DOM_CODES),t:Date.now()}))}catch(_){}
       say('✓ ' + username + ' · Consulta lista. Aquí aparecen las ofertas disponibles y los demás paquetes.', 'ok');
       cat = 'ff-diamonds';
       renderChips();
@@ -2037,6 +2049,24 @@ header{background:rgba(11,8,6,.82)}
       if (thisRequest === requestSequence) btn.disabled=false;
     }
   });
+  /* Si se salen sin comprar, al volver siguen con su ID verificado y su oferta limitada */
+  (function(){
+    var v=null; try{v=JSON.parse(localStorage.getItem('gtr_ffv')||'null')}catch(_){}
+    var ok=v&&v.id&&Date.now()-v.t<48*3600*1000;
+    if(ok){
+      inp.value=v.id; window.GTR_FF_ID=v.id; window.GTR_FF_NAME=v.name||''; window.GTR_FF_REGION=v.region||'';
+      window.GTR_DOM_CODES=new Set(v.codes||[]); window.GTR_DOM_CHECKED=true;
+      say('✓ '+(v.name||v.id)+(v.region?' · Región: '+v.region:'')+' · Tus ofertas siguen disponibles.','ok');
+    }
+    try{
+      var sc=JSON.parse(localStorage.getItem('gtr_cart')||'null');
+      if(sc&&Array.isArray(sc.c)&&Date.now()-sc.t<48*3600*1000&&!cart.length){
+        sc.c.forEach(function(c){ if(GTR_LU[c]&&!ok) return; var n=P.findIndex(function(x){return x[8]===c}); if(n>=0) cart.push(n) });
+      }
+    }catch(_){}
+    window.GTR_CART_READY=true; renderGrid(); renderCart();
+    if(ok) setTimeout(function(){ if(!btn.disabled) btn.click(); },1200); /* revalida en silencio */
+  })();
 })();
 </script>
 <!-- ============ NUEVA PALETA + PRIME 8 ============ -->
