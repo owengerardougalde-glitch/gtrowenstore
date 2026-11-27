@@ -49,7 +49,7 @@ $('orders').onclick=async e=>{const b=e.target.closest('[data-a]');if(!b)return;
  await load()};
 
 async function adm(path,body){const r=await fetch(API+path,{method:body?'POST':'GET',headers:{Authorization:'Bearer '+tk(),'Content-Type':'application/json'},body:body?JSON.stringify(body):undefined});const d=await r.json().catch(()=>({}));return {r,d}}
-$('awAv').onclick=async()=>{$('awOut').textContent='Revisando Central One…';const {d}=await adm('/a/avail');$('awOut').textContent='';$('awRes').innerHTML=(d.items||[]).map(x=>`<p style="color:${x.ok?'#6ee7b7':'#fca5a5'}"><b>${x.code}</b> · tienda $${Number(x.precio).toFixed(2)} · costo ${x.costo==null?'?':'$'+x.costo.toFixed(2)} · ${x.ok?'OK':x.why}</p>`).join('')||'Sin datos.'};
+$('awAv').onclick=async()=>{$('awOut').textContent='Revisando Central One…';const {d}=await adm('/a/avail');$('awOut').textContent=d&&d.central?('Central One: código '+d.central.status+(d.central.note?' · '+d.central.note:' · OK')):'';$('awRes').innerHTML=(d.items||[]).map(x=>`<p style="color:${x.ok?'#6ee7b7':'#fca5a5'}"><b>${x.code}</b> · tienda $${Number(x.precio).toFixed(2)} · costo ${x.costo==null?'?':'$'+x.costo.toFixed(2)} · ${x.ok?'OK':x.why}</p>`).join('')||'Sin datos.'};
 $('awGo').onclick=async()=>{const u=$('awU').value.trim(),a=parseFloat($('awA').value);if(!u||!a){$('awOut').textContent='Escribe el usuario y el monto.';return}
  $('awOut').textContent='Acreditando…';const {d}=await adm('/a/credit',{u,usd:a,note:$('awN').value});
  if(!d.ok){$('awOut').innerHTML='<span class="error">'+esc(d.message||d.error||'Error')+'</span>';return}
