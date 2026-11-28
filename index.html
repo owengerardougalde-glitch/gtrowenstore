@@ -205,7 +205,7 @@ footer{border-top-color:rgba(255,122,0,.2)}
   .topnav button{flex-direction:row;gap:8px;padding:8px 18px;font-size:.88rem}
 }
 </style>
-<script src="//code.tidio.co/gcscrd4peehpejmvje2jrp2vof5cpe3w.js" async></script>
+
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Bebas+Neue&display=swap">
 <meta name="color-scheme" content="dark"><meta name="theme-color" content="#0a0d12">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -371,13 +371,13 @@ body.gtr-tidio-open #tidio-chat{opacity:1!important;pointer-events:auto!importan
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script>try{var q=location.search;if(/tema=oscuro/.test(q))localStorage.setItem("gtr_tema","oscuro");else if(/tema=zakura|tema=claro/.test(q))localStorage.removeItem("gtr_tema");try{localStorage.removeItem("gtr_tema_v")}catch(e){}if(localStorage.getItem("gtr_tema")!=="oscuro")document.documentElement.classList.add("bill")}catch(e){document.documentElement.classList.add("bill")}</script>
-<link rel="stylesheet" href="/gtr-billete.css?v=9"><link rel="stylesheet" href="/gtr-glass.css?v=1">
+<link rel="stylesheet" href="/gtr-billete.css?v=9"><link rel="stylesheet" href="/gtr-glass.css?v=2"><link rel="stylesheet" href="/gtr-fluido.css?v=1"><script src="/gtr-fluido.js?v=1"></script>
 </head>
 <body>
 <header>
   <div class="nav">
     <div class="logo">
-      <img decoding="async" src="/gtr-img-11.jpg" alt="Carnero musculoso con espadas y neón rojo y azul de GTROWEN STORE">
+      <img decoding="async" fetchpriority="high" src="/gtr-img-11.jpg" alt="Carnero musculoso con espadas y neón rojo y azul de GTROWEN STORE">
       <div><div class="logo-t">GTROWEN <b>STORE</b></div><div class="logo-s">ELITE DIGITAL HUB</div></div>
     </div>
     <div class="nav-spacer"></div>
@@ -867,7 +867,7 @@ function renderGrid(){
       const stt=out?'Agotado':(typeof stock==='number'?stock.toLocaleString('en-US')+' en stock':(stock==='unknown'?(window.GTR_STOCK_STATE==='load'?'Verificando…':'Stock por confirmar'):'Disponible'));
       const art=lim
         ?('<div class="fx-art lim">'+gemArt(nn,'lim')+'<span class="fx-qty">x'+nn.toLocaleString('en-US')+'</span></div>')
-          :('<div class="fx-art unl"><img decoding="async" src="'+gemImg(nn)+'" alt="'+nn.toLocaleString('en-US')+' diamantes"><span class="fx-qty">x'+nn.toLocaleString('en-US')+'</span></div>');
+          :('<div class="fx-art unl"><img decoding="async" loading="lazy" src="'+gemImg(nn)+'" alt="'+nn.toLocaleString('en-US')+' diamantes"><span class="fx-qty">x'+nn.toLocaleString('en-US')+'</span></div>');
       return `<article class="card ff ff2 ${lim?'lim':'unl'} ${out?'sold':''} ${hot?'hot':''}">
         <div class="fx-top"><span class="fx-brand">FREE FIRE</span>${kind}</div>
         ${art}

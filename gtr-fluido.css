@@ -1,0 +1,41 @@
+/* GTR · FLUIDEZ — quita lo que más pesa al pintar (brillos y destellos en bucle) en celulares y equipos modestos.
+   Se activa sola: pantallas chicas, poca RAM/CPU, ahorro de datos o "reducir movimiento". */
+html{-webkit-text-size-adjust:100%;overscroll-behavior-y:none}
+button,a,input,select,label,[role=button]{touch-action:manipulation}
+#grid .card,.svc-t{contain:layout style}
+#grid{contain:layout style}
+@media (max-width:820px),(prefers-reduced-motion:reduce){
+  .pk,
+  .cp-pos1,
+  .cp-p-max,
+  .wl-mascot,
+  .wl-mascot img,
+  .wl-enter,
+  .wl-enter::after,
+  .loy.win,
+  .hero-cta .btn-primary::after,
+  .logo img,
+  .gx-eye,
+  html body .hero-card.home #goRecarga:after,
+  html body .gtr-ghost .gg-eye,
+  .ord-live i,
+  html body .btn-primary::after{animation:none!important}
+}
+html.lite .pk,
+html.lite .cp-pos1,
+html.lite .cp-p-max,
+html.lite .wl-mascot,
+html.lite .wl-mascot img,
+html.lite .wl-enter,
+html.lite .wl-enter::after,
+html.lite .loy.win,
+html.lite .hero-cta .btn-primary::after,
+html.lite .logo img,
+html.lite .gx-eye,
+html.lite html body .hero-card.home #goRecarga:after,
+html.lite html body .gtr-ghost .gg-eye,
+html.lite .ord-live i,
+html.lite html body .btn-primary::after{animation:none!important}
+html.lite::before,html.lite::after{display:none!important}
+html.lite body *,html.lite body *::before,html.lite body *::after{scroll-behavior:auto!important}
+html.lite #grid .card,html.lite .svc-t,html.lite .chip,html.lite .search,html.lite .walbar,html.lite .cp-stat{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:linear-gradient(135deg,rgba(255,255,255,.12),rgba(255,255,255,.04)),rgba(30,16,72,.78)!important}

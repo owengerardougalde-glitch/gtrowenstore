@@ -21,7 +21,7 @@ html.bill.bill.bill.bill.bill.bill body{
 }
 html.bill::before,html.bill::after{
   content:"";position:fixed;z-index:-1;border-radius:50%;pointer-events:none;
-  filter:blur(60px);opacity:.55;will-change:transform;
+  opacity:.5;will-change:transform;transform:translateZ(0);
   animation:lgFloat 20s ease-in-out infinite alternate;
 }
 html.bill::before{width:70vmax;height:70vmax;left:-28vmax;top:8vh;
@@ -241,8 +241,7 @@ html.bill.bill.bill.bill.bill.bill body h1,html.bill.bill.bill.bill.bill.bill bo
 /* móvil: menos blur para que vaya fluido */
 @media (max-width:640px){
   :root{--lg-blur:blur(14px) saturate(170%)}
-  html.bill::before,html.bill::after{filter:blur(46px)}
-  html.bill.bill.bill.bill.bill.bill body #grid .card,html.bill.bill.bill.bill.bill.bill body .svc-t{backdrop-filter:blur(10px) saturate(170%)!important;-webkit-backdrop-filter:blur(10px) saturate(170%)!important}
+  html.bill.bill.bill.bill.bill.bill body #grid .card,html.bill.bill.bill.bill.bill.bill body .svc-t{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:var(--lg-bg),rgba(30,16,72,.6)!important}
 }
 /* sin soporte de blur: fondo sólido legible */
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
