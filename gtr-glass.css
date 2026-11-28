@@ -1,0 +1,250 @@
+/* GTR · LIQUID GLASS — capa de vidrio sobre el tema "billete" (morado).
+   Se carga DESPUÉS de gtr-billete.css. Para quitarla: borra el <link> de gtr-glass.css en index.html. */
+
+:root{
+  --lg-bg:linear-gradient(135deg,rgba(255,255,255,.17) 0%,rgba(255,255,255,.05) 42%,rgba(255,255,255,.10) 100%);
+  --lg-bg-hi:linear-gradient(135deg,rgba(255,255,255,.24) 0%,rgba(255,255,255,.08) 45%,rgba(255,255,255,.14) 100%);
+  --lg-bd:rgba(255,255,255,.22);
+  --lg-blur:blur(20px) saturate(185%);
+  --lg-sh:0 14px 38px rgba(6,2,22,.5),inset 0 1.5px 1px rgba(255,255,255,.5),inset 0 -1px 1px rgba(255,255,255,.1),inset 0 0 26px rgba(255,255,255,.05);
+  --lg-tint:linear-gradient(135deg,rgba(164,92,255,.62),rgba(255,111,216,.5) 55%,rgba(76,141,255,.5));
+}
+
+/* ---------- fondo aurora con orbes que flotan ---------- */
+html.bill.bill.bill.bill.bill.bill body{
+  background:
+    radial-gradient(70% 38% at 100% 0%,rgba(255,111,216,.30),transparent 62%),
+    radial-gradient(80% 42% at 0% 28%,rgba(76,141,255,.26),transparent 62%),
+    radial-gradient(90% 40% at 60% 105%,rgba(164,92,255,.34),transparent 62%),
+    #0d0620!important;
+  background-attachment:fixed!important;
+}
+html.bill::before,html.bill::after{
+  content:"";position:fixed;z-index:-1;border-radius:50%;pointer-events:none;
+  filter:blur(60px);opacity:.55;will-change:transform;
+  animation:lgFloat 20s ease-in-out infinite alternate;
+}
+html.bill::before{width:70vmax;height:70vmax;left:-28vmax;top:8vh;
+  background:radial-gradient(circle at 35% 35%,#a45cff,transparent 66%)}
+html.bill::after{width:62vmax;height:62vmax;right:-26vmax;bottom:-12vh;
+  background:radial-gradient(circle at 65% 65%,#ff6fd8,transparent 66%);
+  animation-duration:27s;animation-direction:alternate-reverse}
+@keyframes lgFloat{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(9vmax,-8vmax,0) scale(1.2)}}
+
+/* ---------- superficies de vidrio ---------- */
+html.bill.bill.bill.bill.bill.bill body header{
+  background:linear-gradient(180deg,rgba(255,255,255,.15),rgba(255,255,255,.05))!important;
+  backdrop-filter:blur(26px) saturate(190%)!important;-webkit-backdrop-filter:blur(26px) saturate(190%)!important;
+  border-bottom:1px solid var(--lg-bd)!important;
+  box-shadow:0 10px 30px rgba(6,2,22,.4),inset 0 -1px 0 rgba(255,255,255,.1)!important;
+}
+html.bill.bill.bill.bill.bill.bill body .nav button,html.bill.bill.bill.bill.bill.bill body .cart-btn,html.bill.bill.bill.bill.bill.bill body .curr-btn,html.bill.bill.bill.bill.bill.bill body .select{
+  background:var(--lg-bg)!important;
+  backdrop-filter:var(--lg-blur)!important;-webkit-backdrop-filter:var(--lg-blur)!important;
+  border:1px solid var(--lg-bd)!important;border-radius:16px!important;
+  box-shadow:0 6px 18px rgba(6,2,22,.4),inset 0 1.5px 1px rgba(255,255,255,.55),inset 0 -1px 1px rgba(255,255,255,.08)!important;
+  transition:transform .25s cubic-bezier(.2,.8,.2,1),filter .25s!important;
+}
+html.bill.bill.bill.bill.bill.bill body .nav button:hover,html.bill.bill.bill.bill.bill.bill body .cart-btn:hover,html.bill.bill.bill.bill.bill.bill body .curr-btn:hover{transform:translateY(-2px) scale(1.04);filter:brightness(1.2)}
+html.bill.bill.bill.bill.bill.bill body .nav button:active,html.bill.bill.bill.bill.bill.bill body .cart-btn:active,html.bill.bill.bill.bill.bill.bill body .curr-btn:active{transform:scale(.95)}
+html.bill.bill.bill.bill.bill.bill body .logo img{box-shadow:0 0 0 1.5px rgba(255,255,255,.45),0 6px 18px rgba(164,92,255,.5)!important}
+
+html.bill.bill.bill.bill.bill.bill body .hero-card.home{
+  background:var(--lg-tint),rgba(18,8,48,.4)!important;
+  backdrop-filter:var(--lg-blur)!important;-webkit-backdrop-filter:var(--lg-blur)!important;
+  border:1px solid rgba(255,255,255,.3)!important;border-radius:28px!important;
+  box-shadow:0 22px 60px rgba(120,60,255,.35),inset 0 2px 1px rgba(255,255,255,.55),inset 0 -2px 24px rgba(255,255,255,.07)!important;
+}
+html.bill.bill.bill.bill.bill.bill body #ffHero .hero-card.ffhero{
+  background:var(--lg-bg-hi),rgba(20,10,52,.35)!important;
+  backdrop-filter:var(--lg-blur)!important;-webkit-backdrop-filter:var(--lg-blur)!important;
+  border:1px solid var(--lg-bd)!important;border-radius:28px!important;
+  box-shadow:var(--lg-sh)!important;
+}
+html.bill.bill.bill.bill.bill.bill body #ffHero .idbox{
+  background:rgba(255,255,255,.07)!important;border:1px solid var(--lg-bd)!important;border-radius:20px!important;
+  backdrop-filter:blur(14px)!important;-webkit-backdrop-filter:blur(14px)!important;
+  box-shadow:inset 0 2px 8px rgba(6,2,22,.35),inset 0 1px 0 rgba(255,255,255,.2)!important;
+}
+html.bill.bill.bill.bill.bill.bill body #ffHero .idbox input,html.bill.bill.bill.bill.bill.bill body .toolbar label.search input,html.bill.bill.bill.bill.bill.bill body .search input,html.bill.bill.bill.bill.bill.bill body input,html.bill.bill.bill.bill.bill.bill body select,html.bill.bill.bill.bill.bill.bill body textarea{
+  color:#fff!important;
+}
+html.bill.bill.bill.bill.bill.bill body #ffHero .idbox input{
+  background:rgba(255,255,255,.08)!important;border:1px solid rgba(255,255,255,.22)!important;border-radius:14px!important;
+  box-shadow:inset 0 2px 6px rgba(6,2,22,.3)!important;
+}
+html.bill.bill.bill.bill.bill.bill body #ffHero .idbox input:focus,html.bill.bill.bill.bill.bill.bill body .search:focus-within{
+  border-color:rgba(255,155,232,.9)!important;
+  box-shadow:0 0 0 4px rgba(255,111,216,.2),0 0 26px rgba(164,92,255,.45),inset 0 1px 0 rgba(255,255,255,.25)!important;
+  outline:0!important;
+}
+html.bill.bill.bill.bill.bill.bill body #walBar,html.bill.bill.bill.bill.bill.bill body .walbar{
+  background:var(--lg-bg)!important;border:1px solid var(--lg-bd)!important;border-radius:20px!important;
+  backdrop-filter:var(--lg-blur)!important;-webkit-backdrop-filter:var(--lg-blur)!important;
+  box-shadow:var(--lg-sh)!important;
+}
+html.bill.bill.bill.bill.bill.bill body .wal-ac button{
+  background:var(--lg-bg-hi)!important;border:1px solid var(--lg-bd)!important;border-radius:999px!important;
+  box-shadow:0 4px 12px rgba(6,2,22,.35),inset 0 1.5px 1px rgba(255,255,255,.6)!important;
+}
+html.bill.bill.bill.bill.bill.bill body .wal-ac button:first-child{background:var(--lg-tint)!important;color:#fff!important}
+
+/* buscador, chips, menú inferior */
+html.bill.bill.bill.bill.bill.bill body .toolbar label.search,html.bill.bill.bill.bill.bill.bill body .search{
+  background:var(--lg-bg)!important;border:1px solid var(--lg-bd)!important;border-radius:18px!important;
+  backdrop-filter:var(--lg-blur)!important;-webkit-backdrop-filter:var(--lg-blur)!important;
+  box-shadow:var(--lg-sh)!important;
+}
+html.bill.bill.bill.bill.bill.bill body .chip{
+  background:var(--lg-bg)!important;border:1px solid var(--lg-bd)!important;color:#fff!important;
+  backdrop-filter:blur(14px) saturate(170%)!important;-webkit-backdrop-filter:blur(14px) saturate(170%)!important;
+  box-shadow:0 4px 12px rgba(6,2,22,.3),inset 0 1.5px 1px rgba(255,255,255,.5)!important;
+  transition:transform .2s,filter .2s!important;
+}
+html.bill.bill.bill.bill.bill.bill body .chip:active{transform:scale(.94)}
+html.bill.bill.bill.bill.bill.bill body .chip.active{
+  background:var(--lg-tint)!important;color:#fff!important;border-color:rgba(255,255,255,.5)!important;
+  box-shadow:0 8px 22px rgba(164,92,255,.5),inset 0 1.5px 1px rgba(255,255,255,.7)!important;
+}
+html.bill.bill.bill.bill.bill.bill body .topnav{
+  background:linear-gradient(180deg,rgba(255,255,255,.2),rgba(255,255,255,.07))!important;
+  backdrop-filter:blur(26px) saturate(200%)!important;-webkit-backdrop-filter:blur(26px) saturate(200%)!important;
+  border:1px solid rgba(255,255,255,.32)!important;border-radius:26px!important;
+  box-shadow:0 16px 40px rgba(6,2,22,.55),inset 0 2px 1px rgba(255,255,255,.55),inset 0 -1px 1px rgba(255,255,255,.12)!important;
+}
+html.bill.bill.bill.bill.bill.bill body .topnav button.on{
+  background:var(--lg-tint)!important;color:#fff!important;border-radius:20px!important;
+  box-shadow:0 6px 18px rgba(164,92,255,.55),inset 0 1.5px 1px rgba(255,255,255,.7)!important;
+}
+
+/* tarjetas de productos */
+html.bill.bill.bill.bill.bill.bill body #grid .card{
+  background:var(--lg-bg)!important;border:1px solid var(--lg-bd)!important;border-radius:26px!important;
+  backdrop-filter:blur(16px) saturate(180%)!important;-webkit-backdrop-filter:blur(16px) saturate(180%)!important;
+  box-shadow:var(--lg-sh)!important;
+  transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s,border-color .35s!important;
+}
+@media (hover:hover){
+  html.bill.bill.bill.bill.bill.bill body #grid .card:hover{
+    transform:translateY(-5px) scale(1.012)!important;border-color:rgba(255,255,255,.42)!important;
+    box-shadow:0 22px 55px rgba(164,92,255,.4),inset 0 2px 1px rgba(255,255,255,.65),inset 0 0 30px rgba(255,255,255,.08)!important;
+  }
+}
+html.bill.bill.bill.bill.bill.bill body #grid .card:active{transform:scale(.98)!important;box-shadow:var(--lg-sh)!important}
+html.bill.bill.bill.bill.bill.bill body #grid .fx-art{
+  border-radius:20px!important;
+  box-shadow:inset 0 2px 1px rgba(255,255,255,.6),inset 0 -10px 24px rgba(255,255,255,.08),0 8px 22px rgba(6,2,22,.35)!important;
+}
+html.bill.bill.bill.bill.bill.bill body #grid .fx-qty,html.bill.bill.bill.bill.bill.bill body #grid .fx-kind,html.bill.bill.bill.bill.bill.bill body #grid .save,html.bill.bill.bill.bill.bill.bill body #grid .card .tag,html.bill.bill.bill.bill.bill.bill body #grid .fx-stk{
+  background:rgba(255,255,255,.14)!important;color:#fff!important;
+  border:1px solid rgba(255,255,255,.28)!important;border-radius:999px!important;
+  backdrop-filter:blur(10px)!important;-webkit-backdrop-filter:blur(10px)!important;
+  box-shadow:inset 0 1px 1px rgba(255,255,255,.55)!important;
+}
+html.bill.bill.bill.bill.bill.bill body #grid .fx-kind,html.bill.bill.bill.bill.bill.bill body #grid .save{color:#8dffcb!important;background:rgba(98,230,165,.16)!important;border-color:rgba(98,230,165,.45)!important}
+html.bill.bill.bill.bill.bill.bill body #grid .fx-buy,html.bill.bill.bill.bill.bill.bill body #grid .card .price-row{border-top:1px solid rgba(255,255,255,.18)!important}
+
+/* servicios (streaming y apps) */
+html.bill.bill.bill.bill.bill.bill body .svc-t{
+  background:var(--lg-bg)!important;border:1px solid var(--lg-bd)!important;border-radius:22px!important;
+  backdrop-filter:blur(16px) saturate(180%)!important;-webkit-backdrop-filter:blur(16px) saturate(180%)!important;
+  box-shadow:var(--lg-sh)!important;
+}
+html.bill.bill.bill.bill.bill.bill body .svc-i{box-shadow:inset 0 1.5px 1px rgba(255,255,255,.6),0 6px 14px rgba(6,2,22,.35)!important}
+html.bill.bill.bill.bill.bill.bill body .pr-i img{box-shadow:0 0 0 1.5px rgba(255,255,255,.5),0 8px 20px rgba(164,92,255,.5),inset 0 2px 1px rgba(255,255,255,.6)!important}
+
+/* ---------- botones: gotas de cristal ---------- */
+html.bill.bill.bill.bill.bill.bill body .btn-primary,html.bill.bill.bill.bill.bill.bill body .hero-cta .btn-primary,html.bill.bill.bill.bill.bill.bill body #grid .add,html.bill.bill.bill.bill.bill.bill body #grid button.add,html.bill.bill.bill.bill.bill.bill body .hero-card.home #goRecarga,html.bill.bill.bill.bill.bill.bill body #ffHero .idrow .btn-primary,html.bill.bill.bill.bill.bill.bill body .btn-full{
+  background:var(--lg-tint)!important;color:#fff!important;
+  border:1px solid rgba(255,255,255,.5)!important;border-radius:999px!important;
+  text-shadow:0 1px 3px rgba(40,10,90,.55)!important;
+  backdrop-filter:blur(12px) saturate(170%)!important;-webkit-backdrop-filter:blur(12px) saturate(170%)!important;
+  box-shadow:0 10px 26px rgba(150,80,255,.5),inset 0 2px 1px rgba(255,255,255,.75),inset 0 -3px 8px rgba(40,10,90,.35)!important;
+  transition:transform .2s cubic-bezier(.2,.8,.2,1),filter .2s,box-shadow .2s!important;
+}
+@media (hover:hover){
+  html.bill.bill.bill.bill.bill.bill body .btn-primary:hover,html.bill.bill.bill.bill.bill.bill body #grid .add:hover,html.bill.bill.bill.bill.bill.bill body .hero-card.home #goRecarga:hover,html.bill.bill.bill.bill.bill.bill body #ffHero .idrow .btn-primary:hover{
+    transform:translateY(-2px) scale(1.04)!important;filter:brightness(1.15) saturate(1.15)!important;
+    box-shadow:0 16px 34px rgba(180,100,255,.6),inset 0 2px 1px rgba(255,255,255,.85),inset 0 -3px 8px rgba(40,10,90,.3)!important;
+  }
+}
+html.bill.bill.bill.bill.bill.bill body .btn-primary:active,html.bill.bill.bill.bill.bill.bill body #grid .add:active,html.bill.bill.bill.bill.bill.bill body .add:active,html.bill.bill.bill.bill.bill.bill body .hero-card.home #goRecarga:active{
+  transform:scale(.95)!important;filter:brightness(.95)!important;
+  box-shadow:0 5px 14px rgba(150,80,255,.45),inset 0 2px 1px rgba(255,255,255,.6)!important;
+}
+html.bill.bill.bill.bill.bill.bill body .btn-ghost,html.bill.bill.bill.bill.bill.bill body .hero-card .btn:not(.btn-primary),html.bill.bill.bill.bill.bill.bill body .hero-card.home .hero-cta .btn:not(.btn-primary){
+  background:var(--lg-bg-hi)!important;color:#fff!important;
+  border:1px solid rgba(255,255,255,.35)!important;border-radius:999px!important;
+  backdrop-filter:blur(12px) saturate(170%)!important;-webkit-backdrop-filter:blur(12px) saturate(170%)!important;
+  box-shadow:0 6px 18px rgba(6,2,22,.4),inset 0 1.5px 1px rgba(255,255,255,.65)!important;
+}
+
+/* ---------- carrito, selector de moneda y ventanas ---------- */
+html.bill.bill.bill.bill.bill.bill body .drawer{
+  background:linear-gradient(160deg,rgba(255,255,255,.18),rgba(255,255,255,.05) 50%,rgba(255,255,255,.1)),rgba(16,8,42,.55)!important;
+  backdrop-filter:blur(32px) saturate(190%)!important;-webkit-backdrop-filter:blur(32px) saturate(190%)!important;
+  border-left:1px solid rgba(255,255,255,.28)!important;
+  box-shadow:-24px 0 70px rgba(6,2,22,.6),inset 1px 0 1px rgba(255,255,255,.4)!important;
+}
+html.bill.bill.bill.bill.bill.bill body .drawer-head,html.bill.bill.bill.bill.bill.bill body .drawer-foot{background:transparent!important;border-color:rgba(255,255,255,.16)!important}
+html.bill.bill.bill.bill.bill.bill body .sheet{
+  background:linear-gradient(160deg,rgba(255,255,255,.2),rgba(255,255,255,.06)),rgba(16,8,42,.6)!important;
+  backdrop-filter:blur(34px) saturate(190%)!important;-webkit-backdrop-filter:blur(34px) saturate(190%)!important;
+  border:1px solid rgba(255,255,255,.3)!important;border-bottom:0!important;
+  box-shadow:0 -20px 70px rgba(6,2,22,.6),inset 0 2px 1px rgba(255,255,255,.5)!important;
+}
+html.bill.bill.bill.bill.bill.bill body .cur-item{
+  background:var(--lg-bg)!important;border:1px solid rgba(255,255,255,.18)!important;
+  box-shadow:inset 0 1px 1px rgba(255,255,255,.35)!important;
+}
+html.bill.bill.bill.bill.bill.bill body .cur-item.sel{background:var(--lg-tint)!important;border-color:rgba(255,255,255,.5)!important}
+html.bill.bill.bill.bill.bill.bill body .sheet-ov,html.bill.bill.bill.bill.bill.bill body .wl,html.bill.bill.bill.bill.bill.bill body .cp-modal{
+  background:rgba(8,3,26,.5)!important;backdrop-filter:blur(8px)!important;-webkit-backdrop-filter:blur(8px)!important;
+}
+html.bill.bill.bill.bill.bill.bill body .wl-card{
+  background:linear-gradient(160deg,rgba(255,255,255,.2),rgba(255,255,255,.06)),rgba(20,10,52,.55)!important;
+  backdrop-filter:blur(34px) saturate(190%)!important;-webkit-backdrop-filter:blur(34px) saturate(190%)!important;
+  border:1px solid rgba(255,255,255,.32)!important;border-radius:30px!important;
+  box-shadow:0 30px 90px rgba(6,2,22,.65),inset 0 2px 1px rgba(255,255,255,.55)!important;
+}
+html.bill.bill.bill.bill.bill.bill body .wl-x{background:rgba(255,255,255,.14)!important;border:1px solid rgba(255,255,255,.3)!important;box-shadow:inset 0 1px 1px rgba(255,255,255,.5)}
+html.bill.bill.bill.bill.bill.bill body .cp-stat{
+  background:var(--lg-bg)!important;border:1px solid var(--lg-bd)!important;
+  backdrop-filter:blur(16px) saturate(180%)!important;-webkit-backdrop-filter:blur(16px) saturate(180%)!important;
+  box-shadow:var(--lg-sh)!important;
+}
+
+/* ---------- inputs de los formularios ---------- */
+html.bill.bill.bill.bill.bill.bill body .field input,html.bill.bill.bill.bill.bill.bill body .field select,html.bill.bill.bill.bill.bill.bill body .field textarea,html.bill.bill.bill.bill.bill.bill body .drawer input,html.bill.bill.bill.bill.bill.bill body .drawer select,html.bill.bill.bill.bill.bill.bill body .drawer textarea,html.bill.bill.bill.bill.bill.bill body .sheet input{
+  background:rgba(255,255,255,.08)!important;border:1px solid rgba(255,255,255,.22)!important;border-radius:14px!important;
+  backdrop-filter:blur(12px)!important;-webkit-backdrop-filter:blur(12px)!important;
+  box-shadow:inset 0 2px 8px rgba(6,2,22,.3),inset 0 1px 0 rgba(255,255,255,.14)!important;
+}
+html.bill.bill.bill.bill.bill.bill body input::placeholder,html.bill.bill.bill.bill.bill.bill body textarea::placeholder{color:rgba(246,236,255,.55)!important}
+
+/* ---------- detalles ---------- */
+html.bill.bill.bill.bill.bill.bill body h1,html.bill.bill.bill.bill.bill.bill body h2,html.bill.bill.bill.bill.bill.bill body .section-title h2{text-shadow:0 2px 24px rgba(164,92,255,.4)!important}
+::selection{background:rgba(255,111,216,.5);color:#fff}
+::-webkit-scrollbar{width:9px;height:9px}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,rgba(255,255,255,.3),rgba(255,255,255,.1));border-radius:99px;border:2px solid transparent;background-clip:padding-box}
+::-webkit-scrollbar-track{background:transparent}
+
+@media (prefers-reduced-motion:no-preference){
+  html.bill.bill.bill.bill.bill.bill body #grid .card,html.bill.bill.bill.bill.bill.bill body .svc-t{animation:lgIn .6s cubic-bezier(.2,.8,.2,1) both}
+  html.bill.bill.bill.bill.bill.bill body #grid .card:nth-child(2){animation-delay:.05s}html.bill.bill.bill.bill.bill.bill body #grid .card:nth-child(3){animation-delay:.1s}
+  html.bill.bill.bill.bill.bill.bill body #grid .card:nth-child(4){animation-delay:.15s}html.bill.bill.bill.bill.bill.bill body #grid .card:nth-child(5){animation-delay:.2s}
+  html.bill.bill.bill.bill.bill.bill body #grid .card:nth-child(n+6){animation-delay:.25s}
+}
+@keyframes lgIn{from{opacity:0;transform:translateY(14px) scale(.985)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){html.bill::before,html.bill::after{animation:none}}
+
+/* móvil: menos blur para que vaya fluido */
+@media (max-width:640px){
+  :root{--lg-blur:blur(14px) saturate(170%)}
+  html.bill::before,html.bill::after{filter:blur(46px)}
+  html.bill.bill.bill.bill.bill.bill body #grid .card,html.bill.bill.bill.bill.bill.bill body .svc-t{backdrop-filter:blur(10px) saturate(170%)!important;-webkit-backdrop-filter:blur(10px) saturate(170%)!important}
+}
+/* sin soporte de blur: fondo sólido legible */
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  html.bill.bill.bill.bill.bill.bill body #grid .card,html.bill.bill.bill.bill.bill.bill body .svc-t,html.bill.bill.bill.bill.bill.bill body .drawer,html.bill.bill.bill.bill.bill.bill body .sheet,html.bill.bill.bill.bill.bill.bill body .wl-card,html.bill.bill.bill.bill.bill.bill body .walbar,html.bill.bill.bill.bill.bill.bill body .search,html.bill.bill.bill.bill.bill.bill body .topnav,html.bill.bill.bill.bill.bill.bill body header{background:rgba(30,16,72,.94)!important}
+}
